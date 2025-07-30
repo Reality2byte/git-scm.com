@@ -93,6 +93,12 @@ $ HUGO_UGLYURLS=false hugo
 $ npx -y pagefind --site public --serve
 ```
 
+If you want to make sure that the same Pagefind version is used as when the site is deployed, use this command:
+
+```console
+$ npx -y pagefind@$(sed -n 's/^ *pagefind_version: //p' <./hugo.yml) --site public
+```
+
 Note that running Pagefind will make the process about 7 times slower, and the site will not be re-rendered and live-reloaded in the browser when you change files in `content/` (unlike with `hugo serve -w`).
 
 ## Running the test suite
