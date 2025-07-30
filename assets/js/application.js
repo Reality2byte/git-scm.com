@@ -284,8 +284,7 @@ var Search = {
         $("#search-term").text(term);
         this.initializeSearchIndex(async () => {
           const results = await Search.pagefind.debouncedSearch(term);
-          if (results === null) return;
-          if (results.results.length === 0) {
+          if (results === null || results.results.length === 0) {
             $("#show-results-label").text("No matching pages found.");
             return;
           }
