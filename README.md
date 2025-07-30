@@ -105,6 +105,52 @@ Note that running Pagefind will make the process about 7 times slower, and the s
 
 Believe it or not, https://git-scm.com/ has its own test suite. It uses [Playwright](https://playwright.dev/) to perform a couple of tests that verify that the site "looks right". These tests live in `tests/` and are configured via `playwright.config.js`.
 
+> [!NOTE]
+> Building the site, letting Pagefind generate the search index, and then running the test suite can be quite time consuming. To accelerate the development cycle, it is _highly_ recommended to use a sparse checkout instead of a full clone. The minimal sparse checkout required to run the test suite can be configured like this:
+>
+> ```console
+> $ git config set --worktree core.sparseCheckoutCone false
+> $ git config set --worktree core.sparseCheckout true
+> $ git sparse-checkout set \
+>     /README.md \
+>     /assets/ \
+>     /content/404.html \
+>     /content/_index.html \
+>     /content/about/small-and-fast.html \
+>     /content/downloads/guis/ \
+>     /content/search/ \
+>     /data/ \
+>     /external/book/content/book/_index.html \
+>     /external/book/content/book/az/v2/Başlanğıc-Git-Nədir.html \
+>     /external/book/content/book/en/v2/Getting-Started-About-Version-Control.html \
+>     /external/book/content/book/en/v2/_index.html \
+>     /external/book/content/book/fr/v2/Démarrage-rapide-À-propos-de-la-gestion-de-version.html \
+>     /external/book/data/ \
+>     /external/docs/content/docs/git-add/fr.html \
+>     /external/docs/content/docs/git-clone.html \
+>     /external/docs/content/docs/git-commit.html \
+>     /external/docs/content/docs/git-commit/fr.html \
+>     /external/docs/content/docs/git-config.html \
+>     /external/docs/content/docs/git-config/fr.html \
+>     /external/docs/content/docs/git-remote/fr.html \
+>     /external/docs/content/docs/gitrevisions.html \
+>     /external/docs/content/docs/gitrevisions/fr.html \
+>     /external/docs/data/ \
+>     /hugo.yml \
+>     /layouts/ \
+>     /playwright.config.js \
+>     /script/ \
+>     /static/ \
+>     /tests/git-scm.spec.js
+> ```
+>
+> The site can then be built quickly via these commands:
+>
+> ```console
+> $ HUGO_MEMORYLIMIT=1 time hugo &&
+>   npx -y pagefind@$(sed -n 's/^ *pagefind_version: //p' <./hugo.yml) --site public
+> ```
+
 To run these tests in your local setup, you need a working node.js installation. After that, you need to install Playwright:
 
 ```console
