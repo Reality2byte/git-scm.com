@@ -105,8 +105,16 @@ test.describe('Linux', () => {
 test('search', async ({ page }) => {
   await page.goto(url)
 
-  // Search for "commit"
+  // Full search for "commit"
   const searchBox = page.getByPlaceholder('Type / to search entire site…')
+  await searchBox.fill('commit')
+  await searchBox.press('Enter')
+
+  await expect(page).toHaveURL(/\/search\/results\?search=commit/)
+
+  await page.goto(url)
+
+  // Search for "commit"
   await searchBox.fill('commit')
   await searchBox.press('Shift')
 
