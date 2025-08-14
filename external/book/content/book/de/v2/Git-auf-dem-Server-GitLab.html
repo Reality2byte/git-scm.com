@@ -20,7 +20,7 @@ title: Git - GitLab
 <h2 id="_gitlab">GitLab</h2>
 <div class="paragraph">
 <p>
-GitWeb ist jedoch ein recht übersichtliches Tool.
+GitWeb ist jedoch ein recht minimalistisches Tool.
 Wenn du einen modernen, voll ausgestatteten Git-Server suchst, gibt es einige Open-Source-Lösungen, die du stattdessen installieren kannst.
 Da GitLab einer der beliebtesten ist, werden wir uns mit der Installation im Detail befassen und es als Beispiel verwenden.
 Dies ist etwas schwieriger als die GitWeb-Option und erfordert mehr Wartung, aber es ist eine viel umfassendere Lösung.</p>
@@ -58,7 +58,7 @@ GitLab empfiehlt dringend, GitLab über das offizielle Omnibus GitLab-Paket zu i
 <div class="sect3">
 <h3 id="_administration">Administration</h3>
 <div class="paragraph">
-<p>Die Verwaltungsoberfläche von GitLab wird ist webbasiert.
+<p>Die Verwaltungsoberfläche von GitLab wird webbasiert bereitgestellt.
 Benutze einfach deinen Browser, um den Hostnamen oder die IP-Adresse, auf der GitLab installiert ist, anzugeben, und melden dich als Admin-Benutzer an.
 Der Standardbenutzername ist <code>admin@local.host</code>, das Standardpasswort ist <code>5iveL!fe</code> (dies muss nach der Eingabe <strong>geändert werden</strong>).
 Klicke nach der Anmeldung im Menü oben rechts auf das Symbol „Admin-Bereich“.</p>
@@ -85,10 +85,10 @@ Wenn der Benutzer jane ein Projekt mit dem Namen project hätte, wäre die URL d
 </div>
 <div class="paragraph">
 <p>Das Löschen eines Benutzers kann auf zwei Arten erfolgen.
-Das „Blockieren“ eines Benutzers verhindert, dass er sich am GitLab anmeldet. Alle Daten unter den Namensraum dieses Benutzers bleiben jedoch erhalten. Mit der E-Mail-Adresse dieses Benutzers signierte Commits werden weiterhin mit seinem Profil verknüpft.</p>
+Das „Sperren“ eines Benutzers verhindert, dass er sich am GitLab anmeldet. Alle Daten unter den Namensraum dieses Benutzers bleiben jedoch erhalten. Mit der E-Mail-Adresse dieses Benutzers signierte Commits werden weiterhin mit seinem Profil verknüpft.</p>
 </div>
 <div class="paragraph">
-<p>Das „Zerstören“ eines Benutzers hingegen entfernt ihn vollständig aus der Datenbank und dem Dateisystem.
+<p>Das „Löschen“ eines Benutzers hingegen entfernt ihn vollständig aus der Datenbank und dem Dateisystem.
 Alle Projekte und Daten in seinem Namensraum werden entfernt, und alle Gruppen, die sich in seinem Besitz befinden, werden ebenfalls entfernt.
 Das ist eine permanente und destruktive Aktion, die in der Regel selten angewendet wird.</p>
 </div>
