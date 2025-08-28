@@ -56,7 +56,7 @@ var GitGlossary = {
         const truncatedDefinition = this.truncateWords(definition, 60);
 
         const language = document.querySelector("html")?.getAttribute("lang") || 'en';
-        const glossaryUrl = language === 'en' ? '/docs/gitglossary' : `/docs/gitglossary/${language}`;
+        const glossaryUrl = language === 'en' ? baseURLPrefix + 'docs/gitglossary' : baseURLPrefix + `docs/gitglossary/${language}`;
         
         this.tooltip.querySelector('.tooltip-content').innerHTML = `
             <a href="${glossaryUrl}#def_${term}" target="_blank">
