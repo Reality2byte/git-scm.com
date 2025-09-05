@@ -10,8 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery-1.7.1.min
-//= require jquery-ui-1.8.18.custom.min
 //= require jquery.defaultvalue
 //= require session.min
 
