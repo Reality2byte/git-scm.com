@@ -190,7 +190,7 @@ var Search = {
   },
 
   observeTextEntry: function() {
-    $('form#search input').keyup(function(e) {
+    $('form#search input').on('keyup', function() {
       Search.runSearch();
     });
 
