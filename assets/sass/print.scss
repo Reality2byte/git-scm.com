@@ -29,4 +29,8 @@
   div#main {
     box-decoration-break: clone;
   }
+
+  #dark-mode-button {
+    display: none !important;
+  }
 }
