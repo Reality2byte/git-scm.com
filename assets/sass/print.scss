@@ -25,4 +25,8 @@
   section {
     break-inside: avoid-page;
   }
+
+  div#main {
+    box-decoration-break: clone;
+  }
 }
