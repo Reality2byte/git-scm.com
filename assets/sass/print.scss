@@ -1,0 +1,28 @@
+@media print {
+  .inner {
+    // The `position` of the `inner` class is defined as `relative`, which
+    // causes funny issues when printing, for example tens of empty pages in
+    // the middle. Let's suppress that.
+    position: inherit;
+
+    width: inherit;
+    margin-bottom: 0;
+  }
+
+  #main {
+    margin-bottom: 0;
+  }
+
+  footer {
+    padding: 0;
+    margin-top: 0;
+  }
+
+  aside, .sidebar-btn, #search-container, #reference-version, #dark-mode-button, .site-source {
+    display: none;
+  }
+
+  section {
+    break-inside: avoid-page;
+  }
+}
