@@ -83,7 +83,7 @@ runs:
 
     - name: run Pagefind ${{ env.PAGEFIND_VERSION }} to build the search index
       shell: bash
-      run: npx -y pagefind@${{ env.PAGEFIND_VERSION }} --site public
+      run: npx -y pagefind@${{ env.PAGEFIND_VERSION }} --site public --write-playground
 
     - name: upload GitHub Pages artifact
       uses: actions/upload-pages-artifact@v3
@@ -107,10 +107,33 @@ runs:
           -H "Content-Type: application/json" \
           -d '{ "purge_everything": true }'
 
-    - name: construct `--remap` options for lychee
+    - name: construct `--remap` options, root-dir for lychee
       id: remap
       shell: bash
       run: |
+        # Prepare the root-dir for use with the `--root-dir` option
+        echo "root-dir-arg=$PWD/root-dir" >>$GITHUB_OUTPUT &&
+        case "$base_url" in
+        https://*/?*|http://*/?*)
+          # The base URL is not at the top-level of the URL
+          subdir="${base_url#http*://*/}"
+          target="root-dir/${subdir%/}"
+          source="$(echo "${subdir%/}" | sed 's/[^/]*/../g')/public"
+          mkdir -p "${target%/*}" &&
+          ln -s "$source" "$target" &&
+          echo "root-dir=$target/" >>$GITHUB_OUTPUT
+          ;;
+        https://*|http://*)
+          # The base URL is at the top-level of the URL
+          ln -s public root-dir &&
+          echo 'root-dir=root-dir/' >>$GITHUB_OUTPUT
+          ;;
+        *)
+          echo "::error::Unexpected base_url '$base_url'" >&2
+          echo exit 1
+          ;;
+        esac || exit
+
         echo "result=$(echo "$base_url" |
           sed 's|^\(.*\)\(/git-scm\.com\)$|^(\1)?\2(.*)|') file://$PWD/public\$2" \
           >>$GITHUB_OUTPUT
@@ -144,7 +167,7 @@ runs:
         args: >-
           --offline
           --fallback-extensions html
-          --base '${{ env.base_url }}'
+          --root-dir '${{ steps.remap.outputs.root-dir-arg }}'
           --remap '${{ steps.remap.outputs.result }}'
           ${{ steps.remap.outputs.remap-dotdot }}
           ${{ steps.remap.outputs.remap-git-scm }}
@@ -155,7 +178,7 @@ runs:
           --exclude file:///Pfad/zum/Repo.git/
           --exclude file:///chemin/du/d%C3%A9p%C3%B4t.git/
           --exclude file:///srv/git/project.git
-          public/
+          '${{ steps.remap.outputs.root-dir }}'
         output: lychee.md
         jobSummary: true
         fail: false
