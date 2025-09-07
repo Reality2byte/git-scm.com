@@ -789,6 +789,9 @@ var Graphviz = {
       if (!vizInstance) vizInstance = await Viz.instance()
       const options = {
         format: "svg",
+        graphAttributes: {
+          bgcolor: "transparent",
+        },
       }
       const svg = vizInstance.renderString(x.innerText, options)
       const img = document.createElement('img')
