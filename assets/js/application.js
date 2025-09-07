@@ -800,6 +800,8 @@ var Graphviz = {
         'src',
         `data:image/svg+xml;utf8,${encodeURIComponent(svg.substring(svg.indexOf('<svg')))}`
       )
+      const alt = x.getAttribute("alt")
+      if (alt) img.setAttribute("alt", alt)
       x.parentNode.insertBefore(img, x);
       x.style.display = 'none'
     });
