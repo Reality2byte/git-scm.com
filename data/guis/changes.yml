@@ -1,7 +1,7 @@
 ---
 name: "Changes"
 project_url: "https://github.com/maoyama/Changes"
-image_tag: "images/guis/tempo@2x.png"
+image_tag: "images/guis/changes@2x.png"
 platforms:
   - "Mac"
 price: "Free"
