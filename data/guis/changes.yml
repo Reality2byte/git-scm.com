@@ -1,11 +1,11 @@
 ---
-name: "Tempo"
-project_url: "https://github.com/maoyama/Tempo"
+name: "Changes"
+project_url: "https://github.com/maoyama/Changes"
 image_tag: "images/guis/tempo@2x.png"
 platforms:
   - "Mac"
 price: "Free"
 license: "MIT"
-trend_name: "tempo"
+trend_name: "changes"
 order: 60
 ---
