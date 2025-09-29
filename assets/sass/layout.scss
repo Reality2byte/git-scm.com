@@ -82,6 +82,55 @@ aside {
     }
   }
 
+  .callout.icon {
+    position: relative;
+    padding: 20px 20px 20px 90px !important;
+    border: 2px solid var(--callout-color);
+    background: transparent;
+
+    &.book {
+      background: var(--callout-color);
+    }
+
+    a h3 {
+      font-size: 18px;
+      color: var(--link-color);
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.3em;
+    }
+
+    img {
+      position: absolute;
+      top: 20px;
+      left: 17px;
+      width: 54px;
+      height: 54px;
+      opacity: 0.4;
+
+      :root[data-theme="dark"] & {
+        filter: invert(1);
+      }
+    }
+
+
+    &.video ul {
+      list-style-type: none;
+      margin-left: 1rem;
+
+      ::marker {
+        content: "⏵ ";
+        margin-right: .5rem;
+      }
+
+      li {
+        margin: .25rem 0;
+      }
+    }
+  }
+
   .callout {
     background-color: var(--callout-color);
     @include border-radius(3px);
