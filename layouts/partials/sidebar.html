@@ -54,7 +54,7 @@
         <a href="{{ relURL "docs" }}"{{ if or (eq .Params.Subsection "reference") (eq .Params.Subsection "manual") }} class="active"{{ end }}>Reference</a>
       </li>
       <li>
-        <a href="{{ relURL "install" }}"{{ if (eq $section "install") }} class="active"{{ end }}>Install</a>
+        <a href="{{ relURL "install" }}" class="install-link{{ if (eq $section "install") }} active{{ end }}">Install</a>
       </li>
       <li>
         <a href="{{ relURL "community" }}"{{ if (eq $section "community") }} class="active"{{ end }}>Community</a>

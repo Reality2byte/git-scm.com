@@ -36,6 +36,7 @@ $(document).ready(function() {
   Forms.init();
   Downloads.init();
   DownloadBox.init();
+  InstallPageLink.init();
   PostelizeAnchor.init();
   Print.init();
 });
@@ -806,6 +807,22 @@ var Graphviz = {
       x.parentNode.insertBefore(img, x);
       x.style.display = 'none'
     });
+  }
+}
+
+var InstallPageLink = {
+  init: function() {
+    const installLink = document.querySelector('.install-link');
+    if (!installLink) return;
+
+    const os = window.session?.browser?.os;
+    if (os === "Mac") {
+      installLink.href = installLink.href.replace('/install', '/install/mac');
+    } else if (os === "Windows") {
+      installLink.href = installLink.href.replace('/install', '/install/win');
+    } else if (os === "Linux") {
+      installLink.href = installLink.href.replace('/install', '/install/linux');
+    }
   }
 }
 
