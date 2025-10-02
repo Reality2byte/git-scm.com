@@ -316,30 +316,73 @@ test('small-and-fast', async ({ page }) => {
 });
 
 test('dark mode', async({ page }) => {
-  await page.setViewportSize(devices['iPhone X'].viewport);
+  // Helper: returns relative luminance in range [0, 1]
+  const getPageBrightness = async () => {
+    const screenshot = await page.screenshot({ type: 'png' });
+    const base64 = screenshot.toString('base64');
 
-  await page.goto(`${url}`);
+    return await page.evaluate((b64) => {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.src = `data:image/png;base64,${b64}`;
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = canvas.height = 1;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, 1, 1);
+          const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
+
+          // Calculate brightness, for more details, see
+          // https://en.wikipedia.org/wiki/Relative_luminance#Relative_luminance_and_%22gamma_encoded%22_colorspaces
+          const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+
+          // Normalize to [0, 1]
+          resolve(luminance / 255);
+        };
+        img.onerror = () => resolve(-1); // error indicator
+      });
+    }, base64);
+  };
+
+  await page.setViewportSize(devices['iPhone X'].viewport);
+  await page.goto(url);
+
+  // Ensure consistent test state
   await page.evaluate(() => {
     document.querySelector('#tagline').innerHTML = '--dark-mode-for-dark-times';
   });
+
   const darkModeButton = page.locator('#dark-mode-button');
 
-  const o = { maxDiffPixels: 30 };
-  await expect(page).toHaveScreenshot({ name: 'light-mode.png', ...o });
+  // 1. Light mode
+  const lightBrightness = await getPageBrightness();
+  expect(lightBrightness).toBeCloseTo(0.85, 0.1); // e.g., 0.75–0.95
+
+  // 2. Toggle to dark mode
   await darkModeButton.click();
-  await expect(page).toHaveScreenshot({ name: 'dark-mode.png', ...o });
+  const darkBrightness = await getPageBrightness();
+  expect(darkBrightness).toBeCloseTo(0.25, 0.1); // e.g., 0.15–0.35
 
-  // Now, try again, but this time with system's preference being dark mode
+  // 3. Verify dark < light
+  expect(darkBrightness).toBeLessThan(lightBrightness);
 
+  // --- Test system preference: prefers-color-scheme: dark ---
   await page.emulateMedia({ colorScheme: 'dark' });
-  await page.evaluate(() => window.localStorage.clear());
-  await page.evaluate(() => window.sessionStorage.clear());
+  await page.evaluate(() => {
+    localStorage.clear();
+    sessionStorage.clear();
+  });
   await page.reload();
   await page.evaluate(() => {
     document.querySelector('#tagline').innerHTML = '--dark-mode-for-dark-times';
   });
 
-  await expect(page).toHaveScreenshot({ name: 'dark-mode.png', ...o });
+  // Should start in dark mode
+  const autoDarkBrightness = await getPageBrightness();
+  expect(autoDarkBrightness).toBeCloseTo(0.25, 0.1);
+
+  // Toggle to light
   await darkModeButton.click();
-  await expect(page).toHaveScreenshot({ name: 'light-mode.png', ...o });
-})
+  const autoLightBrightness = await getPageBrightness();
+  expect(autoLightBrightness).toBeCloseTo(0.85, 0.1);
+});
