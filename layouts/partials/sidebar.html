@@ -58,6 +58,13 @@
       </li>
       <li>
         <a href="{{ relURL "community" }}"{{ if (eq $section "community") }} class="active"{{ end }}>Community</a>
+        <ul{{ if (eq $section "community") }} class="expanded"{{ end }}>
+          {{ if (eq $section "community") }}
+          <li>
+            <a href="{{ relURL "community/logos" }}"{{ if (eq .Params.subsection "logos") }} class="active"{{ end }}>Logos</a>
+          </li>
+          {{ end }}
+        </ul>
       </li>
     </ul>
 
