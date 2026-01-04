@@ -83,6 +83,13 @@
                 z-index: -1;
             }
 
+            /* Book pages: code colors */
+            .edition2 {
+                --book-code-color: #{$fixed-width-font-color};
+                --book-code-bg: #{$no-changes-bg-color};
+                --book-code-border: #{$pre-border};
+            }
+
             img {
                 filter: brightness(.6) contrast(1.2);
             }

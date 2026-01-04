@@ -1,4 +1,8 @@
 .edition2 {
+  /* Book code colors (light mode defaults) */
+  --book-code-color: #333;
+  --book-code-bg: #eee;
+  --book-code-border: #f5f5f5;
   * {
     box-sizing: border-box;
   }
@@ -474,11 +478,11 @@
   }
 
   pre {
-    background: #eee;
+    background: var(--book-code-bg);
 
     code {
       display: inline;
-      background: #eee;
+      background: var(--book-code-bg);
       border: 0;
     }
   }
@@ -488,14 +492,14 @@
     overflow-x: auto;
     font-size: 0.9em;
     line-height: 120%;
-    color: #333;
+    color: var(--book-code-color);
   }
 
   code { /* inline code */
     padding: 0;
-    color: #333;
-    background: #eee;
-    border: 1px solid #f5f5f5;
+    color: var(--book-code-color);
+    background: var(--book-code-bg);
+    border: 1px solid var(--book-code-border);
   }
 
   table pre { /* code blocks within tables */
