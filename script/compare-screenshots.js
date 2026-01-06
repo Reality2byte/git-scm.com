@@ -8,6 +8,7 @@ Usage:
 
 Arguments can be URLs or paths to git-scm.com worktrees. When a worktree
 path is given, Hugo is run to build the site and a local server is started.
+Use worktree:/path/to/page to navigate to a specific page.
 
 Options:
   --dark              Emulate dark mode (prefers-color-scheme: dark)
@@ -17,6 +18,7 @@ Options:
 Examples:
   node script/compare-screenshots.js https://git-scm.com http://localhost:5000
   node script/compare-screenshots.js https://git-scm.com /path/to/worktree
+  node script/compare-screenshots.js https://git-scm.com/docs/git-config /path/to/worktree:/docs/git-config
   node script/compare-screenshots.js --dark https://git-scm.com http://localhost:5000
   node script/compare-screenshots.js --clip=1280x720+0+0 https://git-scm.com http://localhost:5000`;
 
@@ -25,13 +27,18 @@ const { spawn, execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-function isWorktree(arg) {
+function getWorktreeInfo(arg) {
   if (arg.startsWith('http://') || arg.startsWith('https://')) return false;
+  const colonIndex = arg.indexOf(':');
+  const worktreePath = colonIndex === -1 ? arg : arg.slice(0, colonIndex);
+  const pagePath = colonIndex === -1 ? '' : arg.slice(colonIndex + 1).replace(/^\/+/, '');
   try {
-    return fs.statSync(path.join(arg, 'hugo.yml')).isFile();
+    if (fs.statSync(path.join(worktreePath, 'hugo.yml')).isFile()) {
+      return { worktreePath, pagePath };
+    }
   } catch {
-    return false;
   }
+  return false;
 }
 
 async function startServer(worktreePath, port) {
@@ -128,9 +135,10 @@ async function main() {
       let server;
       let url = urlOrWorktree;
 
-      if (isWorktree(urlOrWorktree)) {
-        server = await startServer(urlOrWorktree, 5000);
-        url = 'http://localhost:5000/';
+      const worktreeInfo = getWorktreeInfo(urlOrWorktree);
+      if (worktreeInfo) {
+        server = await startServer(worktreeInfo.worktreePath, 5000);
+        url = `http://localhost:5000/${worktreeInfo.pagePath}`;
       }
 
       try {
