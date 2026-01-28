@@ -113,6 +113,11 @@ aside {
       :root[data-theme="dark"] & {
         filter: invert(1);
       }
+      @media screen and (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) & {
+          filter: invert(1);
+        }
+      }
     }
 
 
