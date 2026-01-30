@@ -53,6 +53,12 @@
         filter: invert(1);
         background-color: #9d9c9a;
       }
+      @media screen and (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) & {
+          filter: invert(1);
+          background-color: #9d9c9a;
+        }
+      }
     }
 
     h3 {
@@ -112,6 +118,12 @@
     :root[data-theme="dark"] & {
       outline-color: var(--orange);
     }
+    @media screen and (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) & {
+        outline-color: var(--orange);
+      }
+    }
+
     border-radius: 4px;
     position: relative;
 
