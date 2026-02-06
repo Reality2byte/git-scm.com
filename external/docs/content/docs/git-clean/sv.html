@@ -64,7 +64,7 @@ headings:
 <dl>
 <dt class="hdlist1" id="git-clean--d"> <a class="anchor" href="#git-clean--d"></a>-d </dt>
 <dd>
-<p>Normalt sett, när ingen <span class="hover-term" data-term="sökvägsspec">&lt;sökvägsspec&gt;</span> är specificerad, kommer git clean inte att återgå till ospårade kataloger för att undvika att för mycket tas bort. Ange -d för att den även ska återgå till sådana kataloger. Om en <span class="hover-term" data-term="sökvägsspec">&lt;sökvägsspec&gt;</span> är specificerad är -d irrelevant; alla ospårade filer som matchar de angivna sökvägarna (med undantag för kapslade git-kataloger som nämns under <span class='synopsis'><code>--force</code></span>) kommer att tas bort.</p>
+<p>Normalt sett, när ingen <span class="hover-term" data-term="sökvägsspec">&lt;sökvägsspec&gt;</span> är specificerad, kommer git clean inte att rekursera till ospårade kataloger för att undvika att för mycket tas bort. Ange -d för att den även ska rekursera till sådana kataloger. Om en <span class="hover-term" data-term="sökvägsspec">&lt;sökvägsspec&gt;</span> är specificerad är -d irrelevant; alla ospårade filer som matchar de angivna sökvägarna (med undantag för kapslade git-kataloger som nämns under <span class='synopsis'><code>--force</code></span>) kommer att tas bort.</p>
 </dd>
 <dt class="hdlist1" id="git-clean--f"> <a class="anchor" href="#git-clean--f"></a>-f </dt>
 <dt class="hdlist1" id="git-clean---force"> <a class="anchor" href="#git-clean---force"></a>--force </dt>
@@ -138,7 +138,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-clean-vljeftersiffror"> <a class="anchor" href="#git-clean-vljeftersiffror"></a>välj efter siffror </dt>
 <dd>
-<p>Detta visar de filer och kataloger som ska raderas och visar frågan "Välj objekt att radera&gt;&gt;". När frågan avslutas med dubbelt <em>&gt;&gt;</em> på det här sättet kan du göra mer än ett val, sammanfogat med mellanslag eller kommatecken. Du kan också säga intervall. T.ex. "2-5 7,9" för att välja 2, 3, 4, 5, 7, 9 från listan. Om det andra numret i ett intervall utelämnas, väljs alla återstående objekt. T.ex. "7-" för att välja 7, 8, 9 från listan. Du kan säga <em>*</em> för att välja allt. När du är nöjd med det filtrerade resultatet trycker du också på ENTER (tomt) för att komma tillbaka till huvudmenyn.</p>
+<p>Detta visar de filer och kataloger som ska raderas och visar frågan "Välj objekt att radera&gt;&gt;". När frågan avslutas med dubbelt <em>&gt;&gt;</em> på det här sättet kan du göra mer än ett val, sammanfogat med blanktecken eller kommatecken. Du kan också säga intervall. T.ex. "2-5 7,9" för att välja 2, 3, 4, 5, 7, 9 från listan. Om det andra numret i ett intervall utelämnas, väljs alla återstående objekt. T.ex. "7-" för att välja 7, 8, 9 från listan. Du kan säga <em>*</em> för att välja allt. När du är nöjd med det filtrerade resultatet trycker du också på ENTER (tomt) för att komma tillbaka till huvudmenyn.</p>
 </dd>
 <dt class="hdlist1" id="git-clean-frgavarje"> <a class="anchor" href="#git-clean-frgavarje"></a>fråga varje </dt>
 <dd>

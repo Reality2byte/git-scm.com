@@ -49,7 +49,7 @@ headings:
 <p>Le script <em>git sh-setup</em> est conçu pour être sourcé (en utilisant <span class='synopsis'><code>.</code></span>) par d&#8217;autres scripts shell pour configurer quelques variables pointant sur les répertoires Git normaux et quelques fonctions auxiliaires de shell.</p>
 </div>
 <div class="paragraph">
-<p>Before sourcing it, your script should set up a few variables; <span class='synopsis'><code>USAGE</code></span> (and <span class='synopsis'><code>LONG_USAGE</code></span>, if any) is used to define the message given by <span class='synopsis'><code>usage</code>()</span> shell function. <span class='synopsis'><code>SUBDIRECTORY_OK</code></span> can be set if the script can run from a subdirectory of the working tree (some commands do not).</p>
+<p>Avant de le sourcer, votre script devrait configurer quelques variables ; <span class='synopsis'><code>USAGE</code></span> (et <span class='synopsis'><code>LONG_USAGE</code></span>, le cas échéant) est utilisé pour définir le message donné par la fonction shell <span class='synopsis'><code>usage</code>()</span>. <span class='synopsis'><code>SUBDIRECTORY_OK</code></span> peut être défini si le script peut fonctionner à partir d&#8217;un sous-répertoire de l&#8217;arbre de travail (certaines commandes ne le peuvent pas).</p>
 </div>
 <div class="paragraph">
 <p>Le scriptlet définit les variables shell <span class='synopsis'><code>GIT_DIR</code></span> et <span class='synopsis'><code>GIT_OBJECT_DIRECTORY</code></span>, mais ne les exporte <strong>pas</strong> dans l&#8217;environnement.</p>
@@ -71,7 +71,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-sh-setup-setreflogaction"> <a class="anchor" href="#git-sh-setup-setreflogaction"></a>set_reflog_action </dt>
 <dd>
-<p>Set <span class='synopsis'><code>GIT_REFLOG_ACTION</code></span> environment to a given string (typically the name of the program) unless it is already set. Whenever the script runs a <span class='synopsis'><code>git</code></span> command that updates refs, a reflog entry is created using the value of this string to leave the record of what command updated the ref.</p>
+<p>Définir l&#8217;environnement <span class='synopsis'><em>GIT_REFLOG_ACTION' à une chaîne donnée (généralement le nom du programme) à moins qu'il ne soit déjà défini. Chaque fois que le script exécute une commande `git</em></span> qui met à jour des réfs, une entrée de reflog est créée en utilisant la valeur de cette chaîne pour laisser une trace de la commande qui a mis à jour la réf.</p>
 </dd>
 <dt class="hdlist1" id="git-sh-setup-giteditor"> <a class="anchor" href="#git-sh-setup-giteditor"></a>git_editor </dt>
 <dd>
@@ -91,11 +91,11 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-sh-setup-requireworktreeexists"> <a class="anchor" href="#git-sh-setup-requireworktreeexists"></a>require_work_tree_exists </dt>
 <dd>
-<p>checks if the working tree associated with the repository exists, and otherwise dies. Often done before calling cd_to_toplevel, which is impossible to do if there is no working tree.</p>
+<p>vérifie si l&#8217;arbre de travail associé au dépôt existe et termine autrement. Fait souvent avant d&#8217;appeler cd_to_toplevel, ce qui est impossible à faire s&#8217;il n&#8217;y a pas d&#8217;arbre de travail.</p>
 </dd>
 <dt class="hdlist1" id="git-sh-setup-requirecleanworktreeltactiongtltindicegt"> <a class="anchor" href="#git-sh-setup-requirecleanworktreeactionindice"></a> <a class="anchor" href="#git-sh-setup-requirecleanworktreeltactiongtltindicegt"></a>require_clean_work_tree &lt;action&gt; [&lt;indice&gt;] </dt>
 <dd>
-<p>checks that the working tree and index associated with the repository have no uncommitted changes to tracked files. Otherwise it emits an error message of the form <span class='synopsis'><code>Cannot</code> <em>&lt;action&gt;</em><code>:</code> <em>&lt;reason&gt;</em><code>.</code> <em>&lt;hint&gt;</em></span>, and dies. Example:</p>
+<p>vérifie que l&#8217;arbre de travail et l&#8217;index associés au dépôt n&#8217;ont pas de modifications de fichiers suivis non validées . Sinon, il émet un message d&#8217;erreur de la forme <span class='synopsis'><code>Impossible</code> <em>&lt;action&gt;</em> <code>:</code><em>&lt;raison&gt;</em><code>.</code> <em>&lt;indice&gt;</em></span>, et termine. Exemple :</p>
 <div class="listingblock">
 <div class="content">
 <pre>require_clean_work_tree rebase "S'il vous plaît, validez-les ou remisez-les."</pre>
@@ -108,7 +108,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-sh-setup-createvirtualbase"> <a class="anchor" href="#git-sh-setup-createvirtualbase"></a>create_virtual_base </dt>
 <dd>
-<p>modifies the first file so only lines in common with the second file remain. If there is insufficient common material, then the first file is left empty. The result is suitable as a virtual base input for a 3-way merge.</p>
+<p>modifie le premier fichier de sorte que seules les lignes en commun avec le deuxième fichier restent. S&#8217;il n&#8217;y a pas assez de matériau commun, le premier fichier est laissé vide. Le résultat est utilisable comme une entrée de base virtuelle pour une fusion à 3 voies.</p>
 </dd>
 </dl>
 </div>

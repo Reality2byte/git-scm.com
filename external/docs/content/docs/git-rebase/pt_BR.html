@@ -135,7 +135,7 @@ headings:
 <p>Check out <span class='synopsis'><em>&lt;upstream&gt;</em></span> with the equivalent of <span class='synopsis'><code>git</code> <code>checkout</code> <code>--detach</code> <em>&lt;upstream&gt;</em></span>.</p>
 </li>
 <li>
-<p>Replay the commits, one by one, in order. This is similar to running <span class='synopsis'><code>git</code> <code>cherry-pick</code> <em><span class="hover-term" data-term="commit">&lt;commit&gt;</span></em></span> for each commit. See REBASING MERGES for how merges are handled.</p>
+<p>Replay the commits, one by one, in order. This is similar to running <span class='synopsis'><code>git</code> <code>cherry-pick</code> <em>&lt;commit&gt;</em></span> for each commit. See REBASING MERGES for how merges are handled.</p>
 </li>
 <li>
 <p>Update your branch to point to the final commit with the equivalent of <span class='synopsis'><code>git</code> <code>checkout</code> <code>-B</code> <em>&lt;branch&gt;</em></span>.</p>
@@ -343,7 +343,7 @@ When starting the rebase, <span class='synopsis'><code>ORIG_HEAD</code></span> i
 </dd>
 <dt class="hdlist1" id="git-rebase---emptydropkeepstop"> <a class="anchor" href="#git-rebase---emptydropkeepstop"></a>--empty=(drop|keep|stop) </dt>
 <dd>
-<p>How to handle commits that are not empty to start and are not clean cherry-picks of any upstream commit, but which become empty after rebasing (because they contain a subset of already upstream changes):</p>
+<p>Como lidar com commits que não estão vazios no início e não são cherry-picks limpos de nenhum commit do upstream, mas tornam-se vazios após a reconstrução (pois contém um subconjunto de alterações da upstream):</p>
 <div class="openblock">
 <div class="content">
 <div class="dlist">
@@ -1152,7 +1152,7 @@ exec make test</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Inicie um rebase interativo com <span class='synopsis'><code>git</code> <code>rebase</code> <code>-i</code> <em><span class="hover-term" data-term="commit">&lt;commit&gt;</span></em><code>^</code></span>, onde <span class='synopsis'><em><span class="hover-term" data-term="commit">&lt;commit&gt;</span></em></span> é o commit que você deseja dividir. Na verdade, qualquer intervalo do commit serve, desde que contenha este commit.</p>
+<p>Inicie um rebase interativo com <span class='synopsis'><code>git</code> <code>rebase</code> <code>-i</code> <em>&lt;commit&gt;</em><code>^</code></span>, onde <span class='synopsis'><em>&lt;commit&gt;</em></span> é o commit que você deseja dividir. Na verdade, qualquer intervalo do commit serve, desde que contenha este commit.</p>
 </li>
 <li>
 <p>Marque o commit que deseja dividir com a ação "edit".</p>

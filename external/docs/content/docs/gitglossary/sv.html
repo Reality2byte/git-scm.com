@@ -44,9 +44,9 @@ headings:
 <dl>
 <dt class="hdlist1" id="gitglossary-aiddefalternateobjectdatabaseaalternativobjektdatabas"> <a class="anchor" href="#gitglossary-alternativobjektdatabas"></a> <a class="anchor" href="#gitglossary-aiddefalternateobjectdatabaseaalternativobjektdatabas"></a><a id="def_alternate_object_database"></a>alternativ objektdatabas </dt>
 <dd>
-<p>Via alternativmekanismen kan ett <a href="#def_repository">repo</a> ärva en del av sin <a href="#def_object_database">objektdatabas</a> från en annan objektdatabas, vilket kallas ett "alternativ".</p>
+<p>Via alternativmekanismen kan ett <a href="#def_repository">förvar</a> ärva en del av sin <a href="#def_object_database">objektdatabas</a> från en annan objektdatabas, vilket kallas ett "alternativ".</p>
 </dd>
-<dt class="hdlist1" id="gitglossary-aiddefbarerepositoryabartrepo"> <a class="anchor" href="#gitglossary-bartrepo"></a> <a class="anchor" href="#gitglossary-aiddefbarerepositoryabartrepo"></a><a id="def_bare_repository"></a>bart repo </dt>
+<dt class="hdlist1" id="gitglossary-aiddefbarerepositoryabartfrvar"> <a class="anchor" href="#gitglossary-bartfrvar"></a> <a class="anchor" href="#gitglossary-aiddefbarerepositoryabartfrvar"></a><a id="def_bare_repository"></a>bart förvar </dt>
 <dd>
 <p>A bare repository is normally an appropriately named <a href="#def_directory">directory</a> with a <span class='synopsis'><code>.git</code></span> suffix that does not have a locally checked-out copy of any of the files under revision control. That is, all of the Git administrative and control files that would normally be present in the hidden <span class='synopsis'><code>.git</code></span> sub-directory are directly present in the <span class='synopsis'><code>repository.git</code></span> directory instead, and no other files are present and checked out. Usually publishers of public repositories make bare repositories available.</p>
 </dd>
@@ -56,7 +56,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefbranchagren"> <a class="anchor" href="#gitglossary-gren"></a> <a class="anchor" href="#gitglossary-aiddefbranchagren"></a><a id="def_branch"></a>gren </dt>
 <dd>
-<p>En "gren" är en utvecklingslinje. Den senaste <a href="#def_commit">incheckning</a> på en gren kallas för toppen av den grenen. Grenens topp <a href="#def_ref">refereras</a> av en gren <a href="#def_head">huvud</a>, som rör sig framåt allt eftersom ytterligare utveckling görs på grenen. En enda Git <a href="#def_repository">repo</a> kan spåra ett godtyckligt antal grenar, men ditt <a href="#def_working_tree">arbetskatalog</a> är associerat med bara en av dem (den "nuvarande" eller "utcheckade" grenen), och <a href="#def_HEAD">HEAD</a> pekar på den grenen.</p>
+<p>En "gren" är en utvecklingslinje. Den senaste <a href="#def_commit">incheckning</a> på en gren kallas för toppen av den grenen. Grenens topp <a href="#def_ref">refereras</a> av en gren <a href="#def_head">huvud</a>, som rör sig framåt allt eftersom ytterligare utveckling görs på grenen. En enda Git <a href="#def_repository">förvar</a> kan spåra ett godtyckligt antal grenar, men ditt <a href="#def_working_tree">arbetskatalog</a> är associerat med bara en av dem (den "nuvarande" eller "utcheckade" grenen), och <a href="#def_HEAD">HEAD</a> pekar på den grenen.</p>
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefcacheacache"> <a class="anchor" href="#gitglossary-cache"></a> <a class="anchor" href="#gitglossary-aiddefcacheacache"></a><a id="def_cache"></a>cache </dt>
 <dd>
@@ -76,7 +76,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefcherry-pickingacherry-picking"> <a class="anchor" href="#gitglossary-cherry-picking"></a> <a class="anchor" href="#gitglossary-aiddefcherry-pickingacherry-picking"></a><a id="def_cherry-picking"></a>cherry-picking </dt>
 <dd>
-<p>I <a href="#def_SCM">SCM</a>-jargong betyder "cherry pick" att välja en delmängd av ändringar ur en serie ändringar (vanligtvis incheckning) och registrera dem som en ny serie ändringar ovanpå en annan kodbas. I Git utförs detta med kommandot "git cherry-pick" för att extrahera ändringen som introducerats av en befintlig <a href="#def_commit">incheckning</a> och registrera den baserat på tipset från den aktuella <a href="#def_branch">grenen</a> som en ny incheckning.</p>
+<p>I <a href="#def_SCM">SCM</a>-jargong betyder "cherry pick" att välja en delmängd av ändringar ur en serie ändringar (vanligtvis incheckning) och registrera dem som en ny serie ändringar ovanpå en annan kodbas. I Git utförs detta med kommandot "git cherry-pick" för att extrahera ändringen som introducerats av en befintlig <a href="#def_commit">incheckning</a> och registrera den baserat på toppen från den aktuella <a href="#def_branch">grenen</a> som en ny incheckning.</p>
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefcleanaren"> <a class="anchor" href="#gitglossary-ren"></a> <a class="anchor" href="#gitglossary-aiddefcleanaren"></a><a id="def_clean"></a>ren </dt>
 <dd>
@@ -91,7 +91,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefcommitgraphgeneralaincheckning-grafkonceptrepresentationerochanvndning"> <a class="anchor" href="#gitglossary-incheckning-grafkonceptrepresentationerochanvndning"></a> <a class="anchor" href="#gitglossary-aiddefcommitgraphgeneralaincheckning-grafkonceptrepresentationerochanvndning"></a><a id="def_commit_graph_general"></a>incheckning-grafkoncept, representationer och användning </dt>
 <dd>
-<p>En synonym för strukturen <a href="#def_DAG">DAG</a> som bildas av commits i objektdatabasen, <a href="#def_ref">refererad</a> av branch toppen, med hjälp av deras <a href="#def_chain">kedja</a> av länkade incheckningar. Denna struktur är den definitiva inchecknings-grafen. Grafen kan representeras på andra sätt, t.ex. <a href="#def_commit_graph_file">"commit-graph"-filen</a>.</p>
+<p>En synonym för strukturen <a href="#def_DAG">DAG</a> som bildas av commits i objektdatabasen, <a href="#def_ref">refererad</a> av gren toppen, med hjälp av deras <a href="#def_chain">kedja</a> av länkade incheckningar. Denna struktur är den definitiva inchecknings-grafen. Grafen kan representeras på andra sätt, t.ex. <a href="#def_commit_graph_file">"commit-graph"-filen</a>.</p>
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefcommitgraphfileainchecknings-grafsfil"> <a class="anchor" href="#gitglossary-inchecknings-grafsfil"></a> <a class="anchor" href="#gitglossary-aiddefcommitgraphfileainchecknings-grafsfil"></a><a id="def_commit_graph_file"></a>inchecknings-grafs fil </dt>
 <dd>
@@ -115,7 +115,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefdanglingobjectadinglandeobjekt"> <a class="anchor" href="#gitglossary-dinglandeobjekt"></a> <a class="anchor" href="#gitglossary-aiddefdanglingobjectadinglandeobjekt"></a><a id="def_dangling_object"></a>dinglande objekt </dt>
 <dd>
-<p>Ett <a href="#def_unreachable_object">onåbart objekt</a> som inte är <a href="#def_reachable">nåbart</a> ens från andra oåtkomliga objekt; ett dinglande objekt har inga referenser till sig från någon referens eller <a href="#def_object">objekt</a> i <a href="#def_repository">repo</a>.</p>
+<p>Ett <a href="#def_unreachable_object">onåbart objekt</a> som inte är <a href="#def_reachable">nåbart</a> ens från andra oåtkomliga objekt; ett dinglande objekt har inga referenser till sig från någon referens eller <a href="#def_object">objekt</a> i <a href="#def_repository">förvar</a>.</p>
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefdereferenceaavreferera"> <a class="anchor" href="#gitglossary-avreferera"></a> <a class="anchor" href="#gitglossary-aiddefdereferenceaavreferera"></a><a id="def_dereference"></a>avreferera </dt>
 <dd>
@@ -151,11 +151,11 @@ headings:
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddeffastforwardasnabbspola"> <a class="anchor" href="#gitglossary-snabbspola"></a> <a class="anchor" href="#gitglossary-aiddeffastforwardasnabbspola"></a><a id="def_fast_forward"></a>snabbspola </dt>
 <dd>
-<p>En snabbspolning är en speciell typ av <a href="#def_merge">sammanslagning</a> där du har en <a href="#def_revision">revision</a> och du "sammanfogar" en annan <a href="#def_branch">gren</a>s ändringar som råkar vara en underordnad fil till det du har. I ett sådant fall skapar du inte en ny <a href="#def_merge">sammanslagning</a> <a href="#def_commit">incheckning</a> utan uppdaterar istället bara din gren så att den pekar på samma revision som den gren du sammanfogar. Detta händer ofta på en <a href="#def_remote_tracking_branch">fjärrspårningsgrenar</a> tillhörande ett avlägset <a href="#def_repository">repo</a>.</p>
+<p>En snabbspolning är en speciell typ av <a href="#def_merge">sammanslagning</a> där du har en <a href="#def_revision">revision</a> och du "sammanfogar" en annan <a href="#def_branch">gren</a>s ändringar som råkar vara en underordnad fil till det du har. I ett sådant fall skapar du inte en ny <a href="#def_merge">sammanslagning</a> <a href="#def_commit">incheckning</a> utan uppdaterar istället bara din gren så att den pekar på samma revision som den gren du sammanfogar. Detta händer ofta på en <a href="#def_remote_tracking_branch">fjärrspårningsgrenar</a> tillhörande ett avlägset <a href="#def_repository">förvar</a>.</p>
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddeffetchahmta"> <a class="anchor" href="#gitglossary-hmta"></a> <a class="anchor" href="#gitglossary-aiddeffetchahmta"></a><a id="def_fetch"></a>hämta </dt>
 <dd>
-<p>Att hämta ("Fetcha") en <a href="#def_branch">gren</a> innebär att hämta grenens <a href="#def_head_ref">huvud ref</a> från ett fjärranslutet <a href="#def_repository">repo</a>, för att ta reda på vilka objekt som saknas i den lokala <a href="#def_object_database">objektdatabasen</a>, och för att hämta dem också. Se även <a href='{{< relurl "docs/git-fetch/sv" >}}'>git-fetch[1]</a>.</p>
+<p>Att hämta ("Fetcha") en <a href="#def_branch">gren</a> innebär att hämta grenens <a href="#def_head_ref">huvud ref</a> från ett fjärranslutet <a href="#def_repository">förvar</a>, för att ta reda på vilka objekt som saknas i den lokala <a href="#def_object_database">objektdatabasen</a>, och för att hämta dem också. Se även <a href='{{< relurl "docs/git-fetch/sv" >}}'>git-fetch[1]</a>.</p>
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddeffilesystemafilsystem"> <a class="anchor" href="#gitglossary-filsystem"></a> <a class="anchor" href="#gitglossary-aiddeffilesystemafilsystem"></a><a id="def_file_system"></a>filsystem </dt>
 <dd>
@@ -163,11 +163,11 @@ headings:
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefgitarchiveaGitarkiv"> <a class="anchor" href="#gitglossary-Gitarkiv"></a> <a class="anchor" href="#gitglossary-aiddefgitarchiveaGitarkiv"></a><a id="def_git_archive"></a>Git arkiv </dt>
 <dd>
-<p>Synonym för <a href="#def_repository">repo</a> (för ärkepersoner).</p>
+<p>Synonym för <a href="#def_repository">förvar</a> (för ärkepersoner).</p>
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefgitfileagitfil"> <a class="anchor" href="#gitglossary-gitfil"></a> <a class="anchor" href="#gitglossary-aiddefgitfileagitfil"></a><a id="def_gitfile"></a>gitfil </dt>
 <dd>
-<p>En vanlig fil <span class='synopsis'><code>.git</code></span> vid roten av ett arbetskatalog som pekar på den katalog som är det verkliga repo. För korrekt användning, se <a href='{{< relurl "docs/git-worktree/sv" >}}'>git-worktree[1]</a> eller <a href='{{< relurl "docs/git-submodule/sv" >}}'>git-submodule[1]</a>. För syntax, se <a href='{{< relurl "docs/gitrepository-layout/sv" >}}'>gitrepository-layout[5]</a>.</p>
+<p>En vanlig fil <span class='synopsis'><code>.git</code></span> vid roten av ett arbetskatalog som pekar på den katalog som är det verkliga förvar. För korrekt användning, se <a href='{{< relurl "docs/git-worktree/sv" >}}'>git-worktree[1]</a> eller <a href='{{< relurl "docs/git-submodule/sv" >}}'>git-submodule[1]</a>. För syntax, se <a href='{{< relurl "docs/gitrepository-layout/sv" >}}'>gitrepository-layout[5]</a>.</p>
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefgraftsaYmpningar"> <a class="anchor" href="#gitglossary-Ympningar"></a> <a class="anchor" href="#gitglossary-aiddefgraftsaYmpningar"></a><a id="def_grafts"></a>Ympningar </dt>
 <dd>
@@ -182,11 +182,11 @@ headings:
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefheadahuvud"> <a class="anchor" href="#gitglossary-huvud"></a> <a class="anchor" href="#gitglossary-aiddefheadahuvud"></a><a id="def_head"></a>huvud </dt>
 <dd>
-<p>En <a href="#def_ref">namngiven referens</a> till <a href="#def_commit">incheckning</a> i spetsen av en <a href="#def_branch">gren</a>. Heads lagras i en fil i katalogen <span class='synopsis'><code>$GIT_DIR/refs/heads/</code></span>, förutom när packade referenser används. (Se <a href='{{< relurl "docs/git-pack-refs/sv" >}}'>git-pack-refs[1]</a>.)</p>
+<p>En <a href="#def_ref">namngiven referens</a> till <a href="#def_commit">incheckning</a> i toppen av en <a href="#def_branch">gren</a>. Heads lagras i en fil i katalogen <span class='synopsis'><code>$GIT_DIR/refs/heads/</code></span>, förutom när packade referenser används. (Se <a href='{{< relurl "docs/git-pack-refs/sv" >}}'>git-pack-refs[1]</a>.)</p>
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefHEADaHEAD"> <a class="anchor" href="#gitglossary-HEAD"></a> <a class="anchor" href="#gitglossary-aiddefHEADaHEAD"></a><a id="def_HEAD"></a>HEAD </dt>
 <dd>
-<p>Den aktuella <a href="#def_branch">grenen</a>. Mer detaljerat: Ditt <a href="#def_working_tree">arbetskatalog</a> härleds normalt från trädets tillstånd som HEAD refererar till. HEAD är en referens till en av <a href="#def_head">heads</a> i ditt repository, förutom när du använder en <a href="#def_detached_HEAD">fristående huvud (HEAD)</a>, i vilket fall den direkt refererar till en godtycklig commit.</p>
+<p>Den aktuella <a href="#def_branch">grenen</a>. Mer detaljerat: Ditt <a href="#def_working_tree">arbetskatalog</a> härleds normalt från trädets tillstånd som HEAD refererar till. HEAD är en referens till en av <a href="#def_head">heads</a> i ditt förvar, förutom när du använder en <a href="#def_detached_HEAD">fristående huvud (HEAD)</a>, i vilket fall den direkt refererar till en godtycklig incheckning.</p>
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefheadrefahuvudref"> <a class="anchor" href="#gitglossary-huvudref"></a> <a class="anchor" href="#gitglossary-aiddefheadrefahuvudref"></a><a id="def_head_ref"></a>huvud ref </dt>
 <dd>
@@ -206,13 +206,13 @@ headings:
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefmasteramaster"> <a class="anchor" href="#gitglossary-master"></a> <a class="anchor" href="#gitglossary-aiddefmasteramaster"></a><a id="def_master"></a>master </dt>
 <dd>
-<p>Standardutvecklingen <a href="#def_branch">gren</a>. När du skapar en Git <a href="#def_repository">repo</a> skapas en gren med namnet "master" som blir den aktiva grenen. I de flesta fall innehåller denna den lokala utvecklingen, men det är helt enligt konvention och inte obligatoriskt.</p>
+<p>Standardutvecklingen <a href="#def_branch">gren</a>. När du skapar en Git <a href="#def_repository">förvar</a> skapas en gren med namnet "master" som blir den aktiva grenen. I de flesta fall innehåller denna den lokala utvecklingen, men det är helt enligt konvention och inte obligatoriskt.</p>
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefmergeasammanslagning"> <a class="anchor" href="#gitglossary-sammanslagning"></a> <a class="anchor" href="#gitglossary-aiddefmergeasammanslagning"></a><a id="def_merge"></a>sammanslagning </dt>
 <dd>
-<p>Som verb: Att hämta ("fetcha") innehållet från en annan <a href="#def_branch">gren</a> (möjligen från ett externt <a href="#def_repository">repository</a>) till den aktuella grenen. I det fall där den sammanfogade grenen kommer från ett annat arkiv görs detta genom att först <a href="#def_fetch">hämta</a> den fjärranslutna grenen och sedan sammanfoga resultatet med den aktuella grenen. Denna kombination av hämta- och sammanfogningsoperationer kallas att <a href="#def_pull">dra in</a> ("pulla"). Sammanfogning utförs av en automatisk process som identifierar ändringar som gjorts sedan grenarna divergerade och sedan tillämpar alla dessa ändringar tillsammans. I fall där ändringar står i konflikt kan manuell ingripande krävas för att slutföra sammanfogningen.</p>
+<p>Som verb: Att hämta ("fetcha") innehållet från en annan <a href="#def_branch">gren</a> (möjligen från ett externt <a href="#def_repository">förvar</a>) till den aktuella grenen. I det fall där den sammanfogade grenen kommer från ett annat arkiv görs detta genom att först <a href="#def_fetch">hämta</a> den fjärranslutna grenen och sedan sammanfoga resultatet med den aktuella grenen. Denna kombination av hämta- och sammanfogningsoperationer kallas att <a href="#def_pull">dra in</a> ("pulla"). Sammanfogning utförs av en automatisk process som identifierar ändringar som gjorts sedan grenarna divergerade och sedan tillämpar alla dessa ändringar tillsammans. I fall där ändringar står i konflikt kan manuell ingripande krävas för att slutföra sammanfogningen.</p>
 <div class="paragraph">
-<p>Som ett substantiv: om det inte är en <a href="#def_fast_forward">snabbspolning</a>, resulterar en lyckad sammanslagning i skapandet av en ny <a href="#def_commit">incheckningmmit</a> som representerar resultatet av sammanslagningen, och som har som <a href="#def_parent">föräldrar</a> tipsen för den sammanslagna <a href="#def_branch">grenar</a>. Denna commit kallas en sammanslagnings-incheckning ("merge commit"), eller ibland bara en sammanslagning ("merge").</p>
+<p>Som ett substantiv: om det inte är en <a href="#def_fast_forward">snabbspolning</a>, resulterar en lyckad sammanslagning i skapandet av en ny <a href="#def_commit">incheckningmmit</a> som representerar resultatet av sammanslagningen, och som har som <a href="#def_parent">föräldrar</a> toppar för den sammanslagna <a href="#def_branch">grenar</a>. Denna commit kallas en sammanslagnings-incheckning ("merge commit"), eller ibland bara en sammanslagning ("merge").</p>
 </div>
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefobjectaobjekt"> <a class="anchor" href="#gitglossary-objekt"></a> <a class="anchor" href="#gitglossary-aiddefobjectaobjekt"></a><a id="def_object"></a>objekt </dt>
@@ -245,7 +245,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddeforiginaursprungorigin"> <a class="anchor" href="#gitglossary-ursprungorigin"></a> <a class="anchor" href="#gitglossary-aiddeforiginaursprungorigin"></a><a id="def_origin"></a>ursprung (origin) </dt>
 <dd>
-<p>Standardprojektet uppströms <a href="#def_repository">repo</a>. De flesta projekt har minst ett uppströmsprojekt som de spårar. Som standard används <em>origin</em> för detta ändamål. Nya uppströmsuppdateringar hämtas till <a href="#def_remote_tracking_branch">fjärrspårningsgrenar</a> med namnet origin/name-of-upstream-branch, vilket du kan se med hjälp av <span class='synopsis'><code>git</code> <code>branch</code> <code>-r</code></span>.</p>
+<p>Standardprojektet uppströms <a href="#def_repository">förvar</a>. De flesta projekt har minst ett uppströmsprojekt som de spårar. Som standard används <em>origin</em> för detta ändamål. Nya uppströmsuppdateringar hämtas till <a href="#def_remote_tracking_branch">fjärrspårningsgrenar</a> med namnet origin/name-of-upstream-branch, vilket du kan se med hjälp av <span class='synopsis'><code>git</code> <code>branch</code> <code>-r</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefoverlayaverlgg"> <a class="anchor" href="#gitglossary-verlgg"></a> <a class="anchor" href="#gitglossary-aiddefoverlayaverlgg"></a><a id="def_overlay"></a>överlägg </dt>
 <dd>
@@ -389,7 +389,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefporcelainaporcelain"> <a class="anchor" href="#gitglossary-porcelain"></a> <a class="anchor" href="#gitglossary-aiddefporcelainaporcelain"></a><a id="def_porcelain"></a>porcelain </dt>
 <dd>
-<p>Sött namn för program och programsviter som är beroende av <a href="#def_core_git">core Git</a>, vilket ger högnivååtkomst till core Git. Porslin exponerar mer av ett <a href="#def_SCM">SCM</a>-gränssnitt än <a href="#def_plumbing">plumbing</a>.</p>
+<p>Sött namn för program och programsviter som är beroende av <a href="#def_core_git">core Git</a>, vilket ger högnivååtkomst till core Git. Porslin exponerar mer av ett <a href="#def_SCM">SCM</a>-gränssnitt än <a href="#def_plumbing">rörmokeri</a>.</p>
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefperworktreerefaper-arbetstrdsreferens"> <a class="anchor" href="#gitglossary-per-arbetstrdsreferens"></a> <a class="anchor" href="#gitglossary-aiddefperworktreerefaper-arbetstrdsreferens"></a><a id="def_per_worktree_ref"></a>per-arbetsträdsreferens </dt>
 <dd>
@@ -418,7 +418,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefpushasndpusha"> <a class="anchor" href="#gitglossary-sndpusha"></a> <a class="anchor" href="#gitglossary-aiddefpushasndpusha"></a><a id="def_push"></a>sänd ("pusha") </dt>
 <dd>
-<p>Att sända ("pusha") en <a href="#def_branch">gren</a> innebär att hämta grenens <a href="#def_head_ref">huvud ref</a> från ett fjärr-<a href="#def_repository">repo</a>, ta reda på om det är en förfader till grenens lokala huvud-referens, och i så fall lägga till alla objekt som är <a href="#def_reachable">nåbar</a> från den lokala huvud-referensen, och som saknas i fjärr-repot, till det fjärranslutna <a href="#def_object_database">objektdatabas</a>, och uppdatera den fjärranslutna huvud-referensen. Om den fjärranslutna <a href="#def_head">huvud</a> inte är en förfader till det lokala huvud-värdet, misslyckas sänd-processen.</p>
+<p>Att sända ("pusha") en <a href="#def_branch">gren</a> innebär att hämta grenens <a href="#def_head_ref">huvud ref</a> från ett fjärr-<a href="#def_repository">repo</a>, ta reda på om det är en förfader till grenens lokala huvud-referens, och i så fall lägga till alla objekt som är <a href="#def_reachable">nåbar</a> från den lokala huvud-referensen, och som saknas i fjärrförvar, till det fjärranslutna <a href="#def_object_database">objektdatabas</a>, och uppdatera den fjärranslutna huvud-referensen. Om den fjärranslutna <a href="#def_head">huvud</a> inte är en förfader till det lokala huvud-värdet, misslyckas sänd-processen.</p>
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefreachableanbar"> <a class="anchor" href="#gitglossary-nbar"></a> <a class="anchor" href="#gitglossary-aiddefreachableanbar"></a><a id="def_reachable"></a>nåbar </dt>
 <dd>
@@ -434,7 +434,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefrefaref"> <a class="anchor" href="#gitglossary-ref"></a> <a class="anchor" href="#gitglossary-aiddefrefaref"></a><a id="def_ref"></a>ref </dt>
 <dd>
-<p>Ett namn som pekar på en <a href="#def_object_name">objektnamn</a> eller en annan referens (den senare kallas en <a href="#def_symref">symbolisk ref</a>). För enkelhetens skull kan en referens ibland förkortas när den används som ett argument till ett Git-kommando; se <a href='{{< relurl "docs/gitrevisions/sv" >}}'>gitrevisions[7]</a> för mer information. Referenser lagras i <a href="#def_repository">repot</a>.</p>
+<p>Ett namn som pekar på en <a href="#def_object_name">objektnamn</a> eller en annan referens (den senare kallas en <a href="#def_symref">symbolisk ref</a>). För enkelhetens skull kan en referens ibland förkortas när den används som ett argument till ett Git-kommando; se <a href='{{< relurl "docs/gitrevisions/sv" >}}'>gitrevisions[7]</a> för mer information. Referenser lagras i <a href="#def_repository">förvar</a>.</p>
 <div class="paragraph">
 <p>Ref-namnrymden är hierarkisk. Ref-namn måste antingen börja med <span class='synopsis'><code>refs/</code></span> eller finnas i roten av hierarkin. För de senare måste deras namn följa dessa regler:</p>
 </div>
@@ -478,17 +478,17 @@ headings:
 <dd>
 <p>En "refspec" används av <a href="#def_fetch">hämta</a> ("fetcha") och <a href="#def_push">sänd</a> ("pusha") för att beskriva mappningen mellan fjärren <a href="#def_ref">ref</a> och lokal referens. Se <a href='{{< relurl "docs/git-fetch/sv" >}}'>git-fetch[1]</a> eller <a href='{{< relurl "docs/git-push/sv" >}}'>git-push[1]</a> för detaljer.</p>
 </dd>
-<dt class="hdlist1" id="gitglossary-aiddefremoteafjrrrepo"> <a class="anchor" href="#gitglossary-fjrrrepo"></a> <a class="anchor" href="#gitglossary-aiddefremoteafjrrrepo"></a><a id="def_remote"></a>fjärr repo </dt>
+<dt class="hdlist1" id="gitglossary-aiddefremoteafjrrfrvar"> <a class="anchor" href="#gitglossary-fjrrfrvar"></a> <a class="anchor" href="#gitglossary-aiddefremoteafjrrfrvar"></a><a id="def_remote"></a>fjärr förvar </dt>
 <dd>
-<p>Ett <a href="#def_repository">repo</a> som används för att spåra samma projekt men finns någon annanstans. För att kommunicera med fjärr, se <a href="#def_fetch">hämta</a> eller <a href="#def_push">sänd</a>.</p>
+<p>Ett <a href="#def_repository">förvar</a> som används för att spåra samma projekt men finns någon annanstans. För att kommunicera med fjärr, se <a href="#def_fetch">hämta</a> eller <a href="#def_push">sänd</a>.</p>
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefremotetrackingbrancharfjrrspradegren"> <a class="anchor" href="#gitglossary-rfjrrspradegren"></a> <a class="anchor" href="#gitglossary-aiddefremotetrackingbrancharfjrrspradegren"></a><a id="def_remote_tracking_branch"></a>rfjärrspårade gren </dt>
 <dd>
-<p>En <a href="#def_ref">ref</a> som används för att följa ändringar från en annan <a href="#def_repository">repo</a>. Den ser vanligtvis ut som <em>refs/remotes/foo/bar</em> (vilket indikerar att den spårar en gren med namnet <em>bar</em> i en fjärren med namnet <em>foo</em>), och matchar höger sida av en konfigurerad hämtningsgren <a href="#def_refspec">refspec</a>. En fjärrspårningsgren bör inte innehålla direkta modifieringar eller ha lokala incheckningar gjorda till den.</p>
+<p>En <a href="#def_ref">ref</a> som används för att följa ändringar från en annan <a href="#def_repository">förvar</a>. Den ser vanligtvis ut som <em>refs/remotes/foo/bar</em> (vilket indikerar att den spårar en gren med namnet <em>bar</em> i en fjärren med namnet <em>foo</em>), och matchar höger sida av en konfigurerad hämtningsgren <a href="#def_refspec">refspec</a>. En fjärrspårningsgren bör inte innehålla direkta modifieringar eller ha lokala incheckningar gjorda till den.</p>
 </dd>
-<dt class="hdlist1" id="gitglossary-aiddefrepositoryarepo"> <a class="anchor" href="#gitglossary-repo"></a> <a class="anchor" href="#gitglossary-aiddefrepositoryarepo"></a><a id="def_repository"></a>repo </dt>
+<dt class="hdlist1" id="gitglossary-aiddefrepositoryafrvar"> <a class="anchor" href="#gitglossary-frvar"></a> <a class="anchor" href="#gitglossary-aiddefrepositoryafrvar"></a><a id="def_repository"></a>förvar </dt>
 <dd>
-<p>En samling av <a href="#def_ref">refs</a> tillsammans med en <a href="#def_object_database">objektdatabas</a> som innehåller alla objekt som är <a href="#def_reachable">nåbara</a> från referenserna, eventuellt åtföljda av metadata från en eller flera <a href="#def_porcelain">porslin</a>. Ett repo kan dela en objektdatabas med andra arkiv via <a href="#def_alternate_object_database">alternativs mekanismen</a>.</p>
+<p>En samling av <a href="#def_ref">refs</a> tillsammans med en <a href="#def_object_database">objektdatabas</a> som innehåller alla objekt som är <a href="#def_reachable">nåbara</a> från referenserna, eventuellt åtföljda av metadata från en eller flera <a href="#def_porcelain">porslin</a>. Ett förvar kan dela en objektdatabas med andra arkiv via <a href="#def_alternate_object_database">alternativs mekanismen</a>.</p>
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefresolvearesolve"> <a class="anchor" href="#gitglossary-resolve"></a> <a class="anchor" href="#gitglossary-aiddefresolvearesolve"></a><a id="def_resolve"></a>resolve </dt>
 <dd>
@@ -512,11 +512,11 @@ headings:
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefshallowcloneaytligklon"> <a class="anchor" href="#gitglossary-ytligklon"></a> <a class="anchor" href="#gitglossary-aiddefshallowcloneaytligklon"></a><a id="def_shallow_clone"></a>ytlig klon </dt>
 <dd>
-<p>Mestadels en synonym till <a href="#def_shallow_repository">ytligt repo</a> men frasen gör det mer explicit att den skapades genom att köra kommandot <span class='synopsis'><code>git</code> <code>clone</code> <code>--depth=...</code></span>.</p>
+<p>Mestadels en synonym till <a href="#def_shallow_repository">ytligt förvar</a> men frasen gör det mer explicit att den skapades genom att köra kommandot <span class='synopsis'><code>git</code> <code>clone</code> <code>--depth=...</code></span>.</p>
 </dd>
-<dt class="hdlist1" id="gitglossary-aiddefshallowrepositoryaytligtrepo"> <a class="anchor" href="#gitglossary-ytligtrepo"></a> <a class="anchor" href="#gitglossary-aiddefshallowrepositoryaytligtrepo"></a><a id="def_shallow_repository"></a>ytligt repo </dt>
+<dt class="hdlist1" id="gitglossary-aiddefshallowrepositoryaytligtfrvar"> <a class="anchor" href="#gitglossary-ytligtfrvar"></a> <a class="anchor" href="#gitglossary-aiddefshallowrepositoryaytligtfrvar"></a><a id="def_shallow_repository"></a>ytligt förvar </dt>
 <dd>
-<p>Ett ytligt <a href="#def_repository">repo</a> har en ofullständig historik varav en del <a href="#def_commit">incheckning</a> har <a href="#def_parent">föräldrar</a> bränts bort (med andra ord, Git får höra att låtsas att dessa incheckningar inte har föräldrarna, trots att de är registrerade i <a href="#def_commit_object">incheckning objekt</a>). Detta är ibland användbart när man bara är intresserad av ett projekts aktuella historik trots att den verkliga historiken som registrerats uppströms är mycket större. Ett ytligt repository skapas genom att ge <span class='synopsis'><code>--depth</code></span>-alternativet till <a href='{{< relurl "docs/git-clone/sv" >}}'>git-clone[1]</a>, och dess historik kan senare fördjupas med <a href='{{< relurl "docs/git-fetch/sv" >}}'>git-fetch[1]</a>.</p>
+<p>Ett ytligt <a href="#def_repository">förvar</a> har en ofullständig historik varav en del <a href="#def_commit">incheckning</a> har <a href="#def_parent">föräldrar</a> bränts bort (med andra ord, Git får höra att låtsas att dessa incheckningar inte har föräldrarna, trots att de är registrerade i <a href="#def_commit_object">incheckning objekt</a>). Detta är ibland användbart när man bara är intresserad av ett projekts aktuella historik trots att den verkliga historiken som registrerats uppströms är mycket större. Ett ytligt repo skapas genom att ge <span class='synopsis'><code>--depth</code></span>-alternativet till <a href='{{< relurl "docs/git-clone/sv" >}}'>git-clone[1]</a>, och dess historik kan senare fördjupas med <a href='{{< relurl "docs/git-fetch/sv" >}}'>git-fetch[1]</a>.</p>
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefstashagmmapost"> <a class="anchor" href="#gitglossary-gmmapost"></a> <a class="anchor" href="#gitglossary-aiddefstashagmmapost"></a><a id="def_stash"></a>gömma post </dt>
 <dd>
@@ -524,7 +524,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefsubmoduleaundermodulsubmodule"> <a class="anchor" href="#gitglossary-undermodulsubmodule"></a> <a class="anchor" href="#gitglossary-aiddefsubmoduleaundermodulsubmodule"></a><a id="def_submodule"></a>undermodul ("submodule") </dt>
 <dd>
-<p>Ett <a href="#def_repository">repo</a> som lagrar historiken för ett separat projekt inuti ett annat repo (det senare kallas <a href="#def_superproject">superproject</a>).</p>
+<p>Ett <a href="#def_repository">repo</a> som lagrar historiken för ett separat projekt inuti ett annat förvar (det senare kallas <a href="#def_superproject">superproject</a>).</p>
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefsuperprojectasuperproject"> <a class="anchor" href="#gitglossary-superproject"></a> <a class="anchor" href="#gitglossary-aiddefsuperprojectasuperproject"></a><a id="def_superproject"></a>superproject </dt>
 <dd>
@@ -542,7 +542,7 @@ headings:
 <dd>
 <p>Ett <a href="#def_object">objekt</a> som innehåller ett <a href="#def_ref">ref</a> som pekar på ett annat objekt, vilket kan innehålla ett meddelande precis som ett <a href="#def_commit_object">inchecknings-objekt</a>. Det kan också innehålla en (PGP) signatur, i vilket fall det kallas ett "signerat taggobjekt".</p>
 </dd>
-<dt class="hdlist1" id="gitglossary-aiddeftopicbranchamnegren"> <a class="anchor" href="#gitglossary-mnegren"></a> <a class="anchor" href="#gitglossary-aiddeftopicbranchamnegren"></a><a id="def_topic_branch"></a>ämne gren </dt>
+<dt class="hdlist1" id="gitglossary-aiddeftopicbranchamnes-gren"> <a class="anchor" href="#gitglossary-mnes-gren"></a> <a class="anchor" href="#gitglossary-aiddeftopicbranchamnes-gren"></a><a id="def_topic_branch"></a>ämnes-gren </dt>
 <dd>
 <p>En vanlig Git <a href="#def_branch">gren</a> som används av en utvecklare för att identifiera en konceptuell utvecklingslinje. Eftersom grenar är mycket enkla och billiga är det ofta önskvärt att ha flera små grenar som var och en innehåller mycket väldefinierade koncept eller små stegvisa men relaterade förändringar.</p>
 </dd>
@@ -564,7 +564,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefunbornaoftt"> <a class="anchor" href="#gitglossary-oftt"></a> <a class="anchor" href="#gitglossary-aiddefunbornaoftt"></a><a id="def_unborn"></a>ofött </dt>
 <dd>
-<p><a href="#def_HEAD">HEAD</a> kan peka på en <a href="#def_branch">gren</a> som ännu inte existerar och som inte har någon incheckning på ännu, och en sådan gren kallas en ofödd gren. Det vanligaste sättet användare stöter på en ofödd gren är genom att skapa ett nytt repository utan att klona någon annanstans. HEAD skulle peka på <em>main</em>-grenen (eller <em>master</em>-grenen, beroende på din konfiguration) som ännu inte har skapats. Vissa operationer kan också ge dig en ofödd gren med deras <a href="#def_orphan">orphan</a> (föräldralös) alternativ.</p>
+<p><a href="#def_HEAD">HEAD</a> kan peka på en <a href="#def_branch">gren</a> som ännu inte existerar och som inte har någon incheckning på ännu, och en sådan gren kallas en ofödd gren. Det vanligaste sättet användare stöter på en ofödd gren är genom att skapa ett nytt förvar utan att klona någon annanstans. HEAD skulle peka på <em>main</em>-grenen (eller <em>master</em>-grenen, beroende på din konfiguration) som ännu inte har skapats. Vissa operationer kan också ge dig en ofödd gren med deras <a href="#def_orphan">orphan</a> (föräldralös) alternativ.</p>
 </dd>
 <dt class="hdlist1" id="gitglossary-aiddefunmergedindexaunmergedindex"> <a class="anchor" href="#gitglossary-unmergedindex"></a> <a class="anchor" href="#gitglossary-aiddefunmergedindexaunmergedindex"></a><a id="def_unmerged_index"></a>unmerged index </dt>
 <dd>

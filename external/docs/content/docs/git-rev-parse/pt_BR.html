@@ -703,15 +703,15 @@ J = F^2  = B^3^2   = A^^3^2</pre>
 <dd>
 <p>Inclua os commits que são acessíveis a partir de <em>&lt;rev1&gt;</em> ou <em>&lt;rev2&gt;</em>, mas exclua aqueles que são acessíveis a partir de ambos. Quando <em>&lt;rev1&gt;</em> ou <em>&lt;rev2&gt;</em> é omitido, o padrão é <span class='synopsis'><code>HEAD</code></span>.</p>
 </dd>
-<dt class="hdlist1" id="git-rev-parse-emltrevgtemegemHEADem"> <a class="anchor" href="#git-rev-parse-revegHEAD"></a> <a class="anchor" href="#git-rev-parse-emltrevgtemegemHEADem"></a><em>&lt;rev&gt;^@</em>, e.g. <em>HEAD^@</em> </dt>
+<dt class="hdlist1" id="git-rev-parse-emltrevgtemporexemploemHEADem"> <a class="anchor" href="#git-rev-parse-revporexemploHEAD"></a> <a class="anchor" href="#git-rev-parse-emltrevgtemporexemploemHEADem"></a><em>&lt;rev&gt;^@</em>, por exemplo <em>HEAD^@</em> </dt>
 <dd>
 <p>Um sufixo <em>^</em> seguido por um sinal de arroba é o mesmo que listar todas as origens de <em>&lt;rev&gt;</em> (ou seja, incluir qualquer coisa acessível das suas origens, mas não o próprio commit).</p>
 </dd>
-<dt class="hdlist1" id="git-rev-parse-emltrevgtemegemHEADem-1"> <a class="anchor" href="#git-rev-parse-revegHEAD-1"></a> <a class="anchor" href="#git-rev-parse-emltrevgtemegemHEADem-1"></a><em>&lt;rev&gt;^!</em>, e.g. <em>HEAD^!</em> </dt>
+<dt class="hdlist1" id="git-rev-parse-emltrevgtemporexemploemHEADem-1"> <a class="anchor" href="#git-rev-parse-revporexemploHEAD-1"></a> <a class="anchor" href="#git-rev-parse-emltrevgtemporexemploemHEADem-1"></a><em>&lt;rev&gt;^!</em>, por exemplo <em>HEAD^!</em> </dt>
 <dd>
 <p>Um sufixo <em>^</em> seguido de um ponto de exclamação é o mesmo que fazer um commit <em>&lt;rev&gt;</em> e todos os seus principais prefixam com <em>^</em> para excluí-los (assim como seus ancestrais).</p>
 </dd>
-<dt class="hdlist1" id="git-rev-parse-emltrevgt-ltngtemegemHEAD-HEAD-2em"> <a class="anchor" href="#git-rev-parse-rev-negHEAD-HEAD-2"></a> <a class="anchor" href="#git-rev-parse-emltrevgt-ltngtemegemHEAD-HEAD-2em"></a><em>&lt;rev&gt;^-&lt;n&gt;</em>, e.g. <em>HEAD^-, HEAD^-2</em> </dt>
+<dt class="hdlist1" id="git-rev-parse-emltrevgt-ltngtemporexemploemHEAD-HEAD-2em"> <a class="anchor" href="#git-rev-parse-rev-nporexemploHEAD-HEAD-2"></a> <a class="anchor" href="#git-rev-parse-emltrevgt-ltngtemporexemploemHEAD-HEAD-2em"></a><em>&lt;rev&gt;^-&lt;n&gt;</em>, por exemplo <em>HEAD^-, HEAD^-2</em> </dt>
 <dd>
 <p>É o equivalente a <em>&lt;rev&gt;^&lt;n&gt;..&lt;rev&gt;</em>, with <em>&lt;n&gt;</em> = 1 caso nenhum seja informado.</p>
 </dd>

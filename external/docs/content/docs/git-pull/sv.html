@@ -43,7 +43,7 @@ headings:
 <h2 id="_namn"><a class="anchor" href="#_namn"></a>NAMN</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>git-pull - Hämta från och integrera med annat repo eller en lokal gren</p>
+<p>git-pull - Hämta från och integrera med annat förvar eller en lokal gren</p>
 </div>
 </div>
 </div>
@@ -51,7 +51,7 @@ headings:
 <h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><span class='synopsis'><code>git</code></span> <span class='synopsis'><code>pull</code></span> [<em>&lt;flaggor&gt;</em>] [<em><span class="hover-term" data-term="repo">&lt;repo&gt;</span></em> [<em><span class="hover-term" data-term="refspec">&lt;refspec&gt;</span></em>&#8230;&#8203;]]</pre>
+<pre class="content"><span class='synopsis'><code>git</code></span> <span class='synopsis'><code>pull</code></span> [<em>&lt;flaggor&gt;</em>] [<em><span class="hover-term" data-term="förvar">&lt;förvar&gt;</span></em> [<em><span class="hover-term" data-term="refspec">&lt;refspec&gt;</span></em>&#8230;&#8203;]]</pre>
 </div>
 </div>
 </div>
@@ -59,7 +59,7 @@ headings:
 <h2 id="_beskrivning"><a class="anchor" href="#_beskrivning"></a>BESKRIVNING</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Integrera ändringar från ett fjärr-repo i den aktuella grenen.</p>
+<p>Integrera ändringar från ett fjärrförvar i den aktuella grenen.</p>
 </div>
 <div class="paragraph">
 <p>Först kör <span class='synopsis'><code>git</code> <code>pull</code></span> <span class='synopsis'><code>git</code> <code>fetch</code></span> med samma argument (exklusive sammanslagningsalternativ) för att hämta fjärrgren(ar). Sedan bestämmer den vilken fjärrgren som ska integreras: om du kör <span class='synopsis'><code>git</code> <code>pull</code></span> utan argument används som standard <a href="#UPSTREAM-BRANCHES">upstream</a> för den aktuella grenen. Sedan integreras den grenen i den aktuella grenen.</p>
@@ -96,7 +96,7 @@ headings:
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1" id="git-pull-emltrepogtem"> <a class="anchor" href="#git-pull-repo"></a> <a class="anchor" href="#git-pull-emltrepogtem"></a><em><span class="hover-term" data-term="repo">&lt;repo&gt;</span></em> </dt>
+<dt class="hdlist1" id="git-pull-emltfrvargtem"> <a class="anchor" href="#git-pull-frvar"></a> <a class="anchor" href="#git-pull-emltfrvargtem"></a><em><span class="hover-term" data-term="förvar">&lt;förvar&gt;</span></em> </dt>
 <dd>
 <p>"Fjärr"-arkivet att hämta från. Detta kan antingen vara en URL (se avsnittet <a href="#URLS">GIT URLS</a> nedan) eller namnet på en fjärrenhet (se avsnittet <a href="#REMOTES">FJÄRR</a> nedan).</p>
 <div class="paragraph">
@@ -253,7 +253,7 @@ Endast användbart vid sammanslagning.</p>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--verify-signaturescodespan"> <a class="anchor" href="#git-pull---verify-signatures"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--verify-signaturescodespan"></a><span class='synopsis'><code>--verify-signatures</code></span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--no-verify-signaturescodespan"> <a class="anchor" href="#git-pull---no-verify-signatures"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--no-verify-signaturescodespan"></a><span class='synopsis'><code>--no-verify-signatures</code></span> </dt>
 <dd>
-<p>Verifiera att tip incheckningen för sidgrenen som sammanfogas är signerad med en giltig nyckel, d.v.s. en nyckel som har en giltig uid: i standardförtroendemodellen betyder detta att signeringsnyckeln har signerats av en betrodd nyckel. Om tip incheckningen för sidgrenen inte är signerad med en giltig nyckel avbryts sammanfogningen.</p>
+<p>Verifiera att tip incheckningen för sidgrenen som sammanfogas är signerad med en giltig nyckel, d.v.s. en nyckel som har en giltig uid: i standardförtroendemodellen betyder detta att signeringsnyckeln har signerats av en betrodd nyckel. Om top incheckningen för sidgrenen inte är signerad med en giltig nyckel avbryts sammanfogningen.</p>
 <div class="paragraph">
 <p>Endast användbart vid sammanslagning.</p>
 </div>
@@ -348,34 +348,34 @@ Detta är ett potentiellt <em>farligt</em> driftläge. Det skriver om historiken
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--depthcodeemltdjupgtemspan"> <a class="anchor" href="#git-pull---depthdjup"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--depthcodeemltdjupgtemspan"></a><span class='synopsis'><code>--depth=</code><em>&lt;djup&gt;</em></span> </dt>
 <dd>
-<p>Begränsa hämtningen till det angivna antalet incheckningar från toppen av varje fjärrgrenhistorik. Om hämtning sker till ett ytligt-repo (<em>shallow</em>) skapat av <span class='synopsis'><code>git</code> <code>clone</code></span> med alternativet <span class='synopsis'><code>--depth=</code><em>&lt;djup&gt;</em></span> (se <a href='{{< relurl "docs/git-clone/sv" >}}'>git-clone[1]</a>), fördjupa eller förkorta historiken till det angivna antalet incheckningar. Taggar för de fördjupade incheckningar hämtas inte.</p>
+<p>Begränsa hämtningen till det angivna antalet incheckningar från toppen av varje fjärrgrenhistorik. Om hämtning sker till ett ytligt-förvar (<em>shallow</em>) skapat av <span class='synopsis'><code>git</code> <code>clone</code></span> med alternativet <span class='synopsis'><code>--depth=</code><em>&lt;djup&gt;</em></span> (se <a href='{{< relurl "docs/git-clone/sv" >}}'>git-clone[1]</a>), fördjupa eller förkorta historiken till det angivna antalet incheckningar. Taggar för de fördjupade incheckningar hämtas inte.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--deepencodeemltdjupgtemspan"> <a class="anchor" href="#git-pull---deependjup"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--deepencodeemltdjupgtemspan"></a><span class='synopsis'><code>--deepen=</code><em>&lt;djup&gt;</em></span> </dt>
 <dd>
-<p>Liknar <span class='synopsis'><code>--depth</code></span>, förutom att den anger antalet incheckningar från den aktuella ytliga gränsen istället för från toppen av varje fjärrgrenhistorik.</p>
+<p>spetsenspetsenLiknar <span class='synopsis'><code>--depth</code></span>, förutom att den anger antalet incheckningar från den aktuella ytliga gränsen istället för från topen av varje fjärrgrenhistorik.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--shallow-sincecodeemltdatumgtemspan"> <a class="anchor" href="#git-pull---shallow-sincedatum"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--shallow-sincecodeemltdatumgtemspan"></a><span class='synopsis'><code>--shallow-since=</code><em>&lt;datum&gt;</em></span> </dt>
 <dd>
-<p>Fördjupa eller förkorta historiken för ett ytligt repo för att inkludera alla nåbara incheckningar efter <em>&lt;datum&gt;</em>.</p>
+<p>Fördjupa eller förkorta historiken för ett ytligt förvar för att inkludera alla nåbara incheckningar efter <em>&lt;datum&gt;</em>.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--shallow-excludecodeemltrefgtemspan"> <a class="anchor" href="#git-pull---shallow-excluderef"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--shallow-excludecodeemltrefgtemspan"></a><span class='synopsis'><code>--shallow-exclude=</code><em><span class="hover-term" data-term="ref">&lt;ref&gt;</span></em></span> </dt>
 <dd>
-<p>Fördjupa eller förkorta historiken för ett ytligt repo för att exkludera incheckningar som är åtkomliga från en specifik fjärrgren eller tagg. Det här alternativet kan anges flera gånger.</p>
+<p>Fördjupa eller förkorta historiken för ett ytligt förvar för att exkludera incheckningar som är åtkomliga från en specifik fjärrgren eller tagg. Det här alternativet kan anges flera gånger.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--unshallowcodespan"> <a class="anchor" href="#git-pull---unshallow"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--unshallowcodespan"></a><span class='synopsis'><code>--unshallow</code></span> </dt>
 <dd>
-<p>Om käll-repot är komplett, konvertera ett ytligt repo till ett komplett, och ta bort alla begränsningar som ytliga repon medför.</p>
+<p>Om käll-repot är komplett, konvertera ett ytligt förvar till ett komplett, och ta bort alla begränsningar som ytliga repon medför.</p>
 <div class="paragraph">
-<p>Om käll-repot är ytligt, hämta så mycket som möjligt så att det aktuella repot har samma historik som käll-repot.</p>
+<p>Om käll-förvaret är ytligt, hämta så mycket som möjligt så att det aktuella förvaret har samma historik som käll-förvaret.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--update-shallowcodespan"> <a class="anchor" href="#git-pull---update-shallow"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--update-shallowcodespan"></a><span class='synopsis'><code>--update-shallow</code></span> </dt>
 <dd>
-<p>Som standard vid hämtning från ett ytligt repo, vägrar <span class='synopsis'><code>git</code> <code>fetch</code></span> referenser som kräver uppdatering av <span class='synopsis'><code>.git/shallow</code></span>. Det här alternativet uppdaterar <span class='synopsis'><code>.git/shallow</code></span> och accepterar sådana referenser.</p>
+<p>Som standard vid hämtning från ett ytligt förvar, vägrar <span class='synopsis'><code>git</code> <code>fetch</code></span> referenser som kräver uppdatering av <span class='synopsis'><code>.git/shallow</code></span>. Det här alternativet uppdaterar <span class='synopsis'><code>.git/shallow</code></span> och accepterar sådana referenser.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--negotiation-tipcodeemltincheckninggtememltglobgtemspan"> <a class="anchor" href="#git-pull---negotiation-tipincheckningglob"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--negotiation-tipcodeemltincheckninggtememltglobgtemspan"></a><span class='synopsis'><code>--negotiation-tip=</code>(<em><span class="hover-term" data-term="incheckning">&lt;incheckning&gt;</span></em>|<em>&lt;glob&gt;</em>)</span> </dt>
 <dd>
-<p>Som standard, rapporterar Git incheckningar till servern som är nåbara från alla lokala referenser för att hitta gemensamma incheckningar i ett försök att minska storleken på den packfil som ska tas emot. Om detta anges kommer Git bara att rapportera incheckningar som är nåbara från de givna tipsen. Detta är användbart för att påskynda hämtningar när användaren vet vilken lokal referens som sannolikt har incheckningar gemensamt med den uppströms referens som hämtas.</p>
+<p>Som standard, rapporterar Git incheckningar till servern som är nåbara från alla lokala referenser för att hitta gemensamma incheckningar i ett försök att minska storleken på den packfil som ska tas emot. Om detta anges kommer Git bara att rapportera incheckningar som är nåbara från de givna toppar. Detta är användbart för att påskynda hämtningar när användaren vet vilken lokal referens som sannolikt har incheckningar gemensamt med den uppströms referens som hämtas.</p>
 <div class="paragraph">
 <p>Det här alternativet kan anges mer än en gång; om så är fallet kommer Git att rapportera incheckningar som är åtkomliga från vilken som helst av de givna incheckningar.</p>
 </div>
@@ -426,11 +426,11 @@ Det här alternativet åsidosätter den kontrollen.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--no-tagscodespan"> <a class="anchor" href="#git-pull---no-tags"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--no-tagscodespan"></a><span class='synopsis'><code>--no-tags</code></span> </dt>
 <dd>
-<p>Som standard, hämtas och lagras taggar som pekar på objekt som laddas ner från fjärr-repot lokalt. Det här alternativet inaktiverar denna automatiska taggföljningen. Standardbeteendet för en fjärren kan anges med inställningen <span class='synopsis'><code>remote.</code><em>&lt;namn&gt;</em><code>.tagOpt</code></span>. Se <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>.</p>
+<p>Som standard, hämtas och lagras taggar som pekar på objekt som laddas ner från fjärrförvaret lokalt. Det här alternativet inaktiverar denna automatiska taggföljningen. Standardbeteendet för en fjärren kan anges med inställningen <span class='synopsis'><code>remote.</code><em>&lt;namn&gt;</em><code>.tagOpt</code></span>. Se <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--refmapcodeemltrefspecgtemspan"> <a class="anchor" href="#git-pull---refmaprefspec"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--refmapcodeemltrefspecgtemspan"></a><span class='synopsis'><code>--refmap=</code><em><span class="hover-term" data-term="refspec">&lt;refspec&gt;</span></em></span> </dt>
 <dd>
-<p>När du hämtar referenser som listas på kommandoraden, använd den angivna refspecen (kan anges mer än en gång) för att mappa referenserna till fjärrspårningsgrenar, istället för värdena för <span class='synopsis'><code>remote.</code><em>&lt;name&gt;</em><code>.fetch</code></span>-konfigurationsvariabler för fjärr-repot. Om du anger ett tomt <em><span class="hover-term" data-term="refspec">&lt;refspec&gt;</span></em> till alternativet <span class='synopsis'><code>--refmap</code></span> ignorerar Git de konfigurerade refspecs och förlitar sig helt på de refspecs som anges som kommandoradsargument. Se avsnittet om "Konfigurerade fjärrspårningsgrenar" för mer information.</p>
+<p>När du hämtar referenser som listas på kommandoraden, använd den angivna refspecen (kan anges mer än en gång) för att mappa referenserna till fjärrspårningsgrenar, istället för värdena för <span class='synopsis'><code>remote.</code><em>&lt;name&gt;</em><code>.fetch</code></span>-konfigurationsvariabler för fjärrförvaret. Om du anger ett tomt <em><span class="hover-term" data-term="refspec">&lt;refspec&gt;</span></em> till alternativet <span class='synopsis'><code>--refmap</code></span> ignorerar Git de konfigurerade refspecs och förlitar sig helt på de refspecs som anges som kommandoradsargument. Se avsnittet om "Konfigurerade fjärrspårningsgrenar" för mer information.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode-tcodespan"> <a class="anchor" href="#git-pull--t"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode-tcodespan"></a><span class='synopsis'><code>-t</code></span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--tagscodespan"> <a class="anchor" href="#git-pull---tags"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--tagscodespan"></a><span class='synopsis'><code>--tags</code></span> </dt>
@@ -454,7 +454,7 @@ Det här alternativet åsidosätter den kontrollen.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--upload-packcodeemltupload-packgtemspan"> <a class="anchor" href="#git-pull---upload-packupload-pack"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--upload-packcodeemltupload-packgtemspan"></a><span class='synopsis'><code>--upload-pack</code> <em>&lt;upload-pack&gt;</em></span> </dt>
 <dd>
-<p>När det anges, och repot att hämta från hanteras av <span class='synopsis'><code>git</code> <code>fetch-pack</code></span>, skickas <span class='synopsis'><code>--exec=</code><em>&lt;upload-pack&gt;</em></span> till kommandot för att ange en icke-standardsökväg för kommandot som körs i andra änden.</p>
+<p>När det anges, och förvaret att hämta från hanteras av <span class='synopsis'><code>git</code> <code>fetch-pack</code></span>, skickas <span class='synopsis'><code>--exec=</code><em>&lt;upload-pack&gt;</em></span> till kommandot för att ange en icke-standardsökväg för kommandot som körs i andra änden.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--progresscodespan"> <a class="anchor" href="#git-pull---progress"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--progresscodespan"></a><span class='synopsis'><code>--progress</code></span> </dt>
 <dd>
@@ -487,9 +487,9 @@ Det här alternativet åsidosätter den kontrollen.</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1" id="git-pull-emltrepogtem-1"> <a class="anchor" href="#git-pull-repo-1"></a> <a class="anchor" href="#git-pull-emltrepogtem-1"></a><em><span class="hover-term" data-term="repo">&lt;repo&gt;</span></em> </dt>
+<dt class="hdlist1" id="git-pull-emltfrvargtem-1"> <a class="anchor" href="#git-pull-frvar-1"></a> <a class="anchor" href="#git-pull-emltfrvargtem-1"></a><em><span class="hover-term" data-term="förvar">&lt;förvar&gt;</span></em> </dt>
 <dd>
-<p>Det "fjärrlagrade" repot som är källan för en hämtnings- eller dra-operation (fetch, pull). Denna parameter kan antingen vara en URL (se avsnittet <a href="#URLS">GIT URLS</a> nedan) eller namnet på en fjärren (se avsnittet <a href="#REMOTES">FJÄRR</a> nedan).</p>
+<p>The "remote" repository that is the source of a fetch or pull operation. This parameter can be either a URL (see the section <a href="#URLS">GIT URLS</a> below) or the name of a remote (see the section <a href="#REMOTES">REMOTES</a> below).</p>
 </dd>
 </dl>
 </div>
@@ -497,7 +497,7 @@ Det här alternativet åsidosätter den kontrollen.</p>
 <dl>
 <dt class="hdlist1" id="git-pull-emltrefspecgtem-1"> <a class="anchor" href="#git-pull-refspec-1"></a> <a class="anchor" href="#git-pull-emltrefspecgtem-1"></a><em><span class="hover-term" data-term="refspec">&lt;refspec&gt;</span></em> </dt>
 <dd>
-<p>Anger vilka referenser som ska hämtas och vilka lokala referenser som ska uppdateras. När inga <em><span class="hover-term" data-term="refspec">&lt;refspec&gt;</span></em>s visas på kommandoraden läses referenserna som ska hämtas från variablerna <span class='synopsis'><code>remote.</code><em><span class="hover-term" data-term="repo">&lt;repo&gt;</span></em><code>.fetch</code></span> istället
+<p>Anger vilka referenser som ska hämtas och vilka lokala referenser som ska uppdateras. När inga <em><span class="hover-term" data-term="refspec">&lt;refspec&gt;</span></em>s visas på kommandoraden läses referenserna som ska hämtas från variablerna <span class='synopsis'><code>remote.</code><em><span class="hover-term" data-term="förvar">&lt;förvar&gt;</span></em><code>.fetch</code></span> istället
 (se avsnittet "KONFIGURERADE FJÄRRSPÅRNINGSGRENAR"
 i <a href='{{< relurl "docs/git-fetch/sv" >}}'>git-fetch[1]</a>).</p>
 <div class="paragraph">
@@ -537,7 +537,7 @@ i <a href='{{< relurl "docs/git-fetch/sv" >}}'>git-fetch[1]</a>).</p>
 <div class="title">Note</div>
 </td>
 <td class="content">
-När den fjärrgren du vill hämta är känd för att regelbundet spolas tillbaka och ombaseras, förväntas det att dess nya tips inte kommer att vara en underordnad av dess tidigare tips (som lagrats i din fjärrspårningsgren förra gången du hämtade). Du vill använda <span class='synopsis'><code>+</code></span>-tecknet för att indikera att uppdateringar som inte är framåtspolade kommer att behövas för sådana grenar. Det finns inget sätt att avgöra eller deklarera att en gren kommer att göras tillgänglig i ett arkiv med detta beteende; den indragande ("pullande") användaren måste helt enkelt veta att detta är det förväntade användningsmönstret för en gren.
+När den fjärrgren du vill hämta är känd för att regelbundet spolas tillbaka och ombaseras, förväntas det att dess nya top inte kommer att vara en underordnad av dess tidigare top (som lagrats i din fjärrspårningsgren förra gången du hämtade). Du vill använda <span class='synopsis'><code>+</code></span>-tecknet för att indikera att uppdateringar som inte är framåtspolade kommer att behövas för sådana grenar. Det finns inget sätt att avgöra eller deklarera att en gren kommer att göras tillgänglig i ett förvar med detta beteende; den indragande ("pullande") användaren måste helt enkelt veta att detta är det förväntade användningsmönstret för en gren.
 </td>
 </tr>
 </table>
@@ -549,7 +549,7 @@ När den fjärrgren du vill hämta är känd för att regelbundet spolas tillbak
 <div class="title">Note</div>
 </td>
 <td class="content">
-Det är skillnad på att lista flera <em><span class="hover-term" data-term="refspec">&lt;refspec&gt;</span></em> direkt på <span class='synopsis'><code>git</code> <code>pull</code></span>-kommandoraden och att ha flera <span class='synopsis'><code>remote.</code><em><span class="hover-term" data-term="repo">&lt;repo&gt;</span></em><code>.fetch</code></span>-poster i din konfiguration för ett <em><span class="hover-term" data-term="repo">&lt;repo&gt;</span></em> och att köra ett <span class='synopsis'><code>git</code> <code>pull</code></span>-kommando utan några explicita <em><span class="hover-term" data-term="refspec">&lt;refspec&gt;</span></em>-parametrar. <em><span class="hover-term" data-term="refspec">&lt;refspec&gt;</span></em>s som listas explicit på kommandoraden slås alltid samman med den aktuella grenen efter hämtning. Med andra ord, om du listar mer än en fjärrreferens, kommer <span class='synopsis'><code>git</code> <code>pull</code></span> att skapa en bläckfisk-sammanslagning. Å andra sidan, om du inte listar någon explicit <em><span class="hover-term" data-term="refspec">&lt;refspec&gt;</span></em>-parameter på kommandoraden, kommer <span class='synopsis'><code>git</code> <code>pull</code></span> att hämta alla <em><span class="hover-term" data-term="refspec">&lt;refspec&gt;</span></em>s som den hittar i <span class='synopsis'><code>remote.</code><em>&lt;repository&gt;</em><code>.fetch</code></span>-konfigurationen och slå samman endast den första <em><span class="hover-term" data-term="refspec">&lt;refspec&gt;</span></em> som hittas med den aktuella grenen. Detta beror på att det sällan görs att skapa en bläckfisk från fjärrreferenser, medan det ofta är användbart att hålla reda på flera fjärrreferenser samtidigt genom att hämta mer än ett.
+Det är skillnad på att lista flera <em><span class="hover-term" data-term="refspec">&lt;refspec&gt;</span></em> direkt på <span class='synopsis'><code>git</code> <code>pull</code></span>-kommandoraden och att ha flera <span class='synopsis'><code>remote.</code><em><span class="hover-term" data-term="förvar">&lt;förvar&gt;</span></em><code>.fetch</code></span>-poster i din konfiguration för ett <em><span class="hover-term" data-term="förvar">&lt;förvar&gt;</span></em> och att köra ett <span class='synopsis'><code>git</code> <code>pull</code></span>-kommando utan några explicita <em><span class="hover-term" data-term="refspec">&lt;refspec&gt;</span></em>-parametrar. <em><span class="hover-term" data-term="refspec">&lt;refspec&gt;</span></em>s som listas explicit på kommandoraden slås alltid samman med den aktuella grenen efter hämtning. Med andra ord, om du listar mer än en fjärrreferens, kommer <span class='synopsis'><code>git</code> <code>pull</code></span> att skapa en bläckfisk-sammanslagning. Å andra sidan, om du inte listar någon explicit <em><span class="hover-term" data-term="refspec">&lt;refspec&gt;</span></em>-parameter på kommandoraden, kommer <span class='synopsis'><code>git</code> <code>pull</code></span> att hämta alla <em><span class="hover-term" data-term="refspec">&lt;refspec&gt;</span></em>s som den hittar i <span class='synopsis'><code>remote.</code><em><span class="hover-term" data-term="förvar">&lt;förvar&gt;</span></em><code>.fetch</code></span>-konfigurationen och slå samman endast den första <em><span class="hover-term" data-term="refspec">&lt;refspec&gt;</span></em> som hittas med den aktuella grenen. Detta beror på att det sällan görs att skapa en bläckfisk från fjärrreferenser, medan det ofta är användbart att hålla reda på flera fjärrreferenser samtidigt genom att hämta mer än ett.
 </td>
 </tr>
 </table>
@@ -564,7 +564,7 @@ Det är skillnad på att lista flera <em><span class="hover-term" data-term="ref
 <h2 id="_git_urls"><a class="anchor" href="#_git_urls"></a>GIT URLS<a id="URLS"></a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>I allmänhet innehåller URL:er information om transportprotokollet, adressen till fjärrservern och sökvägen till repot. Beroende på transportprotokollet kan en del av denna information saknas.</p>
+<p>I allmänhet innehåller URL:er information om transportprotokollet, adressen till fjärrservern och sökvägen till förvar. Beroende på transportprotokollet kan en del av denna information saknas.</p>
 </div>
 <div class="paragraph">
 <p>Git stöder ssh-, git-, http- och https-protokollen (dessutom kan ftp och ftps användas för hämtning, men detta är ineffektivt och föråldrat; använd dem inte).</p>
@@ -578,16 +578,16 @@ Det är skillnad på att lista flera <em><span class="hover-term" data-term="ref
 <div class="ulist">
 <ul>
 <li>
-<p><span class='synopsis'><code>ssh://</code>[<em>&lt;användare&gt;</em><code>@</code>]<em>&lt;värd&gt;</em>[<code>:</code><em>&lt;port&gt;</em>]<code>/</code><em>&lt;sökväg-till-git-repo&gt;</em></span></p>
+<p><span class='synopsis'><code>ssh://</code>[<em>&lt;användare&gt;</em><code>@</code>]<em>&lt;värd&gt;</em>[<code>:</code><em>&lt;port&gt;</em>]<code>/</code><em>&lt;sökväg-till-git-förvar&gt;</em></span></p>
 </li>
 <li>
-<p><span class='synopsis'><code>git://</code><em>&lt;värd&gt;</em>[<code>:</code><em>&lt;port&gt;</em>]<code>/</code><em>&lt;sökväg-till-git-repo&gt;</em></span></p>
+<p><span class='synopsis'><code>git://</code><em>&lt;värd&gt;</em>[<code>:</code><em>&lt;port&gt;</em>]<code>/</code><em>&lt;sökväg-till-git-förvar&gt;</em></span></p>
 </li>
 <li>
-<p><span class='synopsis'><code>http</code>[<code>s</code>]<code>://</code><em>&lt;värd&gt;</em>[<code>:</code><em>&lt;port&gt;</em>]<code>/</code><em>&lt;sökväg-till-git-repo&gt;</em></span></p>
+<p><span class='synopsis'><code>http</code>[<code>s</code>]<code>://</code><em>&lt;värd&gt;</em>[<code>:</code><em>&lt;port&gt;</em>]<code>/</code><em>&lt;sökväg-till-git-förvar&gt;</em></span></p>
 </li>
 <li>
-<p><span class='synopsis'><code>ftp</code>[<code>s</code>]<code>://</code><em>&lt;värd&gt;</em>[<code>:</code><em>&lt;port&gt;</em>]<code>/</code><em>&lt;sökväg-till-git-repo&gt;</em></span></p>
+<p><span class='synopsis'><code>ftp</code>[<code>s</code>]<code>://</code><em>&lt;värd&gt;</em>[<code>:</code><em>&lt;port&gt;</em>]<code>/</code><em>&lt;sökväg-till-git-förvar&gt;</em></span></p>
 </li>
 </ul>
 </div>
@@ -597,7 +597,7 @@ Det är skillnad på att lista flera <em><span class="hover-term" data-term="ref
 <div class="ulist">
 <ul>
 <li>
-<p><span class='synopsis'>[<em>&lt;användare&gt;</em><code>@</code>]<em>&lt;värd&gt;</em>[<code>:</code><em>&lt;port&gt;</em>]<code>/</code><em>&lt;sökväg-till-git-repo&gt;</em></span></p>
+<p><span class='synopsis'>[<em>&lt;användare&gt;</em><code>@</code>]<em>&lt;värd&gt;</em><code>:/</code><em>&lt;sökväg-till-git-förvar&gt;</em></span></p>
 </li>
 </ul>
 </div>
@@ -610,26 +610,26 @@ Det är skillnad på att lista flera <em><span class="hover-term" data-term="ref
 <div class="ulist">
 <ul>
 <li>
-<p><span class='synopsis'><code>ssh://</code>[<em>&lt;användare&gt;</em><code>@</code>]<em>&lt;värd&gt;</em>[<code>:</code><em>&lt;port&gt;</em>]<code>/</code><em>&lt;sökväg-till-git-repo&gt;</em></span></p>
+<p><span class='synopsis'><code>ssh://</code>[<em>&lt;användare&gt;</em><code>@</code>]<em>&lt;värd&gt;</em>[<code>:</code><em>&lt;port&gt;</em>]<code>/~</code><em>&lt;användare&gt;</em><code>/</code><em>&lt;sökväg-till-git-förvar&gt;</em></span></p>
 </li>
 <li>
-<p><span class='synopsis'><code>git://</code>[<em>&lt;användare&gt;</em><code>@</code>]<em>&lt;värd&gt;</em>[<code>:</code><em>&lt;port&gt;</em>]<code>/</code><em>&lt;sökväg-till-git-repo&gt;</em></span></p>
+<p><span class='synopsis'><code>git://</code>[<em>&lt;användare&gt;</em><code>@</code>]<em>&lt;värd&gt;</em>[<code>:</code><em>&lt;port&gt;</em>]<code>/</code><em>&lt;sökväg-till-git-förvar&gt;</em></span></p>
 </li>
 <li>
-<p><span class='synopsis'>[<em>&lt;användare&gt;</em><code>@</code>]<em>&lt;värd&gt;</em>[<code>:</code><em>&lt;port&gt;</em>]<code>/</code><em>&lt;sökväg-till-git-repo&gt;</em></span></p>
+<p><span class='synopsis'>[<em>&lt;användare&gt;</em><code>@</code>]<em>&lt;värd&gt;</em>[<code>:</code><em>&lt;port&gt;</em>]<code>/</code><em>&lt;sökväg-till-git-förvar&gt;</em></span></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>För lokala repos, som också stöds nativt av Git, kan följande syntaxer användas:</p>
+<p>För lokala förvar, som också stöds nativt av Git, kan följande syntaxer användas:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><span class='synopsis'><code>/sokvag/till/repo.git/</code></span></p>
+<p><span class='synopsis'><em>/sokvag/till/förvar.git/</em></span></p>
 </li>
 <li>
-<p><span class='synopsis'><code>file:///sokvag/till/repo.git/</code></span></p>
+<p><span class='synopsis'><em>file:///sokvag/till/förvar.git/</em></span></p>
 </li>
 </ul>
 </div>
@@ -670,7 +670,7 @@ Det är skillnad på att lista flera <em><span class="hover-term" data-term="ref
 </div>
 </div>
 <div class="paragraph">
-<p>En URL som "arbete:repo.git" eller "host.xz:/sokvag/till/repo.git" kommer att skrivas om i alla sammanhang som antar att URL:en är "git://git.host.xz/repo.git".</p>
+<p>En URL som "arbete:förvar.git" eller "host.xz:/sokvag/till/förvar.git" kommer att skrivas om i alla sammanhang som antar att URL:en är "git://git.host.xz/förvar.git".</p>
 </div>
 <div class="paragraph">
 <p>Om du vill skriva om URL:er enbart för sändning (push), kan du skapa en konfigurationssektion i formen:</p>
@@ -697,7 +697,7 @@ Det är skillnad på att lista flera <em><span class="hover-term" data-term="ref
 <h2 id="_fjärr"><a class="anchor" href="#_fjärr"></a>FJÄRR<a id="REMOTES"></a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Namnet på en av följande kan användas istället för en URL som <em><span class="hover-term" data-term="repo">&lt;repo&gt;</span></em> argument:</p>
+<p>Namnet på en av följande kan användas istället för en URL som <em><span class="hover-term" data-term="förvar">&lt;förvar&gt;</span></em> argument:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -718,7 +718,7 @@ Det är skillnad på att lista flera <em><span class="hover-term" data-term="ref
 <div class="sect2">
 <h3 id="_namngiven_fjärr_i_konfigurationsfilen"><a class="anchor" href="#_namngiven_fjärr_i_konfigurationsfilen"></a>Namngiven fjärr i konfigurationsfilen</h3>
 <div class="paragraph">
-<p>Du kan välja att ange namnet på en fjärren som du tidigare konfigurerat med hjälp av <a href='{{< relurl "docs/git-remote/sv" >}}'>git-remote[1]</a>, <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a> eller till och med genom en manuell redigering av filen <span class='synopsis'><code>$GIT_DIR/config</code></span>. URL:en för denna fjärrkontroll kommer att användas för att komma åt repot. Refspec:en för denna fjärrkontroll kommer att användas som standard när du inte anger en refspec på kommandoraden. Posten i konfigurationsfilen skulle se ut så här:</p>
+<p>Du kan välja att ange namnet på en fjärren som du tidigare konfigurerat med hjälp av <a href='{{< relurl "docs/git-remote/sv" >}}'>git-remote[1]</a>, <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a> eller till och med genom en manuell redigering av filen <span class='synopsis'><code>$GIT_DIR/config</code></span>. URL:en för denna fjärrkontroll kommer att användas för att komma åt förvaret. Refspec:en för denna fjärrkontroll kommer att användas som standard när du inte anger en refspec på kommandoraden. Posten i konfigurationsfilen skulle se ut så här:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -736,7 +736,7 @@ Det är skillnad på att lista flera <em><span class="hover-term" data-term="ref
 <div class="sect2">
 <h3 id="_namngiven_fil_i_git_dirremotes"><a class="anchor" href="#_namngiven_fil_i_git_dirremotes"></a>Namngiven fil i <span class='synopsis'><code>$GIT_DIR/remotes</code></span></h3>
 <div class="paragraph">
-<p>Du kan välja att ange namnet på en fil i <span class='synopsis'><code>$GIT_DIR/remotes</code></span>. URL:en i den här filen kommer att användas för att komma åt repot. Refspec:en i den här filen kommer att användas som standard när du inte anger en refspec på kommandoraden. Den här filen ska ha följande format:</p>
+<p>Du kan välja att ange namnet på en fil i <span class='synopsis'><code>$GIT_DIR/remotes</code></span>. URL:en i den här filen kommer att användas för att komma åt förvaret. Refspec:en i den här filen kommer att användas som standard när du inte anger en refspec på kommandoraden. Den här filen ska ha följande format:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -752,7 +752,7 @@ Det är skillnad på att lista flera <em><span class="hover-term" data-term="ref
 <div class="sect2">
 <h3 id="_namngiven_fil_i_git_dirbranches"><a class="anchor" href="#_namngiven_fil_i_git_dirbranches"></a>Namngiven fil i <span class='synopsis'><code>$GIT_DIR/branches</code></span></h3>
 <div class="paragraph">
-<p>Du kan välja att ange namnet på en fil i <span class='synopsis'><code>$GIT_DIR/branches</code></span>. URL:en i den här filen kommer att användas för att komma åt repot. Filen ska ha följande format:</p>
+<p>Du kan välja att ange namnet på en fil i <span class='synopsis'><code>$GIT_DIR/branches</code></span>. URL:en i den här filen kommer att användas för att komma åt förvaret. Filen ska ha följande format:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -804,7 +804,7 @@ Det är skillnad på att lista flera <em><span class="hover-term" data-term="ref
 </ul>
 </div>
 <div class="paragraph">
-<p>Uppströmmen lagras i <span class='synopsis'><code>.git/config</code></span>, i fälten "<span class='synopsis'><code>remote</code></span>" och "<span class='synopsis'><code>merge</code></span>". Till exempel, om <span class='synopsis'><em>main`s uppström är `origin/main</em></span>:</p>
+<p>Uppströmmen lagras i <span class='synopsis'><code>.git/config</code></span>, i fälten "<span class='synopsis'><code>remote</code></span>" och "<span class='synopsis'><code>merge</code></span>". Till exempel, om <span class='synopsis'><em>main`s uppstrom är `origin/main</em></span>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -819,7 +819,7 @@ Det är skillnad på att lista flera <em><span class="hover-term" data-term="ref
 <div class="ulist">
 <ul>
 <li>
-<p>När du klonar ett repo kommer Git automatiskt att ställa in uppströmmen för standardgrenen.</p>
+<p>När du klonar ett förvar kommer Git automatiskt att ställa in uppströmmen för standardgrenen.</p>
 </li>
 <li>
 <p>Om du har konfigurationsalternativet <span class='synopsis'><code>push.autoSetupRemote</code></span> aktiverat, kommer <span class='synopsis'><code>git</code> <code>push</code></span> automatiskt att ställa in uppströmsen första gången du pushar en branch.</p>
@@ -878,7 +878,7 @@ Uppströms grenar kallas ibland för "spårningsinformation", som i "ange grenen
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscodeignore-space-at-eolcodespan"> <a class="anchor" href="#git-pull-ignore-space-at-eol"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscodeignore-space-at-eolcodespan"></a><span class='synopsis'><code>ignore-space-at-eol</code></span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscodeignore-cr-at-eolcodespan"> <a class="anchor" href="#git-pull-ignore-cr-at-eol"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscodeignore-cr-at-eolcodespan"></a><span class='synopsis'><code>ignore-cr-at-eol</code></span> </dt>
 <dd>
-<p>Behandlar rader med den angivna typen av mellanslagsändring som oförändrade för en trevägssammanslagning. Ändringar av mellanslag blandade med andra ändringar på en rad ignoreras inte. Se även <a href='{{< relurl "docs/git-diff/sv" >}}'>git-diff[1]</a> <span class='synopsis'><code>-b</code></span>, <span class='synopsis'><code>-w</code></span>, <span class='synopsis'><code>--ignore-space-at-eol</code></span> och <span class='synopsis'><code>--ignore-cr-at-eol</code></span>.</p>
+<p>Behandlar rader med den angivna typen av blankteckenändring som oförändrade för en trevägssammanslagning. Ändringar av blanktecken blandade med andra ändringar på en rad ignoreras inte. Se även <a href='{{< relurl "docs/git-diff/sv" >}}'>git-diff[1]</a> <span class='synopsis'><code>-b</code></span>, <span class='synopsis'><code>-w</code></span>, <span class='synopsis'><code>--ignore-space-at-eol</code></span> och <span class='synopsis'><code>--ignore-cr-at-eol</code></span>.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -919,7 +919,7 @@ Uppströms grenar kallas ibland för "spårningsinformation", som i "ange grenen
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscodepatiencecodespan"> <a class="anchor" href="#git-pull-patience"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscodepatiencecodespan"></a><span class='synopsis'><code>patience</code></span> </dt>
 <dd>
-<p>Föråldrad synonym för <span class='synopsis'><em>diff-algoritm=tålamod</em></span>.</p>
+<p>Föråldrad synonym för <span class='synopsis'><code>diff-algoritm=patience</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscodediff-algorithmcodecodehistogramcodecodeminimalcodecodemyerscodecodepatiencecodespan"> <a class="anchor" href="#git-pull-diff-algorithmhistogramminimalmyerspatience"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscodediff-algorithmcodecodehistogramcodecodeminimalcodecodemyerscodecodepatiencecodespan"></a><span class='synopsis'><code>diff-algorithm=</code>(<code>histogram</code>|<code>minimal</code>|<code>myers</code>|<code>patience</code>)</span> </dt>
 <dd>
@@ -955,7 +955,7 @@ Uppströms grenar kallas ibland för "spårningsinformation", som i "ange grenen
 </dl>
 </div>
 <div class="paragraph">
-<p>Med strategier som använder 3-vägssammanslagning (inklusive standardvärdet <span class='synopsis'><code>ort</code></span>), om en ändring görs på båda grenarna, men senare återställs på en av grenarna, kommer den ändringen att finnas i det sammanslagna resultatet; vissa personer tycker att detta beteende är förvirrande. Det inträffar eftersom endast huvuden och sammanslagningsbasen beaktas när en sammanslagning utförs, inte de enskilda incheckningarna. Sammanslagningsalgoritmen betraktar därför den återställda ändringen som ingen ändring alls och ersätter den ändrade versionen istället.</p>
+<p>Med strategier som använder 3-vägssammanslagning (inklusive standardvärdet <span class='synopsis'><code>ort</code></span>), om en ändring görs på båda grenarna, men senare ångrad på en av grenarna, kommer den ändringen att finnas i det sammanslagna resultatet; vissa personer tycker att detta beteende är förvirrande. Det inträffar eftersom endast huvuden och sammanslagningsbasen beaktas när en sammanslagning utförs, inte de enskilda incheckningarna. Sammanslagningsalgoritmen betraktar därför den ångrade ändringen som ingen ändring alls och ersätter den ändrade versionen istället.</p>
 </div>
 </div>
 </div>
@@ -1009,7 +1009,7 @@ Uppströms grenar kallas ibland för "spårningsinformation", som i "ange grenen
 <div class="ulist">
 <ul>
 <li>
-<p>Uppdatera grenarna för fjärrspårning för det repo du klonade från, och sammanfoga sedan en av dem med din nuvarande gren:</p>
+<p>Uppdatera grenarna för fjärrspårning för det förvaret du klonade från, och sammanfoga sedan en av dem med din nuvarande gren:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ git pull
@@ -1048,7 +1048,7 @@ $ git merge origin/next</pre>
 <h2 id="_säkerhet"><a class="anchor" href="#_säkerhet"></a>SÄKERHET</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Protokollen för hämtning (fetch) och sänd ("pusha") är inte utformade för att förhindra att en sida stjäl data från det andra repot som inte var avsedda att delas. Om du har privata data som du behöver skydda från en skadlig motpart är det bästa alternativet att lagra dem i ett annat repo. Detta gäller både klienter och servrar. Namnrymder på en server är särskilt inte effektiva för läsåtkomstkontroll; du bör bara bevilja läsåtkomst till ett namnrymd till klienter som du skulle anförtro läsåtkomst till hela repot.</p>
+<p>Protokollen för hämtning (fetch) och sänd ("pusha") är inte utformade för att förhindra att en sida stjäl data från det andra förvaret som inte var avsedda att delas. Om du har privata data som du behöver skydda från en skadlig motpart är det bästa alternativet att lagra dem i ett annat förvar. Detta gäller både klienter och servrar. Namnrymder på en server är särskilt inte effektiva för läsåtkomstkontroll; du bör bara bevilja läsåtkomst till ett namnrymd till klienter som du skulle anförtro läsåtkomst till hela förvaret.</p>
 </div>
 <div class="paragraph">
 <p>De kända attackvektorerna är följande:</p>
