@@ -3,7 +3,7 @@
 // primitives, then rasterize the SVGs to PNG via resvg.
 //
 // Prerequisites:
-//   npm install --no-save paper paperjs-offset @resvg/resvg-js
+//   npm install --no-save paper paperjs-offset @resvg/resvg-js node-zopflipng
 //
 // Source geometry (on a 58x58 grid with origin at 0,0):
 //   - Rounded rectangle background: (0,0) 58x58, corner radius 5
@@ -22,6 +22,7 @@
 const paper = require('paper');
 const { PaperOffset } = require('paperjs-offset');
 const { Resvg } = require('@resvg/resvg-js');
+const { optimizeZopfliPngSync } = require('node-zopflipng');
 
 const fs = require('fs');
 const path = require('path');
@@ -37,7 +38,13 @@ function saveFile(filename, data) {
 // Icons (92pt × 92pt) render to 383x383; Logos (219pt × 92pt) to 913×383.
 function renderPng(svgString) {
   const resvg = new Resvg(svgString, { dpi: 300 });
-  return resvg.render().asPng();
+  const png = resvg.render().asPng();
+  return optimizeZopfliPngSync(png, {
+    // Remove color information from transparent pixels.
+    lossyTransparent: true,
+    // Do more iterations for better compression.
+    more: true,
+  });
 }
 
 
