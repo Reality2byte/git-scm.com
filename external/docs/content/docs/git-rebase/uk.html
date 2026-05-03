@@ -138,7 +138,7 @@ headings:
 <p>Повторно застосовує коміти один по одному. Це схоже на виконання <span class='synopsis'><code>git</code> <code>cherry-pick</code> <em>&lt;commit&gt;</em></span> для кожного коміту. Дивіться ПЕРЕБАЗУВАННЯ ЗЛИТТЯ, щоб дізнатися, як обробляються злиття.</p>
 </li>
 <li>
-<p>Оновлює свою гілку, щоб вона вказувала на фінальний коміт, за допомогою еквівалента <span class='synopsis'><code>git</code> <code>checkout</code> <code>-B</code> <em><span class="hover-term" data-term="гілка">&lt;гілка&gt;</span></em></span>.</p>
+<p>Оновлює свою гілку, щоб вона вказувала на фінальний коміт, за допомогою еквівалента <span class='synopsis'><code>git</code> <code>checkout</code> <code>-B</code> <em>&lt;гілка&gt;</em></span>.</p>
 </li>
 </ol>
 </div>
@@ -440,7 +440,7 @@ headings:
 <dt class="hdlist1" id="git-rebase-spanclasssynopsiscode--rerere-autoupdatecodespan"> <a class="anchor" href="#git-rebase---rerere-autoupdate"></a> <a class="anchor" href="#git-rebase-spanclasssynopsiscode--rerere-autoupdatecodespan"></a><span class='synopsis'><code>--rerere-autoupdate</code></span> </dt>
 <dt class="hdlist1" id="git-rebase-spanclasssynopsiscode--no-rerere-autoupdatecodespan"> <a class="anchor" href="#git-rebase---no-rerere-autoupdate"></a> <a class="anchor" href="#git-rebase-spanclasssynopsiscode--no-rerere-autoupdatecodespan"></a><span class='synopsis'><code>--no-rerere-autoupdate</code></span> </dt>
 <dd>
-<p>Після того, як механізм rerere повторно використає записане розвʼязання поточного конфлікту для оновлення файлів у робочому дереві, дозвольте йому також оновити індекс результатом розвʼязання. <span class='synopsis'><code>--no-rerere-autoupdate</code></span> — це гарний спосіб перевірити, що зробив <span class='synopsis'><code>rerere</code></span>, та виявити потенційні помилки злиття, перш ніж занести результат до індексу за допомогою окремого <span class='synopsis'><code>git</code> <code>add</code></span>.</p>
+<p>Після того як механізм rerere повторно використає збережене рішення поточного конфлікту для оновлення файлів у робочому дереві, дозвольте йому також оновити індекс результатом вирішення. Параметр <span class='synopsis'><code>--no-rerere-autoupdate</code></span> — це хороший спосіб ще раз перевірити, що зробив <a href='{{< relurl "docs/git-rerere/uk" >}}'>git-rerere[1]</a>, і виявити можливі помилки злиття, перш ніж зафіксувати результат в індексі за допомогою окремої команди <a href='{{< relurl "docs/git-add/uk" >}}'>git-add[1]</a>.</p>
 </dd>
 </dl>
 </div>
@@ -492,7 +492,7 @@ headings:
 <dd>
 <p>Окремо відтворювати всі перебазовані коміти замість перемотування вперед по незмінних. Це гарантує, що вся історія перебазованої гілки складається з нових комітів.</p>
 <div class="paragraph">
-<p>Це може стати в нагоді після скасування злиття тематичної гілки, оскільки ця опція відтворює тематичну гілку з новими комітами, що дозволяє успішно виконати злиття знову без необхідності «скасовувати відкат» (детальніше див. посилання: howto/revert-a-faulty-merge.html[Посібник зі скасування помилкового злиття]).</p>
+<p>Це може стати в нагоді після скасування злиття тематичної гілки, оскільки ця опція відтворює тематичну гілку з новими комітами, що дозволяє успішно виконати злиття знову без необхідності «скасовувати відкат» (детальніше див. посилання: <a href="{{< relurl "docs/howto/revert-a-faulty-merge/uk" >}}">Посібник зі скасування помилкового злиття</a>).</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-rebase---fork-point"> <a class="anchor" href="#git-rebase---fork-point"></a>--fork-point </dt>
@@ -562,6 +562,13 @@ headings:
 <dt class="hdlist1" id="git-rebase---signoff"> <a class="anchor" href="#git-rebase---signoff"></a>--signoff </dt>
 <dd>
 <p>Додає трейлер <span class='synopsis'><code>Signed-off-by</code></span> до всіх перебазованих комітів. Зверніть увагу, що якщо вказано <span class='synopsis'><code>--interactive</code></span>, то трейлер буде додано лише до відібраних (picked) комітів, комітів позначених для редагування (edited) або зміни повідомлення коміту (reworded).</p>
+<div class="paragraph">
+<p>Див. також НЕСУМІСНІ ОПЦІЇ нижче.</p>
+</div>
+</dd>
+<dt class="hdlist1" id="git-rebase---trailerlttrailergt"> <a class="anchor" href="#git-rebase---trailertrailer"></a> <a class="anchor" href="#git-rebase---trailerlttrailergt"></a>--trailer=&lt;trailer&gt; </dt>
+<dd>
+<p>Додавати вказаний трейлер до кожного повідомлення про коміт, що перебазується, яке обробляється за допомогою функції <a href='{{< relurl "docs/git-interpret-trailers/uk" >}}'>git-interpret-trailers[1]</a>. Ця опція передбачає використання параметра <span class='synopsis'><code>--force-rebase</code></span>.</p>
 <div class="paragraph">
 <p>Див. також НЕСУМІСНІ ОПЦІЇ нижче.</p>
 </div>
@@ -736,6 +743,9 @@ headings:
 </li>
 <li>
 <p>--root при використанні без --onto</p>
+</li>
+<li>
+<p>--trailer</p>
 </li>
 </ul>
 </div>
@@ -1426,39 +1436,85 @@ merge cmake</pre>
 <div class="paragraph">
 <p>Все, що знаходиться нижче цього рядка в цьому розділі, вибірково включено з документації <a href='{{< relurl "docs/git-config/uk" >}}'>git-config[1]</a>. Вміст такий самий, як і там:</p>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Missing <span class='synopsis'><code>uk/config/rebase.adoc</code></span></p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="git-rebase-rebasebackend"> <a class="anchor" href="#git-rebase-rebasebackend"></a>rebase.backend </dt>
+<dd>
+<p>Стандартний бекенд, що використовується для перебазування. Можливі значення: <em>apply</em> або <em>merge</em>. В майбутньому, якщо бекенд <em>merge</em> набуде всіх можливостей бекенда 'apply, цей параметр перестане використовуватись.</p>
+</dd>
+<dt class="hdlist1" id="git-rebase-rebasestat"> <a class="anchor" href="#git-rebase-rebasestat"></a>rebase.stat </dt>
+<dd>
+<p>Чи виводити diffstat для того що було змінено в upstream з моменту останнього перебазування. Стандартне значення — false.</p>
+</dd>
+<dt class="hdlist1" id="git-rebase-rebaseautoSquash"> <a class="anchor" href="#git-rebase-rebaseautoSquash"></a>rebase.autoSquash </dt>
+<dd>
+<p>Якщо значення — true, параметр <span class='synopsis'><code>--autosquash</code></span> є стандартно увімкненим для <a href='{{< relurl "docs/git-rebase/uk" >}}'>git-rebase[1]</a> в інтерактивному режимі. Він може бути перевизначений за допомоги <span class='synopsis'><code>--no-autosquash</code></span>.</p>
+</dd>
+<dt class="hdlist1" id="git-rebase-rebaseautoStash"> <a class="anchor" href="#git-rebase-rebaseautoStash"></a>rebase.autoStash </dt>
+<dd>
+<p>Якщо значення — true, автоматично створюється тимчасовий елемент stash перед початком операції та застосовується після її завершення. Це означає, що ви можете запустити перебазування на робочому дереві, що містить незафіксовані зміни. Однак використовуйте з обережністю: остаточне застосування stash після успішного перебазування може призвести до складних конфліктів. Цей параметр можна перевизначити параметрами <span class='synopsis'><code>--no-autostash</code></span> та <span class='synopsis'><code>--autostash</code></span> команди <a href='{{< relurl "docs/git-rebase/uk" >}}'>git-rebase[1]</a>. Стандартне значення — false.</p>
+</dd>
+<dt class="hdlist1" id="git-rebase-rebaseupdateRefs"> <a class="anchor" href="#git-rebase-rebaseupdateRefs"></a>rebase.updateRefs </dt>
+<dd>
+<p>Якщо значення — true, опція <span class='synopsis'><code>--update-refs</code></span> є стандартно увімкненою.</p>
+</dd>
+<dt class="hdlist1" id="git-rebase-rebasemissingCommitsCheck"> <a class="anchor" href="#git-rebase-rebasemissingCommitsCheck"></a>rebase.missingCommitsCheck </dt>
+<dd>
+<p>Якщо значення — "warn", <span class='synopsis'><em>git rebase -i …`буде показувати попередження якщо деякі з комітів будуть вилучені (напр. рядок коміту було вилучено), однак перебазування буде продовжене. Якщо значення — "error", буде показане попереднє попередження, а перебазування буде призупинене, для виправлення помилки можна скористатись `git rebase --edit-todo</em></span>. Якщо значення — "ignore", перевірки не виконуються. Для того, щоб відкинути коміт без попереджень чи помилок використовуйте команду <span class='synopsis'><code>drop</code></span> в переліку завдань. Стандартне значення — "ignore".</p>
+</dd>
+<dt class="hdlist1" id="git-rebase-rebaseinstructionFormat"> <a class="anchor" href="#git-rebase-rebaseinstructionFormat"></a>rebase.instructionFormat </dt>
+<dd>
+<p>Рядок форматування, як зазначено в <a href='{{< relurl "docs/git-log/uk" >}}'>git-log[1]</a>, який використовується для списку завдань під час інтерактивного перебазування. До цього рядка автоматично додається хеш коміту.</p>
+</dd>
+<dt class="hdlist1" id="git-rebase-rebaseabbreviateCommands"> <a class="anchor" href="#git-rebase-rebaseabbreviateCommands"></a>rebase.abbreviateCommands </dt>
+<dd>
+<p>Якщо значення — true, <span class='synopsis'><code>git</code> <code>rebase</code></span> буде використовувати скорочені назви команд в переліку завдань, що призведе до чогось подібного:</p>
+<div class="listingblock">
+<div class="content">
+<pre>	p deadbee The oneline of the commit
+	p fa1afe1 The oneline of the next commit
+	...</pre>
+</div>
 </div>
 <div class="paragraph">
-<p>See original version for this content.</p>
+<p>а не:</p>
 </div>
-</td>
-</tr>
-</table>
+<div class="listingblock">
+<div class="content">
+<pre>	pick deadbee The oneline of the commit
+	pick fa1afe1 The oneline of the next commit
+	...</pre>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Missing <span class='synopsis'><code>uk/config/sequencer.adoc</code></span></p>
 </div>
 <div class="paragraph">
-<p>See original version for this content.</p>
+<p>Стандартне значення — false.</p>
 </div>
-</td>
-</tr>
-</table>
+</dd>
+<dt class="hdlist1" id="git-rebase-rebaserescheduleFailedExec"> <a class="anchor" href="#git-rebase-rebaserescheduleFailedExec"></a>rebase.rescheduleFailedExec </dt>
+<dd>
+<p>Автоматично перепланувати команди <span class='synopsis'><code>exec</code></span>, виконання яких завершилося з помилкою. Це має сенс лише в інтерактивному режимі (або якщо вказано параметр <span class='synopsis'><code>--exec</code></span>). Це еквівалентно вказівці параметра <span class='synopsis'><code>--reschedule-failed-exec</code></span>.</p>
+</dd>
+<dt class="hdlist1" id="git-rebase-rebaseforkPoint"> <a class="anchor" href="#git-rebase-rebaseforkPoint"></a>rebase.forkPoint </dt>
+<dd>
+<p>Якщо значення — false, опція <span class='synopsis'><code>--no-fork-point</code></span> є стандартно увімкненою.</p>
+</dd>
+<dt class="hdlist1" id="git-rebase-rebaserebaseMerges"> <a class="anchor" href="#git-rebase-rebaserebaseMerges"></a>rebase.rebaseMerges </dt>
+<dd>
+<p>Чи стандартно встановлювати опцію <span class='synopsis'><code>--rebase-merges</code></span> і як саме. Може приймати значення <span class='synopsis'><code>rebase-cousins</code></span>, <span class='synopsis'><code>no-rebase-cousins</code></span> або булеве значення. Встановлення значення true або <span class='synopsis'><code>no-rebase-cousins</code></span> еквівалентно <span class='synopsis'><code>--rebase-merges=no-rebase-cousins</code></span>, встановлення значення <span class='synopsis'><code>rebase-cousins</code></span> еквівалентно <span class='synopsis'><code>--rebase-merges=rebase-cousins</code></span>, а встановлення значення false еквівалентно <span class='synopsis'><code>--no-rebase-merges</code></span>. Передача <span class='synopsis'><code>--rebase-merges</code></span> у командному рядку, з аргументом або без нього, замінює будь-яку конфігурацію <span class='synopsis'><code>rebase.rebaseMerges</code></span>.</p>
+</dd>
+<dt class="hdlist1" id="git-rebase-rebasemaxLabelLength"> <a class="anchor" href="#git-rebase-rebasemaxLabelLength"></a>rebase.maxLabelLength </dt>
+<dd>
+<p>Під час формування імен міток на основі тем комітів скорочувати імена до цієї довжини. Стандартно імена скорочуються до довжини, трохи меншої за <span class='synopsis'><code>NAME_MAX</code></span> (щоб, наприклад, можна було створювати файли <span class='synopsis'><code>.lock</code></span> для відповідних вільних посилань).</p>
+</dd>
+</dl>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="git-rebase-sequenceeditor"> <a class="anchor" href="#git-rebase-sequenceeditor"></a>sequence.editor </dt>
+<dd>
+<p>Текстовий редактор, який використовується командою <span class='synopsis'><code>git</code> <code>rebase</code> <code>-i</code></span> для редагування файлу інструкцій перебазування. Це значення призначене для інтерпретації оболонкою під час використання. Його можна замінити за допомогою змінної середовища <span class='synopsis'><code>GIT_SEQUENCE_EDITOR</code></span>. Якщо це значення не вказано, замість нього використовується стандартний редактор повідомлень комітів.</p>
+</dd>
+</dl>
 </div>
 </div>
 </div>

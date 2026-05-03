@@ -284,7 +284,7 @@ headings:
 <dt class="hdlist1" id="git-merge-spanclasssynopsiscode--rerere-autoupdatecodespan"> <a class="anchor" href="#git-merge---rerere-autoupdate"></a> <a class="anchor" href="#git-merge-spanclasssynopsiscode--rerere-autoupdatecodespan"></a><span class='synopsis'><code>--rerere-autoupdate</code></span> </dt>
 <dt class="hdlist1" id="git-merge-spanclasssynopsiscode--no-rerere-autoupdatecodespan"> <a class="anchor" href="#git-merge---no-rerere-autoupdate"></a> <a class="anchor" href="#git-merge-spanclasssynopsiscode--no-rerere-autoupdatecodespan"></a><span class='synopsis'><code>--no-rerere-autoupdate</code></span> </dt>
 <dd>
-<p>Після того, як механізм rerere повторно використає записане розвʼязання поточного конфлікту для оновлення файлів у робочому дереві, дозвольте йому також оновити індекс результатом розвʼязання. <span class='synopsis'><code>--no-rerere-autoupdate</code></span> — це гарний спосіб перевірити, що зробив <span class='synopsis'><code>rerere</code></span>, та виявити потенційні помилки злиття, перш ніж занести результат до індексу за допомогою окремого <span class='synopsis'><code>git</code> <code>add</code></span>.</p>
+<p>Після того як механізм rerere повторно використає збережене рішення поточного конфлікту для оновлення файлів у робочому дереві, дозвольте йому також оновити індекс результатом вирішення. Параметр <span class='synopsis'><code>--no-rerere-autoupdate</code></span> — це хороший спосіб ще раз перевірити, що зробив <a href='{{< relurl "docs/git-rerere/uk" >}}'>git-rerere[1]</a>, і виявити можливі помилки злиття, перш ніж зафіксувати результат в індексі за допомогою окремої команди <a href='{{< relurl "docs/git-add/uk" >}}'>git-add[1]</a>.</p>
 </dd>
 </dl>
 </div>
@@ -401,7 +401,7 @@ headings:
 <p>Якщо ви хочете просто інтегрувати зміни, що передують коміту, який випадково має тег, наприклад, для синхронізації з версією випуску upstream, вам, можливо, не варто створювати зайвий коміт злиття.</p>
 </div>
 <div class="paragraph">
-<p>У такому випадку ви можете самостійно «розгорнути» тег перед тим, як передати його команді <span class='synopsis'><code>git</code> <code>merge</code></span>, або вказати параметр <span class='synopsis'><code>--ff-only</code></span>, якщо у вас немає власних змін. Наприклад:</p>
+<p>У такому випадку ви можете самостійно «розгорнути» тег перед тим, як передати його команді <span class='synopsis'><code>git</code> <code>merge</code></span>, або вказати параметр <span class='synopsis'><code>--ff-only</code></span>, якщо у вас немає власних змін, напр.</p>
 </div>
 <div class="listingblock">
 <div class="content">

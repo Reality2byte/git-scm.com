@@ -394,7 +394,7 @@ för att få följande uppdateringar...</pre>
 </dd>
 <dt class="hdlist1" id="git-tag-ISO8601"> <a class="anchor" href="#git-tag-ISO8601"></a>ISO 8601 </dt>
 <dd>
-<p>Tid och datum som anges av ISO 8601-standarden, till exempel <span class='synopsis'><code>2005-04-07T22:13:13</code></span>. Parsern accepterar även ett mellanslag istället för tecknet <span class='synopsis'><code>T</code></span>. Bråkdelar av en sekund kommer att ignoreras, till exempel <span class='synopsis'><code>2005-04-07T22:13:13.019</code></span> kommer att behandlas som <span class='synopsis'><code>2005-04-07T22:13:13</code></span>.</p>
+<p>Tid och datum som anges av ISO 8601-standarden, till exempel <span class='synopsis'><code>2005-04-07T22:13:13</code></span>. Parsern accepterar även ett mellanslag i stället för tecknet <span class='synopsis'><code>T</code></span>. Bråkdelar av en sekund kommer att ignoreras, till exempel <span class='synopsis'><code>2005-04-07T22:13:13.019</code></span> kommer att behandlas som <span class='synopsis'><code>2005-04-07T22:13:13</code></span>.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -444,7 +444,7 @@ Utan alternativet <span class='synopsis'><code>--sort=</code><em>&lt;value&gt;</
 </dd>
 <dt class="hdlist1" id="git-tag-spanclasssynopsiscodetaggpgSigncodespan"> <a class="anchor" href="#git-tag-taggpgSign"></a> <a class="anchor" href="#git-tag-spanclasssynopsiscodetaggpgSigncodespan"></a><span class='synopsis'><code>tag.gpgSign</code></span> </dt>
 <dd>
-<p>En booleskt värde som anger om alla taggar ska GPG-signeras. Användning av det här alternativet när du kör i ett automatiserat skript kan resultera i att ett stort antal taggar signeras. Det är därför bekvämt att använda en agent för att undvika att skriva in din GPG-lösenfras flera gånger. Observera att det här alternativet inte påverkar taggsigneringsbeteendet som aktiveras av alternativen <span class='synopsis'><code>-u</code> <em>&lt;keyid&gt;</em></span> eller <span class='synopsis'><code>--local-user=</code><em>&lt;keyid&gt;</em></span>.</p>
+<p>En boolesk inställning som anger om alla taggar ska GPG-signeras. Att använda detta i automatiserade skript kan leda till att många taggar signeras. Det är därför praktiskt att använda en agent för att slippa skriva GPG-lösenfrasen flera gånger. Observera att detta alternativ inte påverkar signering som aktiverats med alternativen <span class='synopsis'><code>-u</code> <em>&lt;keyid&gt;</em></span> eller <span class='synopsis'><code>--local-user=</code><em>&lt;keyid&gt;</em></span>.</p>
 </dd>
 </dl>
 </div>

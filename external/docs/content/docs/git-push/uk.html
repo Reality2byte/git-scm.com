@@ -67,7 +67,7 @@ headings:
 <p>Оновлює одну або декілька гілок, тегів чи інших посилань у віддаленому репозиторії з вашого локального репозиторію та надсилає всі необхідні дані, яких ще немає на віддаленому репозиторії.</p>
 </div>
 <div class="paragraph">
-<p>Найпростіший спосіб надсилання змін — це <span class='synopsis'><code>git</code> <code>push</code> <em>&lt;віддалена&gt;</em> <em><span class="hover-term" data-term="гілка">&lt;гілка&gt;</span></em></span>. <span class='synopsis'><code>git</code> <code>push</code> <code>origin</code> <code>main</code></span> надішле локальну гілку <span class='synopsis'><code>main</code></span> до гілки <span class='synopsis'><code>main</code></span> у віддаленому репозиторії з назвою <span class='synopsis'><code>origin</code></span>.</p>
+<p>Найпростіший спосіб надсилання змін — це <span class='synopsis'><code>git</code> <code>push</code> <em>&lt;віддалена&gt;</em> <em>&lt;гілка&gt;</em></span>. <span class='synopsis'><code>git</code> <code>push</code> <code>origin</code> <code>main</code></span> надішле локальну гілку <span class='synopsis'><code>main</code></span> до гілки <span class='synopsis'><code>main</code></span> у віддаленому репозиторії з назвою <span class='synopsis'><code>origin</code></span>.</p>
 </div>
 <div class="paragraph">
 <p>Аргумент <span class='synopsis'><em>&lt;repository&gt;</em></span> зазвичай використовує значення основного репозиторію (upstream) для поточної гілки або <span class='synopsis'><code>origin</code></span>, якщо основного репозиторію немає.</p>
@@ -101,7 +101,7 @@ headings:
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1" id="git-push-emltgtem"> <a class="anchor" href="#git-push-"></a> <a class="anchor" href="#git-push-emltgtem"></a><em><span class="hover-term" data-term="репозиторій">&lt;репозиторій&gt;</span></em> </dt>
+<dt class="hdlist1" id="git-push-emltgtem"> <a class="anchor" href="#git-push-"></a> <a class="anchor" href="#git-push-emltgtem"></a><em>&lt;репозиторій&gt;</em> </dt>
 <dd>
 <p>Репозиторій «remote», який є призначенням операції push. Цим параметром може бути або URL-адреса (див. розділ <a href="#URLS">GIT URLS</a> нижче), або імʼя віддаленого сервера (див. розділ <a href="#REMOTES">ВІДДАЛЕНІ ЕКЗЕМПЛЯРИ</a> нижче).</p>
 </dd>
@@ -1009,22 +1009,110 @@ git push --force-with-lease=master:base master:master</pre>
 <div class="paragraph">
 <p>Все, що знаходиться нижче цього рядка в цьому розділі, вибірково включено з документації <a href='{{< relurl "docs/git-config/uk" >}}'>git-config[1]</a>. Вміст такий самий, як і там:</p>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="git-push-spanclasssynopsiscodepushautoSetupRemotecodespan"> <a class="anchor" href="#git-push-pushautoSetupRemote"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodepushautoSetupRemotecodespan"></a><span class='synopsis'><code>push.autoSetupRemote</code></span> </dt>
+<dd>
+<p>Якщо встановлено значення <span class='synopsis'><code>true</code></span>, під час стандартного надсилання (push) передбачається використання параметра <span class='synopsis'><code>--set-upstream</code></span>, якщо для поточної гілки відсутнє відстеження upstream; ця опція діє разом із значеннями параметра <span class='synopsis'><code>push.default</code></span>: <span class='synopsis'><code>simple</code></span>, <span class='synopsis'><code>upstream</code></span> та <span class='synopsis'><code>current</code></span>. Це корисно, якщо ви хочете, щоб нові гілки стандартно надсилалися до стандартного віддаленого репозиторію (як у випадку з <span class='synopsis'><code>push.default=current</code></span>) і водночас бажаєте встановити відстеження upstream. Робочі процеси, які, найімовірніше, отримають користь від цієї опції, — це централізовані робочі процеси <span class='synopsis'><code>simple</code></span>, де очікується, що всі гілки матимуть однакову назву на віддаленому сервері.</p>
+</dd>
+<dt class="hdlist1" id="git-push-spanclasssynopsiscodepushdefaultcodespan"> <a class="anchor" href="#git-push-pushdefault"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodepushdefaultcodespan"></a><span class='synopsis'><code>push.default</code></span> </dt>
+<dd>
+<p>Визначає, яку дію має виконати команда <span class='synopsis'><code>git</code> <code>push</code></span>, якщо не вказано refspec (ні в командному рядку, ні в конфігурації, ні деінде). Різні значення підходять для конкретних робочих процесів; наприклад, у суто централізованому робочому процесі (тобто джерело fetch збігається з пунктом призначення push) вам, ймовірно, підійде значення <span class='synopsis'><code>upstream</code></span>. Можливі значення:</p>
+<div class="openblock">
+<div class="content">
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="git-push-spanclasssynopsiscodenothingcodespan"> <a class="anchor" href="#git-push-nothing"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodenothingcodespan"></a><span class='synopsis'><code>nothing</code></span> </dt>
+<dd>
+<p>не виконувати жодних дій (видавати помилку), якщо не вказано refspec. Ця функція призначена насамперед для тих, хто хоче уникнути помилок, завжди вказуючи параметри явно.</p>
+</dd>
+<dt class="hdlist1" id="git-push-spanclasssynopsiscodecurrentcodespan"> <a class="anchor" href="#git-push-current"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodecurrentcodespan"></a><span class='synopsis'><code>current</code></span> </dt>
+<dd>
+<p>надсилати поточну гілку, щоб оновити гілку з такою самою назвою на стороні одержувача. Працює як у централізованих, так і в децентралізованих робочих процесах.</p>
+</dd>
+<dt class="hdlist1" id="git-push-spanclasssynopsiscodeupstreamcodespan"> <a class="anchor" href="#git-push-upstream"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodeupstreamcodespan"></a><span class='synopsis'><code>upstream</code></span> </dt>
+<dd>
+<p>надсилати поточну гілку назад до гілки, зміни якої зазвичай інтегруються в поточну гілку (яка називається <span class='synopsis'><code>@{upstream}</code></span>). Цей режим має сенс лише в тому випадку, якщо ви надсилаєте дані до того самого репозиторію, з якого зазвичай отримуєте оновлення (тобто централізований робочий процес).</p>
+</dd>
+<dt class="hdlist1" id="git-push-spanclasssynopsiscodetrackingcodespan"> <a class="anchor" href="#git-push-tracking"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodetrackingcodespan"></a><span class='synopsis'><code>tracking</code></span> </dt>
+<dd>
+<p>це застарілий синонім для <span class='synopsis'><code>upstream</code></span>.</p>
+</dd>
+<dt class="hdlist1" id="git-push-spanclasssynopsiscodesimplecodespan"> <a class="anchor" href="#git-push-simple"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodesimplecodespan"></a><span class='synopsis'><code>simple</code></span> </dt>
+<dd>
+<p>надсилати поточну гілку з такою ж назвою до віддаленого репозиторію.</p>
 <div class="paragraph">
-<p>Missing <span class='synopsis'><code>uk/config/push.adoc</code></span></p>
+<p>Якщо ви працюєте в централізованому робочому процесі (надсилаєте зміни до того ж репозиторію звідки ви отримуєте дані, який типово є <span class='synopsis'><code>origin</code></span>), — вам треба налаштувати висхідну гілку з такою ж назвою.</p>
 </div>
 <div class="paragraph">
-<p>See original version for this content.</p>
+<p>Цей режим є стандартним в Git 2.0 та найбезпечнішим варіантом для початківців.</p>
 </div>
-</td>
-</tr>
-</table>
+</dd>
+<dt class="hdlist1" id="git-push-spanclasssynopsiscodematchingcodespan"> <a class="anchor" href="#git-push-matching"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodematchingcodespan"></a><span class='synopsis'><code>matching</code></span> </dt>
+<dd>
+<p>надсилати всі гілки, що мають однакову назву на обох сторонах. Це дозволяє репозиторію, куди ви надсилаєте дані, запам’ятати набір гілок, які будуть надіслані (наприклад, якщо ви завжди надсилаєте туди гілки <span class='synopsis'><code>maint</code></span> і <span class='synopsis'><code>master</code></span>, а не інші, репозиторій, куди ви надсилаєте дані, матиме ці дві гілки, і ваші локальні гілки <span class='synopsis'><code>maint</code></span> та <span class='synopsis'><code>master</code></span> будуть туди надіслані).</p>
+<div class="paragraph">
+<p>Щоб ефективно використовувати цей режим, перед виконанням команди <span class='synopsis'><code>git</code> <code>push</code></span> потрібно переконатися, що <em>всі</em> гілки, які ви збираєтеся надіслати, готові до надсилання, оскільки суть цього режиму полягає в тому, щоб дозволити вам надіслати всі гілки за один раз. Якщо ви зазвичай закінчуєте роботу лише над однією гілкою і надсилаєте результат, тоді як інші гілки залишаються незавершеними, цей режим вам не підходить. Також цей режим не підходить для надсилання до спільного центрального репозиторію, оскільки інші люди можуть додавати туди нові гілки або оновлювати вершини наявних гілок поза вашим контролем.</p>
+</div>
+<div class="paragraph">
+<p>Раніше це було стандартним налаштуванням, але з версії Git 2.0 це змінилося (тепер стандартним налаштуванням є <span class='synopsis'><code>simple</code></span>).</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</dd>
+<dt class="hdlist1" id="git-push-spanclasssynopsiscodepushfollowTagscodespan"> <a class="anchor" href="#git-push-pushfollowTags"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodepushfollowTagscodespan"></a><span class='synopsis'><code>push.followTags</code></span> </dt>
+<dd>
+<p>Якщо встановлено — true, стандартно увімкнути опцію <span class='synopsis'><code>--follow-tags</code></span>. Ви можете перевизначити це налаштування будь-коли за допомогою <span class='synopsis'><code>--no-follow-tags</code></span>.</p>
+</dd>
+<dt class="hdlist1" id="git-push-spanclasssynopsiscodepushgpgSigncodespan"> <a class="anchor" href="#git-push-pushgpgSign"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodepushgpgSigncodespan"></a><span class='synopsis'><code>push.gpgSign</code></span> </dt>
+<dd>
+<p>Може приймати булеве значення або рядок <span class='synopsis'><code>if-asked</code></span>. Значення true призводить до того, що всі операції push підписуються GPG, так само, якби до команди <a href='{{< relurl "docs/git-push/uk" >}}'>git-push[1]</a> було передано параметр <span class='synopsis'><code>--signed</code></span>. Рядок <span class='synopsis'><code>if-asked</code></span> призводить до того, що надсилання підписуються, якщо сервер це підтримує, так само, якби до <span class='synopsis'><code>git</code> <code>push</code></span> було передано <span class='synopsis'><code>--signed=if-asked</code></span>. Значення false може замінити значення з файлу конфігурації з нижчим пріоритетом. Явний прапорець командного рядка завжди замінює цю опцію конфігурації.</p>
+</dd>
+<dt class="hdlist1" id="git-push-spanclasssynopsiscodepushpushOptioncodespan"> <a class="anchor" href="#git-push-pushpushOption"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodepushpushOptioncodespan"></a><span class='synopsis'><code>push.pushOption</code></span> </dt>
+<dd>
+<p>Коли в командному рядку немає аргументу <span class='synopsis'><code>--push-option=</code><em>&lt;option&gt;</em></span>, <span class='synopsis'><code>git</code> <code>push</code></span> поводиться так ніби кожне значення <em>&lt;option&gt;</em> цієї змінної було вказано через <span class='synopsis'><code>--push-option=</code><em>&lt;option&gt;</em></span>.</p>
+<div class="paragraph">
+<p>Це багатозначна змінна, і в конфігураційному файлі з вищим пріоритетом (наприклад, <span class='synopsis'><code>.git/config</code></span> у репозиторії) можна вказати порожнє значення, щоб скинути значення, успадковані з конфігураційних файлів з нижчим пріоритетом (наприклад, <span class='synopsis'><code>$HOME/.gitconfig</code></span>).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Приклад:
+
+/etc/gitconfig
+  push.pushoption = a
+  push.pushoption = b
+
+~/.gitconfig
+  push.pushoption = c
+
+repo/.git/config
+  push.pushoption =
+  push.pushoption = b
+
+У результаті залишиться лише b (a та c будуть очищені).</pre>
+</div>
+</div>
+</dd>
+<dt class="hdlist1" id="git-push-spanclasssynopsiscodepushrecurseSubmodulescodespan"> <a class="anchor" href="#git-push-pushrecurseSubmodules"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodepushrecurseSubmodulescodespan"></a><span class='synopsis'><code>push.recurseSubmodules</code></span> </dt>
+<dd>
+<p>Може бути <span class='synopsis'><code>check</code></span>, <span class='synopsis'><code>on-demand</code></span>, <span class='synopsis'><code>only</code></span> або <span class='synopsis'><code>no</code></span>, з такою ж поведінкою як і в <span class='synopsis'><code>push</code> <code>--recurse-submodules</code></span>. Якщо не встановлено, стандартним вважається значення — <span class='synopsis'><code>no</code></span>, якщо тільки не встановлено submodule.recurse (в такому випадку <span class='synopsis'><code>true</code></span> означатиме <span class='synopsis'><code>on-demand</code></span>).</p>
+</dd>
+<dt class="hdlist1" id="git-push-spanclasssynopsiscodepushuseForceIfIncludescodespan"> <a class="anchor" href="#git-push-pushuseForceIfIncludes"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodepushuseForceIfIncludescodespan"></a><span class='synopsis'><code>push.useForceIfIncludes</code></span> </dt>
+<dd>
+<p>Якщо встановлено — true, це є еквівалентом до використання <span class='synopsis'><code>--force-if-includes</code></span> як параметра <a href='{{< relurl "docs/git-push/uk" >}}'>git-push[1]</a> в командному рядку. Додавання <span class='synopsis'><code>--no-force-if-includes</code></span> під час виконання надсилання перевизначає це налаштування.</p>
+</dd>
+<dt class="hdlist1" id="git-push-spanclasssynopsiscodepushnegotiatecodespan"> <a class="anchor" href="#git-push-pushnegotiate"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodepushnegotiatecodespan"></a><span class='synopsis'><code>push.negotiate</code></span> </dt>
+<dd>
+<p>Якщо встановлено — true, намагатись зменшити розмір файлу pack через спроби узгодження, де клієнт та сервер намагаються знайти спільні коміти. Якщо значення — <span class='synopsis'><code>false</code></span>, Git буде покладатись виключно на посилання, оголошені сервером, для пошуку спільних комітів.</p>
+</dd>
+<dt class="hdlist1" id="git-push-spanclasssynopsiscodepushuseBitmapscodespan"> <a class="anchor" href="#git-push-pushuseBitmaps"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodepushuseBitmapscodespan"></a><span class='synopsis'><code>push.useBitmaps</code></span> </dt>
+<dd>
+<p>Якщо встановлено — <span class='synopsis'><code>false</code></span>, використання бітових мап для команди <span class='synopsis'><code>git</code> <code>push</code></span> буде вимкнено, навіть якщо для параметра <span class='synopsis'><code>pack.useBitmaps</code></span> встановлено значення <span class='synopsis'><code>true</code></span>, однак це не заважатиме використанню бітових мап в інших операціях git. Стандартне значення — <span class='synopsis'><code>true</code></span>.</p>
+</dd>
+</dl>
 </div>
 </div>
 </div>

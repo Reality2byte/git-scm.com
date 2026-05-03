@@ -33,7 +33,7 @@ headings:
 <h2 id="_namn"><a class="anchor" href="#_namn"></a>NAMN</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>git-ls-files - Visa information om filer i indexet och arbetskatalogen</p>
+<p>git-ls-files - Visa information om filer i indexet och arbetsträdet</p>
 </div>
 </div>
 </div>
@@ -51,7 +51,7 @@ headings:
 		[-X &lt;fil&gt;|--exclude-from=&lt;fil&gt;]
 		[--exclude-per-directory=&lt;fil&gt;]
 		[--exclude-standard]
-		[--error-unmatch] [--with-tree=&lt;träd-igt&gt;]
+		[--error-unmatch] [--with-tree=&lt;trädlikt&gt;]
 		[--full-name] [--recurse-submodules]
 		[--abbrev[=&lt;n&gt;]] [--format=&lt;format&gt;] [--] [&lt;fil&gt;&#8230;&#8203;]</pre>
 </div>
@@ -76,7 +76,7 @@ headings:
 <dt class="hdlist1" id="git-ls-files--c"> <a class="anchor" href="#git-ls-files--c"></a>-c </dt>
 <dt class="hdlist1" id="git-ls-files---cached"> <a class="anchor" href="#git-ls-files---cached"></a>--cached </dt>
 <dd>
-<p>Visa alla filer som cachas i Gits index, dvs. alla spårade filer. (Detta är standardinställningen om inga -c/-s/-d/-o/-u/-k/-m/--resolve-undo-alternativ är angivna.)</p>
+<p>Visa alla filer som cachas i Gits index, d.v.s. alla spårade filer. (Detta är standardinställningen om inga -c/-s/-d/-o/-u/-k/-m/--resolve-undo-alternativ är angivna.)</p>
 </dd>
 <dt class="hdlist1" id="git-ls-files--d"> <a class="anchor" href="#git-ls-files--d"></a>-d </dt>
 <dt class="hdlist1" id="git-ls-files---deleted"> <a class="anchor" href="#git-ls-files---deleted"></a>--deleted </dt>
@@ -91,12 +91,12 @@ headings:
 <dt class="hdlist1" id="git-ls-files--o"> <a class="anchor" href="#git-ls-files--o"></a>-o </dt>
 <dt class="hdlist1" id="git-ls-files---others"> <a class="anchor" href="#git-ls-files---others"></a>--others </dt>
 <dd>
-<p>Visa andra (dvs. ospårade) filer i utdata</p>
+<p>Visa andra (d.v.s. ospårade) filer i utdata</p>
 </dd>
 <dt class="hdlist1" id="git-ls-files--i"> <a class="anchor" href="#git-ls-files--i"></a>-i </dt>
 <dt class="hdlist1" id="git-ls-files---ignored"> <a class="anchor" href="#git-ls-files---ignored"></a>--ignored </dt>
 <dd>
-<p>Visa endast ignorerade filer i utdata. Måste användas med antingen ett explicit <em>-c</em> eller <em>-o</em>. När filer visas i indexet (dvs. när de används med <em>-c</em>), skriv endast ut de filer som matchar ett uteslutnings-mönster. När "andra" filer visas (dvs. när de används med <em>-o</em>), visa endast de som matchas av ett uteslutnings-mönster. Standardregler för ignorering aktiveras inte automatiskt; därför krävs minst ett av alternativen <span class='synopsis'><code>--exclude*</code></span>.</p>
+<p>Visa endast ignorerade filer i utdata. Måste användas med antingen ett explicit <em>-c</em> eller <em>-o</em>. När filer visas i indexet (d.v.s. när de används med <em>-c</em>), skriv endast ut de filer som matchar ett uteslutningsmönster. När "andra" filer visas (d.v.s. när de används med <em>-o</em>), visa endast de som matchas av ett uteslutningsmönster. Standardregler för ignorering aktiveras inte automatiskt; därför krävs minst ett av alternativen <span class='synopsis'><code>--exclude*</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-ls-files--s"> <a class="anchor" href="#git-ls-files--s"></a>-s </dt>
 <dt class="hdlist1" id="git-ls-files---stage"> <a class="anchor" href="#git-ls-files---stage"></a>--stage </dt>
@@ -105,7 +105,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-ls-files---directory"> <a class="anchor" href="#git-ls-files---directory"></a>--directory </dt>
 <dd>
-<p>Om en hel katalog klassificeras som "annan", visa bara dess namn (med ett avslutande snedstreck) och inte hela dess innehåll. Har ingen effekt utan -o/--others.</p>
+<p>Om en hel katalog klassificeras som "other", visa bara namnet på den (med avslutande snedstreck) och inte hela innehållet. Har ingen effekt utan <span class='synopsis'><code>-o/--others</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-ls-files---no-empty-directory"> <a class="anchor" href="#git-ls-files---no-empty-directory"></a>--no-empty-directory </dt>
 <dd>
@@ -145,7 +145,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-ls-files---exclude-per-directoryltfilgt"> <a class="anchor" href="#git-ls-files---exclude-per-directoryfil"></a> <a class="anchor" href="#git-ls-files---exclude-per-directoryltfilgt"></a>--exclude-per-directory=&lt;fil&gt; </dt>
 <dd>
-<p>Läs ytterligare uteslutnings-mönster som endast gäller för katalogen och dess underkataloger i &lt;fil&gt;. Om du försöker emulera hur Porslin-kommandon fungerar är det enklare och mer noggrant att använda alternativet <span class='synopsis'><code>--exclude-standard</code></span> istället.</p>
+<p>Läs ytterligare uteslutningsmönster som endast gäller för katalogen och dess underkataloger i &lt;fil&gt;. Om syftet är att emulera hur högnivåkommandon fungerar är det enklare och mer noggrant att använda alternativet <span class='synopsis'><code>--exclude-standard</code></span> i stället.</p>
 </dd>
 <dt class="hdlist1" id="git-ls-files---exclude-standard"> <a class="anchor" href="#git-ls-files---exclude-standard"></a>--exclude-standard </dt>
 <dd>
@@ -155,9 +155,9 @@ headings:
 <dd>
 <p>Om någon &lt;fil&gt; inte visas i indexet, behandla detta som ett fel (retur 1).</p>
 </dd>
-<dt class="hdlist1" id="git-ls-files---with-treelttrd-igtgt"> <a class="anchor" href="#git-ls-files---with-treetrd-igt"></a> <a class="anchor" href="#git-ls-files---with-treelttrd-igtgt"></a>--with-tree=&lt;träd-igt&gt; </dt>
+<dt class="hdlist1" id="git-ls-files---with-treelttrdliktgt"> <a class="anchor" href="#git-ls-files---with-treetrdlikt"></a> <a class="anchor" href="#git-ls-files---with-treelttrdliktgt"></a>--with-tree=&lt;trädlikt&gt; </dt>
 <dd>
-<p>När man använder --error-unmatch för att utöka användardefinierade &lt;fil&gt;-argument (dvs. sökvägsmönster) till sökvägar, låtsas att sökvägar som togs bort i indexet eftersom den namngivna &lt;träd-igt&gt; fortfarande finns. Att använda detta alternativ med <span class='synopsis'><code>-s</code></span>- eller <span class='synopsis'><code>-u</code></span>-alternativen är meningslöst.</p>
+<p>När man använder --error-unmatch för att utöka användardefinierade &lt;fil&gt;-argument (dvs. sökvägsmönster) till sökvägar, låtsas att sökvägar som togs bort i indexet eftersom det namngivna &lt;trädlikt&gt;-objektet fortfarande finns. Att använda detta alternativ med <span class='synopsis'><code>-s</code></span>- eller <span class='synopsis'><code>-u</code></span>-alternativen är meningslöst.</p>
 </dd>
 <dt class="hdlist1" id="git-ls-files--t"> <a class="anchor" href="#git-ls-files--t"></a>-t </dt>
 <dd>
@@ -216,7 +216,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-ls-files---full-name"> <a class="anchor" href="#git-ls-files---full-name"></a>--full-name </dt>
 <dd>
-<p>När kommandot körs från en underkatalog, matar det vanligtvis ut sökvägar i förhållande till den aktuella katalogen. Det här alternativet tvingar att sökvägar matas ut i förhållande till projektets översta katalog.</p>
+<p>När kommandot körs från en underkatalog matar det vanligtvis ut sökvägar relativt den aktuella katalogen. Alternativet tvingar i stället sökvägar att matas ut relativt projektets toppkatalog.</p>
 </dd>
 <dt class="hdlist1" id="git-ls-files---recurse-submodules"> <a class="anchor" href="#git-ls-files---recurse-submodules"></a>--recurse-submodules </dt>
 <dd>
@@ -234,13 +234,13 @@ headings:
 <dd>
 <p>Visa &lt;eolinfo&gt; och &lt;eolattr&gt; för filer. &lt;eolinfo&gt; är den filinnehållsidentifiering som används av Git när attributet "text" är "auto" (eller inte angivet och core.autocrlf inte är falskt). &lt;eolinfo&gt; är antingen "-text", "none", "lf", "crlf", "mixed" eller "".</p>
 <div class="paragraph">
-<p>"" betyder att filen inte är en vanlig fil, att den inte finns i indexet eller inte är tillgänglig i arbetskatalogen.</p>
+<p>"" betyder att filen inte är en vanlig fil, att den inte finns i indexet eller inte är tillgänglig i arbetsträdet.</p>
 </div>
 <div class="paragraph">
 <p>&lt;eolattr&gt; är attributet som används vid utcheckning eller incheckning, det är antingen "", "-text", "text", "text=auto", "text eol=lf", "text eol=crlf". Sedan Git 2.10 stöds "text=auto eol=lf" och "text=auto eol=crlf".</p>
 </div>
 <div class="paragraph">
-<p>Både &lt;eolinfo&gt; i indexet ("i/&lt;eolinfo&gt;") och i arbetskatalogen ("w/&lt;eolinfo&gt;") visas för vanliga filer, följt av ("attr/&lt;eolinfo&gt;").</p>
+<p>Både &lt;eolinfo&gt; i indexet ("i/&lt;eolinfo&gt;") och i arbetsträdet ("w/&lt;eolinfo&gt;") visas för vanliga filer, följt av ("attr/&lt;eolinfo&gt;").</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-ls-files---sparse"> <a class="anchor" href="#git-ls-files---sparse"></a>--sparse </dt>
@@ -282,7 +282,7 @@ headings:
 <p><em>git ls-files --unmerged</em> och <em>git ls-files --stage</em> kan användas för att undersöka detaljerad information om ej sammanslagna sökvägar.</p>
 </div>
 <div class="paragraph">
-<p>För en osammanslagen sökväg, istället för att registrera ett enda mod/SHA-1-par, registrerar indexet upp till tre sådana par; ett från träd O i steg 1, A i steg 2 och B i steg 3. Denna information kan användas av användaren (eller porslinet) för att se vad som så småningom ska registreras vid sökvägen. (se <a href='{{< relurl "docs/git-read-tree/sv" >}}'>git-read-tree[1]</a> för mer information om tillstånd)</p>
+<p>För en osammanslagen sökväg, i stället för att registrera ett enda mod/SHA-1-par, registrerar indexet upp till tre sådana par; ett från träd O i steg 1, A i steg 2 och B i steg 3. Denna information kan användas av användaren (eller högnivåkommandon) för att se vad som så småningom ska registreras vid sökvägen. (se <a href='{{< relurl "docs/git-read-tree/sv" >}}'>git-read-tree[1]</a> för mer information om tillstånd)</p>
 </div>
 <div class="paragraph">
 <p>Utan <span class='synopsis'><code>-z</code></span>-alternativet citeras sökvägar med "ovanliga" tecken enligt beskrivningen för konfigurationsvariabeln <span class='synopsis'><code>core.quotePath</code></span> (se <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>). Med <span class='synopsis'><code>-z</code></span> matas filnamnet ut ordagrant och raden avslutas med en NUL-byte.</p>
@@ -321,7 +321,7 @@ headings:
 <dd>
 <p>Objektstorleken för filen som registreras i indexet ("-" om objektet är en <span class='synopsis'><code>commit</code></span> eller ett <span class='synopsis'><code>tree</code></span>). Den stöder även ett utfyllt format med storleken "%(objectsize:padded)".</p>
 </dd>
-<dt class="hdlist1" id="git-ls-files-stage"> <a class="anchor" href="#git-ls-files-stage"></a>stage </dt>
+<dt class="hdlist1" id="git-ls-files-kad"> <a class="anchor" href="#git-ls-files-kad"></a>köad </dt>
 <dd>
 <p>Det steg av filen som är registrerat i indexet.</p>
 </dd>
@@ -368,7 +368,7 @@ headings:
 <p>Ett mönster som anges på kommandoraden med --exclude eller läst från filen som anges med --exclude-from är relativt till toppen av katalogträdet. Ett mönster som lästs från en fil som anges med --exclude-per-directory är relativt till katalogen där mönsterfilen visas.</p>
 </div>
 <div class="paragraph">
-<p>Generellt sett bör du kunna använda <span class='synopsis'><code>--exclude-standard</code></span> när du vill att undantagsreglerna ska tillämpas på samma sätt som Porslins-kommandon gör. För att emulera vad <span class='synopsis'><code>--exclude-standard</code></span> specificerar kan du ange <span class='synopsis'><code>--exclude-per-directory=.gitignore</code></span> och sedan ange:</p>
+<p>Generellt sett bör <span class='synopsis'><code>--exclude-standard</code></span> kunna användas när undantagsreglerna ska tillämpas på samma sätt som högnivåkommandon gör. För att emulera vad <span class='synopsis'><code>--exclude-standard</code></span> specificerar kan <span class='synopsis'><code>--exclude-per-directory=.gitignore</code></span> och sedan ange:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">

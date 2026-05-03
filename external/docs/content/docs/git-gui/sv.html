@@ -47,7 +47,7 @@ headings:
 <h2 id="_beskrivning"><a class="anchor" href="#_beskrivning"></a>BESKRIVNING</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Ett Tcl/Tk-baserat grafiskt användargränssnitt till Git. <em>git gui</em> fokuserar på att låta användare göra ändringar i sitt kodförråd genom att göra nya incheckningar, ändra befintliga, skapa grenar, utföra lokala sammanslagningar och hämta/pusha till fjärrkodförråd.</p>
+<p>Ett Tcl/Tk-baserat grafiskt användargränssnitt till Git. <em>git gui</em> fokuserar på att låta användare göra ändringar i sitt kodförråd genom att göra nya incheckningar, ändra befintliga, skapa grenar, utföra lokala sammanslagningar och hämta/skicka till fjärrkodförråd.</p>
 </div>
 <div class="paragraph">
 <p>Till skillnad från <em>gitk</em> fokuserar <em>git gui</em> på incheckning-generering och annotering av enskilda filer och visar inte projekthistorik. Den tillhandahåller dock menyåtgärder för att starta en <em>gitk</em>-session inifrån <em>git gui</em>.</p>
@@ -64,15 +64,15 @@ headings:
 <dl>
 <dt class="hdlist1" id="git-gui-skyldig"> <a class="anchor" href="#git-gui-skyldig"></a>skyldig </dt>
 <dd>
-<p>Starta en skuldvisningsfunktion på den angivna filen i den angivna versionen (eller arbetskatalogen om ingen annan specificerad version finns).</p>
+<p>Starta en klandervisare för den angivna filen i den angivna versionen (eller arbetsträdet om ingen version anges).</p>
 </dd>
 <dt class="hdlist1" id="git-gui-browser"> <a class="anchor" href="#git-gui-browser"></a>browser </dt>
 <dd>
-<p>Start a tree browser showing all files in the specified commit. Files selected through the browser are opened in the blame viewer.</p>
+<p>Starta en trädvisare som visar alla filer i den angivna incheckningen. Filer som väljs i trädvisaren öppnas i klandervisaren.</p>
 </dd>
 <dt class="hdlist1" id="git-gui-citool"> <a class="anchor" href="#git-gui-citool"></a>citool </dt>
 <dd>
-<p>Starta <em>git gui</em> och ordna så att exakt en incheckning görs innan du avslutar och återgår till skalet. Gränssnittet är begränsat till endast inchecknings-åtgärder, vilket minskar programmets starttid något och förenklar menyraden.</p>
+<p>Starta <em>git gui</em> och ordna så att exakt en incheckning görs innan programmet avslutar och återgår till skalet. Gränssnittet är begränsat till enbart incheckningsåtgärder, vilket minskar programmets starttid något och förenklar menyraden.</p>
 </dd>
 <dt class="hdlist1" id="git-gui-version"> <a class="anchor" href="#git-gui-version"></a>version </dt>
 <dd>
@@ -109,7 +109,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-gui-spanclasssynopsiscodegitcodecodeguicodecodecitoolcodecode--nocommitcodespan"> <a class="anchor" href="#git-gui-gitguicitool--nocommit"></a> <a class="anchor" href="#git-gui-spanclasssynopsiscodegitcodecodeguicodecodecitoolcodecode--nocommitcodespan"></a><span class='synopsis'><code>git</code> <code>gui</code> <code>citool</code> <code>--nocommit</code></span> </dt>
 <dd>
-<p>Bete sig som vanligt citool, men istället för att göra en incheckning helt enkelt avsluta med en noll exit-kod. Den kontrollerar fortfarande att indexet inte innehåller några ej sammanslagna poster, så du kan använda det som en GUI-version av <a href='{{< relurl "docs/git-mergetool/sv" >}}'>git-mergetool[1]</a></p>
+<p>Bete sig som vanligt citool, men i stället för att göra en incheckning helt enkelt avsluta med en noll exit-kod. Den kontrollerar fortfarande att indexet inte innehåller några ej sammanslagna poster, så det kan användas som en GUI-version av <a href='{{< relurl "docs/git-mergetool/sv" >}}'>git-mergetool[1]</a></p>
 </dd>
 <dt class="hdlist1" id="git-gui-spanclasssynopsiscodegitcodecodecitoolcodespan"> <a class="anchor" href="#git-gui-gitcitool"></a> <a class="anchor" href="#git-gui-spanclasssynopsiscodegitcodecodecitoolcodespan"></a><span class='synopsis'><code>git</code> <code>citool</code></span> </dt>
 <dd>
@@ -130,7 +130,7 @@ headings:
 <dl>
 <dt class="hdlist1" id="git-gui-ahrefrelurldocsgitksvgitk1a"> <a class="anchor" href="#git-gui-gitk1"></a> <a class="anchor" href="#git-gui-ahrefrelurldocsgitksvgitk1a"></a><a href='{{< relurl "docs/gitk/sv" >}}'>gitk[1]</a> </dt>
 <dd>
-<p>Git-kodförråd läsare. Visar grenar, inchecknings-historik och filskillnader. gitk är verktyget som startas av 'git gui&#8217;s Förvar Visualisera-åtgärder.</p>
+<p>Git-kodförråd läsare. Visar grenar, incheckningshistorik och filskillnader. gitk är verktyget som startas av 'git gui&#8217;s Kodförråd Visualisera-åtgärder.</p>
 </dd>
 </dl>
 </div>

@@ -108,7 +108,7 @@ git commit</pre>
 <dt class="hdlist1" id="git-add-spanclasssynopsiscode-fcodespan"> <a class="anchor" href="#git-add--f"></a> <a class="anchor" href="#git-add-spanclasssynopsiscode-fcodespan"></a><span class='synopsis'><code>-f</code></span> </dt>
 <dt class="hdlist1" id="git-add-spanclasssynopsiscode--forcecodespan"> <a class="anchor" href="#git-add---force"></a> <a class="anchor" href="#git-add-spanclasssynopsiscode--forcecodespan"></a><span class='synopsis'><code>--force</code></span> </dt>
 <dd>
-<p>Дозволяє додавання файлів, які інакше ігноруються.</p>
+<p>Дозволяє додавання файлів, які зазвичай ігноруються. Ця опція також використовується, коли встановлено <span class='synopsis'><code>submodule.</code><em>&lt;name&gt;</em><code>.ignore=all</code></span>, але ви хочете додати оновлення субмодуля в stage. Шлях до субмодуля (<span class='synopsis'><code>path</code></span>) необхідно вказати явно.</p>
 </dd>
 <dt class="hdlist1" id="git-add-spanclasssynopsiscode--sparsecodespan"> <a class="anchor" href="#git-add---sparse"></a> <a class="anchor" href="#git-add-spanclasssynopsiscode--sparsecodespan"></a><span class='synopsis'><code>--sparse</code></span> </dt>
 <dd>
@@ -130,7 +130,7 @@ git commit</pre>
 <dt class="hdlist1" id="git-add-spanclasssynopsiscode-Ucodeemltngtemspan"> <a class="anchor" href="#git-add--Un"></a> <a class="anchor" href="#git-add-spanclasssynopsiscode-Ucodeemltngtemspan"></a><span class='synopsis'><code>-U</code><em>&lt;n&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-add-spanclasssynopsiscode--unifiedcodeemltngtemspan"> <a class="anchor" href="#git-add---unifiedn"></a> <a class="anchor" href="#git-add-spanclasssynopsiscode--unifiedcodeemltngtemspan"></a><span class='synopsis'><code>--unified=</code><em>&lt;n&gt;</em></span> </dt>
 <dd>
-<p>Створює файли відмінностей (diff) з <em>&lt;n&gt;</em> рядками контексту. Стандартно використовується <span class='synopsis'><code>diff.context</code></span> або 3, якщо параметр конфігурації не встановлено.</p>
+<p>Створити diffs з <em>&lt;n&gt;</em> рядками контексту. Зазвичай кількість рядків контексту дорівнює значенню <span class='synopsis'><code>diff.context</code></span> або 3, якщо ця змінна конфігурації не встановлена. (Опція <span class='synopsis'><code>-U</code></span> без аргументу <span class='synopsis'><em>&lt;n&gt;</em></span> через історичну випадковість мовчки приймається як синонім опції <span class='synopsis'><code>-p</code></span>).</p>
 </dd>
 <dt class="hdlist1" id="git-add-spanclasssynopsiscode--inter-hunk-contextcodeemltngtemspan"> <a class="anchor" href="#git-add---inter-hunk-contextn"></a> <a class="anchor" href="#git-add-spanclasssynopsiscode--inter-hunk-contextcodeemltngtemspan"></a><span class='synopsis'><code>--inter-hunk-context=</code><em>&lt;n&gt;</em></span> </dt>
 <dd>

@@ -66,7 +66,7 @@ headings:
 <p>En packindexfil (.idx) skapas för snabb slumpvis åtkomst till objekten i paketet. Om både indexfilen (.idx) och det packade arkivet (.pack) placeras i underkatalogen pack/ i $GIT_OBJECT_DIRECTORY (eller någon av katalogerna i $GIT_ALTERNATE_OBJECT_DIRECTORIES) kan Git läsa från det packade arkivet.</p>
 </div>
 <div class="paragraph">
-<p>The <em>git unpack-objects</em> command can read the packed archive and expand the objects contained in the pack into "one-file one-object" format; this is typically done by the smart-pull commands when a pack is created on-the-fly for efficient network transport by their peers.</p>
+<p>Kommandot <em>git unpack-objects</em> kan läsa det packade arkivet och expandera objekten i paketet till formatet "en-fil ett-objekt"; detta görs normalt av smarta pull-kommandon när ett paket skapas i farten för effektiv nätverkstransport av motparten.</p>
 </div>
 </div>
 </div>
@@ -316,7 +316,7 @@ island = refs/tags/</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>puts heads and tags into an island (whose name is the empty string; see below for more on naming). Any refs which do not match those regular expressions (e.g., <span class='synopsis'><code>refs/pull/123</code></span>) is not in any island. Any object which is reachable only from <span class='synopsis'><code>refs/pull/</code></span> (but not heads or tags) is therefore not a candidate to be used as a base for <span class='synopsis'><code>refs/heads/</code></span>.</p>
+<p>det placerar grenhuvuden och taggar i en ö (vars namn är den tomma strängen; se nedan för mer om namngivning). Referenser som inte matchar dessa reguljära uttryck (t.ex. <span class='synopsis'><code>refs/pull/123</code></span>) tillhör ingen ö. Objekt som endast är nåbara från <span class='synopsis'><code>refs/pull/</code></span> (men inte från grenhuvuden eller taggar) blir därför inte kandidater som bas för <span class='synopsis'><code>refs/heads/</code></span>.</p>
 </div>
 <div class="paragraph">
 <p>Referenser grupperas i öar baserat på sina "namn", och två regex som ger samma namn anses ligga i samma ö. Namnen beräknas från regexen genom att sammanfoga eventuella fångstgrupper med ett <em>-</em> emellan. (Om det inte finns några fångstgrupper blir namnet den tomma strängen, som i exemplet ovan.) Detta gör att du kan skapa godtyckligt många öar. Endast upp till 14 sådana fångstgrupper stöds dock.</p>

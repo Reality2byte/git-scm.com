@@ -22,8 +22,8 @@ headings:
   id: _alternativ
 - text: AVANCERADE ALTERNATIV
   id: _avancerade_alternativ
-- text: CONFIG FILE-ONLY OPTIONS
-  id: _config_file_only_options
+- text: ALTERNATIV ENDAST FÖR KONFIGURATIONSFIL
+  id: _alternativ_endast_för_konfigurationsfil
 - text: GRUNDLÄGGANDE EXEMPEL
   id: _grundläggande_exempel
 - text: REBASE MOT PULL/MERGE
@@ -65,13 +65,13 @@ headings:
 <h2 id="_beskrivning"><a class="anchor" href="#_beskrivning"></a>BESKRIVNING</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><em>git svn</em> är en enkel kanal för ändringsuppsättningar mellan Subversion och Git. Den tillhandahåller ett dubbelriktat flöde av ändringar mellan ett Subversion- och ett Git-förvar.</p>
+<p><em>git svn</em> är en enkel kanal för ändringsuppsättningar mellan Subversion och Git. Den tillhandahåller ett dubbelriktat flöde av ändringar mellan ett Subversion- och ett Git-kodförråd.</p>
 </div>
 <div class="paragraph">
-<p><em>git svn</em> kan spåra ett vanligt Subversion-förvar, genom att följa den vanliga layouten "trunk/branches/tags", med alternativet --stdlayout. Den kan också följa grenar och taggar i vilken layout som helst med alternativen -T/-t/-b (se alternativ för <em>init</em> nedan, och även kommandot <em>clone</em>).</p>
+<p><em>git svn</em> kan spåra ett vanligt Subversion-kodförråd, genom att följa den vanliga layouten "trunk/branches/tags", med alternativet --stdlayout. Den kan också följa grenar och taggar i vilken layout som helst med alternativen -T/-t/-b (se alternativ för <em>init</em> nedan, och även kommandot <em>clone</em>).</p>
 </div>
 <div class="paragraph">
-<p>När ett Subversion-förvar har spårats (med någon av ovanstående metoder) kan Git-förvaret uppdateras från Subversion med kommandot <em>fetch</em> och Subversion uppdateras från Git med kommandot <em>dcommit</em>.</p>
+<p>När ett Subversion-kodförråd har spårats (med någon av ovanstående metoder) kan Git-kodförrådet uppdateras från Subversion med kommandot <em>fetch</em> och Subversion uppdateras från Git med kommandot <em>dcommit</em>.</p>
 </div>
 </div>
 </div>
@@ -82,7 +82,7 @@ headings:
 <dl>
 <dt class="hdlist1" id="git-svn-eminitem"> <a class="anchor" href="#git-svn-init"></a> <a class="anchor" href="#git-svn-eminitem"></a><em>init</em> </dt>
 <dd>
-<p>Initierar ett tomt Git-förvar med ytterligare metadatakataloger för <em>git svn</em>. Subversion-URL:en kan anges som ett kommandoradsargument eller som fullständiga URL-argument till -T/-t/-b. Valfritt kan målkatalogen som ska användas anges som ett andra argument. Normalt initierar detta kommando den aktuella katalogen.</p>
+<p>Initierar ett tomt Git-kodförråd med ytterligare metadatakataloger för <em>git svn</em>. Subversion-URL:en kan anges som ett kommandoradsargument eller som fullständiga URL-argument till -T/-t/-b. Valfritt kan målkatalogen som ska användas anges som ett andra argument. Normalt initierar detta kommando den aktuella katalogen.</p>
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-svn--Tltstam-underkataloggt"> <a class="anchor" href="#git-svn--Tstam-underkatalog"></a> <a class="anchor" href="#git-svn--Tltstam-underkataloggt"></a>-T&lt;stam-underkatalog&gt; </dt>
@@ -94,7 +94,7 @@ headings:
 <dt class="hdlist1" id="git-svn--s"> <a class="anchor" href="#git-svn--s"></a>-s </dt>
 <dt class="hdlist1" id="git-svn---stdlayout"> <a class="anchor" href="#git-svn---stdlayout"></a>--stdlayout </dt>
 <dd>
-<p>Dessa är valfria kommandoradsalternativ för init. Var och en av dessa flaggor kan peka på en relativ sökväg till förvaret (--tags=project/tags) eller en fullständig url (--tags=https://foo.org/project/tags). Du kan ange mer än ett --tags- och/eller --branches-alternativ, ifall ditt Subversion-förvar placerar taggar eller grenar under flera sökvägar. Alternativet --stdlayout är ett förkortat sätt att ställa in trunk,tags,branches som relativa sökvägar, vilket är Subversions standardvärde. Om något av de andra alternativen också anges har de företräde.</p>
+<p>Dessa är valfria kommandoradsalternativ för init. Var och en av dessa flaggor kan peka på en relativ sökväg till kodförrådet (--tags=project/tags) eller en fullständig url (--tags=https://foo.org/project/tags). Du kan ange mer än ett --tags- och/eller --branches-alternativ, ifall ditt Subversion-kodförråd placerar taggar eller grenar under flera sökvägar. Alternativet --stdlayout är ett förkortat sätt att ställa in trunk,tags,branches som relativa sökvägar, vilket är Subversions standardvärde. Om något av de andra alternativen också anges har de företräde.</p>
 </dd>
 <dt class="hdlist1" id="git-svn---no-metadata"> <a class="anchor" href="#git-svn---no-metadata"></a>--no-metadata </dt>
 <dd>
@@ -116,13 +116,13 @@ headings:
 <dd>
 <p>Ställ in <em>rewriteUUID</em> alternativet i [svn-remote] konfigurationsfilen.</p>
 </dd>
-<dt class="hdlist1" id="git-svn---usernameltanvdaregt"> <a class="anchor" href="#git-svn---usernameanvdare"></a> <a class="anchor" href="#git-svn---usernameltanvdaregt"></a>--username=&lt;anvädare&gt; </dt>
+<dt class="hdlist1" id="git-svn---usernameltanvndaregt"> <a class="anchor" href="#git-svn---usernameanvndare"></a> <a class="anchor" href="#git-svn---usernameltanvndaregt"></a>--username=&lt;användare&gt; </dt>
 <dd>
 <p>För transporter som SVN hanterar autentisering för (http, https och vanlig svn), ange användarnamnet. För andra transporter (t.ex. <span class='synopsis'><code>svn+ssh://</code></span>) måste du inkludera användarnamnet i URL:en, t.ex. <span class='synopsis'><code>svn+ssh://foo@svn.bar.com/project</code></span></p>
 </dd>
 <dt class="hdlist1" id="git-svn---prefixltprefixgt"> <a class="anchor" href="#git-svn---prefixprefix"></a> <a class="anchor" href="#git-svn---prefixltprefixgt"></a>--prefix=&lt;prefix&gt; </dt>
 <dd>
-<p>Detta gör det möjligt att ange ett prefix som läggs till före namnen på fjärrer om trunk/branches/tags anges. Prefixet inkluderar inte automatiskt ett avslutande snedstreck, så se till att inkludera ett i argumentet om det är vad du vill. Om --branches/-b anges måste prefixet inkludera ett avslutande snedstreck. Att ange ett prefix (med ett avslutande snedstreck) rekommenderas starkt i vilket fall som helst, eftersom dina SVN-spårningsreferenser då kommer att finnas på "refs/remotes/$prefix/<strong>", vilket är kompatibelt med Gits egen layout för fjärrspårningsreferenser (refs/remotes/$remote/</strong>). Att ange ett prefix är också användbart om du vill spåra flera projekt som delar ett gemensamt arkiv. Som standard är prefixet satt till <em>origin/</em>.</p>
+<p>Det här gör det möjligt att ange ett prefix som läggs till före namnen på fjärrar om trunk/branches/tags anges. Prefixet inkluderar inte automatiskt ett avslutande snedstreck, så se till att inkludera ett i argumentet om det är vad du vill. Om --branches/-b anges måste prefixet inkludera ett avslutande snedstreck. Att ange ett prefix (med ett avslutande snedstreck) rekommenderas starkt i vilket fall som helst, eftersom dina SVN-spårningsreferenser då kommer att finnas på "refs/remotes/$prefix/<strong>", vilket är kompatibelt med Gits egen layout för fjärrspårningsreferenser (refs/remotes/$remote/</strong>). Att ange ett prefix är också användbart om du vill spåra flera projekt som delar ett gemensamt kodförråd. Som standard är prefixet satt till <em>origin/</em>.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -150,24 +150,24 @@ Före Git v2.0 var standardprefixet "" (inget prefix). Detta innebar att SVN-sp�
 </dd>
 <dt class="hdlist1" id="git-svn---no-minimize-url"> <a class="anchor" href="#git-svn---no-minimize-url"></a>--no-minimize-url </dt>
 <dd>
-<p>När man spårar flera kataloger (med hjälp av alternativen --stdlayout, --branches eller --tags) kommer git svn att försöka ansluta till roten (eller den högsta tillåtna nivån) av Subversion-förvaret. Denna standardinställning möjliggör bättre spårning av historik om hela projekt flyttas inom ett förvar, men kan orsaka problem på förvar där läsåtkomstrestriktioner finns. Att skicka <span class='synopsis'><code>--no-minimize-url</code></span> tillåter git svn att acceptera URL:er som de är utan att försöka ansluta till en katalog på högre nivå. Detta alternativ är avstängt som standard när endast en URL/gren spåras (det skulle inte göra någon större nytta).</p>
+<p>När man spårar flera kataloger (med hjälp av alternativen --stdlayout, --branches eller --tags) kommer git svn att försöka ansluta till roten (eller den högsta tillåtna nivån) av Subversion-kodförrådet. Denna standardinställning möjliggör bättre spårning av historik om hela projekt flyttas inom ett kodförråd, men kan orsaka problem på kodförråd där läsåtkomstrestriktioner finns. Att skicka <span class='synopsis'><code>--no-minimize-url</code></span> tillåter git svn att acceptera URL:er som de är utan att försöka ansluta till en katalog på högre nivå. Detta alternativ är avstängt som standard när endast en URL/gren spåras (det skulle inte göra någon större nytta).</p>
 </dd>
 </dl>
 </div>
 </dd>
 <dt class="hdlist1" id="git-svn-emfetchem"> <a class="anchor" href="#git-svn-fetch"></a> <a class="anchor" href="#git-svn-emfetchem"></a><em>fetch</em> </dt>
 <dd>
-<p>Hämta ohämtad revisioner från den Subversion-fjärr vi spårar. Namnet på avsnittet [svn-remote "&#8230;&#8203;"] i filen $GIT_DIR/config kan anges som ett valfritt kommandoradsargument.</p>
+<p>Hämta revisioner som ännu inte hämtats från Subversion-fjärren vi spårar. Namnet på avsnittet [svn-remote "&#8230;&#8203;"] i filen $GIT_DIR/config kan anges som ett valfritt kommandoradsargument.</p>
 <div class="paragraph">
-<p>Detta uppdaterar automatiskt rev_map om det behövs (se <em>$GIT_DIR/svn/**/.rev_map.*</em> i avsnittet FILER nedan för mer information).</p>
+<p>Det här uppdaterar automatiskt rev_map om det behövs (se <em>$GIT_DIR/svn/**/.rev_map.*</em> i avsnittet FILER nedan för mer information).</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-svn---localtime"> <a class="anchor" href="#git-svn---localtime"></a>--localtime </dt>
 <dd>
-<p>Lagra Git-incheckningtider i den lokala tidszonen istället för UTC. Detta gör att <em>git log</em> (även utan --date=local) visar samma tider som <em>svn log</em> skulle göra i den lokala tidszonen.</p>
+<p>Lagra Git-incheckningstider i den lokala tidszonen i stället för UTC. Detta gör att <em>git log</em> (även utan --date=local) visar samma tider som <em>svn log</em> skulle göra i den lokala tidszonen.</p>
 <div class="paragraph">
-<p>Detta stör inte samverkan med Subversion-förvaret du klonade från, men om du vill att ditt lokala Git-förvar ska kunna samverka med någon annans lokala Git-förvar, använd antingen inte det här alternativet eller så bör ni båda använda det i samma lokala tidszon.</p>
+<p>Det här stör inte samverkan med Subversion-kodförrådet du klonade från, men om du vill att ditt lokala Git-kodförråd ska kunna samverka med någon annans lokala Git-kodförråd, använd antingen inte det här alternativet eller så bör ni båda använda det i samma lokala tidszon.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-svn---parent"> <a class="anchor" href="#git-svn---parent"></a>--parent </dt>
@@ -186,7 +186,7 @@ Före Git v2.0 var standardprefixet "" (inget prefix). Detta innebar att SVN-sp�
 </dd>
 <dt class="hdlist1" id="git-svn---ignore-pathsltregexgt-1"> <a class="anchor" href="#git-svn---ignore-pathsregex-1"></a> <a class="anchor" href="#git-svn---ignore-pathsltregexgt-1"></a>--ignore-paths=&lt;regex&gt; </dt>
 <dd>
-<p>Detta gör det möjligt att ange ett reguljärt Perl-uttryck som gör att alla matchande sökvägar hoppas över från utcheckningen från SVN. Alternativet <span class='synopsis'><code>--ignore-paths</code></span> ska matcha för varje <em>fetch</em> (inklusive automatiska hämtningar på grund av <em>clone</em>, <em>dcommit</em>, <em>rebase</em>, etc.) på ett givet förvar.</p>
+<p>Det här gör det möjligt att ange ett reguljärt Perl-uttryck som gör att alla matchande sökvägar hoppas över från utcheckningen från SVN. Alternativet <span class='synopsis'><code>--ignore-paths</code></span> ska matcha för varje <em>fetch</em> (inklusive automatiska hämtningar på grund av <em>clone</em>, <em>dcommit</em>, <em>rebase</em>, etc.) på ett givet kodförråd.</p>
 <div class="verseblock">
 <pre class="content">konfigurationsnyckel: svn-remote.&lt;namn&gt;.ignore-paths</pre>
 </div>
@@ -223,26 +223,26 @@ Före Git v2.0 var standardprefixet "" (inget prefix). Detta innebar att SVN-sp�
 </dd>
 <dt class="hdlist1" id="git-svn---include-pathsltregexgt-1"> <a class="anchor" href="#git-svn---include-pathsregex-1"></a> <a class="anchor" href="#git-svn---include-pathsltregexgt-1"></a>--include-paths=&lt;regex&gt; </dt>
 <dd>
-<p>Detta gör det möjligt att ange ett reguljärt Perl-uttryck som gör att endast matchande sökvägar inkluderas vid utcheckning från SVN. Alternativet <span class='synopsis'><code>--include-paths</code></span> ska matcha för varje <em>fetch</em> (inklusive automatiska hämtningar på grund av <em>clone</em>, <em>dcommit</em>, <em>rebase</em>, etc.) på ett givet förvar. <span class='synopsis'><code>--ignore-paths</code></span> har företräde framför <span class='synopsis'><code>--include-paths</code></span>.</p>
+<p>Det här gör det möjligt att ange ett reguljärt Perl-uttryck som gör att endast matchande sökvägar inkluderas vid utcheckning från SVN. Alternativet <span class='synopsis'><code>--include-paths</code></span> ska matcha för varje <em>fetch</em> (inklusive automatiska hämtningar på grund av <em>clone</em>, <em>dcommit</em>, <em>rebase</em>, etc.) på ett givet kodförråd. <span class='synopsis'><code>--ignore-paths</code></span> har företräde framför <span class='synopsis'><code>--include-paths</code></span>.</p>
 <div class="verseblock">
 <pre class="content">konfigurationsnyckel: svn-remote.&lt;namn&gt;.include-paths</pre>
 </div>
 </dd>
 <dt class="hdlist1" id="git-svn---log-window-sizeltngt"> <a class="anchor" href="#git-svn---log-window-sizen"></a> <a class="anchor" href="#git-svn---log-window-sizeltngt"></a>--log-window-size=&lt;n&gt; </dt>
 <dd>
-<p>Hämta &lt;n&gt; loggposter per begäran vid skanning av Subversionshistorik. Standardvärdet är 100. För mycket stora Subversion-förvar kan större värden behövas för att <em>klona</em>/<em>hämta</em> ska slutföras inom rimlig tid. Men alltför stora värden kan leda till högre minnesanvändning och timeouts för begäran.</p>
+<p>Hämta &lt;n&gt; loggposter per begäran vid skanning av Subversionshistorik. Standardvärdet är 100. För mycket stora Subversion-kodförråd kan större värden behövas för att <em>klona</em>/<em>hämta</em> ska slutföras inom rimlig tid. Men alltför stora värden kan leda till högre minnesanvändning och timeouts för begäran.</p>
 </dd>
 </dl>
 </div>
 </dd>
 <dt class="hdlist1" id="git-svn-emcloneem"> <a class="anchor" href="#git-svn-clone"></a> <a class="anchor" href="#git-svn-emcloneem"></a><em>clone</em> </dt>
 <dd>
-<p>Kör <em>init</em> och <em>fetch</em>. Den skapar automatiskt en katalog baserat på basnamnet på URL:en som skickas till den; eller om ett andra argument skickas; skapar den en katalog och arbetar inom den. Den accepterar alla argument som kommandona <em>init</em> och <em>fetch</em> accepterar; med undantag för <span class='synopsis'><code>--fetch-all</code></span> och <span class='synopsis'><code>--parent</code></span>. Efter att ett arkiv har klonats kommer kommandot <em>fetch</em> att kunna uppdatera revisioner utan att påverka arbetskatalogen; och kommandot <em>rebase</em> kommer att kunna uppdatera arbetskatalogen med de senaste ändringarna.</p>
+<p>Kör <em>init</em> och <em>fetch</em>. Den skapar automatiskt en katalog baserat på basnamnet på URL:en som skickas till den; eller om ett andra argument skickas; skapar den en katalog och arbetar inom den. Den accepterar alla argument som kommandona <em>init</em> och <em>fetch</em> accepterar; med undantag för <span class='synopsis'><code>--fetch-all</code></span> och <span class='synopsis'><code>--parent</code></span>. Efter att ett kodförråd har klonats kommer kommandot <em>fetch</em> att kunna uppdatera revisioner utan att påverka arbetsträdet; och kommandot <em>rebase</em> kommer att kunna uppdatera arbetsträdet med de senaste ändringarna.</p>
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-svn---preserve-empty-dirs"> <a class="anchor" href="#git-svn---preserve-empty-dirs"></a>--preserve-empty-dirs </dt>
 <dd>
-<p>Skapa en platshållarfil i det lokala Git-arkivet för varje tom katalog som hämtas från Subversion. Detta inkluderar kataloger som blir tomma genom att ta bort alla poster i Subversion-förvaret (men inte själva katalogen). Platshållarfilerna spåras också och tas bort när de inte längre behövs.</p>
+<p>Skapa en platshållarfil i det lokala Git-kodförrådet för varje tom katalog som hämtas från Subversion. Detta inkluderar kataloger som blir tomma genom att ta bort alla poster i Subversion-kodförrådet (men inte själva katalogen). Platshållarfilerna spåras också och tas bort när de inte längre behövs.</p>
 </dd>
 <dt class="hdlist1" id="git-svn---placeholder-filenameltfilnamngt"> <a class="anchor" href="#git-svn---placeholder-filenamefilnamn"></a> <a class="anchor" href="#git-svn---placeholder-filenameltfilnamngt"></a>--placeholder-filename=&lt;filnamn&gt; </dt>
 <dd>
@@ -253,18 +253,18 @@ Före Git v2.0 var standardprefixet "" (inget prefix). Detta innebar att SVN-sp�
 </dd>
 <dt class="hdlist1" id="git-svn-emrebaseem"> <a class="anchor" href="#git-svn-rebase"></a> <a class="anchor" href="#git-svn-emrebaseem"></a><em>rebase</em> </dt>
 <dd>
-<p>Detta hämtar revisioner från SVN-föräldern till den aktuella HEAD-filen och ombaserar det nuvarande (ej incheckade till SVN) arbetet mot den.</p>
+<p>Det här hämtar revisioner från SVN-föräldern till den aktuella HEAD-filen och ombaserar det nuvarande (ej incheckade till SVN) arbetet mot den.</p>
 <div class="paragraph">
-<p>Detta fungerar på liknande sätt som <span class='synopsis'><code>svn</code> <code>update</code></span> eller <span class='synopsis'><code>git</code> <code>pull</code></span> förutom att det bevarar linjär historik med <span class='synopsis'><code>git</code> <code>rebase</code></span> istället för <span class='synopsis'><code>git</code> <code>merge</code></span> för att förenkla dcommitning med <span class='synopsis'><code>git</code> <code>svn</code></span>.</p>
+<p>Det här fungerar på liknande sätt som <span class='synopsis'><code>svn</code> <code>update</code></span> eller <span class='synopsis'><code>git</code> <code>pull</code></span> förutom att det bevarar linjär historik med <span class='synopsis'><code>git</code> <code>rebase</code></span> i stället för <span class='synopsis'><code>git</code> <code>merge</code></span> för att förenkla dcommitning med <span class='synopsis'><code>git</code> <code>svn</code></span>.</p>
 </div>
 <div class="paragraph">
-<p>Detta accepterar alla alternativ som <em>git svn fetch</em> och <em>git rebase</em> accepterar. Emellertid hämtar <span class='synopsis'><code>--fetch-all</code></span> bara från den aktuella [svn-remote], och inte alla [svn-remote] definitioner.</p>
+<p>Det här accepterar alla alternativ som <em>git svn fetch</em> och <em>git rebase</em> accepterar. Emellertid hämtar <span class='synopsis'><code>--fetch-all</code></span> bara från den aktuella [svn-remote], och inte alla [svn-remote] definitioner.</p>
 </div>
 <div class="paragraph">
-<p>Liksom <em>git rebase</em>; detta kräver att arbetskatalogen är ren och inte har några oincheckade ändringar.</p>
+<p>Liksom <em>git rebase</em>; detta kräver att arbetsträdet är ren och inte har några oincheckade ändringar.</p>
 </div>
 <div class="paragraph">
-<p>Detta uppdaterar automatiskt rev_map om det behövs (se <em>$GIT_DIR/svn/**/.rev_map.*</em> i avsnittet FILER nedan för mer information).</p>
+<p>Det här uppdaterar automatiskt rev_map om det behövs (se <em>$GIT_DIR/svn/**/.rev_map.*</em> i avsnittet FILER nedan för mer information).</p>
 </div>
 <div class="dlist">
 <dl>
@@ -278,9 +278,9 @@ Före Git v2.0 var standardprefixet "" (inget prefix). Detta innebar att SVN-sp�
 </dd>
 <dt class="hdlist1" id="git-svn-emdcommitem"> <a class="anchor" href="#git-svn-dcommit"></a> <a class="anchor" href="#git-svn-emdcommitem"></a><em>dcommit</em> </dt>
 <dd>
-<p>Checka-in varje diff från den aktuella grenen direkt till SVN-förvaret och ombasera eller återställ sedan (beroende på om det finns en diff mellan SVN och head). Detta skapar en revision i SVN för varje incheckning i Git.</p>
+<p>Checka in varje diff från den aktuella grenen direkt till SVN-kodförrådet och ombasera eller återställ sedan (beroende på om det finns en diff mellan SVN och <span class='synopsis'><code>HEAD</code></span>). Detta skapar en revision i SVN för varje incheckning i Git.</p>
 <div class="paragraph">
-<p>När ett valfritt Git-grennamn (eller ett Git inchecknings-objektnamn) anges som ett argument, fungerar delkommandot på den angivna grenen, inte på den aktuella grenen.</p>
+<p>När ett valfritt Git-grennamn (eller ett Git incheckningsobjektnamn) anges som ett argument, fungerar delkommandot på den angivna grenen, inte på den aktuella grenen.</p>
 </div>
 <div class="paragraph">
 <p>Användning av <em>dcommit</em> är att föredra framför <em>set-tree</em> (nedan).</p>
@@ -289,17 +289,17 @@ Före Git v2.0 var standardprefixet "" (inget prefix). Detta innebar att SVN-sp�
 <dl>
 <dt class="hdlist1" id="git-svn---no-rebase"> <a class="anchor" href="#git-svn---no-rebase"></a>--no-rebase </dt>
 <dd>
-<p>Efter checkat-in, gör inte ombasering eller återställning.</p>
+<p>Efter incheckning, gör inte ombasering eller återställning.</p>
 </dd>
 <dt class="hdlist1" id="git-svn---commit-urlltURLgt"> <a class="anchor" href="#git-svn---commit-urlURL"></a> <a class="anchor" href="#git-svn---commit-urlltURLgt"></a>--commit-url &lt;URL&gt; </dt>
 <dd>
-<p>Incheckning till denna SVN-URL (den fullständiga sökvägen). Detta är avsett att tillåta att befintliga <em>git svn</em>-förvar som skapats med en transportmetod (t.ex. <span class='synopsis'><code>svn://</code></span> eller <span class='synopsis'><code>http://</code></span> för anonym läsning) återanvänds om en användare senare ges åtkomst till en alternativ transportmetod (t.ex. <span class='synopsis'><code>svn+ssh://</code></span> eller <span class='synopsis'><code>https://</code></span>) för incheckning.</p>
+<p>Incheckning till denna SVN-URL (den fullständiga sökvägen). Detta är avsett att tillåta att befintliga <em>git svn</em>-kodförråd som skapats med en transportmetod (t.ex. <span class='synopsis'><code>svn://</code></span> eller <span class='synopsis'><code>http://</code></span> för anonym läsning) återanvänds om en användare senare ges åtkomst till en alternativ transportmetod (t.ex. <span class='synopsis'><code>svn+ssh://</code></span> eller <span class='synopsis'><code>https://</code></span>) för incheckning.</p>
 <div class="verseblock">
 <pre class="content">konfigurationsnyckel: svn-remote.&lt;namn&gt;.commiturl
 konfigurationsnyckel: svn.commiturl (skriver över alla svn-remote.&lt;namn&gt;.commiturl-alternativ)</pre>
 </div>
 <div class="paragraph">
-<p>Observera att SVN-URL:en för incheckningsurl-konfigurationsnyckeln inkluderar SVN-grenen. Om du hellre vill ange incheckning-URL:en för ett helt SVN-förvar, använd svn-remote.&lt;namn&gt;.pushurl istället.</p>
+<p>Observera att SVN-URL:en för konfigurationsnyckeln commiturl inkluderar SVN-grenen. Om du i stället vill ange commit-URL för ett helt SVN-kodförråd, använd svn-remote.&lt;namn&gt;.pushurl.</p>
 </div>
 <div class="paragraph">
 <p>Att använda detta alternativ för något annat ändamål (fråga inte) avråds starkt.</p>
@@ -307,19 +307,19 @@ konfigurationsnyckel: svn.commiturl (skriver över alla svn-remote.&lt;namn&gt;.
 </dd>
 <dt class="hdlist1" id="git-svn---mergeinfoltsammanslagningsinfogt"> <a class="anchor" href="#git-svn---mergeinfosammanslagningsinfo"></a> <a class="anchor" href="#git-svn---mergeinfoltsammanslagningsinfogt"></a>--mergeinfo=&lt;sammanslagningsinfo&gt; </dt>
 <dd>
-<p>Lägg till den givna sammanslagings-informationen under dcommit (t.ex. <span class='synopsis'><code>--mergeinfo="/branches/foo:1-10"</code></span>). Alla svn-serverversioner kan lagra denna information (som en egenskap), och svn-klienter från och med version 1.5 kan använda den. För att ange sammanslagings-information från flera grenar, använd ett enda mellanslag mellan grenarna (<span class='synopsis'><code>--mergeinfo="/branches/foo:1-10</code> <code>/branches/bar:3,5-6,8"</code></span>)</p>
+<p>Lägg till angiven sammanslagningsinformation under dcommit (t.ex. <span class='synopsis'><code>--mergeinfo="/branches/foo:1-10"</code></span>). Alla svn-serverversioner kan lagra denna information (som en egenskap), och svn-klienter från och med version 1.5 kan använda den. För att ange sammanslagningsinformation från flera grenar, använd ett enda mellanslag mellan grenarna (<span class='synopsis'><code>--mergeinfo="/branches/foo:1-10</code> <code>/branches/bar:3,5-6,8"</code></span>)</p>
 <div class="verseblock">
 <pre class="content">konfigurationsnyckel: svn.pushmergeinfo</pre>
 </div>
 <div class="paragraph">
-<p>Det här alternativet gör att git-svn försöker automatiskt fylla i egenskapen svn:mergeinfo i SVN-förvaret när det är möjligt. För närvarande kan detta bara göras vid dcommit av icke-snabbspola-sammanslagningar där alla föräldrar utom den första redan har skickats in i SVN.</p>
+<p>Det här alternativet gör att git-svn försöker fylla i egenskapen svn:mergeinfo i SVN-kodförrådet automatiskt när det är möjligt. För närvarande kan detta bara göras vid dcommit av icke-fast-forward-sammanslagningar där alla föräldrar utom den första redan har skickats till SVN.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-svn---interactive"> <a class="anchor" href="#git-svn---interactive"></a>--interactive </dt>
 <dd>
 <p>Be användaren att bekräfta att en patchuppsättning faktiskt ska skickas till SVN. För varje patch kan man svara "ja" (acceptera denna patch), "nej" (kassera denna patch), "alla" (acceptera alla patchar) eller "avsluta".</p>
 <div class="paragraph">
-<p><em>git svn dcommit</em> returnerar omedelbart om svaret är "nej" eller "avsluta", utan att checka-in något till SVN.</p>
+<p><em>git svn dcommit</em> returnerar omedelbart om svaret är "nej" eller "avsluta", utan att checka in något till SVN.</p>
 </div>
 </dd>
 </dl>
@@ -327,39 +327,39 @@ konfigurationsnyckel: svn.commiturl (skriver över alla svn-remote.&lt;namn&gt;.
 </dd>
 <dt class="hdlist1" id="git-svn-embranchem"> <a class="anchor" href="#git-svn-branch"></a> <a class="anchor" href="#git-svn-embranchem"></a><em>branch</em> </dt>
 <dd>
-<p>Skapa en gren i SVN-förvaret.</p>
+<p>Skapa en gren i SVN-kodförrådet.</p>
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-svn--m"> <a class="anchor" href="#git-svn--m"></a>-m </dt>
 <dt class="hdlist1" id="git-svn---message"> <a class="anchor" href="#git-svn---message"></a>--message </dt>
 <dd>
-<p>Tillåter att ange inchecknings-meddelandet.</p>
+<p>Tillåter att ange incheckningsmeddelandet.</p>
 </dd>
 <dt class="hdlist1" id="git-svn--t"> <a class="anchor" href="#git-svn--t"></a>-t </dt>
 <dt class="hdlist1" id="git-svn---tag"> <a class="anchor" href="#git-svn---tag"></a>--tag </dt>
 <dd>
-<p>Skapa en tagg genom att använda tags_subdir istället för branches_subdir som angavs under git svn init.</p>
+<p>Skapa en tagg genom att använda tags_subdir i stället för branches_subdir som angavs under git svn init.</p>
 </dd>
 <dt class="hdlist1" id="git-svn--dltskvggt"> <a class="anchor" href="#git-svn--dskvg"></a> <a class="anchor" href="#git-svn--dltskvggt"></a>-d&lt;sökväg&gt; </dt>
 <dt class="hdlist1" id="git-svn---destinationltskvggt"> <a class="anchor" href="#git-svn---destinationskvg"></a> <a class="anchor" href="#git-svn---destinationltskvggt"></a>--destination=&lt;sökväg&gt; </dt>
 <dd>
-<p>Om fler än ett --branches (eller --tags)-alternativ har angetts för kommandot <em>init</em> eller <em>clone</em> måste du ange platsen för den gren (eller tagg) du vill skapa i SVN-förvaret. &lt;sökväg&gt; anger vilken sökväg som ska användas för att skapa grenen eller taggen och ska matcha mönstret till vänster om en av de konfigurerade grenarnas eller taggarnas refspecs. Du kan se dessa refspecs med kommandona</p>
+<p>Om fler än ett --branches (eller --tags)-alternativ har angetts för kommandot <em>init</em> eller <em>clone</em> måste du ange platsen för den gren (eller tagg) du vill skapa i SVN-kodförrådet. &lt;sökväg&gt; anger vilken sökväg som ska användas för att skapa grenen eller taggen och ska matcha mönstret till vänster om en av de konfigurerade grenarnas eller taggarnas refspecs. Du kan se dessa refspecs med kommandona</p>
 <div class="literalblock">
 <div class="content">
 <pre>git config --get-all svn-remote.&lt;namn&gt;.branches git config --get-all svn-remote.&lt;namn&gt;.tags</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>där &lt;namn&gt; är namnet på SVN-arkivet som anges av -R-alternativet till <em>init</em> (eller "svn" som standard).</p>
+<p>där &lt;namn&gt; är namnet på SVN-kodförrådet som anges av -R-alternativet till <em>init</em> (eller "svn" som standard).</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-svn---username"> <a class="anchor" href="#git-svn---username"></a>--username </dt>
 <dd>
-<p>Ange SVN-användarnamnet som incheckning ska utföras som. Det här alternativet åsidosätter konfigurationsegenskapen <em>användarnamn</em>.</p>
+<p>Ange SVN-användarnamnet som incheckningen ska utföras som. Det här alternativet åsidosätter konfigurationsegenskapen <em>username</em>.</p>
 </dd>
 <dt class="hdlist1" id="git-svn---commit-url"> <a class="anchor" href="#git-svn---commit-url"></a>--commit-url </dt>
 <dd>
-<p>Använd den angivna URL:en för att ansluta till Subversion-målfövaret. Detta är användbart i fall där käll-SVN-förvaret är skrivskyddat. Det här alternativet åsidosätter konfigurationsegenskapen <em>commiturl</em>.</p>
+<p>Använd den angivna URL:en för att ansluta till Subversion-målkodförrådet. Detta är användbart när käll-SVN-kodförrådet är skrivskyddat. Det här alternativet åsidosätter konfigurationsegenskapen <em>commiturl</em>.</p>
 <div class="literalblock">
 <div class="content">
 <pre>git config --get-all svn-remote.&lt;namn&gt;.commiturl</pre>
@@ -368,18 +368,18 @@ konfigurationsnyckel: svn.commiturl (skriver över alla svn-remote.&lt;namn&gt;.
 </dd>
 <dt class="hdlist1" id="git-svn---parents"> <a class="anchor" href="#git-svn---parents"></a>--parents </dt>
 <dd>
-<p>Skapa överordnade mappar. Den här parametern motsvarar parametern --parents på svn cp-kommandon och är användbar för icke-standardiserade förvars-layouter.</p>
+<p>Skapa överordnade mappar. Den här parametern motsvarar parametern --parents på svn cp-kommandon och är användbar för icke-standardiserade kodförråds-layouter.</p>
 </dd>
 </dl>
 </div>
 </dd>
 <dt class="hdlist1" id="git-svn-emtagem"> <a class="anchor" href="#git-svn-tag"></a> <a class="anchor" href="#git-svn-emtagem"></a><em>tag</em> </dt>
 <dd>
-<p>Skapa en tagg i SVN-förvaret. Detta är en förkortning för <em>branch -t</em>.</p>
+<p>Skapa en tagg i SVN-kodförrådet. Detta är en förkortning för <em>branch -t</em>.</p>
 </dd>
 <dt class="hdlist1" id="git-svn-emlogem"> <a class="anchor" href="#git-svn-log"></a> <a class="anchor" href="#git-svn-emlogem"></a><em>log</em> </dt>
 <dd>
-<p>Detta borde göra det enkelt att slå upp svn-loggmeddelanden när svn-användare hänvisar till -r/--revisionsnummer.</p>
+<p>Det här borde göra det enkelt att slå upp svn-loggmeddelanden när svn-användare hänvisar till -r/--revisionsnummer.</p>
 <div class="paragraph">
 <p>Följande funktioner från &#8216;svn log&#8217; stöds:</p>
 </div>
@@ -418,7 +418,7 @@ konfigurationsnyckel: svn.commiturl (skriver över alla svn-remote.&lt;namn&gt;.
 <dl>
 <dt class="hdlist1" id="git-svn---show-commit"> <a class="anchor" href="#git-svn---show-commit"></a>--show-commit </dt>
 <dd>
-<p>visar även Git incheckning sha1</p>
+<p>visar även Git-incheckningens sha1</p>
 </dd>
 <dt class="hdlist1" id="git-svn---oneline"> <a class="anchor" href="#git-svn---oneline"></a>--oneline </dt>
 <dd>
@@ -446,41 +446,41 @@ SVN lagrar bara tider i UTC och inget annat. Den vanliga svn-klienten konvertera
 </dd>
 <dt class="hdlist1" id="git-svn-emblameem"> <a class="anchor" href="#git-svn-blame"></a> <a class="anchor" href="#git-svn-emblameem"></a><em>blame</em> </dt>
 <dd>
-<p>Visa vilken version och författare som senast ändrade varje rad i en fil. Utdata från detta läge är som standard formatkompatibel med utdata från &#8216;svn blame&#8217;. Precis som med SVN blame-kommandot ignoreras lokala, obekräftade ändringar i arbetskatalogen; versionen av filen i HEAD-versionen antecknas. Okända argument skickas direkt till <em>git blame</em>.</p>
+<p>Visa vilken revision och författare som senast ändrade varje rad i en fil. Utdata i detta läge är som standard formatkompatibel med utdata från <span class='synopsis'><code>svn</code> <code>blame</code></span>. Precis som i SVN-kommandot <span class='synopsis'><code>blame</code></span> ignoreras lokala oincheckade ändringar i arbetsträdet; versionen av filen i HEAD-revisionen annoteras. Okända argument skickas direkt till <em>git blame</em>.</p>
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-svn---git-format"> <a class="anchor" href="#git-svn---git-format"></a>--git-format </dt>
 <dd>
-<p>Producera utdata i samma format som <em>git blame</em>, men med SVN-revisionsnummer istället för Git inchecknings-hashar. I det här läget visas ändringar som inte har incheckats till SVN (inklusive lokala redigeringar av arbetskopior) som revision 0.</p>
+<p>Producera utdata i samma format som <em>git blame</em>, men med SVN-revisionsnummer i stället för Git-incheckningshashar. I det här läget visas ändringar som inte har checkats in till SVN (inklusive lokala redigeringar i arbetskopian) som revision 0.</p>
 </dd>
 </dl>
 </div>
 </dd>
 <dt class="hdlist1" id="git-svn-emfind-revem"> <a class="anchor" href="#git-svn-find-rev"></a> <a class="anchor" href="#git-svn-emfind-revem"></a><em>find-rev</em> </dt>
 <dd>
-<p>När ett SVN-revisionsnummer av formen <em>rN</em> ges, returneras motsvarande Git inchecknings-hash (detta kan valfritt följas av ett träd-liknande tecken för att ange vilken gren som ska genomsökas). När ett träd-liknande tecken ges, returneras motsvarande SVN-revisionsnummer.</p>
+<p>När ett SVN-revisionsnummer av formen <em>rN</em> anges returneras motsvarande Git-incheckningshash (detta kan valfritt följas av en tree-ish för att ange vilken gren som ska genomsökas). När en tree-ish anges returneras motsvarande SVN-revisionsnummer.</p>
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-svn--B"> <a class="anchor" href="#git-svn--B"></a>-B </dt>
 <dt class="hdlist1" id="git-svn---before"> <a class="anchor" href="#git-svn---before"></a>--before </dt>
 <dd>
-<p>Kräv inte en exakt matchning om det ges en SVN-revision, hitta istället den incheckning som motsvarar tillståndet för SVN-repositoriet (på den aktuella grenen) vid den angivna revisionen.</p>
+<p>Kräv inte en exakt matchning om en SVN-revision anges, utan hitta i stället den incheckning som motsvarar tillståndet i SVN-kodförrådet (på aktuell gren) vid den angivna revisionen.</p>
 </dd>
 <dt class="hdlist1" id="git-svn--A"> <a class="anchor" href="#git-svn--A"></a>-A </dt>
 <dt class="hdlist1" id="git-svn---after"> <a class="anchor" href="#git-svn---after"></a>--after </dt>
 <dd>
-<p>Kräv inte en exakt matchning om det ges en SVN-revision; om det inte finns en exakt matchning returnera den närmaste matchningen vid sökning framåt i historiken.</p>
+<p>Kräv inte en exakt matchning om en SVN-revision anges; om ingen exakt matchning finns, returnera den närmaste matchningen vid sökning framåt i historiken.</p>
 </dd>
 </dl>
 </div>
 </dd>
 <dt class="hdlist1" id="git-svn-emset-treeem"> <a class="anchor" href="#git-svn-set-tree"></a> <a class="anchor" href="#git-svn-emset-treeem"></a><em>set-tree</em> </dt>
 <dd>
-<p>Du bör överväga att använda <em>dcommit</em> istället för det här kommandot. Kommit angivna incheckning- eller trädobjekt till SVN. Detta kräver att dina importerade hämtningsdata är uppdaterade. Detta gör absolut inga försök att göra patchar vid incheckning till SVN, det skriver helt enkelt över filer med de som anges i trädet eller incheckningen. All sammanslagning antas ha skett oberoende av <em>git svn</em>-funktioner.</p>
+<p>Du bör överväga att använda <em>dcommit</em> i stället för detta kommando. Checka in angivna inchecknings- eller trädobjekt till SVN. Detta förutsätter att importerade hämtningsdata är uppdaterade. Kommandot försöker inte alls patcha vid incheckning till SVN, utan skriver helt enkelt över filer med dem som anges i trädet eller incheckningen. All sammanslagning antas ha skett oberoende av <em>git svn</em>-funktionerna.</p>
 </dd>
 <dt class="hdlist1" id="git-svn-emcreate-ignoreem"> <a class="anchor" href="#git-svn-create-ignore"></a> <a class="anchor" href="#git-svn-emcreate-ignoreem"></a><em>create-ignore</em> </dt>
 <dd>
-<p>Hittar rekursivt egenskaperna svn:ignore och svn:global-ignores i kataloger och skapar matchande .gitignore-filer. De resulterande filerna köade för att checkas-in, men är inte incheckade. Använd -r/--revision för att referera till en specifik revision.</p>
+<p>Hittar rekursivt egenskaperna svn:ignore och svn:global-ignores i kataloger och skapar matchande .gitignore-filer. De resulterande filerna köas för incheckning, men checkas inte in. Använd -r/--revision för att referera till en specifik revision.</p>
 </dd>
 <dt class="hdlist1" id="git-svn-emshow-ignoreem"> <a class="anchor" href="#git-svn-show-ignore"></a> <a class="anchor" href="#git-svn-emshow-ignoreem"></a><em>show-ignore</em> </dt>
 <dd>
@@ -492,21 +492,21 @@ SVN lagrar bara tider i UTC och inget annat. Den vanliga svn-klienten konvertera
 </dd>
 <dt class="hdlist1" id="git-svn-emcommit-diffem"> <a class="anchor" href="#git-svn-commit-diff"></a> <a class="anchor" href="#git-svn-emcommit-diffem"></a><em>commit-diff</em> </dt>
 <dd>
-<p>Bekräftar skillnaden mellan två träd-igta argument från kommandoraden. Detta kommando förlitar sig inte på att finnas inuti ett <span class='synopsis'><code>git</code> <code>svn</code> <code>init</code></span>-redigerat förvar. Detta kommando tar tre argument, (a) det ursprungliga trädet att differa mot, (b) det nya trädresultatet, (c) URL:en till Subversion-målförvaret. Det sista argumentet (URL:en) kan utelämnas om du arbetar från ett <em>git svn</em>-medvetet förvar (som har <span class='synopsis'><code>initierats</code></span> med <em>git svn</em>). Alternativet -r<span class="hover-term" data-term="revision">&lt;revision&gt;</span> krävs för detta.</p>
+<p>Checkar in diffen mellan två tree-ish-argument från kommandoraden. Kommandot kräver inte att du befinner dig i ett kodförråd som har <span class='synopsis'><code>git</code> <code>svn</code> <code>init</code></span>-ierats. Kommandot tar tre argument: (a) originalträdet att diffa mot, (b) resultatet i det nya trädet, (c) URL:en till Subversion-målkodförrådet. Det sista argumentet (URL:en) kan utelämnas om du arbetar från ett <em>git svn</em>-medvetet kodförråd (som har initierats med <em>git svn</em>). Alternativet -r<span class="hover-term" data-term="revision">&lt;revision&gt;</span> krävs för detta.</p>
 <div class="paragraph">
-<p>Inchecknings-meddelandet levereras antingen direkt med alternativet <span class='synopsis'><code>-m</code></span> eller <span class='synopsis'><code>-F</code></span>, eller indirekt från taggen eller incheckning när den andra träd-igt betecknar ett sådant objekt, eller så begärs det genom att anropa en editor (se alternativet <span class='synopsis'><code>--edit</code></span> nedan).</p>
+<p>Incheckningsmeddelandet anges antingen direkt med <span class='synopsis'><code>-m</code></span> eller <span class='synopsis'><code>-F</code></span>, eller indirekt från taggen eller incheckningen när den andra tree-ish betecknar ett sådant objekt, eller så begärs det genom att en redigerare startas (se <span class='synopsis'><code>--edit</code></span> nedan).</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-svn--mltmeddgt"> <a class="anchor" href="#git-svn--mmedd"></a> <a class="anchor" href="#git-svn--mltmeddgt"></a>-m &lt;medd&gt; </dt>
 <dt class="hdlist1" id="git-svn---messageltmeddgt"> <a class="anchor" href="#git-svn---messagemedd"></a> <a class="anchor" href="#git-svn---messageltmeddgt"></a>--message=&lt;medd&gt; </dt>
 <dd>
-<p>Använd det givna <span class='synopsis'><code>medd</code></span> som inchecknings-meddelande. Det här alternativet inaktiverar alternativet <span class='synopsis'><code>--edit</code></span>.</p>
+<p>Använd det givna <span class='synopsis'><code>medd</code></span> som incheckningsmeddelande. Detta alternativ inaktiverar <span class='synopsis'><code>--edit</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-svn--Fltfilnamngt"> <a class="anchor" href="#git-svn--Ffilnamn"></a> <a class="anchor" href="#git-svn--Fltfilnamngt"></a>-F &lt;filnamn&gt; </dt>
 <dt class="hdlist1" id="git-svn---fileltfilnamngt"> <a class="anchor" href="#git-svn---filefilnamn"></a> <a class="anchor" href="#git-svn---fileltfilnamngt"></a>--file=&lt;filnamn&gt; </dt>
 <dd>
-<p>Hämta inchecknings-meddelandet från den givna filen. Det här alternativet inaktiverar alternativet <span class='synopsis'><code>--edit</code></span>.</p>
+<p>Ta incheckningsmeddelandet från den angivna filen. Detta alternativ inaktiverar <span class='synopsis'><code>--edit</code></span>.</p>
 </dd>
 </dl>
 </div>
@@ -517,7 +517,7 @@ SVN lagrar bara tider i UTC och inget annat. Den vanliga svn-klienten konvertera
 </dd>
 <dt class="hdlist1" id="git-svn-emproplistem"> <a class="anchor" href="#git-svn-proplist"></a> <a class="anchor" href="#git-svn-emproplistem"></a><em>proplist</em> </dt>
 <dd>
-<p>Listar egenskaperna som lagras i Subversion-förvaret för en given fil eller katalog. Använd -r/--revision för att referera till en specifik Subversion-revision.</p>
+<p>Listar egenskaperna som lagras i Subversion-kodförrådet för en given fil eller katalog. Använd -r/--revision för att referera till en specifik Subversion-revision.</p>
 </dd>
 <dt class="hdlist1" id="git-svn-empropgetem"> <a class="anchor" href="#git-svn-propget"></a> <a class="anchor" href="#git-svn-empropgetem"></a><em>propget</em> </dt>
 <dd>
@@ -535,7 +535,7 @@ SVN lagrar bara tider i UTC och inget annat. Den vanliga svn-klienten konvertera
 </div>
 </div>
 <div class="paragraph">
-<p>Detta kommer att ställa in egenskapen <em>svn:keywords</em> till <em>FreeBSD=%H</em> för filen <em>devel/py-tipper/Makefile</em>.</p>
+<p>Det här kommer att ställa in egenskapen <em>svn:keywords</em> till <em>FreeBSD=%H</em> för filen <em>devel/py-tipper/Makefile</em>.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-svn-emshow-externalsem"> <a class="anchor" href="#git-svn-show-externals"></a> <a class="anchor" href="#git-svn-emshow-externalsem"></a><em>show-externals</em> </dt>
@@ -548,7 +548,7 @@ SVN lagrar bara tider i UTC och inget annat. Den vanliga svn-klienten konvertera
 </dd>
 <dt class="hdlist1" id="git-svn-emresetem"> <a class="anchor" href="#git-svn-reset"></a> <a class="anchor" href="#git-svn-emresetem"></a><em>reset</em> </dt>
 <dd>
-<p>Ångrar effekterna av <em>fetch</em> (hämta) tillbaka till den angivna revisionen. Detta låter dig åter-<em>fetch</em> en SVN-revision. Normalt sett bör innehållet i en SVN-revision aldrig ändras och <em>återställ</em> bör inte vara nödvändigt. Men om SVN-behörigheter ändras, eller om du ändrar alternativet --ignore-paths, kan en <em>hämtning</em> misslyckas med "hittades inte i incheckning" (filen var inte synlig tidigare) eller "checksumma missmatchning" (en ändring missades). Om problemfilen inte kan ignoreras för alltid (med --ignore-paths) är det enda sättet att reparera repo att använda <em>återställ</em>.</p>
+<p>Ångrar effekterna av <em>fetch</em> (hämta) tillbaka till den angivna revisionen. Detta låter dig åter-<em>fetch</em> en SVN-revision. Normalt sett bör innehållet i en SVN-revision aldrig ändras och <em>återställ</em> bör inte vara nödvändigt. Men om SVN-behörigheter ändras, eller om du ändrar alternativet --ignore-paths, kan en <em>hämtning</em> misslyckas med "hittades inte i incheckning" (filen var inte synlig tidigare) eller "checksumma missmatchning" (en ändring missades). Om problemfilen inte kan ignoreras för alltid (med --ignore-paths) är det enda sättet att reparera kodförrådet att använda <em>återställ</em>.</p>
 <div class="paragraph">
 <p>Endast rev_map och refs/remotes/git-svn ändras (se <em>$GIT_DIR/svn/**/.rev_map.*</em> i avsnittet FILER nedan för detaljer). Följ <em>reset</em> med en <em>fetch</em> och sedan <em>git reset</em> eller <em>git rebase</em> för att flytta lokala grenar till det nya trädet.</p>
 </div>
@@ -562,7 +562,7 @@ SVN lagrar bara tider i UTC och inget annat. Den vanliga svn-klienten konvertera
 <dt class="hdlist1" id="git-svn--p"> <a class="anchor" href="#git-svn--p"></a>-p </dt>
 <dt class="hdlist1" id="git-svn---parent-1"> <a class="anchor" href="#git-svn---parent-1"></a>--parent </dt>
 <dd>
-<p>Släng även den angivna revisionen och behåll istället den närmaste föräldern.</p>
+<p>Släng även den angivna revisionen och behåll i stället den närmaste föräldern.</p>
 </dd>
 <dt class="hdlist1" id="git-svn-Exempel"> <a class="anchor" href="#git-svn-Exempel"></a>Exempel: </dt>
 <dd>
@@ -624,10 +624,10 @@ git svn fetch</pre>
 <dd>
 <p>Används med <em>fetch</em> kommandot.</p>
 <div class="paragraph">
-<p>Detta möjliggör stöd för revisionsintervall för partiell/kauteriserad historik. $NUMBER, $NUMBER1:$NUMBER2 (numeriska intervall), $NUMBER:HEAD och BASE:$NUMBER stöds alla.</p>
+<p>Det här möjliggör stöd för revisionsintervall för partiell/avkortad historik. $NUMBER, $NUMBER1:$NUMBER2 (numeriska intervall), $NUMBER:HEAD och BASE:$NUMBER stöds alla.</p>
 </div>
 <div class="paragraph">
-<p>Detta kan tillåta dig att skapa partiella speglingar när du kör hämtning; men rekommenderas generellt inte eftersom historiken kommer att hoppas över och förloras.</p>
+<p>Det här kan tillåta dig att skapa partiella speglingar när du kör hämtning; men rekommenderas generellt inte eftersom historiken kommer att hoppas över och förloras.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-svn--"> <a class="anchor" href="#git-svn--"></a>- </dt>
@@ -635,7 +635,7 @@ git svn fetch</pre>
 <dd>
 <p>Används endast med kommandot <em>set-tree</em>.</p>
 <div class="paragraph">
-<p>Läs en lista med incheckningar från stdin och checka-in dem i omvänd ordning. Endast den inledande sha1 läses från varje rad, så utdata från <em>git rev-list --pretty=oneline</em> kan användas.</p>
+<p>Läs en lista med incheckningar från stdin och checka in dem i omvänd ordning. Endast den inledande sha1 läses från varje rad, så utdata från <em>git rev-list --pretty=oneline</em> kan användas.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-svn---rmdir"> <a class="anchor" href="#git-svn---rmdir"></a>--rmdir </dt>
@@ -653,7 +653,7 @@ git svn fetch</pre>
 <dd>
 <p>Används endast med kommandona <em>dcommit</em>, <em>set-tree</em> och <em>commit-diff</em>.</p>
 <div class="paragraph">
-<p>Redigera inchecknings-meddelandet innan det checkas-in till SVN. Detta är avstängt som standard för objekt som är incheckningar och tvingas aktiverat vid incheckning av trädobjekt.</p>
+<p>Redigera incheckningsmeddelandet innan det checkas in till SVN. Detta är avstängt som standard för objekt som är incheckningar och tvingas aktiverat vid incheckning av trädobjekt.</p>
 </div>
 <div class="verseblock">
 <pre class="content">konfigurationsnyckel: svn.edit</pre>
@@ -691,7 +691,7 @@ konfigurationsnyckel: svn.findcopiesharder</pre>
 <dd>
 <p>Om det här alternativet anges, körs filen med incheckare-namnet som första argument för varje SVN-incheckare-namn som inte finns i authors-filen. Programmet förväntas returnera en enda rad av formen "Namn &lt;e-postadress&gt;" eller "Namn &lt;&gt;", vilken kommer att behandlas som om den inkluderades i authors-filen.</p>
 <div class="paragraph">
-<p>Av historiska skäl söks först ett relativt <em>filnamn</em> relativt till den aktuella katalogen för <em>init</em> och <em>clone</em> och relativt till roten av arbetskatalogen för <em>fetch</em>. Om <em>filnamn</em> inte hittas söks det som vilket annat kommando som helst i <em>$PATH</em>.</p>
+<p>Av historiska skäl söks först ett relativt <em>filnamn</em> relativt till den aktuella katalogen för <em>init</em> och <em>clone</em> och relativt till roten av arbetsträdet för <em>fetch</em>. Om <em>filnamn</em> inte hittas söks det som vilket annat kommando som helst i <em>$PATH</em>.</p>
 </div>
 <div class="verseblock">
 <pre class="content">konfigurationsnyckel: svn.authorsProg</pre>
@@ -717,12 +717,12 @@ konfigurationsnyckel: svn.findcopiesharder</pre>
 <dt class="hdlist1" id="git-svn--n"> <a class="anchor" href="#git-svn--n"></a>-n </dt>
 <dt class="hdlist1" id="git-svn---dry-run"> <a class="anchor" href="#git-svn---dry-run"></a>--dry-run </dt>
 <dd>
-<p>Detta kan användas med kommandona <em>dcommit</em>, <em>rebase</em>, <em>branch</em> och <em>tag</em>.</p>
+<p>Det här kan användas med kommandona <em>dcommit</em>, <em>rebase</em>, <em>branch</em> och <em>tag</em>.</p>
 <div class="paragraph">
-<p>För <em>dcommit</em>, skriv ut serien med Git-argument som skulle visa vilka diffs som skulle checkats-in till SVN.</p>
+<p>För <em>dcommit</em>, skriv ut serien med Git-argument som skulle visa vilka diffar som skulle ha checkats in till SVN.</p>
 </div>
 <div class="paragraph">
-<p>För <em>rebase</em>, visa den lokala grenen som är associerad med det uppströms svn-förvaret som är associerat med den aktuella grenen och URL:en för det svn-förvar som ska hämtas från.</p>
+<p>För <em>rebase</em>, visa den lokala grenen som är associerad med det uppströms svn-kodförrådet som är associerat med den aktuella grenen och URL:en för det svn-kodförråd som ska hämtas från.</p>
 </div>
 <div class="paragraph">
 <p>För <em>branch</em> och <em>tag</em>, visa de webbadresser som ska användas för kopiering när grenen eller taggen skapas.</p>
@@ -730,14 +730,14 @@ konfigurationsnyckel: svn.findcopiesharder</pre>
 </dd>
 <dt class="hdlist1" id="git-svn---use-log-author"> <a class="anchor" href="#git-svn---use-log-author"></a>--use-log-author </dt>
 <dd>
-<p>När du hämtar svn-incheckningar till Git (som en del av operationerna <em>fetch</em>, <em>rebase</em> eller <em>dcommit</em>), leta efter den första <span class='synopsis'><code>From:</code></span>-raden eller <span class='synopsis'><code>Signed-off-by</code></span>-trailern i loggmeddelandet och använd den som författarsträng.</p>
+<p>När du hämtar svn-incheckningar till Git (som en del av operationerna <em>fetch</em>, <em>rebase</em> eller <em>dcommit</em>), leta efter den första <span class='synopsis'><code>From:</code></span>-raden eller <span class='synopsis'><code>Signed-off-by</code></span>-slutraden i loggmeddelandet och använd den som författarsträng.</p>
 <div class="verseblock">
 <pre class="content">konfigurationsnyckel: svn.useLogAuthor</pre>
 </div>
 </dd>
 <dt class="hdlist1" id="git-svn---add-author-from"> <a class="anchor" href="#git-svn---add-author-from"></a>--add-author-from </dt>
 <dd>
-<p>När du checkar-in till svn från Git (som en del av <em>set-tree</em>- eller <em>dcommit</em>-operationer), och om det befintliga loggmeddelandet inte redan har en <span class='synopsis'><code>From:</code></span>- eller <span class='synopsis'><code>Signed-off-by</code></span>-trailer, lägg till en <span class='synopsis'><code>From:</code></span>-rad baserat på Git-incheckningens författarsträng. Om du använder detta kommer <span class='synopsis'><code>--use-log-author</code></span> att hämta en giltig författarsträng för alla incheckningar.</p>
+<p>När du checkar in till svn från Git (som en del av <em>set-tree</em>- eller <em>dcommit</em>-operationer), och om det befintliga loggmeddelandet inte redan har en <span class='synopsis'><code>From:</code></span>- eller <span class='synopsis'><code>Signed-off-by</code></span>-slutrad, lägg till en <span class='synopsis'><code>From:</code></span>-rad baserat på Git-incheckningens författarsträng. Om du använder detta kommer <span class='synopsis'><code>--use-log-author</code></span> att hämta en giltig författarsträng för alla incheckningar.</p>
 <div class="verseblock">
 <pre class="content">konfigurationsnyckel: svn.addAuthorFrom</pre>
 </div>
@@ -754,16 +754,16 @@ konfigurationsnyckel: svn.findcopiesharder</pre>
 <dt class="hdlist1" id="git-svn--iltGITSVNIDgt"> <a class="anchor" href="#git-svn--iGITSVNID"></a> <a class="anchor" href="#git-svn--iltGITSVNIDgt"></a>-i&lt;GIT_SVN_ID&gt; </dt>
 <dt class="hdlist1" id="git-svn---idltGITSVNIDgt"> <a class="anchor" href="#git-svn---idGITSVNID"></a> <a class="anchor" href="#git-svn---idltGITSVNIDgt"></a>--id &lt;GIT_SVN_ID&gt; </dt>
 <dd>
-<p>Detta ställer in GIT_SVN_ID (istället för att använda miljön). Detta gör det möjligt för användaren att åsidosätta standardreferensnamnet som hämtas från när en enskild URL spåras. Kommandona <em>log</em> och <em>dcommit</em> kräver inte längre denna växel som argument.</p>
+<p>Det här ställer in GIT_SVN_ID (i stället för att använda miljön). Detta gör det möjligt för användaren att åsidosätta standardreferensnamnet som hämtas från när en enskild URL spåras. Kommandona <em>log</em> och <em>dcommit</em> kräver inte längre denna växel som argument.</p>
 </dd>
 <dt class="hdlist1" id="git-svn--Rltfjrr-namngt"> <a class="anchor" href="#git-svn--Rfjrr-namn"></a> <a class="anchor" href="#git-svn--Rltfjrr-namngt"></a>-R&lt;fjärr-namn&gt; </dt>
 <dt class="hdlist1" id="git-svn---svn-remoteltfjrr-namngt"> <a class="anchor" href="#git-svn---svn-remotefjrr-namn"></a> <a class="anchor" href="#git-svn---svn-remoteltfjrr-namngt"></a>--svn-remote &lt;fjärr-namn&gt; </dt>
 <dd>
-<p>Ange avsnittet [svn-remote "&lt;fjärr-namn&gt;"] som ska användas, detta gör att flera SVN-arkiv kan spåras. Standard: "svn"</p>
+<p>Ange avsnittet [svn-remote "&lt;fjärr-namn&gt;"] som ska användas; detta gör att flera SVN-kodförråd kan spåras. Standard: "svn"</p>
 </dd>
 <dt class="hdlist1" id="git-svn---follow-parent"> <a class="anchor" href="#git-svn---follow-parent"></a>--follow-parent </dt>
 <dd>
-<p>Det här alternativet är endast relevant om vi spårar grenar (med hjälp av ett av layoutflaggor för förvar --trunk, --tags, --branches, --stdlayout). För varje spårad gren, försök att ta reda på var dess version kopierades ifrån och ange en lämplig förälder i den första Git-incheckningen för grenen. Detta är särskilt användbart när vi spårar en katalog som har flyttats runt inom förvaret. Om den här funktionen är inaktiverad kommer grenarna som skapats av <em>git svn</em> alla att vara linjära och inte dela någon historik, vilket innebär att det inte kommer att finnas någon information om var grenar förgrenades eller slogs samman. Att följa långa/komplicerade historiker kan dock ta lång tid, så att inaktivera den här funktionen kan påskynda kloningsprocessen. Den här funktionen är aktiverad som standard, använd --no-follow-parent för att inaktivera den.</p>
+<p>Det här alternativet är endast relevant om vi spårar grenar (med hjälp av ett av layoutflaggor för kodförråd --trunk, --tags, --branches, --stdlayout). För varje spårad gren, försök att ta reda på var dess version kopierades ifrån och ange en lämplig förälder i den första Git-incheckningen för grenen. Detta är särskilt användbart när vi spårar en katalog som har flyttats runt inom kodförrådet. Om den här funktionen är inaktiverad kommer grenarna som skapats av <em>git svn</em> alla att vara linjära och inte dela någon historik, vilket innebär att det inte kommer att finnas någon information om var grenar förgrenades eller slogs samman. Att följa långa/komplicerade historiker kan dock ta lång tid, så att inaktivera den här funktionen kan påskynda kloningsprocessen. Den här funktionen är aktiverad som standard, använd --no-follow-parent för att inaktivera den.</p>
 <div class="verseblock">
 <pre class="content">konfigurationsnyckel: svn.followparent</pre>
 </div>
@@ -773,30 +773,30 @@ konfigurationsnyckel: svn.findcopiesharder</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_config_file_only_options"><a class="anchor" href="#_config_file_only_options"></a>CONFIG FILE-ONLY OPTIONS</h2>
+<h2 id="_alternativ_endast_för_konfigurationsfil"><a class="anchor" href="#_alternativ_endast_för_konfigurationsfil"></a>ALTERNATIV ENDAST FÖR KONFIGURATIONSFIL</h2>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-svn-svnnoMetadata"> <a class="anchor" href="#git-svn-svnnoMetadata"></a>svn.noMetadata </dt>
 <dt class="hdlist1" id="git-svn-svn-remoteltnamngtnoMetadata"> <a class="anchor" href="#git-svn-svn-remotenamnnoMetadata"></a> <a class="anchor" href="#git-svn-svn-remoteltnamngtnoMetadata"></a>svn-remote.&lt;namn&gt;.noMetadata </dt>
 <dd>
-<p>Detta tar bort raderna <em>git-svn-id:</em> i slutet av varje incheckning.</p>
+<p>Det här tar bort raderna <em>git-svn-id:</em> i slutet av varje incheckning.</p>
 <div class="paragraph">
 <p>Det här alternativet kan bara användas för engångsimporter eftersom <em>git svn</em> inte kommer att kunna hämtas igen utan metadata. Om du dessutom förlorar dina <em>$GIT_DIR/svn/**/.rev_map.*</em>-filer kommer <em>git svn</em> inte att kunna återskapa dem.</p>
 </div>
 <div class="paragraph">
-<p>Kommandot <em>git svn log</em> fungerar inte heller på förvar som använder detta. Att använda detta konflikt med alternativet <em>useSvmProps</em> av (förhoppningsvis) uppenbara skäl.</p>
+<p>Kommandot <em>git svn log</em> fungerar inte heller på kodförråd som använder detta. Att använda detta står i konflikt med alternativet <em>useSvmProps</em> av (förhoppningsvis) uppenbara skäl.</p>
 </div>
 <div class="paragraph">
-<p>Det här alternativet rekommenderas INTE eftersom det gör det svårt att spåra gamla referenser till SVN-revisionsnummer i befintlig dokumentation, felrapporter och arkiv. Om du planerar att så småningom migrera från SVN till Git och är säker på att ta bort SVN-historiken, överväg <a href="https://github.com/newren/git-filter-repo">git-filter-repo</a> istället. filter-repo tillåter också omformatering av metadata för att underlätta läsning och omskrivning av författarskapsinformation för användare som inte har "svn.authorsFile".</p>
+<p>Det här alternativet rekommenderas INTE eftersom det försvårar spårning av äldre referenser till SVN-revisionsnummer i befintlig dokumentation, felrapporter och arkiv. Om du planerar att så småningom migrera från SVN till Git och är säker på att du kan släppa SVN-historiken, överväg i stället <a href="https://github.com/newren/git-filter-repo">git-filter-repo</a>. filter-repo kan också formatera om metadata för bättre läsbarhet och skriva om författarinformation för användare som inte använder "svn.authorsFile".</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-svn-svnuseSvmProps"> <a class="anchor" href="#git-svn-svnuseSvmProps"></a>svn.useSvmProps </dt>
 <dt class="hdlist1" id="git-svn-svn-remoteltnamngtuseSvmProps"> <a class="anchor" href="#git-svn-svn-remotenamnuseSvmProps"></a> <a class="anchor" href="#git-svn-svn-remoteltnamngtuseSvmProps"></a>svn-remote.&lt;namn&gt;.useSvmProps </dt>
 <dd>
-<p>Detta gör det möjligt för <em>git svn</em> att ommappa förvarets URL:er och UUID:er från speglar skapade med SVN::Mirror (eller svk) för metadata.</p>
+<p>Det här gör det möjligt för <em>git svn</em> att ommappa kodförrådets URL:er och UUID:er från speglar skapade med SVN::Mirror (eller svk) för metadata.</p>
 <div class="paragraph">
-<p>Om en SVN-revision har egenskapen "svm:headrev" är det troligt att revisionen skapades av SVN::Mirror (som även används av SVK). Egenskapen innehåller ett UUID för arkivet och en revision. Vi vill att det ska se ut som att vi speglar den ursprungliga URL:en, så vi introducerar en hjälpfunktion som returnerar den ursprungliga identitets-URL:en och UUID:t, och använder den när vi genererar metadata i inchecknings-meddelanden.</p>
+<p>Om en SVN-revision har egenskapen "svm:headrev" är det troligt att revisionen skapades av SVN::Mirror (som även används av SVK). Egenskapen innehåller ett UUID för kodförrådet och en revision. Vi vill att det ska se ut som att vi speglar den ursprungliga URL:en, så vi introducerar en hjälpfunktion som returnerar den ursprungliga identitets-URL:en och UUID:t, och använder den när vi genererar metadata i incheckningsmeddelanden.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-svn-svnuseSvnsyncProps"> <a class="anchor" href="#git-svn-svnuseSvnsyncProps"></a>svn.useSvnsyncProps </dt>
@@ -806,7 +806,7 @@ konfigurationsnyckel: svn.findcopiesharder</pre>
 </dd>
 <dt class="hdlist1" id="git-svn-svn-remoteltnamngtrewriteRoot"> <a class="anchor" href="#git-svn-svn-remotenamnrewriteRoot"></a> <a class="anchor" href="#git-svn-svn-remoteltnamngtrewriteRoot"></a>svn-remote.&lt;namn&gt;.rewriteRoot </dt>
 <dd>
-<p>Detta gör det möjligt för användare att skapa förvar från alternativa URL:er. Till exempel kan en administratör köra <em>git svn</em> lokalt på servern (åtkomst via file://) men vilja distribuera förvaret med en offentlig <a href="http://-" class="bare">http://-</a> eller svn://-URL i metadata så att användarna ser den offentliga URL:en.</p>
+<p>Det här gör det möjligt för användare att skapa kodförråd från alternativa URL:er. Till exempel kan en administratör köra <em>git svn</em> lokalt på servern (åtkomst via file://) men vilja distribuera kodförrådet med en offentlig <a href="http://-" class="bare">http://-</a> eller svn://-URL i metadata så att användarna ser den offentliga URL:en.</p>
 </dd>
 <dt class="hdlist1" id="git-svn-svn-remoteltnamngtrewriteUUID"> <a class="anchor" href="#git-svn-svn-remotenamnrewriteUUID"></a> <a class="anchor" href="#git-svn-svn-remoteltnamngtrewriteUUID"></a>svn-remote.&lt;namn&gt;.rewriteUUID </dt>
 <dd>
@@ -814,19 +814,19 @@ konfigurationsnyckel: svn.findcopiesharder</pre>
 </dd>
 <dt class="hdlist1" id="git-svn-svn-remoteltnamngtpushurl"> <a class="anchor" href="#git-svn-svn-remotenamnpushurl"></a> <a class="anchor" href="#git-svn-svn-remoteltnamngtpushurl"></a>svn-remote.&lt;namn&gt;.pushurl </dt>
 <dd>
-<p>I likhet med Gits <span class='synopsis'><code>remote.</code><em>&lt;namn&gt;</em><code>.pushurl</code></span> är denna nyckel utformad för att användas i fall där <em>url</em> pekar till ett SVN-förvar via en skrivskyddad transport, för att tillhandahålla en alternativ läs-/skrivtransport. Det antas att båda nycklarna pekar till samma förvar. Till skillnad från <em>commiturl</em> är <em>pushurl</em> en bassökväg. Om antingen <em>commiturl</em> eller <em>pushurl</em> kan användas, har <em>commiturl</em> företräde.</p>
+<p>I likhet med Gits <span class='synopsis'><code>remote.</code><em>&lt;namn&gt;</em><code>.pushurl</code></span> är denna nyckel utformad för att användas i fall där <em>url</em> pekar till ett SVN-kodförråd via en skrivskyddad transport, för att tillhandahålla en alternativ läs-/skrivtransport. Det antas att båda nycklarna pekar till samma kodförråd. Till skillnad från <em>commiturl</em> är <em>pushurl</em> en bassökväg. Om antingen <em>commiturl</em> eller <em>pushurl</em> kan användas, har <em>commiturl</em> företräde.</p>
 </dd>
 <dt class="hdlist1" id="git-svn-svnbrokenSymlinkWorkaround"> <a class="anchor" href="#git-svn-svnbrokenSymlinkWorkaround"></a>svn.brokenSymlinkWorkaround </dt>
 <dd>
-<p>Detta inaktiverar potentiellt dyra kontroller för att kringgå trasiga symboliska länkar som checkats in i SVN av trasiga klienter. Ställ in det här alternativet till "false" om du spårar ett SVN-arkiv med många tomma blobbar som inte är symboliska länkar. Det här alternativet kan ändras medan <em>git svn</em> körs och träda i kraft vid nästa hämtade version. Om det inte är inställt antar <em>git svn</em> att det här alternativet är "sant".</p>
+<p>Det här inaktiverar potentiellt dyra kontroller för att kringgå trasiga symboliska länkar som checkats in i SVN av trasiga klienter. Ställ in det här alternativet till "false" om du spårar ett SVN-kodförråd med många tomma blobbar som inte är symboliska länkar. Det här alternativet kan ändras medan <em>git svn</em> körs och träda i kraft vid nästa hämtade version. Om det inte är inställt antar <em>git svn</em> att det här alternativet är "sant".</p>
 </dd>
 <dt class="hdlist1" id="git-svn-svnpathnameencoding"> <a class="anchor" href="#git-svn-svnpathnameencoding"></a>svn.pathnameencoding </dt>
 <dd>
-<p>Detta instruerar git svn att omkoda sökvägar till en given kodning. Det kan användas av Windows-användare och av de som arbetar i icke-UTF8-språk för att undvika korrupta filnamn med icke-ASCII-tecken. Giltiga kodningar är de som stöds av Perls Encode-modul.</p>
+<p>Det här instruerar git svn att omkoda sökvägar till en given kodning. Det kan användas av Windows-användare och av de som arbetar i icke-UTF8-språk för att undvika korrupta filnamn med icke-ASCII-tecken. Giltiga kodningar är de som stöds av Perls Encode-modul.</p>
 </dd>
 <dt class="hdlist1" id="git-svn-svn-remoteltnamngtautomkdirs"> <a class="anchor" href="#git-svn-svn-remotenamnautomkdirs"></a> <a class="anchor" href="#git-svn-svn-remoteltnamngtautomkdirs"></a>svn-remote.&lt;namn&gt;.automkdirs </dt>
 <dd>
-<p>Normalt sett försöker kommandona "git svn clone" och "git svn rebase" att återskapa tomma kataloger som finns i Subversion-förvaret. Om det här alternativet är satt till "false" kommer tomma kataloger endast att skapas om kommandot "git svn mkdirs" körs explicit. Om det inte är satt antar <em>git svn</em> att det här alternativet är "sant".</p>
+<p>Normalt sett försöker kommandona "git svn clone" och "git svn rebase" att återskapa tomma kataloger som finns i Subversion-kodförrådet. Om det här alternativet är satt till "false" kommer tomma kataloger endast att skapas om kommandot "git svn mkdirs" körs explicit. Om det inte är satt antar <em>git svn</em> att det här alternativet är "sant".</p>
 </dd>
 </dl>
 </div>
@@ -842,36 +842,13 @@ konfigurationsnyckel: svn.findcopiesharder</pre>
 <h2 id="_grundläggande_exempel"><a class="anchor" href="#_grundläggande_exempel"></a>GRUNDLÄGGANDE EXEMPEL</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Spåra och bidra till Spåra och bidra till stam-strukturen (trunk) för ett Subversion-hanterat projekt (ignorera taggar och grenar):</p>
+<p>Spåra och bidra till trunk för ett Subversion-hanterat projekt (ignorerar taggar och grenar):</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># Klona ett repo (som git clone):
-	git svn clone http://svn.example.com/project/trunk
-# Ange den nyligen klonade katalogen:
-	cd trunk
-# Du bör vara på master branch, dubbelkolla med 'git branch'
-	git branch
-# Gör lite arbete och incheckning lokalt till Git:
-	git commit ...
-# Något är incheckat till SVN, ombasera dina lokala ändringar mot de
-# senaste ändringarna i SVN:
-	git svn rebase
-# Checka nu in dina ändringar (som tidigare incheckning med Git) till SVN,
-# samt uppdatera automatiskt din fungerande HEAD:
-	git svn dcommit
-# Lägg till svn:ignore och svn:global-ignores inställningar till standard Git exclude-filen:
-	git svn show-ignore &gt;&gt; .git/info/exclude</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Spåra och bidra till ett helt Subversion-hanterat projekt (komplett med en trunk, taggar och grenar):</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre># Klona ett förvar med standard SVN-kataloglayout (som git clone):
+<pre># Klona ett kodförråd med standard SVN-kataloglayout (som git clone):
 	git svn clone http://svn.example.com/project --stdlayout --prefix svn/
-# Eller, om förvaret använder en icke-standardiserad kataloglayout:
+# Eller, om kodförrådet använder en icke-standardiserad kataloglayout:
 	git svn clone http://svn.example.com/project -T tr -b branch -t tag --prefix svn/
 # Visa alla grenar och taggar du har klonat:
 	git branch -r
@@ -885,7 +862,27 @@ konfigurationsnyckel: svn.findcopiesharder</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Den initiala <em>git svn clone</em> kan vara ganska tidskrävande (särskilt för stora Subversion-förvar). Om flera personer (eller en person med flera maskiner) vill använda <em>git svn</em> för att interagera med samma Subversion-förvar, kan du göra den initiala <em>git svn clone</em> till ett förvar på en server och låta varje person klona det förvar med <em>git clone</em>:</p>
+<p>Spåra och bidra till ett helt Subversion-hanterat projekt (komplett med en trunk, taggar och grenar):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># Klona ett kodförråd med standard SVN-kataloglayout (som git clone):
+	git svn clone http://svn.example.com/project --stdlayout --prefix svn/
+# Eller, om kodförrådet använder en icke-standardiserad kataloglayout:
+	git svn clone http://svn.example.com/project -T tr -b branch -t tag --prefix svn/
+# Visa alla grenar och taggar du har klonat:
+	git branch -r
+# Skapa en ny gren i SVN
+	git svn branch waldo
+# Återställ din master till trunk (eller någon annan gren, ersätt 'trunk'
+# med lämpligt namn):
+	git reset --hard svn/trunk
+# Du kan bara dcommit till en gren/tagg/trunk åt gången. Användningen
+# av dcommit/rebase/show-ignore bör vara densamma som ovan.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Den första <em>git svn clone</em> kan vara ganska tidskrävande (särskilt för stora Subversion-kodförråd). Om flera personer (eller en person med flera maskiner) vill använda <em>git svn</em> mot samma Subversion-kodförråd, kan du göra den initiala <em>git svn clone</em> till ett kodförråd på en server och låta varje person klona det kodförrådet med <em>git clone</em>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -916,10 +913,10 @@ konfigurationsnyckel: svn.findcopiesharder</pre>
 <h2 id="_rebase_mot_pullmerge"><a class="anchor" href="#_rebase_mot_pullmerge"></a>REBASE MOT PULL/MERGE</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Föredra att använda <em>git svn rebase</em> eller <em>git rebase</em>, snarare än <em>git pull</em> eller <em>git merge</em> för att synkronisera ointegrerade incheckningar med en <em>git svn</em>-gren. Genom att göra det hålls historiken för ointegrerade incheckningar linjär i förhållande till SVN-förvaret uppströms och tillåts användning av det föredragna underkommandot <em>git svn dcommit</em> för att skicka tillbaka ointegrerade incheckningar till SVN.</p>
+<p>Föredra att använda <em>git svn rebase</em> eller <em>git rebase</em>, snarare än <em>git pull</em> eller <em>git merge</em> för att synkronisera ointegrerade incheckningar med en <em>git svn</em>-gren. Genom att göra det hålls historiken för ointegrerade incheckningar linjär i förhållande till SVN-kodförrådet uppströms och tillåts användning av det föredragna underkommandot <em>git svn dcommit</em> för att skicka tillbaka ointegrerade incheckningar till SVN.</p>
 </div>
 <div class="paragraph">
-<p>Ursprungligen rekommenderade <em>git svn</em> att utvecklare skulle hämta eller sammanslå från grenen <em>git svn</em>. Detta berodde på att författaren föredrog <span class='synopsis'><code>git</code> <code>svn</code> <code>set-tree</code> <code>B</code></span> för att checka-in ett enda huvud snarare än <span class='synopsis'><code>git</code> <code>svn</code> <code>set-tree</code> <code>A..B</code></span>-notationen för att checka-in flera incheckningar. Användning av <em>git pull</em> eller <em>git merge</em> med <span class='synopsis'><code>git</code> <code>svn</code> <code>set-tree</code> <code>A..B</code></span> kommer att göra att icke-linjär historik plattas ut vid incheckning i SVN och detta kan leda till att sammanslagnings-incheckningar oväntat återställer tidigare incheckningar i SVN.</p>
+<p>Ursprungligen rekommenderade <em>git svn</em> att utvecklare skulle hämta eller slå samman från grenen <em>git svn</em>. Det berodde på att författaren föredrog <span class='synopsis'><code>git</code> <code>svn</code> <code>set-tree</code> <code>B</code></span> för att checka in ett enda huvud, i stället för notationen <span class='synopsis'><code>git</code> <code>svn</code> <code>set-tree</code> <code>A..B</code></span> för att checka in flera incheckningar. Användning av <em>git pull</em> eller <em>git merge</em> med <span class='synopsis'><code>git</code> <code>svn</code> <code>set-tree</code> <code>A..B</code></span> gör att icke-linjär historik plattas ut vid incheckning i SVN, och detta kan leda till att sammanslagningsincheckningar oväntat återställer tidigare incheckningar i SVN.</p>
 </div>
 </div>
 </div>
@@ -938,7 +935,7 @@ konfigurationsnyckel: svn.findcopiesharder</pre>
 <p>Om <em>git svn</em> är konfigurerad för att hämta grenar (och --follow-branches är aktivt), skapar den ibland flera Git-grenar för en SVN-gren, där de ytterligare grenarna har namn av formen <em>branchname@nnn</em> (med nnn ett SVN-revisionsnummer). Dessa ytterligare grenar skapas om <em>git svn</em> inte kan hitta en överordnad incheckning för den första incheckningen i en SVN-gren, för att koppla grenen till historiken för de andra grenarna.</p>
 </div>
 <div class="paragraph">
-<p>Normalt sett, består den första incheckningen i en SVN-gren av en kopieringsoperation. <em>git svn</em> läser denna incheckning för att hämta SVN-revisionen som grenen skapades från. Den försöker sedan hitta Git-incheckningen som motsvarar denna SVN-revision och använder den som förälder till grenen. Det är dock möjligt att det inte finns någon lämplig Git-incheckning som kan fungera som förälder. Detta händer bland annat om SVN-grenen är en kopia av en revision som inte hämtades av <em>git svn</em> (t.ex. för att det är en gammal revision som hoppades över med <span class='synopsis'><code>--revision</code></span>), eller om en katalog kopierades i SVN som inte spåras av <em>git svn</em> (t.ex. en gren som inte spåras alls, eller en underkatalog till en spårad gren). I dessa fall kommer <em>git svn</em> fortfarande att skapa en Git-gren, men istället för att använda en befintlig Git-incheckning som förälder till grenen, kommer den att läsa SVN-historiken för katalogen som grenen kopierades från och skapa lämpliga Git-incheckningar. Detta indikeras av meddelandet "Initierar förälder: &lt;grennamn&gt;".</p>
+<p>Normalt sett, består den första incheckningen i en SVN-gren av en kopieringsoperation. <em>git svn</em> läser denna incheckning för att hämta SVN-revisionen som grenen skapades från. Den försöker sedan hitta Git-incheckningen som motsvarar denna SVN-revision och använder den som förälder till grenen. Det är dock möjligt att det inte finns någon lämplig Git-incheckning som kan fungera som förälder. Detta händer bland annat om SVN-grenen är en kopia av en revision som inte hämtades av <em>git svn</em> (t.ex. för att det är en gammal revision som hoppades över med <span class='synopsis'><code>--revision</code></span>), eller om en katalog kopierades i SVN som inte spåras av <em>git svn</em> (t.ex. en gren som inte spåras alls, eller en underkatalog till en spårad gren). I dessa fall kommer <em>git svn</em> fortfarande att skapa en Git-gren, men i stället för att använda en befintlig Git-incheckning som förälder till grenen, kommer den att läsa SVN-historiken för katalogen som grenen kopierades från och skapa lämpliga Git-incheckningar. Detta indikeras av meddelandet "Initierar förälder: &lt;grennamn&gt;".</p>
 </div>
 <div class="paragraph">
 <p>Dessutom skapas en speciell gren med namnet <em>&lt;branchname&gt;@&lt;SVN-Revision&gt;</em>, där &lt;SVN-Revision&gt; är SVN-revisionsnumret som grenen kopierades från. Denna gren pekar på den nyskapade föräldra-incheckningen för grenen. Om grenen i SVN raderades och senare återskapades från en annan version, kommer det att finnas flera sådana grenar med ett <em>@</em>.</p>
@@ -947,7 +944,7 @@ konfigurationsnyckel: svn.findcopiesharder</pre>
 <p>Observera att detta kan innebära att flera Git-incheckningar skapas för en enda SVN-revision.</p>
 </div>
 <div class="paragraph">
-<p>Ett exempel: i ett SVN-förvar med en standardlayout för trunk/tags/branches skapas en katalog trunk/sub i r.100. I r.200 förgrenas trunk/sub genom att kopieras till branches/. <em>git svn clone -s</em> skapar sedan en gren <em>sub</em>. Den skapar också nya Git-incheckningar för r.100 till r.199 och använder dessa som historik för grenen <em>sub</em>. Således kommer det att finnas två Git-incheckningar för varje revision från r.100 till r.199 (en som innehåller trunk/, en som innehåller trunk/sub/). Slutligen skapar den en gren <em>sub@200</em> som pekar på den nya överordnade incheckningen för grenen <em>sub</em> (dvs. incheckningen för r.200 och trunk/sub/).</p>
+<p>Ett exempel: i ett SVN-kodförråd med en standardlayout för trunk/tags/branches skapas en katalog trunk/sub i r.100. I r.200 förgrenas trunk/sub genom att kopieras till branches/. <em>git svn clone -s</em> skapar sedan en gren <em>sub</em>. Den skapar också nya Git-incheckningar för r.100 till r.199 och använder dessa som historik för grenen <em>sub</em>. Således kommer det att finnas två Git-incheckningar för varje revision från r.100 till r.199 (en som innehåller trunk/, en som innehåller trunk/sub/). Slutligen skapar den en gren <em>sub@200</em> som pekar på den nya överordnade incheckningen för grenen <em>sub</em> (d.v.s. incheckningen för r.200 och trunk/sub/).</p>
 </div>
 </div>
 </div>
@@ -955,13 +952,13 @@ konfigurationsnyckel: svn.findcopiesharder</pre>
 <h2 id="_förbehåll"><a class="anchor" href="#_förbehåll"></a>FÖRBEHÅLL</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>För enkelhetens skull och för att interagera med Subversion rekommenderas det att alla <em>git svn</em>-användare klonar, hämtar och dcommitar direkt från SVN-servern, och undviker alla <em>git clone</em>/<em>pull</em>/<em>merge</em>/<em>push</em>-operationer mellan Git-förvar och grenar. Den rekommenderade metoden för att utbyta kod mellan Git-grenar och användare är <em>git format-patch</em> och <em>git am</em>, eller bara <em>dcommit</em> till SVN-förvaret.</p>
+<p>För enkelhetens skull och för att interagera med Subversion rekommenderas det att alla <em>git svn</em>-användare klonar, hämtar och dcommitar direkt från SVN-servern, och undviker alla <em>git clone</em>/<em>pull</em>/<em>merge</em>/<em>push</em>-operationer mellan Git-kodförråd och grenar. Den rekommenderade metoden för att utbyta kod mellan Git-grenar och användare är <em>git format-patch</em> och <em>git am</em>, eller bara <em>dcommit</em> till SVN-kodförrådet.</p>
 </div>
 <div class="paragraph">
-<p>Att köra <em>git merge</em> eller <em>git pull</em> rekommenderas INTE på en gren du planerar att <em>dcommit</em> från eftersom Subversion-användare inte kan se några sammanslagingar du har gjort. Dessutom, om du sammanslår (merge) eller drar (pull) från en Git-gren som är en spegel av en SVN-gren, kan <em>dcommit</em> checka-in till fel gren.</p>
+<p>Att köra <em>git merge</em> eller <em>git pull</em> rekommenderas INTE på en gren du planerar att <em>dcommit</em> från eftersom Subversion-användare inte kan se några sammanslagningar du har gjort. Dessutom, om du sammanslår (merge) eller drar (pull) från en Git-gren som är en spegel av en SVN-gren, kan <em>dcommit</em> checka in till fel gren.</p>
 </div>
 <div class="paragraph">
-<p>Om du sammanslår (merge), observera följande regel: <em>git svn dcommit</em> kommer att försöka checka-in ovanpå SVN-incheckningen som namnges i</p>
+<p>Om du sammanslår (merge), observera följande regel: <em>git svn dcommit</em> kommer att försöka checka in ovanpå SVN-incheckningen som namnges i</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -969,22 +966,22 @@ konfigurationsnyckel: svn.findcopiesharder</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Du <em>måste</em> därför se till att den senaste inchecknings-filen för den gren du vill dcommit:a till är den <em>första</em> föräldern till sammanslagingen. Annars kommer det att bli kaos, särskilt om den första föräldern är en äldre incheckning på samma SVN-gren.</p>
+<p>Du <em>måste</em> därför se till att den senaste incheckningsfilen för den gren du vill dcommit:a till är den <em>första</em> föräldern till sammanslagningen. Annars kommer det att bli kaos, särskilt om den första föräldern är en äldre incheckning på samma SVN-gren.</p>
 </div>
 <div class="paragraph">
-<p><em>git clone</em> klonar inte grenar under hierarkin refs/remotes/ eller någon <em>git svn</em>-metadata eller konfiguration. Så förvar som skapats och hanteras med <em>git svn</em> bör använda <em>rsync</em> för kloning, om kloning ska göras överhuvudtaget.</p>
+<p><em>git clone</em> klonar inte grenar under hierarkin refs/remotes/ eller någon <em>git svn</em>-metadata eller konfiguration. Så kodförråd som skapats och hanteras med <em>git svn</em> bör använda <em>rsync</em> för kloning, om kloning ska göras överhuvudtaget.</p>
 </div>
 <div class="paragraph">
-<p>Eftersom <em>dcommit</em> använder ombasering (reabse) internt, kommer alla Git-grenar som du <em>git push</em> till före <em>dcommit</em> att kräva att den befintliga referensen på fjärrförvaret överskrivs. Detta anses generellt vara dålig praxis, se dokumentationen för <a href='{{< relurl "docs/git-push/sv" >}}'>git-push[1]</a> för mer information.</p>
+<p>Eftersom <em>dcommit</em> använder ombasering internt kommer alla Git-grenar som du kör <em>git push</em> till före <em>dcommit</em> att kräva att den befintliga referensen i fjärrkodförrådet skrivs över med tvång. Detta anses i allmänhet vara dålig praxis; se dokumentationen för <a href='{{< relurl "docs/git-push/sv" >}}'>git-push[1]</a> för detaljer.</p>
 </div>
 <div class="paragraph">
-<p>Använd inte --amend alternativet i <a href='{{< relurl "docs/git-commit/sv" >}}'>git-commit[1]</a> på en ändring som du redan har dcommitat. Det anses vara dålig praxis att --amend incheckningar som du redan har pushat till ett fjärrförvar för andra användare, och dcommit med SVN är analogt med det.</p>
+<p>Använd inte alternativet --amend i <a href='{{< relurl "docs/git-commit/sv" >}}'>git-commit[1]</a> på en ändring som du redan har dcommitat. Det anses vara dålig praxis att använda --amend på incheckningar som du redan har skickat till ett fjärrkodförråd för andra användare, och dcommit med SVN är analogt med det.</p>
 </div>
 <div class="paragraph">
-<p>När man klonar ett SVN-förvar, om inget av alternativen för att beskriva förvarets layout används (--trunk, --tags, --branches, --stdlayout), kommer <em>git svn clone</em> att skapa ett Git-förvar med helt linjär historik, där grenar och taggar visas som separata kataloger i arbetskopian. Även om detta är det enklaste sättet att få en kopia av ett komplett förvar, kommer det för projekt med många grenar att leda till en arbetskopia som är många gånger större än bara trunk-katalogen. Därför rekommenderas det för projekt som använder standardkatalogstrukturen (trunk/branches/tags) att klona med alternativet <span class='synopsis'><code>--stdlayout</code></span>. Om projektet använder en icke-standardiserad struktur, och/eller om grenar och taggar inte krävs, är det enklast att bara klona en katalog (vanligtvis trunk), utan att ange några alternativ för arkivets layout. Om fullständig historik med grenar och taggar krävs måste alternativen <span class='synopsis'><code>--trunk</code></span> / <span class='synopsis'><code>--branches</code></span> / <span class='synopsis'><code>--tags</code></span> användas.</p>
+<p>När du klonar ett SVN-kodförråd och inga alternativ för att beskriva kodförrådets layout används (--trunk, --tags, --branches, --stdlayout), skapar <em>git svn clone</em> ett Git-kodförråd med helt linjär historik, där grenar och taggar visas som separata kataloger i arbetskopian. Även om detta är det enklaste sättet att få en kopia av ett komplett kodförråd, leder det för projekt med många grenar till en arbetskopia som är många gånger större än bara trunk. Därför rekommenderas projekt som använder standardstrukturen (trunk/branches/tags) att klona med <span class='synopsis'><code>--stdlayout</code></span>. Om projektet använder en icke-standardstruktur, och/eller om grenar och taggar inte behövs, är det enklast att bara klona en katalog (vanligen trunk) utan layoutalternativ. Om full historik med grenar och taggar krävs måste alternativen <span class='synopsis'><code>--trunk</code></span> / <span class='synopsis'><code>--branches</code></span> / <span class='synopsis'><code>--tags</code></span> användas.</p>
 </div>
 <div class="paragraph">
-<p>När man använder flera --branches eller --tags hanterar <em>git svn</em> inte automatiskt namnkollisioner (till exempel om två grenar från olika sökvägar har samma namn, eller om en gren och en tagg har samma namn). I dessa fall, använd <em>init</em> för att konfigurera ditt Git-förvar och redigera sedan, innan din första <em>fetch</em>, $GIT_DIR/config-filen så att grenarna och taggarna är associerade med olika namnrymder. Till exempel:</p>
+<p>När man använder flera --branches eller --tags hanterar <em>git svn</em> inte automatiskt namnkollisioner (till exempel om två grenar från olika sökvägar har samma namn, eller om en gren och en tagg har samma namn). I dessa fall, använd <em>init</em> för att konfigurera ditt Git-kodförråd och redigera sedan, innan din första <em>fetch</em>, $GIT_DIR/config-filen så att grenarna och taggarna är associerade med olika namnrymder. Till exempel:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -998,7 +995,7 @@ branches = debug/*:refs/remotes/svn/debug/*</pre>
 <h2 id="_konfiguration"><a class="anchor" href="#_konfiguration"></a>KONFIGURATION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><em>git svn</em> lagrar konfigurationsinformation för [svn-remote] i förvars-filen $GIT_DIR/config. Det liknar de centrala Git [remote]-sektionerna förutom att <em>fetch</em>-nycklarna inte accepterar glob-argument; de hanteras istället av nycklarna <em>branches</em> och <em>tags</em>. Eftersom vissa SVN-förvar är ovalningt konfigurerade med flera projekt, är glob-expansioner som de som listas nedan tillåtna:</p>
+<p><em>git svn</em> lagrar [svn-remote]-konfiguration i kodförrådets fil $GIT_DIR/config. Detta liknar Gits vanliga [remote]-sektioner, förutom att <em>fetch</em>-nycklar inte accepterar glob-argument; de hanteras i stället av nycklarna <em>branches</em> och <em>tags</em>. Eftersom vissa SVN-kodförråd är ovanligt konfigurerade med flera projekt är glob-expansioner som de nedan tillåtna:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1095,10 +1092,10 @@ branches = debug/*:refs/remotes/svn/debug/*</pre>
 <p>Vi ignorerar alla SVN-egenskaper förutom svn:executable. Alla ohanterade egenskaper loggas till $GIT_DIR/svn/&lt;refnamn&gt;/unhandled.log</p>
 </div>
 <div class="paragraph">
-<p>Omdöpta och kopierade kataloger upptäcks inte av Git och spåras därför inte vid incheckning till SVN. Jag planerar inte att lägga till stöd för detta eftersom det är ganska svårt och tidskrävande att få det att fungera för alla möjliga gränsfall (Git gör det inte heller). Att checka-in omdöpta och kopierade filer stöds fullt ut om de är tillräckligt lika för att Git ska kunna upptäcka dem.</p>
+<p>Omdöpta och kopierade kataloger upptäcks inte av Git och spåras därför inte vid incheckning till SVN. Jag planerar inte att lägga till stöd för detta eftersom det är ganska svårt och tidskrävande att få att fungera för alla möjliga gränsfall (Git gör det inte heller). Att checka in omdöpta och kopierade filer stöds fullt ut om de är tillräckligt lika för att Git ska kunna upptäcka dem.</p>
 </div>
 <div class="paragraph">
-<p>I SVN är det möjligt (men avråds) att göra ändringar i en tagg (eftersom en tagg bara är en katalogkopia, alltså tekniskt sett samma sak som en gren). När man klonar ett SVN-förvar kan <em>git svn</em> inte veta om en sådan incheckning till en tagg kommer att ske i framtiden. Därför agerar den konservativt och importerar alla SVN-taggar som grenar, med prefixet <em>tags/</em> före taggnamnet.</p>
+<p>I SVN är det möjligt (men avråds) att göra ändringar i en tagg (eftersom en tagg bara är en katalogkopia, alltså tekniskt sett samma sak som en gren). När man klonar ett SVN-kodförråd kan <em>git svn</em> inte veta om en sådan incheckning till en tagg kommer att ske i framtiden. Därför agerar den konservativt och importerar alla SVN-taggar som grenar, med prefixet <em>tags/</em> före taggnamnet.</p>
 </div>
 </div>
 </div>

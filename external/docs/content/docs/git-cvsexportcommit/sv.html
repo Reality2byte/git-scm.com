@@ -58,7 +58,7 @@ headings:
 <p>Stöder filtillägg, borttagningar och incheckningar som påverkar binära filer.</p>
 </div>
 <div class="paragraph">
-<p>Om incheckningen är en sammanslagings-incheckning måste du ange för <em>git cvsexportcommit</em> vilken förälder som ändringsset ska göras mot.</p>
+<p>Om incheckningen är en sammanslagningsincheckning måste du ange för <em>git cvsexportcommit</em> vilken förälder som ändringsset ska göras mot.</p>
 </div>
 </div>
 </div>
@@ -69,7 +69,7 @@ headings:
 <dl>
 <dt class="hdlist1" id="git-cvsexportcommit--c"> <a class="anchor" href="#git-cvsexportcommit--c"></a>-c </dt>
 <dd>
-<p>Automatisk incheckning om patchen applicerades korrekt. Den kommer inte att checka-in om några stycken inte applicerades eller om det uppstod andra problem.</p>
+<p>Automatisk incheckning om patchen applicerades korrekt. Den kommer inte att checka in om några stycken inte applicerades eller om det uppstod andra problem.</p>
 </dd>
 <dt class="hdlist1" id="git-cvsexportcommit--p"> <a class="anchor" href="#git-cvsexportcommit--p"></a>-p </dt>
 <dd>
@@ -93,11 +93,11 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-cvsexportcommit--m"> <a class="anchor" href="#git-cvsexportcommit--m"></a>-m </dt>
 <dd>
-<p>Lägg till det angivna prefixet före inchecknings-meddelandet. Användbart för patch-serier och liknande.</p>
+<p>Lägg till det angivna prefixet före incheckningsmeddelandet. Användbart för patch-serier och liknande.</p>
 </dd>
 <dt class="hdlist1" id="git-cvsexportcommit--u"> <a class="anchor" href="#git-cvsexportcommit--u"></a>-u </dt>
 <dd>
-<p>Uppdatera berörda filer från CVS-arkivet innan du försöker exportera.</p>
+<p>Uppdatera berörda filer från CVS-kodförrådet innan du försöker exportera.</p>
 </dd>
 <dt class="hdlist1" id="git-cvsexportcommit--k"> <a class="anchor" href="#git-cvsexportcommit--k"></a>-k </dt>
 <dd>
@@ -105,7 +105,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-cvsexportcommit--w"> <a class="anchor" href="#git-cvsexportcommit--w"></a>-w </dt>
 <dd>
-<p>Ange platsen för CVS-utcheckningen som ska användas för exporten. Det här alternativet kräver inte att GIT_DIR anges före körning om den aktuella katalogen finns i ett Git-arkiv. Standardvärdet är <em>cvsexportcommit.cvsdir</em>.</p>
+<p>Ange platsen för CVS-utcheckningen som ska användas för exporten. Alternativet kräver inte att GIT_DIR anges före körning om den aktuella katalogen finns i ett Git-kodförråd. Standardvärdet är <em>cvsexportcommit.cvsdir</em>.</p>
 </dd>
 <dt class="hdlist1" id="git-cvsexportcommit--W"> <a class="anchor" href="#git-cvsexportcommit--W"></a>-W </dt>
 <dd>
@@ -152,7 +152,7 @@ $ cvs commit -F .msg &lt;filer&gt;</pre>
 <dd>
 <div class="listingblock">
 <div class="content">
-<pre>	$ git cvsexportcommit -v -c -w ~/project_cvs_checkout &lt;incheckningsssss-sha1&gt;</pre>
+<pre>	$ git cvsexportcommit -v -c -w ~/project_cvs_checkout &lt;inchecknings-sha1&gt;</pre>
 </div>
 </div>
 </dd>

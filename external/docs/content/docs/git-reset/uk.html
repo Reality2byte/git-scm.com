@@ -29,7 +29,7 @@ headings:
 <h2 id="_назва"><a class="anchor" href="#_назва"></a>НАЗВА</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>git-reset — Скидання поточного HEAD до вказаного стану</p>
+<p>git-reset — Скидання поточного <span class='synopsis'><code>HEAD</code></span> до вказаного стану</p>
 </div>
 </div>
 </div>
@@ -37,10 +37,10 @@ headings:
 <h2 id="_синопсис"><a class="anchor" href="#_синопсис"></a>СИНОПСИС</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><span class='synopsis'><code>git</code></span> <span class='synopsis'><code>reset</code></span> [<span class='synopsis'><code>-q</code></span>] [<em>&lt;tree-ish&gt;</em>] [<span class='synopsis'><code>--</code></span>] <em>&lt;pathspec&gt;</em>&#8230;&#8203;
+<pre class="content"><span class='synopsis'><code>git</code></span> <span class='synopsis'><code>reset</code></span> [<span class='synopsis'><code>--soft</code></span> | <span class='synopsis'><code>--mixed</code></span> [<span class='synopsis'><code>-N</code></span>] | <span class='synopsis'><code>--hard</code></span> | <span class='synopsis'><code>--merge</code></span> | <span class='synopsis'><code>--keep</code></span>] [<span class='synopsis'><code>-q</code></span>] [<em>&lt;commit&gt;</em>]
+<span class='synopsis'><code>git</code></span> <span class='synopsis'><code>reset</code></span> [<span class='synopsis'><code>-q</code></span>] [<em>&lt;tree-ish&gt;</em>] [<span class='synopsis'><code>--</code></span>] <em>&lt;pathspec&gt;</em>&#8230;&#8203;
 <span class='synopsis'><code>git</code></span> <span class='synopsis'><code>reset</code></span> [<span class='synopsis'><code>-q</code></span>] [<span class='synopsis'><code>--pathspec-from-file=</code></span><em>&lt;file&gt;</em> [<span class='synopsis'><code>--pathspec-file-nul</code></span>]] [<em>&lt;tree-ish&gt;</em>]
-<span class='synopsis'><code>git</code></span> <span class='synopsis'><code>reset</code></span> (<span class='synopsis'><code>--patch</code></span> | <span class='synopsis'><code>-p</code></span>) [<em>&lt;tree-ish&gt;</em>] [<span class='synopsis'><code>--</code></span>] [<em>&lt;pathspec&gt;</em>&#8230;&#8203;]
-<span class='synopsis'><code>git</code></span> <span class='synopsis'><code>reset</code></span> [<span class='synopsis'><code>--soft</code></span> | <span class='synopsis'><code>--mixed</code></span> [<span class='synopsis'><code>-N</code></span>] | <span class='synopsis'><code>--hard</code></span> | <span class='synopsis'><code>--merge</code></span> | <span class='synopsis'><code>--keep</code></span>] [<span class='synopsis'><code>-q</code></span>] [<em>&lt;commit&gt;</em>]</pre>
+<span class='synopsis'><code>git</code></span> <span class='synopsis'><code>reset</code></span> (<span class='synopsis'><code>--patch</code></span> | <span class='synopsis'><code>-p</code></span>) [<em>&lt;tree-ish&gt;</em>] [<span class='synopsis'><code>--</code></span>] [<em>&lt;pathspec&gt;</em>&#8230;&#8203;]</pre>
 </div>
 </div>
 </div>
@@ -48,56 +48,45 @@ headings:
 <h2 id="_опис"><a class="anchor" href="#_опис"></a>ОПИС</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>У перших трьох формах копіює записи з <em>&lt;tree-ish&gt;</em> до індексу. В останній формі встановіть поточну вершину гілки (<span class='synopsis'><code>HEAD</code></span>) на <em>&lt;commit&gt;</em>, за бажанням змінюючи індекс та робоче дерево відповідно. <em>&lt;tree-ish&gt;</em>/<em>&lt;commit&gt;</em> зазвичай має значення <span class='synopsis'><code>HEAD</code></span> у всіх формах.</p>
+<p>Команда <span class='synopsis'><code>git</code> <code>reset</code></span> виконує одну з таких дій:</p>
 </div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Команда <span class='synopsis'><code>git</code> <code>reset</code> [<em>&lt;режим&gt;</em>] <em>&lt;коміт&gt;</em></span> змінює коміт, на який вказує <span class='synopsis'><code>HEAD</code></span>. Це дозволяє скасувати різні операції Git, наприклад, фіксацію, злиття, перебазування та витяг даних.</p>
+</li>
+<li>
+<p>Якщо ви вказуєте файли або теки або передаєте аргумент <span class='synopsis'><code>--patch</code></span>, команда <span class='synopsis'><code>git</code> <code>reset</code></span> оновлює версію вказаних файлів, що знаходиться у стадії підготовки до злиття.</p>
 <div class="dlist">
 <dl>
-<dt class="hdlist1" id="git-reset-spanclasssynopsiscodegitcodecoderesetcodecode-qcodeemlttree-ishgtemcode--codeemltpathspecgtemspan"> <a class="anchor" href="#git-reset-gitreset-qtree-ish--pathspec"></a> <a class="anchor" href="#git-reset-spanclasssynopsiscodegitcodecoderesetcodecode-qcodeemlttree-ishgtemcode--codeemltpathspecgtemspan"></a><span class='synopsis'><code>git</code> <code>reset</code> [<code>-q</code>] [<em>&lt;tree-ish&gt;</em>] [<code>--</code>] <em>&lt;pathspec&gt;</em>...</span> </dt>
-<dt class="hdlist1" id="git-reset-spanclasssynopsiscodegitcodecoderesetcodecode-qcodecode--pathspec-from-filecodeemltfilegtemcode--pathspec-file-nulcodeemlttree-ishgtemspan"> <a class="anchor" href="#git-reset-gitreset-q--pathspec-from-filefile--pathspec-file-nultree-ish"></a> <a class="anchor" href="#git-reset-spanclasssynopsiscodegitcodecoderesetcodecode-qcodecode--pathspec-from-filecodeemltfilegtemcode--pathspec-file-nulcodeemlttree-ishgtemspan"></a><span class='synopsis'><code>git</code> <code>reset</code> [<code>-q</code>] [<code>--pathspec-from-file=</code><em>&lt;file&gt;</em> [<code>--pathspec-file-nul</code>]] [<em>&lt;tree-ish&gt;</em>]</span> </dt>
-<dd>
-<p>Ці форми скидають записи індексу для всіх шляхів, що відповідають <em>&lt;pathspec &gt;</em>, до їхнього стану в <em>&lt;tree-ish&gt;</em>. (Це не впливає на робоче дерево чи поточну гілку.)</p>
-<div class="paragraph">
-<p>Це означає, що <span class='synopsis'><code>git</code> <code>reset</code> <em>&lt;pathspec&gt;</em></span> є протилежністю <span class='synopsis'><code>git</code> <code>add</code> <em>&lt;pathspec&gt;</em></span>. Ця команда еквівалентна <span class='synopsis'><code>git</code> <code>restore</code> [<code>--source=</code><em>&lt;tree-ish&gt;</em>] <code>--staged</code> <em>&lt;pathspec&gt;</em>...</span>.</p>
-</div>
-<div class="paragraph">
-<p>Після запуску <span class='synopsis'><code>git</code> <code>reset</code> <em>&lt;pathspec&gt;</em></span> для оновлення запису індексу, ви можете скористатися <a href='{{< relurl "docs/git-restore/uk" >}}'>git-restore[1]</a> для перевірки вмісту індексу до робочого дерева. Або ж, використовуючи <a href='{{< relurl "docs/git-restore/uk" >}}'>git-restore[1]</a> та вказавши коміт з <span class='synopsis'><code>--source</code></span>, ви можете скопіювати вміст шляху з коміту до індексу та до робочого дерева одночасно.</p>
-</div>
-</dd>
-<dt class="hdlist1" id="git-reset-spanclasssynopsiscodegitcodecoderesetcodecode--patchcodecode-pcodeemlttree-ishgtemcode--codeemltpathspecgtemspan"> <a class="anchor" href="#git-reset-gitreset--patch-ptree-ish--pathspec"></a> <a class="anchor" href="#git-reset-spanclasssynopsiscodegitcodecoderesetcodecode--patchcodecode-pcodeemlttree-ishgtemcode--codeemltpathspecgtemspan"></a><span class='synopsis'><code>git</code> <code>reset</code> (<code>--patch</code> | <code>-p</code>) [<em>&lt;tree-ish&gt;</em>] [<code>--</code>] [<em>&lt;pathspec&gt;</em>...]</span> </dt>
-<dd>
-<p>Інтерактивно обирає фрагменти в відмінності між індексом та <em>&lt;tree-ish&gt;</em> (зазвичай <span class='synopsis'><code>HEAD</code></span>). Вибрані фрагменти застосовуються до індексу у зворотному порядку.</p>
-<div class="paragraph">
-<p>Це означає, що <span class='synopsis'><code>git</code> <code>reset</code> <code>-p</code></span> є протилежністю <span class='synopsis'><code>git</code> <code>add</code> <code>-p</code></span>, тобто ви можете використовувати його для вибіркового скидання фрагментів. Дивіться розділ "Інтерактивний режим" у <a href='{{< relurl "docs/git-add/uk" >}}'>git-add[1]</a>, щоб дізнатися, як працювати з режимом <span class='synopsis'><code>--patch</code></span>.</p>
-</div>
-</dd>
 <dt class="hdlist1" id="git-reset-spanclasssynopsiscodegitcodecoderesetcodeemltmodegtememltcommitgtemspan"> <a class="anchor" href="#git-reset-gitresetmodecommit"></a> <a class="anchor" href="#git-reset-spanclasssynopsiscodegitcodecoderesetcodeemltmodegtememltcommitgtemspan"></a><span class='synopsis'><code>git</code> <code>reset</code> [<em>&lt;mode&gt;</em>] [<em>&lt;commit&gt;</em>]</span> </dt>
 <dd>
-<p>Ця форма скидає поточну вершину гілки до <em>&lt;commit&gt;</em> та, можливо, оновлює індекс (скидаючи його до дерева <em>&lt;commit&gt;</em>) та робочого дерева залежно від <em>&lt;mode&gt;</em>. Перед операцією <span class='synopsis'><code>ORIG_HEAD</code></span> встановлюється на вершину поточної гілки. Якщо <em>&lt;mode&gt;</em> пропущено, стандартно використовується значення <span class='synopsis'><code>--mixed</code></span>. <em>&lt;mode&gt;</em> має бути одним із наступних:</p>
+<p>Встановлення вершини поточної гілки (<span class='synopsis'><code>HEAD</code></span>) так, щоб вона вказувала на <em>&lt;commit&gt;</em>. Залежно від <em>&lt;mode&gt;</em>, також оновлюються робоча тека та/або індекс відповідно до вмісту <em>&lt;commit&gt;</em>. Зазвичай <em>&lt;commit&gt;</em> дорівнює <span class='synopsis'><code>HEAD</code></span>. Перед виконанням операції <span class='synopsis'><code>ORIG_HEAD</code></span> встановлюється на вершину поточної гілки.</p>
+<div class="paragraph">
+<p>Значення <em>&lt;mode&gt;</em> повинно бути одним з наступних (стандартно — <span class='synopsis'><code>--mixed</code></span>):</p>
+</div>
 <div class="openblock">
 <div class="content">
 <div class="dlist">
 <dl>
-<dt class="hdlist1" id="git-reset-spanclasssynopsiscode--softcodespan"> <a class="anchor" href="#git-reset---soft"></a> <a class="anchor" href="#git-reset-spanclasssynopsiscode--softcodespan"></a><span class='synopsis'><code>--soft</code></span> </dt>
-<dd>
-<p>Цей режим взагалі не впливає на файл індексу та робоче дерево (але, як і всі інші режими, встановлює вершину на <em>&lt;commit&gt;</em>). У результаті всі змінені файли залишаються у стані «Зміни, що підлягають фіксації», як це відображає команда <span class='synopsis'><code>git</code> <code>status</code></span>.</p>
-</dd>
 <dt class="hdlist1" id="git-reset-spanclasssynopsiscode--mixedcodespan"> <a class="anchor" href="#git-reset---mixed"></a> <a class="anchor" href="#git-reset-spanclasssynopsiscode--mixedcodespan"></a><span class='synopsis'><code>--mixed</code></span> </dt>
 <dd>
-<p>Скидає індекс, але не робоче дерево (тобто змінені файли зберігаються, але не позначаються для фіксації) і повідомляє, що саме не було оновлено. Це стандартна дія.</p>
+<p>Залишати робочу теку без змін. Оновити індекс відповідно до нового <span class='synopsis'><code>HEAD</code></span>, щоб нічого не потрапило до стадії підготовки до коміту.</p>
 <div class="paragraph">
-<p>Якщо вказано <span class='synopsis'><code>-N</code></span>, видалені шляхи позначаються як такі, що мають бути додані (див. <a href='{{< relurl "docs/git-add/uk" >}}'>git-add[1]</a>).</p>
+<p>Якщо вказано параметр <span class='synopsis'><code>-N</code></span>, видалені шляхи позначаються як такі, що планується додати (див. <a href='{{< relurl "docs/git-add/uk" >}}'>git-add[1]</a>).</p>
 </div>
+</dd>
+<dt class="hdlist1" id="git-reset-spanclasssynopsiscode--softcodespan"> <a class="anchor" href="#git-reset---soft"></a> <a class="anchor" href="#git-reset-spanclasssynopsiscode--softcodespan"></a><span class='synopsis'><code>--soft</code></span> </dt>
+<dd>
+<p>Не змінювати файли робочого дерева та індекс. Наприклад, якщо у вас немає змін, що знаходяться у стадії підготовки до фіксації, ви можете скористатися командою <span class='synopsis'><em>git reset --soft HEAD~5; git commit</em></span>, щоб об’єднати останні 5 комітів в один. Це працює навіть у разі наявності змін у робочому дереві, яке залишається незмінним, але таке використання може спричинити плутанину.</p>
 </dd>
 <dt class="hdlist1" id="git-reset-spanclasssynopsiscode--hardcodespan"> <a class="anchor" href="#git-reset---hard"></a> <a class="anchor" href="#git-reset-spanclasssynopsiscode--hardcodespan"></a><span class='synopsis'><code>--hard</code></span> </dt>
 <dd>
-<p>Скидає індекс та робоче дерево. Усі зміни у відстежуваних файлах у робочому дереві, внесені після <em>&lt;commit&gt;</em>, будуть відкинуті. Усі невідстежувані файли чи теки, що заважають запису відстежуваних файлів, просто видаляються.</p>
+<p>Перезаписати всі файли та теки версією з <em>&lt;commit&gt;</em>; при цьому можуть бути перезаписані файли, що не відстежуються. Файли, що відстежуються, але відсутні в <em>&lt;commit&gt;</em>, видаляються, щоб робоче дерево відповідало <em>&lt;commit&gt;</em>. Оновити індекс відповідно до нового <span class='synopsis'><code>HEAD</code></span>, отже нічого не буде додано до stage.</p>
 </dd>
 <dt class="hdlist1" id="git-reset-spanclasssynopsiscode--mergecodespan"> <a class="anchor" href="#git-reset---merge"></a> <a class="anchor" href="#git-reset-spanclasssynopsiscode--mergecodespan"></a><span class='synopsis'><code>--merge</code></span> </dt>
 <dd>
-<p>Скидає індекс та оновлює файли в робочому дереві, які відрізняються між <em>&lt;commit&gt;</em> та <span class='synopsis'><code>HEAD</code></span>, але зберігає ті, що відрізняються між індексом та робочим деревом (тобто ті, зміни до яких ще не додано). Якщо файл, який відрізняється між <em>&lt;commit&gt;</em> та індексом, містить неіндексовані зміни, скидання переривається.</p>
-<div class="paragraph">
-<p>Іншими словами, опція <span class='synopsis'><code>--merge</code></span> виконує дію, схожу на команду <span class='synopsis'><code>git</code> <code>read-tree</code> <code>-u</code> <code>-m</code> <em>&lt;commit&gt;</em></span>, але при цьому зберігає необʼєднані записи індексу.</p>
-</div>
+<p>Скинути індекс та оновити файли в робочому дереві, які мають відмінності між <em>&lt;commit&gt;</em> та <span class='synopsis'><code>HEAD</code></span>, але залишити ті, що відрізняються між індексом та робочим деревом (тобто ті, зміни до яких ще не додано). В основному використовується для скидання не обʼєднаних записів індексу, таких як ті, що залишаються після виконання команд <span class='synopsis'><code>git</code> <code>am</code> <code>-3</code></span> або <span class='synopsis'><code>git</code> <code>switch</code> <code>-m</code></span> у певних ситуаціях. Якщо файл, який має відмінності між <em>&lt;commit&gt;</em> та індексом, містить зміни, що не додані до stage, скидання буде перервано.</p>
 </dd>
 <dt class="hdlist1" id="git-reset-spanclasssynopsiscode--keepcodespan"> <a class="anchor" href="#git-reset---keep"></a> <a class="anchor" href="#git-reset-spanclasssynopsiscode--keepcodespan"></a><span class='synopsis'><code>--keep</code></span> </dt>
 <dd>
@@ -113,7 +102,28 @@ headings:
 </div>
 </div>
 </dd>
+<dt class="hdlist1" id="git-reset-spanclasssynopsiscodegitcodecoderesetcodecode-qcodeemlttree-ishgtemcode--codeemltpathspecgtemspan"> <a class="anchor" href="#git-reset-gitreset-qtree-ish--pathspec"></a> <a class="anchor" href="#git-reset-spanclasssynopsiscodegitcodecoderesetcodecode-qcodeemlttree-ishgtemcode--codeemltpathspecgtemspan"></a><span class='synopsis'><code>git</code> <code>reset</code> [<code>-q</code>] [<em>&lt;tree-ish&gt;</em>] [<code>--</code>] <em>&lt;pathspec&gt;</em>...</span> </dt>
+<dt class="hdlist1" id="git-reset-spanclasssynopsiscodegitcodecoderesetcodecode-qcodecode--pathspec-from-filecodeemltfilegtemcode--pathspec-file-nulcodeemlttree-ishgtemspan"> <a class="anchor" href="#git-reset-gitreset-q--pathspec-from-filefile--pathspec-file-nultree-ish"></a> <a class="anchor" href="#git-reset-spanclasssynopsiscodegitcodecoderesetcodecode-qcodecode--pathspec-from-filecodeemltfilegtemcode--pathspec-file-nulcodeemlttree-ishgtemspan"></a><span class='synopsis'><code>git</code> <code>reset</code> [<code>-q</code>] [<code>--pathspec-from-file=</code><em>&lt;file&gt;</em> [<code>--pathspec-file-nul</code>]] [<em>&lt;tree-ish&gt;</em>]</span> </dt>
+<dd>
+<p>Для всіх вказаних файлів або тек, встановити версію в stage, на версію з вказаного коміту або дерева (як правило, це <span class='synopsis'><code>HEAD</code></span>).</p>
+<div class="paragraph">
+<p>Це означає, що команда <span class='synopsis'><code>git</code> <code>reset</code> <em>&lt;pathspec&gt;</em></span> є протилежністю команди <span class='synopsis'><code>git</code> <code>add</code> <em>&lt;pathspec&gt;</em></span>: вона прибирає всі зміни зі stage для вказаних файлів або тек. Це еквівалентно команді <span class='synopsis'><code>git</code> <code>restore</code> <code>--staged</code> <em>&lt;pathspec&gt;</em>...</span>.</p>
+</div>
+<div class="paragraph">
+<p>У цьому режимі команда <span class='synopsis'><code>git</code> <code>reset</code></span> оновлює лише індекс (не оновлюючи <span class='synopsis'><code>HEAD</code></span> та файли робочого дерева). Якщо ви хочете оновити як файли, так і записи індексу, скористайтеся командою <a href='{{< relurl "docs/git-restore/uk" >}}'>git-restore[1]</a>.</p>
+</div>
+</dd>
+<dt class="hdlist1" id="git-reset-spanclasssynopsiscodegitcodecoderesetcodecode--patchcodecode-pcodeemlttree-ishgtemcode--codeemltpathspecgtemspan"> <a class="anchor" href="#git-reset-gitreset--patch-ptree-ish--pathspec"></a> <a class="anchor" href="#git-reset-spanclasssynopsiscodegitcodecoderesetcodecode--patchcodecode-pcodeemlttree-ishgtemcode--codeemltpathspecgtemspan"></a><span class='synopsis'><code>git</code> <code>reset</code> (<code>--patch</code> | <code>-p</code>) [<em>&lt;tree-ish&gt;</em>] [<code>--</code>] [<em>&lt;pathspec&gt;</em>...]</span> </dt>
+<dd>
+<p>Інтерактивно обирає зміни з різниці між індексом та вказаним комітом або деревом (як правило, це <span class='synopsis'><code>HEAD</code></span>). Індекс змінюється з урахуванням обраних змін.</p>
+<div class="paragraph">
+<p>Це означає, що <span class='synopsis'><code>git</code> <code>reset</code> <code>-p</code></span> є протилежністю <span class='synopsis'><code>git</code> <code>add</code> <code>-p</code></span>, тобто ви можете використовувати його для вибіркового прибирання змін зі stage. Дивіться розділ "Інтерактивний режим" у <a href='{{< relurl "docs/git-add/uk" >}}'>git-add[1]</a>, щоб дізнатися, як використовувати опцію <span class='synopsis'><code>--patch</code></span>.</p>
+</div>
+</dd>
 </dl>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>Дивіться розділ «Скидання, відновлення та повернення до початкового стану» в <a href='{{< relurl "docs/git/uk" >}}'>git[1]</a>, щоб ознайомитися з відмінностями між цими трьома командами.</p>
@@ -146,7 +156,7 @@ headings:
 <dt class="hdlist1" id="git-reset-spanclasssynopsiscode-Ucodeemltngtemspan"> <a class="anchor" href="#git-reset--Un"></a> <a class="anchor" href="#git-reset-spanclasssynopsiscode-Ucodeemltngtemspan"></a><span class='synopsis'><code>-U</code><em>&lt;n&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-reset-spanclasssynopsiscode--unifiedcodeemltngtemspan"> <a class="anchor" href="#git-reset---unifiedn"></a> <a class="anchor" href="#git-reset-spanclasssynopsiscode--unifiedcodeemltngtemspan"></a><span class='synopsis'><code>--unified=</code><em>&lt;n&gt;</em></span> </dt>
 <dd>
-<p>Створює файли відмінностей (diff) з <em>&lt;n&gt;</em> рядками контексту. Стандартно використовується <span class='synopsis'><code>diff.context</code></span> або 3, якщо параметр конфігурації не встановлено.</p>
+<p>Створити diffs з <em>&lt;n&gt;</em> рядками контексту. Зазвичай кількість рядків контексту дорівнює значенню <span class='synopsis'><code>diff.context</code></span> або 3, якщо ця змінна конфігурації не встановлена. (Опція <span class='synopsis'><code>-U</code></span> без аргументу <span class='synopsis'><em>&lt;n&gt;</em></span> через історичну випадковість мовчки приймається як синонім опції <span class='synopsis'><code>-p</code></span>).</p>
 </dd>
 <dt class="hdlist1" id="git-reset-spanclasssynopsiscode--inter-hunk-contextcodeemltngtemspan"> <a class="anchor" href="#git-reset---inter-hunk-contextn"></a> <a class="anchor" href="#git-reset-spanclasssynopsiscode--inter-hunk-contextcodeemltngtemspan"></a><span class='synopsis'><code>--inter-hunk-context=</code><em>&lt;n&gt;</em></span> </dt>
 <dd>

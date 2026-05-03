@@ -294,10 +294,10 @@ headings:
 <p><span class='synopsis'><code>theirs</code></span> löser automatiskt anteckningskonflikter till förmån för fjärrversionen (d.v.s. den angivna anteckningsreferensen som sammanfogas in i den aktuella anteckningsreferensen).</p>
 </div>
 <div class="paragraph">
-<p><span class='synopsis'><code>union</code></span> automatically resolves notes conflicts by concatenating the local and remote versions.</p>
+<p><span class='synopsis'><code>union</code></span> löser automatiskt anteckningskonflikter genom att sammanfoga de lokala och fjärrversionerna.</p>
 </div>
 <div class="paragraph">
-<p><span class='synopsis'><code>cat_sort_uniq</code></span> is similar to <span class='synopsis'><code>union</code></span>, but in addition to concatenating the local and remote versions, this strategy also sorts the resulting lines, and removes duplicate lines from the result. This is equivalent to applying the "cat | sort | uniq" shell pipeline to the local and remote versions. This strategy is useful if the notes follow a line-based format where one wants to avoid duplicated lines in the merge result. Note that if either the local or remote version contain duplicate lines prior to the merge, these will also be removed by this notes merge strategy.</p>
+<p><span class='synopsis'><code>cat_sort_uniq</code></span> liknar <span class='synopsis'><code>union</code></span>, men förutom att sammanfoga de lokala och fjärrversionerna sorterar denna strategi även de resulterande raderna och tar bort dubbletter från resultatet. Detta motsvarar att tillämpa skalpipelinen "cat | sort | uniq" på de lokala och fjärrversionerna. Denna strategi är användbar om anteckningarna följer ett radbaserat format där man vill undvika dubbletter i sammanslagningsresultatet. Observera att om antingen den lokala eller fjärrversionen innehåller dubbletter före sammanslagningen, kommer dessa också att tas bort av denna strategi för sammanslagning av anteckningar.</p>
 </div>
 </div>
 </div>
@@ -353,7 +353,7 @@ $ git notes --ref=built add --allow-empty -C "$blob" HEAD</pre>
 <dd>
 <p>Vilken sammanslagningsstrategi som ska väljas som standard vid lösande av anteckningskonflikter. Måste vara en av <span class='synopsis'><code>manual</code></span>, <span class='synopsis'><code>ours</code></span>, <span class='synopsis'><code>theirs</code></span>, <span class='synopsis'><code>union</code></span> eller <span class='synopsis'><code>cat_sort_uniq</code></span>. Standardinställningen är <span class='synopsis'><code>manual</code></span>. Se avsnittet "ANTECKNINGAR SAMMANSLAGNINGSSTRATEGIER" i <a href='{{< relurl "docs/git-notes/sv" >}}'>git-notes[1]</a> för mer information om varje strategi.</p>
 <div class="paragraph">
-<p>Den här inställningen kan åsidosättas genom att skicka <span class='synopsis'><code>--strategy</code></span>-alternativet till <a href='{{< relurl "docs/git-notes/sv" >}}'>git-notes[1]</a>.</p>
+<p>Inställningen kan åsidosättas genom att skicka alternativet <span class='synopsis'><code>--strategy</code></span> till <a href='{{< relurl "docs/git-notes/sv" >}}'>git-notes[1]</a>.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-notes-spanclasssynopsiscodenotescodeemltnamegtemcodemergeStrategycodespan"> <a class="anchor" href="#git-notes-notesnamemergeStrategy"></a> <a class="anchor" href="#git-notes-spanclasssynopsiscodenotescodeemltnamegtemcodemergeStrategycodespan"></a><span class='synopsis'><code>notes.</code><em>&lt;name&gt;</em><code>.mergeStrategy</code></span> </dt>
@@ -362,7 +362,7 @@ $ git notes --ref=built add --allow-empty -C "$blob" HEAD</pre>
 </dd>
 <dt class="hdlist1" id="git-notes-spanclasssynopsiscodenotesdisplayRefcodespan"> <a class="anchor" href="#git-notes-notesdisplayRef"></a> <a class="anchor" href="#git-notes-spanclasssynopsiscodenotesdisplayRefcodespan"></a><span class='synopsis'><code>notes.displayRef</code></span> </dt>
 <dd>
-<p>Vilken referens (eller referenser, om en glob eller angetts mer än en gång), utöver standardvärdet som anges av <span class='synopsis'><code>core.notesRef</code></span> eller <span class='synopsis'><code>GIT_NOTES_REF</code></span>, som anteckningar ska läsas från när inchecknings-meddelanden visas med kommandofamiljen <span class='synopsis'><code>git</code> <code>log</code></span>.</p>
+<p>Vilken referens (eller referenser, om en glob eller angetts mer än en gång), utöver standardvärdet som anges av <span class='synopsis'><code>core.notesRef</code></span> eller <span class='synopsis'><code>GIT_NOTES_REF</code></span>, som anteckningar ska läsas från när incheckningsmeddelanden visas med kommandofamiljen <span class='synopsis'><code>git</code> <code>log</code></span>.</p>
 <div class="paragraph">
 <p>Den här inställningen kan åsidosättas med miljövariabeln <span class='synopsis'><code>GIT_NOTES_DISPLAY_REF</code></span>, som måste vara en kolonseparerad lista med referenser eller globs.</p>
 </div>
@@ -387,7 +387,7 @@ $ git notes --ref=built add --allow-empty -C "$blob" HEAD</pre>
 <dd>
 <p>När anteckningar kopieras under en omskrivning (se alternativet <span class='synopsis'><code>notes.rewrite.</code><em>&lt;kommando&gt;</em></span>), avgör detta vad som ska göras om mål-incheckningen redan har en anteckning. Måste vara en av <span class='synopsis'><code>overwrite</code></span>, <span class='synopsis'><code>concatenate</code></span>, <span class='synopsis'><code>cat_sort_uniq</code></span> eller <span class='synopsis'><code>ignore</code></span>. Standardvärdet är <span class='synopsis'><code>concatenate</code></span>.</p>
 <div class="paragraph">
-<p>Den här inställningen kan åsidosättas med miljövariabeln <span class='synopsis'><code>GIT_NOTES_REWRITE_MODE</code></span>.</p>
+<p>Inställningen kan åsidosättas med miljövariabeln <span class='synopsis'><code>GIT_NOTES_REWRITE_MODE</code></span>.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-notes-spanclasssynopsiscodenotesrewriteRefcodespan"> <a class="anchor" href="#git-notes-notesrewriteRef"></a> <a class="anchor" href="#git-notes-spanclasssynopsiscodenotesrewriteRefcodespan"></a><span class='synopsis'><code>notes.rewriteRef</code></span> </dt>

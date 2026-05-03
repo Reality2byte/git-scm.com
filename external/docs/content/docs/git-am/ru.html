@@ -24,8 +24,8 @@ headings:
   id: _перехватчики
 - text: КОНФИГУРАЦИЯ
   id: _конфигурация
-- text: СМОТРИТЕ ТАКЖЕ
-  id: _смотрите_также
+- text: СМ. ТАКЖЕ
+  id: _см_также
 - text: GIT
   id: _git
 ---
@@ -44,7 +44,7 @@ headings:
 <pre class="content"><em>git am</em> [--signoff] [--keep] [--[no-]keep-cr] [--[no-]utf8] [--no-verify]
 	[--[no-]3way] [--interactive] [--committer-date-is-author-date]
 	[--ignore-date] [--ignore-space-change | --ignore-whitespace]
-	[--whitespace=&lt;действие&gt;] [-C&lt;число&gt;] [-p&lt;число&gt;] [--directory=&lt;каталог&gt;]
+	[--whitespace=&lt;действие&gt;] [-C&lt;число&gt;] [-p&lt;число&gt;] [--directory=<span class="hover-term" data-term="каталог">&lt;каталог&gt;</span>]
 	[--exclude=&lt;путь&gt;] [--include=&lt;путь&gt;] [--reject] [-q | --quiet]
 	[--[no-]scissors] [-S[&lt;id-ключа&gt;]] [--patch-format=&lt;формат&gt;]
 	[--quoted-cr=&lt;действие&gt;]
@@ -162,7 +162,7 @@ headings:
 <dt class="hdlist1" id="git-am-spanclasssynopsiscode--rerere-autoupdatecodespan"> <a class="anchor" href="#git-am---rerere-autoupdate"></a> <a class="anchor" href="#git-am-spanclasssynopsiscode--rerere-autoupdatecodespan"></a><span class='synopsis'><code>--rerere-autoupdate</code></span> </dt>
 <dt class="hdlist1" id="git-am-spanclasssynopsiscode--no-rerere-autoupdatecodespan"> <a class="anchor" href="#git-am---no-rerere-autoupdate"></a> <a class="anchor" href="#git-am-spanclasssynopsiscode--no-rerere-autoupdatecodespan"></a><span class='synopsis'><code>--no-rerere-autoupdate</code></span> </dt>
 <dd>
-<p>После того как механизм rerere повторно использует записанное ранее разрешение на текущем конфликте для обновления файлов в рабочем каталоге, разрешить также обновить индекс, применив к нему результат разрешения. Параметр <span class='synopsis'><code>--no-rerere-autoupdate</code></span> можно использовать как удобный способом дважды проверить результат работы <span class='synopsis'><code>rerere</code></span>, и поймать потенциальные ошибки слияния до выполнения коммита, добавляя результат в индексе с помощью отдельной команды <span class='synopsis'><code>git</code> <code>add</code></span>.</p>
+<p>После того как механизм rerere повторно использует записанное ранее разрешение на текущем конфликте для обновления файлов в рабочем каталоге, разрешить также обновить индекс, применив к нему результат разрешения. Параметр <span class='synopsis'><code>--no-rerere-autoupdate</code></span> можно использовать как удобный способ дважды проверить результат работы <a href='{{< relurl "docs/git-rerere/ru" >}}'>git-rerere[1]</a> и поймать потенциальные ошибки слияния до того, как зафиксировать результат в индексе с помощью отдельной команды <a href='{{< relurl "docs/git-add/ru" >}}'>git-add[1]</a>.</p>
 </dd>
 </dl>
 </div>
@@ -265,7 +265,7 @@ headings:
 <h2 id="_обсуждение"><a class="anchor" href="#_обсуждение"></a>ОБСУЖДЕНИЕ</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Имя автора коммита берётся из строки "From: " сообщения, а дата автора коммита берётся из строки "Date: " сообщения. Строка "Subject: " используется в качестве заголовка коммита после удаления общего префикса "[PATCH &lt;что-либо&gt;]". Строка "Subject: " должна кратко описывать, о чём коммит, в одной строке текста.</p>
+<p>Имя автора коммита берётся из строки «From: » сообщения, а дата автора коммита берётся из строки «Date: » сообщения. Строка «Subject: » используется в качестве заголовка коммита после удаления общего префикса «[PATCH &lt;что-либо&gt;]». Строка «Subject: » должна кратко описывать, о чём коммит, в одной строке текста.</p>
 </div>
 <div class="paragraph">
 <p>Строки "From: ", "Date: " и "Subject: ", начинающие тело, переопределяют соответствующие значения имени автора и заголовка коммита, взятые из заголовков.</p>
@@ -347,7 +347,7 @@ headings:
 </div>
 </div>
 <div class="sect1">
-<h2 id="_смотрите_также"><a class="anchor" href="#_смотрите_также"></a>СМОТРИТЕ ТАКЖЕ</h2>
+<h2 id="_см_также"><a class="anchor" href="#_см_также"></a>СМ. ТАКЖЕ</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href='{{< relurl "docs/git-apply/ru" >}}'>git-apply[1]</a>, <a href='{{< relurl "docs/git-format-patch/ru" >}}'>git-format-patch[1]</a>.</p>

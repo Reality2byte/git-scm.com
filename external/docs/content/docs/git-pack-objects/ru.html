@@ -22,8 +22,8 @@ headings:
   id: _дельта_острова
 - text: КОНФИГУРАЦИЯ
   id: _конфигурация
-- text: СМОТРИТЕ ТАКЖЕ
-  id: _смотрите_также
+- text: СМ. ТАКЖЕ
+  id: _см_также
 - text: GIT
   id: _git
 ---
@@ -77,7 +77,7 @@ headings:
 <dl>
 <dt class="hdlist1" id="git-pack-objects-base-name"> <a class="anchor" href="#git-pack-objects-base-name"></a>base-name </dt>
 <dd>
-<p>Записывать в пары файлов (.pack и .idx), используя &lt;базовое-имя&gt; для определения имени создаваемого файла. При использовании этого параметра два файла в паре записываются в файлы &lt;базовое-имя&gt;-&lt;SHA-1&gt;.{pack,idx}. &lt;SHA-1&gt; — это хеш, основанный на содержимом пакета, и он записывается в стандартный вывод команды.</p>
+<p>Записывать в пары файлов (.pack и .idx), используя &lt;базовое-имя&gt; для определения имени создаваемого файла. При использовании этого параметра два файла в паре записываются в файлы &lt;базовое-имя&gt;-<span class="hover-term" data-term="SHA-1">&lt;SHA-1&gt;</span>.{pack,idx}. <span class="hover-term" data-term="SHA-1">&lt;SHA-1&gt;</span> — это хеш, основанный на содержимом пакета, и он записывается в стандартный вывод команды.</p>
 </dd>
 <dt class="hdlist1" id="git-pack-objects---stdout"> <a class="anchor" href="#git-pack-objects---stdout"></a>--stdout </dt>
 <dd>
@@ -85,7 +85,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-pack-objects---revs"> <a class="anchor" href="#git-pack-objects---revs"></a>--revs </dt>
 <dd>
-<p>Читать аргументы редакций из стандартного ввода вместо отдельных имён объектов. Аргументы редакций обрабатываются так же, как <em>git rev-list</em> с флагом <span class='synopsis'><code>--objects</code></span> использует свои аргументы <span class='synopsis'><code>commit</code></span> для построения списка объектов, которые он выводит. Объекты в результирующем списке упаковываются. Кроме редакций, также принимаются строки <span class='synopsis'><code>--not</code></span> или <span class='synopsis'><code>--shallow</code> <em>&lt;SHA-1&gt;</em></span>.</p>
+<p>Читать аргументы редакций из стандартного ввода вместо отдельных имён объектов. Аргументы редакций обрабатываются так же, как <em>git rev-list</em> с флагом <span class='synopsis'><code>--objects</code></span> использует свои аргументы <span class='synopsis'><code>commit</code></span> для построения списка объектов, которые он выводит. Объекты в результирующем списке упаковываются. Кроме редакций, также принимаются строки <span class='synopsis'><code>--not</code></span> или <span class='synopsis'><code>--shallow</code> <em><span class="hover-term" data-term="SHA-1">&lt;SHA-1&gt;</span></em></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-pack-objects---unpacked"> <a class="anchor" href="#git-pack-objects---unpacked"></a>--unpacked </dt>
 <dd>
@@ -352,7 +352,7 @@ island = refs/virtual/([0-9]+)/(pull)/</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_смотрите_также"><a class="anchor" href="#_смотрите_также"></a>СМОТРИТЕ ТАКЖЕ</h2>
+<h2 id="_см_также"><a class="anchor" href="#_см_также"></a>СМ. ТАКЖЕ</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href='{{< relurl "docs/git-rev-list/ru" >}}'>git-rev-list[1]</a> <a href='{{< relurl "docs/git-repack/ru" >}}'>git-repack[1]</a> <a href='{{< relurl "docs/git-prune-packed/ru" >}}'>git-prune-packed[1]</a></p>

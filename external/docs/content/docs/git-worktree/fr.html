@@ -126,7 +126,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-worktree-spanclasssynopsiscodeprunecodespan"> <a class="anchor" href="#git-worktree-prune"></a> <a class="anchor" href="#git-worktree-spanclasssynopsiscodeprunecodespan"></a><span class='synopsis'><code>prune</code></span> </dt>
 <dd>
-<p>Élaguer les informations de l&#8217;arbre-de-travail dans <span class='synopsis'><code>$GIT_DIR/worktrees</code></span>.</p>
+<p>Retirer l&#8217;information de l&#8217;arbre-de-travail dans <span class='synopsis'><code>$GIT_DIR/worktrees</code></span> pour les arbres-de-travail dont les arbres de travail manquent. Utile après avoir retiré manuellement un arbre de travail qui n&#8217;est plus nécessaire (mais utilisez "git worktree remove" la prochaine fois que vous voulez le faire). De plus, si vous avez <em>déplacé</em> un arbre de travail ailleurs causant l&#8217;information de l&#8217;arbre-de-travail pour devenir esseulé, voir "git worktree repair" pour reconnecter l&#8217;arbre-de-travail au nouvel emplacement de l&#8217;arbre de travail.</p>
 </dd>
 <dt class="hdlist1" id="git-worktree-spanclasssynopsiscoderemovecodespan"> <a class="anchor" href="#git-worktree-remove"></a> <a class="anchor" href="#git-worktree-spanclasssynopsiscoderemovecodespan"></a><span class='synopsis'><code>remove</code></span> </dt>
 <dd>
@@ -241,7 +241,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-worktree-spanclasssynopsiscode--expirecodeemltdategtemspan"> <a class="anchor" href="#git-worktree---expiredate"></a> <a class="anchor" href="#git-worktree-spanclasssynopsiscode--expirecodeemltdategtemspan"></a><span class='synopsis'><code>--expire</code> <em>&lt;date&gt;</em></span> </dt>
 <dd>
-<p>Avec <span class='synopsis'><code>prune</code></span>, n&#8217;expirer que les arbres-de-travail inutilisés plus vieux que <em>&lt;date&gt;</em>.</p>
+<p>Avec <span class='synopsis'><code>prune</code></span>, n&#8217;expirer que les arbres-de-travail manquants plus vieux que <em>&lt;date&gt;</em>.</p>
 <div class="paragraph">
 <p>Avec <span class='synopsis'><code>list</code></span>, annoter les arbres-de-travail manquant comme élagable s&#8217;ils sont plus vieux que <em>&lt;date&gt;</em>.</p>
 </div>

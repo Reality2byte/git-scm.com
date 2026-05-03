@@ -52,7 +52,7 @@ headings:
 <p>Efterföljande uppdateringar av grenar skapar alltid nya filer under kataloghierarkin <span class='synopsis'><code>$GIT_DIR/refs</code></span>.</p>
 </div>
 <div class="paragraph">
-<p>En rekommenderad metod för att hantera ett förvar med för många referenser är att packa dess referenser med <span class='synopsis'><code>--all</code></span> en gång, och då och då köra <span class='synopsis'><code>git</code> <code>pack-refs</code></span>. Taggar är per definition stationära och förväntas inte ändras. Grenhuvuden kommer att packas med den initiala <span class='synopsis'><code>pack-refs</code> <code>--all</code></span>, men endast de för närvarande aktiva grenhuvudena kommer att packas upp, och nästa <span class='synopsis'><code>pack-refs</code></span> (utan <span class='synopsis'><code>--all</code></span>) kommer att lämna dem opackade.</p>
+<p>En rekommenderad metod för att hantera ett kodförråd med för många referenser är att packa dess referenser med <span class='synopsis'><code>--all</code></span> en gång, och då och då köra <span class='synopsis'><code>git</code> <code>pack-refs</code></span>. Taggar är per definition stationära och förväntas inte ändras. Grenhuvuden kommer att packas med den initiala <span class='synopsis'><code>pack-refs</code> <code>--all</code></span>, men endast de för närvarande aktiva grenhuvudena kommer att packas upp, och nästa <span class='synopsis'><code>pack-refs</code></span> (utan <span class='synopsis'><code>--all</code></span>) kommer att lämna dem opackade.</p>
 </div>
 </div>
 </div>
@@ -71,7 +71,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-pack-refs---auto"> <a class="anchor" href="#git-pack-refs---auto"></a>--auto </dt>
 <dd>
-<p>Packa referenser efter behov beroende på referensdatabasens aktuella tillstånd. Beteendet beror på vilket referensformat som används av arkivet och kan ändras i framtiden.</p>
+<p>Packa referenser efter behov beroende på referensdatabasens aktuella tillstånd. Beteendet beror på vilket referensformat som används av kodförrådet och kan ändras i framtiden.</p>
 <div class="ulist">
 <ul>
 <li>

@@ -66,22 +66,22 @@ headings:
 <h2 id="_beskrivning"><a class="anchor" href="#_beskrivning"></a>BESKRIVNING</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Du kan söka efter/ställa in/ersätta/avaktivera alternativ med det här kommandot. Namnet är egentligen sektionen och nyckeln separerade med en punkt, och värdet kommer att vara ett escape-tecken.</p>
+<p>Det går att hämta, sätta, ersätta och avaktivera alternativ med det här kommandot. Namnet består av sektion och nyckel, separerade med en punkt, och värdet escapas vid behov.</p>
 </div>
 <div class="paragraph">
-<p>Flera rader kan läggas till i ett alternativ med hjälp av alternativet <span class='synopsis'><code>--append</code></span>. Om du vill uppdatera eller avaktivera ett alternativ som kan förekomma på flera rader, behöver <span class='synopsis'><code>--value=</code><em>&lt;mönster&gt;</em></span> (vilket är ett utökat reguljärt uttryck, såvida inte alternativet <span class='synopsis'><code>--fixed-value</code></span> anges) anges. Endast de befintliga värden som matchar mönstret uppdateras eller avaktiveras. Om du vill hantera de rader som <strong>inte</strong> matchar mönstret, lägg bara till ett utropstecken framför (se även <a href="#EXAMPLES">EXEMPEL</a>), men observera att detta bara fungerar när alternativet <span class='synopsis'><code>--fixed-value</code></span> inte används.</p>
+<p>Flera rader kan läggas till för ett alternativ med <span class='synopsis'><code>--append</code></span>. Om du vill uppdatera eller ta bort ett alternativ som kan förekomma på flera rader behöver <span class='synopsis'><code>--value=</code><em>&lt;mönster&gt;</em></span> (ett utökat reguljärt uttryck, såvida inte <span class='synopsis'><code>--fixed-value</code></span> anges) anges. Bara befintliga värden som matchar mönstret uppdateras eller tas bort. Om du vill hantera rader som <strong>inte</strong> matchar mönstret, lägg bara till ett utropstecken framför (se även <a href="#EXAMPLES">EXEMPEL</a>), men observera att detta bara fungerar när <span class='synopsis'><code>--fixed-value</code></span> inte används.</p>
 </div>
 <div class="paragraph">
 <p>Alternativet <span class='synopsis'><code>--type=</code><em>&lt;typ&gt;</em></span> instruerar <em>git config</em> att säkerställa att inkommande och utgående värden kan kanoniseras under den givna &lt;typen&gt;. Om ingen <span class='synopsis'><code>--type=</code><em>&lt;typ&gt;</em></span> anges kommer ingen kanonisering att utföras. Anropare kan avaktivera en befintlig <span class='synopsis'><code>--type</code></span>-specifikation med <span class='synopsis'><code>--no-type</code></span>.</p>
 </div>
 <div class="paragraph">
-<p>Vid läsning läses värdena som standard från system-, globala och lokala konfigurationsfiler för förvaret, och alternativen <span class='synopsis'><code>--system</code></span>, <span class='synopsis'><code>--global</code></span>, <span class='synopsis'><code>--local</code></span>, <span class='synopsis'><code>--worktree</code></span> och <span class='synopsis'><code>--file</code> <em>&lt;filnamn&gt;</em></span> kan användas för att ange att kommandot ska läsa endast från den platsen (se <a href="#FILES">FILER</a>).</p>
+<p>Vid läsning läses värdena som standard från system-, globala och lokala konfigurationsfiler för kodförrådet, och flaggorna <span class='synopsis'><code>--system</code></span>, <span class='synopsis'><code>--global</code></span>, <span class='synopsis'><code>--local</code></span>, <span class='synopsis'><code>--worktree</code></span> och <span class='synopsis'><code>--file</code> <em>&lt;filnamn&gt;</em></span> kan användas för att ange att kommandot bara ska läsa från den platsen (se <a href="#FILES">FILER</a>).</p>
 </div>
 <div class="paragraph">
-<p>Vid skrivning, skrivs det nya värdet som standard till den lokala konfigurationsfilen för repot, och alternativen <span class='synopsis'><code>--system</code></span>, <span class='synopsis'><code>--global</code></span>, <span class='synopsis'><code>--worktree</code></span>, <span class='synopsis'><code>--file</code> <em>&lt;filnamn&gt;</em></span> kan användas för att ange att kommandot ska skriva till den platsen (du kan säga <span class='synopsis'><code>--local</code></span> men det är standardvärdet).</p>
+<p>Vid skrivning, skrivs det nya värdet som standard till den lokala konfigurationsfilen för kodförrådet, och alternativen <span class='synopsis'><code>--system</code></span>, <span class='synopsis'><code>--global</code></span>, <span class='synopsis'><code>--worktree</code></span>, <span class='synopsis'><code>--file</code> <em>&lt;filnamn&gt;</em></span> kan användas för att ange att kommandot ska skriva till den platsen (alternativet <span class='synopsis'><code>--local</code></span> kan anges, men standardvärdet).</p>
 </div>
 <div class="paragraph">
-<p>Det här kommandot kommer att misslyckas med status som inte är noll vid fel. Några avslutningskoder är:</p>
+<p>Kommandot misslyckas med status som inte är noll vid fel. Några avslutningskoder är:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -98,7 +98,7 @@ headings:
 <p>konfigurationsfilen kan inte skrivas (ret=4),</p>
 </li>
 <li>
-<p>du försöker avaktivera ett alternativ som inte finns (ret=5),</p>
+<p>du försöker ta bort ett alternativ som inte finns (ret=5),</p>
 </li>
 <li>
 <p>du försöker avaktivera/aktivera ett alternativ som flera rader matchar för (ret=5), eller</p>
@@ -131,11 +131,11 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-config-set"> <a class="anchor" href="#git-config-set"></a>set </dt>
 <dd>
-<p>Ange värde för ett eller flera konfigurationsalternativ. Som standard vägrar det här kommandot att skriva flervärdeskonfigurationsalternativ. Om <span class='synopsis'><code>--all</code></span> skickas ersätts alla flervärdeskonfigurationsalternativ med det nya värdet, medan <span class='synopsis'><code>--value=</code></span> ersätter alla konfigurationsalternativ vars värden matchar det givna mönstret.</p>
+<p>Sätt värde för ett eller flera konfigurationsalternativ. Som standard vägrar kommandot att skriva flervärdesalternativ. Om <span class='synopsis'><code>--all</code></span> anges ersätts alla flervärdesalternativ med det nya värdet, medan <span class='synopsis'><code>--value=</code></span> ersätter alla alternativ vars värden matchar det angivna mönstret.</p>
 </dd>
 <dt class="hdlist1" id="git-config-unset"> <a class="anchor" href="#git-config-unset"></a>unset </dt>
 <dd>
-<p>Avaktivera värde för ett eller flera konfigurationsalternativ. Som standard vägrar det här kommandot att avaktivera flervärdesnycklar. Om <span class='synopsis'><code>--all</code></span> skickas avaktiveras alla flervärdeskonfigurationsalternativ, medan <span class='synopsis'><code>--value</code></span> avaktiverar alla konfigurationsalternativ vars värden matchar det givna mönstret.</p>
+<p>Avaktivera värde för ett eller flera konfigurationsalternativ. Som standard vägrar kommandot att avaktivera flervärdesnycklar. Om <span class='synopsis'><code>--all</code></span> anges avaktiveras alla flervärdesalternativ, medan <span class='synopsis'><code>--value</code></span> avaktiverar alla alternativ vars värden matchar det angivna mönstret.</p>
 </dd>
 <dt class="hdlist1" id="git-config-rename-section"> <a class="anchor" href="#git-config-rename-section"></a>rename-section </dt>
 <dd>
@@ -147,7 +147,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-config-edit"> <a class="anchor" href="#git-config-edit"></a>edit </dt>
 <dd>
-<p>Öppnar en editor för att ändra den angivna konfigurationsfilen; antingen <span class='synopsis'><code>--system</code></span>, <span class='synopsis'><code>--global</code></span>, <span class='synopsis'><code>--local</code></span> (standard), <span class='synopsis'><code>--worktree</code></span> eller <span class='synopsis'><code>--file</code> <em>&lt;konfigurationsfil&gt;</em></span>.</p>
+<p>Öppnar en redigerare för att ändra den angivna konfigurationsfilen; antingen <span class='synopsis'><code>--system</code></span>, <span class='synopsis'><code>--global</code></span>, <span class='synopsis'><code>--local</code></span> (standard), <span class='synopsis'><code>--worktree</code></span> eller <span class='synopsis'><code>--file</code> <em>&lt;konfigurationsfil&gt;</em></span>.</p>
 </dd>
 </dl>
 </div>
@@ -187,7 +187,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-config---global"> <a class="anchor" href="#git-config---global"></a>--global </dt>
 <dd>
-<p>För skrivalternativ: skriv till den globala <span class='synopsis'><code>~/.gitconfig</code></span>-filen istället för arkivet <span class='synopsis'><code>.git/config</code></span>, skriv till <span class='synopsis'><code>$XDG_CONFIG_HOME/git/config</code></span>-filen om den här filen finns och <span class='synopsis'><code>~/.gitconfig</code></span>-filen inte gör det.</p>
+<p>För skrivalternativ: skriv till den globala <span class='synopsis'><code>~/.gitconfig</code></span>-filen i stället för kodförrådets <span class='synopsis'><code>.git/config</code></span>; skriv till <span class='synopsis'><code>$XDG_CONFIG_HOME/git/config</code></span> om den filen finns och <span class='synopsis'><code>~/.gitconfig</code></span> inte gör det.</p>
 <div class="paragraph">
 <p>För läsalternativ: läs endast från global <span class='synopsis'><code>~/.gitconfig</code></span> och från <span class='synopsis'><code>$XDG_CONFIG_HOME/git/config</code></span> snarare än från alla tillgängliga filer.</p>
 </div>
@@ -197,7 +197,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-config---system"> <a class="anchor" href="#git-config---system"></a>--system </dt>
 <dd>
-<p>För skrivalternativ: skriv till systemomfattande <span class='synopsis'><code>$</code>(<code>prefix</code>)<code>/etc/gitconfig</code></span> istället för kodförrådets <span class='synopsis'><code>.git/config</code></span>.</p>
+<p>För skrivalternativ: skriv till systemomfattande <span class='synopsis'><code>$</code>(<code>prefix</code>)<code>/etc/gitconfig</code></span> i stället för kodförrådets <span class='synopsis'><code>.git/config</code></span>.</p>
 <div class="paragraph">
 <p>För läsalternativ: läs endast från systemomfattande <span class='synopsis'><code>$</code>(<code>prefix</code>)<code>/etc/gitconfig</code></span> snarare än från alla tillgängliga filer.</p>
 </div>
@@ -207,9 +207,9 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-config---local"> <a class="anchor" href="#git-config---local"></a>--local </dt>
 <dd>
-<p>För skrivalternativ: skriv til kodförrådets <span class='synopsis'><code>.git/config</code></span>-fil. Detta är standardbeteendet.</p>
+<p>För skrivalternativ: skriv till kodförrådets <span class='synopsis'><code>.git/config</code></span>-fil. Detta är standardbeteendet.</p>
 <div class="paragraph">
-<p>För läsalternativ: läs endast från arkivet <span class='synopsis'><code>.git/config</code></span> snarare än från alla tillgängliga filer.</p>
+<p>För läsalternativ: läs endast från kodförrådet <span class='synopsis'><code>.git/config</code></span> snarare än från alla tillgängliga filer.</p>
 </div>
 <div class="paragraph">
 <p>Se även <a href="#FILES">FILER</a>.</p>
@@ -217,14 +217,14 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-config---worktree"> <a class="anchor" href="#git-config---worktree"></a>--worktree </dt>
 <dd>
-<p>Liknar <span class='synopsis'><code>--local</code></span> förutom att <span class='synopsis'><code>$GIT_DIR/config.worktree</code></span> läses från eller skrivs till om <span class='synopsis'><code>extensions.worktreeConfig</code></span> är aktiverat. Om inte är det samma sak som <span class='synopsis'><code>--local</code></span>. Observera att <span class='synopsis'><code>$GIT_DIR</code></span> är lika med <span class='synopsis'><code>$GIT_COMMON_DIR</code></span> för det huvudsakliga arbetskatalog, men har formen <span class='synopsis'><code>$GIT_DIR/worktrees/</code><em>&lt;id&gt;</em><code>/</code></span> för andra arbetsträd. Se <a href='{{< relurl "docs/git-worktree/sv" >}}'>git-worktree[1]</a> för att lära dig hur man aktiverar <span class='synopsis'><code>extensions.worktreeConfig</code></span>.</p>
+<p>Liknar <span class='synopsis'><code>--local</code></span> förutom att <span class='synopsis'><code>$GIT_DIR/config.worktree</code></span> läses från eller skrivs till om <span class='synopsis'><code>extensions.worktreeConfig</code></span> är aktiverat. Om inte är det samma sak som <span class='synopsis'><code>--local</code></span>. Observera att <span class='synopsis'><code>$GIT_DIR</code></span> är lika med <span class='synopsis'><code>$GIT_COMMON_DIR</code></span> för det huvudsakliga arbetsträdet, men har formen <span class='synopsis'><code>$GIT_DIR/worktrees/</code><em>&lt;id&gt;</em><code>/</code></span> för andra arbetsträd. Se <a href='{{< relurl "docs/git-worktree/sv" >}}'>git-worktree[1]</a> för information om hur <span class='synopsis'><code>extensions.worktreeConfig</code></span> aktiveras.</p>
 </dd>
-<dt class="hdlist1" id="git-config--fltltkonfigurationsfilgt"> <a class="anchor" href="#git-config--fkonfigurationsfil"></a> <a class="anchor" href="#git-config--fltltkonfigurationsfilgt"></a>-f &lt;&lt;konfigurationsfil&gt; </dt>
-<dt class="hdlist1" id="git-config---fileltcltkonfigurationsfilgt"> <a class="anchor" href="#git-config---fileckonfigurationsfil"></a> <a class="anchor" href="#git-config---fileltcltkonfigurationsfilgt"></a>--file &lt;c&lt;konfigurationsfil&gt; </dt>
+<dt class="hdlist1" id="git-config--fltkonfigurationsfilgt"> <a class="anchor" href="#git-config--fkonfigurationsfil"></a> <a class="anchor" href="#git-config--fltkonfigurationsfilgt"></a>-f &lt;konfigurationsfil&gt; </dt>
+<dt class="hdlist1" id="git-config---fileltkonfigurationsfilgt"> <a class="anchor" href="#git-config---filekonfigurationsfil"></a> <a class="anchor" href="#git-config---fileltkonfigurationsfilgt"></a>--file &lt;konfigurationsfil&gt; </dt>
 <dd>
-<p>För skrivalternativ: skriv till den angivna filen istället för kodförrådet <span class='synopsis'><code>.git/config</code></span>.</p>
+<p>För skrivalternativ: skriv till den angivna filen i stället för kodförrådets <span class='synopsis'><code>.git/config</code></span>.</p>
 <div class="paragraph">
-<p>För läsalternativ: läs endast från den angivna filen istället för från alla tillgängliga filer.</p>
+<p>För läsalternativ: läs endast från den angivna filen i stället för från alla tillgängliga filer.</p>
 </div>
 <div class="paragraph">
 <p>Se även <a href="#FILES">FILER</a>.</p>
@@ -232,7 +232,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-config---blobltblobgt"> <a class="anchor" href="#git-config---blobblob"></a> <a class="anchor" href="#git-config---blobltblobgt"></a>--blob &lt;blob&gt; </dt>
 <dd>
-<p>Liknar <span class='synopsis'><code>--file</code></span> men använd den givna blobben istället för en fil. Du kan t.ex. använda <em>master:.gitmodules</em> för att läsa värden från filen <em>.gitmodules</em> i master-grenen. Se avsnittet "SPECIFICERING AV REVISIONER" i <a href='{{< relurl "docs/gitrevisions/sv" >}}'>gitrevisions[7]</a> för en mer komplett lista över sätt att stava blobbnamn.</p>
+<p>Liknar <span class='synopsis'><code>--file</code></span>, men den givna blobben används i stället för en fil. Till exempel kan <em>master:.gitmodules</em> användas för att läsa värden från filen <em>.gitmodules</em> i master-grenen. Se avsnittet "SPECIFICERING AV REVISIONER" i <a href='{{< relurl "docs/gitrevisions/sv" >}}'>gitrevisions[7]</a> för en mer komplett lista över sätt att ange blobbnamn.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscode--valuecodeemltmnstergtemspan"> <a class="anchor" href="#git-config---valuemnster"></a> <a class="anchor" href="#git-config-spanclasssynopsiscode--valuecodeemltmnstergtemspan"></a><span class='synopsis'><code>--value=</code><em>&lt;mönster&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscode--no-valuecodespan"> <a class="anchor" href="#git-config---no-value"></a> <a class="anchor" href="#git-config-spanclasssynopsiscode--no-valuecodespan"></a><span class='synopsis'><code>--no-value</code></span> </dt>
@@ -244,7 +244,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-config---fixed-value"> <a class="anchor" href="#git-config---fixed-value"></a>--fixed-value </dt>
 <dd>
-<p>När det används med <span class='synopsis'><code>--value=</code><em>&lt;mönster&gt;</em></span>, behandla <em>&lt;mönster&gt;</em> som en exakt sträng istället för ett reguljärt uttryck. Detta begränsar namn/värde-paren som matchas till endast de där värdet är exakt lika med <em>&lt;mönster&gt;</em>.</p>
+<p>När det används med <span class='synopsis'><code>--value=</code><em>&lt;mönster&gt;</em></span>, behandla <em>&lt;mönster&gt;</em> som en exakt sträng i stället för ett reguljärt uttryck. Detta begränsar de matchade namn/värde-paren till endast de där värdet är exakt lika med <em>&lt;mönster&gt;</em>.</p>
 </dd>
 <dt class="hdlist1" id="git-config---typelttypgt"> <a class="anchor" href="#git-config---typetyp"></a> <a class="anchor" href="#git-config---typelttypgt"></a>--type &lt;typ&gt; </dt>
 <dd>
@@ -270,7 +270,7 @@ headings:
 <p><em>expiry-date</em>: kanonisera genom att konvertera från en fast eller relativ datumsträng till en tidsstämpel. Denna specifikation har ingen effekt när värdet anges.</p>
 </li>
 <li>
-<p><em>color</em>: När ett värde hämtas, kanonisera genom att konvertera till en ANSI-färg escape-sekvens. När ett värde anges utförs en rimlighetskontroll för att säkerställa att det givna värdet kan kanoniseras som en ANSI-färg, men att det skrivs som det är.</p>
+<p><em>color</em>: När ett värde hämtas kanoniseras det genom konvertering till en ANSI-färgescape-sekvens. När ett värde anges utförs en rimlighetskontroll för att säkerställa att värdet kan kanoniseras som en ANSI-färg, men det skrivs oförändrat.</p>
 </li>
 </ul>
 </div>
@@ -281,7 +281,7 @@ headings:
 <dt class="hdlist1" id="git-config---path"> <a class="anchor" href="#git-config---path"></a>--path </dt>
 <dt class="hdlist1" id="git-config---expiry-date"> <a class="anchor" href="#git-config---expiry-date"></a>--expiry-date </dt>
 <dd>
-<p>Historiska alternativ för att välja en typspecifikation. Föredra istället <span class='synopsis'><code>--type</code></span> (se ovan).</p>
+<p>Historiska alternativ för att välja en typspecifikation. Föredra i stället <span class='synopsis'><code>--type</code></span> (se ovan).</p>
 </dd>
 <dt class="hdlist1" id="git-config---no-type"> <a class="anchor" href="#git-config---no-type"></a>--no-type </dt>
 <dd>
@@ -290,7 +290,7 @@ headings:
 <dt class="hdlist1" id="git-config--z"> <a class="anchor" href="#git-config--z"></a>-z </dt>
 <dt class="hdlist1" id="git-config---null"> <a class="anchor" href="#git-config---null"></a>--null </dt>
 <dd>
-<p>För alla alternativ som matar ut värden och/eller nycklar, avsluta alltid värden med null-tecknet (istället för en nyrad). Använd istället nyrad som avgränsare mellan nyckel och värde. Detta möjliggör säker parsning av utdata utan att bli förvirrad av t.ex. värden som innehåller radbrytningar.</p>
+<p>För alla alternativ som matar ut värden och/eller nycklar, avsluta alltid värden med NUL-tecknet (i stället för en nyrad). Använd i stället nyrad som avgränsare mellan nyckel och värde. Detta möjliggör säker parsning av utdata utan att bli förvirrad av t.ex. värden som innehåller radbrytningar.</p>
 </dd>
 <dt class="hdlist1" id="git-config---name-only"> <a class="anchor" href="#git-config---name-only"></a>--name-only </dt>
 <dd>
@@ -357,7 +357,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-config---get-regexpltnamn-regexpgt"> <a class="anchor" href="#git-config---get-regexpnamn-regexp"></a> <a class="anchor" href="#git-config---get-regexpltnamn-regexpgt"></a>--get-regexp &lt;namn-regexp&gt; </dt>
 <dd>
-<p>Replaced by <span class='synopsis'><code>git</code> <code>config</code> <code>get</code> <code>--all</code> <code>--show-names</code> <code>--regexp</code> <em>&lt;namn-regexp&gt;</em></span>.</p>
+<p>Ersatt av <span class='synopsis'><code>git</code> <code>config</code> <code>get</code> <code>--all</code> <code>--show-names</code> <code>--regexp</code> <em>&lt;namn-regexp&gt;</em></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-config---get-urlmatchltnamngtltURLgt"> <a class="anchor" href="#git-config---get-urlmatchnamnURL"></a> <a class="anchor" href="#git-config---get-urlmatchltnamngtltURLgt"></a>--get-urlmatch &lt;namn&gt; &lt;URL&gt; </dt>
 <dd>
@@ -400,7 +400,7 @@ headings:
 <h2 id="_konfiguration"><a class="anchor" href="#_konfiguration"></a>KONFIGURATION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><span class='synopsis'><code>pager.config</code></span> respekteras bara när konfigurationen listas, dvs. när <span class='synopsis'><code>list</code></span> eller <span class='synopsis'><code>get</code></span> används, vilka kan returnera flera resultat. Standardinställningen är att använda en bläddrare.</p>
+<p><span class='synopsis'><code>pager.config</code></span> respekteras bara vid listning av konfiguration, d.v.s. när <span class='synopsis'><code>list</code></span> eller <span class='synopsis'><code>get</code></span> används, vilka kan returnera flera resultat. Standard är att använda en sidvisare.</p>
 </div>
 </div>
 </div>
@@ -426,7 +426,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-config-GITDIRconfig"> <a class="anchor" href="#git-config-GITDIRconfig"></a>$GIT_DIR/config </dt>
 <dd>
-<p>Förvars specifik konfigurationsfil.</p>
+<p>Kodförrådsspecifik konfigurationsfil.</p>
 </dd>
 <dt class="hdlist1" id="git-config-GITDIRconfigworktree"> <a class="anchor" href="#git-config-GITDIRconfigworktree"></a>$GIT_DIR/config.worktree </dt>
 <dd>
@@ -444,10 +444,10 @@ headings:
 <p>Filerna läses i den ordning som anges ovan, där det senast funna värdet prioriteras framför det tidigare lästa värdet. När flera värden tas kommer alla värden från en nyckel från alla filer att användas.</p>
 </div>
 <div class="paragraph">
-<p>Som standard, skrivs alternativ endast till den specifika konfigurationsfilen för arkivet. Observera att detta även påverkar alternativ som <span class='synopsis'><code>set</code></span> och <span class='synopsis'><code>unset</code></span>. <strong><em>git config</em> kommer bara att ändra en fil åt gången</strong>.</p>
+<p>Som standard skrivs alternativ endast till den specifika konfigurationsfilen för kodförrådet. Observera att detta även påverkar alternativ som <span class='synopsis'><code>set</code></span> och <span class='synopsis'><code>unset</code></span>. <strong><em>git config</em> kommer bara att ändra en fil åt gången</strong>.</p>
 </div>
 <div class="paragraph">
-<p>Du kan begränsa vilka konfigurationskällor som läses från eller skrivs till genom att ange sökvägen till en fil med alternativet <span class='synopsis'><code>--file</code></span>, eller genom att ange ett konfigurationsomfång med <span class='synopsis'><code>--system</code></span>, <span class='synopsis'><code>--global</code></span>, <span class='synopsis'><code>--local</code></span> eller <span class='synopsis'><code>--worktree</code></span>. För mer information, se <a href="#OPTIONS">ALTERNATIV</a> ovan.</p>
+<p>Du kan begränsa vilka konfigurationskällor som läses från eller skrivs till genom att ange sökvägen till en fil med <span class='synopsis'><code>--file</code></span>, eller genom att ange ett konfigurationsomfång med <span class='synopsis'><code>--system</code></span>, <span class='synopsis'><code>--global</code></span>, <span class='synopsis'><code>--local</code></span> eller <span class='synopsis'><code>--worktree</code></span>. Se <a href="#OPTIONS">ALTERNATIV</a> ovan för mer information.</p>
 </div>
 </div>
 </div>
@@ -491,7 +491,7 @@ headings:
 <p>Med undantag för <em>command</em> motsvarar varje omfång ett kommandoradsalternativ: <span class='synopsis'><code>--system</code></span>, <span class='synopsis'><code>--global</code></span>, <span class='synopsis'><code>--local</code></span>, <span class='synopsis'><code>--worktree</code></span>.</p>
 </div>
 <div class="paragraph">
-<p>När man läser alternativ och anger ett scope, läses endast alternativ från filerna inom det omfånget. När man skriver alternativ och anger ett omfång, skrivs det till filerna inom det omfånget (istället för till den databasspecifika konfigurationsfilen). Se <a href="#OPTIONS">ALTERNATIV</a> ovan för en fullständig beskrivning.</p>
+<p>Vid läsning av alternativ läses bara alternativ från filerna inom angivet omfång. Vid skrivning av alternativ skrivs det till filerna inom angivet omfång (i stället för kodförrådets konfigurationsfil). Se <a href="#OPTIONS">ALTERNATIV</a> ovan för en fullständig beskrivning.</p>
 </div>
 <div class="paragraph">
 <p>De flesta konfigurationsalternativ respekteras oavsett vilket omfång de definieras i, men vissa alternativ respekteras endast i vissa omfång. Se respektive alternativs dokumentation för fullständig information.</p>
@@ -515,7 +515,7 @@ headings:
 <dt class="hdlist1" id="git-config-GITCONFIGGLOBAL"> <a class="anchor" href="#git-config-GITCONFIGGLOBAL"></a>GIT_CONFIG_GLOBAL </dt>
 <dt class="hdlist1" id="git-config-GITCONFIGSYSTEM"> <a class="anchor" href="#git-config-GITCONFIGSYSTEM"></a>GIT_CONFIG_SYSTEM </dt>
 <dd>
-<p>Hämta konfigurationen från de givna filerna istället från global eller systemnivåkonfiguration. Se <a href='{{< relurl "docs/git/sv" >}}'>git[1]</a> för mer information.</p>
+<p>Hämta konfigurationen från de givna filerna i stället för från global konfiguration eller systemnivåkonfiguration. Se <a href='{{< relurl "docs/git/sv" >}}'>git[1]</a> för mer information.</p>
 </dd>
 <dt class="hdlist1" id="git-config-GITCONFIGNOSYSTEM"> <a class="anchor" href="#git-config-GITCONFIGNOSYSTEM"></a>GIT_CONFIG_NOSYSTEM </dt>
 <dd>
@@ -532,14 +532,14 @@ headings:
 <dt class="hdlist1" id="git-config-GITCONFIGKEYltngt"> <a class="anchor" href="#git-config-GITCONFIGKEYn"></a> <a class="anchor" href="#git-config-GITCONFIGKEYltngt"></a>GIT_CONFIG_KEY_&lt;n&gt; </dt>
 <dt class="hdlist1" id="git-config-GITCONFIGVALUEltngt"> <a class="anchor" href="#git-config-GITCONFIGVALUEn"></a> <a class="anchor" href="#git-config-GITCONFIGVALUEltngt"></a>GIT_CONFIG_VALUE_&lt;n&gt; </dt>
 <dd>
-<p>Om GIT_CONFIG_COUNT sätts till ett positivt tal, kommer alla miljöpar GIT_CONFIG_KEY_&lt;n&gt; och GIT_CONFIG_VALUE_&lt;n&gt; upp till det numret att läggas till i processens körtidskonfiguration. Konfigurationsparen nollindexeras. Alla saknade nyckelr eller värden behandlas som ett fel. En tom GIT_CONFIG_COUNT behandlas på samma sätt som GIT_CONFIG_COUNT=0, det vill säga inga par bearbetas. Dessa miljövariabler kommer att åsidosätta värden i konfigurationsfiler, men kommer att åsidosättas av eventuella explicita alternativ som skickas via <span class='synopsis'><code>git</code> <code>-c</code></span>.</p>
+<p>Om GIT_CONFIG_COUNT sätts till ett positivt tal läggs alla miljöpar GIT_CONFIG_KEY_&lt;n&gt; och GIT_CONFIG_VALUE_&lt;n&gt; upp till det numret till i processens körtidskonfiguration. Konfigurationsparen är nollindexerade. Alla saknade nycklar eller värden behandlas som ett fel. En tom GIT_CONFIG_COUNT behandlas på samma sätt som GIT_CONFIG_COUNT=0, det vill säga inga par bearbetas. Dessa miljövariabler åsidosätter värden i konfigurationsfiler, men åsidosätts i sin tur av explicita alternativ som skickas via <span class='synopsis'><code>git</code> <code>-c</code></span>.</p>
 <div class="paragraph">
 <p>Detta är användbart i fall där du vill skapa flera git-kommandon med en gemensam konfiguration men inte kan vara beroende av en konfigurationsfil, till exempel när du skriver skript.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-config-GITCONFIG"> <a class="anchor" href="#git-config-GITCONFIG"></a>GIT_CONFIG </dt>
 <dd>
-<p>Om ingen <span class='synopsis'><code>--file</code></span>-inställning finns i <span class='synopsis'><code>git</code> <code>config</code></span>, använd filen som ges av <span class='synopsis'><code>GIT_CONFIG</code></span> som om den tillhandahölls via <span class='synopsis'><code>--file</code></span>. Denna variabel har ingen effekt på andra Git-kommandon och är främst till för historisk kompatibilitet; det finns generellt ingen anledning att använda den istället för <span class='synopsis'><code>--file</code></span>-inställningen.</p>
+<p>Om ingen <span class='synopsis'><code>--file</code></span>-inställning finns i <span class='synopsis'><code>git</code> <code>config</code></span>, använd filen som ges av <span class='synopsis'><code>GIT_CONFIG</code></span> som om den tillhandahölls via <span class='synopsis'><code>--file</code></span>. Denna variabel har ingen effekt på andra Git-kommandon och är främst till för historisk kompatibilitet; det finns generellt ingen anledning att använda den i stället för <span class='synopsis'><code>--file</code></span>-inställningen.</p>
 </dd>
 </dl>
 </div>
@@ -599,7 +599,7 @@ headings:
 </div>
 </div>
 <div class="paragraph">
-<p>Detta säkerställer att endast nyckel/värde-paret för kernel.org ersätts.</p>
+<p>Det säkerställer att endast nyckel/värde-paret för kernel.org ersätts.</p>
 </div>
 <div class="paragraph">
 <p>För att ta bort posten för namnbyten, gör</p>
@@ -645,7 +645,7 @@ headings:
 </div>
 </div>
 <div class="paragraph">
-<p>Men om du bara vill ersätta raden för standardproxyn, dvs. den utan ett "för &#8230;&#8203;"-postfix, gör något så här:</p>
+<p>Men om endast raden för standardproxyn ska ersättas, d.v.s. den utan ett "för &#8230;&#8203;"-postfix, gör något så här:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1115,11 +1115,11 @@ konfigurationsvariabler.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodetruecodespan"> <a class="anchor" href="#git-config-true"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodetruecodespan"></a><span class='synopsis'><code>true</code></span> </dt>
 <dd>
-<p>automatisk inställning görs när startpunkten är en fjärrspårningsgren</p>
+<p>automatisk inställning görs när startpunkten är en fjärrspårad gren</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodealwayscodespan"> <a class="anchor" href="#git-config-always"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodealwayscodespan"></a><span class='synopsis'><code>always</code></span> </dt>
 <dd>
-<p>automatisk inställning görs när startpunkten är antingen en lokal gren eller en fjärrspårningsgren</p>
+<p>automatisk inställning görs när startpunkten är antingen en lokal gren eller en fjärrspårad gren</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodeinheritcodespan"> <a class="anchor" href="#git-config-inherit"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodeinheritcodespan"></a><span class='synopsis'><code>inherit</code></span> </dt>
 <dd>
@@ -1127,14 +1127,14 @@ konfigurationsvariabler.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodesimplecodespan"> <a class="anchor" href="#git-config-simple"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodesimplecodespan"></a><span class='synopsis'><code>simple</code></span> </dt>
 <dd>
-<p>automatisk inställning görs endast när startpunkten är en fjärrspårningsgren och den nya grenen har samma namn som fjärrgrenen.</p>
+<p>automatisk inställning görs endast när startpunkten är en fjärrspårad gren och den nya grenen har samma namn som fjärrgrenen.</p>
 </dd>
 </dl>
 </div>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodebranchautoSetupRebasecodespan"> <a class="anchor" href="#git-config-branchautoSetupRebase"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodebranchautoSetupRebasecodespan"></a><span class='synopsis'><code>branch.autoSetupRebase</code></span> </dt>
 <dd>
-<p>När en ny gern skapas med <span class='synopsis'><code>git</code> <code>branch</code></span>, <span class='synopsis'><code>git</code> <code>switch</code></span> eller <span class='synopsis'><code>git</code> <code>checkout</code></span> som spårar en annan gren, talar denna variabel om för Git att ställa in pull för att obasera istället för sammanslå (se <span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.rebase</code></span>). De giltiga inställningarna är:</p>
+<p>När en ny gren skapas med <span class='synopsis'><code>git</code> <code>branch</code></span>, <span class='synopsis'><code>git</code> <code>switch</code></span> eller <span class='synopsis'><code>git</code> <code>checkout</code></span> och spårar en annan gren, anger variabeln att Git ska ställa in pull till att ombasera i stället för att sammanfoga (se <span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.rebase</code></span>). Giltiga inställningar är:</p>
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodenevercodespan"> <a class="anchor" href="#git-config-never"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodenevercodespan"></a><span class='synopsis'><code>never</code></span> </dt>
@@ -1143,7 +1143,7 @@ konfigurationsvariabler.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodelocalcodespan"> <a class="anchor" href="#git-config-local"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodelocalcodespan"></a><span class='synopsis'><code>local</code></span> </dt>
 <dd>
-<p>rebase is set to true for tracked branches of other local branches.</p>
+<p>Visa både fjärrspårade grenar och lokala grenar.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscoderemotecodespan"> <a class="anchor" href="#git-config-remote"></a> <a class="anchor" href="#git-config-spanclasssynopsiscoderemotecodespan"></a><span class='synopsis'><code>remote</code></span> </dt>
 <dd>
@@ -1163,27 +1163,27 @@ konfigurationsvariabler.</p>
 <dd>
 <p>Denna variabel styr sorteringsordningen för grenar när de visas av <a href='{{< relurl "docs/git-branch/sv" >}}'>git-branch[1]</a>. Utan alternativet <span class='synopsis'><code>--sort=</code><em>&lt;värde&gt;</em></span> kommer värdet för denna variabel att användas som standard. Se fältnamnen i <a href='{{< relurl "docs/git-for-each-ref/sv" >}}'>git-for-each-ref[1]</a> för giltiga värden.</p>
 </dd>
-<dt class="hdlist1" id="git-config-spanclasssynopsiscodebranchcodeemltnamegtemcoderemotecodespan"> <a class="anchor" href="#git-config-branchnameremote"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodebranchcodeemltnamegtemcoderemotecodespan"></a><span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.remote</code></span> </dt>
-<dd>
-<p>När den är på grenen <em>&lt;namn&gt;</em>, talar den om för <span class='synopsis'><code>git</code> <code>fetch</code></span> och <span class='synopsis'><code>git</code> <code>push</code></span> vilken fjärr som ska hämtas från eller pushas till. Fjärren som pushas till kan åsidosättas med <span class='synopsis'><code>remote.pushDefault</code></span> (för alla grenar). Fjärren som pushas till, för den aktuella grenen, kan ytterligare åsidosättas av <span class='synopsis'><code>branch.</code><em>&lt;namn&gt;</em><code>.pushRemote</code></span>. Om ingen fjärr är konfigurerad, eller om du inte är på någon gren och det finns mer än en fjärr definierad i förvaret, används som standard <span class='synopsis'><code>origin</code></span> för hämtning och <span class='synopsis'><code>remote.pushDefault</code></span> för push:ing. Dessutom är <span class='synopsis'><code>.</code></span> (en punkt) det aktuella lokala förvaret (ett punkt-förvar), se `branch.&lt;namn&gt;.merge`s sista anmärkning nedan.</p>
-</dd>
-<dt class="hdlist1" id="git-config-spanclasssynopsiscodebranchcodeemltnamegtemcodepushRemotecodespan"> <a class="anchor" href="#git-config-branchnamepushRemote"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodebranchcodeemltnamegtemcodepushRemotecodespan"></a><span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.pushRemote</code></span> </dt>
-<dd>
-<p>När den är på branch <em>&lt;name&gt;</em>, åsidosätter den <span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.remote</code></span> för push:ning. Den åsidosätter också <span class='synopsis'><code>remote.pushDefault</code></span> för push:ning från gren <em>&lt;name&gt;</em>. När du hämtar från en plats (t.ex. din uppströms) och pushar till en annan plats (t.ex. ditt eget publiceringsfövar), vill du ställa in <span class='synopsis'><code>remote.pushDefault</code></span> för att ange fjärren som push-funktionen ska skickas till för alla grenar, och använda det här alternativet för att åsidosätta det för en specifik gren.</p>
-</dd>
-<dt class="hdlist1" id="git-config-spanclasssynopsiscodebranchcodeemltnamegtemcodemergecodespan"> <a class="anchor" href="#git-config-branchnamemerge"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodebranchcodeemltnamegtemcodemergecodespan"></a><span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.merge</code></span> </dt>
-<dd>
-<p>Definierar, tillsammans med <span class='synopsis'><code>branch.</code><em>&lt;namn&gt;</em><code>.remote</code></span>, uppströmsgrenen för den givna grenen. Den anger för <span class='synopsis'><code>git</code> <code>fetch</code></span>/<span class='synopsis'><code>git</code> <code>pull</code></span>/<span class='synopsis'><code>git</code> <code>rebase</code></span> vilken gren som ska sammanslås och kan också påverka <span class='synopsis'><code>git</code> <code>push</code></span> (se <span class='synopsis'><code>push.default</code></span>). I grenen <em>&lt;namn&gt;</em> anger den för <span class='synopsis'><code>git</code> <code>fetch</code></span> vilken standardrefspec som ska markeras för sammanfogning i <span class='synopsis'><code>FETCH_HEAD</code></span>. Värdet hanteras som den fjärr-delen av en refspec och måste matcha en ref som hämtas från fjärren som anges av <span class='synopsis'><code>branch.</code><em>&lt;namn&gt;</em><code>.remote</code></span>. Sammanslagnings-informationen används av <span class='synopsis'><code>git</code> <code>pull</code></span> (som först anropar <span class='synopsis'><code>git</code> <code>fetch</code></span>) för att söka efter standardgrenen för sammanfogning. Utan detta alternativ sammanslår <span class='synopsis'><code>git</code> <code>pull</code></span> som standard den första hämtade refspecen. Ange flera värden för att få en bläckfisk-sammanfogning. Om du vill konfigurera <span class='synopsis'><code>git</code> <code>pull</code></span> så att den sammanfogas med <em>&lt;namn&gt;</em> från en annan gren i det lokala arkivet, kan du peka <span class='synopsis'><code>branch.</code><em>&lt;namn&gt;</em><code>.merge</code></span> till önskad gren och använda den relativa sökvägsinställningen <span class='synopsis'><code>.</code></span> (en punkt) för <span class='synopsis'><code>branch.</code><em>&lt;namn&gt;</em><code>.remote</code></span>.</p>
-</dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodebranchcodeemltnamngtemcodemergeOptionscodespan"> <a class="anchor" href="#git-config-branchnamnmergeOptions"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodebranchcodeemltnamngtemcodemergeOptionscodespan"></a><span class='synopsis'><code>branch.</code><em>&lt;namn&gt;</em><code>.mergeOptions</code></span> </dt>
 <dd>
-<p>Ställer in standardalternativ för sammanslagning till grenen <em>&lt;namn&gt;</em>. Syntaxen och de alternativ som stöds är desamma som för <a href='{{< relurl "docs/git-merge/sv" >}}'>git-merge[1]</a>, men alternativvärden som innehåller blanksteg stöds för närvarande inte.</p>
+<p>När grenen är <em>&lt;namn&gt;</em> anger den för <span class='synopsis'><code>git</code> <code>fetch</code></span> och <span class='synopsis'><code>git</code> <code>push</code></span> vilken fjärr som ska hämtas från eller skickas till. Fjärren som skickas till kan åsidosättas med <span class='synopsis'><code>remote.pushDefault</code></span> (för alla grenar). Fjärren som skickas till, för den aktuella grenen, kan ytterligare åsidosättas av <span class='synopsis'><code>branch.</code><em>&lt;namn&gt;</em><code>.pushRemote</code></span>. Om ingen fjärr är konfigurerad, eller om ingen gren är aktiv och det finns mer än en fjärr definierad i kodförrådet, används som standard <span class='synopsis'><code>origin</code></span> för hämtning och <span class='synopsis'><code>remote.pushDefault</code></span> för push:ing. Dessutom är <span class='synopsis'><code>.</code></span> (en punkt) det aktuella lokala kodförrådet (ett punkt-kodförråd), se `branch.&lt;namn&gt;.merge`s sista anmärkning nedan.</p>
 </dd>
-<dt class="hdlist1" id="git-config-spanclasssynopsiscodebranchcodeemltnamegtemcoderebasecodespan"> <a class="anchor" href="#git-config-branchnamerebase"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodebranchcodeemltnamegtemcoderebasecodespan"></a><span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.rebase</code></span> </dt>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodebranchcodeemltnamngtemcodemergeOptionscodespan-1"> <a class="anchor" href="#git-config-branchnamnmergeOptions-1"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodebranchcodeemltnamngtemcodemergeOptionscodespan-1"></a><span class='synopsis'><code>branch.</code><em>&lt;namn&gt;</em><code>.mergeOptions</code></span> </dt>
 <dd>
-<p>När det är sant, ombasera grenen <em>&lt;namn&gt;</em> ovanpå den hämtade grenen, istället för att sammanfoga standardgrenen från standardfjärren när <span class='synopsis'><code>git</code> <code>pull</code></span> körs. Se <span class='synopsis'><code>pull.rebase</code></span> för att göra detta på ett icke-grenspecifikt sätt.</p>
+<p>För grenen <em>&lt;name&gt;</em> åsidosätter den <span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.remote</code></span> för push. Den åsidosätter också <span class='synopsis'><code>remote.pushDefault</code></span> för push från grenen <em>&lt;name&gt;</em>. När hämtning sker från en plats (t.ex. uppströmsen) och push till en annan plats (t.ex. ett eget publiceringskodförråd) kan <span class='synopsis'><code>remote.pushDefault</code></span> för att ange vilken fjärr som ska användas för push för alla grenar, och använda detta alternativ för att åsidosätta det för en specifik gren.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodebranchcodeemltnamngtemcodemergeOptionscodespan-1-1"> <a class="anchor" href="#git-config-branchnamnmergeOptions-1-1"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodebranchcodeemltnamngtemcodemergeOptionscodespan-1-1"></a><span class='synopsis'><code>branch.</code><em>&lt;namn&gt;</em><code>.mergeOptions</code></span> </dt>
+<dd>
+<p>Definierar, tillsammans med <span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.remote</code></span>, uppströmsgrenen för den givna grenen. Den anger för <span class='synopsis'><code>git</code> <code>fetch</code></span>/<span class='synopsis'><code>git</code> <code>pull</code></span>/<span class='synopsis'><code>git</code> <code>rebase</code></span> vilken gren som ska sammanfogas och kan även påverka <span class='synopsis'><code>git</code> <code>push</code></span> (se <span class='synopsis'><code>push.default</code></span>). För grenen <em>&lt;name&gt;</em> anger den för <span class='synopsis'><code>git</code> <code>fetch</code></span> vilken standardrefspec som ska markeras för sammanfogning i <span class='synopsis'><code>FETCH_HEAD</code></span>. Värdet hanteras som fjärrdelen av en refspec och måste matcha en ref som hämtas från fjärren som anges av <span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.remote</code></span>. Sammanfogningsinformationen används av <span class='synopsis'><code>git</code> <code>pull</code></span> (som först anropar <span class='synopsis'><code>git</code> <code>fetch</code></span>) för att slå upp standardgrenen för sammanfogning. Utan detta alternativ sammanfogar <span class='synopsis'><code>git</code> <code>pull</code></span> som standard den första hämtade refspecen. Ange flera värden för att få en bläckfisksammanslagning. Om <span class='synopsis'><code>git</code> <code>pull</code></span> ska konfigureras så att den sammanfogar till <em>&lt;name&gt;</em> från en annan gren i det lokala kodförrådet, kan <span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.merge</code></span> peka på önskad gren och den relativa sökvägsinställningen <span class='synopsis'><code>.</code></span> (en punkt) för <span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.remote</code></span>.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodebranchcodeemltnamngtemcodemergeOptionscodespan-1-1-1"> <a class="anchor" href="#git-config-branchnamnmergeOptions-1-1-1"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodebranchcodeemltnamngtemcodemergeOptionscodespan-1-1-1"></a><span class='synopsis'><code>branch.</code><em>&lt;namn&gt;</em><code>.mergeOptions</code></span> </dt>
+<dd>
+<p>Sätter standardalternativ för sammanslagning till grenen <em>&lt;name&gt;</em>. Syntaxen och de alternativ som stöds är desamma som i <a href='{{< relurl "docs/git-merge/sv" >}}'>git-merge[1]</a>, men alternativvärden som innehåller blanktecken stöds för närvarande inte.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodebranchcodeemltnamngtemcodemergeOptionscodespan-1-1-1-1"> <a class="anchor" href="#git-config-branchnamnmergeOptions-1-1-1-1"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodebranchcodeemltnamngtemcodemergeOptionscodespan-1-1-1-1"></a><span class='synopsis'><code>branch.</code><em>&lt;namn&gt;</em><code>.mergeOptions</code></span> </dt>
+<dd>
+<p>När det är sant, ombasera grenen <em>&lt;namn&gt;</em> ovanpå den hämtade grenen, i stället för att sammanfoga standardgrenen från standardfjärren när <span class='synopsis'><code>git</code> <code>pull</code></span> körs. Se <span class='synopsis'><code>pull.rebase</code></span> för att göra detta på ett icke-grenspecifikt sätt.</p>
 <div class="paragraph">
-<p>När <span class='synopsis'><code>merges</code></span> (eller bara <span class='synopsis'><code>m</code></span>) används, skicka <span class='synopsis'><code>--rebase-merges</code></span>-alternativet till <span class='synopsis'><code>git</code> <code>rebase</code></span> så att de lokala sammanslagnings-incheckningen inkluderas i ombaseringen (se <a href='{{< relurl "docs/git-rebase/sv" >}}'>git-rebase[1]</a> för detaljer).</p>
+<p>När <span class='synopsis'><code>merges</code></span> (eller bara <span class='synopsis'><code>m</code></span>) används skickas alternativet <span class='synopsis'><code>--rebase-merges</code></span> till <span class='synopsis'><code>git</code> <code>rebase</code></span> så att lokala sammanslagningsincheckningar inkluderas i rebasen (se <a href='{{< relurl "docs/git-rebase/sv" >}}'>git-rebase[1]</a> för detaljer).</p>
 </div>
 <div class="paragraph">
 <p>När värdet är <span class='synopsis'><code>interactive</code></span> (eller bara <span class='synopsis'><code>i</code></span>) körs ombaseringen i interaktivt läge.</p>
@@ -1192,7 +1192,7 @@ konfigurationsvariabler.</p>
 <p><strong>OBS</strong>: detta är en potentiellt farlig operation; använd den <strong>inte</strong> om du inte förstår konsekvenserna (se <a href='{{< relurl "docs/git-rebase/sv" >}}'>git-rebase[1]</a> för mer information).</p>
 </div>
 </dd>
-<dt class="hdlist1" id="git-config-spanclasssynopsiscodebranchcodeemltnamegtemcodedescriptioncodespan"> <a class="anchor" href="#git-config-branchnamedescription"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodebranchcodeemltnamegtemcodedescriptioncodespan"></a><span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.description</code></span> </dt>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodebranchcodeemltnamngtemcodemergeOptionscodespan-1-1-1-1-1"> <a class="anchor" href="#git-config-branchnamnmergeOptions-1-1-1-1-1"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodebranchcodeemltnamngtemcodemergeOptionscodespan-1-1-1-1-1"></a><span class='synopsis'><code>branch.</code><em>&lt;namn&gt;</em><code>.mergeOptions</code></span> </dt>
 <dd>
 <p>Grenbeskrivning, kan redigeras med <span class='synopsis'><code>git</code> <code>branch</code> <code>--edit-description</code></span>. Grenbeskrivningen läggs automatiskt till i <span class='synopsis'><code>format-patch</code></span> följebrevet eller <span class='synopsis'><code>request-pull</code></span> sammanfattningen.</p>
 </dd>
@@ -1247,7 +1247,7 @@ konfigurationsvariabler.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodecheckoutworkerscodespan"> <a class="anchor" href="#git-config-checkoutworkers"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodecheckoutworkerscodespan"></a><span class='synopsis'><code>checkout.workers</code></span> </dt>
 <dd>
-<p>Antalet parallella arbetare som ska användas vid uppdatering av arbetskatalogen. Standardvärdet är ett, dvs. sekventiell exekvering. Om det sätts till ett värde mindre än ett, kommer Git att använda lika många arbetare som antalet tillgängliga logiska kärnor. Denna inställning och <span class='synopsis'><code>checkout.thresholdForParallelism</code></span> påverkar alla kommandon som utför utcheckning. T.ex. checkout, clone, reset, sparse-checkout, etc.</p>
+<p>Antalet parallella arbetare som ska användas vid uppdatering av arbetsträdet. Standardvärdet är ett, d.v.s. sekventiell exekvering. Om det sätts till ett värde mindre än ett, kommer Git att använda lika många arbetare som antalet tillgängliga logiska kärnor. Inställningen och <span class='synopsis'><code>checkout.thresholdForParallelism</code></span> påverkar alla kommandon som utför utcheckning. T.ex. checkout, clone, reset, sparse-checkout, etc.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1255,7 +1255,7 @@ konfigurationsvariabler.</p>
 <div class="title">Note</div>
 </td>
 <td class="content">
-Parallell utcheckning ger vanligtvis bättre prestanda för förvar som finns på SSD-diskar eller över NFS. För förvar på roterande diskar och/eller maskiner med ett litet antal kärnor fungerar standard sekventiell utcheckning ofta bättre. Storleken och komprimeringsnivån för ett förvaret kan också påverka hur bra den parallella versionen presterar.
+Parallell utcheckning ger vanligtvis bättre prestanda för kodförråd som finns på SSD-diskar eller över NFS. För kodförråd på roterande diskar och/eller maskiner med ett litet antal kärnor fungerar standard sekventiell utcheckning ofta bättre. Storleken och komprimeringsnivån för ett kodförrådet kan också påverka hur bra den parallella versionen presterar.
 </td>
 </tr>
 </table>
@@ -1288,7 +1288,7 @@ Parallell utcheckning ger vanligtvis bättre prestanda för förvar som finns p�
 <dl>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodeclonedefaultRemoteNamecodespan"> <a class="anchor" href="#git-config-clonedefaultRemoteName"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodeclonedefaultRemoteNamecodespan"></a><span class='synopsis'><code>clone.defaultRemoteName</code></span> </dt>
 <dd>
-<p>Namnet på den fjärren som ska skapas vid kloning av ett arkiv. Standardvärdet är <span class='synopsis'><code>origin</code></span>.
+<p>Namnet på den fjärr som ska skapas när ett kodförråd klonas. Standardvärdet är <span class='synopsis'><code>origin</code></span>.
 Den kan åsidosättas genom att skicka
 kommandoradsalternativet <span class='synopsis'><code>--origin</code></span> till <a href='{{< relurl "docs/git-clone/sv" >}}'>git-clone[1]</a>.</p>
 </dd>
@@ -1349,11 +1349,11 @@ Se <a href='{{< relurl "docs/git-clone/sv" >}}'>git-clone[1]</a>.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodecommitstatuscodespan"> <a class="anchor" href="#git-config-commitstatus"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodecommitstatuscodespan"></a><span class='synopsis'><code>commit.status</code></span> </dt>
 <dd>
-<p>Ett booleskt värde för att aktivera/inaktivera inkludering av statusinformation i inchecknings-meddelandemallen när en editor används för att förbereda inchecknings-meddelandet. Standardvärdet är <span class='synopsis'><code>true</code></span>.</p>
+<p>Ett booleskt värde för att aktivera/inaktivera inkludering av statusinformation i incheckningsmeddelandemallen när en redigerare används för att förbereda incheckningsmeddelandet. Standardvärdet är <span class='synopsis'><code>true</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodecommittemplatecodespan"> <a class="anchor" href="#git-config-committemplate"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodecommittemplatecodespan"></a><span class='synopsis'><code>commit.template</code></span> </dt>
 <dd>
-<p>Ange sökvägen till en fil som ska användas som mall för nya inchecknings-meddelanden.</p>
+<p>Ange sökvägen till en fil som ska användas som mall för nya incheckningsmeddelanden.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodecommitverbosecodespan"> <a class="anchor" href="#git-config-commitverbose"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodecommitverbosecodespan"></a><span class='synopsis'><code>commit.verbose</code></span> </dt>
 <dd>
@@ -1433,7 +1433,7 @@ Se <a href='{{< relurl "docs/git-clone/sv" >}}'>git-clone[1]</a>.</p>
 <dl>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodediffautoRefreshIndexcodespan"> <a class="anchor" href="#git-config-diffautoRefreshIndex"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodediffautoRefreshIndexcodespan"></a><span class='synopsis'><code>diff.autoRefreshIndex</code></span> </dt>
 <dd>
-<p>När du använder <span class='synopsis'><code>git</code> <code>diff</code></span> för att jämföra med arbetsträdfiler, betrakta inte ändringar som endast innehåller statistiska data som ändrade. Kör istället <span class='synopsis'><code>git</code> <code>update-index</code> <code>--refresh</code></span> i tysthet för att uppdatera den cachade statistiska informationen för sökvägar vars innehåll i arbetsträdet matchar innehållet i indexet. Standardvärdet för detta alternativ är <span class='synopsis'><code>true</code></span>. Observera att detta endast påverkar <span class='synopsis'><code>git</code> <code>diff</code></span> Porslin, och inte <span class='synopsis'><code>diff</code></span>-kommandon på lägre nivå som <span class='synopsis'><code>git</code> <code>diff-files</code></span>.</p>
+<p>När <span class='synopsis'><code>git</code> <code>diff</code></span> används för att jämföra med arbetsträdfiler, betrakta inte ändringar som endast innehåller statistiska data som ändrade. Kör i stället <span class='synopsis'><code>git</code> <code>update-index</code> <code>--refresh</code></span> i tysthet för att uppdatera den cachade statistiska informationen för sökvägar vars innehåll i arbetsträdet matchar innehållet i indexet. Standardvärdet för detta alternativ är <span class='synopsis'><code>true</code></span>. Observera att detta endast påverkar högnivåkommandot <span class='synopsis'><code>git</code> <code>diff</code></span>, och inte lågnivåkommandon som <span class='synopsis'><code>git</code> <code>diff-files</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodediffdirstatcodespan"> <a class="anchor" href="#git-config-diffdirstat"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodediffdirstatcodespan"></a><span class='synopsis'><code>diff.dirstat</code></span> </dt>
 <dd>
@@ -1454,7 +1454,7 @@ Följande parametrar är tillgängliga:</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodelinescodespan"> <a class="anchor" href="#git-config-lines"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodelinescodespan"></a><span class='synopsis'><code>lines</code></span> </dt>
 <dd>
-<p>Beräkna dirstat-talen genom att göra den vanliga radbaserade diff-analysen och summera antalet borttagna/tillagda rader. (För binära filer, räkna istället 64-byte-block, eftersom binära filer inte har något naturligt koncept för rader). Detta är ett dyrare <span class='synopsis'><code>--dirstat</code></span>-beteende än <span class='synopsis'><code>changes</code></span>-beteendet, men det räknar omordnade rader i en fil lika mycket som andra ändringar. Den resulterande utdata överensstämmer med vad du får från de andra <span class='synopsis'><code>--*stat</code></span>-alternativen.</p>
+<p>Beräkna dirstat-talen genom att göra den vanliga radbaserade diff-analysen och summera antalet borttagna/tillagda rader. (För binära filer, räkna i stället 64-byte-block, eftersom binära filer inte har något naturligt koncept för rader). Detta är ett dyrare <span class='synopsis'><code>--dirstat</code></span>-beteende än <span class='synopsis'><code>changes</code></span>-beteendet, men det räknar omordnade rader i en fil lika mycket som andra ändringar. Den resulterande utdata överensstämmer med vad du får från de andra <span class='synopsis'><code>--*stat</code></span>-alternativen.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodefilescodespan"> <a class="anchor" href="#git-config-files"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefilescodespan"></a><span class='synopsis'><code>files</code></span> </dt>
 <dd>
@@ -1486,7 +1486,7 @@ Följande parametrar är tillgängliga:</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodediffcontextcodespan"> <a class="anchor" href="#git-config-diffcontext"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodediffcontextcodespan"></a><span class='synopsis'><code>diff.context</code></span> </dt>
 <dd>
-<p>Generera diffar med <em>&lt;n&gt;</em> rader kontext istället för standardvärdet 3. Detta värde åsidosätts av alternativet <span class='synopsis'><code>-U</code></span>.</p>
+<p>Generera diffar med <em>&lt;n&gt;</em> rader kontext i stället för standardvärdet 3. Detta värde åsidosätts av alternativet <span class='synopsis'><code>-U</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodediffinterHunkContextcodespan"> <a class="anchor" href="#git-config-diffinterHunkContext"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodediffinterHunkContextcodespan"></a><span class='synopsis'><code>diff.interHunkContext</code></span> </dt>
 <dd>
@@ -1494,7 +1494,7 @@ Följande parametrar är tillgängliga:</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodediffexternalcodespan"> <a class="anchor" href="#git-config-diffexternal"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodediffexternalcodespan"></a><span class='synopsis'><code>diff.external</code></span> </dt>
 <dd>
-<p>Om denna konfigurationsvariabel är satt, utförs diff-generering inte med hjälp av den interna diff-maskineriet, utan med hjälp av det givna kommandot. Kan åsidosättas med miljövariabeln <span class='synopsis'><code>GIT_EXTERNAL_DIFF</code></span>. Kommandot anropas med parametrar som beskrivs under "git Diffs" i <a href='{{< relurl "docs/git/sv" >}}'>git[1]</a>. Obs: om du bara vill använda ett externt diff-program på en delmängd av dina filer, kanske du vill använda <a href='{{< relurl "docs/gitattributes/sv" >}}'>gitattributes[5]</a> istället.</p>
+<p>Om konfigurationsvariabeln är satt utförs diff-generering inte med hjälp av det interna diffmaskineriet, utan med hjälp av det givna kommandot. Kan åsidosättas med miljövariabeln <span class='synopsis'><code>GIT_EXTERNAL_DIFF</code></span>. Kommandot anropas med parametrar som beskrivs under "git Diffs" i <a href='{{< relurl "docs/git/sv" >}}'>git[1]</a>. Obs: om ett externt diff-program bara ska användas på en delmängd av filerna kan <a href='{{< relurl "docs/gitattributes/sv" >}}'>gitattributes[5]</a> användas i stället.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodedifftrustExitCodecodespan"> <a class="anchor" href="#git-config-difftrustExitCode"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodedifftrustExitCodecodespan"></a><span class='synopsis'><code>diff.trustExitCode</code></span> </dt>
 <dd>
@@ -1502,7 +1502,7 @@ Följande parametrar är tillgängliga:</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodediffignoreSubmodulescodespan"> <a class="anchor" href="#git-config-diffignoreSubmodules"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodediffignoreSubmodulescodespan"></a><span class='synopsis'><code>diff.ignoreSubmodules</code></span> </dt>
 <dd>
-<p>Ställer in standardvärdet för <span class='synopsis'><code>--ignore-submodules</code></span>. Observera att detta endast påverkar <span class='synopsis'><code>git</code> <code>diff</code></span> Porslin, och inte lägre nivåer av <span class='synopsis'><code>diff</code></span>-kommandon som <span class='synopsis'><code>git</code> <code>diff-files</code></span>. <span class='synopsis'><code>git</code> <code>checkout</code></span> och <span class='synopsis'><code>git</code> <code>switch</code></span> respekterar också denna inställning vid rapportering av ej incheckade ändringar. Om den ställs in på <span class='synopsis'><code>all</code></span> inaktiveras undermoduls-ammanfattningen som normalt visas av <span class='synopsis'><code>git</code> <code>commit</code></span> och <span class='synopsis'><code>git</code> <code>status</code></span> när <span class='synopsis'><code>status.submoduleSummary</code></span> är inställt om den inte åsidosätts med hjälp av kommandoradsalternativet <span class='synopsis'><code>--ignore-submodules</code></span>. Kommandona <span class='synopsis'><code>git</code> <code>submodule</code></span> påverkas inte av denna inställning. Som standard är detta inställt på ospårad så att eventuella ej spårade undermoduler ignoreras.</p>
+<p>Ställer in standardvärdet för <span class='synopsis'><code>--ignore-submodules</code></span>. Observera att detta endast påverkar högnivåkommandot <span class='synopsis'><code>git</code> <code>diff</code></span>, och inte lågnivåkommandon som <span class='synopsis'><code>git</code> <code>diff-files</code></span>. <span class='synopsis'><code>git</code> <code>checkout</code></span> och <span class='synopsis'><code>git</code> <code>switch</code></span> respekterar också inställningen vid rapportering av ej incheckade ändringar. Om den ställs in på <span class='synopsis'><code>all</code></span> inaktiveras undermodulssammanfattningen som normalt visas av <span class='synopsis'><code>git</code> <code>commit</code></span> och <span class='synopsis'><code>git</code> <code>status</code></span> när <span class='synopsis'><code>status.submoduleSummary</code></span> är inställt, om den inte åsidosätts med kommandoradsalternativet <span class='synopsis'><code>--ignore-submodules</code></span>. Kommandona <span class='synopsis'><code>git</code> <code>submodule</code></span> påverkas inte av inställningen. Som standard är detta inställt på <span class='synopsis'><code>untracked</code></span>, så att eventuella ospårade undermoduler ignoreras.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodediffmnemonicPrefixcodespan"> <a class="anchor" href="#git-config-diffmnemonicPrefix"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodediffmnemonicPrefixcodespan"></a><span class='synopsis'><code>diff.mnemonicPrefix</code></span> </dt>
 <dd>
@@ -1511,19 +1511,19 @@ Följande parametrar är tillgängliga:</p>
 <dl>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodegitcodecodediffcodespan"> <a class="anchor" href="#git-config-gitdiff"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodegitcodecodediffcodespan"></a><span class='synopsis'><code>git</code> <code>diff</code></span> </dt>
 <dd>
-<p>compares the (i)ndex and the (w)ork tree;</p>
+<p>jämför (i)indexet och (w)arbetskatalog(erna);</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodegitcodecodediffcodecodeHEADcodespan"> <a class="anchor" href="#git-config-gitdiffHEAD"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodegitcodecodediffcodecodeHEADcodespan"></a><span class='synopsis'><code>git</code> <code>diff</code> <code>HEAD</code></span> </dt>
 <dd>
-<p>compares a (c)ommit and the (w)ork tree;</p>
+<p>jämför ett (c)incheckning och (w)arbetsträdet;</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodegitcodecodediffcodecode--cachedcodespan"> <a class="anchor" href="#git-config-gitdiff--cached"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodegitcodecodediffcodecode--cachedcodespan"></a><span class='synopsis'><code>git</code> <code>diff</code> <code>--cached</code></span> </dt>
 <dd>
-<p>compares a (c)ommit and the (i)ndex;</p>
+<p>jämför en (c)inchecking och (i)index;</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodegitcodecodediffcodecodeHEADcodeemltfil1gtememltfil2gtemspan"> <a class="anchor" href="#git-config-gitdiffHEADfil1fil2"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodegitcodecodediffcodecodeHEADcodeemltfil1gtememltfil2gtemspan"></a><span class='synopsis'><code>git</code> <code>diff</code> <code>HEAD:</code><em>&lt;fil1&gt;</em> <em>&lt;fil2&gt;</em></span> </dt>
 <dd>
-<p>compares an (o)bject and a (w)ork tree entity;</p>
+<p>jämför ett (o)objekt och en (w)arbetstkatalogs entitet;</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodegitcodecodediffcodecode--no-indexcodeemltagtememltbgtemspan"> <a class="anchor" href="#git-config-gitdiff--no-indexab"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodegitcodecodediffcodecode--no-indexcodeemltagtememltbgtemspan"></a><span class='synopsis'><code>git</code> <code>diff</code> <code>--no-index</code> <em>&lt;a&gt;</em> <em>&lt;b&gt;</em></span> </dt>
 <dd>
@@ -1553,7 +1553,7 @@ Följande parametrar är tillgängliga:</p>
 <p>Fil som anger hur filer ska ordnas inom en diff.
 Se <span class='synopsis'><code>-O</code></span>-flaggan till <a href='{{< relurl "docs/git-diff/sv" >}}'>git-diff[1]</a> för mer information..
 Om <span class='synopsis'><code>diff.orderFile</code></span> är en relativ sökväg behandlas den som
-relativt till toppen av arbetskatalogen.</p>
+relativt till toppen av arbetsträdet.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodediffrenameLimitcodespan"> <a class="anchor" href="#git-config-diffrenameLimit"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodediffrenameLimitcodespan"></a><span class='synopsis'><code>diff.renameLimit</code></span> </dt>
 <dd>
@@ -1561,7 +1561,7 @@ relativt till toppen av arbetskatalogen.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodediffrenamescodespan"> <a class="anchor" href="#git-config-diffrenames"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodediffrenamescodespan"></a><span class='synopsis'><code>diff.renames</code></span> </dt>
 <dd>
-<p>Om och hur Git identifierar namnbyten. Om det är satt till <span class='synopsis'><code>false</code></span> är namnbytesdetektering inaktiverad. Om det är satt till <span class='synopsis'><code>true</code></span> är grundläggande namnbytesdetektering aktiverad. Om det är satt till <span class='synopsis'><code>copies</code></span> eller <span class='synopsis'><code>copy</code></span> kommer Git även att identifiera kopior. Standardvärdet är <span class='synopsis'><code>true</code></span>. Observera att detta endast påverkar <span class='synopsis'><code>git</code> <code>diff</code></span> Porslinskommandon som <a href='{{< relurl "docs/git-diff/sv" >}}'>git-diff[1]</a> och <a href='{{< relurl "docs/git-log/sv" >}}'>git-log[1]</a>, och inte lägre kommandon som <a href='{{< relurl "docs/git-diff-files/sv" >}}'>git-diff-files[1]</a>.</p>
+<p>Om och hur Git identifierar namnbyten. Om det är satt till <span class='synopsis'><code>false</code></span> är namnbytesdetektering inaktiverad. Om det är satt till <span class='synopsis'><code>true</code></span> är grundläggande namnbytesdetektering aktiverad. Om det är satt till <span class='synopsis'><code>copies</code></span> eller <span class='synopsis'><code>copy</code></span> kommer Git även att identifiera kopior. Standardvärdet är <span class='synopsis'><code>true</code></span>. Observera att detta endast påverkar högnivåkommandon som <a href='{{< relurl "docs/git-diff/sv" >}}'>git-diff[1]</a> och <a href='{{< relurl "docs/git-log/sv" >}}'>git-log[1]</a>, och inte lågnivåkommandon som <a href='{{< relurl "docs/git-diff-files/sv" >}}'>git-diff-files[1]</a>.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodediffsuppressBlankEmptycodespan"> <a class="anchor" href="#git-config-diffsuppressBlankEmpty"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodediffsuppressBlankEmptycodespan"></a><span class='synopsis'><code>diff.suppressBlankEmpty</code></span> </dt>
 <dd>
@@ -1587,7 +1587,7 @@ relativt till toppen av arbetskatalogen.</p>
 <dd>
 <p>Det reguljära uttryck som diff-föraren ska använda för att känna igen styckes-huvuden. Ett inbyggt mönster kan också användas. Se <a href='{{< relurl "docs/gitattributes/sv" >}}'>gitattributes[5]</a> för mer information.</p>
 </dd>
-<dt class="hdlist1" id="git-config-spanclasssynopsiscodediffcodeemltdrivergtemcodebinarycodespan"> <a class="anchor" href="#git-config-diffdriverbinary"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodediffcodeemltdrivergtemcodebinarycodespan"></a><span class='synopsis'><code>diff.</code><em>&lt;driver&gt;</em><code>.binary</code></span> </dt>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodediffcodeemltfraregtemcodebinarycodespan"> <a class="anchor" href="#git-config-difffrarebinary"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodediffcodeemltfraregtemcodebinarycodespan"></a><span class='synopsis'><code>diff.</code><em>&lt;förare&gt;</em><code>.binary</code></span> </dt>
 <dd>
 <p>Sätt det här alternativet till <span class='synopsis'><code>true</code></span> för att få diff-förare att behandla filer som binära. Se <a href='{{< relurl "docs/gitattributes/sv" >}}'>gitattributes[5]</a> för mer information.</p>
 </dd>
@@ -1729,19 +1729,19 @@ den ställs in på <span class='synopsis'><code>false</code></span> färgas inte
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchfsckObjectscodespan"> <a class="anchor" href="#git-config-fetchfsckObjects"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchfsckObjectscodespan"></a><span class='synopsis'><code>fetch.fsckObjects</code></span> </dt>
 <dd>
-<p>Om den är satt till sant kommer git-fetch-pack att kontrollera alla hämtade objekt. Se <span class='synopsis'><code>transfer.fsckObjects</code></span> för vad som är markerat. Standardvärdet är <span class='synopsis'><code>false</code></span>. Om det inte är satt används värdet för <span class='synopsis'><code>transfer.fsckObjects</code></span> istället.</p>
+<p>Om den är satt till sant kommer git-fetch-pack att kontrollera alla hämtade objekt. Se <span class='synopsis'><code>transfer.fsckObjects</code></span> för vad som är markerat. Standardvärdet är <span class='synopsis'><code>false</code></span>. Om det inte är satt används värdet för <span class='synopsis'><code>transfer.fsckObjects</code></span> i stället.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchfsckcodeemltmedd-idgtemspan"> <a class="anchor" href="#git-config-fetchfsckmedd-id"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchfsckcodeemltmedd-idgtemspan"></a><span class='synopsis'><code>fetch.fsck.</code><em>&lt;medd-id&gt;</em></span> </dt>
 <dd>
-<p>Fungerar som <span class='synopsis'><code>fsck.</code><em>&lt;medd-id&gt;</em></span>, men används av <a href='{{< relurl "docs/git-fetch-pack/sv" >}}'>git-fetch-pack[1]</a> istället för <a href='{{< relurl "docs/git-fsck/sv" >}}'>git-fsck[1]</a>. Se dokumentationen för <span class='synopsis'><code>fsck.</code><em>&lt;medd-id&gt;</em></span> för mer information.</p>
+<p>Fungerar som <span class='synopsis'><code>fsck.</code><em>&lt;medd-id&gt;</em></span>, men används av <a href='{{< relurl "docs/git-fetch-pack/sv" >}}'>git-fetch-pack[1]</a> i stället för <a href='{{< relurl "docs/git-fsck/sv" >}}'>git-fsck[1]</a>. Se dokumentationen för <span class='synopsis'><code>fsck.</code><em>&lt;medd-id&gt;</em></span> för mer information.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchfsckskipListcodespan"> <a class="anchor" href="#git-config-fetchfsckskipList"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchfsckskipListcodespan"></a><span class='synopsis'><code>fetch.fsck.skipList</code></span> </dt>
 <dd>
-<p>Fungerar som <span class='synopsis'><code>fsck.skipList</code></span>, men används av <a href='{{< relurl "docs/git-fetch-pack/sv" >}}'>git-fetch-pack[1]</a> istället för <a href='{{< relurl "docs/git-fsck/sv" >}}'>git-fsck[1]</a>. Se dokumentationen för <span class='synopsis'><code>fsck.skipList</code></span> för mer information.</p>
+<p>Fungerar som <span class='synopsis'><code>fsck.skipList</code></span>, men används av <a href='{{< relurl "docs/git-fetch-pack/sv" >}}'>git-fetch-pack[1]</a> i stället för <a href='{{< relurl "docs/git-fsck/sv" >}}'>git-fsck[1]</a>. Se dokumentationen för <span class='synopsis'><code>fsck.skipList</code></span> för mer information.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchunpackLimitcodespan"> <a class="anchor" href="#git-config-fetchunpackLimit"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchunpackLimitcodespan"></a><span class='synopsis'><code>fetch.unpackLimit</code></span> </dt>
 <dd>
-<p>Om antalet objekt som hämtas via Git-överföringen understiger denna gräns, kommer objekten att packas upp till lösa objektfiler. Om antalet mottagna objekt däremot är lika med eller överstiger denna gräns, kommer det mottagna paketet att lagras som ett paket, efter att eventuella saknade deltabaser har lagts till. Att lagra paketet från en push-operation kan göra att push-operationen slutförs snabbare, särskilt på långsamma filsystem. Om det inte är angivet används värdet <span class='synopsis'><code>transfer.unpackLimit</code></span> istället.</p>
+<p>Om antalet objekt som hämtas via Git-överföringen understiger denna gräns, kommer objekten att packas upp till lösa objektfiler. Om antalet mottagna objekt däremot är lika med eller överstiger denna gräns, kommer det mottagna paketet att lagras som ett paket, efter att eventuella saknade deltabaser har lagts till. Att lagra paketet från en push-operation kan göra att push-operationen slutförs snabbare, särskilt på långsamma filsystem. Om det inte är angivet används värdet <span class='synopsis'><code>transfer.unpackLimit</code></span> i stället.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchprunecodespan"> <a class="anchor" href="#git-config-fetchprune"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchprunecodespan"></a><span class='synopsis'><code>fetch.prune</code></span> </dt>
 <dd>
@@ -1761,9 +1761,9 @@ den ställs in på <span class='synopsis'><code>false</code></span> färgas inte
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchnegotiationAlgorithmcodespan"> <a class="anchor" href="#git-config-fetchnegotiationAlgorithm"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchnegotiationAlgorithmcodespan"></a><span class='synopsis'><code>fetch.negotiationAlgorithm</code></span> </dt>
 <dd>
-<p>Styr hur information om incheckningar i det lokala förvaret skickas vid förhandling av innehållet i packfilen som ska skickas av servern. Ställ in på <span class='synopsis'><code>consecutive</code></span> för att använda en algoritm som går över på varandra följande incheckningar och kontrollerar var och en. Ställ in på <span class='synopsis'><code>skipping</code></span> för att använda en algoritm som hoppar över incheckningar i ett försök att konvergera snabbare, men kan resultera i en packfil som är större än nödvändigt; eller sätt på <span class='synopsis'><code>noop</code></span> för att inte skicka någon information alls, vilket nästan säkert kommer att resultera i en packfil som är större än nödvändigt, men som hoppar över förhandlingssteget. Ställ in på <span class='synopsis'><code>default</code></span> för att åsidosätta inställningar som gjorts tidigare och använda standardbeteendet. Standardvärdet är normalt <span class='synopsis'><code>consecutive</code></span>, men om <span class='synopsis'><code>feature.experimental</code></span> är <span class='synopsis'><code>true</code></span> är standardvärdet <span class='synopsis'><code>skipping</code></span>. Okända värden kommer att orsaka att <span class='synopsis'><code>git</code> <code>fetch</code></span> ger fel.</p>
+<p>Styr hur information om incheckningar i det lokala kodförrådet skickas vid förhandling av innehållet i packfilen som ska skickas av servern. Ställ in på <span class='synopsis'><code>consecutive</code></span> för att använda en algoritm som går över på varandra följande incheckningar och kontrollerar var och en. Ställ in på <span class='synopsis'><code>skipping</code></span> för att använda en algoritm som hoppar över incheckningar i ett försök att konvergera snabbare, men kan resultera i en packfil som är större än nödvändigt; eller sätt på <span class='synopsis'><code>noop</code></span> för att inte skicka någon information alls, vilket nästan säkert kommer att resultera i en packfil som är större än nödvändigt, men som hoppar över förhandlingssteget. Ställ in på <span class='synopsis'><code>default</code></span> för att åsidosätta inställningar som gjorts tidigare och använda standardbeteendet. Standardvärdet är normalt <span class='synopsis'><code>consecutive</code></span>, men om <span class='synopsis'><code>feature.experimental</code></span> är <span class='synopsis'><code>true</code></span> är standardvärdet <span class='synopsis'><code>skipping</code></span>. Okända värden kommer att orsaka att <span class='synopsis'><code>git</code> <code>fetch</code></span> ger fel.</p>
 <div class="paragraph">
-<p>Se även alternativen <span class='synopsis'><code>--negotiate-only</code></span> och <span class='synopsis'><code>--negotiation-tip</code></span> för <a href='{{< relurl "docs/git-fetch/sv" >}}'>git-fetch[1]</a>.</p>
+<p>Se även alternativen <span class='synopsis'><code>--negotiate-only</code></span> och <span class='synopsis'><code>--negotiation-tip</code></span> i <a href='{{< relurl "docs/git-fetch/sv" >}}'>git-fetch[1]</a>.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchshowForcedUpdatescodespan"> <a class="anchor" href="#git-config-fetchshowForcedUpdates"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchshowForcedUpdatescodespan"></a><span class='synopsis'><code>fetch.showForcedUpdates</code></span> </dt>
@@ -1777,18 +1777,18 @@ den ställs in på <span class='synopsis'><code>false</code></span> färgas inte
 <p>Ett värde på 0 ger en rimlig standardinställning. Om den inte är inställd är standardvärdet 1.</p>
 </div>
 <div class="paragraph">
-<p>For submodules, this setting can be overridden using the <span class='synopsis'><code>submodule.fetchJobs</code></span> config setting.</p>
+<p>Antalet undermoduler som hämtas samtidigt. Standardvärdet är <span class='synopsis'><code>submodule.fetchJobs</code></span>.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchwriteCommitGraphcodespan"> <a class="anchor" href="#git-config-fetchwriteCommitGraph"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchwriteCommitGraphcodespan"></a><span class='synopsis'><code>fetch.writeCommitGraph</code></span> </dt>
 <dd>
-<p>Sätt till true för att skriva en inchecknings-graph efter varje <span class='synopsis'><code>git</code> <code>fetch</code></span>-kommando som laddar ner en pack-fil från en fjärr. Med alternativet <span class='synopsis'><code>--split</code></span> skapar de flesta körningar en mycket liten inchecknings-graph-fil ovanpå den/de befintliga inchecknings-graph-filen/filerna. Ibland slås dessa filer samman och skrivningen kan ta längre tid. Att ha en uppdaterad inchecknings-graph-fil hjälper till att utföra många Git-kommandon, inklusive <span class='synopsis'><code>git</code> <code>merge-base</code></span>, <span class='synopsis'><code>git</code> <code>push</code> <code>-f</code></span> och <span class='synopsis'><code>git</code> <code>log</code> <code>--graph</code></span>. Standardvärdet är <span class='synopsis'><code>false</code></span>.</p>
+<p>Sätt till true för att skriva en incheckningsgraf efter varje <span class='synopsis'><code>git</code> <code>fetch</code></span>-kommando som laddar ner en pack-fil från en fjärr. Med alternativet <span class='synopsis'><code>--split</code></span> skapar de flesta körningar en mycket liten incheckningsgraf-fil ovanpå den/de befintliga incheckningsgraf-filen/filerna. Ibland slås filerna samman och skrivningen kan ta längre tid. Att ha en uppdaterad incheckningsgraf-fil hjälper till att utföra många Git-kommandon, inklusive <span class='synopsis'><code>git</code> <code>merge-base</code></span>, <span class='synopsis'><code>git</code> <code>push</code> <code>-f</code></span> och <span class='synopsis'><code>git</code> <code>log</code> <code>--graph</code></span>. Standardvärdet är <span class='synopsis'><code>false</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchbundleURIcodespan"> <a class="anchor" href="#git-config-fetchbundleURI"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchbundleURIcodespan"></a><span class='synopsis'><code>fetch.bundleURI</code></span> </dt>
 <dd>
 <p>Det här värdet lagrar en URI för att ladda ner Git-objektdata från en bunt-URI innan en stegvis hämtning utförs från den ursprungliga Git-servern. Detta liknar hur alternativet <span class='synopsis'><code>--bundle-uri</code></span> beter sig i <a href='{{< relurl "docs/git-clone/sv" >}}'>git-clone[1]</a>. <span class='synopsis'><code>git</code> <code>clone</code> <code>--bundle-uri</code></span> kommer att ställa in värdet <span class='synopsis'><code>fetch.bundleURI</code></span> om den angivna bunt-URI:n innehåller en bunt-lista som är organiserad för stegvisa hämtningar.</p>
 <div class="paragraph">
-<p>Om du ändrar det här värdet och ditt förvar har ett <span class='synopsis'><code>fetch.bundleCreationToken</code></span>-värde, ta bort det <span class='synopsis'><code>fetch.bundleCreationToken</code></span>-värdet innan du hämtar från den nya bunt-URI:n.</p>
+<p>Om du ändrar det här värdet och ditt kodförråd har ett <span class='synopsis'><code>fetch.bundleCreationToken</code></span>-värde, ta bort det <span class='synopsis'><code>fetch.bundleCreationToken</code></span>-värdet innan du hämtar från den nya bunt-URI:n.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchbundleCreationTokencodespan"> <a class="anchor" href="#git-config-fetchbundleCreationToken"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchbundleCreationTokencodespan"></a><span class='synopsis'><code>fetch.bundleCreationToken</code></span> </dt>
@@ -2107,6 +2107,10 @@ den ställs in på <span class='synopsis'><code>false</code></span> färgas inte
 <dd>
 <p>Tillåter åsidosättning av standardformatet för referenslagring för nya arkiv. Se <span class='synopsis'><code>--ref-format=</code></span> i <a href='{{< relurl "docs/git-init/sv" >}}'>git-init[1]</a>. Både kommandoradsalternativet och miljövariabeln <span class='synopsis'><code>GIT_DEFAULT_REF_FORMAT</code></span> har företräde framför denna konfiguration.</p>
 </dd>
+<dt class="hdlist1" id="git-config-initdefaultSubmodulePathConfig"> <a class="anchor" href="#git-config-initdefaultSubmodulePathConfig"></a>init.defaultSubmodulePathConfig </dt>
+<dd>
+<p>A boolean that specifies if <span class='synopsis'><code>git</code> <code>init</code></span> and <span class='synopsis'><code>git</code> <code>clone</code></span> should automatically set <span class='synopsis'><code>extensions.submodulePathConfig</code></span> to <span class='synopsis'><code>true</code></span>. This allows all new repositories to automatically use the submodule path extension. Defaults to <span class='synopsis'><code>false</code></span> when unset.</p>
+</dd>
 </dl>
 </div>
 <div class="admonitionblock warning">
@@ -2148,7 +2152,7 @@ den ställs in på <span class='synopsis'><code>false</code></span> färgas inte
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodelogabbrevCommitcodespan"> <a class="anchor" href="#git-config-logabbrevCommit"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodelogabbrevCommitcodespan"></a><span class='synopsis'><code>log.abbrevCommit</code></span> </dt>
 <dd>
 <p>Om <span class='synopsis'><code>sant</code></span>, gör
-<a href='{{< relurl "docs/git-log/sv" >}}'>git-log[1]</a>, <a href='{{< relurl "docs/git-show/sv" >}}'>git-show[1]</a>, och
+<a href='{{< relurl "docs/git-log/sv" >}}'>git-log[1]</a>, <a href='{{< relurl "docs/git-show/sv" >}}'>git-show[1]</a>, and
 <a href='{{< relurl "docs/git-whatchanged/sv" >}}'>git-whatchanged[1]</a>
 anta <span class='synopsis'><code>--abbrev-commit</code></span>. Du kan
  åsidosätta detta alternativ med <span class='synopsis'><code>--no-abbrev-commit</code></span>.</p>
@@ -2162,7 +2166,7 @@ anta <span class='synopsis'><code>--abbrev-commit</code></span>. Du kan
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodelogdecoratecodespan"> <a class="anchor" href="#git-config-logdecorate"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodelogdecoratecodespan"></a><span class='synopsis'><code>log.decorate</code></span> </dt>
 <dd>
-<p>Print out the ref names of any commits that are shown by the log command. Possible values are:</p>
+<p>Skriv ut referensnamnen för alla incheckningar som visas. Möjliga värden är:</p>
 <div class="openblock">
 <div class="content">
 <div class="dlist">
@@ -2184,12 +2188,12 @@ anta <span class='synopsis'><code>--abbrev-commit</code></span>. Du kan
 </div>
 </div>
 <div class="paragraph">
-<p>Detta är samma sak som alternativet <span class='synopsis'><code>--decorate</code></span> i <span class='synopsis'><code>git</code> <code>log</code></span>.</p>
+<p>Det är samma sak som alternativet <span class='synopsis'><code>--decorate</code></span> i <span class='synopsis'><code>git</code> <code>log</code></span>.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodeloginitialDecorationSetcodespan"> <a class="anchor" href="#git-config-loginitialDecorationSet"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodeloginitialDecorationSetcodespan"></a><span class='synopsis'><code>log.initialDecorationSet</code></span> </dt>
 <dd>
-<p>Som standard, visar <span class='synopsis'><code>git</code> <code>log</code></span> bara dekorationer för vissa kända referensnamnrymder. Om <em>alla</em> anges visas alla referenser som dekorationer.</p>
+<p>Som standard visar <span class='synopsis'><code>git</code> <code>log</code></span> bara dekorationer för vissa kända referensnamnrymder. Om <em>alla</em> anges visas alla referenser som dekorationer.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodelogexcludeDecorationcodespan"> <a class="anchor" href="#git-config-logexcludeDecoration"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodelogexcludeDecorationcodespan"></a><span class='synopsis'><code>log.excludeDecoration</code></span> </dt>
 <dd>
@@ -2197,11 +2201,11 @@ anta <span class='synopsis'><code>--abbrev-commit</code></span>. Du kan
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodelogdiffMergescodespan"> <a class="anchor" href="#git-config-logdiffMerges"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodelogdiffMergescodespan"></a><span class='synopsis'><code>log.diffMerges</code></span> </dt>
 <dd>
-<p>Ställ in diff-formatet som ska användas när <span class='synopsis'><code>--diff-merges=on</code></span> är specificerat, se <span class='synopsis'><code>--diff-merges</code></span> i <a href='{{< relurl "docs/git-log/sv" >}}'>git-log[1]</a> för detaljer. Standardinställningen är <span class='synopsis'><code>separate</code></span>.</p>
+<p>Ställ in diff-formatet som ska användas när <span class='synopsis'><code>--diff-merges=on</code></span> har angetts; se <span class='synopsis'><code>--diff-merges</code></span> i <a href='{{< relurl "docs/git-log/sv" >}}'>git-log[1]</a> för detaljer. Standardinställningen är <span class='synopsis'><code>separate</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodelogfollowcodespan"> <a class="anchor" href="#git-config-logfollow"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodelogfollowcodespan"></a><span class='synopsis'><code>log.follow</code></span> </dt>
 <dd>
-<p>Om <span class='synopsis'><code>true</code></span> kommer <span class='synopsis'><code>git</code> <code>log</code></span> att agera som om <span class='synopsis'><code>--follow</code></span>-alternativet användes när en enda &lt;sökväg&gt; anges. Detta har samma begränsningar som <span class='synopsis'><code>--follow</code></span>, d.v.s. det kan inte användas för att följa flera filer och fungerar inte bra på icke-linjär historik.</p>
+<p>Om <span class='synopsis'><code>true</code></span> kommer <span class='synopsis'><code>git</code> <code>log</code></span> att agera som om <span class='synopsis'><code>--follow</code></span>-alternativet användes när en enda &lt;sökväg&gt; anges. Detta har samma begränsningar som <span class='synopsis'><code>--follow</code></span>, dvs. det kan inte användas för att följa flera filer och fungerar inte bra på icke-linjär historik.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodeloggraphColorscodespan"> <a class="anchor" href="#git-config-loggraphColors"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodeloggraphColorscodespan"></a><span class='synopsis'><code>log.graphColors</code></span> </dt>
 <dd>
@@ -2213,7 +2217,7 @@ anta <span class='synopsis'><code>--abbrev-commit</code></span>. Du kan
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodelogshowSignaturecodespan"> <a class="anchor" href="#git-config-logshowSignature"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodelogshowSignaturecodespan"></a><span class='synopsis'><code>log.showSignature</code></span> </dt>
 <dd>
-<p>Om sant, gör att <a href='{{< relurl "docs/git-log/sv" >}}'>git-log[1]</a>, <a href='{{< relurl "docs/git-show/sv" >}}'>git-show[1]</a> och <a href='{{< relurl "docs/git-whatchanged/sv" >}}'>git-whatchanged[1]</a> antar <span class='synopsis'><code>--show-signature</code></span>.</p>
+<p>Om true, gör att <a href='{{< relurl "docs/git-log/sv" >}}'>git-log[1]</a>, <a href='{{< relurl "docs/git-show/sv" >}}'>git-show[1]</a> och <a href='{{< relurl "docs/git-whatchanged/sv" >}}'>git-whatchanged[1]</a> antar <span class='synopsis'><code>--show-signature</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodelogmailmapcodespan"> <a class="anchor" href="#git-config-logmailmap"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodelogmailmapcodespan"></a><span class='synopsis'><code>log.mailmap</code></span> </dt>
 <dd>
@@ -2325,11 +2329,11 @@ slutet av ett konfliktområde.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodemergedefaultToUpstreamcodespan"> <a class="anchor" href="#git-config-mergedefaultToUpstream"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodemergedefaultToUpstreamcodespan"></a><span class='synopsis'><code>merge.defaultToUpstream</code></span> </dt>
 <dd>
-<p>Om merge anropas utan något inchecknings-argument, sammanfogas de uppströmsgrenar som konfigurerats för den aktuella grenen med hjälp av deras senast observerade värden som lagrats i deras fjärrspårningsgrenar. Värdena för <span class='synopsis'><em>branch.&lt;nuvarande gren&gt;.merge</em></span> som namnger grenarna på fjärrvärd namngiven av <span class='synopsis'><em>branch.&lt;nuvarande gren&gt;.remote</em></span> konsulteras, och sedan mappas de via <span class='synopsis'><code>remote.</code><em>&lt;fjärrvärd&gt;</em><code>.fetch</code></span> till deras motsvarande fjärrspårningsgrenar, och topparna för dessa spårningsgrenar sammanfogas. Standardvärdet är sant.</p>
+<p>Om merge anropas utan något incheckningsargument sammanfogas de uppströmsgrenar som konfigurerats för den aktuella grenen med hjälp av deras senast observerade värden i motsvarande fjärrspårade grenar. Värdena i <span class='synopsis'><em>branch.&lt;nuvarande gren&gt;.merge</em></span>, som namnger grenarna på den fjärr som anges av <span class='synopsis'><em>branch.&lt;nuvarande gren&gt;.remote</em></span>, läses av och mappas sedan via <span class='synopsis'><code>remote.</code><em>&lt;fjärrvärd&gt;</em><code>.fetch</code></span> till motsvarande fjärrspårade grenar, varefter topparna på spårningsgrenarna sammanfogas. Standardvärdet är sant.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodemergeffcodespan"> <a class="anchor" href="#git-config-mergeff"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodemergeffcodespan"></a><span class='synopsis'><code>merge.ff</code></span> </dt>
 <dd>
-<p>Som standard, skapar Git inte en extra sammanslagnings-incheckningar när den sammanfogar en incheckning som är en underordnad till den topen av aktuell incheckning. Istället snabbspolas spetsen för den aktuella grenen framåt. När den är satt till <span class='synopsis'><code>false</code></span>, talar denna variabel om för Git att skapa en extra sammanslagnings-incheckning i ett sådant fall (motsvarande att ge alternativet <span class='synopsis'><code>--no-ff</code></span> från kommandoraden). När den är satt till <span class='synopsis'><code>only</code></span>, tillåts endast sådana snabbspolnings-sammanslagningar (motsvarande att ge alternativet <span class='synopsis'><code>--ff-only</code></span> från kommandoraden).</p>
+<p>Som standard skapar Git ingen extra sammanslagningsincheckning när en incheckning som är en efterföljare till den aktuella incheckningen sammanfogas. I stället snabbspolas toppen på den aktuella grenen framåt. När variabeln sätts till <span class='synopsis'><code>false</code></span> instruerar den Git att skapa en extra sammanslagningsincheckning i ett sådant fall (motsvarande alternativet <span class='synopsis'><code>--no-ff</code></span> på kommandoraden). När den sätts till <span class='synopsis'><code>only</code></span> tillåts endast sådana snabbspolningssammanslagningar (motsvarande alternativet <span class='synopsis'><code>--ff-only</code></span> på kommandoraden).</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodemergeverifySignaturescodespan"> <a class="anchor" href="#git-config-mergeverifySignatures"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodemergeverifySignaturescodespan"></a><span class='synopsis'><code>merge.verifySignatures</code></span> </dt>
 <dd>
@@ -2360,22 +2364,22 @@ slutet av ett konfliktområde.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodemergerenamescodespan"> <a class="anchor" href="#git-config-mergerenames"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodemergerenamescodespan"></a><span class='synopsis'><code>merge.renames</code></span> </dt>
 <dd>
-<p>Huruvida Git detekterar namnbyten. Om det är satt till <span class='synopsis'><code>false</code></span> är namnbytesdetektering inaktiverad. Om det är satt till <span class='synopsis'><code>true</code></span> är grundläggande namnbytesdetektering aktiverad. Standardvärdet är diff.renames.</p>
+<p>Huruvida Git identifierar namnbyten. Om det är satt till <span class='synopsis'><code>false</code></span> är namnbytesdetektering inaktiverad. Om det är satt till <span class='synopsis'><code>true</code></span> är grundläggande namnbytesdetektering aktiverad. Standardvärdet är diff.renames.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodemergedirectoryRenamescodespan"> <a class="anchor" href="#git-config-mergedirectoryRenames"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodemergedirectoryRenamescodespan"></a><span class='synopsis'><code>merge.directoryRenames</code></span> </dt>
 <dd>
-<p>Huruvida Git detekterar katalogbyten, vilket påverkar vad som händer vid sammanslagningstillfället med nya filer som läggs till i en katalog på ena sidan av historiken när den katalogen döptes om på den andra sidan av historiken. Möjliga värden är:</p>
+<p>Huruvida Git identifierar katalognamnbyten, vilket påverkar vad som händer vid sammanslagningstillfället med nya filer som läggs till i en katalog på ena sidan av historiken när den katalogen döptes om på den andra sidan av historiken. Möjliga värden är:</p>
 <div class="openblock">
 <div class="content">
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodefalsecodespan-1"> <a class="anchor" href="#git-config-false-1-1"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefalsecodespan-1"></a><span class='synopsis'><code>false</code></span> </dt>
 <dd>
-<p>Detektering av katalog-namnbyte är inaktiverat, vilket innebär att sådana nya filer kommer att lämnas kvar i den gamla katalogen.</p>
+<p>Identifiering av katalognamnbyten är inaktiverad, vilket innebär att sådana nya filer kommer att lämnas kvar i den gamla katalogen.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodetruecodespan-1"> <a class="anchor" href="#git-config-true-1"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodetruecodespan-1"></a><span class='synopsis'><code>true</code></span> </dt>
 <dd>
-<p>Detektering av katalog namnbyte är aktiverat, vilket innebär att sådana nya filer flyttas till den nya katalogen.</p>
+<p>Identifiering av katalognamnbyten är aktiverad, vilket innebär att sådana nya filer flyttas till den nya katalogen.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodeconflictcodespan"> <a class="anchor" href="#git-config-conflict"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodeconflictcodespan"></a><span class='synopsis'><code>conflict</code></span> </dt>
 <dd>
@@ -2417,12 +2421,12 @@ slutet av ett konfliktområde.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>men alla okända värden (t.ex. ett värde som läggs till av en framtida version av Git) tas som <span class='synopsis'><code>sant</code></span> istället för att utlösa ett fel. Standardvärdet är <span class='synopsis'><code>sant</code></span>.</p>
+<p>men alla okända värden (t.ex. ett värde som läggs till av en framtida version av Git) tas som <span class='synopsis'><code>sant</code></span> i stället för att utlösa ett fel. Standardvärdet är <span class='synopsis'><code>sant</code></span>.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodemergeautoStashcodespan"> <a class="anchor" href="#git-config-mergeautoStash"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodemergeautoStashcodespan"></a><span class='synopsis'><code>merge.autoStash</code></span> </dt>
 <dd>
-<p>När den är satt till <span class='synopsis'><code>true</code></span> skapas automatiskt en tillfällig gömma-post innan operationen börjar och tillämpas efter att operationen är avslutad. Detta innebär att du kan köra merge på ett smutsigt arbetsträd. Använd dock med försiktighet: den slutliga stash-applikationen efter en lyckad merge kan resultera i icke-triviala konflikter. Detta alternativ kan åsidosättas av alternativen <span class='synopsis'><code>--no-autostash</code></span> och <span class='synopsis'><code>--autostash</code></span> i <a href='{{< relurl "docs/git-merge/sv" >}}'>git-merge[1]</a>. Standardvärdet är <span class='synopsis'><code>false</code></span>.</p>
+<p>När den är satt till <span class='synopsis'><code>true</code></span> skapas automatiskt en tillfällig gömd post innan operationen börjar och tillämpas efter att operationen är avslutad. Detta innebär att merge kan köras på ett smutsigt arbetsträd. Använd dock med försiktighet: den slutliga tillämpningen av gömman efter en lyckad merge kan resultera i icke-triviala konflikter. Detta alternativ kan åsidosättas av alternativen <span class='synopsis'><code>--no-autostash</code></span> och <span class='synopsis'><code>--autostash</code></span> i <a href='{{< relurl "docs/git-merge/sv" >}}'>git-merge[1]</a>. Standardvärdet är <span class='synopsis'><code>false</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodemergetoolcodespan"> <a class="anchor" href="#git-config-mergetool"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodemergetoolcodespan"></a><span class='synopsis'><code>merge.tool</code></span> </dt>
 <dd>
@@ -2430,7 +2434,7 @@ slutet av ett konfliktområde.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodemergeguitoolcodespan"> <a class="anchor" href="#git-config-mergeguitool"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodemergeguitoolcodespan"></a><span class='synopsis'><code>merge.guitool</code></span> </dt>
 <dd>
-<p>Styr vilket sammanslagningsverktyg som används av <a href='{{< relurl "docs/git-mergetool/sv" >}}'>git-mergetool[1]</a> när flaggan <span class='synopsis'><code>-g</code></span>/<span class='synopsis'><code>--gui</code></span> är specificerad. Listan nedan visar de giltiga inbyggda värdena. Alla andra värden behandlas som ett anpassat sammanslagningsverktyg och kräver att en motsvarande variabel <span class='synopsis'><code>mergetool.</code><em>&lt;gui-verktyg&gt;</em><code>.cmd</code></span> definieras.</p>
+<p>Styr vilket sammanslagningsverktyg som används av <a href='{{< relurl "docs/git-mergetool/sv" >}}'>git-mergetool[1]</a> när flaggan <span class='synopsis'><code>-g</code></span>/<span class='synopsis'><code>--gui</code></span> har angetts. Listan nedan visar de giltiga inbyggda värdena. Alla andra värden behandlas som ett anpassat sammanslagningsverktyg och kräver att en motsvarande variabel <span class='synopsis'><code>mergetool.</code><em>&lt;gui-verktyg&gt;</em><code>.cmd</code></span> definieras.</p>
 </dd>
 </dl>
 </div>
@@ -2473,34 +2477,34 @@ slutet av ett konfliktområde.</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1" id="git-config-spanclasssynopsiscodemergetoolcodeemlttoolgtemcodepathcodespan"> <a class="anchor" href="#git-config-mergetooltoolpath"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodemergetoolcodeemlttoolgtemcodepathcodespan"></a><span class='synopsis'><code>mergetool.</code><em>&lt;tool&gt;</em><code>.path</code></span> </dt>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodemergetoolcodespan-1"> <a class="anchor" href="#git-config-mergetool-1"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodemergetoolcodespan-1"></a><span class='synopsis'><code>merge.tool</code></span> </dt>
 <dd>
 <p>Åsidosätt sökvägen för det givna verktyget. Detta är användbart om ditt verktyg inte finns i <span class='synopsis'><code>$PATH</code></span>.</p>
 </dd>
-<dt class="hdlist1" id="git-config-spanclasssynopsiscodemergetoolcodeemlttoolgtemcodecmdcodespan"> <a class="anchor" href="#git-config-mergetooltoolcmd"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodemergetoolcodeemlttoolgtemcodecmdcodespan"></a><span class='synopsis'><code>mergetool.</code><em>&lt;tool&gt;</em><code>.cmd</code></span> </dt>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodemergetoolcodespan-1-1"> <a class="anchor" href="#git-config-mergetool-1-1"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodemergetoolcodespan-1-1"></a><span class='synopsis'><code>merge.tool</code></span> </dt>
 <dd>
-<p>Specify the command to invoke the specified merge tool. The specified command is evaluated in shell with the following variables available: <span class='synopsis'><code>BASE</code></span> is the name of a temporary file containing the common base of the files to be merged, if available; <span class='synopsis'><code>LOCAL</code></span> is the name of a temporary file containing the contents of the file on the current branch; <span class='synopsis'><code>REMOTE</code></span> is the name of a temporary file containing the contents of the file from the branch being merged; <span class='synopsis'><code>MERGED</code></span> contains the name of the file to which the merge tool should write the results of a successful merge.</p>
+<p>När <span class='synopsis'><code>git</code> <code>mergetool</code></span> anropas med detta verktyg (antingen genom alternativet <span class='synopsis'><code>-t</code></span> eller <span class='synopsis'><code>--tool</code></span> eller konfigurationsvariabeln <span class='synopsis'><code>merge.tool</code></span>), kommer den konfigurerade kommandoraden att anropas med <span class='synopsis'><code>BASE</code></span> satt till namnet på en temporär fil som innehåller den gemensamma basen för sammanslagningen, om tillgänglig; <span class='synopsis'><code>LOCAL</code></span> satt till namnet på en temporär fil som innehåller innehållet i filen på den aktuella grenen; <span class='synopsis'><code>REMOTE</code></span> satt till namnet på en temporär fil som innehåller innehållet i filen som ska sammanfogas, och <span class='synopsis'><code>MERGED</code></span> satt till namnet på den fil som sammanslagningsverktyget ska skriva resultatet av sammanslagningslösningen till.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodemergetoolcodeemltverktyggtemcodehideResolvedcodespan"> <a class="anchor" href="#git-config-mergetoolverktyghideResolved"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodemergetoolcodeemltverktyggtemcodehideResolvedcodespan"></a><span class='synopsis'><code>mergetool.</code><em>&lt;verktyg&gt;</em><code>.hideResolved</code></span> </dt>
 <dd>
 <p>Tillåter användaren att åsidosätta det globala värdet <span class='synopsis'><code>mergetool.hideResolved</code></span> för ett specifikt verktyg. Se <span class='synopsis'><code>mergetool.hideResolved</code></span> för en fullständig beskrivning.</p>
 </dd>
-<dt class="hdlist1" id="git-config-spanclasssynopsiscodemergetoolcodeemlttoolgtemcodetrustExitCodecodespan"> <a class="anchor" href="#git-config-mergetooltooltrustExitCode"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodemergetoolcodeemlttoolgtemcodetrustExitCodecodespan"></a><span class='synopsis'><code>mergetool.</code><em>&lt;tool&gt;</em><code>.trustExitCode</code></span> </dt>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodediffcodeemltfraregtemcodetrustExitCodecodespan-1"> <a class="anchor" href="#git-config-difffraretrustExitCode-1"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodediffcodeemltfraregtemcodetrustExitCodecodespan-1"></a><span class='synopsis'><code>diff.</code><em>&lt;förare&gt;</em><code>.trustExitCode</code></span> </dt>
 <dd>
-<p>För ett anpassat sammanslagnings-kommando anger du om avslutningskoden för sammanfognings-kommandot kan användas för att avgöra om sammanslagningen lyckades. Om detta inte är inställt på sant kontrolleras tidsstämpeln för sammanslagningsmålfilen och sammanslagningen antas ha lyckats om filen har uppdaterats. Annars uppmanas användaren att ange att sammanslagningen lyckades.</p>
+<p>För ett anpassat sammanslagningskommando anges om avslutningskoden för sammanslagningskommandot kan användas för att avgöra om sammanslagningen lyckades. Om detta inte är inställt på sant kontrolleras tidsstämpeln för sammanslagningsmålfilen och sammanslagningen antas ha lyckats om filen har uppdaterats. Annars uppmanas användaren att ange att sammanslagningen lyckades.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodemergetoolmeldhasOutputcodespan"> <a class="anchor" href="#git-config-mergetoolmeldhasOutput"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodemergetoolmeldhasOutputcodespan"></a><span class='synopsis'><code>mergetool.meld.hasOutput</code></span> </dt>
 <dd>
-<p>Äldre versioner av <span class='synopsis'><code>meld</code></span> stöder inte alternativet <span class='synopsis'><code>--output</code></span>. Git kommer att försöka upptäcka om <span class='synopsis'><code>meld</code></span> stöder <span class='synopsis'><code>--output</code></span> genom att inspektera utdata från <span class='synopsis'><code>meld</code> <code>--help</code></span>. Om du konfigurerar <span class='synopsis'><code>mergetool.meld.hasOutput</code></span> hoppar Git över dessa kontroller och använder det konfigurerade värdet istället. Om <span class='synopsis'><code>mergetool.meld.hasOutput</code></span> ställs in på <span class='synopsis'><code>true</code></span> får Git att ovillkorligen använda alternativet <span class='synopsis'><code>--output</code></span>, och <span class='synopsis'><code>false</code></span> undviker att använda <span class='synopsis'><code>--output</code></span>.</p>
+<p>Äldre versioner av <span class='synopsis'><code>meld</code></span> stöder inte alternativet <span class='synopsis'><code>--output</code></span>. Git kommer att försöka upptäcka om <span class='synopsis'><code>meld</code></span> stöder <span class='synopsis'><code>--output</code></span> genom att inspektera utdata från <span class='synopsis'><code>meld</code> <code>--help</code></span>. Om <span class='synopsis'><code>mergetool.meld.hasOutput</code></span> konfigureras hoppar Git över kontrollen och använder det konfigurerade värdet i stället. Om <span class='synopsis'><code>mergetool.meld.hasOutput</code></span> ställs in på <span class='synopsis'><code>true</code></span> får Git att ovillkorligen använda alternativet <span class='synopsis'><code>--output</code></span>, och <span class='synopsis'><code>false</code></span> undviker att använda <span class='synopsis'><code>--output</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodemergetoolmelduseAutoMergecodespan"> <a class="anchor" href="#git-config-mergetoolmelduseAutoMerge"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodemergetoolmelduseAutoMergecodespan"></a><span class='synopsis'><code>mergetool.meld.useAutoMerge</code></span> </dt>
 <dd>
-<p>När <span class='synopsis'><code>--auto-merge</code></span> är angivet, kommer meld att sammanfoga alla icke-konfliktande delar automatiskt, markera de motstridiga delarna och vänta på användarens beslut. Om <span class='synopsis'><code>mergetool.meld.useAutoMerge</code></span> sätts till <span class='synopsis'><code>true</code></span> anger du att Git villkorslöst ska använda alternativet <span class='synopsis'><code>--auto-merge</code></span> med <span class='synopsis'><code>meld</code></span>. Om detta värde sätts till <span class='synopsis'><code>auto</code></span> detekterar git om <span class='synopsis'><code>--auto-merge</code></span> stöds och kommer endast att använda <span class='synopsis'><code>--auto-merge</code></span> när det är tillgängligt. Värdet <span class='synopsis'><code>false</code></span> undviker att använda <span class='synopsis'><code>--auto-merge</code></span> helt och hållet, och är standardvärdet.</p>
+<p>När <span class='synopsis'><code>--auto-merge</code></span> är angivet kommer meld att sammanfoga alla icke-konfliktande delar automatiskt, markera de motstridiga delarna och vänta på användarens beslut. Om <span class='synopsis'><code>mergetool.meld.useAutoMerge</code></span> sätts till <span class='synopsis'><code>true</code></span> innebär det att Git villkorslöst använder alternativet <span class='synopsis'><code>--auto-merge</code></span> med <span class='synopsis'><code>meld</code></span>. Om detta värde sätts till <span class='synopsis'><code>auto</code></span> identifierar Git om <span class='synopsis'><code>--auto-merge</code></span> stöds och kommer endast att använda <span class='synopsis'><code>--auto-merge</code></span> när det är tillgängligt. Värdet <span class='synopsis'><code>false</code></span> undviker att använda <span class='synopsis'><code>--auto-merge</code></span> helt och hållet, och är standardvärdet.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodemergetoolcodeemltvariantgtemcodelayoutcodespan"> <a class="anchor" href="#git-config-mergetoolvariantlayout"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodemergetoolcodeemltvariantgtemcodelayoutcodespan"></a><span class='synopsis'><code>mergetool.</code><em>&lt;variant&gt;</em><code>.layout</code></span> </dt>
 <dd>
-<p>Konfigurera layouten för delade fönster för vimdiffs <em>&lt;variant&gt;</em>, vilket är någon av <span class='synopsis'><code>vimdiff</code></span>, <span class='synopsis'><code>nvimdiff</code></span>, <span class='synopsis'><code>gvimdiff</code></span>. Vid start av <span class='synopsis'><code>git</code> <code>mergetool</code></span> med <span class='synopsis'><code>--tool=</code><em>&lt;variant&gt;</em></span> (eller utan <span class='synopsis'><code>--tool</code></span> om <span class='synopsis'><code>merge.tool</code></span> är konfigurerad som <em>&lt;variant&gt;</em>), kommer Git att konsultera <span class='synopsis'><code>mergetool.</code><em>&lt;variant&gt;</em><code>.layout</code></span> för att bestämma verktygets layout. Om den variantspecifika konfigurationen inte är tillgänglig används <span class='synopsis'><code>vimdiff</code></span> som reserv. Om inte heller den är tillgänglig används en standardlayout med 4 fönster. För att konfigurera layouten, se <em>BAKÄNDA-SPECIFIKA TIPS</em>
-avsnitt i <a href='{{< relurl "docs/git-mergetool/sv" >}}'>git-mergetool[1]</a>.</p>
+<p>	Konfigurera layouten för delade fönster för vimdiffs <em>&lt;variant&gt;</em>, vilket är någon av <span class='synopsis'><code>vimdiff</code></span>, <span class='synopsis'><code>nvimdiff</code></span>, <span class='synopsis'><code>gvimdiff</code></span>. Vid start av <span class='synopsis'><code>git</code> <code>mergetool</code></span> med <span class='synopsis'><code>--tool=</code><em>&lt;variant&gt;</em></span> (eller utan <span class='synopsis'><code>--tool</code></span> om <span class='synopsis'><code>merge.tool</code></span> är konfigurerad som <em>&lt;variant&gt;</em>), kommer Git att konsultera <span class='synopsis'><code>mergetool.</code><em>&lt;variant&gt;</em><code>.layout</code></span> för att bestämma verktygets layout. Om den variantspecifika konfigurationen inte är tillgänglig används <span class='synopsis'><code>vimdiff</code></span> som reserv. Om inte heller den är tillgänglig används en standardlayout med 4 fönster. För att konfigurera layouten, se <em>BAKÄNDA-SPECIFIKA TIPS</em>
+<a href='{{< relurl "docs/git-mergetool/sv" >}}'>git-mergetool[1]</a></p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodemergetoolhideResolvedcodespan"> <a class="anchor" href="#git-config-mergetoolhideResolved"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodemergetoolhideResolvedcodespan"></a><span class='synopsis'><code>mergetool.hideResolved</code></span> </dt>
 <dd>
@@ -2520,7 +2524,7 @@ avsnitt i <a href='{{< relurl "docs/git-mergetool/sv" >}}'>git-mergetool[1]</a>.
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodemergetoolpromptcodespan"> <a class="anchor" href="#git-config-mergetoolprompt"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodemergetoolpromptcodespan"></a><span class='synopsis'><code>mergetool.prompt</code></span> </dt>
 <dd>
-<p>Prompt before each invocation of the merge resolution program.</p>
+<p>Fråga före varje anrop av sammanslagningsprogrammet för att ge användaren en chans att hoppa över sökvägen.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodemergetoolguiDefaultcodespan"> <a class="anchor" href="#git-config-mergetoolguiDefault"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodemergetoolguiDefaultcodespan"></a><span class='synopsis'><code>mergetool.guiDefault</code></span> </dt>
 <dd>
@@ -2534,7 +2538,7 @@ avsnitt i <a href='{{< relurl "docs/git-mergetool/sv" >}}'>git-mergetool[1]</a>.
 <dd>
 <p>Vilken sammanslagningsstrategi som ska väljas som standard vid lösande av anteckningskonflikter. Måste vara en av <span class='synopsis'><code>manual</code></span>, <span class='synopsis'><code>ours</code></span>, <span class='synopsis'><code>theirs</code></span>, <span class='synopsis'><code>union</code></span> eller <span class='synopsis'><code>cat_sort_uniq</code></span>. Standardinställningen är <span class='synopsis'><code>manual</code></span>. Se avsnittet "ANTECKNINGAR SAMMANSLAGNINGSSTRATEGIER" i <a href='{{< relurl "docs/git-notes/sv" >}}'>git-notes[1]</a> för mer information om varje strategi.</p>
 <div class="paragraph">
-<p>Den här inställningen kan åsidosättas genom att skicka <span class='synopsis'><code>--strategy</code></span>-alternativet till <a href='{{< relurl "docs/git-notes/sv" >}}'>git-notes[1]</a>.</p>
+<p>Inställningen kan åsidosättas genom att skicka alternativet <span class='synopsis'><code>--strategy</code></span> till <a href='{{< relurl "docs/git-notes/sv" >}}'>git-notes[1]</a>.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodenotescodeemltnamegtemcodemergeStrategycodespan"> <a class="anchor" href="#git-config-notesnamemergeStrategy"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodenotescodeemltnamegtemcodemergeStrategycodespan"></a><span class='synopsis'><code>notes.</code><em>&lt;name&gt;</em><code>.mergeStrategy</code></span> </dt>
@@ -2543,7 +2547,7 @@ avsnitt i <a href='{{< relurl "docs/git-mergetool/sv" >}}'>git-mergetool[1]</a>.
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodenotesdisplayRefcodespan"> <a class="anchor" href="#git-config-notesdisplayRef"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodenotesdisplayRefcodespan"></a><span class='synopsis'><code>notes.displayRef</code></span> </dt>
 <dd>
-<p>Vilken referens (eller referenser, om en glob eller angetts mer än en gång), utöver standardvärdet som anges av <span class='synopsis'><code>core.notesRef</code></span> eller <span class='synopsis'><code>GIT_NOTES_REF</code></span>, som anteckningar ska läsas från när inchecknings-meddelanden visas med kommandofamiljen <span class='synopsis'><code>git</code> <code>log</code></span>.</p>
+<p>Vilken referens (eller referenser, om en glob eller angetts mer än en gång), utöver standardvärdet som anges av <span class='synopsis'><code>core.notesRef</code></span> eller <span class='synopsis'><code>GIT_NOTES_REF</code></span>, som anteckningar ska läsas från när incheckningsmeddelanden visas med kommandofamiljen <span class='synopsis'><code>git</code> <code>log</code></span>.</p>
 <div class="paragraph">
 <p>Den här inställningen kan åsidosättas med miljövariabeln <span class='synopsis'><code>GIT_NOTES_DISPLAY_REF</code></span>, som måste vara en kolonseparerad lista med referenser eller globs.</p>
 </div>
@@ -2568,7 +2572,7 @@ avsnitt i <a href='{{< relurl "docs/git-mergetool/sv" >}}'>git-mergetool[1]</a>.
 <dd>
 <p>När anteckningar kopieras under en omskrivning (se alternativet <span class='synopsis'><code>notes.rewrite.</code><em>&lt;kommando&gt;</em></span>), avgör detta vad som ska göras om mål-incheckningen redan har en anteckning. Måste vara en av <span class='synopsis'><code>overwrite</code></span>, <span class='synopsis'><code>concatenate</code></span>, <span class='synopsis'><code>cat_sort_uniq</code></span> eller <span class='synopsis'><code>ignore</code></span>. Standardvärdet är <span class='synopsis'><code>concatenate</code></span>.</p>
 <div class="paragraph">
-<p>Den här inställningen kan åsidosättas med miljövariabeln <span class='synopsis'><code>GIT_NOTES_REWRITE_MODE</code></span>.</p>
+<p>Inställningen kan åsidosättas med miljövariabeln <span class='synopsis'><code>GIT_NOTES_REWRITE_MODE</code></span>.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodenotesrewriteRefcodespan"> <a class="anchor" href="#git-config-notesrewriteRef"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodenotesrewriteRefcodespan"></a><span class='synopsis'><code>notes.rewriteRef</code></span> </dt>
@@ -2689,18 +2693,18 @@ avsnitt i <a href='{{< relurl "docs/git-mergetool/sv" >}}'>git-mergetool[1]</a>.
 <dl>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodepushautoSetupRemotecodespan"> <a class="anchor" href="#git-config-pushautoSetupRemote"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodepushautoSetupRemotecodespan"></a><span class='synopsis'><code>push.autoSetupRemote</code></span> </dt>
 <dd>
-<p>Om satt till <span class='synopsis'><code>true</code></span> antas <span class='synopsis'><code>--set-upstream</code></span> vara standard push när ingen uppströmsspårning finns för den aktuella grenen; detta alternativ träder i kraft med <span class='synopsis'><code>push.default</code></span>-alternativen <span class='synopsis'><code>simple</code></span>, <span class='synopsis'><code>upstream</code></span> och <span class='synopsis'><code>current</code></span>. Det är användbart om du som standard vill att nya grenar ska pushas till standardfjärren (som beteendet hos <span class='synopsis'><code>push.default=current</code></span>) och du också vill att uppströmsspårningen ska vara inställd. Arbetsflöden som sannolikt kommer att dra nytta av detta alternativ är <span class='synopsis'><code>enkla</code></span> centrala arbetsflöden där alla grenar förväntas ha samma namn på fjärren.</p>
+<p>Om satt till <span class='synopsis'><code>true</code></span> antas <span class='synopsis'><code>--set-upstream</code></span> vara standard push när ingen uppströmsspårning finns för den aktuella grenen; detta alternativ träder i kraft med <span class='synopsis'><code>push.default</code></span>-alternativen <span class='synopsis'><code>simple</code></span>, <span class='synopsis'><code>upstream</code></span> och <span class='synopsis'><code>current</code></span>. Det är användbart om nya grenar som standard ska skickas till standardfjärren (som beteendet hos <span class='synopsis'><code>push.default=current</code></span>) och det också är önskvärt att uppströmsspårningen ska vara inställd. Arbetsflöden som sannolikt kommer att dra nytta av detta alternativ är <span class='synopsis'><code>enkla</code></span> centrala arbetsflöden där alla grenar förväntas ha samma namn på fjärren.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodepushdefaultcodespan"> <a class="anchor" href="#git-config-pushdefault"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodepushdefaultcodespan"></a><span class='synopsis'><code>push.default</code></span> </dt>
 <dd>
-<p>Definierar åtgärden <span class='synopsis'><code>git</code> <code>push</code></span> ska utföra om ingen refspec anges (vare sig från kommandoraden, konfigurationen eller någon annanstans). Olika värden är väl lämpade för specifika arbetsflöden; till exempel, i ett rent centralt arbetsflöde (dvs. hämtningskällan är lika med push-destinationen) är <span class='synopsis'><code>upstream</code></span> förmodligen vad du vill ha. Möjliga värden är:</p>
+<p>Definierar vilken åtgärd <span class='synopsis'><code>git</code> <code>push</code></span> ska utföra om ingen refspec anges (varken från kommandoraden, konfigurationen eller någon annanstans). Olika värden passar olika arbetsflöden; till exempel, i ett rent centralt arbetsflöde (dvs. hämtningskällan är samma som push-destinationen) är <span class='synopsis'><code>upstream</code></span> sannolikt rätt val. Möjliga värden är:</p>
 <div class="openblock">
 <div class="content">
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodenothingcodespan"> <a class="anchor" href="#git-config-nothing"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodenothingcodespan"></a><span class='synopsis'><code>nothing</code></span> </dt>
 <dd>
-<p>do not push anything (error out) unless a refspec is given. This is primarily meant for people who want to avoid mistakes by always being explicit.</p>
+<p>skicka ingenting (ge fel) om ingen refspec anges. Detta är främst avsett för personer som vill undvika misstag genom att alltid vara explicita.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodecurrentcodespan"> <a class="anchor" href="#git-config-current"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodecurrentcodespan"></a><span class='synopsis'><code>current</code></span> </dt>
 <dd>
@@ -2712,13 +2716,13 @@ avsnitt i <a href='{{< relurl "docs/git-mergetool/sv" >}}'>git-mergetool[1]</a>.
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodetrackingcodespan"> <a class="anchor" href="#git-config-tracking"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodetrackingcodespan"></a><span class='synopsis'><code>tracking</code></span> </dt>
 <dd>
-<p>this is a deprecated synonym for <span class='synopsis'><code>upstream</code></span>.</p>
+<p>Föråldrad synonym för <span class='synopsis'><code>--empty=keep</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodesimplecodespan-1"> <a class="anchor" href="#git-config-simple-1"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodesimplecodespan-1"></a><span class='synopsis'><code>simple</code></span> </dt>
 <dd>
-<p>push the current branch with the same name on the remote.</p>
+<p>Ett praktiskt sätt att skicka den aktuella grenen till samma namn i fjärrkodförrådet.</p>
 <div class="paragraph">
-<p>Om du arbetar med ett centraliserat arbetsflöde (push:ar till samma förvar som du hämtar från, vilket vanligtvis är <span class='synopsis'><code>origin</code></span>), måste du konfigurera en uppströmsgren med samma namn.</p>
+<p>Om du arbetar med ett centraliserat arbetsflöde (push:ar till samma kodförråd som du hämtar från, vilket vanligtvis är <span class='synopsis'><code>origin</code></span>), måste du konfigurera en uppströmsgren med samma namn.</p>
 </div>
 <div class="paragraph">
 <p>Det här läget är standardläget sedan Git 2.0 och är det säkraste alternativet som passar nybörjare.</p>
@@ -2726,12 +2730,12 @@ avsnitt i <a href='{{< relurl "docs/git-mergetool/sv" >}}'>git-mergetool[1]</a>.
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodematchingcodespan"> <a class="anchor" href="#git-config-matching"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodematchingcodespan"></a><span class='synopsis'><code>matching</code></span> </dt>
 <dd>
-<p>skicka (push) alla grenar med samma namn i båda ändar. Detta gör att arkivet du skickar kommer ihåg uppsättningen grenar som kommer att skickas ut (t.ex. om du alltid skickar <span class='synopsis'><code>maint</code></span> och <span class='synopsis'><code>master</code></span> där och inga andra grenar, kommer arkivet du skickar till att ha dessa två grenar, och dina lokala <span class='synopsis'><code>maint</code></span> och <span class='synopsis'><code>master</code></span> kommer att skickas dit).</p>
+<p>skicka (push) alla grenar med samma namn i båda ändar. Detta gör att kodförrådet du skickar kommer ihåg uppsättningen grenar som kommer att skickas ut (t.ex. om du alltid skickar <span class='synopsis'><code>maint</code></span> och <span class='synopsis'><code>master</code></span> där och inga andra grenar, kommer kodförrådet du skickar till att ha dessa två grenar, och dina lokala <span class='synopsis'><code>maint</code></span> och <span class='synopsis'><code>master</code></span> kommer att skickas dit).</p>
 <div class="paragraph">
 <p>För att använda det här läget effektivt måste du se till att <em>alla</em> grenar du vill skicka ut är redo att skickas ut innan du kör <span class='synopsis'><code>git</code> <code>push</code></span>, eftersom hela poängen med det här läget är att låta dig skicka alla grenar på en gång. Om du vanligtvis bara avslutar arbetet på en gren och skickar ut resultatet, medan andra grenar är oavslutade, är det här läget inte för dig. Det här läget är inte heller lämpligt för att skicka till ett delat centralt arkiv, eftersom andra personer kan lägga till nya grenar där, eller uppdatera toppen på befintliga grenar utanför din kontroll.</p>
 </div>
 <div class="paragraph">
-<p>Detta brukade vara standardinställningen, men inte sedan Git 2.0 (<span class='synopsis'><code>simple</code></span> är den nya standardinställningen).</p>
+<p>Det brukade vara standardinställningen, men inte sedan Git 2.0 (<span class='synopsis'><code>simple</code></span> är den nya standardinställningen).</p>
 </div>
 </dd>
 </dl>
@@ -2751,7 +2755,7 @@ avsnitt i <a href='{{< relurl "docs/git-mergetool/sv" >}}'>git-mergetool[1]</a>.
 <dd>
 <p>När inget <span class='synopsis'><code>--push-option=</code><em>&lt;alternativ&gt;</em></span>-argument anges från kommandoraden, beter sig <span class='synopsis'><code>git</code> <code>push</code></span> som om varje <em>&lt;alternativ&gt;</em> i denna variabel anges som <span class='synopsis'><code>--push-option=</code><em>&lt;alternativ&gt;</em></span>.</p>
 <div class="paragraph">
-<p>Detta är en variabel med flera värden, och ett tomt värde kan användas i en konfigurationsfil med högre prioritet (t.ex. <span class='synopsis'><code>.git/config</code></span> i ett förvar) för att rensa värden som ärvts från konfigurationsfiler med lägre prioritet (t.ex. <span class='synopsis'><code>$HOME/.gitconfig</code></span>).</p>
+<p>Det är en variabel med flera värden, och ett tomt värde kan användas i en konfigurationsfil med högre prioritet (t.ex. <span class='synopsis'><code>.git/config</code></span> i ett kodförråd) för att rensa värden som ärvts från konfigurationsfiler med lägre prioritet (t.ex. <span class='synopsis'><code>$HOME/.gitconfig</code></span>).</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2768,7 +2772,7 @@ repo/.git/config
   push.pushoption =
   push.pushoption = b
 
-Detta kommer att resultera i att endast b (a och c är nollställda).</pre>
+Detta ger endast b (a och c rensas).</pre>
 </div>
 </div>
 </dd>
@@ -2794,11 +2798,11 @@ Detta kommer att resultera i att endast b (a och c är nollställda).</pre>
 <dl>
 <dt class="hdlist1" id="git-config-rebasebackend"> <a class="anchor" href="#git-config-rebasebackend"></a>rebase.backend </dt>
 <dd>
-<p>Standard-bakända att använda för ombasering. Möjliga val är <em>apply</em> (tillämpa) eller <em>merge</em> (sammanslå). Om sammanfognings-bakändan i framtiden får alla återstående funktioner från tillämpa-bakändan , kan den här inställningen bli oanvänd.</p>
+<p>Standardbakände för ombasering. Möjliga val är <em>apply</em> (tillämpa) eller <em>merge</em> (sammanslå). Om sammanslagningsbakänden i framtiden får alla återstående funktioner från tillämpabakänden, kan inställningen bli oanvänd.</p>
 </dd>
 <dt class="hdlist1" id="git-config-rebasestat"> <a class="anchor" href="#git-config-rebasestat"></a>rebase.stat </dt>
 <dd>
-<p>Whether to show a diffstat of what changed upstream since the last rebase. False by default.</p>
+<p>Visa en diffstat över vad som har ändrats uppströms sedan den senaste ombaseringen. Diffstat styrs också av konfigurationsalternativet rebase.stat.</p>
 </dd>
 <dt class="hdlist1" id="git-config-rebaseautoSquash"> <a class="anchor" href="#git-config-rebaseautoSquash"></a>rebase.autoSquash </dt>
 <dd>
@@ -2806,7 +2810,7 @@ Detta kommer att resultera i att endast b (a och c är nollställda).</pre>
 </dd>
 <dt class="hdlist1" id="git-config-rebaseautoStash"> <a class="anchor" href="#git-config-rebaseautoStash"></a>rebase.autoStash </dt>
 <dd>
-<p>När den är satt till sant, skapas automatiskt en tillfällig gömma-post innan operationen börjar, och tillämpas efter att operationen är avslutad. Detta innebär att du kan köra rebase på ett smutsigt arbetsträd. Använd dock försiktigt: den slutliga gömma-applikationen efter en lyckad ombasering kan resultera i icke-triviala konflikter. Detta alternativ kan åsidosättas av alternativen <span class='synopsis'><code>--no-autostash</code></span> och <span class='synopsis'><code>--autostash</code></span> i <a href='{{< relurl "docs/git-rebase/sv" >}}'>git-rebase[1]</a>. Standardvärdet är falskt.</p>
+<p>När den sätts till <span class='synopsis'><code>true</code></span> skapas automatiskt en tillfällig gömd post innan operationen börjar, och den tillämpas efter att operationen avslutas. Det innebär att ombasering kan köras på ett smutsigt arbetsträd. Använd dock med försiktighet: den sista tillämpningen av gömman efter en lyckad ombasering kan ge icke-triviala konflikter. Inställningen kan åsidosättas med <span class='synopsis'><code>--no-autostash</code></span> och <span class='synopsis'><code>--autostash</code></span> i <a href='{{< relurl "docs/git-rebase/sv" >}}'>git-rebase[1]</a>. Standardvärdet är <span class='synopsis'><code>false</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-config-rebaseupdateRefs"> <a class="anchor" href="#git-config-rebaseupdateRefs"></a>rebase.updateRefs </dt>
 <dd>
@@ -2818,16 +2822,16 @@ Detta kommer att resultera i att endast b (a och c är nollställda).</pre>
 </dd>
 <dt class="hdlist1" id="git-config-rebaseinstructionFormat"> <a class="anchor" href="#git-config-rebaseinstructionFormat"></a>rebase.instructionFormat </dt>
 <dd>
-<p>En formatsträng, som specificerad i <a href='{{< relurl "docs/git-log/sv" >}}'>git-log[1]</a>, som ska användas för att-göra-listan under en interaktiv ombasering. Formatet kommer automatiskt att ha inchecknings-hashen till formatet.</p>
+<p>En formatsträng, enligt specifikationen i <a href='{{< relurl "docs/git-log/sv" >}}'>git-log[1]</a>, som används för todo-listan vid interaktiv ombasering. Incheckningshashen läggs automatiskt till i början av formatet.</p>
 </dd>
 <dt class="hdlist1" id="git-config-rebaseabbreviateCommands"> <a class="anchor" href="#git-config-rebaseabbreviateCommands"></a>rebase.abbreviateCommands </dt>
 <dd>
 <p>Om satt till sant, kommer <span class='synopsis'><code>git</code> <code>rebase</code></span> att använda förkortade kommandonamn i att-göra-listan vilket resulterar i något liknande:</p>
 <div class="listingblock">
 <div class="content">
-<pre>	p deadbee The oneline of the commit
-	p fa1afe1 The oneline of the next commit
-	...</pre>
+<pre>pick deadbee Enrad i denna incheckning
+pick fa1afe1 Enrad i nästa incheckning
+...</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2835,9 +2839,9 @@ Detta kommer att resultera i att endast b (a och c är nollställda).</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>	pick deadbee The oneline of the commit
-	pick fa1afe1 The oneline of the next commit
-	...</pre>
+<pre>pick deadbee Enrad i denna incheckning
+pick fa1afe1 Enrad i nästa incheckning
+...</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2846,7 +2850,7 @@ Detta kommer att resultera i att endast b (a och c är nollställda).</pre>
 </dd>
 <dt class="hdlist1" id="git-config-rebaserescheduleFailedExec"> <a class="anchor" href="#git-config-rebaserescheduleFailedExec"></a>rebase.rescheduleFailedExec </dt>
 <dd>
-<p>Schemalägg automatiskt <span class='synopsis'><code>exec</code></span>-kommandon som misslyckades. Detta är bara logiskt i interaktivt läge (eller när ett <span class='synopsis'><code>--exec</code></span>-alternativ angavs). Detta är samma sak som att ange <span class='synopsis'><code>--reschedule-failed-exec</code></span>-alternativet.</p>
+<p>Schemalägg automatiskt om <span class='synopsis'><code>exec</code></span>-kommandon som misslyckades. Detta är bara meningsfullt i interaktivt läge (eller när alternativet <span class='synopsis'><code>--exec</code></span> har angivits). Detta motsvarar att ange alternativet <span class='synopsis'><code>--reschedule-failed-exec</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-config-rebaseforkPoint"> <a class="anchor" href="#git-config-rebaseforkPoint"></a>rebase.forkPoint </dt>
 <dd>
@@ -2854,7 +2858,7 @@ Detta kommer att resultera i att endast b (a och c är nollställda).</pre>
 </dd>
 <dt class="hdlist1" id="git-config-rebaserebaseMerges"> <a class="anchor" href="#git-config-rebaserebaseMerges"></a>rebase.rebaseMerges </dt>
 <dd>
-<p>Om och hur alternativet <span class='synopsis'><code>--rebase-merges</code></span> ska ställas in som standard. Kan vara <span class='synopsis'><code>rebase-cousins</code></span>, <span class='synopsis'><code>no-rebase-cousins</code></span> eller ett booleskt värde. Att sätta till true eller <span class='synopsis'><code>no-rebase-cousins</code></span> motsvarar <span class='synopsis'><code>--rebase-merges=no-rebase-cousins</code></span>, att sätta till <span class='synopsis'><code>rebase-cousins</code></span> motsvarar <span class='synopsis'><code>--rebase-merges=rebase-cousins</code></span>, och att sätta till <span class='synopsis'><code>false</code></span>(falsk) motsvarar <span class='synopsis'><code>--no-rebase-merges</code></span>. Att skicka <span class='synopsis'><code>--rebase-merges</code></span> på kommandoraden, med eller utan ett argument, åsidosätter alla <span class='synopsis'><code>rebase.rebaseMerges</code></span>-konfigurationer.</p>
+<p>Om och hur alternativet <span class='synopsis'><code>--rebase-merges</code></span> ska ställas in som standard. Kan vara <span class='synopsis'><code>rebase-cousins</code></span>, <span class='synopsis'><code>no-rebase-cousins</code></span> eller ett booleskt värde. Att sätta till <span class='synopsis'><code>true</code></span> eller <span class='synopsis'><code>no-rebase-cousins</code></span> motsvarar <span class='synopsis'><code>--rebase-merges=no-rebase-cousins</code></span>, att sätta till <span class='synopsis'><code>rebase-cousins</code></span> motsvarar <span class='synopsis'><code>--rebase-merges=rebase-cousins</code></span>, och att sätta till <span class='synopsis'><code>false</code></span> motsvarar <span class='synopsis'><code>--no-rebase-merges</code></span>. Att skicka <span class='synopsis'><code>--rebase-merges</code></span> på kommandoraden, med eller utan ett argument, åsidosätter alla <span class='synopsis'><code>rebase.rebaseMerges</code></span>-konfigurationer.</p>
 </dd>
 <dt class="hdlist1" id="git-config-rebasemaxLabelLength"> <a class="anchor" href="#git-config-rebasemaxLabelLength"></a>rebase.maxLabelLength </dt>
 <dd>
@@ -3019,7 +3023,7 @@ Detta kommer att resultera i att endast b (a och c är nollställda).</pre>
 <dl>
 <dt class="hdlist1" id="git-config-sequenceeditor"> <a class="anchor" href="#git-config-sequenceeditor"></a>sequence.editor </dt>
 <dd>
-<p>Textredigerare som används av <span class='synopsis'><code>git</code> <code>rebase</code> <code>-i</code></span> för att redigera instruktionsfilen för ombasering. Värdet är avsett att tolkas av skalet när det används. Det kan åsidosättas av miljövariabeln <span class='synopsis'><code>GIT_SEQUENCE_EDITOR</code></span>. När den inte är konfigurerad, används standardredigeraren för inchecknings-meddelanden istället.</p>
+<p>Textredigerare som används av <span class='synopsis'><code>git</code> <code>rebase</code> <code>-i</code></span> för att redigera instruktionsfilen för ombasering. Värdet är avsett att tolkas av skalet när det används. Det kan åsidosättas av miljövariabeln <span class='synopsis'><code>GIT_SEQUENCE_EDITOR</code></span>. När den inte är konfigurerad, används standardredigeraren för inchecknings-meddelanden i stället.</p>
 </dd>
 </dl>
 </div>
@@ -3096,22 +3100,22 @@ Detta kommer att resultera i att endast b (a och c är nollställda).</pre>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodestashindexcodespan"> <a class="anchor" href="#git-config-stashindex"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodestashindexcodespan"></a><span class='synopsis'><code>stash.index</code></span> </dt>
 <dd>
 <p>	Om detta är satt till sant, kommer <span class='synopsis'><code>git</code> <code>stash</code> <code>apply</code></span> och <span class='synopsis'><code>git</code> <code>stash</code> <code>pop</code></span> att bete sig som om <span class='synopsis'><code>--index</code></span> angavs. Standardvärdet är falskt.
-See the descriptions in <a href='{{< relurl "docs/git-stash/sv" >}}'>git-stash[1]</a>.</p>
+Se även <a href='{{< relurl "docs/git-stash/sv" >}}'>git-stash[1]</a>.</p>
 <div class="paragraph">
-<p>Detta påverkar även anrop av <a href='{{< relurl "docs/git-stash/sv" >}}'>git-stash[1]</a> via <span class='synopsis'><code>--autostash</code></span> från kommandon som <a href='{{< relurl "docs/git-merge/sv" >}}'>git-merge[1]</a>, <a href='{{< relurl "docs/git-rebase/sv" >}}'>git-rebase[1]</a> och <a href='{{< relurl "docs/git-pull/sv" >}}'>git-pull[1]</a>.</p>
+<p>Det påverkar även anrop av <a href='{{< relurl "docs/git-stash/sv" >}}'>git-stash[1]</a> via <span class='synopsis'><code>--autostash</code></span> från kommandon som <a href='{{< relurl "docs/git-merge/sv" >}}'>git-merge[1]</a>, <a href='{{< relurl "docs/git-rebase/sv" >}}'>git-rebase[1]</a> och <a href='{{< relurl "docs/git-pull/sv" >}}'>git-pull[1]</a>.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodestashshowIncludeUntrackedcodespan"> <a class="anchor" href="#git-config-stashshowIncludeUntracked"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodestashshowIncludeUntrackedcodespan"></a><span class='synopsis'><code>stash.showIncludeUntracked</code></span> </dt>
 <dd>
-<p>Om detta är satt till sant, kommer kommandot <span class='synopsis'><code>git</code> <code>stash</code> <code>show</code></span> att visa de ospårade filerna från en gömma-post. Standardvärdet är falskt. See the description of the 'show' command in <a href='{{< relurl "docs/git-stash/sv" >}}'>git-stash[1]</a>.</p>
+<p>Om detta sätts till true visar kommandot <span class='synopsis'><code>git</code> <code>stash</code> <code>show</code></span> de ospårade filerna i en stash-post. Standard är false. See the description of the 'show' command in <a href='{{< relurl "docs/git-stash/sv" >}}'>git-stash[1]</a>.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodestashshowPatchcodespan"> <a class="anchor" href="#git-config-stashshowPatch"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodestashshowPatchcodespan"></a><span class='synopsis'><code>stash.showPatch</code></span> </dt>
 <dd>
-<p>Om detta är satt till sant, kommer kommandot <span class='synopsis'><code>git</code> <code>stash</code> <code>show</code></span> utan ett alternativ att visa gömma-posten i patch-format. Standardvärdet är falskt. See the description of the 'show' command in <a href='{{< relurl "docs/git-stash/sv" >}}'>git-stash[1]</a>.</p>
+<p>Om detta är satt till <span class='synopsis'><code>true</code></span> visar kommandot <span class='synopsis'><code>git</code> <code>stash</code> <code>show</code></span> utan ett alternativ den gömda posten i patch-format. Standardvärdet är <span class='synopsis'><code>false</code></span>. See the description of the 'show' command in <a href='{{< relurl "docs/git-stash/sv" >}}'>git-stash[1]</a>.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodestashshowStatcodespan"> <a class="anchor" href="#git-config-stashshowStat"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodestashshowStatcodespan"></a><span class='synopsis'><code>stash.showStat</code></span> </dt>
 <dd>
-<p>Om detta är satt till sant, kommer kommandot <span class='synopsis'><code>git</code> <code>stash</code> <code>show</code></span> utan ett alternativ att visa en diffstat för gömma-posten. Standardinställningen är sant. See the description of the 'show' command in <a href='{{< relurl "docs/git-stash/sv" >}}'>git-stash[1]</a>.</p>
+<p>Om detta är satt till <span class='synopsis'><code>true</code></span> visar kommandot <span class='synopsis'><code>git</code> <code>stash</code> <code>show</code></span> utan ett alternativ en diffstat för den gömda posten. Standardinställningen är <span class='synopsis'><code>true</code></span>. See the description of the 'show' command in <a href='{{< relurl "docs/git-stash/sv" >}}'>git-stash[1]</a>.</p>
 </dd>
 </dl>
 </div>
@@ -3162,7 +3166,7 @@ Utan alternativet <span class='synopsis'><code>--sort=</code><em>&lt;value&gt;</
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodetaggpgSigncodespan"> <a class="anchor" href="#git-config-taggpgSign"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodetaggpgSigncodespan"></a><span class='synopsis'><code>tag.gpgSign</code></span> </dt>
 <dd>
-<p>En booleskt värde som anger om alla taggar ska GPG-signeras. Användning av det här alternativet när du kör i ett automatiserat skript kan resultera i att ett stort antal taggar signeras. Det är därför bekvämt att använda en agent för att undvika att skriva in din GPG-lösenfras flera gånger. Observera att det här alternativet inte påverkar taggsigneringsbeteendet som aktiveras av alternativen <span class='synopsis'><code>-u</code> <em>&lt;keyid&gt;</em></span> eller <span class='synopsis'><code>--local-user=</code><em>&lt;keyid&gt;</em></span>.</p>
+<p>En boolesk inställning som anger om alla taggar ska GPG-signeras. Att använda detta i automatiserade skript kan leda till att många taggar signeras. Det är därför praktiskt att använda en agent för att slippa skriva GPG-lösenfrasen flera gånger. Observera att detta alternativ inte påverkar signering som aktiverats med alternativen <span class='synopsis'><code>-u</code> <em>&lt;keyid&gt;</em></span> eller <span class='synopsis'><code>--local-user=</code><em>&lt;keyid&gt;</em></span>.</p>
 </dd>
 </dl>
 </div>
@@ -3340,11 +3344,11 @@ Utan alternativet <span class='synopsis'><code>--sort=</code><em>&lt;value&gt;</
 <dl>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodeworktreeguessRemotecodespan"> <a class="anchor" href="#git-config-worktreeguessRemote"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodeworktreeguessRemotecodespan"></a><span class='synopsis'><code>worktree.guessRemote</code></span> </dt>
 <dd>
-<p>Om ingen gren anges och varken <span class='synopsis'><code>-b</code></span>, <span class='synopsis'><code>-B</code></span> eller <span class='synopsis'><code>--detach</code></span> används, skapar <span class='synopsis'><code>git</code> <code>worktree</code> <code>add</code></span> som standard en ny gren från HEAD. Om <span class='synopsis'><code>worktree.guessRemote</code></span> är satt till sant, försöker <span class='synopsis'><code>worktree</code> <code>add</code></span> hitta en fjärrspårningsgren vars namn unikt matchar det nya grennamnet. Om en sådan gren finns, checkas den ut och sätts som "uppströms" för den nya grenen. Om ingen sådan matchning kan hittas, återgår den till att skapa en ny gren från den aktuella <span class='synopsis'><code>HEAD</code></span>.</p>
+<p>Om ingen gren anges och varken <span class='synopsis'><code>-b</code></span>, <span class='synopsis'><code>-B</code></span> eller <span class='synopsis'><code>--detach</code></span> används, skapar <span class='synopsis'><code>git</code> <code>worktree</code> <code>add</code></span> som standard en ny gren från HEAD. Om <span class='synopsis'><code>worktree.guessRemote</code></span> är satt till sant, försöker <span class='synopsis'><code>worktree</code> <code>add</code></span> hitta en fjärrspårad gren vars namn unikt matchar det nya grennamnet. Om en sådan gren finns, checkas den ut och sätts som "uppströms" för den nya grenen. Om ingen sådan matchning kan hittas, återgår den till att skapa en ny gren från den aktuella <span class='synopsis'><code>HEAD</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodeworktreeuseRelativePathscodespan"> <a class="anchor" href="#git-config-worktreeuseRelativePaths"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodeworktreeuseRelativePathscodespan"></a><span class='synopsis'><code>worktree.useRelativePaths</code></span> </dt>
 <dd>
-<p>Länka arbetsträd med relativa sökvägar (när "<span class='synopsis'><code>true</code></span>") eller absoluta sökvägar (när "<span class='synopsis'><code>false</code></span>"). Detta är särskilt användbart för inställningar där förvaret och arbetsträden kan flyttas mellan olika platser eller miljöer. Standardvärdet är "<span class='synopsis'><code>false</code></span>".</p>
+<p>Länka arbetsträd med relativa sökvägar (när "<span class='synopsis'><code>true</code></span>") eller absoluta sökvägar (när "<span class='synopsis'><code>false</code></span>"). Detta är särskilt användbart för inställningar där kodförrådet och arbetsträden kan flyttas mellan olika platser eller miljöer. Standardvärdet är "<span class='synopsis'><code>false</code></span>".</p>
 <div class="paragraph">
 <p>Observera att om du ställer in <span class='synopsis'><code>worktree.useRelativePaths</code></span> till "<span class='synopsis'><code>true</code></span>" aktiveras konfigurationen <span class='synopsis'><code>extensions.relativeWorktrees</code></span> (se <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>), vilket gör den inkompatibel med äldre versioner av Git.</p>
 </div>
@@ -3358,7 +3362,7 @@ Utan alternativet <span class='synopsis'><code>--sort=</code><em>&lt;value&gt;</
 <h2 id="_buggar"><a class="anchor" href="#_buggar"></a>BUGGAR</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>När man använder den föråldrade syntaxen <span class='synopsis'>[<code>section.subsection</code>]</span> kommer ändring av ett värde att resultera i att en flerradig nyckel läggs till istället för en ändring, om underavsnittet anges med minst en versal. Till exempel när konfigurationen ser ut så här</p>
+<p>När den föråldrade syntaxen <span class='synopsis'>[<code>section.subsection</code>]</span> används, kommer en värdeändring att resultera i att en flerradig nyckel läggs till i stället för att värdet ändras, om underavsnittet anges med minst en versal. Till exempel när konfigurationen ser ut så här</p>
 </div>
 <div class="listingblock">
 <div class="content">

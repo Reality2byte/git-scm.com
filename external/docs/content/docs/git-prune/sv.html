@@ -59,7 +59,7 @@ I de flesta fall, bör användare köra <em>git gc</em>, som anropar <em>git pru
 </table>
 </div>
 <div class="paragraph">
-<p>Detta kör <em>git fsck --unreachable</em> med alla referenser som finns i <span class='synopsis'><code>refs/</code></span>, eventuellt med en ytterligare uppsättning objekt som anges på kommandoraden, och beskär alla opackade objekt som inte kan nås från något av dessa huvudobjekt från objektdatabasen. Dessutom rensar det de opackade objekten som också finns i paket genom att köra <em>git prune-packed</em>. Det tar också bort poster från .git/shallow som inte kan nås av någon referens.</p>
+<p>Kommandot kör <em>git fsck --unreachable</em> med alla referenser som finns i <span class='synopsis'><code>refs/</code></span>, eventuellt med en ytterligare uppsättning objekt som anges på kommandoraden, och rensar alla opackade objekt som inte kan nås från något av dessa huvudobjekt från objektdatabasen. Dessutom rensar det de opackade objekten som också finns i paket genom att köra <em>git prune-packed</em>. Det tar också bort poster från .git/shallow som inte kan nås av någon referens.</p>
 </div>
 <div class="paragraph">
 <p>Observera att oåtkomliga, packade objekt kommer att finnas kvar. Om detta inte önskas, se <a href='{{< relurl "docs/git-repack/sv" >}}'>git-repack[1]</a>.</p>
@@ -87,7 +87,7 @@ I de flesta fall, bör användare köra <em>git gc</em>, som anropar <em>git pru
 </dd>
 <dt class="hdlist1" id="git-prune---expirelttidgt"> <a class="anchor" href="#git-prune---expiretid"></a> <a class="anchor" href="#git-prune---expirelttidgt"></a>--expire &lt;tid&gt; </dt>
 <dd>
-<p>Only expire loose objects older than &lt;time&gt;.</p>
+<p>Låt tid gå ut för onödiga objekt äldre än &lt;tid&gt;.</p>
 </dd>
 <dt class="hdlist1" id="git-prune---"> <a class="anchor" href="#git-prune---"></a>-- </dt>
 <dd>
@@ -118,7 +118,7 @@ I de flesta fall, bör användare köra <em>git gc</em>, som anropar <em>git pru
 <h2 id="_noteringar"><a class="anchor" href="#_noteringar"></a>NOTERINGAR</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>I de flesta fall behöver användare inte anropa <em>git prune</em> direkt, utan bör istället anropa <em>git gc</em>, som hanterar rensning tillsammans med många andra hushållningssuppgifter.</p>
+<p>I de flesta fall behöver användare inte anropa <em>git prune</em> direkt, utan bör i stället anropa <em>git gc</em>, som hanterar rensning tillsammans med många andra hushållningssuppgifter.</p>
 </div>
 <div class="paragraph">
 <p>För en beskrivning av vilka objekt som beaktas för beskärning, se 'git fsck&#8217;s --unreachable-alternativ.</p>

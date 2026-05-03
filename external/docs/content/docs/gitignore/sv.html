@@ -60,7 +60,7 @@ headings:
 <p>Mönster läses från kommandoraden för de kommandon som stöder dem.</p>
 </li>
 <li>
-<p>Mönster lästa från en <span class='synopsis'><code>.gitignore</code></span>-fil i samma katalog som sökvägen, eller i någon överordnad katalog (upp till den översta nivån i arbetskatalog), där mönster i filer på högre nivå åsidosätts av de i filer på lägre nivå ner till katalogen som innehåller filen. Dessa mönster matchar i förhållande till platsen för <span class='synopsis'><code>.gitignore</code></span>-filen. Ett projekt inkluderar normalt sådana <span class='synopsis'><code>.gitignore</code></span>-filer i sitt kodförråd, som innehåller mönster för filer som genererats som en del av projektbygget.arbetskatalog.</p>
+<p>Mönster lästa från en <span class='synopsis'><code>.gitignore</code></span>-fil i samma katalog som sökvägen, eller i någon överordnad katalog (upp till den översta nivån i arbetsträdet), där mönster i filer på högre nivå åsidosätts av de i filer på lägre nivå ner till katalogen som innehåller filen. Dessa mönster matchar i förhållande till platsen för <span class='synopsis'><code>.gitignore</code></span>-filen. Ett projekt inkluderar normalt sådana <span class='synopsis'><code>.gitignore</code></span>-filer i sitt kodförråd, som innehåller mönster för filer som genereras som en del av projektbygget.</p>
 </li>
 <li>
 <p>Mönster lästa från <span class='synopsis'><code>$GIT_DIR/info/exclude</code></span>.</p>
@@ -76,18 +76,18 @@ headings:
 <div class="ulist">
 <ul>
 <li>
-<p>Mönster som ska vara versionskontrollerade och distribueras till andra kodförråd via klon (dvs. filer som alla utvecklare vill ignorera) ska läggas i en <span class='synopsis'><code>.gitignore</code></span>-fil.</p>
+<p>Mönster som ska vara versionskontrollerade och distribueras till andra kodförråd via klon (d.v.s. filer som alla utvecklare vill ignorera) ska läggas i en <span class='synopsis'><code>.gitignore</code></span>-fil.</p>
 </li>
 <li>
 <p>Mönster som är specifika för ett visst kodförråd men som inte behöver delas med andra relaterade kodförråd (t.ex. hjälpfiler som finns inuti kodförrådet men är specifika för en användares arbetsflöde) ska placeras i filen <span class='synopsis'><code>$GIT_DIR/info/exclude</code></span>.</p>
 </li>
 <li>
-<p>Mönster som en användare vill att Git ska ignorera i alla situationer (t.ex. säkerhetskopior eller temporära filer som genereras av användarens valda editor) hamnar vanligtvis i en fil som anges av <span class='synopsis'><code>core.excludesFile</code></span> i användarens <span class='synopsis'><code>~/.gitconfig</code></span>. Standardvärdet är $XDG_CONFIG_HOME/git/ignore. Om $XDG_CONFIG_HOME antingen inte är angivet eller är tomt, används $HOME/.config/git/ignore istället.</p>
+<p>Mönster som en användare vill att Git ska ignorera i alla situationer (t.ex. säkerhetskopior eller temporära filer som genereras av användarens valda redigerare) hamnar vanligtvis i en fil som anges av <span class='synopsis'><code>core.excludesFile</code></span> i användarens <span class='synopsis'><code>~/.gitconfig</code></span>. Standardvärdet är $XDG_CONFIG_HOME/git/ignore. Om $XDG_CONFIG_HOME antingen inte är angivet eller är tomt, används $HOME/.config/git/ignore i stället.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>De underliggande Git-verktygen för rörmokeri, såsom <em>git ls-files</em> och <em>git read-tree</em>, läser <span class='synopsis'><code>gitignore</code></span>-mönster som anges av kommandoradsalternativ, eller från filer som anges av kommandoradsalternativ. Git-verktyg på högre nivå, såsom <em>git status</em> och <em>git add</em>, använder mönster från källorna som anges ovan.</p>
+<p>De underliggande Git-lågnivåverktygen, såsom <em>git ls-files</em> och <em>git read-tree</em>, läser <span class='synopsis'><code>gitignore</code></span>-mönster som anges av kommandoradsalternativ, eller från filer som anges av kommandoradsalternativ. Git-högnivåverktyg, såsom <em>git status</em> och <em>git add</em>, använder mönster från källorna som anges ovan.</p>
 </div>
 </div>
 </div>
@@ -112,7 +112,7 @@ headings:
 <p>Snedstrecket "<span class='synopsis'><code>/</code></span>" används som katalogavgränsare. Avgränsare kan förekomma i början, mitten eller slutet av sökmönstret <span class='synopsis'><code>.gitignore</code></span>.</p>
 </li>
 <li>
-<p>Om det finns ett avskiljare i början eller mitten (eller båda) av mönstret, är mönstret relativt till katalognivån för den specifika <span class='synopsis'><code>.gitignore</code></span>-filen. Annars kan mönstret också matcha på vilken nivå som helst under <span class='synopsis'><code>.gitignore</code></span>-nivån.</p>
+<p>Om det finns en avskiljare i början eller mitten (eller båda) av mönstret, är mönstret relativt till katalognivån för den specifika <span class='synopsis'><code>.gitignore</code></span>-filen. Annars kan mönstret också matcha på vilken nivå som helst under <span class='synopsis'><code>.gitignore</code></span>-nivån.</p>
 </li>
 <li>
 <p>Om mönstret avslutas med en avskiljare matchas endast kataloger, annars kan mönstret matcha både filer och kataloger.</p>
@@ -167,7 +167,7 @@ headings:
 <p>För att sluta spåra en fil som för närvarande spåras, använd <em>git rm --cached</em> för att ta bort filen från indexet. Filnamnet kan sedan läggas till i <span class='synopsis'><code>.gitignore</code></span>-filen för att förhindra att filen återinförs i senare incheckningar.</p>
 </div>
 <div class="paragraph">
-<p>Git följer inte symboliska länkar när den öppnar en <span class='synopsis'><code>.gitignore</code></span>-fil i arbetsträdet. Detta gör att beteendet bibehålls konsekvent när filen öppnas från indexet eller ett träd istället för från filsystemet.</p>
+<p>Git följer inte symboliska länkar när den öppnar en <span class='synopsis'><code>.gitignore</code></span>-fil i arbetsträdet. Detta gör att beteendet bibehålls konsekvent när filen öppnas från indexet eller ett träd i stället för från filsystemet.</p>
 </div>
 </div>
 </div>

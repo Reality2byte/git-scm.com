@@ -31,7 +31,7 @@ headings:
 <h2 id="_namn"><a class="anchor" href="#_namn"></a>NAMN</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>git-credential-store - Hjälpere för att lagra legitimationsinformation på disk</p>
+<p>git-credential-store - Hjälpprogram för att lagra autentiseringsuppgifter på disk</p>
 </div>
 </div>
 </div>
@@ -55,16 +55,16 @@ headings:
 <div class="title">Note</div>
 </td>
 <td class="content">
-Genom att använda det här hjälpprogramet lagras dina lösenord okrypterade på disk, skyddade endast av filsystemsbehörigheter. Om detta inte är en acceptabel säkerhetsavvägning kan du prova <a href='{{< relurl "docs/git-credential-cache/sv" >}}'>git-credential-cache[1]</a>, eller hitta entthjälpprogram som integreras med säker lagring som tillhandahålls av ditt operativsystem.
+Med detta hjälpprogram lagras lösenord okrypterade på disk, skyddade endast av filsystemets behörigheter. Om detta inte är en acceptabel säkerhetsavvägning kan <a href='{{< relurl "docs/git-credential-cache/sv" >}}'>git-credential-cache[1]</a> prövas, eller hitta ett hjälpprogram som integreras med säker lagring som tillhandahålls av operativsystemet.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Det här kommandot lagrar legitimationsinformation på obestämd tid på disk för användning av framtida Git-program.</p>
+<p>Kommandot lagrar autentiseringsuppgifter på obestämd tid på disk för användning av framtida Git-program.</p>
 </div>
 <div class="paragraph">
-<p>Du vill förmodligen inte anropa det här kommandot direkt; det är tänkt att användas som en hjälp för legitimationsinformation av andra delar av git. Se <a href='{{< relurl "docs/gitcredentials/sv" >}}'>gitcredentials[7]</a> eller <span class='synopsis'><code>EXEMPEL</code></span> nedan.</p>
+<p>Kommandot är normalt inte avsett att anropas direkt; det är tänkt att användas som ett hjälpverktyg för autentiseringsuppgifter i andra delar av Git. Se <a href='{{< relurl "docs/gitcredentials/sv" >}}'>gitcredentials[7]</a> eller <span class='synopsis'><code>EXEMPEL</code></span> nedan.</p>
 </div>
 </div>
 </div>
@@ -75,7 +75,7 @@ Genom att använda det här hjälpprogramet lagras dina lösenord okrypterade p�
 <dl>
 <dt class="hdlist1" id="git-credential-store---fileltskvggt"> <a class="anchor" href="#git-credential-store---fileskvg"></a> <a class="anchor" href="#git-credential-store---fileltskvggt"></a>--file=&lt;sökväg&gt; </dt>
 <dd>
-<p>Använd <span class='synopsis'><em>&lt;sökväg&gt;</em></span> för att slå upp och lagra inloggningsuppgifter. Filens filsystembehörigheter kommer att vara inställda för att förhindra att andra användare på systemet läser den, men den kommer inte att krypteras eller på annat sätt skyddas. Om inget anges kommer inloggningsuppgifter att sökas efter från <span class='synopsis'><code>~/.git-credentials</code></span> och <span class='synopsis'><code>$XDG_CONFIG_HOME/git/credentials</code></span>, och inloggningsuppgifter kommer att skrivas till <span class='synopsis'><code>~/.git-credentials</code></span> om den finns, eller <span class='synopsis'><code>$XDG_CONFIG_HOME/git/credentials</code></span> om den finns och den förra inte finns. Se även <a href="#FILES">FILER</a>.</p>
+<p>Använd <span class='synopsis'><em>&lt;path&gt;</em></span> för att slå upp och lagra inloggningsuppgifter. Filens filsystemrättigheter sätts så att andra användare på systemet inte kan läsa den, men den krypteras inte och skyddas inte på annat sätt. Om den inte anges söks inloggningsuppgifter i <span class='synopsis'><code>~/.git-credentials</code></span> och <span class='synopsis'><code>$XDG_CONFIG_HOME/git/credentials</code></span>, och de skrivs till <span class='synopsis'><code>~/.git-credentials</code></span> om den finns, annars till <span class='synopsis'><code>$XDG_CONFIG_HOME/git/credentials</code></span> om den finns och den första inte gör det. Se även <a href="#FILES">FILER</a>.</p>
 </dd>
 </dl>
 </div>
@@ -95,18 +95,18 @@ Genom att använda det här hjälpprogramet lagras dina lösenord okrypterade p�
 </dd>
 <dt class="hdlist1" id="git-credential-store-XDGCONFIGHOMEgitcredentials"> <a class="anchor" href="#git-credential-store-XDGCONFIGHOMEgitcredentials"></a>$XDG_CONFIG_HOME/git/credentials </dt>
 <dd>
-<p>Andra användarspecifika inloggningsuppgifter. Om <em>$XDG_CONFIG_HOME</em> inte är angivet eller tomt, kommer <span class='synopsis'><code>$HOME/.config/git/credentials</code></span> att användas. Inloggningsuppgifter som lagras i den här filen kommer inte att användas om <span class='synopsis'><code>~/.git-credentials</code></span> också har en matchande inloggningsuppgifter väl. Det är en bra idé att inte skapa den här filen om du ibland använder äldre versioner av Git som inte stöder den.</p>
+<p>Andra användarspecifika inloggningsuppgifter. Om <em>$XDG_CONFIG_HOME</em> inte är angivet eller tomt används <span class='synopsis'><code>$HOME/.config/git/credentials</code></span>. Inloggningsuppgifter som lagras i filen kommer inte att användas om <span class='synopsis'><code>~/.git-credentials</code></span> också har en matchande inloggningsuppgift. Det är klokt att inte skapa filen vid användning av äldre versioner av Git som inte stöder den.</p>
 </dd>
 </dl>
 </div>
 <div class="paragraph">
-<p>Vid uppslagning av legitimationsinformation läses filerna i den ordning som anges ovan, där den första matchande autentiseringsuppgiften som hittas prioriteras framför autentiseringsuppgifter som finns i filer längre ner i listan.</p>
+<p>Vid uppslagning av autentiseringsuppgifter läses filerna i den ordning som anges ovan, där den första matchande autentiseringsuppgiften som hittas prioriteras framför autentiseringsuppgifter som finns i filer längre ned i listan.</p>
 </div>
 <div class="paragraph">
-<p>Legitimationsinformations-lagringen skriver som standard till den första befintliga filen i listan. Om ingen av dessa filer finns skapas och skrivs till <span class='synopsis'><code>~/.git-credentials</code></span>.</p>
+<p>Lagringen av autentiseringsuppgifter skriver som standard till den första befintliga filen i listan. Om ingen av filerna finns skapas och skrivs <span class='synopsis'><code>~/.git-credentials</code></span>.</p>
 </div>
 <div class="paragraph">
-<p>När du raderar inloggningsuppgifter kommer matchande legitimationsinformationen att raderas från alla filer.</p>
+<p>När inloggningsuppgifter raderas kommer matchande autentiseringsuppgifter att raderas från alla filer.</p>
 </div>
 </div>
 </div>
@@ -114,18 +114,18 @@ Genom att använda det här hjälpprogramet lagras dina lösenord okrypterade p�
 <h2 id="_exempel"><a class="anchor" href="#_exempel"></a>EXEMPEL</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Poängen med den här hjälpprogramet är att minska antalet gånger du måste skriva in ditt användarnamn eller lösenord. Till exempel:</p>
+<p>Poängen med det här hjälpprogrammet är att minska antalet gånger du måste skriva in ditt användarnamn eller lösenord. Till exempel:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>$ git config credential.helper store
 $ git push http://example.com/repo.git
-Username: &lt;skriv ditt användarnamn&gt;
-Password: &lt;skriv ditt lösenord&gt;
+Username: &lt;ange användarnamn&gt;
+Password: &lt;ange lösenord&gt;
 
 [flera dagar senare]
 $ git push http://example.com/repo.git
-[dina inloggningsuppgifter används automatiskt]</pre>
+[inloggningsuppgifterna används automatiskt]</pre>
 </div>
 </div>
 </div>
@@ -134,7 +134,7 @@ $ git push http://example.com/repo.git
 <h2 id="_lagringsformat"><a class="anchor" href="#_lagringsformat"></a>LAGRINGSFORMAT</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Filen <span class='synopsis'><code>.git-credentials</code></span> lagras i klartext. Varje legitimationsinformation lagras på en egen rad som en URL, ungefär som:</p>
+<p>Filen <span class='synopsis'><code>.git-credentials</code></span> lagras i klartext. Varje autentiseringsuppgift lagras på en egen rad som en URL, ungefär som:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -145,7 +145,7 @@ $ git push http://example.com/repo.git
 <p>Inga andra typer av rader (t.ex. tomma rader eller kommentarsrader) är tillåtna i filen, även om vissa kan ignoreras tyst. Visa eller redigera inte filen med redigerare.</p>
 </div>
 <div class="paragraph">
-<p>När Git behöver autentisering för en specifik URL-kontext, kommer legitimationsinformations-lagret att betrakta den kontexten som ett mönster som matchar varje post i legitimationsinformations-filen. Om protokollet, värdnamnet och användarnamnet (om vi redan har ett) matchar, returneras lösenordet till Git. Se diskussionen om konfiguration i <a href='{{< relurl "docs/gitcredentials/sv" >}}'>gitcredentials[7]</a> för mer information.</p>
+<p>När Git behöver autentisering för en specifik URL-kontext kommer credential-store att betrakta den kontexten som ett mönster som matchas mot varje post i credentials-filen. Om protokollet, värdnamnet och användarnamnet (om vi redan har ett) matchar returneras lösenordet till Git. Se diskussionen om konfiguration i <a href='{{< relurl "docs/gitcredentials/sv" >}}'>gitcredentials[7]</a> för mer information.</p>
 </div>
 </div>
 </div>

@@ -521,7 +521,7 @@ git push --force-with-lease=master:base master:master</pre>
 <p>En URL som "arbete:kodförråd.git" eller "host.xz:/sokvag/till/kodförråd.git" kommer att skrivas om i alla sammanhang som antar att URL:en är "git://git.host.xz/kodförråd.git".</p>
 </div>
 <div class="paragraph">
-<p>Om du vill skriva om URL:er enbart för sändning (push), kan du skapa en konfigurationssektion i formen:</p>
+<p>Om URL:er bara ska skrivas om för skickning (push), kan en konfigurationssektion skapas i formen:</p>
 </div>
 <div class="verseblock">
 <pre class="content">	[url "<em>&lt;faktisk-url-bas&gt;</em>"]
@@ -537,7 +537,7 @@ git push --force-with-lease=master:base master:master</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>En URL som "git://example.org/path/to/repo.git" kommer att skrivas om till "ssh://example.org/path/to/repo.git" för sändning ("pushas"), men pulls kommer fortfarande att använda den ursprungliga URL:en.</p>
+<p>En URL som "git://example.org/path/to/repo.git" kommer att skrivas om till "ssh://example.org/path/to/repo.git" för skickning ("skickas"), men pulls kommer fortfarande att använda den ursprungliga URL:en.</p>
 </div>
 </div>
 </div>
@@ -545,7 +545,7 @@ git push --force-with-lease=master:base master:master</pre>
 <h2 id="_fjärr"><a class="anchor" href="#_fjärr"></a>FJÄRR<a id="REMOTES"></a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Namnet på en av följande kan användas istället för en URL som <em><span class="hover-term" data-term="kodförråd">&lt;kodförråd&gt;</span></em> argument:</p>
+<p>Namnet på någon av följande kan användas i stället för en URL som argumentet <em><span class="hover-term" data-term="kodförråd">&lt;kodförråd&gt;</span></em>:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -566,7 +566,7 @@ git push --force-with-lease=master:base master:master</pre>
 <div class="sect2">
 <h3 id="_namngiven_fjärr_i_konfigurationsfilen"><a class="anchor" href="#_namngiven_fjärr_i_konfigurationsfilen"></a>Namngiven fjärr i konfigurationsfilen</h3>
 <div class="paragraph">
-<p>Du kan välja att ange namnet på en fjärren som du tidigare konfigurerat med hjälp av <a href='{{< relurl "docs/git-remote/sv" >}}'>git-remote[1]</a>, <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a> eller till och med genom en manuell redigering av filen <span class='synopsis'><code>$GIT_DIR/config</code></span>. URL:en för denna fjärr kommer att användas för att komma åt kodförrådet. Referensspecifikationen för denna fjärr kommer att användas som standard när du inte anger en referensspecifikation på kommandoraden. Posten i konfigurationsfilen skulle se ut så här:</p>
+<p>Du kan välja att ange namnet på en fjärr som du tidigare konfigurerat med hjälp av <a href='{{< relurl "docs/git-remote/sv" >}}'>git-remote[1]</a>, <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a> eller till och med genom en manuell redigering av filen <span class='synopsis'><code>$GIT_DIR/config</code></span>. URL:en för denna fjärr kommer att användas för att komma åt kodförrådet. Refspecen för denna fjärr kommer att användas som standard när du inte anger en refspec på kommandoraden. Posten i konfigurationsfilen skulle se ut så här:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -578,13 +578,13 @@ git push --force-with-lease=master:base master:master</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><em>&lt;pushurl&gt;</em> används endast för sänding ("pusha"). Det är valfritt och standardvärdet är <em>&lt;URL&gt;</em>. Att säda till en fjärr påverkar alla definierade push-adresser eller alla definierade webbadresser om inga sänd-adresser (push) är definierade. Fetch hämtar dock bara från den först definierade webbadressen om flera webbadresser är definierade.</p>
+<p><em>&lt;pushurl&gt;</em> används bara när man skickar. Det är valfritt och standardvärdet är <em>&lt;URL&gt;</em>. Att skicka till en fjärr påverkar alla definierade push-adresser eller alla definierade webbadresser om inga push-adresser är definierade. Fetch hämtar dock bara från den först definierade webbadressen om flera webbadresser är definierade.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_namngiven_fil_i_git_dirremotes"><a class="anchor" href="#_namngiven_fil_i_git_dirremotes"></a>Namngiven fil i <span class='synopsis'><code>$GIT_DIR/remotes</code></span></h3>
 <div class="paragraph">
-<p>Du kan välja att ange namnet på en fil i <span class='synopsis'><code>$GIT_DIR/remotes</code></span>. URL:en i den här filen kommer att användas för att komma åt kodförrådet. Referensspecifikationen i den här filen kommer att användas som standard när du inte anger en referensspecifikation på kommandoraden. Den här filen ska ha följande format:</p>
+<p>Du kan välja att ange namnet på en fil i <span class='synopsis'><code>$GIT_DIR/remotes</code></span>. URL:en i den här filen kommer att användas för att komma åt kodförrådet. Referensspecifikationen i den här filen kommer att användas som standard när du inte anger en refspec på kommandoraden. Den här filen ska ha följande format:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -644,7 +644,7 @@ git push --force-with-lease=master:base master:master</pre>
 <p>Det är standardvärdet för <span class='synopsis'><code>git</code> <code>pull</code></span> eller <span class='synopsis'><code>git</code> <code>fetch</code></span> utan argument.</p>
 </li>
 <li>
-<p>Det är standardinställningen för <span class='synopsis'><code>git</code> <code>push</code></span> utan argument, med vissa undantag. Du kan till exempel använda alternativet <span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.pushRemote</code></span> för att pusha till en annan fjärr än den du hämtar från, och som standard med <span class='synopsis'><code>push.default=simple</code></span> måste den uppströmsgren du konfigurerar ha samma namn.</p>
+<p>Det är standardinställningen för <span class='synopsis'><code>git</code> <code>push</code></span> utan argument, med vissa undantag. Du kan till exempel använda alternativet <span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.pushRemote</code></span> för att skicka till en annan fjärr än den du hämtar från, och som standard med <span class='synopsis'><code>push.default=simple</code></span> måste den uppströmsgren du konfigurerar ha samma namn.</p>
 </li>
 <li>
 <p>Olika kommandon, inklusive <span class='synopsis'><code>git</code> <code>checkout</code></span> och <span class='synopsis'><code>git</code> <code>status</code></span>, visar hur många incheckningar som har lagts till i din nuvarande grenen och upstream sedan du avgrenade från den, till exempel "Din branch och <em>origin/main</em> har divergerat och har 2 respektive 3 olika incheckningar".</p>
@@ -662,18 +662,18 @@ git push --force-with-lease=master:base master:master</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Du kan explicit ställa in en uppströmsgren med <span class='synopsis'><code>git</code> <code>push</code> <code>--set-upstream</code> <em>&lt;fjärr&gt;</em> <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em></span> men Git kommer ofta automatiskt att ställa in uppströmsen åt dig, till exempel:</p>
+<p>Du kan explicit ställa in en uppströmsgren med <span class='synopsis'><code>git</code> <code>push</code> <code>--set-upstream</code> <em>&lt;fjärr&gt;</em> <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em></span> men Git ställer ofta automatiskt in uppström åt dig, till exempel:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>När du klonar ett kodförråd kommer Git automatiskt att ställa in uppströmmen för standardgrenen.</p>
+<p>När du klonar ett kodförråd ställer Git automatiskt in uppström för standardgrenen.</p>
 </li>
 <li>
-<p>Om du har konfigurationsalternativet <span class='synopsis'><code>push.autoSetupRemote</code></span> aktiverat, kommer <span class='synopsis'><code>git</code> <code>push</code></span> automatiskt att ställa in uppströmsen första gången du pushar en branch.</p>
+<p>Om du har konfigurationsalternativet <span class='synopsis'><code>push.autoSetupRemote</code></span> aktiverat ställer <span class='synopsis'><code>git</code> <code>push</code></span> automatiskt in uppström första gången du skickar en gren.</p>
 </li>
 <li>
-<p>Att checka ut en fjärrspårningsgren med <span class='synopsis'><code>git</code> <code>checkout</code> <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em></span> skapar automatiskt en lokal gren med det namnet och ställer in uppströmmen på den fjärranslutna grenen.</p>
+<p>Att checka ut en fjärrspårad gren med <span class='synopsis'><code>git</code> <code>checkout</code> <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em></span> skapar automatiskt en lokal gren med det namnet och ställer in uppström till den fjärrspårade grenen.</p>
 </li>
 </ul>
 </div>
@@ -1013,18 +1013,18 @@ Uppströms grenar kallas ibland för "spårningsinformation", som i "ange grenen
 <dl>
 <dt class="hdlist1" id="git-push-spanclasssynopsiscodepushautoSetupRemotecodespan"> <a class="anchor" href="#git-push-pushautoSetupRemote"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodepushautoSetupRemotecodespan"></a><span class='synopsis'><code>push.autoSetupRemote</code></span> </dt>
 <dd>
-<p>Om satt till <span class='synopsis'><code>true</code></span> antas <span class='synopsis'><code>--set-upstream</code></span> vara standard push när ingen uppströmsspårning finns för den aktuella grenen; detta alternativ träder i kraft med <span class='synopsis'><code>push.default</code></span>-alternativen <span class='synopsis'><code>simple</code></span>, <span class='synopsis'><code>upstream</code></span> och <span class='synopsis'><code>current</code></span>. Det är användbart om du som standard vill att nya grenar ska pushas till standardfjärren (som beteendet hos <span class='synopsis'><code>push.default=current</code></span>) och du också vill att uppströmsspårningen ska vara inställd. Arbetsflöden som sannolikt kommer att dra nytta av detta alternativ är <span class='synopsis'><code>enkla</code></span> centrala arbetsflöden där alla grenar förväntas ha samma namn på fjärren.</p>
+<p>Om satt till <span class='synopsis'><code>true</code></span> antas <span class='synopsis'><code>--set-upstream</code></span> vara standard push när ingen uppströmsspårning finns för den aktuella grenen; detta alternativ träder i kraft med <span class='synopsis'><code>push.default</code></span>-alternativen <span class='synopsis'><code>simple</code></span>, <span class='synopsis'><code>upstream</code></span> och <span class='synopsis'><code>current</code></span>. Det är användbart om nya grenar som standard ska skickas till standardfjärren (som beteendet hos <span class='synopsis'><code>push.default=current</code></span>) och det också är önskvärt att uppströmsspårningen ska vara inställd. Arbetsflöden som sannolikt kommer att dra nytta av detta alternativ är <span class='synopsis'><code>enkla</code></span> centrala arbetsflöden där alla grenar förväntas ha samma namn på fjärren.</p>
 </dd>
 <dt class="hdlist1" id="git-push-spanclasssynopsiscodepushdefaultcodespan"> <a class="anchor" href="#git-push-pushdefault"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodepushdefaultcodespan"></a><span class='synopsis'><code>push.default</code></span> </dt>
 <dd>
-<p>Definierar åtgärden <span class='synopsis'><code>git</code> <code>push</code></span> ska utföra om ingen refspec anges (vare sig från kommandoraden, konfigurationen eller någon annanstans). Olika värden är väl lämpade för specifika arbetsflöden; till exempel, i ett rent centralt arbetsflöde (dvs. hämtningskällan är lika med push-destinationen) är <span class='synopsis'><code>upstream</code></span> förmodligen vad du vill ha. Möjliga värden är:</p>
+<p>Definierar vilken åtgärd <span class='synopsis'><code>git</code> <code>push</code></span> ska utföra om ingen refspec anges (varken från kommandoraden, konfigurationen eller någon annanstans). Olika värden passar olika arbetsflöden; till exempel, i ett rent centralt arbetsflöde (dvs. hämtningskällan är samma som push-destinationen) är <span class='synopsis'><code>upstream</code></span> sannolikt rätt val. Möjliga värden är:</p>
 <div class="openblock">
 <div class="content">
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-push-spanclasssynopsiscodenothingcodespan"> <a class="anchor" href="#git-push-nothing"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodenothingcodespan"></a><span class='synopsis'><code>nothing</code></span> </dt>
 <dd>
-<p>do not push anything (error out) unless a refspec is given. This is primarily meant for people who want to avoid mistakes by always being explicit.</p>
+<p>skicka ingenting (ge fel) om ingen refspec anges. Detta är främst avsett för personer som vill undvika misstag genom att alltid vara explicita.</p>
 </dd>
 <dt class="hdlist1" id="git-push-spanclasssynopsiscodecurrentcodespan"> <a class="anchor" href="#git-push-current"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodecurrentcodespan"></a><span class='synopsis'><code>current</code></span> </dt>
 <dd>
@@ -1036,13 +1036,13 @@ Uppströms grenar kallas ibland för "spårningsinformation", som i "ange grenen
 </dd>
 <dt class="hdlist1" id="git-push-spanclasssynopsiscodetrackingcodespan"> <a class="anchor" href="#git-push-tracking"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodetrackingcodespan"></a><span class='synopsis'><code>tracking</code></span> </dt>
 <dd>
-<p>this is a deprecated synonym for <span class='synopsis'><code>upstream</code></span>.</p>
+<p>Föråldrad synonym för <span class='synopsis'><code>--empty=keep</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-push-spanclasssynopsiscodesimplecodespan"> <a class="anchor" href="#git-push-simple"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodesimplecodespan"></a><span class='synopsis'><code>simple</code></span> </dt>
 <dd>
-<p>push the current branch with the same name on the remote.</p>
+<p>Ett praktiskt sätt att skicka den aktuella grenen till samma namn i fjärrkodförrådet.</p>
 <div class="paragraph">
-<p>Om du arbetar med ett centraliserat arbetsflöde (push:ar till samma förvar som du hämtar från, vilket vanligtvis är <span class='synopsis'><code>origin</code></span>), måste du konfigurera en uppströmsgren med samma namn.</p>
+<p>Om du arbetar med ett centraliserat arbetsflöde (push:ar till samma kodförråd som du hämtar från, vilket vanligtvis är <span class='synopsis'><code>origin</code></span>), måste du konfigurera en uppströmsgren med samma namn.</p>
 </div>
 <div class="paragraph">
 <p>Det här läget är standardläget sedan Git 2.0 och är det säkraste alternativet som passar nybörjare.</p>
@@ -1050,12 +1050,12 @@ Uppströms grenar kallas ibland för "spårningsinformation", som i "ange grenen
 </dd>
 <dt class="hdlist1" id="git-push-spanclasssynopsiscodematchingcodespan"> <a class="anchor" href="#git-push-matching"></a> <a class="anchor" href="#git-push-spanclasssynopsiscodematchingcodespan"></a><span class='synopsis'><code>matching</code></span> </dt>
 <dd>
-<p>skicka (push) alla grenar med samma namn i båda ändar. Detta gör att arkivet du skickar kommer ihåg uppsättningen grenar som kommer att skickas ut (t.ex. om du alltid skickar <span class='synopsis'><code>maint</code></span> och <span class='synopsis'><code>master</code></span> där och inga andra grenar, kommer arkivet du skickar till att ha dessa två grenar, och dina lokala <span class='synopsis'><code>maint</code></span> och <span class='synopsis'><code>master</code></span> kommer att skickas dit).</p>
+<p>skicka (push) alla grenar med samma namn i båda ändar. Detta gör att kodförrådet du skickar kommer ihåg uppsättningen grenar som kommer att skickas ut (t.ex. om du alltid skickar <span class='synopsis'><code>maint</code></span> och <span class='synopsis'><code>master</code></span> där och inga andra grenar, kommer kodförrådet du skickar till att ha dessa två grenar, och dina lokala <span class='synopsis'><code>maint</code></span> och <span class='synopsis'><code>master</code></span> kommer att skickas dit).</p>
 <div class="paragraph">
 <p>För att använda det här läget effektivt måste du se till att <em>alla</em> grenar du vill skicka ut är redo att skickas ut innan du kör <span class='synopsis'><code>git</code> <code>push</code></span>, eftersom hela poängen med det här läget är att låta dig skicka alla grenar på en gång. Om du vanligtvis bara avslutar arbetet på en gren och skickar ut resultatet, medan andra grenar är oavslutade, är det här läget inte för dig. Det här läget är inte heller lämpligt för att skicka till ett delat centralt arkiv, eftersom andra personer kan lägga till nya grenar där, eller uppdatera toppen på befintliga grenar utanför din kontroll.</p>
 </div>
 <div class="paragraph">
-<p>Detta brukade vara standardinställningen, men inte sedan Git 2.0 (<span class='synopsis'><code>simple</code></span> är den nya standardinställningen).</p>
+<p>Det brukade vara standardinställningen, men inte sedan Git 2.0 (<span class='synopsis'><code>simple</code></span> är den nya standardinställningen).</p>
 </div>
 </dd>
 </dl>
@@ -1075,7 +1075,7 @@ Uppströms grenar kallas ibland för "spårningsinformation", som i "ange grenen
 <dd>
 <p>När inget <span class='synopsis'><code>--push-option=</code><em>&lt;alternativ&gt;</em></span>-argument anges från kommandoraden, beter sig <span class='synopsis'><code>git</code> <code>push</code></span> som om varje <em>&lt;alternativ&gt;</em> i denna variabel anges som <span class='synopsis'><code>--push-option=</code><em>&lt;alternativ&gt;</em></span>.</p>
 <div class="paragraph">
-<p>Detta är en variabel med flera värden, och ett tomt värde kan användas i en konfigurationsfil med högre prioritet (t.ex. <span class='synopsis'><code>.git/config</code></span> i ett förvar) för att rensa värden som ärvts från konfigurationsfiler med lägre prioritet (t.ex. <span class='synopsis'><code>$HOME/.gitconfig</code></span>).</p>
+<p>Det är en variabel med flera värden, och ett tomt värde kan användas i en konfigurationsfil med högre prioritet (t.ex. <span class='synopsis'><code>.git/config</code></span> i ett kodförråd) för att rensa värden som ärvts från konfigurationsfiler med lägre prioritet (t.ex. <span class='synopsis'><code>$HOME/.gitconfig</code></span>).</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1092,7 +1092,7 @@ repo/.git/config
   push.pushoption =
   push.pushoption = b
 
-Detta kommer att resultera i att endast b (a och c är nollställda).</pre>
+Detta ger endast b (a och c rensas).</pre>
 </div>
 </div>
 </dd>

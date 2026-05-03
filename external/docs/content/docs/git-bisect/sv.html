@@ -57,15 +57,15 @@ headings:
 <h2 id="_beskrivning"><a class="anchor" href="#_beskrivning"></a>BESKRIVNING</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Det här kommandot använder en binär sökalgoritm för att hitta vilken incheckningi projektets historik som introducerade ett programfel. Du använder den genom att först ange en "dålig" incheckning som är känd för att innehålla programfelet, och en "bra" incheckning som är känd för att finnas innan programfelet introducerades. Sedan väljer <span class='synopsis'><code>git</code> <code>bisect</code></span> en incheckning mellan dessa två slutpunkter och frågar dig om den valda incheckning är "bra" eller "dålig". Den fortsätter att begränsa intervallet tills den hittar exakt den incheckning som introducerade ändringen.</p>
+<p>Det här kommandot använder en binär sökalgoritm för att hitta vilken incheckning i projektets historik som introducerade ett programfel. Det används genom att först ange en "dålig" incheckning som är känd för att innehålla programfelet och en "bra" incheckning som är känd för att ligga före programfelets introduktion. Därefter väljer <span class='synopsis'><code>git</code> <code>bisect</code></span> en incheckning mellan dessa två slutpunkter och frågar om den valda incheckningen är "bra" eller "dålig". Processen fortsätter att begränsa intervallet tills den hittar den incheckning som introducerade ändringen.</p>
 </div>
 <div class="paragraph">
-<p>Faktum är, att <span class='synopsis'><code>git</code> <code>bisect</code></span> kan användas för att hitta den incheckning som ändrade <strong>någon</strong> egenskap i ditt projekt; t.ex. den incheckning som fixade ett fel, eller den incheckning som fick ett benchmarks prestanda att förbättras. För att stödja denna mer allmänna användning kan termerna "gammal" och "ny" användas istället för "bra" och "dålig", eller så kan du välja dina egna termer. Se avsnittet "Alternativa termer" nedan för mer information.</p>
+<p>Faktum är att <span class='synopsis'><code>git</code> <code>bisect</code></span> kan användas för att hitta den incheckning som ändrade <strong>någon</strong> egenskap i projektet, t.ex. den incheckning som fixade ett fel eller den incheckning som förbättrade prestandan i ett benchmark. För att stödja denna mer allmänna användning kan termerna "gammal" och "ny" användas i stället för "bra" och "dålig", eller så kan egna termer väljas. Se avsnittet "Alternativa termer" nedan för mer information.</p>
 </div>
 <div class="sect2">
-<h3 id="_grundläggande_binärsökningskommandon_start_dålig_bra"><a class="anchor" href="#_grundläggande_binärsökningskommandon_start_dålig_bra"></a>Grundläggande binärsökningskommandon: start, dålig, bra</h3>
+<h3 id="_grundläggande_halveringskommandon_start_dålig_bra"><a class="anchor" href="#_grundläggande_halveringskommandon_start_dålig_bra"></a>Grundläggande halveringskommandon: start, dålig, bra</h3>
 <div class="paragraph">
-<p>Anta som exempel, att du försöker hitta den incheckningsom bröt en funktion som var känd för att fungera i version <span class='synopsis'><code>v2.6.13-rc2</code></span> av ditt projekt. Du startar en binärsöknings-session enligt följande:</p>
+<p>Anta till exempel att målet är att hitta den incheckning som bröt en funktion som var känd för att fungera i version <span class='synopsis'><code>v2.6.13-rc2</code></span> av projektet. En bisect-session startas enligt följande:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -75,15 +75,15 @@ $ git bisect good v2.6.13-rc2    # v2.6.13-rc2 är känd för att vara bra</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>När du har angett minst en dålig och en bra incheckning, väljer <span class='synopsis'><code>git</code> <code>bisect</code></span> en incheckningmitt i det historikintervallet, kontrollerar den och matar ut något liknande följande:</p>
+<p>När du har angett minst en dålig och en bra incheckning, väljer <span class='synopsis'><code>git</code> <code>bisect</code></span> en incheckning mitt i det historikintervallet, kontrollerar den och matar ut något liknande följande:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>Bisect: 675 revisioner kvar att testa efter detta (ungefär 10 steg)</pre>
+<pre>Tudelning: 675 revisioner kvar att testa efter detta (ungefär 10 steg)</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Du bör nu kompilera den utcheckade versionen och testa den. Om den versionen fungerar korrekt skriver du</p>
+<p>Nu bör den utcheckade versionen kompileras och testas. Om den versionen fungerar korrekt skriv</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -103,20 +103,20 @@ $ git bisect good v2.6.13-rc2    # v2.6.13-rc2 är känd för att vara bra</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>Bisect: 337 revisioner kvar att testa efter detta (ungefär 9 steg)</pre>
+<pre>Tudelning: 337 revisioner kvar att testa efter detta (ungefär 9 steg)</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Fortsätt upprepa processen: kompilera trädet, testa det och beroende på om det är bra eller dåligt, kör <span class='synopsis'><code>git</code> <code>bisect</code> <code>good</code></span> eller <span class='synopsis'><code>git</code> <code>bisect</code> <code>bad</code></span> för att fråga efter nästa incheckning som behöver testas.</p>
 </div>
 <div class="paragraph">
-<p>Så småningom kommer det inte finnas några fler revisioner kvar att inspektera, och kommandot kommer att skriva ut en beskrivning av den första felaktiga incheckning. Referensen <span class='synopsis'><code>refs/bisect/bad</code></span> kommer att lämnas kvar och peka på den incheckningen.</p>
+<p>Så småningom kommer det inte finnas några fler revisioner kvar att inspektera, och kommandot kommer att skriva ut en beskrivning av den första felaktiga incheckningen. Referensen <span class='synopsis'><code>refs/bisect/bad</code></span> kommer att lämnas kvar och peka på den incheckningen.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_återställning_av_binärsökning"><a class="anchor" href="#_återställning_av_binärsökning"></a>Återställning av binärsökning</h3>
+<h3 id="_återställning_av_halvering"><a class="anchor" href="#_återställning_av_halvering"></a>Återställning av halvering</h3>
 <div class="paragraph">
-<p>Efter en binärsökningssession, för att rensa binärsökningstillståndet och återgå till det ursprungliga HEAD, kör följande kommando:</p>
+<p>Efter en bisektionssession, för att rensa bisektionstillståndet och återgå till det ursprungliga HEAD, kör följande kommando:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -124,10 +124,10 @@ $ git bisect good v2.6.13-rc2    # v2.6.13-rc2 är känd för att vara bra</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Som standard kommer detta att returnera ditt träd till den incheckning som checkades ut före <span class='synopsis'><code>git</code> <code>bisect</code> <code>start</code></span>. (En ny <span class='synopsis'><code>git</code> <code>bisect</code> <code>start</code></span> kommer också att göra det, eftersom den rensar upp det gamla binärsöknings-tillståndet.)</p>
+<p>Som standard kommer detta att returnera ditt träd till den incheckning som checkades ut före <span class='synopsis'><code>git</code> <code>bisect</code> <code>start</code></span>. (En ny <span class='synopsis'><code>git</code> <code>bisect</code> <code>start</code></span> kommer också att göra det, eftersom den rensar upp det gamla bisektionstillståndet.)</p>
 </div>
 <div class="paragraph">
-<p>Med ett valfritt argument, kan du återgå till en annan incheckning istället:</p>
+<p>Med ett valfritt argument går det i stället att återgå till en annan incheckning:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -135,7 +135,7 @@ $ git bisect good v2.6.13-rc2    # v2.6.13-rc2 är känd för att vara bra</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Till exempel, <span class='synopsis'><code>git</code> <code>bisect</code> <code>reset</code> <code>bisect/bad</code></span> kommer att kontrollera den första dåliga revisionen, medan <span class='synopsis'><code>git</code> <code>bisect</code> <code>reset</code> <code>HEAD</code></span> kommer att lämna dig på den nuvarande binärsöknings-incheckning och undvika att byta incheckningar alls.</p>
+<p>Till exempel, <span class='synopsis'><code>git</code> <code>bisect</code> <code>reset</code> <code>bisect/bad</code></span> kommer att kontrollera den första dåliga revisionen, medan <span class='synopsis'><code>git</code> <code>bisect</code> <code>reset</code> <code>HEAD</code></span> kommer att lämna dig på den nuvarande bisection-incheckning och undvika att byta incheckningar alls.</p>
 </div>
 </div>
 <div class="sect2">
@@ -144,13 +144,13 @@ $ git bisect good v2.6.13-rc2    # v2.6.13-rc2 är känd för att vara bra</pre>
 <p>Ibland letar man inte efter den incheckning som introducerade ett fel, utan snarare efter en incheckning som orsakade en förändring mellan ett annat "gammalt" tillstånd och ett "nytt" tillstånd. Till exempel kanske man letar efter den incheckning som introducerade en viss korrigering. Eller så kanske man letar efter den första incheckning där källkodsfilnamnen slutligen konverterades till företagets namngivningsstandard. Eller vad det nu var.</p>
 </div>
 <div class="paragraph">
-<p>I sådana fall kan det vara mycket förvirrande att använda termerna "bra" och "dåligt" för att hänvisa till "tillståndet före förändringen" och "tillståndet efter förändringen". Så istället kan du använda termerna "gammalt" respektive "nytt" istället för "bra" och "dåligt". (Men observera att du inte kan blanda "bra" och "dåligt" med "gammalt" och "nytt" i en enda session.)</p>
+<p>I sådana fall kan det vara mycket förvirrande att använda termerna "bra" och "dåligt" för att hänvisa till "tillståndet före förändringen" och "tillståndet efter förändringen". Då kan termerna "gammalt" respektive "nytt" i stället för "bra" och "dåligt". (Men observera att det inte går att blanda "bra"/"dåligt" med "gammalt"/"nytt" i en och samma session.)</p>
 </div>
 <div class="paragraph">
-<p>I denna mer generella användning förser du <span class='synopsis'><code>git</code> <code>bisect</code></span> med en "ny" incheckning som har en viss egenskap och en "gammal" incheckning som inte har den egenskapen. Varje gång <span class='synopsis'><code>git</code> <code>bisect</code></span> checkar ut en incheckning testar du om den incheckning har egenskapen. Om den har det, markera incheckning som "ny"; annars markera den som "gammal". När binärsökningen är klar kommer <span class='synopsis'><code>git</code> <code>bisect</code></span> att rapportera vilken incheckning som introducerade egenskapen.</p>
+<p>I denna mer generella användning förses <span class='synopsis'><code>git</code> <code>bisect</code></span> med en "ny" incheckning som har en viss egenskap och en "gammal" incheckning som inte har den egenskapen. Varje gång <span class='synopsis'><code>git</code> <code>bisect</code></span> checkar ut en incheckning testas om den incheckningen har egenskapen. Om den har det, markera incheckningen som "ny"; annars markera den som "gammal". När bisektionen är klar kommer <span class='synopsis'><code>git</code> <code>bisect</code></span> att rapportera vilken incheckning som introducerade egenskapen.</p>
 </div>
 <div class="paragraph">
-<p>För att använda "old" och "new" istället för "good" och bad, måste du köra <span class='synopsis'><code>git</code> <code>bisect</code> <code>start</code></span> utan incheckningar som argument och sedan köra följande kommandon för att lägga till incheckningar:</p>
+<p>För att använda "old" och "new" i stället för "good" och "bad" måste <span class='synopsis'><code>git</code> <code>bisect</code> <code>start</code></span> köras utan incheckningar som argument och följas av följande kommandon för att lägga till incheckningar:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -180,7 +180,7 @@ $ git bisect good v2.6.13-rc2    # v2.6.13-rc2 är känd för att vara bra</pre>
 <p>Du kan bara få den gamla termen med <span class='synopsis'><code>git</code> <code>bisect</code> <code>terms</code> <code>--term-old</code></span> eller <span class='synopsis'><code>git</code> <code>bisect</code> <code>terms</code> <code>--term-good</code></span>; <span class='synopsis'><code>git</code> <code>bisect</code> <code>terms</code> <code>--term-new</code></span> och <span class='synopsis'><code>git</code> <code>bisect</code> <code>terms</code> <code>--term-bad</code></span> kan användas för att lära sig hur man anropar incheckningar som är nyare än den sökta ändringen.</p>
 </div>
 <div class="paragraph">
-<p>Om du vill använda dina egna termer istället för "dålig"/"bra" eller "nytt"/"gammalt", kan du välja vilka namn du vill (förutom befintliga bisect-underkommandon som <span class='synopsis'><code>reset</code></span>, <span class='synopsis'><code>start</code></span>, &#8230;&#8203;) genom att starta bisektionen med</p>
+<p>Om du vill använda dina egna termer i stället för "dålig"/"bra" eller "nytt"/"gammalt", kan du välja vilka namn du vill (förutom befintliga bisect-underkommandon som <span class='synopsis'><code>reset</code></span>, <span class='synopsis'><code>start</code></span>, &#8230;&#8203;) genom att starta bisektionen med</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -204,13 +204,13 @@ $ git bisect good v2.6.13-rc2    # v2.6.13-rc2 är känd för att vara bra</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Använd sedan <span class='synopsis'><code>git</code> <code>bisect</code> <em>&lt;term-gammal&gt;</em></span> och <span class='synopsis'><code>git</code> <code>bisect</code> <em>&lt;term-ny&gt;</em></span> istället för <span class='synopsis'><code>git</code> <code>bisect</code> <code>good</code></span> och <span class='synopsis'><code>git</code> <code>bisect</code> <code>bad</code></span> för att markera incheckningar.</p>
+<p>Använd sedan <span class='synopsis'><code>git</code> <code>bisect</code> <em>&lt;term-gammal&gt;</em></span> och <span class='synopsis'><code>git</code> <code>bisect</code> <em>&lt;term-ny&gt;</em></span> i stället för <span class='synopsis'><code>git</code> <code>bisect</code> <code>good</code></span> och <span class='synopsis'><code>git</code> <code>bisect</code> <code>bad</code></span> för att markera incheckningar.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_binärsökning_visualiseravisa"><a class="anchor" href="#_binärsökning_visualiseravisa"></a>Binärsökning visualisera/visa</h3>
+<h3 id="_bisect_visualiseravisa"><a class="anchor" href="#_bisect_visualiseravisa"></a>Bisect visualisera/visa</h3>
 <div class="paragraph">
-<p>För att se de för närvarande återstående misstänkta i <em>gitk</em>, kör följande kommando under binärsökningsprocessen (underkommandot <em>view</em> kan användas som ett alternativ till <em>visualize</em>):</p>
+<p>För att se de för närvarande återstående misstänkta i <em>gitk</em>, kör följande kommando under bisektionsprocessen (underkommandot <em>view</em> kan användas som ett alternativ till <em>visualize</em>):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -218,10 +218,10 @@ $ git bisect good v2.6.13-rc2    # v2.6.13-rc2 är känd för att vara bra</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Git detekterar en grafisk miljö genom olika miljövariabler: <span class='synopsis'><code>DISPLAY</code></span>, som anges i X Window System-miljöer på Unix-system. <span class='synopsis'><code>SESSIONNAME</code></span>, som anges under Cygwin i interaktiva skrivbordssessioner. <span class='synopsis'><code>MSYSTEM</code></span>, som anges under Msys2 och Git för Windows. <span class='synopsis'><code>SECURITYSESSIONID</code></span>, som kan anges på macOS i interaktiva skrivbordssessioner.</p>
+<p>Git identifierar en grafisk miljö med hjälp av olika miljövariabler: <span class='synopsis'><code>DISPLAY</code></span>, som anges i X Window System-miljöer på Unix-system. <span class='synopsis'><code>SESSIONNAME</code></span>, som anges under Cygwin i interaktiva skrivbordssessioner. <span class='synopsis'><code>MSYSTEM</code></span>, som anges under Msys2 och Git för Windows. <span class='synopsis'><code>SECURITYSESSIONID</code></span>, som kan anges på macOS i interaktiva skrivbordssessioner.</p>
 </div>
 <div class="paragraph">
-<p>Om ingen av dessa miljövariabler är satta används <em>git log</em> istället. Du kan också ange kommandoradsalternativ som <span class='synopsis'><code>-p</code></span> och <span class='synopsis'><code>--stat</code></span>.</p>
+<p>Om ingen av dessa miljövariabler är satta används <em>git log</em> i stället. Du kan också ange kommandoradsalternativ som <span class='synopsis'><code>-p</code></span> och <span class='synopsis'><code>--stat</code></span>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -230,7 +230,7 @@ $ git bisect good v2.6.13-rc2    # v2.6.13-rc2 är känd för att vara bra</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_binärsöknings_logg_och_binärsöknings_uppspelning"><a class="anchor" href="#_binärsöknings_logg_och_binärsöknings_uppspelning"></a>Binärsöknings-logg och Binärsöknings-uppspelning</h3>
+<h3 id="_bisect_logg_och_bisect_uppspelning"><a class="anchor" href="#_bisect_logg_och_bisect_uppspelning"></a>Bisect-logg och bisect-uppspelning</h3>
 <div class="paragraph">
 <p>Efter att ha markerat revisionerna som bra eller dåliga, kör följande kommando för att visa vad som har gjorts hittills:</p>
 </div>
@@ -252,7 +252,7 @@ $ git bisect replay that-file</pre>
 <div class="sect2">
 <h3 id="_undvik_att_testa_en_incheckning"><a class="anchor" href="#_undvik_att_testa_en_incheckning"></a>Undvik att testa en incheckning</h3>
 <div class="paragraph">
-<p>Om, du mitt i en bisect-session vet att den föreslagna revisionen inte är bra att testa (t.ex. att den misslyckas med att bygga och du vet att felet inte har något att göra med dett programfel du jagar), kan du manuellt välja en närliggande incheckning och testa den istället.</p>
+<p>Om det mitt i en bisect-session är känt att den föreslagna revisionen inte är bra att testa (t.ex. att den misslyckas med att bygga och att felet inte har något att göra med det programfel som jagas), kan en närliggande incheckning väljas manuellt och testas i stället.</p>
 </div>
 <div class="paragraph">
 <p>Till exempel:</p>
@@ -271,9 +271,9 @@ $ git reset --hard HEAD~3		# prova 3 revisioner innan vad
 </div>
 </div>
 <div class="sect2">
-<h3 id="_binärsökning_hoppaöver"><a class="anchor" href="#_binärsökning_hoppaöver"></a>Binärsökning hoppaöver</h3>
+<h3 id="_bisect_hoppaöver"><a class="anchor" href="#_bisect_hoppaöver"></a>Bisect hoppaöver</h3>
 <div class="paragraph">
-<p>Istället för att själv välja en närliggande incheckning, kan du be Git att göra det åt dig genom att köra kommandot:</p>
+<p>I stället för att själv välja en närliggande incheckning kan Git göra det genom att följande kommando körs:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -284,7 +284,7 @@ $ git reset --hard HEAD~3		# prova 3 revisioner innan vad
 <p>Men om du hoppar över en incheckning intill den du letar efter, kommer Git inte att kunna avgöra exakt vilken av dessa incheckning som var den första dåliga.</p>
 </div>
 <div class="paragraph">
-<p>Du kan också hoppa över ett intervall av incheckningar, istället för bara ett incheckning, med hjälp av intervallnotation. Till exempel:</p>
+<p>Det går också att hoppa över ett intervall av incheckningar, i stället för bara en incheckning, med hjälp av intervallnotation. Till exempel:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -292,10 +292,10 @@ $ git reset --hard HEAD~3		# prova 3 revisioner innan vad
 </div>
 </div>
 <div class="paragraph">
-<p>Detta talar om för binärsöknings-processen att ingen incheckning efter <span class='synopsis'><code>v2.5</code></span>, upp till och inklusive <span class='synopsis'><code>v2.6</code></span>, ska testas.</p>
+<p>Det talar om för bisect-processen att ingen incheckning efter <span class='synopsis'><code>v2.5</code></span>, upp till och inklusive <span class='synopsis'><code>v2.6</code></span>, ska testas.</p>
 </div>
 <div class="paragraph">
-<p>Observera att om du också vill hoppa över den första inchecknings-funktionen i intervallet skulle du köra kommandot:</p>
+<p>Observera att om även den första incheckningen i intervallet ska hoppas över körs kommandot:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -303,13 +303,13 @@ $ git reset --hard HEAD~3		# prova 3 revisioner innan vad
 </div>
 </div>
 <div class="paragraph">
-<p>Detta talar om för binärsöknings-processen att incheckningar mellan <span class='synopsis'><code>v2.5</code></span> och <span class='synopsis'><code>v2.6</code></span> (inklusive) ska hoppas över.</p>
+<p>Det talar om för bisect-processen att incheckningar mellan <span class='synopsis'><code>v2.5</code></span> och <span class='synopsis'><code>v2.6</code></span> (inklusive) ska hoppas över.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_binärsökning_nästa"><a class="anchor" href="#_binärsökning_nästa"></a>Binärsökning nästa</h3>
+<h3 id="_bisect_nästa"><a class="anchor" href="#_bisect_nästa"></a>Bisect nästa</h3>
 <div class="paragraph">
-<p>Normalt sett, efter att en revision markerats som bra eller dålig, beräknar och kontrollerar Git automatiskt nästa revision att testa. Men om du uttryckligen behöver begära nästa binärsökningssteg kan du använda:</p>
+<p>Normalt sett, efter att en revision markerats som bra eller dålig, beräknar och kontrollerar Git automatiskt nästa revision att testa. Men om du uttryckligen behöver begära nästa bisektionssteg kan du använda:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -317,11 +317,11 @@ $ git reset --hard HEAD~3		# prova 3 revisioner innan vad
 </div>
 </div>
 <div class="paragraph">
-<p>Du kan använda detta för att återuppta binärsökningsprocessen efter att ha avbrutit den genom att checka ut en annan revision.</p>
+<p>Du kan använda detta för att återuppta bisektionsprocessen efter att ha avbrutit den genom att checka ut en annan revision.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_minska_binärsökningen_genom_att_ge_fler_parametrar_för_att_börja_binärsökningen"><a class="anchor" href="#_minska_binärsökningen_genom_att_ge_fler_parametrar_för_att_börja_binärsökningen"></a>Minska binärsökningen genom att ge fler parametrar för att börja binärsökningen</h3>
+<h3 id="_minska_bisektionen_genom_att_ge_fler_parametrar_för_att_börja_bisektionen"><a class="anchor" href="#_minska_bisektionen_genom_att_ge_fler_parametrar_för_att_börja_bisektionen"></a>Minska bisektionen genom att ge fler parametrar för att börja bisektionen</h3>
 <div class="paragraph">
 <p>Du kan ytterligare minska antalet försök, om du vet vilken del av trädet som är involverad i problemet du spårar, genom att ange sökvägsmönster-parametrar när du kör kommandot <span class='synopsis'><code>bisect</code> <code>start</code></span>:</p>
 </div>
@@ -331,7 +331,7 @@ $ git reset --hard HEAD~3		# prova 3 revisioner innan vad
 </div>
 </div>
 <div class="paragraph">
-<p>Om du i förväg vet mer än en bra incheckning kan du begränsa binärsöknings-utrymmet genom att ange alla bra incheckningar omedelbart efter den dåliga incheckningen när du kör kommandot <span class='synopsis'><code>bisect</code> <code>start</code></span>:</p>
+<p>Om du i förväg vet mer än en bra incheckning kan du begränsa bisect-utrymmet genom att ange alla bra incheckningar omedelbart efter den dåliga incheckningen när du kör kommandot <span class='synopsis'><code>bisect</code> <code>start</code></span>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -342,7 +342,7 @@ $ git reset --hard HEAD~3		# prova 3 revisioner innan vad
 </div>
 </div>
 <div class="sect2">
-<h3 id="_binärsökning_körning"><a class="anchor" href="#_binärsökning_körning"></a>Binärsökning körning</h3>
+<h3 id="_bisect_kör"><a class="anchor" href="#_bisect_kör"></a>Bisect kör</h3>
 <div class="paragraph">
 <p>Om du har ett skript som kan avgöra om den aktuella källkoden är bra eller dålig, kan du dela den genom att köra kommandot:</p>
 </div>
@@ -355,16 +355,16 @@ $ git reset --hard HEAD~3		# prova 3 revisioner innan vad
 <p>Observera att skriptet (<span class='synopsis'><code>my_script</code></span> i exemplet ovan) ska avslutas med kod 0 om den nuvarande källkoden är bra/gammal, och avslutas med en kod mellan 1 och 127 (inklusive), förutom 125, om den nuvarande källkoden är dålig/ny.</p>
 </div>
 <div class="paragraph">
-<p>Annan avslutningskod kommer att avbryta binärsöknings-processen. Det bör noteras att ett program som avslutas via <span class='synopsis'><code>exit</code>(<code>-1</code>)</span> lämnar $? = 255, (se manualsidan för exit(3)), eftersom värdet hackas med <span class='synopsis'><em>&amp; 0377</em></span>.</p>
+<p>Annan avslutningskod kommer att avbryta bisect-processen. Det bör noteras att ett program som avslutas via <span class='synopsis'><code>exit</code>(<code>-1</code>)</span> lämnar $? = 255, (se manualsidan för exit(3)), eftersom värdet hackas med <span class='synopsis'><em>&amp; 0377</em></span>.</p>
 </div>
 <div class="paragraph">
 <p>Den speciella avslutningskoden 125 bör användas när den aktuella källkoden inte kan testas. Om skriptet avslutas med denna kod kommer den aktuella versionen att hoppas över (se <span class='synopsis'><code>git</code> <code>bisect</code> <code>skip</code></span> ovan). 125 valdes som det högsta rimliga värdet att använda för detta ändamål, eftersom 126 och 127 används av POSIX-shell för att signalera specifik felstatus (127 är för kommandot hittades inte, 126 är för kommandot hittades men inte körbart – dessa detaljer spelar ingen roll, eftersom de är normala fel i skriptet, vad gäller <span class='synopsis'><code>bisect</code> <code>run</code></span>).</p>
 </div>
 <div class="paragraph">
-<p>Du kan ofta upptäcka att du under en binärsöknings-session vill ha tillfälliga modifieringar (t.ex. s/#define DEBUG 0/#define DEBUG 1/ i en header-fil, eller "revision som inte har denna incheckning behöver denna patch tillämpad för att lösa ett annat problem som denna binärsökning inte är intresserad av") tillämpade på den revision som testas.</p>
+<p>Du kan ofta upptäcka att du under en bisect-session vill ha tillfälliga modifieringar (t.ex. s/#define DEBUG 0/#define DEBUG 1/ i en headerfil, eller "revision som inte har denna incheckning behöver denna patch tillämpad för att lösa ett annat problem som denna bisektion inte är intresserad av") tillämpade på den revision som testas.</p>
 </div>
 <div class="paragraph">
-<p>För att hantera en sådan situation, efter att den inre <em>git bisect</em> hittat nästa revision att testa, kan skriptet tillämpa patchen innan kompilering, köra det riktiga testet och därefter avgöra om revisionen (eventuellt med den nödvändiga patchen) klarade testet och sedan spola tillbaka trädet till det ursprungliga tillståndet. Slutligen bör skriptet avslutas med statusen för det riktiga testet för att låta <span class='synopsis'><code>git</code> <code>bisect</code> <code>run</code></span>-kommandoslingan avgöra det slutliga resultatet av binärsökning-sessionen.</p>
+<p>För att hantera en sådan situation, efter att den inre <em>git bisect</em> hittat nästa revision att testa, kan skriptet tillämpa patchen innan kompilering, köra det riktiga testet och därefter avgöra om revisionen (eventuellt med den nödvändiga patchen) klarade testet och sedan spola tillbaka trädet till det ursprungliga tillståndet. Slutligen bör skriptet avslutas med statusen för det riktiga testet för att låta <span class='synopsis'><code>git</code> <code>bisect</code> <code>run</code></span>-kommandoslingan avgöra det slutliga resultatet av bisect-sessionen.</p>
 </div>
 </div>
 </div>
@@ -377,7 +377,7 @@ $ git reset --hard HEAD~3		# prova 3 revisioner innan vad
 <dt class="hdlist1" id="git-bisect---no-checkout"> <a class="anchor" href="#git-bisect---no-checkout"></a>--no-checkout </dt>
 <dd>
 <div class="paragraph">
-<p>Checka inte ut det nya arbetskatalogen vid varje iteration av binärsökningsprocessen. Uppdatera istället bara referensen med namnet <span class='synopsis'><code>BISECT_HEAD</code></span> så att den pekar på den incheckning som ska testas.</p>
+<p>Checka inte ut det nya arbetsträdet vid varje iteration av bisektionsprocessen. Uppdatera i stället bara referensen med namnet <span class='synopsis'><code>BISECT_HEAD</code></span> så att den pekar på den incheckning som ska testas.</p>
 </div>
 <div class="paragraph">
 <p>Det här alternativet kan vara användbart när testet du skulle utföra i varje steg inte kräver ett utcheckat träd.</p>
@@ -389,10 +389,10 @@ $ git reset --hard HEAD~3		# prova 3 revisioner innan vad
 <dt class="hdlist1" id="git-bisect---first-parent"> <a class="anchor" href="#git-bisect---first-parent"></a>--first-parent </dt>
 <dd>
 <div class="paragraph">
-<p>Följ endast den första överordnade incheckning när du ser en sammanslagnings-incheckning.</p>
+<p>Följ endast den första föräldraincheckningen när en sammanslagningsincheckning påträffas.</p>
 </div>
 <div class="paragraph">
-<p>Vid detektering av regressioner som introduceras genom sammanslagningen av en gren kommer sammanslagnigs-incheckning att identifieras som introduktionen av programfelet och dess föregångare kommer att ignoreras.</p>
+<p>Vid identifiering av regressioner som introduceras genom sammanslagningen av en gren kommer sammanslagningsincheckningen att identifieras som introduktionen av programfelet och dess föregångare kommer att ignoreras.</p>
 </div>
 <div class="paragraph">
 <p>Det här alternativet är särskilt användbart för att undvika falska positiva resultat när en sammanfogad gren innehöll trasiga eller icke-byggbara incheckningar, men själva sammanslagningen var OK.</p>
@@ -408,27 +408,27 @@ $ git reset --hard HEAD~3		# prova 3 revisioner innan vad
 <div class="ulist">
 <ul>
 <li>
-<p>Automatiskt binärsökninga en trasig version mellan v1.2 och HEAD:</p>
+<p>Automatiskt bisectera en trasig version mellan v1.2 och HEAD:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ git bisect start HEAD v1.2 --      # HEAD är dålig, v1.2 är bra
 $ git bisect run make                # "make" bygger appen
-$ git bisect reset                   # avsluta binärsöknings-sessionen</pre>
+$ git bisect reset                   # avsluta bisect-sessionen</pre>
 </div>
 </div>
 </li>
 <li>
-<p>Automatiskt binärsökninga ett testfel mellan origo och HEAD:</p>
+<p>Automatiskt bisecta ett testfel mellan origo och HEAD:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ git bisect start HEAD origin --    # HEAD är dåligt, ursprunget är bra
 $ git bisect run make test           # "Gör test"-byggen och tester
-$ git bisect reset                   # avsluta binärsöknings-sessionen</pre>
+$ git bisect reset                   # avsluta bisect-sessionen</pre>
 </div>
 </div>
 </li>
 <li>
-<p>Automatiskt binärsök ett trasigt testfall:</p>
+<p>Dela automatiskt ett trasigt testfall i två delar:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ cat ~/test.sh
@@ -437,18 +437,18 @@ make || exit 125                     # detta hoppar över trasiga byggen
 ~/check_test_case.sh                 #klarar testfallet det?
 $ git bisect start HEAD HEAD~10 --   # boven i dramat är bland de sista 10
 $ git bisect run ~/test.sh
-$ git bisect reset                   # avsluta binärsöknings-sessionen</pre>
+$ git bisect reset                   # avsluta bisect-sessionen</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Här använder vi ett anpassat skript av typen <span class='synopsis'><code>test.sh</code></span>. I det här skriptet hoppar vi över den aktuella inchecknings-processen om <span class='synopsis'><code>make</code></span> misslyckas. <span class='synopsis'><code>check_test_case.sh</code></span> ska <span class='synopsis'><code>exit</code> <code>0</code></span> om testfallet godkänns, och <span class='synopsis'><code>exit</code> <code>1</code></span> annars.</p>
+<p>Här använder vi ett anpassat skript av typen <span class='synopsis'><code>test.sh</code></span>. I det här skriptet hoppar vi över den aktuella incheckningsprocessen om <span class='synopsis'><code>make</code></span> misslyckas. <span class='synopsis'><code>check_test_case.sh</code></span> ska <span class='synopsis'><code>exit</code> <code>0</code></span> om testfallet godkänns, och <span class='synopsis'><code>exit</code> <code>1</code></span> annars.</p>
 </div>
 <div class="paragraph">
-<p>Det är säkrare om både <span class='synopsis'><code>test.sh</code></span> och <span class='synopsis'><code>check_test_case.sh</code></span> finns utanför arkivet för att förhindra interaktioner mellan bisect-, make- och test-processerna och skripten.</p>
+<p>Det är säkrare om både <span class='synopsis'><code>test.sh</code></span> och <span class='synopsis'><code>check_test_case.sh</code></span> finns utanför kodförrådet för att förhindra interaktioner mellan bisect-, make- och test-processerna och skripten.</p>
 </div>
 </li>
 <li>
-<p>Automatisk binärsökning med tillfälliga ändringar (snabbkorrigering):</p>
+<p>Automatisk bisect med tillfälliga ändringar (snabbkorrigering):</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ cat ~/test.sh
@@ -475,27 +475,27 @@ exit $status</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Detta tillämpar modifieringar från en hot-fix-gren före varje testkörning, t.ex. om din bygg- eller testmiljö har ändrats så att äldre versioner kan behöva en fix som nyare redan har. (Se till att hot-fix-grenen är baserad på en incheckning som finns i alla versioner som du binärsöker, så att sammanslagings-funktionen inte drar in för mycket, eller använd <span class='synopsis'><code>git</code> <code>cherry-pick</code></span> istället för <span class='synopsis'><code>git</code> <code>merge</code></span>.)</p>
+<p>Det tillämpar modifieringar från en hot-fix-gren före varje testkörning, t.ex. om bygg- eller testmiljön har ändrats så att äldre versioner kan behöva en fix som nyare redan har. (Hot-fix-grenen bör vara baserad på en incheckning som finns i alla versioner som delas upp, så att sammanfogningsfunktionen inte drar in för mycket, eller använd <span class='synopsis'><code>git</code> <code>cherry-pick</code></span> i stället för <span class='synopsis'><code>git</code> <code>merge</code></span>.)</p>
 </div>
 </li>
 <li>
-<p>Automatiskt binärsök ett trasigt testfall:</p>
+<p>Dela automatiskt ett trasigt testfall i två delar:</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ git bisect start HEAD HEAD~10 --   # syndaren är bland de senaste 10
+<pre>$ git bisect start HEAD HEAD~10 --   # gärningsmannen är bland de senaste 10
 $ git bisect run sh -c "make || exit 125; ~/check_test_case.sh"
-$ git bisect reset                   # avsluta binärsöknings-sessionen</pre>
+$ git bisect reset                   # avsluta bisect-sessionen</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Detta visar att du kan klara dig utan ett körskript om du skriver testet på en enda rad.</p>
+<p>Det visar att ett körskript inte behövs om testet skrivs på en enda rad.</p>
 </div>
 </li>
 <li>
 <p>Lokalisera en bra region av objektgrafen i ett skadat arkiv</p>
 <div class="listingblock">
 <div class="content">
-<pre>$ git bisect start HEAD &lt;känd-bra-incheckning&gt; [ &lt;gräns-incheckning&gt; ... ] --no-checkout
+<pre>$ git bisect start HEAD &lt;known-good-commit&gt; [ &lt;boundary-commit&gt; ... ] --no-checkout
 $ git bisect run sh -c '
 	GOOD=$(git for-each-ref "--format=%(objectname)" refs/bisect/good-*) &amp;&amp;
 	git rev-list --objects BISECT_HEAD --not $GOOD &gt;tmp.$$ &amp;&amp;
@@ -504,7 +504,7 @@ $ git bisect run sh -c '
 	rm -f tmp.$$
 	test $rc = 0'
 
-$ git bisect reset                   # avsluta binärsöknings-sessionen</pre>
+$ git bisect reset                   # avsluta bisect-sessionen</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -512,7 +512,7 @@ $ git bisect reset                   # avsluta binärsöknings-sessionen</pre>
 </div>
 </li>
 <li>
-<p>Leta efter en lösning istället för en regression i koden</p>
+<p>Leta efter en lösning i stället för en regression i koden</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ git bisect start
@@ -545,7 +545,7 @@ $ git bisect broken HEAD~10</pre>
 <h2 id="_se_även"><a class="anchor" href="#_se_även"></a>SE ÄVEN</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="{{< relurl "docs/git-bisect-lk2009/sv" >}}">Bekämpa regressioner med git bisect</a>, <a href='{{< relurl "docs/git-blame/sv" >}}'>git-blame[1]</a>.</p>
+<p><a href="{{< relurl "docs/git-bisect-lk2009/sv" >}}">Fighting regressions with git bisect</a>, <a href='{{< relurl "docs/git-blame/sv" >}}'>git-blame[1]</a>.</p>
 </div>
 </div>
 </div>

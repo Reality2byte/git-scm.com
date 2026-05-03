@@ -24,8 +24,8 @@ headings:
   id: _создание_объектов_замен
 - text: ОШИБКИ
   id: _ошибки
-- text: СМОТРИТЕ ТАКЖЕ
-  id: _смотрите_также
+- text: СМ. ТАКЖЕ
+  id: _см_также
 - text: GIT
   id: _git
 ---
@@ -41,11 +41,11 @@ headings:
 <h2 id="_обзор"><a class="anchor" href="#_обзор"></a>ОБЗОР</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>git replace</em> [-f] &lt;объект&gt; &lt;замена&gt;
-<em>git replace</em> [-f] --edit &lt;объект&gt;
-<em>git replace</em> [-f] --graft &lt;коммит&gt; [&lt;родитель&gt;&#8230;&#8203;]
+<pre class="content"><em>git replace</em> [-f] <span class="hover-term" data-term="объект">&lt;объект&gt;</span> &lt;замена&gt;
+<em>git replace</em> [-f] --edit <span class="hover-term" data-term="объект">&lt;объект&gt;</span>
+<em>git replace</em> [-f] --graft <span class="hover-term" data-term="коммит">&lt;коммит&gt;</span> [&lt;родитель&gt;&#8230;&#8203;]
 <em>git replace</em> [-f] --convert-graft-file
-<em>git replace</em> -d &lt;объект&gt;&#8230;&#8203;
+<em>git replace</em> -d <span class="hover-term" data-term="объект">&lt;объект&gt;</span>&#8230;&#8203;
 <em>git replace</em> [--format=&lt;формат&gt;] [-l [&lt;шаблон&gt;]]</pre>
 </div>
 </div>
@@ -113,17 +113,17 @@ headings:
 <dd>
 <p>Удалить существующие ссылки замены для указанных объектов.</p>
 </dd>
-<dt class="hdlist1" id="git-replace---editltgt"> <a class="anchor" href="#git-replace---edit"></a> <a class="anchor" href="#git-replace---editltgt"></a>--edit &lt;объект&gt; </dt>
+<dt class="hdlist1" id="git-replace---editltgt"> <a class="anchor" href="#git-replace---edit"></a> <a class="anchor" href="#git-replace---editltgt"></a>--edit <span class="hover-term" data-term="объект">&lt;объект&gt;</span> </dt>
 <dd>
-<p>Редактировать содержимое объекта в интерактивном режиме. Существующее содержимое для &lt;объекта&gt; выводится в удобочитаемом виде во временный файл, запускается редактор для этого файла, и результат анализируется для создания нового объекта того же типа, что и &lt;объект&gt;. Затем создаётся ссылка замены, чтобы заменить &lt;объект&gt; на вновь созданный объект. Подробности о том, как будет выбран редактор, см. в <a href='{{< relurl "docs/git-var/ru" >}}'>git-var[1]</a>.</p>
+<p>Редактировать содержимое объекта в интерактивном режиме. Существующее содержимое для &lt;объекта&gt; выводится в удобочитаемом виде во временный файл, запускается редактор для этого файла, и результат анализируется для создания нового объекта того же типа, что и <span class="hover-term" data-term="объект">&lt;объект&gt;</span>. Затем создаётся ссылка замены, чтобы заменить <span class="hover-term" data-term="объект">&lt;объект&gt;</span> на вновь созданный объект. Подробности о том, как будет выбран редактор, см. в <a href='{{< relurl "docs/git-var/ru" >}}'>git-var[1]</a>.</p>
 </dd>
 <dt class="hdlist1" id="git-replace---raw"> <a class="anchor" href="#git-replace---raw"></a>--raw </dt>
 <dd>
 <p>При редактировании предоставлять необработанное содержимое объекта, а не удобочитаемое. В настоящее время это влияет только на деревья, которые будут показаны в их двоичной форме. С этим сложнее работать, но это может помочь при восстановлении дерева, которое настолько повреждено, что его нельзя вывести в удобочитаемом виде. Обратите внимание, что вам может потребоваться настроить редактор для корректного чтения и записи двоичных данных.</p>
 </dd>
-<dt class="hdlist1" id="git-replace---graftltgtltgt82308203"> <a class="anchor" href="#git-replace---graft"></a> <a class="anchor" href="#git-replace---graftltgtltgt82308203"></a>--graft &lt;коммит&gt; [&lt;родитель&gt;&#8230;&#8203;] </dt>
+<dt class="hdlist1" id="git-replace---graftltgtltgt82308203"> <a class="anchor" href="#git-replace---graft"></a> <a class="anchor" href="#git-replace---graftltgtltgt82308203"></a>--graft <span class="hover-term" data-term="коммит">&lt;коммит&gt;</span> [&lt;родитель&gt;&#8230;&#8203;] </dt>
 <dd>
-<p>Создать сброшенный (graft) коммит. Создаётся новый коммит с тем же содержимым, что и &lt;коммит&gt;, за исключением того, что его родителями будут [&lt;родитель&gt;&#8230;&#8203;] вместо родителей &lt;коммита&gt;. Затем создаётся ссылка замены, чтобы заменить &lt;коммит&gt; на вновь созданный коммит. Используйте <span class='synopsis'><code>--convert-graft-file</code></span> для преобразования файла <span class='synopsis'><code>$GIT_DIR/info/grafts</code></span> и использования ссылок замены вместо него.</p>
+<p>Создать сброшенный (graft) коммит. Создаётся новый коммит с тем же содержимым, что и <span class="hover-term" data-term="коммит">&lt;коммит&gt;</span>, за исключением того, что его родителями будут [&lt;родитель&gt;&#8230;&#8203;] вместо родителей &lt;коммита&gt;. Затем создаётся ссылка замены, чтобы заменить <span class="hover-term" data-term="коммит">&lt;коммит&gt;</span> на вновь созданный коммит. Используйте <span class='synopsis'><code>--convert-graft-file</code></span> для преобразования файла <span class='synopsis'><code>$GIT_DIR/info/grafts</code></span> и использования ссылок замены вместо него.</p>
 </dd>
 <dt class="hdlist1" id="git-replace---convert-graft-file"> <a class="anchor" href="#git-replace---convert-graft-file"></a>--convert-graft-file </dt>
 <dd>
@@ -189,7 +189,7 @@ headings:
 </div>
 </div>
 <div class="sect1">
-<h2 id="_смотрите_также"><a class="anchor" href="#_смотрите_также"></a>СМОТРИТЕ ТАКЖЕ</h2>
+<h2 id="_см_также"><a class="anchor" href="#_см_также"></a>СМ. ТАКЖЕ</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href='{{< relurl "docs/git-hash-object/ru" >}}'>git-hash-object[1]</a> <a href='{{< relurl "docs/git-rebase/ru" >}}'>git-rebase[1]</a> <a href='{{< relurl "docs/git-tag/ru" >}}'>git-tag[1]</a> <a href='{{< relurl "docs/git-branch/ru" >}}'>git-branch[1]</a> <a href='{{< relurl "docs/git-commit/ru" >}}'>git-commit[1]</a> <a href='{{< relurl "docs/git-var/ru" >}}'>git-var[1]</a> <a href='{{< relurl "docs/git/ru" >}}'>git[1]</a> <a href="https://github.com/newren/git-filter-repo">git-filter-repo</a></p>

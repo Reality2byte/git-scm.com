@@ -156,7 +156,7 @@ headings:
 <p>Om endast ett träd anges fungerar <em>git read-tree</em> som om användaren inte hade angett <span class='synopsis'><code>-m</code></span>, utom att om det ursprungliga indexet har en post för ett visst sökvägsnamn och innehållet i sökvägen matchar trädet som läses, används stat-informationen från indexet. (Med andra ord har indexets stat() företräde framför de sammanslagna trädens.)</p>
 </div>
 <div class="paragraph">
-<p>That means that if you do a <span class='synopsis'><code>git</code> <code>read-tree</code> <code>-m</code> <em>&lt;newtree&gt;</em></span> followed by a <span class='synopsis'><code>git</code> <code>checkout-index</code> <code>-f</code> <code>-u</code> <code>-a</code></span>, the <em>git checkout-index</em> only checks out the stuff that really changed.</p>
+<p>Det betyder att om man gör ett <span class='synopsis'><code>git</code> <code>read-tree</code> <code>-m</code> <em>&lt;newtree&gt;</em></span> följt av ett <span class='synopsis'><code>git</code> <code>checkout-index</code> <code>-f</code> <code>-u</code> <code>-a</code></span>, så checkar <em>git checkout-index</em> bara ut de saker som verkligen ändrats.</p>
 </div>
 <div class="paragraph">
 <p>Det här används för att undvika onödiga falska träffar när <em>git diff-files</em> körs efter <em>git read-tree</em>.</p>
@@ -357,7 +357,7 @@ $ echo "Sammanslå med Linus" | \
 <h2 id="_glesa_utckeckningar"><a class="anchor" href="#_glesa_utckeckningar"></a>GLESA UTCKECKNINGAR</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Note: The skip-worktree capabilities in <a href='{{< relurl "docs/git-update-index/sv" >}}'>git-update-index[1]</a> and <span class='synopsis'><code>read-tree</code></span> predated the introduction of <a href='{{< relurl "docs/git-sparse-checkout/sv" >}}'>git-sparse-checkout[1]</a>. Users are encouraged to use the <span class='synopsis'><code>sparse-checkout</code></span> command in preference to these plumbing commands for sparse-checkout/skip-worktree related needs. However, the information below might be useful to users trying to understand the pattern style used in non-cone mode of the <span class='synopsis'><code>sparse-checkout</code></span> command.</p>
+<p>Obs: Hoppa-över-arbetsträds-funktionaliteten i <a href='{{< relurl "docs/git-update-index/sv" >}}'>git-update-index[1]</a> och <span class='synopsis'><code>read-tree</code></span> föregår introduktionen av <a href='{{< relurl "docs/git-sparse-checkout/sv" >}}'>git-sparse-checkout[1]</a>. Användare uppmuntras att använda kommandot <span class='synopsis'><code>sparse-checkout</code></span> i stället för dessa lågnivåkommandon för gles-utcheckning/hoppa-över-arbetsträds-relaterade behov. Informationen nedan kan dock vara användbar för användare som försöker förstå mönsterstilen som används i icke-konläge för kommandot <span class='synopsis'><code>sparse-checkout</code></span>.</p>
 </div>
 <div class="paragraph">
 <p>"Gles utcheckning" tillåter gles ifyllnad av arbetskatalogen. Den använder hoppa-över-arbetsträds-biten (se <a href='{{< relurl "docs/git-update-index/sv" >}}'>git-update-index[1]</a>) för att tala om för Git om en fil i arbetskatalogen är värd att titta på.</p>

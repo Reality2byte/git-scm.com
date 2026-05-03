@@ -29,7 +29,7 @@ headings:
 <h2 id="_namn"><a class="anchor" href="#_namn"></a>NAMN</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>git-repack - Packa opackade objekt i ett förvar</p>
+<p>git-repack - Packa opackade objekt i ett kodförråd</p>
 </div>
 </div>
 </div>
@@ -64,7 +64,7 @@ headings:
 <dl>
 <dt class="hdlist1" id="git-repack--a"> <a class="anchor" href="#git-repack--a"></a>-a </dt>
 <dd>
-<p>Istället för att packa de opackade objekten stegvis, packa allt som refereras till i ett enda paket. Särskilt användbart när man packar ett kodförråd som används för privat utveckling. Använd med <span class='synopsis'><code>-d</code></span>. Detta rensar upp objekten som <span class='synopsis'><code>git</code> <code>prune</code></span> lämnar efter sig, men <span class='synopsis'><code>git</code> <code>fsck</code> <code>--full</code> <code>--dangling</code></span> visas som dinglande.</p>
+<p>I stället för att packa de opackade objekten stegvis, packa allt som refereras till i ett enda paket. Särskilt användbart när man packar ett kodförråd som används för privat utveckling. Använd med <span class='synopsis'><code>-d</code></span>. Detta rensar upp objekten som <span class='synopsis'><code>git</code> <code>prune</code></span> lämnar efter sig, men som <span class='synopsis'><code>git</code> <code>fsck</code> <code>--full</code> <code>--dangling</code></span> visar som dinglande.</p>
 <div class="paragraph">
 <p>Observera att användare som hämtar över dumma protokoll måste hämta hela det nya paketet för att hämta ett objekt där i, oavsett hur många andra objekt i det paketet de redan har lokalt.</p>
 </div>
@@ -74,7 +74,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-repack--A"> <a class="anchor" href="#git-repack--A"></a>-A </dt>
 <dd>
-<p>Samma som <span class='synopsis'><code>-a</code></span>, om inte <span class='synopsis'><code>-d</code></span> används. Då blir alla onåbara objekt i ett tidigare paket lösa, ouppackade objekt, istället för att lämnas kvar i det gamla paketet. Oåtkomliga objekt läggs aldrig avsiktligt till i ett paket, inte ens vid ompackning. Detta alternativ förhindrar att onåbara objekt från att omedelbart raderas genom att lämnas kvar i det gamla paketet och sedan tas bort. Istället kommer de lösa onåbara objekten att beskäras enligt normala utgångsregler med nästa <em>git gc</em>-anrop. Se <a href='{{< relurl "docs/git-gc/sv" >}}'>git-gc[1]</a>.</p>
+<p>Samma som <span class='synopsis'><code>-a</code></span>, om inte <span class='synopsis'><code>-d</code></span> används. Då blir alla onåbara objekt i ett tidigare paket lösa, ouppackade objekt, i stället för att lämnas kvar i det gamla paketet. Oåtkomliga objekt läggs aldrig avsiktligt till i ett paket, inte ens vid ompackning. Detta alternativ förhindrar att onåbara objekt omedelbart raderas genom att lämnas kvar i det gamla paketet och sedan tas bort. I stället kommer de lösa onåbara objekten att beskäras enligt normala utgångsregler vid nästa anrop av <em>git gc</em>. Se <a href='{{< relurl "docs/git-gc/sv" >}}'>git-gc[1]</a>.</p>
 </dd>
 <dt class="hdlist1" id="git-repack--d"> <a class="anchor" href="#git-repack--d"></a>-d </dt>
 <dd>
@@ -86,7 +86,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-repack---cruft-expirationltapproxidatumgt"> <a class="anchor" href="#git-repack---cruft-expirationapproxidatum"></a> <a class="anchor" href="#git-repack---cruft-expirationltapproxidatumgt"></a>--cruft-expiration=&lt;approxidatum&gt; </dt>
 <dd>
-<p>Gör att oåtkomliga objekt äldre än <span class='synopsis'><em>&lt;approximate&gt;</em></span> omedelbart upphör istället för att vänta på nästa <span class='synopsis'><code>git</code> <code>gc</code></span>-anrop. Endast användbart med <span class='synopsis'><code>--cruft</code> <code>-d</code></span>.</p>
+<p>Gör att oåtkomliga objekt äldre än <span class='synopsis'><em>&lt;approximate&gt;</em></span> omedelbart upphör i stället för att vänta på nästa <span class='synopsis'><code>git</code> <code>gc</code></span>-anrop. Endast användbart med <span class='synopsis'><code>--cruft</code> <code>-d</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-repack---max-cruft-sizeltngt"> <a class="anchor" href="#git-repack---max-cruft-sizen"></a> <a class="anchor" href="#git-repack---max-cruft-sizeltngt"></a>--max-cruft-size=&lt;n&gt; </dt>
 <dd>
@@ -94,7 +94,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-repack---combine-cruft-below-sizeltngt"> <a class="anchor" href="#git-repack---combine-cruft-below-sizen"></a> <a class="anchor" href="#git-repack---combine-cruft-below-sizeltngt"></a>--combine-cruft-below-size=&lt;n&gt; </dt>
 <dd>
-<p>När du genererar cruft-paket utan beskärning, packa endast om befintliga cruft-paket vars storlek är strikt mindre än <span class='synopsis'><em>&lt;n&gt;</em></span> byte, vilket valfritt kan suffixas med "k", "m" eller "g". Cruft-paket vars storlek är större än eller lika med <span class='synopsis'><em>&lt;n&gt;</em></span> lämnas som de är och packas inte om. Användbart när du vill undvika att packa om stora cruft-paket i förvar som har många och/eller stora oåtkomliga objekt.</p>
+<p>När du genererar cruft-paket utan beskärning, packa endast om befintliga cruft-paket vars storlek är strikt mindre än <span class='synopsis'><em>&lt;n&gt;</em></span> byte, vilket valfritt kan suffixas med "k", "m" eller "g". Cruft-paket vars storlek är större än eller lika med <span class='synopsis'><em>&lt;n&gt;</em></span> lämnas som de är och packas inte om. Användbart när du vill undvika att packa om stora cruft-paket i kodförråd som har många och/eller stora oåtkomliga objekt.</p>
 </dd>
 <dt class="hdlist1" id="git-repack---expire-toltkatgt"> <a class="anchor" href="#git-repack---expire-tokat"></a> <a class="anchor" href="#git-repack---expire-toltkatgt"></a>--expire-to=&lt;kat&gt; </dt>
 <dd>
@@ -119,7 +119,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-repack--n"> <a class="anchor" href="#git-repack--n"></a>-n </dt>
 <dd>
-<p>Uppdatera inte serverinformationen med <em>git update-server-info</em>. Det här alternativet hoppar över uppdatering av lokala katalogfiler som behövs för att publicera detta förvar (eller en direkt kopia av det) via HTTP eller FTP. Se <a href='{{< relurl "docs/git-update-server-info/sv" >}}'>git-update-server-info[1]</a>.</p>
+<p>Uppdatera inte serverinformationen med <em>git update-server-info</em>. Det här alternativet hoppar över uppdatering av lokala katalogfiler som behövs för att publicera detta kodförråd (eller en direkt kopia av det) via HTTP eller FTP. Se <a href='{{< relurl "docs/git-update-server-info/sv" >}}'>git-update-server-info[1]</a>.</p>
 </dd>
 <dt class="hdlist1" id="git-repack---windowltngt"> <a class="anchor" href="#git-repack---windown"></a> <a class="anchor" href="#git-repack---windowltngt"></a>--window=&lt;n&gt; </dt>
 <dt class="hdlist1" id="git-repack---depthltngt"> <a class="anchor" href="#git-repack---depthn"></a> <a class="anchor" href="#git-repack---depthltngt"></a>--depth=&lt;n&gt; </dt>
@@ -131,28 +131,28 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-repack---threadsltngt"> <a class="anchor" href="#git-repack---threadsn"></a> <a class="anchor" href="#git-repack---threadsltngt"></a>--threads=&lt;n&gt; </dt>
 <dd>
-<p>Den här alternativet skickas vidare till <span class='synopsis'><code>git</code> <code>pack-objects</code></span>.</p>
+<p>Alternativet skickas vidare till <span class='synopsis'><code>git</code> <code>pack-objects</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-repack---window-memoryltngt"> <a class="anchor" href="#git-repack---window-memoryn"></a> <a class="anchor" href="#git-repack---window-memoryltngt"></a>--window-memory=&lt;n&gt; </dt>
 <dd>
-<p>Det här alternativet ger en ytterligare gräns utöver <span class='synopsis'><code>--window</code></span>; fönsterstorleken kommer dynamiskt att skalas ned så att den inte tar upp mer än <em>&lt;n&gt;</em> byte i minnet. Detta är användbart i förvar med en blandning av stora och små objekt för att inte få slut på minne med ett stort fönster, men ändå kunna dra nytta av det stora fönstret för de mindre objekten. Storleken kan läggas till suffixet "k", "m" eller "g". <span class='synopsis'><code>--window-memory=0</code></span> gör minnesanvändningen obegränsad. Standardvärdet tas från konfigurationsvariabeln <span class='synopsis'><code>pack.windowMemory</code></span>. Observera att den faktiska minnesanvändningen kommer att vara gränsen multiplicerad med antalet trådar som används av <a href='{{< relurl "docs/git-pack-objects/sv" >}}'>git-pack-objects[1]</a>.</p>
+<p>Det här alternativet ger en ytterligare gräns utöver <span class='synopsis'><code>--window</code></span>; fönsterstorleken kommer dynamiskt att skalas ned så att den inte tar upp mer än <em>&lt;n&gt;</em> byte i minnet. Detta är användbart i kodförråd med en blandning av stora och små objekt för att inte få slut på minne med ett stort fönster, men ändå kunna dra nytta av det stora fönstret för de mindre objekten. Storleken kan läggas till suffixet "k", "m" eller "g". <span class='synopsis'><code>--window-memory=0</code></span> gör minnesanvändningen obegränsad. Standardvärdet tas från konfigurationsvariabeln <span class='synopsis'><code>pack.windowMemory</code></span>. Observera att den faktiska minnesanvändningen kommer att vara gränsen multiplicerad med antalet trådar som används av <a href='{{< relurl "docs/git-pack-objects/sv" >}}'>git-pack-objects[1]</a>.</p>
 </dd>
 <dt class="hdlist1" id="git-repack---max-pack-sizeltngt"> <a class="anchor" href="#git-repack---max-pack-sizen"></a> <a class="anchor" href="#git-repack---max-pack-sizeltngt"></a>--max-pack-size=&lt;n&gt; </dt>
 <dd>
-<p>Maximal storlek för varje utdatapaketfil. Storleken kan anges med suffixet "k", "m" eller "g". Den minsta tillåtna storleken är begränsad till 1 MiB. Om angiven, kan flera paketfiler skapas, vilket också förhindrar skapandet av ett bitmappsindex. Standardinställningen är obegränsad, såvida inte konfigurationsvariabeln <span class='synopsis'><code>pack.packSizeLimit</code></span> är angiven. Observera att det här alternativet kan resultera i ett större och långsammare förvar; se diskussionen i <span class='synopsis'><code>pack.packSizeLimit</code></span>.</p>
+<p>Maximal storlek för varje utdatapaketfil. Storleken kan anges med suffixet "k", "m" eller "g". Den minsta tillåtna storleken är begränsad till 1 MiB. Om angiven, kan flera paketfiler skapas, vilket också förhindrar skapandet av ett bitmappsindex. Standardinställningen är obegränsad, såvida inte konfigurationsvariabeln <span class='synopsis'><code>pack.packSizeLimit</code></span> är angiven. Observera att det här alternativet kan resultera i ett större och långsammare kodförråd; se diskussionen i <span class='synopsis'><code>pack.packSizeLimit</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-repack---filterltfilter-specgt"> <a class="anchor" href="#git-repack---filterfilter-spec"></a> <a class="anchor" href="#git-repack---filterltfilter-specgt"></a>--filter=&lt;filter-spec&gt; </dt>
 <dd>
-<p>Ta bort objekt som matchar filterspecifikationen från den resulterande packfilen och lägg dem i en separat packfil. Observera att objekt som används i arbetskatalogen inte filtreras bort. Så för att delningen ska fungera fullt ut, är det bäst att utföra den i ett rent repo och att använda alternativen <span class='synopsis'><code>-a</code></span> och <span class='synopsis'><code>-d</code></span> tillsammans med detta alternativ. Även <span class='synopsis'><code>--no-write-bitmap-index</code></span> (eller konfigurationsalternativet <span class='synopsis'><code>repack.writebitmaps</code></span> satt till <span class='synopsis'><code>false</code></span>) bör användas, annars kommer skrivning av bitmapindex att misslyckas, eftersom det förutsätter en enda packfil som innehåller alla objekt. Se <a href='{{< relurl "docs/git-rev-list/sv" >}}'>git-rev-list[1]</a> för giltiga <span class='synopsis'><em>&lt;filter-spec&gt;</em></span>-former.</p>
+<p>Ta bort objekt som matchar filterspecifikationen från den resulterande packfilen och lägg dem i en separat packfil. Observera att objekt som används i arbetskatalogen inte filtreras bort. Så för att delningen ska fungera fullt ut, är det bäst att utföra den i ett rent kodförråd och att använda alternativen <span class='synopsis'><code>-a</code></span> och <span class='synopsis'><code>-d</code></span> tillsammans med detta alternativ. Även <span class='synopsis'><code>--no-write-bitmap-index</code></span> (eller konfigurationsalternativet <span class='synopsis'><code>repack.writebitmaps</code></span> satt till <span class='synopsis'><code>false</code></span>) bör användas, annars kommer skrivning av bitmapindex att misslyckas, eftersom det förutsätter en enda packfil som innehåller alla objekt. Se <a href='{{< relurl "docs/git-rev-list/sv" >}}'>git-rev-list[1]</a> för giltiga <span class='synopsis'><em>&lt;filter-spec&gt;</em></span>-former.</p>
 </dd>
 <dt class="hdlist1" id="git-repack---filter-toltkatgt"> <a class="anchor" href="#git-repack---filter-tokat"></a> <a class="anchor" href="#git-repack---filter-toltkatgt"></a>--filter-to=&lt;kat&gt; </dt>
 <dd>
-<p>Skriv paketet som innehåller bortfiltrerade objekt till katalogen <span class='synopsis'><em>&lt;kat&gt;</em></span>. Endast användbart med <span class='synopsis'><code>--filter</code></span>. Detta kan användas för att placera paketet i en separat objektkatalog som nås via Git alternativ-mekanismen. <strong>VARNING:</strong> Om paketfilen som innehåller de bortfiltrerade objekten inte är tillgänglig kan förvaret bli korrupt eftersom det kanske inte är möjligt att komma åt objekten i den paketfilen. Se avsnitten <span class='synopsis'><code>objects</code></span> och <span class='synopsis'><code>objects/info/alternates</code></span> i <a href='{{< relurl "docs/gitrepository-layout/sv" >}}'>gitrepository-layout[5]</a>.</p>
+<p>Skriv paketet som innehåller bortfiltrerade objekt till katalogen <span class='synopsis'><em>&lt;kat&gt;</em></span>. Endast användbart med <span class='synopsis'><code>--filter</code></span>. Detta kan användas för att placera paketet i en separat objektkatalog som nås via Git alternativ-mekanismen. <strong>VARNING:</strong> Om paketfilen som innehåller de bortfiltrerade objekten inte är tillgänglig kan kodförrådet bli korrupt eftersom det kanske inte är möjligt att komma åt objekten i den paketfilen. Se avsnitten <span class='synopsis'><code>objects</code></span> och <span class='synopsis'><code>objects/info/alternates</code></span> i <a href='{{< relurl "docs/gitrepository-layout/sv" >}}'>gitrepository-layout[5]</a>.</p>
 </dd>
 <dt class="hdlist1" id="git-repack--b"> <a class="anchor" href="#git-repack--b"></a>-b </dt>
 <dt class="hdlist1" id="git-repack---write-bitmap-index"> <a class="anchor" href="#git-repack---write-bitmap-index"></a>--write-bitmap-index </dt>
 <dd>
-<p>Skriv ett nåbarhetes-bitmappindex som en del av ompackningen. Detta är bara meningsfullt när det används med <span class='synopsis'><code>-a</code></span>, <span class='synopsis'><code>-A</code></span> eller <span class='synopsis'><code>-m</code></span>, eftersom bitmapparna måste kunna referera till alla nåbara objekt. Det här alternativet åsidosätter inställningen för <span class='synopsis'><code>repack.writeBitmaps</code></span>. Det här alternativet har ingen effekt om flera packfiler skapas, såvida inte en MIDX skrivs (i vilket fall en bitmapp för fler-pack skapas).</p>
+<p>Skriv ett nåbarhetsbitmappindex som en del av ompackningen. Detta är bara meningsfullt när det används med <span class='synopsis'><code>-a</code></span>, <span class='synopsis'><code>-A</code></span> eller <span class='synopsis'><code>-m</code></span>, eftersom bitmapparna måste kunna referera till alla nåbara objekt. Flaggan åsidosätter inställningen för <span class='synopsis'><code>repack.writeBitmaps</code></span>. Flaggan har ingen effekt om flera packfiler skapas, såvida inte en MIDX skrivs (i vilket fall en bitmapp för fler-pack skapas).</p>
 </dd>
 <dt class="hdlist1" id="git-repack---pack-kept-objects"> <a class="anchor" href="#git-repack---pack-kept-objects"></a>--pack-kept-objects </dt>
 <dd>
@@ -169,7 +169,7 @@ headings:
 <dt class="hdlist1" id="git-repack--k"> <a class="anchor" href="#git-repack--k"></a>-k </dt>
 <dt class="hdlist1" id="git-repack---keep-unreachable"> <a class="anchor" href="#git-repack---keep-unreachable"></a>--keep-unreachable </dt>
 <dd>
-<p>När <span class='synopsis'><code>-ad</code></span> används, kommer alla oåtkomliga objekt från befintliga paket att läggas till i slutet av paketfilen istället för att tas bort. Dessutom kommer alla oåtkomliga lösa objekt att packas (och deras lösa motsvarigheter tas bort).</p>
+<p>När <span class='synopsis'><code>-ad</code></span> används, kommer alla oåtkomliga objekt från befintliga paket att läggas till i slutet av paketfilen i stället för att tas bort. Dessutom kommer alla oåtkomliga lösa objekt att packas (och deras lösa motsvarigheter tas bort).</p>
 </dd>
 <dt class="hdlist1" id="git-repack--i"> <a class="anchor" href="#git-repack--i"></a>-i </dt>
 <dt class="hdlist1" id="git-repack---delta-islands"> <a class="anchor" href="#git-repack---delta-islands"></a>--delta-islands </dt>
@@ -217,7 +217,7 @@ headings:
 <p>Olika konfigurationsvariabler påverkar packning, se <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a> (sök efter "pack" och "delta").</p>
 </div>
 <div class="paragraph">
-<p>Som standard, skickar kommandot alternativet <span class='synopsis'><code>--delta-base-offset</code></span> till <em>git pack-objects</em>; detta resulterar vanligtvis i något mindre paket, men de genererade paketen är inkompatibla med versioner av Git som är äldre än version 1.4.4. Om du behöver dela ditt arkiv med sådana gamla Git-versioner, antingen direkt eller via det dumma http-protokollet, måste du ställa in konfigurationsvariabeln <span class='synopsis'><code>repack.UseDeltaBaseOffset</code></span> till "false" och packa om. Åtkomst från gamla Git-versioner över det ursprungliga protokollet påverkas inte av det här alternativet eftersom konverteringen utförs direkt efter behov i så fall.</p>
+<p>Som standard skickar kommandot alternativet <span class='synopsis'><code>--delta-base-offset</code></span> till <em>git pack-objects</em>; detta resulterar vanligtvis i något mindre paket, men de genererade paketen är inkompatibla med versioner av Git som är äldre än version 1.4.4. Om arkivet behöver delas med sådana gamla Git-versioner, antingen direkt eller via det dumma http-protokollet, måste konfigurationsvariabeln <span class='synopsis'><code>repack.UseDeltaBaseOffset</code></span> till "false" och packa om. Åtkomst från gamla Git-versioner över det ursprungliga protokollet påverkas inte av det här alternativet eftersom konverteringen utförs direkt efter behov i så fall.</p>
 </div>
 <div class="paragraph">
 <p>Deltakomprimering används inte på objekt som är större än konfigurationsvariabeln <span class='synopsis'><code>core.bigFileThreshold</code></span> och på filer med attributet <span class='synopsis'><code>delta</code></span> inställt på falskt.</p>

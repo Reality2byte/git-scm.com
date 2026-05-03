@@ -18,8 +18,8 @@ headings:
   id: _beskrivning
 - text: ALTERNATIV
   id: _alternativ
-- text: VACKRA FORMAT
-  id: _vackra_format
+- text: VISNINGSFORMAT
+  id: _visningsformat
 - text: DIFF-FORMATERING
   id: _diff_formatering
 - text: Generera patchtext med -p
@@ -45,7 +45,7 @@ headings:
 <h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>git show</em> [&lt;flaggor&gt;] <span class="hover-term" data-term="objekt">&lt;objekt&gt;</span>&#8230;&#8203;</pre>
+<pre class="content"><span class='synopsis'><code>git</code></span> <span class='synopsis'><code>show</code></span> [<em>&lt;options&gt;</em>] [<em>&lt;object&gt;</em>&#8230;&#8203;]</pre>
 </div>
 </div>
 </div>
@@ -56,19 +56,19 @@ headings:
 <p>Visar ett eller flera objekt (blobbar, träd, taggar och incheckningar).</p>
 </div>
 <div class="paragraph">
-<p>För incheckningar visas loggmeddelandet och den textuella differensen. Den presenterar också sammanslagings-incheckningen i ett speciellt format som produceras av <em>git diff-tree --cc</em>.</p>
+<p>For commits it shows the log message and textual diff. It also presents the merge commit in a special format as produced by <span class='synopsis'><code>git</code> <code>diff-tree</code> <code>--cc</code></span>.</p>
 </div>
 <div class="paragraph">
 <p>För taggar, visar den taggmeddelandet och de refererade objekten.</p>
 </div>
 <div class="paragraph">
-<p>För träd, visar den namnen (motsvarande <em>git ls-tree</em> med --name-only).</p>
+<p>For trees, it shows the names (equivalent to <span class='synopsis'><code>git</code> <code>ls-tree</code></span> with <span class='synopsis'><code>--name-only</code></span>).</p>
 </div>
 <div class="paragraph">
 <p>För vanliga blobbar, visar den det vanliga innehållet.</p>
 </div>
 <div class="paragraph">
-<p>Vissa alternativ som kommandot <em>git log</em> förstår kan användas för att styra hur ändringarna som incheckning introducerar visas.</p>
+<p>Some options that <span class='synopsis'><code>git</code> <code>log</code></span> command understands can be used to control how the changes the commit introduces are shown.</p>
 </div>
 <div class="paragraph">
 <p>Den här manualsidan beskriver endast de mest använda alternativen.</p>
@@ -80,14 +80,14 @@ headings:
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1" id="git-show-ltobjektgt82308203"> <a class="anchor" href="#git-show-objekt"></a> <a class="anchor" href="#git-show-ltobjektgt82308203"></a><span class="hover-term" data-term="objekt">&lt;objekt&gt;</span>&#8230;&#8203; </dt>
+<dt class="hdlist1" id="git-show-spanclasssynopsisemltobjectgtemspan"> <a class="anchor" href="#git-show-object"></a> <a class="anchor" href="#git-show-spanclasssynopsisemltobjectgtemspan"></a><span class='synopsis'><em>&lt;object&gt;</em>...</span> </dt>
 <dd>
-<p>Namnen på objekt som ska visas (standardinställningen är <em>HEAD</em>). För en mer komplett lista över hur objektnamn stavas, se avsnittet "SPECIFICERING AV REVISIONER" i <a href='{{< relurl "docs/gitrevisions/sv" >}}'>gitrevisions[7]</a>.</p>
+<p>The names of objects to show (defaults to <span class='synopsis'><code>HEAD</code></span>). For a more complete list of ways to spell object names, see "SPECIFYING REVISIONS" section in <a href='{{< relurl "docs/gitrevisions/sv" >}}'>gitrevisions[7]</a>.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--prettycodecodecodeemltformatgtemspan"> <a class="anchor" href="#git-show---prettyformat"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--prettycodecodecodeemltformatgtemspan"></a><span class='synopsis'><code>--pretty</code>[<code>=</code><em>&lt;format&gt;</em>]</span> </dt>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--formatcodeemltformatgtemspan"> <a class="anchor" href="#git-show---formatformat"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--formatcodeemltformatgtemspan"></a><span class='synopsis'><code>--format=</code><em>&lt;format&gt;</em></span> </dt>
 <dd>
-<p>Skriv ut innehållet i inchecknings-loggarna i ett givet format med en pretty-print, där <em>&lt;format&gt;</em> kan vara ett av följande: <span class='synopsis'><code>oneline</code></span>, <span class='synopsis'><code>short</code></span>, <span class='synopsis'><code>medium</code></span>, <span class='synopsis'><code>full</code></span>, <span class='synopsis'><code>fuller</code></span>, <span class='synopsis'><code>reference</code></span>, <span class='synopsis'><code>email</code></span>, <span class='synopsis'><code>raw</code></span>, <span class='synopsis'><code>format:</code><em>&lt;string&gt;</em></span> och <span class='synopsis'><code>tformat:</code><em>&lt;string&gt;</em></span>. När <em>&lt;format&gt;</em> inte är något av ovanstående, och innehåller <span class='synopsis'><code>%</code><em>&lt;placeholder&gt;</em></span>, fungerar det som om <span class='synopsis'><code>--pretty=tformat:</code><em>&lt;format&gt;</em></span> vore angivet.</p>
+<p>Skriv ut innehållet i incheckningsloggarna i ett givet format med en pretty-print, där <em>&lt;format&gt;</em> kan vara ett av följande: <span class='synopsis'><code>oneline</code></span>, <span class='synopsis'><code>short</code></span>, <span class='synopsis'><code>medium</code></span>, <span class='synopsis'><code>full</code></span>, <span class='synopsis'><code>fuller</code></span>, <span class='synopsis'><code>reference</code></span>, <span class='synopsis'><code>email</code></span>, <span class='synopsis'><code>raw</code></span>, <span class='synopsis'><code>format:</code><em>&lt;string&gt;</em></span> och <span class='synopsis'><code>tformat:</code><em>&lt;string&gt;</em></span>. När <em>&lt;format&gt;</em> inte är något av ovanstående, och innehåller <span class='synopsis'><code>%</code><em>&lt;placeholder&gt;</em></span>, fungerar det som om <span class='synopsis'><code>--pretty=tformat:</code><em>&lt;format&gt;</em></span> vore angivet.</p>
 <div class="paragraph">
 <p>Se avsnittet "VACKERT FORMAT" för ytterligare information om varje format. När <span class='synopsis'><code>=</code><em>&lt;format&gt;</em></span>-delen utelämnas används <span class='synopsis'><code>medium</code></span> som standard.</p>
 </div>
@@ -106,22 +106,22 @@ Du kan ange standardformatet för pretty i kodförråds-konfigurationen (se <a h
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--abbrev-commitcodespan"> <a class="anchor" href="#git-show---abbrev-commit"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--abbrev-commitcodespan"></a><span class='synopsis'><code>--abbrev-commit</code></span> </dt>
 <dd>
-<p>Istället för att visa det fullständiga 40-byte hexadecimala inchecknings-objektnamnet, visa ett prefix som namnger objektet unikt. Alternativet <span class='synopsis'><code>--abbrev=</code><em>&lt;n&gt;</em></span> (som också modifierar diff-utdata, om det visas) kan användas för att ange prefixets minsta längd.</p>
+<p>I stället för att visa det fullständiga 40-byte hexadecimala incheckningsobjektnamnet, visa ett prefix som namnger objektet unikt. Alternativet <span class='synopsis'><code>--abbrev=</code><em>&lt;n&gt;</em></span> (som också modifierar diff-utdata, om det visas) kan användas för att ange prefixets minsta längd.</p>
 <div class="paragraph">
-<p>Detta borde göra <span class='synopsis'><code>--pretty=oneline</code></span> mycket mer läsbar för personer som använder terminaler med 80 kolumner.</p>
+<p>Det borde göra <span class='synopsis'><code>--pretty=oneline</code></span> mycket mer läsbar för personer som använder terminaler med 80 kolumner.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--no-abbrev-commitcodespan"> <a class="anchor" href="#git-show---no-abbrev-commit"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--no-abbrev-commitcodespan"></a><span class='synopsis'><code>--no-abbrev-commit</code></span> </dt>
 <dd>
-<p>Visa det fullständiga 40-byte hexadecimala inchecknings-objektnamnet. Detta negerar <span class='synopsis'><code>--abbrev-commit</code></span>, antingen explicit eller underförstått av andra alternativ som <span class='synopsis'><code>--oneline</code></span>. Det åsidosätter också variabeln <span class='synopsis'><code>log.abbrevCommit</code></span>.</p>
+<p>Visa det fullständiga 40-byte hexadecimala incheckningsobjektnamnet. Detta negerar <span class='synopsis'><code>--abbrev-commit</code></span>, antingen explicit eller underförstått av andra alternativ som <span class='synopsis'><code>--oneline</code></span>. Det åsidosätter också variabeln <span class='synopsis'><code>log.abbrevCommit</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--onelinecodespan"> <a class="anchor" href="#git-show---oneline"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--onelinecodespan"></a><span class='synopsis'><code>--oneline</code></span> </dt>
 <dd>
-<p>Detta är en förkortning för <span class='synopsis'><code>--pretty=oneline</code> <code>--abbrev-commit</code></span> som används tillsammans.</p>
+<p>Det är en förkortning för <span class='synopsis'><code>--pretty=oneline</code> <code>--abbrev-commit</code></span> som används tillsammans.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--encodingcodeemltkodninggtemspan"> <a class="anchor" href="#git-show---encodingkodning"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--encodingcodeemltkodninggtemspan"></a><span class='synopsis'><code>--encoding=</code><em>&lt;kodning&gt;</em></span> </dt>
 <dd>
-<p>Incheckning-objekt registrerar teckenkodningen som används för loggmeddelandet i deras kodnings-huvud; det här alternativet kan användas för att ange att kommandot ska koda om inchecknings-loggmeddelandet i den kodning som användaren föredrar. För icke-rörmokeri-kommandon är standardvärdet UTF-8. Observera att om ett objekt påstår sig vara kodat i <span class='synopsis'><code>X</code></span> och vi matar ut i <span class='synopsis'><code>X</code></span>, kommer vi att mata ut objektet ordagrant; det betyder att ogiltiga sekvenser i den ursprungliga commiten kan kopieras till utdata. På samma sätt, om iconv(3) misslyckas med att konvertera incheckningen, kommer vi att mata ut det ursprungliga objektet ordagrant i tysthet.</p>
+<p>Incheckningsobjekt registrerar teckenkodningen som används för loggmeddelandet i sitt kodningshuvud; det här alternativet kan användas för att ange att kommandot ska koda om incheckningsloggmeddelandet i den kodning som användaren föredrar. För högnivåkommandon är standardvärdet UTF-8. Observera att om ett objekt påstår sig vara kodat i <span class='synopsis'><code>X</code></span> och vi matar ut i <span class='synopsis'><code>X</code></span>, kommer vi att mata ut objektet ordagrant; det betyder att ogiltiga sekvenser i den ursprungliga incheckningen kan kopieras till utdata. På samma sätt, om iconv(3) misslyckas med att konvertera incheckningen, kommer vi att mata ut det ursprungliga objektet ordagrant i tysthet.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--expand-tabscodeemltngtemspan"> <a class="anchor" href="#git-show---expand-tabsn"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--expand-tabscodeemltngtemspan"></a><span class='synopsis'><code>--expand-tabs=</code><em>&lt;n&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--expand-tabscodespan"> <a class="anchor" href="#git-show---expand-tabs"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--expand-tabscodespan"></a><span class='synopsis'><code>--expand-tabs</code></span> </dt>
@@ -134,10 +134,10 @@ Du kan ange standardformatet för pretty i kodförråds-konfigurationen (se <a h
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--notescodecodecodeemltrefgtemspan"> <a class="anchor" href="#git-show---notesref"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--notescodecodecodeemltrefgtemspan"></a><span class='synopsis'><code>--notes</code>[<code>=</code><em><span class="hover-term" data-term="ref">&lt;ref&gt;</span></em>]</span> </dt>
 <dd>
-<p>	Visa anteckningarna (se <a href='{{< relurl "docs/git-notes/sv" >}}'>git-notes[1]</a>) som kommenterar incheckningen när inchecknings-loggmeddelandet visas.
-Detta är standardinställningen för kommandona <span class='synopsis'><code>git</code> <code>log</code></span>, <span class='synopsis'><code>git</code> <code>show</code></span> och <span class='synopsis'><code>git</code> <code>whatchanged</code></span> när det inte finns något <span class='synopsis'><code>--pretty</code></span>, <span class='synopsis'><code>--format</code></span> eller <span class='synopsis'><code>--oneline</code></span>-alternativ angivet på kommandoraden.</p>
+<p>	Visa anteckningarna (se <a href='{{< relurl "docs/git-notes/sv" >}}'>git-notes[1]</a>) som kommenterar incheckningen när incheckningsloggmeddelandet visas.
+Det är standardinställningen för kommandona <span class='synopsis'><code>git</code> <code>log</code></span>, <span class='synopsis'><code>git</code> <code>show</code></span> och <span class='synopsis'><code>git</code> <code>whatchanged</code></span> när det inte finns något <span class='synopsis'><code>--pretty</code></span>, <span class='synopsis'><code>--format</code></span> eller <span class='synopsis'><code>--oneline</code></span>-alternativ angivet på kommandoraden.</p>
 <div class="paragraph">
-<p>Som standard, är de anteckningar som visas från anteckningsreferenserna som listas i variablerna <span class='synopsis'><code>core.notesRef</code></span> och <span class='synopsis'><code>notes.displayRef</code></span> (eller motsvarande miljööverskridanden). Se <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a> för mer information.</p>
+<p>Som standard visas anteckningar från de anteckningsreferenser som listas i variablerna <span class='synopsis'><code>core.notesRef</code></span> och <span class='synopsis'><code>notes.displayRef</code></span> (eller motsvarande miljööverskridanden). Se <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a> för mer information.</p>
 </div>
 <div class="paragraph">
 <p>Med ett valfritt argument <em><span class="hover-term" data-term="ref">&lt;ref&gt;</span></em>, använd ref för att hitta de anteckningar som ska visas. Ref kan ange hela referensnamnet när det börjar med <span class='synopsis'><code>refs/notes/</code></span>; när det börjar med <span class='synopsis'><code>notes/</code></span>, prefixeras <span class='synopsis'><code>refs/</code></span> och annars <span class='synopsis'><code>refs/notes/</code></span> för att bilda referensens fullständiga namn.</p>
@@ -158,158 +158,102 @@ Detta är standardinställningen för kommandona <span class='synopsis'><code>gi
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--standard-notescodespan"> <a class="anchor" href="#git-show---standard-notes"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--standard-notescodespan"></a><span class='synopsis'><code>--standard-notes</code></span> </dt>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--no-standard-notescodespan"> <a class="anchor" href="#git-show---no-standard-notes"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--no-standard-notescodespan"></a><span class='synopsis'><code>--no-standard-notes</code></span> </dt>
 <dd>
-<p>Dessa alternativ är föråldrade. Använd alternativen <span class='synopsis'><code>--notes</code></span>/<span class='synopsis'><code>--no-notes</code></span> ovan istället.</p>
+<p>Dessa alternativ är föråldrade. Använd alternativen <span class='synopsis'><code>--notes</code></span>/<span class='synopsis'><code>--no-notes</code></span> ovan i stället.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--show-signaturecodespan"> <a class="anchor" href="#git-show---show-signature"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--show-signaturecodespan"></a><span class='synopsis'><code>--show-signature</code></span> </dt>
 <dd>
-<p>Kontrollera giltigheten hos ett signerat inchecknings-objekt genom att skicka signaturen till <span class='synopsis'><code>gpg</code> <code>--verify</code></span> och visa utdata.</p>
+<p>Kontrollera giltigheten hos ett signerat incheckningsobjekt genom att skicka signaturen till <span class='synopsis'><code>gpg</code> <code>--verify</code></span> och visa utdata.</p>
 </dd>
 </dl>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_vackra_format"><a class="anchor" href="#_vackra_format"></a>VACKRA FORMAT</h2>
+<h2 id="_visningsformat"><a class="anchor" href="#_visningsformat"></a>VISNINGSFORMAT</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Om incheckningen är en sammanslagning, och om vackra-formatet inte är <span class='synopsis'><code>oneline</code></span>, <span class='synopsis'><code>email</code></span> eller <span class='synopsis'><code>raw</code></span>, infogas en extra rad före raden <span class='synopsis'><code>Author:</code></span>. Denna rad börjar med "Merge:" och hasherna för föräldraincheckningar skrivs ut, separerade med mellanslag. Observera att de listade incheckningar inte nödvändigtvis är listan över de <em>direkta</em> föräldraincheckningarna om du har begränsat din historikvy: till exempel om du bara är intresserad av ändringar relaterade till en viss katalog eller fil.</p>
+<p>Om incheckningen är en sammanslagning, och om visningsformatet inte är <span class='synopsis'><code>oneline</code></span>, <span class='synopsis'><code>email</code></span> eller <span class='synopsis'><code>raw</code></span>, infogas en extra rad före raden <span class='synopsis'><code>Author:</code></span>. Denna rad börjar med "Merge:" och hasherna för föräldraincheckningar skrivs ut, separerade med mellanslag. Observera att de listade incheckningar inte nödvändigtvis är listan över de <em>direkta</em> föräldraincheckningarna om du har begränsat din historikvy: till exempel om du bara är intresserad av ändringar relaterade till en viss katalog eller fil.</p>
 </div>
 <div class="paragraph">
 <p>Det finns flera inbyggda format, och du kan definiera ytterligare format genom att sätta ett pretty.&lt;namn&gt;-konfigurationsalternativ till antingen ett annat formatnamn eller en <span class='synopsis'><code>format:</code></span>-sträng, enligt beskrivningen nedan (se <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>). Här är detaljerna för de inbyggda formaten:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><span class='synopsis'><code>oneline</code></span></p>
-<div class="literalblock">
-<div class="content">
-<pre><span class="hover-term" data-term="hash">&lt;hash&gt;</span> &lt;titelrad&gt;</pre>
-</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeonelinecodespan"> <a class="anchor" href="#git-show-oneline"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeonelinecodespan"></a><span class='synopsis'><code>oneline</code></span> </dt>
+<dd>
+<div class="verseblock">
+<pre class="content"><em><span class="hover-term" data-term="hash">&lt;hash&gt;</span></em> <em>&lt;title-line&gt;</em></pre>
 </div>
 <div class="paragraph">
-<p>Detta är utformat för att vara så kompakt som möjligt.</p>
+<p>Det är utformat för att vara så kompakt som möjligt.</p>
 </div>
-</li>
-<li>
-<p><span class='synopsis'><code>short</code></span></p>
-<div class="literalblock">
-<div class="content">
-<pre>commit <span class="hover-term" data-term="hash">&lt;hash&gt;</span>
-Author: &lt;författare&gt;</pre>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeshortcodespan"> <a class="anchor" href="#git-show-short"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeshortcodespan"></a><span class='synopsis'><code>short</code></span> </dt>
+<dd>
+<div class="verseblock">
+<pre class="content"><em>commit <span class="hover-term" data-term="hash">&lt;hash&gt;</span> Author: &lt;author&gt;</em>
+<em><em>_
+</em>    &lt;titelrad&gt;_</em></pre>
 </div>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodemediumcodespan"> <a class="anchor" href="#git-show-medium"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodemediumcodespan"></a><span class='synopsis'><code>medium</code></span> </dt>
+<dd>
+<div class="verseblock">
+<pre class="content"><em>commit <span class="hover-term" data-term="hash">&lt;hash&gt;</span> Author: &lt;author&gt; Date: &lt;author-date&gt;</em>
+<em><em>_
+</em>    &lt;titelrad&gt;<em>
+</em><em>
+</em>    &lt;fullt-incheckningsmeddelande&gt;_</em></pre>
 </div>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;titelrad&gt;</pre>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodefullcodespan"> <a class="anchor" href="#git-show-full"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodefullcodespan"></a><span class='synopsis'><code>full</code></span> </dt>
+<dd>
+<div class="verseblock">
+<pre class="content"><em>commit <span class="hover-term" data-term="hash">&lt;hash&gt;</span> Author: &lt;author&gt; Commit: &lt;committer&gt;</em>
+<em><em>_
+</em>    &lt;titelrad&gt;<em>
+</em><em>
+</em>    &lt;fullt-incheckningsmeddelande&gt;_</em></pre>
 </div>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodefullercodespan"> <a class="anchor" href="#git-show-fuller"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodefullercodespan"></a><span class='synopsis'><code>fuller</code></span> </dt>
+<dd>
+<div class="verseblock">
+<pre class="content"><em>commit <span class="hover-term" data-term="hash">&lt;hash&gt;</span> Author: &lt;författare&gt; AuthorDate: &lt;författar-datum&gt; Commit: &lt;incheckare&gt; CommitDate: &lt;inchecknings-datum&gt;</em>
+<em><em>_
+</em>     &lt;title-line&gt;<em>
+</em><em>
+</em>     &lt;full-commit-message&gt;_</em></pre>
 </div>
-</li>
-<li>
-<p><span class='synopsis'><code>medium</code></span></p>
-<div class="literalblock">
-<div class="content">
-<pre>commit <span class="hover-term" data-term="hash">&lt;hash&gt;</span>
-Author: &lt;författare&gt;
-Date:   &lt;författar-datum&gt;</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;titelrad&gt;</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;fullt-inchecknings-meddelande&gt;</pre>
-</div>
-</div>
-</li>
-<li>
-<p><span class='synopsis'><code>full</code></span></p>
-<div class="literalblock">
-<div class="content">
-<pre>commit <span class="hover-term" data-term="hash">&lt;hash&gt;</span>
-Author: &lt;författare&gt;
-Commit: &lt;incheckare&gt;</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;titelrad&gt;</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;fullt-inchecknings-meddelande&gt;</pre>
-</div>
-</div>
-</li>
-<li>
-<p><span class='synopsis'><code>fuller</code></span></p>
-<div class="literalblock">
-<div class="content">
-<pre>commit <span class="hover-term" data-term="hash">&lt;hash&gt;</span>
-Author:     &lt;författare&gt;
-AuthorDate: &lt;författar-datum&gt;
-Commit:     &lt;incheckare&gt;
-CommitDate: &lt;incheckare-datum&gt;</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;titelrad&gt;</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;fullt-inchecknings-meddelande&gt;</pre>
-</div>
-</div>
-</li>
-<li>
-<p><span class='synopsis'><code>reference</code></span></p>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;förkortad-hash&gt; (&lt;titelrad&gt;, &lt;kort-författar-datum&gt;)</pre>
-</div>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodereferencecodespan"> <a class="anchor" href="#git-show-reference"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodereferencecodespan"></a><span class='synopsis'><code>reference</code></span> </dt>
+<dd>
+<div class="verseblock">
+<pre class="content"><em>&lt;förkortad-hash&gt;</em> (<em>&lt;titelrad&gt;</em><span class='synopsis'><code>,</code></span> <em>&lt;kort-författar-datum&gt;</em>)</pre>
 </div>
 <div class="paragraph">
-<p>Detta format används för att referera till en annan incheckning i ett inchecknings-meddelande och är detsamma som <span class='synopsis'><code>--pretty='format:%C</code>(<code>auto</code>)<code>%h</code> (<code>%s,</code> <code>%ad</code>)</span>. Som standard formateras datumet med <span class='synopsis'><code>--date=short</code></span> om inte ett annat <span class='synopsis'><code>--date</code></span>-alternativ uttryckligen anges. Precis som med alla <span class='synopsis'><code>format:</code></span> med formatplatshållare påverkas inte dess utdata av andra alternativ som <span class='synopsis'><code>--decorate</code></span> och <span class='synopsis'><code>--walk-reflogs</code></span>.</p>
+<p>Formatet används för att referera till en annan incheckning i ett incheckningsmeddelande och är detsamma som <span class='synopsis'><code>--pretty='format:%C</code>(<code>auto</code>)<code>%h</code> (<code>%s,</code> <code>%ad</code>)</span>. Som standard formateras datumet med <span class='synopsis'><code>--date=short</code></span> om inte ett annat <span class='synopsis'><code>--date</code></span>-alternativ uttryckligen anges. Precis som med alla <span class='synopsis'><code>format:</code></span> med formatplatshållare påverkas inte dess utdata av andra alternativ som <span class='synopsis'><code>--decorate</code></span> och <span class='synopsis'><code>--walk-reflogs</code></span>.</p>
 </div>
-</li>
-<li>
-<p><span class='synopsis'><code>email</code></span></p>
-<div class="literalblock">
-<div class="content">
-<pre>From <span class="hover-term" data-term="hash">&lt;hash&gt;</span> &lt;datum&gt;
-From: &lt;författare&gt;
-Date: &lt;författare-datum&gt;
-Subject: [PATCH] &lt;titelrad&gt;</pre>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeemailcodespan"> <a class="anchor" href="#git-show-email"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeemailcodespan"></a><span class='synopsis'><code>email</code></span> </dt>
+<dd>
+<div class="verseblock">
+<pre class="content"><em>From <span class="hover-term" data-term="hash">&lt;hash&gt;</span> &lt;datum&gt; From: &lt;författare&gt; Date: &lt;författar-datum&gt; Subject: [PATCH] &lt;titelrad&gt;</em>
+<em><em>_
+</em>&lt;fullt-incheckningsmeddelande&gt;_</em></pre>
 </div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;fullt-inchecknings-meddelande&gt;</pre>
-</div>
-</div>
-</li>
-<li>
-<p><span class='synopsis'><code>mboxrd</code></span></p>
-<div class="paragraph">
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodemboxrdcodespan"> <a class="anchor" href="#git-show-mboxrd"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodemboxrdcodespan"></a><span class='synopsis'><code>mboxrd</code></span> </dt>
+<dd>
 <p>Som <span class='synopsis'><code>email</code></span>, men rader i inchecknings-meddelandet som börjar med "From " (föregångna av noll eller fler "&gt;") citeras med "&gt;" så att de inte förväxlas med att starta en ny incheckning.</p>
-</div>
-</li>
-<li>
-<p><span class='synopsis'><code>raw</code></span></p>
-<div class="paragraph">
-<p><span class='synopsis'><code>raw</code></span>-formatet visar hela incheckningen exakt så som den lagras i inchecknings-objektet. Det är värt att notera att hasherna visas i sin helhet, oavsett om <span class='synopsis'><code>--abbrev</code></span> eller <span class='synopsis'><code>--no-abbrev</code></span> används, och informationen i <span class='synopsis'><code>parents</code></span> visar de verkliga föräldra-incheckningen, utan att ta hänsyn till grafts eller historikförenkling. Observera att detta format påverkar hur incheckningar visas, men inte hur diffen visas, t.ex. med <span class='synopsis'><code>git</code> <code>log</code> <code>--raw</code></span>. För att få fullständiga objektnamn i ett rått diff-format, använd <span class='synopsis'><code>--no-abbrev</code></span>.</p>
-</div>
-</li>
-<li>
-<p><span class='synopsis'><code>format:</code><em>&lt;formatsträng&gt;</em></span></p>
-<div class="paragraph">
-<p>Formatet <span class='synopsis'><code>format:</code><em>&lt;format-sträng&gt;</em></span> låter dig ange vilken information du vill visa. Det fungerar lite som printf-formatet, med det anmärkningsvärda undantaget att du får en nyrad med <span class='synopsis'><code>%n</code></span> istället för <span class='synopsis'><em>\n</em></span>.</p>
-</div>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscoderawcodespan"> <a class="anchor" href="#git-show-raw"></a> <a class="anchor" href="#git-show-spanclasssynopsiscoderawcodespan"></a><span class='synopsis'><code>raw</code></span> </dt>
+<dd>
+<p><span class='synopsis'><code>raw</code></span>-formatet visar hela incheckningen exakt så som den lagras i incheckningsobjektet. Det är värt att notera att hasherna visas i sin helhet, oavsett om <span class='synopsis'><code>--abbrev</code></span> eller <span class='synopsis'><code>--no-abbrev</code></span> används, och informationen i <span class='synopsis'><code>parents</code></span> visar de verkliga föräldra-incheckningen, utan att ta hänsyn till grafts eller historikförenkling. Observera att detta format påverkar hur incheckningar visas, men inte hur diffen visas, t.ex. med <span class='synopsis'><code>git</code> <code>log</code> <code>--raw</code></span>. För att få fullständiga objektnamn i ett rått diff-format, använd <span class='synopsis'><code>--no-abbrev</code></span>.</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeformatcodeemltformatstrnggtemspan"> <a class="anchor" href="#git-show-formatformatstrng"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeformatcodeemltformatstrnggtemspan"></a><span class='synopsis'><code>format:</code><em>&lt;formatsträng&gt;</em></span> </dt>
+<dd>
+<p>Formatet <span class='synopsis'><code>format:</code><em>&lt;format-sträng&gt;</em></span> låter dig ange vilken information du vill visa. Det fungerar lite som printf-formatet, med det anmärkningsvärda undantaget att du får en nyrad med <span class='synopsis'><code>%n</code></span> i stället för <span class='synopsis'><em>\n</em></span>.</p>
 <div class="paragraph">
 <p>T.ex., <em>format:"Författaren till %h var %an, %ar%nTiteln var &gt;&gt;%s&lt;&lt;%n"</em> skulle visa något liknande:</p>
 </div>
@@ -326,6 +270,8 @@ The title was &gt;&gt;t4119: test autocomputing -p&lt;n&gt; for traditional diff
 <ul>
 <li>
 <p>Platshållare som expanderar till ett enda bokstavstecken:</p>
+<div class="openblock">
+<div class="content">
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodencodespan"> <a class="anchor" href="#git-show-n"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodencodespan"></a><span class='synopsis'><code>%n</code></span> </dt>
@@ -342,9 +288,13 @@ The title was &gt;&gt;t4119: test autocomputing -p&lt;n&gt; for traditional diff
 </dd>
 </dl>
 </div>
+</div>
+</div>
 </li>
 <li>
 <p>Platshållare som påverkar formateringen av senare platshållare:</p>
+<div class="openblock">
+<div class="content">
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodeCredcodespan"> <a class="anchor" href="#git-show-Cred"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeCredcodespan"></a><span class='synopsis'><code>%Cred</code></span> </dt>
@@ -365,7 +315,7 @@ The title was &gt;&gt;t4119: test autocomputing -p&lt;n&gt; for traditional diff
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodeCcodespanemltspecgtemspanclasssynopsisspan"> <a class="anchor" href="#git-show-Cspec"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeCcodespanemltspecgtemspanclasssynopsisspan"></a><span class='synopsis'><code>%C</code>(</span><em>&lt;spec&gt;</em><span class='synopsis'>)</span> </dt>
 <dd>
-<p>färgspecifikation, som beskrivs under Värden i avsnittet "KONFIGURATIONSFIL" i <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>. Som standard, visas färger endast när de är aktiverade för loggutdata (av <span class='synopsis'><code>color.diff</code></span>, <span class='synopsis'><code>color.ui</code></span> eller <span class='synopsis'><code>--color</code></span>, och med respekt för <span class='synopsis'><code>auto</code></span>-inställningarna för den förra om vi går till en terminal). <span class='synopsis'><code>%C</code>(<code>auto,</code></span><em>&lt;spec&gt;</em><span class='synopsis'>)</span> accepteras som en historisk synonym för standardvärdet (t.ex. <span class='synopsis'><code>%C</code>(<code>auto,red</code>)</span>). Att ange <span class='synopsis'><code>%C</code>(<code>always,</code></span><em>&lt;spec&gt;</em><span class='synopsis'>)</span> kommer att visa färgerna även när färg inte är aktiverad på annat sätt (men överväg att bara använda <span class='synopsis'><code>--color=always</code></span> för att aktivera färg för hela utdata, inklusive detta format och allt annat som git kan färga). Enbart <span class='synopsis'><code>auto</code></span> (dvs. <span class='synopsis'><code>%C</code>(<code>auto</code>)</span>) kommer att aktivera automatisk färgning på nästa platshållare tills färgen byts igen.</p>
+<p>färgspecifikation, som beskrivs under Värden i avsnittet "KONFIGURATIONSFIL" i <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>. Som standard visas färger endast när de är aktiverade för loggutdata (av <span class='synopsis'><code>color.diff</code></span>, <span class='synopsis'><code>color.ui</code></span> eller <span class='synopsis'><code>--color</code></span>, och med respekt för <span class='synopsis'><code>auto</code></span>-inställningarna för den förra om vi går till en terminal). <span class='synopsis'><code>%C</code>(<code>auto,</code></span><em>&lt;spec&gt;</em><span class='synopsis'>)</span> accepteras som en historisk synonym för standardvärdet (t.ex. <span class='synopsis'><code>%C</code>(<code>auto,red</code>)</span>). Att ange <span class='synopsis'><code>%C</code>(<code>always,</code></span><em>&lt;spec&gt;</em><span class='synopsis'>)</span> kommer att visa färgerna även när färg inte är aktiverad på annat sätt (men överväg att bara använda <span class='synopsis'><code>--color=always</code></span> för att aktivera färg för hela utdata, inklusive detta format och allt annat som git kan färga). Enbart <span class='synopsis'><code>auto</code></span> (d.v.s. <span class='synopsis'><code>%C</code>(<code>auto</code>)</span>) kommer att aktivera automatisk färgning på nästa platshållare tills färgen byts igen.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodemcodespan"> <a class="anchor" href="#git-show-m"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodemcodespan"></a><span class='synopsis'><code>%m</code></span> </dt>
 <dd>
@@ -400,9 +350,13 @@ The title was &gt;&gt;t4119: test autocomputing -p&lt;n&gt; for traditional diff
 </dd>
 </dl>
 </div>
+</div>
+</div>
 </li>
 <li>
 <p>Platshållare som expanderar till information som extraheras från incheckningen:</p>
+<div class="openblock">
+<div class="content">
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodeHcodespan"> <a class="anchor" href="#git-show-H"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeHcodespan"></a><span class='synopsis'><code>%H</code></span> </dt>
@@ -411,7 +365,7 @@ The title was &gt;&gt;t4119: test autocomputing -p&lt;n&gt; for traditional diff
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodehcodespan"> <a class="anchor" href="#git-show-h"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodehcodespan"></a><span class='synopsis'><code>%h</code></span> </dt>
 <dd>
-<p>förkortad inchecknings-hash</p>
+<p>förkortad incheckningshash</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodeTcodespan"> <a class="anchor" href="#git-show-T"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeTcodespan"></a><span class='synopsis'><code>%T</code></span> </dt>
 <dd>
@@ -549,43 +503,50 @@ The title was &gt;&gt;t4119: test autocomputing -p&lt;n&gt; for traditional diff
 <dd>
 <p>referensnamn utan " (", ")" omslag.</p>
 </dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodecodecodecountcodespan"> <a class="anchor" href="#git-show-count"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodecodecodecountcodespan"></a><span class='synopsis'><code>%</code>(<code>count</code>)</span> </dt>
+<dd>
+<p>the number of a patch within a patch series. Used only in <span class='synopsis'><code>--commit-list-format</code></span> in <span class='synopsis'><code>format-patch</code></span></p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodecodecodetotalcodespan"> <a class="anchor" href="#git-show-total"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodecodecodetotalcodespan"></a><span class='synopsis'><code>%</code>(<code>total</code>)</span> </dt>
+<dd>
+<p>the total number of patches in a patch series. Used only in <span class='synopsis'><code>--commit-list-format</code></span> in <span class='synopsis'><code>format-patch</code></span></p>
+</dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodecodecodedecoratecodespanspanclasssynopsiscodecodeemltoptiongtemcodecodespanspanclasssynopsisspan"> <a class="anchor" href="#git-show-decorateoption"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodecodecodedecoratecodespanspanclasssynopsiscodecodeemltoptiongtemcodecodespanspanclasssynopsisspan"></a><span class='synopsis'><code>%</code>(<code>decorate</code></span><span class='synopsis'>[<code>:</code><em>&lt;option&gt;</em><code>,...</code>]</span><span class='synopsis'>)</span> </dt>
 <dd>
 <p>referensnamn med anpassade dekorationer. Strängen <span class='synopsis'><code>decorate</code></span> kan följas av ett kolon och noll eller fler kommaseparerade alternativ. Alternativvärden kan innehålla bokstavliga formateringskoder. Dessa måste användas för kommatecken (<span class='synopsis'><code>%x2C</code></span>) och avslutande parenteser (<span class='synopsis'><code>%x29</code></span>) på grund av deras roll i alternativsyntaxen.</p>
-<div class="ulist">
-<ul>
-<li>
-<p><span class='synopsis'><code>prefix=</code><em>&lt;värde&gt;</em></span>: Visas före listan med referensnamn. Standardvärdet är "&#160;<span class='synopsis'>(</span>".</p>
-</li>
-<li>
-<p><span class='synopsis'><code>suffix=</code><em>&lt;värde&gt;</em></span>: Visas efter listan med referensnamn. Standardvärdet är "<span class='synopsis'>)</span>".</p>
-</li>
-<li>
-<p><span class='synopsis'><code>separator=</code><em>&lt;värde&gt;</em></span>: Visas mellan referensnamn. Standardvärdet är "<span class='synopsis'><code>,</code></span>&#160;".</p>
-</li>
-<li>
-<p><span class='synopsis'><code>pointer=</code><em>&lt;värde&gt;</em></span>: Visas mellan HEAD och grenen den pekar på, om någon.
-Standardinställningen är "&#160;<span class='synopsis'><em>&#8594;</em></span>&#160;".</p>
-</li>
-<li>
-<p><span class='synopsis'><code>tag=</code><em>&lt;värde&gt;</em></span>: Visas före taggnamn. Standardinställningen är "<span class='synopsis'><code>tag:</code></span>&#160;".</p>
-</li>
-</ul>
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeprefixcodeemltvrdegtemspan"> <a class="anchor" href="#git-show-prefixvrde"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeprefixcodeemltvrdegtemspan"></a><span class='synopsis'><code>prefix=</code><em>&lt;värde&gt;</em></span> </dt>
+<dd>
+<p>Visas före listan med referensnamn. Standard är "&#160;<span class='synopsis'>(</span>".</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodesuffixcodeemltvrdegtemspan"> <a class="anchor" href="#git-show-suffixvrde"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodesuffixcodeemltvrdegtemspan"></a><span class='synopsis'><code>suffix=</code><em>&lt;värde&gt;</em></span> </dt>
+<dd>
+<p>Visas efter listan med referensnamn. Standard är "<span class='synopsis'>)</span>".</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeseparatorcodeemltvrdegtemspan"> <a class="anchor" href="#git-show-separatorvrde"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeseparatorcodeemltvrdegtemspan"></a><span class='synopsis'><code>separator=</code><em>&lt;värde&gt;</em></span> </dt>
+<dd>
+<p>Visas mellan referensnamn. Standard är "<span class='synopsis'><code>,</code></span>&#160;".</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodepointercodeemltvrdegtemspan"> <a class="anchor" href="#git-show-pointervrde"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodepointercodeemltvrdegtemspan"></a><span class='synopsis'><code>pointer=</code><em>&lt;värde&gt;</em></span> </dt>
+<dd>
+<p>Shown between HEAD and the branch it points to, if any. Defaults to "&#160;&#8594;&#160;".</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodetagcodeemltvaluegtemspan"> <a class="anchor" href="#git-show-tagvalue"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodetagcodeemltvaluegtemspan"></a><span class='synopsis'><code>tag=</code><em>&lt;value&gt;</em></span> </dt>
+<dd>
+<p>Shown before tag names. Defaults to "<span class='synopsis'><code>tag:</code></span>&#160;".</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Till exempel, för att skapa dekorationer utan radbrytning eller taggannoteringar, och med mellanslag som avgränsare:</p>
 </div>
 </dd>
 </dl>
 </div>
-</li>
-</ul>
-</div>
-<div class="openblock">
+<div class="listingblock">
 <div class="content">
-<div class="paragraph">
-<p>Till exempel, för att skapa dekorationer utan radbrytning eller taggannoteringar, och med mellanslag som avgränsare:</p>
-</div>
-<div class="paragraph">
-<p><span class='synopsis'><code>%</code>(<code>decorate:prefix=,suffix=,tag=,separator=</code> )</span></p>
-</div>
+<pre>    %(decorate:prefix=,suffix=,tag=,separator= )</pre>
 </div>
 </div>
 <div class="dlist">
@@ -593,21 +554,25 @@ Standardinställningen är "&#160;<span class='synopsis'><em>&#8594;</em></span>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodecodecodedescribecodespanspanclasssynopsiscodecodeemltoptiongtemcodecodespanspanclasssynopsisspan"> <a class="anchor" href="#git-show-describeoption"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodecodecodedescribecodespanspanclasssynopsiscodecodeemltoptiongtemcodecodespanspanclasssynopsisspan"></a><span class='synopsis'><code>%</code>(<code>describe</code></span><span class='synopsis'>[<code>:</code><em>&lt;option&gt;</em><code>,...</code>]</span><span class='synopsis'>)</span> </dt>
 <dd>
 <p>human-readable name, like <a href='{{< relurl "docs/git-describe/sv" >}}'>git-describe[1]</a>; empty string for undescribable commits. The <span class='synopsis'><code>describe</code></span> string may be followed by a colon and zero or more comma-separated options. Descriptions can be inconsistent when tags are added or removed at the same time.</p>
-<div class="ulist">
-<ul>
-<li>
-<p><span class='synopsis'><code>tags</code>[<code>=</code><em>&lt;bool-value&gt;</em>]</span>: Istället för att bara överväga kommenterade taggar, överväg även lättviktiga taggar.</p>
-</li>
-<li>
-<p><span class='synopsis'><code>abbrev=</code><em>&lt;nummer&gt;</em></span>: Istället för att använda standardantalet hexadecimala siffror (som varierar beroende på antalet objekt i förvaret med standardvärdet 7) för det förkortade objektnamnet, använd &lt;nummer&gt; siffror, eller så många siffror som behövs för att bilda ett unikt objektnamn.</p>
-</li>
-<li>
-<p><span class='synopsis'><code>match=</code><em>&lt;mönster&gt;</em></span>: Beakta endast taggar som matchar den givna <span class='synopsis'><code>glob</code>(<code>7</code>)</span> <em>&lt;mönster&gt;</em>, exklusive prefixet <span class='synopsis'><code>refs/tags/</code></span>.</p>
-</li>
-<li>
-<p><span class='synopsis'><code>exclude=</code><em>&lt;mönster&gt;</em></span>: Beakta inte taggar som matchar det angivna <span class='synopsis'><code>glob</code>(<code>7</code>)</span> <em>&lt;mönster&gt;</em>, exklusive prefixet <span class='synopsis'><code>refs/tags/</code></span>.</p>
-</li>
-</ul>
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodetagscodecodecodeemltbool-valuegtemspan"> <a class="anchor" href="#git-show-tagsbool-value"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodetagscodecodecodeemltbool-valuegtemspan"></a><span class='synopsis'><code>tags</code>[<code>=</code><em>&lt;bool-value&gt;</em>]</span> </dt>
+<dd>
+<p>Instead of only considering annotated tags, consider lightweight tags as well.</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeabbrevcodeemltnumbergtemspan"> <a class="anchor" href="#git-show-abbrevnumber"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeabbrevcodeemltnumbergtemspan"></a><span class='synopsis'><code>abbrev=</code><em>&lt;number&gt;</em></span> </dt>
+<dd>
+<p>Instead of using the default number of hexadecimal digits (which will vary according to the number of objects in the repository with a default of 7) of the abbreviated object name, use <em>&lt;number&gt;</em> digits, or as many digits as needed to form a unique object name.</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodematchcodeemltmnstergtemspan"> <a class="anchor" href="#git-show-matchmnster"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodematchcodeemltmnstergtemspan"></a><span class='synopsis'><code>match=</code><em>&lt;mönster&gt;</em></span> </dt>
+<dd>
+<p>Only consider tags matching the given <span class='synopsis'><code>glob</code>(<code>7</code>)</span> <em>&lt;pattern&gt;</em>, excluding the <span class='synopsis'><code>refs/tags/</code></span> prefix.</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeexcludecodeemltmnstergtemspan"> <a class="anchor" href="#git-show-excludemnster"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeexcludecodeemltmnstergtemspan"></a><span class='synopsis'><code>exclude=</code><em>&lt;mönster&gt;</em></span> </dt>
+<dd>
+<p>Do not consider tags matching the given <span class='synopsis'><code>glob</code>(<code>7</code>)</span> <em>&lt;pattern&gt;</em>, excluding the <span class='synopsis'><code>refs/tags/</code></span> prefix.</p>
+</dd>
+</dl>
 </div>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodeScodespan"> <a class="anchor" href="#git-show-S"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeScodespan"></a><span class='synopsis'><code>%S</code></span> </dt>
@@ -632,11 +597,11 @@ Standardinställningen är "&#160;<span class='synopsis'><em>&#8594;</em></span>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodeBcodespan"> <a class="anchor" href="#git-show-B"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeBcodespan"></a><span class='synopsis'><code>%B</code></span> </dt>
 <dd>
-<p>rå kropp (oförpackat motiv och kropp)</p>
+<p>rå kropp (ej radbruten ämnesrad och kropp)</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodeNcodespan"> <a class="anchor" href="#git-show-N"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeNcodespan"></a><span class='synopsis'><code>%N</code></span> </dt>
 <dd>
-<p>inchecknings-anteckningar</p>
+<p>incheckningsanteckningar</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodeGGcodespan"> <a class="anchor" href="#git-show-GG"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeGGcodespan"></a><span class='synopsis'><code>%GG</code></span> </dt>
 <dd>
@@ -696,39 +661,41 @@ Standardinställningen är "&#160;<span class='synopsis'><em>&#8594;</em></span>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodecodecodetrailerscodespanspanclasssynopsiscodecodeemltalternativgtemcodecodespanspanclasssynopsisspan"> <a class="anchor" href="#git-show-trailersalternativ"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodecodecodetrailerscodespanspanclasssynopsiscodecodeemltalternativgtemcodecodespanspanclasssynopsisspan"></a><span class='synopsis'><code>%</code>(<code>trailers</code></span><span class='synopsis'>[<code>:</code><em>&lt;alternativ&gt;</em><code>,...</code>]</span><span class='synopsis'>)</span> </dt>
 <dd>
-<p>visa släprad för brödtexten så som de tolkas av <a href='{{< relurl "docs/git-interpret-trailers/sv" >}}'>git-interpret-trailers[1]</a>. Strängen <span class='synopsis'><code>trailers</code></span> kan följas av ett kolon och noll eller fler kommaseparerade alternativ. Om något alternativ anges flera gånger vinner den sista förekomsten.</p>
-<div class="ulist">
-<ul>
-<li>
-<p><span class='synopsis'><code>key=</code><em>&lt;key&gt;</em></span>: visar endast släprad med angiven &lt;key&gt;. Matchning sker utan att skiftläges-känsligt och avslutande kolon är valfritt. Om alternativet anges flera gånger visas släprader som matchar någon av nycklarna. Detta alternativ aktiverar automatiskt alternativet <span class='synopsis'><code>only</code></span> så att icke-släprader i släp-blocket döljs. Om det inte önskas kan det inaktiveras med <span class='synopsis'><code>only=false</code></span>. T.ex. visar <span class='synopsis'><code>%</code>(<code>trailers:key=Reviewed-by</code>)</span> trailerrader med nyckeln <span class='synopsis'><code>Reviewed-by</code></span>.</p>
-</li>
-<li>
-<p><span class='synopsis'><code>only</code>[<code>=</code><em>&lt;bool&gt;</em>]</span>: välj om icke-släprader från trailerblocket ska inkluderas.</p>
-</li>
-<li>
-<p><span class='synopsis'><code>separator=</code><em>&lt;sep&gt;</em></span>: anger avgränsaren som infogas mellan släprader. Standardinställningen är ett radmatningstecken. Strängen &lt;sep&gt; kan innehålla de bokstavliga formateringskoder som beskrivs ovan. För att använda kommatecken som avgränsare måste man använda <span class='synopsis'><code>%x2C</code></span> eftersom det annars skulle tolkas som nästa alternativ. T.ex. visar <span class='synopsis'><code>%</code>(<code>trailers:key=Ticket,separator=%x2C</code>)</span> alla släprader vars nyckel är "Ticket" avgränsade med ett kommatecken och ett mellanslag.</p>
-</li>
-<li>
-<p><span class='synopsis'><code>unfold</code>[<code>=</code><em>&lt;bool&gt;</em>]</span>: gör att det beter sig som om tolka-släpraders
-<span class='synopsis'><code>--unfold</code></span>-alternativ var angivet. T.ex., <span class='synopsis'><code>%</code>(<code>trailers:only,unfold=true</code>)</span>
-vecklar ut och visar alla släprader.</p>
-</li>
-<li>
-<p><span class='synopsis'><code>keyonly</code>[<code>=</code><em>&lt;bool&gt;</em>]</span>: visar endast den viktigaste delen av släpraden.</p>
-</li>
-<li>
-<p><span class='synopsis'><code>valueonly</code>[<code>=</code><em>&lt;bool&gt;</em>]</span>: visar endast värdedelen av släprad.</p>
-</li>
-<li>
-<p><span class='synopsis'><code>key_value_separator=</code><em>&lt;sep&gt;</em></span>: anger avgränsaren som infogas mellan nyckeln och värdet för varje trailer. Standardvärdet är ": ". Annars delar den samma semantik som <span class='synopsis'><code>separator=</code><em>&lt;sep&gt;</em></span> ovan.</p>
-</li>
-</ul>
-</div>
+<p>visa slutrad för brödtexten så som de tolkas av <a href='{{< relurl "docs/git-interpret-trailers/sv" >}}'>git-interpret-trailers[1]</a>. Strängen <span class='synopsis'><code>trailers</code></span> kan följas av ett kolon och noll eller fler kommaseparerade alternativ. Om något alternativ anges flera gånger vinner den sista förekomsten.</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodekeycodeemltnyckelgtemspan"> <a class="anchor" href="#git-show-keynyckel"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodekeycodeemltnyckelgtemspan"></a><span class='synopsis'><code>key=</code><em>&lt;nyckel&gt;</em></span> </dt>
+<dd>
+<p>Visar bara slutrader med angiven &lt;nyckel&gt;. Matchning sker skiftlägesokänsligt och avslutande kolon är valfritt. Om flaggan anges flera gånger visas slutrader som matchar någon av nycklarna. Flaggan aktiverar automatiskt <span class='synopsis'><code>only</code></span> så att rader som inte är slutrader i slutradsblocket döljs. Om det inte önskas kan det inaktiveras med <span class='synopsis'><code>only=false</code></span>. T.ex. visar <span class='synopsis'><code>%</code>(<code>trailers:key=Reviewed-by</code>)</span> slutrader med nyckeln <span class='synopsis'><code>Reviewed-by</code></span>.</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeonlycodecodecodeemltboolgtemspan"> <a class="anchor" href="#git-show-onlybool"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeonlycodecodecodeemltboolgtemspan"></a><span class='synopsis'><code>only</code>[<code>=</code><em>&lt;bool&gt;</em>]</span> </dt>
+<dd>
+<p>Välj om rader som inte är slutrader i slutradsblocket ska inkluderas.</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeseparatorcodeemltsepgtemspan"> <a class="anchor" href="#git-show-separatorsep"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeseparatorcodeemltsepgtemspan"></a><span class='synopsis'><code>separator=</code><em>&lt;sep&gt;</em></span> </dt>
+<dd>
+<p>Ange avgränsaren som infogas mellan slutrader. Standard är ett radmatningstecken. Strängen &lt;sep&gt; kan innehålla de bokstavliga formateringskoder som beskrivs ovan. För att använda kommatecken som avgränsare måste man använda <span class='synopsis'><code>%x2C</code></span> eftersom det annars tolkas som nästa alternativ. T.ex. visar <span class='synopsis'><code>%</code>(<code>trailers:key=Ticket,separator=%x2C</code> )</span> alla slutrader vars nyckel är <span class='synopsis'><code>Ticket</code></span> avgränsade med kommatecken och mellanslag.</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeunfoldcodecodecodeemltboolgtemspan"> <a class="anchor" href="#git-show-unfoldbool"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeunfoldcodecodecodeemltboolgtemspan"></a><span class='synopsis'><code>unfold</code>[<code>=</code><em>&lt;bool&gt;</em>]</span> </dt>
+<dd>
+<p>Gör att det beter sig som om interpret-trailers <span class='synopsis'><code>--unfold</code></span>-flagga angetts. T.ex. vecklar <span class='synopsis'><code>%</code>(<code>trailers:only,unfold=true</code>)</span> ut och visar alla slutrader.</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodekeyonlycodecodecodeemltboolgtemspan"> <a class="anchor" href="#git-show-keyonlybool"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodekeyonlycodecodecodeemltboolgtemspan"></a><span class='synopsis'><code>keyonly</code>[<code>=</code><em>&lt;bool&gt;</em>]</span> </dt>
+<dd>
+<p>Visa bara nyckeldelen av slutraden.</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodevalueonlycodecodecodeemltboolgtemspan"> <a class="anchor" href="#git-show-valueonlybool"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodevalueonlycodecodecodeemltboolgtemspan"></a><span class='synopsis'><code>valueonly</code>[<code>=</code><em>&lt;bool&gt;</em>]</span> </dt>
+<dd>
+<p>Visa bara värdedelen av slutraden.</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodekeyvalueseparatorcodeemltsepgtemspan"> <a class="anchor" href="#git-show-keyvalueseparatorsep"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodekeyvalueseparatorcodeemltsepgtemspan"></a><span class='synopsis'><code>key_value_separator=</code><em>&lt;sep&gt;</em></span> </dt>
+<dd>
+<p>Ange avgränsaren som infogas mellan nyckel och värde i varje slutrad. Standard är ": ". I övrigt har den samma semantik som <span class='synopsis'><code>separator=</code><em>&lt;sep&gt;</em></span> ovan.Anger avgränsaren som infogas mellan nyckeln och värdet för varje slutrad. Standardvärdet är ": ". Annars delar den samma semantik som <span class='synopsis'><code>separator=</code><em>&lt;sep&gt;</em></span> ovan.</p>
 </dd>
 </dl>
 </div>
-</li>
-</ul>
+</dd>
+</dl>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -754,13 +721,15 @@ Vissa platshållare kan vara beroende av andra alternativ som ges till revisions
 <div class="paragraph">
 <p>Om du lägger till ett <span class='synopsis'> </span> (mellanslag) efter <span class='synopsis'><code>%</code></span> av en platshållare, infogas ett mellanslag omedelbart före expansionen om och endast om platshållaren expanderar till en sträng som inte är tom.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><span class='synopsis'><code>tformat:</code></span></p>
-<div class="paragraph">
-<p>Formatet <span class='synopsis'><code>tformat:</code></span> fungerar precis som <span class='synopsis'><code>format:</code></span>, förutom att det tillhandahåller "terminator"-semantik istället för "separator"-semantik. Med andra ord, varje commit har meddelandets terminatorteckne (vanligtvis en nyrad) tillagt, snarare än en avgränsare placerad mellan poster. Detta innebär att den sista posten i ett enradigt format avslutas korrekt med en ny rad, precis som formatet "enradigt" gör. Till exempel:</p>
 </div>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodetformatcodespan"> <a class="anchor" href="#git-show-tformat"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodetformatcodespan"></a><span class='synopsis'><code>tformat:</code></span> </dt>
+<dd>
+<p>Formatet <span class='synopsis'><code>tformat:</code></span> fungerar precis som <span class='synopsis'><code>format:</code></span>, förutom att det tillhandahåller "terminator"-semantik i stället för "separator"-semantik. Med andra ord har varje incheckning meddelandets terminatortecken (vanligtvis en nyrad) tillagt, snarare än en avgränsare placerad mellan poster. Detta innebär att den sista posten i ett enradigt format avslutas korrekt med en ny rad, precis som formatet "enradigt" gör. Till exempel:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ git log -2 --pretty=format:%h 4da45bef \
@@ -783,8 +752,8 @@ $ git log -2 --pretty=tformat:%h 4da45bef \
 $ git log -2 --pretty=%h 4da45bef</pre>
 </div>
 </div>
-</li>
-</ul>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -805,19 +774,19 @@ $ git log -2 --pretty=%h 4da45bef</pre>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode-scodespan"> <a class="anchor" href="#git-show--s"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode-scodespan"></a><span class='synopsis'><code>-s</code></span> </dt>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--no-patchcodespan"> <a class="anchor" href="#git-show---no-patch"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--no-patchcodespan"></a><span class='synopsis'><code>--no-patch</code></span> </dt>
 <dd>
-<p>Undertryck all utdata från diff-maskineriet. Användbart för kommandon som <span class='synopsis'><code>git</code> <code>show</code></span> som visar patchen som standard för att undertrycka deras utdata, eller för att avbryta effekten av alternativ som <span class='synopsis'><code>--patch</code></span>, <span class='synopsis'><code>--stat</code></span> tidigare på kommandoraden i ett alias.</p>
+<p>Undertryck all utdata från diffmaskineriet. Användbart för kommandon som <span class='synopsis'><code>git</code> <code>show</code></span> som visar patchen som standard för att undertrycka deras utdata, eller för att avbryta effekten av alternativ som <span class='synopsis'><code>--patch</code></span>, <span class='synopsis'><code>--stat</code></span> tidigare på kommandoraden i ett alias.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode-mcodespan"> <a class="anchor" href="#git-show--m"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode-mcodespan"></a><span class='synopsis'><code>-m</code></span> </dt>
 <dd>
-<p>Visa differenser för sammanslagings-incheckningar i standardformatet. Detta liknar <span class='synopsis'><code>--diff-merges=on</code></span>, förutom att <span class='synopsis'><code>-m</code></span> inte kommer att producera någon utdata om inte <span class='synopsis'><code>-p</code></span> också anges.</p>
+<p>Visa differenser för sammanslagningsincheckningar i standardformatet. Detta liknar <span class='synopsis'><code>--diff-merges=on</code></span>, förutom att <span class='synopsis'><code>-m</code></span> inte kommer att producera någon utdata om inte <span class='synopsis'><code>-p</code></span> också anges.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode-ccodespan"> <a class="anchor" href="#git-show--c"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode-ccodespan"></a><span class='synopsis'><code>-c</code></span> </dt>
 <dd>
-<p>Producera kombinerad diff-utdata för sammanslagings-incheckningar. Genväg för <span class='synopsis'><code>--diff-merges=combined</code> <code>-p</code></span>.</p>
+<p>Producera kombinerad diff-utdata för sammanslagningsincheckningar. Genväg för <span class='synopsis'><code>--diff-merges=combined</code> <code>-p</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--cccodespan"> <a class="anchor" href="#git-show---cc"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--cccodespan"></a><span class='synopsis'><code>--cc</code></span> </dt>
 <dd>
-<p>Producera tät kombinerad diff-utdata för sammanslagnings-incheckningar. Genväg för <span class='synopsis'><code>--diff-merges=dense-combined</code> <code>-p</code></span>.</p>
+<p>Producera tät kombinerad diff-utdata för sammanslagningsincheckningar. Genväg för <span class='synopsis'><code>--diff-merges=dense-combined</code> <code>-p</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--ddcodespan"> <a class="anchor" href="#git-show---dd"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--ddcodespan"></a><span class='synopsis'><code>--dd</code></span> </dt>
 <dd>
@@ -825,7 +794,7 @@ $ git log -2 --pretty=%h 4da45bef</pre>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--remerge-diffcodespan"> <a class="anchor" href="#git-show---remerge-diff"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--remerge-diffcodespan"></a><span class='synopsis'><code>--remerge-diff</code></span> </dt>
 <dd>
-<p>Producera remerge-diff utdata för sammanslagnings-incheckningar. Genväg för <span class='synopsis'><code>--diff-merges=remerge</code> <code>-p</code></span>.</p>
+<p>Producera remerge-diff-utdata för sammanslagningsincheckningar. Genväg för <span class='synopsis'><code>--diff-merges=remerge</code> <code>-p</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--no-diff-mergescodespan"> <a class="anchor" href="#git-show---no-diff-merges"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--no-diff-mergescodespan"></a><span class='synopsis'><code>--no-diff-merges</code></span> </dt>
 <dd>
@@ -833,7 +802,7 @@ $ git log -2 --pretty=%h 4da45bef</pre>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--diff-mergescodeemltformatgtemspan"> <a class="anchor" href="#git-show---diff-mergesformat"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--diff-mergescodeemltformatgtemspan"></a><span class='synopsis'><code>--diff-merges=</code><em>&lt;format&gt;</em></span> </dt>
 <dd>
-<p>Ange diff-formatet som ska användas för sammanslagnings-incheckningar. Standardinställningen är `dense-combined` om inte <span class='synopsis'><code>--first-parent</code></span> används, i vilket fall <span class='synopsis'><code>first-parent</code></span> är standardinställningen.</p>
+<p>Ange diff-formatet som ska användas för sammanslagningsincheckningar. Standardinställningen är `dense-combined` om inte <span class='synopsis'><code>--first-parent</code></span> används, i vilket fall <span class='synopsis'><code>first-parent</code></span> är standardinställningen.</p>
 <div class="paragraph">
 <p>Följande format stöds:</p>
 </div>
@@ -844,17 +813,17 @@ $ git log -2 --pretty=%h 4da45bef</pre>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodeoffcodespan"> <a class="anchor" href="#git-show-off"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeoffcodespan"></a><span class='synopsis'><code>off</code></span> </dt>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodenonecodespan"> <a class="anchor" href="#git-show-none"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodenonecodespan"></a><span class='synopsis'><code>none</code></span> </dt>
 <dd>
-<p>Inaktivera utdata för diffs för sammanslagnings-incheckningar. Användbart för att åsidosätta implicita värden.</p>
+<p>Inaktivera utdata för diffar för sammanslagningsincheckningar. Användbart för att åsidosätta implicita värden.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodeoncodespan"> <a class="anchor" href="#git-show-on"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeoncodespan"></a><span class='synopsis'><code>on</code></span> </dt>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodemcodespan-1"> <a class="anchor" href="#git-show-m-1-1-1-1-1"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodemcodespan-1"></a><span class='synopsis'><code>m</code></span> </dt>
 <dd>
-<p>Gör diff-utdata för sammanslagnings-incheckningar så att de visas i standardformatet. Standardformatet kan ändras med hjälp av konfigurationsvariabeln <span class='synopsis'><code>log.diffMerges</code></span>, vars standardvärde är <span class='synopsis'><code>separate</code></span>.</p>
+<p>Gör diff-utdata för sammanslagningsincheckningar så att de visas i standardformatet. Standardformatet kan ändras med hjälp av konfigurationsvariabeln <span class='synopsis'><code>log.diffMerges</code></span>, vars standardvärde är <span class='synopsis'><code>separate</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodefirst-parentcodespan"> <a class="anchor" href="#git-show-first-parent"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodefirst-parentcodespan"></a><span class='synopsis'><code>first-parent</code></span> </dt>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode1codespan"> <a class="anchor" href="#git-show-1"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode1codespan"></a><span class='synopsis'><code>1</code></span> </dt>
 <dd>
-<p>Visa fullständig skillnad med avseende på första föräldern. Detta är samma format som <span class='synopsis'><code>--patch</code></span> producerar för icke-sammanslagna incheckningar.</p>
+<p>Visa fullständig skillnad med avseende på första föräldern. Detta är samma format som <span class='synopsis'><code>--patch</code></span> producerar för ej sammanfogade incheckningar.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodeseparatecodespan"> <a class="anchor" href="#git-show-separate"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeseparatecodespan"></a><span class='synopsis'><code>separate</code></span> </dt>
 <dd>
@@ -863,7 +832,7 @@ $ git log -2 --pretty=%h 4da45bef</pre>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodecombinedcodespan"> <a class="anchor" href="#git-show-combined"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodecombinedcodespan"></a><span class='synopsis'><code>combined</code></span> </dt>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodeccodespan"> <a class="anchor" href="#git-show-c"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeccodespan"></a><span class='synopsis'><code>c</code></span> </dt>
 <dd>
-<p>Visa skillnader från varje förälder till sammanslagningsresultatet samtidigt istället för att visa parvisa skillnader mellan en förälder och resultatet en i taget. Dessutom listas endast filer som har ändrats från alla föräldrar.</p>
+<p>Visa skillnader från varje förälder till sammanslagningsresultatet samtidigt i stället för att visa parvisa skillnader mellan en förälder och resultatet en i taget. Dessutom listas endast filer som har ändrats från alla föräldrar.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodedense-combinedcodespan"> <a class="anchor" href="#git-show-dense-combined"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodedense-combinedcodespan"></a><span class='synopsis'><code>dense-combined</code></span> </dt>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodecccodespan"> <a class="anchor" href="#git-show-cc"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodecccodespan"></a><span class='synopsis'><code>cc</code></span> </dt>
@@ -873,7 +842,7 @@ $ git log -2 --pretty=%h 4da45bef</pre>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscoderemergecodespan"> <a class="anchor" href="#git-show-remerge"></a> <a class="anchor" href="#git-show-spanclasssynopsiscoderemergecodespan"></a><span class='synopsis'><code>remerge</code></span> </dt>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodercodespan"> <a class="anchor" href="#git-show-r"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodercodespan"></a><span class='synopsis'><code>r</code></span> </dt>
 <dd>
-<p>Återsammanfoga två-föräldra sammanslagnings-incheckningar för att skapa ett temporärt trädobjekt – potentiellt innehållande filer med konfliktmarkörer och liknande. En skillnad visas sedan mellan det temporära trädet och den faktiska sammanslagnings-incheckningen.</p>
+<p>Återsammanfoga två-föräldra sammanslagningsincheckningar för att skapa ett temporärt trädobjekt – potentiellt innehållande filer med konfliktmarkörer och liknande. En skillnad visas sedan mellan det temporära trädet och den faktiska sammanslagningsincheckningen.</p>
 </dd>
 </dl>
 </div>
@@ -885,17 +854,17 @@ $ git log -2 --pretty=%h 4da45bef</pre>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--combined-all-pathscodespan"> <a class="anchor" href="#git-show---combined-all-paths"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--combined-all-pathscodespan"></a><span class='synopsis'><code>--combined-all-paths</code></span> </dt>
 <dd>
-<p>Gör att kombinerade diffs (används försammanslagnings-incheckningar) listar namnet på filen från alla föräldrar. Det har således bara effekt när <span class='synopsis'><code>--diff-merges=</code>[<code>dense-</code>]<code>combined</code></span> används, och är sannolikt bara användbart om filnamnsändringar upptäcks (dvs. när antingen namnbyte eller kopieringsdetektering har begärts).</p>
+<p>Gör att kombinerade diffar (används för sammanslagningsincheckningar) listar namnet på filen från alla föräldrar. Det har således bara effekt när <span class='synopsis'><code>--diff-merges=</code>[<code>dense-</code>]<code>combined</code></span> används, och är sannolikt bara användbart om filnamnsändringar upptäcks (d.v.s. när antingen namnbyte eller kopieringsdetektering har begärts).</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode-Ucodeemltngtemspan"> <a class="anchor" href="#git-show--Un"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode-Ucodeemltngtemspan"></a><span class='synopsis'><code>-U</code><em>&lt;n&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--unifiedcodeemltngtemspan"> <a class="anchor" href="#git-show---unifiedn"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--unifiedcodeemltngtemspan"></a><span class='synopsis'><code>--unified=</code><em>&lt;n&gt;</em></span> </dt>
 <dd>
-<p>Generera skillnader med <em>&lt;n&gt;</em> kontextrader istället för de vanliga tre.
+<p>Generate diffs with <em>&lt;n&gt;</em> lines of context. The number of context lines defaults to <span class='synopsis'><code>diff.context</code></span> or 3 if the configuration variable is unset. (<span class='synopsis'><code>-U</code></span> without <span class='synopsis'><em>&lt;n&gt;</em></span> is silently accepted as a synonym for <span class='synopsis'><code>-p</code></span> due to a historical accident).
 implicerar <span class='synopsis'><code>--patch</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--outputcodeemltfilgtemspan"> <a class="anchor" href="#git-show---outputfil"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--outputcodeemltfilgtemspan"></a><span class='synopsis'><code>--output=</code><em>&lt;fil&gt;</em></span> </dt>
 <dd>
-<p>Utdata till en specifik fil istället för stdout.</p>
+<p>Skriv utdata till en specifik fil i stället för stdout.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--output-indicator-newcodeemltteckengtemspan"> <a class="anchor" href="#git-show---output-indicator-newtecken"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--output-indicator-newcodeemltteckengtemspan"></a><span class='synopsis'><code>--output-indicator-new=</code><em>&lt;tecken&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--output-indicator-oldcodeemltteckengtemspan"> <a class="anchor" href="#git-show---output-indicator-oldtecken"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--output-indicator-oldcodeemltteckengtemspan"></a><span class='synopsis'><code>--output-indicator-old=</code><em>&lt;tecken&gt;</em></span> </dt>
@@ -998,7 +967,7 @@ i råformat, vilket du kan uppnå med
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--numstatcodespan"> <a class="anchor" href="#git-show---numstat"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--numstatcodespan"></a><span class='synopsis'><code>--numstat</code></span> </dt>
 <dd>
-<p>Liknar <span class='synopsis'><code>--stat</code></span>, men visar antalet tillagda och borttagna rader i decimalnotation och sökväg utan förkortning, för att göra det mer maskinvänligt. För binära filer matas två <span class='synopsis'><code>-</code></span> ut istället för att säga <span class='synopsis'><code>0</code> <code>0</code></span>.</p>
+<p>Liknar <span class='synopsis'><code>--stat</code></span>, men visar antalet tillagda och borttagna rader i decimalnotation och sökväg utan förkortning, för att göra det mer maskinvänligt. För binära filer matas två <span class='synopsis'><code>-</code></span> ut i stället för <span class='synopsis'><code>0</code> <code>0</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--shortstatcodespan"> <a class="anchor" href="#git-show---shortstat"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--shortstatcodespan"></a><span class='synopsis'><code>--shortstat</code></span> </dt>
 <dd>
@@ -1018,7 +987,7 @@ i råformat, vilket du kan uppnå med
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodelinescodespan"> <a class="anchor" href="#git-show-lines"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodelinescodespan"></a><span class='synopsis'><code>lines</code></span> </dt>
 <dd>
-<p>Beräkna dirstat-talen genom att göra den vanliga radbaserade diff-analysen och summera antalet borttagna/tillagda rader. (För binära filer, räkna istället 64-byte-block, eftersom binära filer inte har något naturligt koncept för rader). Detta är ett dyrare <span class='synopsis'><code>--dirstat</code></span>-beteende än <span class='synopsis'><code>changes</code></span>-beteendet, men det räknar omordnade rader i en fil lika mycket som andra ändringar. Den resulterande utdata överensstämmer med vad du får från de andra <span class='synopsis'><code>--*stat</code></span>-alternativen.</p>
+<p>Beräkna dirstat-talen genom att göra den vanliga radbaserade diff-analysen och summera antalet borttagna/tillagda rader. (För binära filer, räkna i stället 64-byte-block, eftersom binära filer inte har något naturligt koncept för rader). Detta är ett dyrare <span class='synopsis'><code>--dirstat</code></span>-beteende än <span class='synopsis'><code>changes</code></span>-beteendet, men det räknar omordnade rader i en fil lika mycket som andra ändringar. Den resulterande utdata överensstämmer med vad du får från de andra <span class='synopsis'><code>--*stat</code></span>-alternativen.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodefilescodespan"> <a class="anchor" href="#git-show-files"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodefilescodespan"></a><span class='synopsis'><code>files</code></span> </dt>
 <dd>
@@ -1058,7 +1027,7 @@ i råformat, vilket du kan uppnå med
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode-zcodespan"> <a class="anchor" href="#git-show--z"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode-zcodespan"></a><span class='synopsis'><code>-z</code></span> </dt>
 <dd>
-<p>Separera incheckningar med <em>NUL</em> istället för newlines.</p>
+<p>Separera incheckningar med <em>NUL</em> i stället för nyrader.</p>
 <div class="paragraph">
 <p>Also, when <span class='synopsis'><code>--raw</code></span> or <span class='synopsis'><code>--numstat</code></span> has been given, do not munge pathnames and use <em>NUL</em>s as output field terminators.</p>
 </div>
@@ -1076,11 +1045,11 @@ i råformat, vilket du kan uppnå med
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--submodulecodecodecodeemltformatgtemspan"> <a class="anchor" href="#git-show---submoduleformat"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--submodulecodecodecodeemltformatgtemspan"></a><span class='synopsis'><code>--submodule</code>[<code>=</code><em>&lt;format&gt;</em>]</span> </dt>
 <dd>
-<p>Ange hur skillnader i undermoduler visas. När <span class='synopsis'><code>--submodule=short</code></span> anges används formatet <span class='synopsis'><code>short</code></span>. Detta format visar bara namnen på incheckningar i början och slutet av intervallet. När <span class='synopsis'><code>--submodule</code></span> eller <span class='synopsis'><code>--submodule=log</code></span> anges används formatet <span class='synopsis'><code>log</code></span>. Detta format listar incheckningar i intervallet, precis som <a href='{{< relurl "docs/git-submodule/sv" >}}'>git-submodule[1]</a> <span class='synopsis'><code>summary</code></span> gör. När <span class='synopsis'><code>--submodule=diff</code></span> anges används formatet <span class='synopsis'><code>diff</code></span>. Detta format visar en inline-diff av ändringarna i undermodulinnehållet mellan inchecknings-intervallet. Standardinställningen är <span class='synopsis'><code>diff.submodule</code></span> eller formatet <span class='synopsis'><code>short</code></span> om konfigurationsalternativet inte är inställt.</p>
+<p>Ange hur skillnader i undermoduler visas. När <span class='synopsis'><code>--submodule=short</code></span> anges används formatet <span class='synopsis'><code>short</code></span>. Detta format visar bara namnen på incheckningar i början och slutet av intervallet. När <span class='synopsis'><code>--submodule</code></span> eller <span class='synopsis'><code>--submodule=log</code></span> anges används formatet <span class='synopsis'><code>log</code></span>. Detta format listar incheckningar i intervallet, precis som <a href='{{< relurl "docs/git-submodule/sv" >}}'>git-submodule[1]</a> <span class='synopsis'><code>summary</code></span> gör. När <span class='synopsis'><code>--submodule=diff</code></span> anges används formatet <span class='synopsis'><code>diff</code></span>. Detta format visar en inline-diff av ändringarna i undermodulinnehållet mellan incheckningsintervallet. Standardinställningen är <span class='synopsis'><code>diff.submodule</code></span> eller formatet <span class='synopsis'><code>short</code></span> om konfigurationsalternativet inte är inställt.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--colorcodecodecodeemltnrgtemspan"> <a class="anchor" href="#git-show---colornr"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--colorcodecodecodeemltnrgtemspan"></a><span class='synopsis'><code>--color</code>[<code>=</code><em>&lt;när&gt;</em>]</span> </dt>
 <dd>
-<p>Visa färglagd skillnad. <span class='synopsis'><code>--color</code></span> (dvs. utan <span class='synopsis'><code>=</code><em>&lt;när&gt;</em></span>) är samma sak som <span class='synopsis'><code>--color=always</code></span>. <em>&lt;när&gt;</em> kan vara en av <span class='synopsis'><code>always</code></span>, <span class='synopsis'><code>aldrig</code></span> eller <span class='synopsis'><code>auto</code></span>.</p>
+<p>Visa färglagd skillnad. <span class='synopsis'><code>--color</code></span> (d.v.s. utan <span class='synopsis'><code>=</code><em>&lt;när&gt;</em></span>) är samma sak som <span class='synopsis'><code>--color=always</code></span>. <em>&lt;när&gt;</em> kan vara en av <span class='synopsis'><code>always</code></span>, <span class='synopsis'><code>aldrig</code></span> eller <span class='synopsis'><code>auto</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--no-colorcodespan"> <a class="anchor" href="#git-show---no-color"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--no-colorcodespan"></a><span class='synopsis'><code>--no-color</code></span> </dt>
 <dd>
@@ -1115,7 +1084,7 @@ Läget måste vara ett av:</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodezebracodespan"> <a class="anchor" href="#git-show-zebra"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodezebracodespan"></a><span class='synopsis'><code>zebra</code></span> </dt>
 <dd>
-<p>Block med flyttad text detekteras som i <span class='synopsis'><code>blocks</code></span>-läge. Blocken målas med antingen färgen <span class='synopsis'><code>color.diff.</code>(<code>old</code>|<code>new</code>)<code>Moved</code></span> eller <span class='synopsis'><code>color.diff.</code>(<code>old</code>|<code>new</code>)<code>MovedAlternative</code></span>. Växlingen mellan de två färgerna indikerar att ett nytt block har detekterats.</p>
+<p>Block med flyttad text identifieras som i <span class='synopsis'><code>blocks</code></span>-läge. Blocken målas med antingen färgen <span class='synopsis'><code>color.diff.</code>(<code>old</code>|<code>new</code>)<code>Moved</code></span> eller <span class='synopsis'><code>color.diff.</code>(<code>old</code>|<code>new</code>)<code>MovedAlternative</code></span>. Växlingen mellan de två färgerna indikerar att ett nytt block har identifierats.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodedimmed-zebracodespan"> <a class="anchor" href="#git-show-dimmed-zebra"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodedimmed-zebracodespan"></a><span class='synopsis'><code>dimmed-zebra</code></span> </dt>
 <dd>
@@ -1132,7 +1101,7 @@ Läget måste vara ett av:</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--color-moved-wscodeemltlgegtemcodecodespan"> <a class="anchor" href="#git-show---color-moved-wslge"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--color-moved-wscodeemltlgegtemcodecodespan"></a><span class='synopsis'><code>--color-moved-ws=</code><em>&lt;läge&gt;</em><code>,...</code></span> </dt>
 <dd>
-<p>Detta konfigurerar hur blanksteg ignoreras när rörelsedetektering utförs för <span class='synopsis'><code>--color-moved</code></span>.
+<p>Det konfigurerar hur blanksteg ignoreras när rörelsedetektering utförs för <span class='synopsis'><code>--color-moved</code></span>.
 Dessa lägen kan anges som en kommaseparerad lista:</p>
 <div class="openblock">
 <div class="content">
@@ -1200,7 +1169,7 @@ Dessa lägen kan anges som en kommaseparerad lista:</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--word-diff-regexcodeemltregexgtemspan"> <a class="anchor" href="#git-show---word-diff-regexregex"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--word-diff-regexcodeemltregexgtemspan"></a><span class='synopsis'><code>--word-diff-regex=</code><em>&lt;regex&gt;</em></span> </dt>
 <dd>
-<p>Använd <em>&lt;regex&gt;</em> för att avgöra vad ett ord är, istället för att betrakta sträckor av icke-blanksteg som ett ord. Innebär även <span class='synopsis'><code>--word-diff</code></span> om det inte redan var aktiverat.</p>
+<p>Använd <em>&lt;regex&gt;</em> för att avgöra vad ett ord är, i stället för att betrakta sträckor av icke-blanksteg som ett ord. Innebär även <span class='synopsis'><code>--word-diff</code></span> om det inte redan var aktiverat.</p>
 <div class="paragraph">
 <p>Varje icke-överlappande matchning av <em>&lt;regex&gt;</em> betraktas som ett ord. Allt mellan dessa matchningar betraktas som blanktecken och ignoreras(!) i syfte att hitta skillnader. Du kanske vill lägga till <span class='synopsis'>|[<code>^</code>[<code>:space:</code>]]</span> i ditt reguljära uttryck för att se till att det matchar alla tecken som inte är blanktecken. En matchning som innehåller en nyrad avkortas tyst(!) vid nyradslinjen.</p>
 </div>
@@ -1234,7 +1203,7 @@ Dessa lägen kan anges som en kommaseparerad lista:</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--full-indexcodespan"> <a class="anchor" href="#git-show---full-index"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--full-indexcodespan"></a><span class='synopsis'><code>--full-index</code></span> </dt>
 <dd>
-<p>Istället för de första tecknen, visa de fullständiga namnen på blob-objekten före och efter avbildningen på "index"-raden när du genererar utdata för patch-format.</p>
+<p>I stället för de första tecknen, visa de fullständiga namnen på blob-objekten före och efter avbildningen på "index"-raden när du genererar utdata för patch-format.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--binarycodespan"> <a class="anchor" href="#git-show---binary"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--binarycodespan"></a><span class='synopsis'><code>--binary</code></span> </dt>
 <dd>
@@ -1243,14 +1212,14 @@ implicerar <span class='synopsis'><code>--patch</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--abbrevcodecodecodeemltngtemspan"> <a class="anchor" href="#git-show---abbrevn"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--abbrevcodecodecodeemltngtemspan"></a><span class='synopsis'><code>--abbrev</code>[<code>=</code><em>&lt;n&gt;</em>]</span> </dt>
 <dd>
-<p>Istället för att visa det fullständiga 40-byte hexadecimala objektnamnet i utdata i diff-raw-format och diff-tree-huvud-rader, visa det kortaste prefixet som är minst <em>&lt;n&gt;</em> hexdigits långt och som unikt refererar till objektet. I diff-patch-utdataformat har <span class='synopsis'><code>--full-index</code></span> högre prioritet, d.v.s. om <span class='synopsis'><code>--full-index</code></span> anges kommer fullständiga blobnamn att visas oavsett <span class='synopsis'><code>--abbrev</code></span>. Antal siffror som inte är standard kan anges med <span class='synopsis'><code>--abbrev=</code><em>&lt;n&gt;</em></span>.</p>
+<p>I stället för att visa det fullständiga 40-byte hexadecimala objektnamnet i utdata i diff-raw-format och diff-tree-rubrikrader, visa det kortaste prefixet som är minst <em>&lt;n&gt;</em> hexdigits långt och som unikt refererar till objektet. I diff-patch-utdataformat har <span class='synopsis'><code>--full-index</code></span> högre prioritet, d.v.s. om <span class='synopsis'><code>--full-index</code></span> anges kommer fullständiga blobnamn att visas oavsett <span class='synopsis'><code>--abbrev</code></span>. Antal siffror som inte är standard kan anges med <span class='synopsis'><code>--abbrev=</code><em>&lt;n&gt;</em></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode-Bcodeemltngtemcodecodeemltmgtemspan"> <a class="anchor" href="#git-show--Bnm"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode-Bcodeemltngtemcodecodeemltmgtemspan"></a><span class='synopsis'><code>-B</code>[<em>&lt;n&gt;</em>][<code>/</code><em>&lt;m&gt;</em>]</span> </dt>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--break-rewritescodecodecodeemltngtemcodecodeemltmgtemspan"> <a class="anchor" href="#git-show---break-rewritesnm"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--break-rewritescodecodecodeemltngtemcodecodeemltmgtemspan"></a><span class='synopsis'><code>--break-rewrites</code>[<code>=</code>[<em>&lt;n&gt;</em>][<code>/</code><em>&lt;m&gt;</em>]]</span> </dt>
 <dd>
 <p>Dela upp fullständiga omskrivningsändringar i par av radera och skapa. Detta tjänar två syften:</p>
 <div class="paragraph">
-<p>Det påverkar hur en förändring som innebär en total omskrivning av en fil, inte som en serie borttagningar och infogningar blandade med ett fåtal rader som råkar matcha textuellt som kontexten, utan som en enda borttagning av allt gammalt följt av en enda infogning av allt nytt, och siffran <em>&lt;m&gt;</em> styr denna aspekt av <span class='synopsis'><code>-B</code></span>-alternativet (standard är 60%). <span class='synopsis'><code>-B/70%</code></span> anger att mindre än 30% av originalet ska finnas kvar i resultatet för att Git ska betrakta det som en total omskrivning (dvs. annars kommer den resulterande patchen att vara en serie borttagningar och infogningar blandade med kontextrader).</p>
+<p>Det påverkar hur en förändring som innebär en total omskrivning av en fil, inte som en serie borttagningar och infogningar blandade med ett fåtal rader som råkar matcha textuellt som kontexten, utan som en enda borttagning av allt gammalt följt av en enda infogning av allt nytt, och siffran <em>&lt;m&gt;</em> styr denna aspekt av <span class='synopsis'><code>-B</code></span>-alternativet (standard är 60%). <span class='synopsis'><code>-B/70%</code></span> anger att mindre än 30% av originalet ska finnas kvar i resultatet för att Git ska betrakta det som en total omskrivning (d.v.s. annars kommer den resulterande patchen att vara en serie borttagningar och infogningar blandade med kontextrader).</p>
 </div>
 <div class="paragraph">
 <p>När den används med <span class='synopsis'><code>-M</code></span> betraktas även en helt omskriven fil som källa till ett namnbyte (vanligtvis betraktar <span class='synopsis'><code>-M</code></span> bara en fil som försvunnit som källa till ett namnbyte), och siffran <em>&lt;n&gt;</em> styr denna aspekt av alternativet <span class='synopsis'><code>-B</code></span> (standard är 50%). <span class='synopsis'><code>-B20%</code></span> anger att en ändring med tillägg och borttagning jämfört med 20% eller mer av filens storlek är berättigad att plockas upp som en möjlig källa till ett namnbyte till en annan fil.</p>
@@ -1291,21 +1260,21 @@ till exakta namnbyten, använd <span class='synopsis'><code>-M100%</code></span>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode-lcodeemltnumgtemspan"> <a class="anchor" href="#git-show--lnum"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode-lcodeemltnumgtemspan"></a><span class='synopsis'><code>-l</code><em>&lt;num&gt;</em></span> </dt>
 <dd>
-<p>Alternativen <span class='synopsis'><code>-M</code></span> och <span class='synopsis'><code>-C</code></span> involverar några preliminära steg som kan upptäcka delmängder av namnbyten/kopior billigt, följt av en uttömmande reservdel som jämför alla återstående oparade destinationer med alla relevanta källor. (För namnbyten är endast återstående oparade källor relevanta; för kopior är alla originalkällor relevanta.) För N källor och destinationer är denna uttömmande kontroll O(N^2). Detta alternativ förhindrar att den uttömmande delen av namnbytes-/kopieringsdetektering körs om antalet inblandade käll-/destinationsfiler överstiger det angivna antalet. Standardvärdet är <span class='synopsis'><code>diff.renameLimit</code></span>. Observera att värdet 0 behandlas som obegränsat.</p>
+<p>Alternativen <span class='synopsis'><code>-M</code></span> och <span class='synopsis'><code>-C</code></span> involverar några preliminära steg som kan upptäcka delmängder av namnbyten/kopior billigt, följt av en uttömmande del som jämför alla återstående oparade destinationer med alla relevanta källor. (För namnbyten är endast återstående oparade källor relevanta; för kopior är alla originalkällor relevanta.) För N källor och destinationer är denna uttömmande kontroll O(N^2). Detta alternativ förhindrar att den uttömmande delen av namnbytes-/kopieringsdetektering körs om antalet inblandade käll-/destinationsfiler överstiger det angivna antalet. Standardvärdet är <span class='synopsis'><code>diff.renameLimit</code></span>. Observera att värdet 0 behandlas som obegränsat.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--diff-filtercodecodeAcodecodeCcodecodeDcodecodeMcodecodeRcodecodeTcodecodeUcodecodeXcodecodeBcodecodecodecodecodespan"> <a class="anchor" href="#git-show---diff-filterACDMRTUXB"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--diff-filtercodecodeAcodecodeCcodecodeDcodecodeMcodecodeRcodecodeTcodecodeUcodecodeXcodecodeBcodecodecodecodecodespan"></a><span class='synopsis'><code>--diff-filter=</code>[(<code>A</code>|<code>C</code>|<code>D</code>|<code>M</code>|<code>R</code>|<code>T</code>|<code>U</code>|<code>X</code>|<code>B</code>)<code>...</code>[<code>*</code>]]</span> </dt>
 <dd>
-<p>Markera endast filer som är Tillagda (<span class='synopsis'><code>A</code></span>), Kopierade (<span class='synopsis'><code>C</code></span>), Borttagna (<span class='synopsis'><code>D</code></span>), Modifierade (<span class='synopsis'><code>M</code></span>), Omdöpta (<span class='synopsis'><code>R</code></span>), har sin typ (dvs. vanlig fil, symlänk, undermodul, &#8230;&#8203;) ändrad (<span class='synopsis'><code>T</code></span>), är Osammanslagna (<span class='synopsis'><code>U</code></span>), är Okända (<span class='synopsis'><code>X</code></span>) eller har fått sin parning Bruten (<span class='synopsis'><code>B</code></span>). Vilken kombination som helst av filtertecknen (inklusive inga) kan användas. När <span class='synopsis'><code>*</code></span> (Allt-eller-inget) läggs till i kombinationen markeras alla sökvägar om det finns någon fil som matchar andra kriterier i jämförelsen; om det inte finns någon fil som matchar andra kriterier markeras ingenting.</p>
+<p>Markera endast filer som är Tillagda (<span class='synopsis'><code>A</code></span>), Kopierade (<span class='synopsis'><code>C</code></span>), Borttagna (<span class='synopsis'><code>D</code></span>), Modifierade (<span class='synopsis'><code>M</code></span>), Omdöpta (<span class='synopsis'><code>R</code></span>), har sin typ (d.v.s. vanlig fil, symlänk, undermodul, &#8230;&#8203;) ändrad (<span class='synopsis'><code>T</code></span>), är Osammanslagna (<span class='synopsis'><code>U</code></span>), är Okända (<span class='synopsis'><code>X</code></span>) eller har fått sin parning Bruten (<span class='synopsis'><code>B</code></span>). Vilken kombination som helst av filtertecknen (inklusive inga) kan användas. När <span class='synopsis'><code>*</code></span> (Allt-eller-inget) läggs till i kombinationen markeras alla sökvägar om det finns någon fil som matchar andra kriterier i jämförelsen; om det inte finns någon fil som matchar andra kriterier markeras ingenting.</p>
 <div class="paragraph">
 <p>Även, dessa versaler kan ändras till gemener för att exkludera. T.ex. exkluderar <span class='synopsis'><code>--diff-filter=ad</code></span> tillagda och borttagna sökvägar.</p>
 </div>
 <div class="paragraph">
-<p>Observera att inte alla diffs kan innehålla alla typer. Till exempel kan kopierade och omdöpta poster inte visas om detektering för dessa typer är inaktiverat.</p>
+<p>Observera att inte alla diffar kan innehålla alla typer. Till exempel kan kopierade och omdöpta poster inte visas om identifieringen för dessa typer är inaktiverad.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode-Scodeemltstrnggtemspan"> <a class="anchor" href="#git-show--Sstrng"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode-Scodeemltstrnggtemspan"></a><span class='synopsis'><code>-S</code><em>&lt;sträng&gt;</em></span> </dt>
 <dd>
-<p>Leta efter skillnader som ändrar antalet förekomster av den angivna <em>&lt;sträng&gt;</em> (dvs. tillägg/borttagning) i en fil. Avsedd för skriptutvecklarens bruk.</p>
+<p>Leta efter skillnader som ändrar antalet förekomster av den angivna <em>&lt;sträng&gt;</em> (d.v.s. tillägg/borttagning) i en fil. Avsedd för skriptutvecklarens bruk.</p>
 <div class="paragraph">
 <p>Det är användbart när du letar efter ett exakt kodblock (som en struktur) och vill veta blockets historia sedan det först kom till: använd funktionen iterativt för att mata in det intressanta blocket i föravbildningen tillbaka till <span class='synopsis'><code>-S</code></span> och fortsätt tills du får den allra första versionen av blocket.</p>
 </div>
@@ -1384,7 +1353,7 @@ till exakta namnbyten, använd <span class='synopsis'><code>-M100%</code></span>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--skip-tocodeemltfilgtemspan"> <a class="anchor" href="#git-show---skip-tofil"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--skip-tocodeemltfilgtemspan"></a><span class='synopsis'><code>--skip-to=</code><em>&lt;fil&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--rotate-tocodeemltfilgtemspan"> <a class="anchor" href="#git-show---rotate-tofil"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--rotate-tocodeemltfilgtemspan"></a><span class='synopsis'><code>--rotate-to=</code><em>&lt;fil&gt;</em></span> </dt>
 <dd>
-<p>Släng filerna före den namngivna <em>&lt;fil&gt;</em> från utdata (dvs. <em>hoppa till</em>), eller flytta dem till slutet av utdata (dvs. <em>rotera till</em>). Dessa alternativ uppfanns främst för användning av <span class='synopsis'><code>git</code> <code>difftool</code></span>-kommandot, och kanske inte är särskilt användbara annars.</p>
+<p>Släng filerna före den namngivna <em>&lt;fil&gt;</em> från utdata (d.v.s. <em>hoppa till</em>), eller flytta dem till slutet av utdata (d.v.s. <em>rotera till</em>). Dessa alternativ uppfanns främst för användning av <span class='synopsis'><code>git</code> <code>difftool</code></span>-kommandot, och kanske inte är särskilt användbara annars.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode-Rcodespan"> <a class="anchor" href="#git-show--R"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode-Rcodespan"></a><span class='synopsis'><code>-R</code></span> </dt>
 <dd>
@@ -1455,11 +1424,11 @@ till exakta namnbyten, använd <span class='synopsis'><code>-M100%</code></span>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--src-prefixcodeemltprefixgtemspan"> <a class="anchor" href="#git-show---src-prefixprefix"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--src-prefixcodeemltprefixgtemspan"></a><span class='synopsis'><code>--src-prefix=</code><em>&lt;prefix&gt;</em></span> </dt>
 <dd>
-<p>Visa givet käll_&lt;prefix&gt;_ istället för ”a/”.</p>
+<p>Visa det angivna käll_&lt;prefix&gt;_ i stället för "a/".</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--dst-prefixcodeemltprefixgtemspan"> <a class="anchor" href="#git-show---dst-prefixprefix"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--dst-prefixcodeemltprefixgtemspan"></a><span class='synopsis'><code>--dst-prefix=</code><em>&lt;prefix&gt;</em></span> </dt>
 <dd>
-<p>Visa den angivna mål <em>&lt;prefix&gt;</em> istället för "b/".</p>
+<p>Visa det angivna mål_&lt;prefix&gt;_ i stället för "b/".</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--no-prefixcodespan"> <a class="anchor" href="#git-show---no-prefix"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--no-prefixcodespan"></a><span class='synopsis'><code>--no-prefix</code></span> </dt>
 <dd>
@@ -1504,10 +1473,10 @@ till exakta namnbyten, använd <span class='synopsis'><code>-M100%</code></span>
 </div>
 </div>
 <div class="paragraph">
-<p>Om ingen sökvägsmönster anges mäts djupet som om alla poster på toppnivå vore specificerade. Observera att detta skiljer sig från att mäta från roten, eftersom <span class='synopsis'><code>--max-depth=0</code></span> fortfarande skulle returnera <span class='synopsis'><code>foo</code></span>. Detta låter dig fortfarande begränsa djupet samtidigt som du frågar efter en delmängd av posterna på toppnivå.</p>
+<p>Om ingen sökvägsmönster anges mäts djupet som om alla poster på toppnivå vore angivna. Observera att detta skiljer sig från att mäta från roten, eftersom <span class='synopsis'><code>--max-depth=0</code></span> fortfarande skulle returnera <span class='synopsis'><code>foo</code></span>. Detta gör det fortfarande möjligt att begränsa djupet samtidigt som en delmängd av posterna på toppnivå.</p>
 </div>
 <div class="paragraph">
-<p>Observera att det här alternativet endast stöds för skillnader mellan trädobjekt, inte mot indexet eller arbetskatalog.</p>
+<p>Observera att det här alternativet endast stöds för skillnader mellan trädobjekt, inte mot indexet eller arbetsträd.</p>
 </div>
 </dd>
 </dl>
@@ -1536,7 +1505,7 @@ till exakta namnbyten, använd <span class='synopsis'><code>-M100%</code></span>
 </div>
 </div>
 <div class="paragraph">
-<p>Filnamnen <span class='synopsis'><code>a/</code></span> och <span class='synopsis'><code>b/</code></span> är desamma om det inte rör sig om att byta namn/kopiera. Speciellt, även vid skapande eller borttagning, används <span class='synopsis'><code>/dev/null</code></span> <em>inte</em> istället för filnamnen <span class='synopsis'><code>a/</code></span> eller <span class='synopsis'><code>b/</code></span>.</p>
+<p>Filnamnen <span class='synopsis'><code>a/</code></span> och <span class='synopsis'><code>b/</code></span> är desamma om det inte rör sig om att byta namn/kopiera. Särskilt vid skapande eller borttagning används <span class='synopsis'><code>/dev/null</code></span> <em>inte</em> i stället för filnamnen <span class='synopsis'><code>a/</code></span> eller <span class='synopsis'><code>b/</code></span>.</p>
 </div>
 <div class="paragraph">
 <p>När ett namnbyte/kopiering är inblandat visar <span class='synopsis'><code>fil1</code></span> och <span class='synopsis'><code>fil2</code></span> namnet på källfilen för namnbytet/kopieringen respektive namnet på filen som namnbytet/kopieringen producerar.</p>
@@ -1597,7 +1566,7 @@ rename to a</pre>
 <h2 id="_kombinerat_diff_format"><a class="anchor" href="#_kombinerat_diff_format"></a>Kombinerat diff-format</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Alla diff-genererande kommandon kan använda <span class='synopsis'><code>-c</code></span> eller <span class='synopsis'><code>--cc</code></span> alternativet för att skapa en <em>kombinerad diff</em> när en merge visas. Detta är standardformatet när merges visas med <a href='{{< relurl "docs/git-diff/sv" >}}'>git-diff[1]</a> eller <a href='{{< relurl "docs/git-show/sv" >}}'>git-show[1]</a>. Observera också att du kan ge lämplig <span class='synopsis'><code>--diff-merges</code></span> alternativ till vilket som helst av dessa kommandon för att tvinga generering av diffs i ett specifikt format.</p>
+<p>Alla kommandon som genererar diffar kan använda alternativet <span class='synopsis'><code>-c</code></span> eller <span class='synopsis'><code>--cc</code></span> för att skapa en <em>kombinerad diff</em> när en sammanslagning visas. Detta är standardformatet när sammanslagningar visas med <a href='{{< relurl "docs/git-diff/sv" >}}'>git-diff[1]</a> eller <a href='{{< relurl "docs/git-show/sv" >}}'>git-show[1]</a>. Observera också att du kan ge ett lämpligt <span class='synopsis'><code>--diff-merges</code></span>-alternativ till vilket som helst av dessa kommandon för att tvinga fram generering av diffar i ett specifikt format.</p>
 </div>
 <div class="paragraph">
 <p>Ett "kombinerat diff"-format ser ut så här:</p>
@@ -1655,12 +1624,12 @@ index fabadb8,cc95eb0..4866510
 <p>Den följs av ett eller flera utökade huvud-rader (detta exempel visar en sammanslagning med två föräldrar):</p>
 <div class="verseblock">
 <pre class="content"><span class='synopsis'><code>index</code></span> <em><span class="hover-term" data-term="hash">&lt;hash&gt;</span></em><span class='synopsis'><code>,</code></span><em><span class="hover-term" data-term="hash">&lt;hash&gt;</span></em><span class='synopsis'><code>..</code></span><em><span class="hover-term" data-term="hash">&lt;hash&gt;</span></em>
-<span class='synopsis'><code>mode</code></span> <em>&lt;behörighter&gt;</em><span class='synopsis'><code>,</code></span><em>&lt;behörighter&gt;</em><span class='synopsis'><code>..</code></span><em>&lt;behörighter&gt;</em>
-<span class='synopsis'><code>new</code></span> <span class='synopsis'><code>file</code></span> <span class='synopsis'><code>mode</code></span> <em>&lt;behörighter&gt;</em>
-<span class='synopsis'><code>deleted</code></span> <span class='synopsis'><code>file</code></span> <span class='synopsis'><code>mode</code></span> <em>&lt;behörighter&gt;</em><span class='synopsis'><code>,</code></span><em>&lt;behörighter&gt;</em></pre>
+<span class='synopsis'><code>mode</code></span> <em>&lt;läge&gt;</em><span class='synopsis'><code>,</code></span><em>&lt;läge&gt;</em><span class='synopsis'><code>..</code></span><em>&lt;läge&gt;</em>
+<span class='synopsis'><code>new</code></span> <span class='synopsis'><code>file</code></span> <span class='synopsis'><code>mode</code></span> <em>&lt;läge&gt;</em>
+<span class='synopsis'><code>deleted</code></span> <span class='synopsis'><code>file</code></span> <span class='synopsis'><code>mode</code></span> <em>&lt;läge&gt;</em><span class='synopsis'><code>,</code></span><em>&lt;läge&gt;</em></pre>
 </div>
 <div class="paragraph">
-<p>Raden <span class='synopsis'><code>mode</code> <em>&lt;behörighter&gt;</em><code>,</code><em>&lt;behörighter&gt;</em><code>..</code><em>&lt;behörighter&gt;</em></span> visas bara om minst en av &lt;behörighter&gt; skiljer sig från resten. Utökade huvuden med information om detekterad innehållsförflyttning (namnbyten och kopieringsdetektering) är utformade för att fungera med diff-värdet för två <em>&lt;trädlikt&gt;</em> och används inte av kombinerat diff-format.</p>
+<p>Raden <span class='synopsis'><code>mode</code> <em>&lt;läge&gt;</em><code>,</code><em>&lt;läge&gt;</em><code>..</code><em>&lt;läge&gt;</em></span> visas bara om minst ett av &lt;läge&gt;-värdena skiljer sig från resten. Utökade rubriker med information om identifierad innehållsförflyttning (namnbyten och kopieringsdetektering) är utformade för att fungera med diff-värdet för två <em>&lt;trädlikt&gt;</em> och används inte av kombinerat diff-format.</p>
 </div>
 </li>
 <li>
@@ -1675,7 +1644,7 @@ index fabadb8,cc95eb0..4866510
 <p>I likhet med det tvåradiga huvud för det traditionella <em>unified</em> diff-formatet används <span class='synopsis'><code>/dev/null</code></span> för att signalera skapade eller raderade filer.</p>
 </div>
 <div class="paragraph">
-<p>Om alternativet --combined-all-paths däremot anges, får du istället för en tvåradig från-fil/till-fil-rubrik en N+1-radig from-file/to-file huvud, där N är antalet föräldrar i sammanslagings-incheckning:</p>
+<p>Om alternativet --combined-all-paths däremot anges, får du i stället för en tvåradig från-fil/till-fil-rubrik en N+1-radig from-file/to-file-rubrik, där N är antalet föräldrar i sammanslagningsincheckningen:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -1686,11 +1655,11 @@ index fabadb8,cc95eb0..4866510
 </div>
 </div>
 <div class="paragraph">
-<p>Detta utökade format kan vara användbart om namnbytes- eller kopieringsdetektering är aktivt, så att du kan se filens ursprungliga namn i olika överordnade filer.</p>
+<p>Det här utökade formatet kan vara användbart om namnbytes- eller kopieringsdetektering är aktiv, så att du kan se filens ursprungliga namn i olika överordnade filer.</p>
 </div>
 </li>
 <li>
-<p>Chunk-huvud-formatet är modifierat för att förhindra att folk av misstag matar in det i <span class='synopsis'><code>patch</code> <code>-p1</code></span>. Kombinerat diff-format skapades för granskning av sammanslagings inchecknings-ändringar och var inte avsett att tillämpas. Ändringen liknar ändringen i det utökade <em>index</em>-huvudet:</p>
+<p>Chunk-headerformatet är modifierat för att förhindra att folk av misstag matar in det i <span class='synopsis'><code>patch</code> <code>-p1</code></span>. Kombinerat diff-format skapades för granskning av sammanslagningsincheckningsändringar och var inte avsett att tillämpas. Ändringen liknar ändringen i den utökade <em>index</em>-headern:</p>
 <div class="literalblock">
 <div class="content">
 <pre>@@@ &lt;från-fil-omfång&gt; &lt;från-fil-omfång&gt; &lt;till-fil-omfånge&gt; @@@</pre>
@@ -1712,7 +1681,7 @@ index fabadb8,cc95eb0..4866510
 <p>I exemplet ovan ändrades funktionssignaturen från båda filerna (därav två borttagningar av <span class='synopsis'><code>-</code></span> från både fil1 och fil2, plus <span class='synopsis'><code>++</code></span> för att betyda att en rad som lades till inte visas i vare sig fil1 eller fil2). Dessutom är åtta andra rader desamma från fil1 men visas inte i fil2 (därav prefixet <span class='synopsis'><code>+</code></span>).</p>
 </div>
 <div class="paragraph">
-<p>När det visas med <span class='synopsis'><code>git</code> <code>diff-tree</code> <code>-c</code></span> jämför den föräldrarna till en sammanslagnings-incheckning med sammanslagnings-resultatet (dvs. file1..fileN är föräldrarna). När det visas med <span class='synopsis'><code>git</code> <code>diff-files</code> <code>-c</code></span> jämför den de två olösta sammanslagnings-föräldrarna med den fungerande arbetskatalog filen (dvs. file1 är steg 2, även kallad "vår version", file2 är steg 3, även kallad "deras version").</p>
+<p>När det visas med <span class='synopsis'><code>git</code> <code>diff-tree</code> <code>-c</code></span> jämför den föräldrarna till en sammanslagningsincheckning med sammanslagningsresultatet (d.v.s. file1..fileN är föräldrarna). När det visas med <span class='synopsis'><code>git</code> <code>diff-files</code> <code>-c</code></span> jämför den de två olösta sammanslagningsföräldrarna med arbetsträdfilen (d.v.s. file1 är steg 2, även kallad "vår version", file2 är steg 3, även kallad "deras version").</p>
 </div>
 </div>
 </div>
@@ -1759,7 +1728,7 @@ index fabadb8,cc95eb0..4866510
 <li>
 <p>Sökvägsnamn är kodade i UTF-8-normaliseringsform C. Detta gäller trädobjekt, indexfilen, referensnamn, såväl som sökvägsnamn i kommandoradsargument, miljövariabler och konfigurationsfiler (<span class='synopsis'><code>.git/config</code></span> (se <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>), <a href='{{< relurl "docs/gitignore/sv" >}}'>gitignore[5]</a>, <a href='{{< relurl "docs/gitattributes/sv" >}}'>gitattributes[5]</a> och <a href='{{< relurl "docs/gitmodules/sv" >}}'>gitmodules[5]</a>).</p>
 <div class="paragraph">
-<p>Observera att Git på kärnnivå behandlar sökvägsnamn helt enkelt som sekvenser av icke-NUL-byte, det finns inga konverteringar av sökvägskodning (förutom på Mac och Windows). Därför fungerar användning av sökvägsnamn som inte är ASCII-namn oftast även på plattformar och filsystem som använder äldre utökade ASCII-kodningar. Förvar som skapas på sådana system kommer dock inte att fungera korrekt på UTF-8-baserade system (t.ex. Linux, Mac, Windows) och vice versa. Dessutom antar många Git-baserade verktyg helt enkelt att sökvägsnamn är UTF-8 och kommer inte att kunna visa andra kodningar korrekt.</p>
+<p>Observera att Git på kärnnivå behandlar sökvägsnamn helt enkelt som sekvenser av icke-NUL-byte, det finns inga konverteringar av sökvägskodning (förutom på Mac och Windows). Därför fungerar användning av sökvägsnamn som inte är ASCII-namn oftast även på plattformar och filsystem som använder äldre utökade ASCII-kodningar. Kodförråd som skapas på sådana system kommer dock inte att fungera korrekt på UTF-8-baserade system (t.ex. Linux, Mac, Windows) och vice versa. Dessutom antar många Git-baserade verktyg helt enkelt att sökvägsnamn är UTF-8 och kommer inte att kunna visa andra kodningar korrekt.</p>
 </div>
 </li>
 <li>

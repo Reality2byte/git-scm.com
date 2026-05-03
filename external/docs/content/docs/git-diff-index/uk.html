@@ -80,7 +80,7 @@ headings:
 <dt class="hdlist1" id="git-diff-index-spanclasssynopsiscode-Ucodeemltngtemspan"> <a class="anchor" href="#git-diff-index--Un"></a> <a class="anchor" href="#git-diff-index-spanclasssynopsiscode-Ucodeemltngtemspan"></a><span class='synopsis'><code>-U</code><em>&lt;n&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-diff-index-spanclasssynopsiscode--unifiedcodeemltngtemspan"> <a class="anchor" href="#git-diff-index---unifiedn"></a> <a class="anchor" href="#git-diff-index-spanclasssynopsiscode--unifiedcodeemltngtemspan"></a><span class='synopsis'><code>--unified=</code><em>&lt;n&gt;</em></span> </dt>
 <dd>
-<p>Генерувати diff з <em>&lt;n&gt;</em> рядками контексту замість звичайних трьох.
+<p>Створити diffs з <em>&lt;n&gt;</em> рядками контексту. Зазвичай кількість рядків контексту дорівнює значенню <span class='synopsis'><code>diff.context</code></span> або 3, якщо ця змінна конфігурації не встановлена. (Опція <span class='synopsis'><code>-U</code></span> без аргументу <span class='synopsis'><em>&lt;n&gt;</em></span> через історичну випадковість мовчки приймається як синонім опції <span class='synopsis'><code>-p</code></span>).
 Мається на увазі <span class='synopsis'><code>--patch</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-diff-index-spanclasssynopsiscode--outputcodeemltgtemspan"> <a class="anchor" href="#git-diff-index---output"></a> <a class="anchor" href="#git-diff-index-spanclasssynopsiscode--outputcodeemltgtemspan"></a><span class='synopsis'><code>--output=</code><em>&lt;файл&gt;</em></span> </dt>
@@ -654,7 +654,10 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-diff-index-spanclasssynopsiscode--default-prefixcodespan"> <a class="anchor" href="#git-diff-index---default-prefix"></a> <a class="anchor" href="#git-diff-index-spanclasssynopsiscode--default-prefixcodespan"></a><span class='synopsis'><code>--default-prefix</code></span> </dt>
 <dd>
-<p>Використовувати типові префікси джерела та призначення ("a/" та "b/"). Замінює змінні конфігурації, такі як <span class='synopsis'><code>diff.noprefix</code></span>, <span class='synopsis'><code>diff.srcPrefix</code></span>, <span class='synopsis'><code>diff.dstPrefix</code></span> та <span class='synopsis'><code>diff.mnemonicPrefix</code></span> (див. <a href='{{< relurl "docs/git-config/uk" >}}'>git-config[1]</a>).</p>
+<p>Використовувати типові префікси джерела та призначення ("a/" та "b/").
+Перевизначає змінні конфігурації, такі як <span class='synopsis'><code>diff.noprefix</code></span>,
+<span class='synopsis'><code>diff.srcPrefix</code></span>, <span class='synopsis'><code>diff.dstPrefix</code></span> та <span class='synopsis'><code>diff.mnemonicPrefix</code></span>
+(див. <a href='{{< relurl "docs/git-config/uk" >}}'>git-config[1]</a>).</p>
 </dd>
 <dt class="hdlist1" id="git-diff-index-spanclasssynopsiscode--line-prefixcodeemltprefixgtemspan"> <a class="anchor" href="#git-diff-index---line-prefixprefix"></a> <a class="anchor" href="#git-diff-index-spanclasssynopsiscode--line-prefixcodeemltprefixgtemspan"></a><span class='synopsis'><code>--line-prefix=</code><em>&lt;prefix&gt;</em></span> </dt>
 <dd>
@@ -962,7 +965,7 @@ unmerged       :000000 000000 0000000 0000000 U file6</pre>
 <em>перейменувати в &lt;шлях&gt;</em>
 <em>індекс подібності &lt;номер&gt;</em>
 <em>індекс несхожості &lt;номер&gt;</em>
-<em>індекс <span class="hover-term" data-term="хеш">&lt;хеш&gt;</span>..<span class="hover-term" data-term="хеш">&lt;хеш&gt;</span> &lt;режим&gt;</em></pre>
+<em>індекс &lt;хеш&gt;..&lt;хеш&gt; &lt;режим&gt;</em></pre>
 </div>
 <div class="paragraph">
 <p>Режими файлів <em>&lt;режим&gt;</em> виводиться у вигляді 6-значні вісімкових чисел, включаючи тип файлу та біти прав доступу до файлу.</p>

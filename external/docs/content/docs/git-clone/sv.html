@@ -73,7 +73,7 @@ headings:
 <dt class="hdlist1" id="git-clone-spanclasssynopsiscode-lcodespan"> <a class="anchor" href="#git-clone--l"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode-lcodespan"></a><span class='synopsis'><code>-l</code></span> </dt>
 <dt class="hdlist1" id="git-clone-spanclasssynopsiscode--localcodespan"> <a class="anchor" href="#git-clone---local"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--localcodespan"></a><span class='synopsis'><code>--local</code></span> </dt>
 <dd>
-<p>När arkivet som ska klonas från finns på en lokal maskin, kringgår denna flagga den normala "Git aware" transportmekanismen och klonar arkivet genom att skapa en kopia av <span class='synopsis'><code>HEAD</code></span> och allt under objekt- och refs-katalogerna. Filerna under <span class='synopsis'><code>.git/objects/</code></span>-katalogen är hårdlänkade för att spara utrymme när det är möjligt.</p>
+<p>När kodförrådet som ska klonas från finns på en lokal maskin, kringgår denna flagga den normala "Git aware" transportmekanismen och klonar kodförrådet genom att skapa en kopia av <span class='synopsis'><code>HEAD</code></span> och allt under objekt- och refs-katalogerna. Filerna under <span class='synopsis'><code>.git/objects/</code></span>-katalogen är hårdlänkade för att spara utrymme när det är möjligt.</p>
 <div class="paragraph">
 <p>Om kodförrådet anges som en lokal sökväg (t.ex. <span class='synopsis'><em>/sökväg/till/kodförråd</em></span>) är detta standardinställningen, och <span class='synopsis'><code>--local</code></span> är i princip utan verkan. Om kodförrådet anges som en URL ignoreras denna flagga (och vi använder aldrig de lokala optimeringarna). Att ange <span class='synopsis'><code>--no-local</code></span> åsidosätter standardinställningen när <span class='synopsis'><em>/sökväg/till/kodförråd</em></span> anges, och använder i stället den vanliga Git-transporten.</p>
 </div>
@@ -95,8 +95,17 @@ headings:
 <dt class="hdlist1" id="git-clone-spanclasssynopsiscode--sharedcodespan"> <a class="anchor" href="#git-clone---shared"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--sharedcodespan"></a><span class='synopsis'><code>--shared</code></span> </dt>
 <dd>
 <p>När kodförrådet som ska klonas finns på den lokala maskinen konfigureras <span class='synopsis'><code>.git/objects/info/alternates</code></span> automatiskt för att dela objekten med källkodförrådet i stället för att använda hårda länkar. Det resulterande kodförrådet börjar utan egna objekt.</p>
-<div class="paragraph">
-<p><strong>OBS</strong>: detta är en potentiellt farlig operation; använd den <strong>inte</strong> om du inte förstår vad den gör. Om du klonar ditt kodförråd med det här alternativet och sedan tar bort grenar (eller använder något annat Git-kommando som gör att en befintlig incheckning blir orefererad) i källförrådet, kan vissa objekt bli orefererade (eller hänga kvar). Dessa objekt kan tas bort med vanliga Git-operationer (som <span class='synopsis'><code>git</code> <code>commit</code></span>) som automatiskt anropar <span class='synopsis'><code>git</code> <code>maintenance</code> <code>run</code> <code>--auto</code></span>. (Se <a href='{{< relurl "docs/git-maintenance/sv" >}}'>git-maintenance[1]</a>.) Om dessa objekt tas bort och refererades till av det klonade kodförrådet, kommer det klonade kodförrådet att bli korrupt.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+detta är en potentiellt farlig operation; den bör <strong>inte</strong> användas om innebörden inte är klar. Om kodförrådet klonas med det här alternativet och grenar sedan tas bort (eller något annat Git-kommando används som gör att en befintlig incheckning blir orefererad) i källförrådet, kan vissa objekt bli orefererade (eller hänga kvar). Dessa objekt kan tas bort med vanliga Git-operationer (som <span class='synopsis'><code>git</code> <code>commit</code></span>) som automatiskt anropar <span class='synopsis'><code>git</code> <code>maintenance</code> <code>run</code> <code>--auto</code></span>. (Se <a href='{{< relurl "docs/git-maintenance/sv" >}}'>git-maintenance[1]</a>.) Om dessa objekt tas bort och refererades till av det klonade kodförrådet, kommer det klonade kodförrådet att bli korrupt.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Observera att om man kör <span class='synopsis'><code>git</code> <code>repack</code></span> utan <span class='synopsis'><code>--local</code></span>-alternativet i ett kodförråd klonat med <span class='synopsis'><code>--shared</code></span>, kopieras objekt från källkodförrådet till ett pack i det klonade kodförrådet, vilket tar bort diskutrymmesbesparingarna med <span class='synopsis'><code>clone</code> <code>--shared</code></span>. Det är dock säkert att köra <span class='synopsis'><code>git</code> <code>gc</code></span>, som använder <span class='synopsis'><code>--local</code></span>-alternativet som standard.</p>
@@ -105,11 +114,21 @@ headings:
 <p>Om du vill bryta beroendet mellan ett kodförråd som klonats med <span class='synopsis'><code>--shared</code></span> och dess källkodförråd kan du helt enkelt köra <span class='synopsis'><code>git</code> <code>repack</code> <code>-a</code></span> för att kopiera alla objekt från källkodförrådet till ett pack i det klonade kodförrådet.</p>
 </div>
 </dd>
-<dt class="hdlist1" id="git-clone-spanclasssynopsiscode--referencecodecode-if-ablecodeemltkodfrrdgtemspan"> <a class="anchor" href="#git-clone---reference-if-ablekodfrrd"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--referencecodecode-if-ablecodeemltkodfrrdgtemspan"></a><span class='synopsis'><code>--reference</code>[<code>-if-able</code>] <em><span class="hover-term" data-term="kodförråd">&lt;kodförråd&gt;</span></em></span> </dt>
+<dt class="hdlist1" id="git-clone-spanclasssynopsiscode--referencecodeemltkodfrrdgtemspan"> <a class="anchor" href="#git-clone---referencekodfrrd"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--referencecodeemltkodfrrdgtemspan"></a><span class='synopsis'><code>--reference=</code><em><span class="hover-term" data-term="kodförråd">&lt;kodförråd&gt;</span></em></span> </dt>
+<dt class="hdlist1" id="git-clone-spanclasssynopsiscode--reference-if-ablecodeemltkodfrrdgtemspan"> <a class="anchor" href="#git-clone---reference-if-ablekodfrrd"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--reference-if-ablecodeemltkodfrrdgtemspan"></a><span class='synopsis'><code>--reference-if-able=</code><em><span class="hover-term" data-term="kodförråd">&lt;kodförråd&gt;</span></em></span> </dt>
 <dd>
 <p>Om referensen <em>&lt;repository&gt;</em> finns på den lokala maskinen, konfigurera automatiskt <span class='synopsis'><code>.git/objects/info/alternates</code></span> för att hämta objekt från referensen <em>&lt;repository&gt;</em>. Att använda ett redan befintligt kodförråd som ett alternativ kräver att färre objekt kopieras från kodförråd som klonas, vilket minskar nätverks- och lokallagringskostnader. När <span class='synopsis'><code>--reference-if-able</code></span> används hoppas en icke-befintlig katalog över med en varning i stället för att klonningen avbryts.</p>
-<div class="paragraph">
-<p><strong>OBS</strong>: se OBS för alternativet <span class='synopsis'><code>--shared</code></span> och även alternativet <span class='synopsis'><code>--dissociate</code></span>.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+se OBS för alternativet <span class='synopsis'><code>--shared</code></span> och även alternativet <span class='synopsis'><code>--dissociate</code></span>.
+</td>
+</tr>
+</table>
 </div>
 </dd>
 <dt class="hdlist1" id="git-clone-spanclasssynopsiscode--dissociatecodespan"> <a class="anchor" href="#git-clone---dissociate"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--dissociatecodespan"></a><span class='synopsis'><code>--dissociate</code></span> </dt>
@@ -128,18 +147,19 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-clone-spanclasssynopsiscode--progresscodespan"> <a class="anchor" href="#git-clone---progress"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--progresscodespan"></a><span class='synopsis'><code>--progress</code></span> </dt>
 <dd>
-<p>Förloppsstatus rapporteras som standard i standardfelströmmen när den är kopplad till en terminal, såvida inte <span class='synopsis'><code>--quiet</code></span> anges. Denna flagga tvingar fram förloppsstatus även om standardfelströmmen inte dirigeras till en terminal.</p>
+<p>Rapportera förloppsstatus i standardfelströmmen som standard när den är kopplad till en terminal, såvida inte <span class='synopsis'><code>--quiet</code></span> anges. Denna flagga tvingar fram förloppsstatus även om standardfelströmmen inte dirigeras till en terminal.</p>
 </dd>
 <dt class="hdlist1" id="git-clone-spanclasssynopsiscode--server-optioncodeemltalternativgtemspan"> <a class="anchor" href="#git-clone---server-optionalternativ"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--server-optioncodeemltalternativgtemspan"></a><span class='synopsis'><code>--server-option=</code><em>&lt;alternativ&gt;</em></span> </dt>
 <dd>
-<p>Skicka den givna strängen till servern vid kommunikation med protokollversion 2. Den givna strängen får inte innehålla tecknet NUL eller LF. Serverns hantering av serveralternativ, inklusive okända, är serverspecifik. När flera <span class='synopsis'><code>--server-option=</code><em>&lt;alternativ&gt;</em></span> anges skickas de alla till den andra sidan i den ordning som anges på kommandoraden. När ingen <span class='synopsis'><code>--server-option=</code></span><em>&lt;alternativ&gt;</em> anges från kommandoraden används istället värdena för konfigurationsvariabeln <span class='synopsis'><code>remote.</code><em>&lt;namn&gt;</em><code>.serverOption</code></span>.</p>
+<p>Skicka den givna strängen till servern vid kommunikation med protokollversion 2. Den givna strängen får inte innehålla tecknet <em>NUL</em> eller <em>LF</em>. Serverns hantering av serveralternativ, inklusive okända, är serverspecifik. När flera <span class='synopsis'><code>--server-option=</code><em>&lt;alternativ&gt;</em></span> anges skickas de alla till den andra sidan i den ordning som anges på kommandoraden. När ingen <span class='synopsis'><code>--server-option=</code><em>&lt;alternativ&gt;</em></span> anges från kommandoraden används i stället värdena för konfigurationsvariabeln <span class='synopsis'><code>remote.</code><em>&lt;namn&gt;</em><code>.serverOption</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-clone-spanclasssynopsiscode-ncodespan"> <a class="anchor" href="#git-clone--n"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode-ncodespan"></a><span class='synopsis'><code>-n</code></span> </dt>
 <dt class="hdlist1" id="git-clone-spanclasssynopsiscode--no-checkoutcodespan"> <a class="anchor" href="#git-clone---no-checkout"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--no-checkoutcodespan"></a><span class='synopsis'><code>--no-checkout</code></span> </dt>
 <dd>
-<p>Ingen utcheckning av <span class='synopsis'><code>HEAD</code></span> utförs efter att klonen är klar.</p>
+<p>Checka inte ut <span class='synopsis'><code>HEAD</code></span> efter att klonen är klar.</p>
 </dd>
-<dt class="hdlist1" id="git-clone-spanclasssynopsiscode--codespanspanclasssynopsiscodeno-codespanspanclasssynopsiscodereject-shallowcodespan"> <a class="anchor" href="#git-clone---no-reject-shallow"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--codespanspanclasssynopsiscodeno-codespanspanclasssynopsiscodereject-shallowcodespan"></a><span class='synopsis'><code>--</code></span>[<span class='synopsis'><code>no-</code></span>]<span class='synopsis'><code>reject-shallow</code></span> </dt>
+<dt class="hdlist1" id="git-clone-spanclasssynopsiscode--no-reject-shallowcodespan"> <a class="anchor" href="#git-clone---no-reject-shallow"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--no-reject-shallowcodespan"></a><span class='synopsis'><code>--no-reject-shallow</code></span> </dt>
+<dt class="hdlist1" id="git-clone-spanclasssynopsiscode--reject-shallowcodespan"> <a class="anchor" href="#git-clone---reject-shallow"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--reject-shallowcodespan"></a><span class='synopsis'><code>--reject-shallow</code></span> </dt>
 <dd>
 <p>Misslyckas om källkodförrådet är ett ytligt kodförråd. Konfigurationsvariabeln <span class='synopsis'><code>clone.rejectShallow</code></span> kan användas för att ange standardvärdet.</p>
 </dd>
@@ -153,7 +173,19 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-clone-spanclasssynopsiscode--filtercodeemltfilter-specgtemspan"> <a class="anchor" href="#git-clone---filterfilter-spec"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--filtercodeemltfilter-specgtemspan"></a><span class='synopsis'><code>--filter=</code><em>&lt;filter-spec&gt;</em></span> </dt>
 <dd>
-<p>Använd funktionen för partiell kloning och begär att servern skickar en delmängd av nåbara objekt enligt ett givet objektfilter. När du använder <span class='synopsis'><code>--filter</code></span> används den angivna <em>&lt;filter-spec&gt;</em> för det partiella klonfiltret. Till exempel kommer <span class='synopsis'><code>--filter=blob:none</code></span> att filtrera bort alla blobbar (filinnehåll) tills de behövs av Git. Dessutom kommer <span class='synopsis'><code>--filter=blob:limit=</code><em>&lt;storlek&gt;</em></span> att filtrera bort alla blobbar med en storlek på minst <em>&lt;storlek&gt;</em>. För mer information om filterspecifikationer, se alternativet <span class='synopsis'><code>--filter</code></span> i <a href='{{< relurl "docs/git-rev-list/sv" >}}'>git-rev-list[1]</a>.</p>
+<p>Använd funktionen för partiell kloning och begär att servern skickar en delmängd av nåbara objekt enligt ett givet objektfilter. När <span class='synopsis'><code>--filter</code></span> används används den angivna <em>&lt;filter-spec&gt;</em> för det partiella klonfiltret.</p>
+<div class="paragraph">
+<p>If <span class='synopsis'><code>--filter=auto</code></span> is used the filter specification is determined automatically through the <em>promisor-remote</em> protocol (see <a href='{{< relurl "docs/gitprotocol-v2/sv" >}}'>gitprotocol-v2[5]</a>) by combining the filter specifications advertised by the server for the promisor remotes that the client accepts (see the <span class='synopsis'><code>promisor.acceptFromServer</code></span> configuration option in <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>). This allows the server to suggest the optimal filter for the available promisor remotes.</p>
+</div>
+<div class="paragraph">
+<p>As with other filter specifications, the "auto" value is persisted in the configuration. This ensures that future fetches will continue to adapt to the server&#8217;s current recommendation.</p>
+</div>
+<div class="paragraph">
+<p>For details on all other available filter specifications, see the <span class='synopsis'><code>--filter=</code><em>&lt;filter-spec&gt;</em></span> option in <a href='{{< relurl "docs/git-rev-list/sv" >}}'>git-rev-list[1]</a>.</p>
+</div>
+<div class="paragraph">
+<p>For example, <span class='synopsis'><code>--filter=blob:none</code></span> will filter out all blobs (file contents) until needed by Git. Also, <span class='synopsis'><code>--filter=blob:limit=</code><em>&lt;size&gt;</em></span> will filter out all blobs of size at least <em>&lt;size&gt;</em>.</p>
+</div>
 </dd>
 <dt class="hdlist1" id="git-clone-spanclasssynopsiscode--also-filter-submodulescodespan"> <a class="anchor" href="#git-clone---also-filter-submodules"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--also-filter-submodulescodespan"></a><span class='synopsis'><code>--also-filter-submodules</code></span> </dt>
 <dd>
@@ -163,38 +195,38 @@ headings:
 <dd>
 <p>Ställ in en spegel av källkodförrådet. Detta innebär <span class='synopsis'><code>--bare</code></span>. Jämfört med <span class='synopsis'><code>--bare</code></span> mappar <span class='synopsis'><code>--mirror</code></span> inte bara lokala grenar i källan till lokala grenar i målet, utan mappar också alla referenser (inklusive fjärrspårade grenar, anteckningar etc.) och ställer in en refspec-konfiguration så att alla dessa referenser skrivs över av en <span class='synopsis'><code>git</code> <code>remote</code> <code>update</code></span> i målkodförrådet.</p>
 </dd>
-<dt class="hdlist1" id="git-clone-spanclasssynopsiscode-ocodespanemltnamngtem"> <a class="anchor" href="#git-clone--onamn"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode-ocodespanemltnamngtem"></a><span class='synopsis'><code>-o</code></span> <em>&lt;namn&gt;</em> </dt>
-<dt class="hdlist1" id="git-clone-spanclasssynopsiscode--origincodespanemltnamngtem"> <a class="anchor" href="#git-clone---originnamn"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--origincodespanemltnamngtem"></a><span class='synopsis'><code>--origin</code></span> <em>&lt;namn&gt;</em> </dt>
+<dt class="hdlist1" id="git-clone-spanclasssynopsiscode-ocodeemltnamngtemspan"> <a class="anchor" href="#git-clone--onamn"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode-ocodeemltnamngtemspan"></a><span class='synopsis'><code>-o</code><em>&lt;namn&gt;</em></span> </dt>
+<dt class="hdlist1" id="git-clone-spanclasssynopsiscode--origincodeemltnamngtemspan"> <a class="anchor" href="#git-clone---originnamn"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--origincodeemltnamngtemspan"></a><span class='synopsis'><code>--origin=</code><em>&lt;namn&gt;</em></span> </dt>
 <dd>
 <p>I stället för att använda fjärrnamnet <span class='synopsis'><code>origin</code></span> för att hålla reda på uppströmskodförrådet, använd <em>&lt;namn&gt;</em>. Åsidosätter <span class='synopsis'><code>clone.defaultRemoteName</code></span> från konfigurationsfilen.</p>
 </dd>
-<dt class="hdlist1" id="git-clone-spanclasssynopsiscode-bcodespanemltnamngtem"> <a class="anchor" href="#git-clone--bnamn"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode-bcodespanemltnamngtem"></a><span class='synopsis'><code>-b</code></span> <em>&lt;namn&gt;</em> </dt>
-<dt class="hdlist1" id="git-clone-spanclasssynopsiscode--branchcodespanemltnamngtem"> <a class="anchor" href="#git-clone---branchnamn"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--branchcodespanemltnamngtem"></a><span class='synopsis'><code>--branch</code></span> <em>&lt;namn&gt;</em> </dt>
+<dt class="hdlist1" id="git-clone-spanclasssynopsiscode-bcodeemltnamngtemspan"> <a class="anchor" href="#git-clone--bnamn"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode-bcodeemltnamngtemspan"></a><span class='synopsis'><code>-b</code><em>&lt;namn&gt;</em></span> </dt>
+<dt class="hdlist1" id="git-clone-spanclasssynopsiscode--branchcodeemltnamngtemspan"> <a class="anchor" href="#git-clone---branchnamn"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--branchcodeemltnamngtemspan"></a><span class='synopsis'><code>--branch=</code><em>&lt;namn&gt;</em></span> </dt>
 <dd>
-<p>Istället för att peka den nyskapade <span class='synopsis'><code>HEAD</code></span> till grenen som pekas på av det klonade kodförrådets <span class='synopsis'><code>HEAD</code></span>, peka istället på <em>&lt;namn&gt;</em> grenen. I ett icke-bart kodförråd är det detta grenen som kommer att checkas ut. <span class='synopsis'><code>--branch</code></span> kan också ta taggar och kopplar bort <span class='synopsis'><code>HEAD</code></span> vid den incheckningen i det resulterande kodförrådet.</p>
+<p>Hänvisa den nyskapade <span class='synopsis'><code>HEAD</code></span> till grenen <em>&lt;namn&gt;</em> i stället för grenen som det klonade kodförrådets <span class='synopsis'><code>HEAD</code></span> hänvisar till. I ett icke-bart kodförråd är detta grenen som kommer att checkas ut. <span class='synopsis'><code>--branch</code></span> kan också ta taggar och kopplar bort <span class='synopsis'><code>HEAD</code></span> vid den incheckningen i det resulterande kodförrådet.</p>
 </dd>
 <dt class="hdlist1" id="git-clone-spanclasssynopsiscode--revisioncodeemltrevgtemspan"> <a class="anchor" href="#git-clone---revisionrev"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--revisioncodeemltrevgtemspan"></a><span class='synopsis'><code>--revision=</code><em>&lt;rev&gt;</em></span> </dt>
 <dd>
 <p>Skapa ett nytt kodförråd och hämta historiken som leder till den givna revisionen <em>&lt;rev&gt;</em> (och inget annat), utan att skapa någon fjärrspårad gren och utan att skapa någon lokal gren, och koppla bort <span class='synopsis'><code>HEAD</code></span> till <em>&lt;rev&gt;</em>. Argumentet kan vara ett referensnamn (t.ex. <span class='synopsis'><code>refs/heads/main</code></span> eller <span class='synopsis'><code>refs/tags/v1.0</code></span>) som skalar ner till en incheckning, eller ett hexadecimalt objektnamn. Detta alternativ är inkompatibelt med <span class='synopsis'><code>--branch</code></span> och <span class='synopsis'><code>--mirror</code></span>.</p>
 </dd>
-<dt class="hdlist1" id="git-clone-spanclasssynopsiscode-ucodespanemltuppladdnings-paketgtem"> <a class="anchor" href="#git-clone--uuppladdnings-paket"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode-ucodespanemltuppladdnings-paketgtem"></a><span class='synopsis'><code>-u</code></span> <em>&lt;uppladdnings-paket&gt;</em> </dt>
-<dt class="hdlist1" id="git-clone-spanclasssynopsiscode--upload-packcodespanemltuppladdnings-paketgtem"> <a class="anchor" href="#git-clone---upload-packuppladdnings-paket"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--upload-packcodespanemltuppladdnings-paketgtem"></a><span class='synopsis'><code>--upload-pack</code></span> <em>&lt;uppladdnings-paket&gt;</em> </dt>
+<dt class="hdlist1" id="git-clone-spanclasssynopsiscode-ucodeemltupload-packgtemspan"> <a class="anchor" href="#git-clone--uupload-pack"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode-ucodeemltupload-packgtemspan"></a><span class='synopsis'><code>-u</code><em>&lt;upload-pack&gt;</em></span> </dt>
+<dt class="hdlist1" id="git-clone-spanclasssynopsiscode--upload-packcodeemltupload-packgtemspan"> <a class="anchor" href="#git-clone---upload-packupload-pack"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--upload-packcodeemltupload-packgtemspan"></a><span class='synopsis'><code>--upload-pack=</code><em>&lt;upload-pack&gt;</em></span> </dt>
 <dd>
-<p>När detta anges, och kodförrådet att klona från nås via ssh, anger detta en icke-standardsökväg för kommandot som körs i den andra änden.</p>
+<p>Specify a non-default path for the command run on the other end when the repository to clone from is accessed via ssh.</p>
 </dd>
 <dt class="hdlist1" id="git-clone-spanclasssynopsiscode--templatecodeemltmallkataloggtemspan"> <a class="anchor" href="#git-clone---templatemallkatalog"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--templatecodeemltmallkataloggtemspan"></a><span class='synopsis'><code>--template=</code><em>&lt;mallkatalog&gt;</em></span> </dt>
 <dd>
 <p>Ange katalogen från vilken mallar ska användas; (Se avsnittet "MALLKATALOG" i <a href='{{< relurl "docs/git-init/sv" >}}'>git-init[1]</a>.)</p>
 </dd>
-<dt class="hdlist1" id="git-clone-spanclasssynopsiscode-ccodespanspanclasssynopsisemltkeygtemcodecodeemltvrdegtemspan"> <a class="anchor" href="#git-clone--ckeyvrde"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode-ccodespanspanclasssynopsisemltkeygtemcodecodeemltvrdegtemspan"></a><span class='synopsis'><code>-c</code></span> <span class='synopsis'><em>&lt;key&gt;</em><code>=</code><em>&lt;värde&gt;</em></span> </dt>
-<dt class="hdlist1" id="git-clone-spanclasssynopsiscode--configcodespanspanclasssynopsisemltkeygtemcodecodeemltvrdegtemspan"> <a class="anchor" href="#git-clone---configkeyvrde"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--configcodespanspanclasssynopsisemltkeygtemcodecodeemltvrdegtemspan"></a><span class='synopsis'><code>--config</code></span> <span class='synopsis'><em>&lt;key&gt;</em><code>=</code><em>&lt;värde&gt;</em></span> </dt>
+<dt class="hdlist1" id="git-clone-spanclasssynopsiscode-ccodeemltnyckelgtemcodecodeemltvrdegtemspan"> <a class="anchor" href="#git-clone--cnyckelvrde"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode-ccodeemltnyckelgtemcodecodeemltvrdegtemspan"></a><span class='synopsis'><code>-c</code><em>&lt;nyckel&gt;</em><code>=</code><em>&lt;värde&gt;</em></span> </dt>
+<dt class="hdlist1" id="git-clone-spanclasssynopsiscode--configcodeemltnyckelgtemcodecodeemltvrdegtemspan"> <a class="anchor" href="#git-clone---confignyckelvrde"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--configcodeemltnyckelgtemcodecodeemltvrdegtemspan"></a><span class='synopsis'><code>--config=</code><em>&lt;nyckel&gt;</em><code>=</code><em>&lt;värde&gt;</em></span> </dt>
 <dd>
 <p>Ställ in en konfigurationsvariabel i det nyskapade kodförrådet; denna träder i kraft omedelbart efter att kodförrådet har initierats, men innan fjärrhistoriken hämtas eller några filer checkas ut. <em>&lt;nyckeln&gt;</em> har samma format som förväntas av <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a> (t.ex. <span class='synopsis'><code>core.eol=true</code></span>). Om flera värden anges för samma nyckel kommer varje värde att skrivas till konfigurationsfilen. Detta gör det säkert att till exempel lägga till ytterligare hämtningsreferenser till den ursprungliga fjärren.</p>
 <div class="paragraph">
 <p>På grund av begränsningar i den nuvarande implementeringen, träder vissa konfigurationsvariabler inte i kraft förrän efter den initiala hämtningen och utcheckningen. Konfigurationsvariabler som är kända för att inte träda i kraft är: <span class='synopsis'><code>remote.</code><em>&lt;namn&gt;</em><code>.mirror</code></span> och <span class='synopsis'><code>remote.</code><em>&lt;namn&gt;</em><code>.tagOpt</code></span>. Använd motsvarande alternativ <span class='synopsis'><code>--mirror</code></span> och <span class='synopsis'><code>--no-tags</code></span> i stället.</p>
 </div>
 </dd>
-<dt class="hdlist1" id="git-clone-spanclasssynopsiscode--depthcodeemltdjupgtemspan"> <a class="anchor" href="#git-clone---depthdjup"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--depthcodeemltdjupgtemspan"></a><span class='synopsis'><code>--depth</code> <em>&lt;djup&gt;</em></span> </dt>
+<dt class="hdlist1" id="git-clone-spanclasssynopsiscode--depthcodeemltdjupgtemspan"> <a class="anchor" href="#git-clone---depthdjup"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--depthcodeemltdjupgtemspan"></a><span class='synopsis'><code>--depth=</code><em>&lt;djup&gt;</em></span> </dt>
 <dd>
 <p>Skapa en "ytlig"-klon med en historik avkortad till det angivna antalet incheckningar. Implicerar <span class='synopsis'><code>--single-branch</code></span> om inte <span class='synopsis'><code>--no-single-branch</code></span> anges för att hämta historikerna nära topparna på alla grenar. Om du vill klona undermoduler ytligt, skicka även <span class='synopsis'><code>--shallow-submodules</code></span>.</p>
 </dd>
@@ -261,8 +293,8 @@ headings:
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1" id="git-clone-spanclasssynopsiscode-jcodespanemltngtem"> <a class="anchor" href="#git-clone--jn"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode-jcodespanemltngtem"></a><span class='synopsis'><code>-j</code></span> <em>&lt;n&gt;</em> </dt>
-<dt class="hdlist1" id="git-clone-spanclasssynopsiscode--jobscodespanemltngtem"> <a class="anchor" href="#git-clone---jobsn"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--jobscodespanemltngtem"></a><span class='synopsis'><code>--jobs</code></span> <em>&lt;n&gt;</em> </dt>
+<dt class="hdlist1" id="git-clone-spanclasssynopsiscode-jcodeemltngtemspan"> <a class="anchor" href="#git-clone--jn"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode-jcodeemltngtemspan"></a><span class='synopsis'><code>-j</code><em>&lt;n&gt;</em></span> </dt>
+<dt class="hdlist1" id="git-clone-spanclasssynopsiscode--jobscodeemltngtemspan"> <a class="anchor" href="#git-clone---jobsn"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscode--jobscodeemltngtemspan"></a><span class='synopsis'><code>--jobs=</code><em>&lt;n&gt;</em></span> </dt>
 <dd>
 <p>Antalet undermoduler som hämtas samtidigt. Standardvärdet är <span class='synopsis'><code>submodule.fetchJobs</code></span>.</p>
 </dd>
@@ -395,7 +427,7 @@ headings:
 <p>En URL som "arbete:kodförråd.git" eller "host.xz:/sokvag/till/kodförråd.git" kommer att skrivas om i alla sammanhang som antar att URL:en är "git://git.host.xz/kodförråd.git".</p>
 </div>
 <div class="paragraph">
-<p>Om du vill skriva om URL:er enbart för sändning (push), kan du skapa en konfigurationssektion i formen:</p>
+<p>Om URL:er bara ska skrivas om för skickning (push), kan en konfigurationssektion skapas i formen:</p>
 </div>
 <div class="verseblock">
 <pre class="content">	[url "<em>&lt;faktisk-url-bas&gt;</em>"]
@@ -411,7 +443,7 @@ headings:
 </div>
 </div>
 <div class="paragraph">
-<p>En URL som "git://example.org/path/to/repo.git" kommer att skrivas om till "ssh://example.org/path/to/repo.git" för sändning ("pushas"), men pulls kommer fortfarande att använda den ursprungliga URL:en.</p>
+<p>En URL som "git://example.org/path/to/repo.git" kommer att skrivas om till "ssh://example.org/path/to/repo.git" för skickning ("skickas"), men pulls kommer fortfarande att använda den ursprungliga URL:en.</p>
 </div>
 </div>
 </div>
@@ -495,13 +527,17 @@ $ cd my-linux</pre>
 <dd>
 <p>Tillåter åsidosättning av standardformatet för referenslagring för nya arkiv. Se <span class='synopsis'><code>--ref-format=</code></span> i <a href='{{< relurl "docs/git-init/sv" >}}'>git-init[1]</a>. Både kommandoradsalternativet och miljövariabeln <span class='synopsis'><code>GIT_DEFAULT_REF_FORMAT</code></span> har företräde framför denna konfiguration.</p>
 </dd>
+<dt class="hdlist1" id="git-clone-initdefaultSubmodulePathConfig"> <a class="anchor" href="#git-clone-initdefaultSubmodulePathConfig"></a>init.defaultSubmodulePathConfig </dt>
+<dd>
+<p>A boolean that specifies if <span class='synopsis'><code>git</code> <code>init</code></span> and <span class='synopsis'><code>git</code> <code>clone</code></span> should automatically set <span class='synopsis'><code>extensions.submodulePathConfig</code></span> to <span class='synopsis'><code>true</code></span>. This allows all new repositories to automatically use the submodule path extension. Defaults to <span class='synopsis'><code>false</code></span> when unset.</p>
+</dd>
 </dl>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-clone-spanclasssynopsiscodeclonedefaultRemoteNamecodespan"> <a class="anchor" href="#git-clone-clonedefaultRemoteName"></a> <a class="anchor" href="#git-clone-spanclasssynopsiscodeclonedefaultRemoteNamecodespan"></a><span class='synopsis'><code>clone.defaultRemoteName</code></span> </dt>
 <dd>
-<p>Namnet på den fjärren som ska skapas vid kloning av ett arkiv. Standardvärdet är <span class='synopsis'><code>origin</code></span>.
+<p>Namnet på den fjärr som ska skapas när ett kodförråd klonas. Standardvärdet är <span class='synopsis'><code>origin</code></span>.
 Det kan åsidosättas genom att använda
 kommandoradsalternativet <span class='synopsis'><code>--origin</code></span>.</p>
 </dd>

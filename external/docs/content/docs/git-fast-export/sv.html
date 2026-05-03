@@ -52,7 +52,7 @@ headings:
 <p>Programmet dumpar de givna revisionerna i en form som är lämplig att skickas till <em>git fast-import</em>.</p>
 </div>
 <div class="paragraph">
-<p>Du kan använda den som en människoläsbar bundle-ersättning (se <a href='{{< relurl "docs/git-bundle/sv" >}}'>git-bundle[1]</a>), eller som ett format som kan redigeras innan det matas till <em>git fast-import</em> för att göra historikomskrivningar (en möjlighet som används av verktyg som <em>git filter-repo</em>).</p>
+<p>Du kan använda det som en läsbar ersättning för buntar (se <a href='{{< relurl "docs/git-bundle/sv" >}}'>git-bundle[1]</a>), eller som ett format som kan redigeras innan det matas till <em>git fast-import</em> för att skriva om historik (en förmåga som verktyg som <em>git filter-repo</em> förlitar sig på).</p>
 </div>
 </div>
 </div>
@@ -74,12 +74,12 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-fast-export---signed-commitsverbatimwarn-verbatimwarn-stripstripabort"> <a class="anchor" href="#git-fast-export---signed-commitsverbatimwarn-verbatimwarn-stripstripabort"></a>--signed-commits=(verbatim|warn-verbatim|warn-strip|strip|abort) </dt>
 <dd>
-<p>Ange hur signerade incheckningar ska hanteras. Bete sig exakt som <em>--signed-tags</em>, men för incheckningar. Standardvärdet är <em>strip</em>, vilket är hur tidigare versioner av det här kommandot utan den här inställningen betedde sig.</p>
+<p>Ange hur signerade incheckningar ska hanteras. Beter sig exakt som <em>--signed-tags</em>, men för incheckningar. Standardvärdet är <em>strip</em>, vilket motsvarar hur tidigare versioner av kommandot betedde sig utan detta alternativ.</p>
 <div class="paragraph">
-<p>Vid export, börjar en signatur med:</p>
+<p>Vid export börjar en signatur med:</p>
 </div>
 <div class="paragraph">
-<p>gpgsig &lt;git-hash-algo&gt; &lt;signatur-format&gt;</p>
+<p>gpgsig &lt;git-hash-algo&gt; &lt;signaturformat&gt;</p>
 </div>
 <div class="paragraph">
 <p>där &lt;git-hash-algo&gt; är Git-objektets hash så antingen "sha1" eller "sha256", och &lt;signatur-format&gt; är signaturtypen, så "openpgp", "x509", "ssh" eller "unknown".</p>
@@ -97,7 +97,7 @@ headings:
 <div class="title">Note</div>
 </td>
 <td class="content">
-Detta är mycket experimentellt och formatet på dataströmmen kan komma att ändras i framtiden utan kompatibilitetsgarantier.
+Det här är mycket experimentellt och formatet på dataströmmen kan komma att ändras i framtiden utan kompatibilitetsgarantier.
 </td>
 </tr>
 </table>
@@ -113,7 +113,7 @@ Detta är mycket experimentellt och formatet på dataströmmen kan komma att än
 <dt class="hdlist1" id="git-fast-export--M"> <a class="anchor" href="#git-fast-export--M"></a>-M </dt>
 <dt class="hdlist1" id="git-fast-export--C"> <a class="anchor" href="#git-fast-export--C"></a>-C </dt>
 <dd>
-<p>Utför flytt- och/eller kopieringsdetektering, enligt beskrivningen på manualsidan för <a href='{{< relurl "docs/git-diff/sv" >}}'>git-diff[1]</a>, och använd det för att generera namnbytes och kopierings kommandon i utdatadumpen.</p>
+<p>Utför flytt- och/eller kopieringsdetektering, enligt beskrivningen på manualsidan för <a href='{{< relurl "docs/git-diff/sv" >}}'>git-diff[1]</a>, och använd det för att generera namnbytes- och kopieringskommandon i utdatadumpen.</p>
 <div class="paragraph">
 <p>Observera att tidigare versioner av det här kommandot inte klagade och gav felaktiga resultat om du angav dessa alternativ.</p>
 </div>
@@ -128,7 +128,7 @@ Detta är mycket experimentellt och formatet på dataströmmen kan komma att än
 </dd>
 <dt class="hdlist1" id="git-fast-export---mark-tags"> <a class="anchor" href="#git-fast-export---mark-tags"></a>--mark-tags </dt>
 <dd>
-<p>Förutom att märka blobbar och incheckningar med mark-id:n, märk även taggar. Detta är användbart tillsammans med <span class='synopsis'><code>--export-marks</code></span> och <span class='synopsis'><code>--import-marks</code></span>, och är också användbart (och nödvändigt) för export av kapslade taggar. Det skadar inte andra fall och skulle vara standard, men många fast-import framändar är inte förberedda för att acceptera taggar med mark-identifierare.</p>
+<p>Förutom att märka blobbar och incheckningar med mark-id:n, märk även taggar. Detta är användbart tillsammans med <span class='synopsis'><code>--export-marks</code></span> och <span class='synopsis'><code>--import-marks</code></span>, och är också användbart (och nödvändigt) för export av kapslade taggar. Det skadar inte i andra fall och skulle kunna vara standard, men många verktyg som använder fast-import är inte förberedda på att acceptera taggar med markidentifierare.</p>
 <div class="paragraph">
 <p>Alla incheckningar (eller taggar) som redan har markerats kommer inte att exporteras igen. Om bakändan använder en liknande --import-marks-fil möjliggör detta stegvis dubbelriktad export av kodförrådet genom att hålla markeringarna desamma över körningar.</p>
 </div>
@@ -143,7 +143,7 @@ Detta är mycket experimentellt och formatet på dataströmmen kan komma att än
 </dd>
 <dt class="hdlist1" id="git-fast-export---no-data"> <a class="anchor" href="#git-fast-export---no-data"></a>--no-data </dt>
 <dd>
-<p>Hoppa över utdata från blobobjekt och referera istället till blobbar via deras ursprungliga SHA-1-hash. Detta är användbart när man skriver om katalogstrukturen eller historiken för ett kodförråd utan att röra innehållet i enskilda filer. Observera att den resulterande strömmen endast kan användas av ett kodförråd som redan innehåller de nödvändiga objekten.</p>
+<p>Hoppa över utdata från blobobjekt och referera i stället till blobbar via deras ursprungliga SHA-1-hash. Detta är användbart när man skriver om katalogstrukturen eller historiken för ett kodförråd utan att röra innehållet i enskilda filer. Observera att den resulterande strömmen endast kan användas av ett kodförråd som redan innehåller de nödvändiga objekten.</p>
 </dd>
 <dt class="hdlist1" id="git-fast-export---full-tree"> <a class="anchor" href="#git-fast-export---full-tree"></a>--full-tree </dt>
 <dd>
@@ -155,21 +155,21 @@ Detta är mycket experimentellt och formatet på dataströmmen kan komma att än
 </dd>
 <dt class="hdlist1" id="git-fast-export---anonymize-mapltfrngtlttillgt"> <a class="anchor" href="#git-fast-export---anonymize-mapfrntill"></a> <a class="anchor" href="#git-fast-export---anonymize-mapltfrngtlttillgt"></a>--anonymize-map=&lt;från&gt;[:&lt;till&gt;] </dt>
 <dd>
-<p>Konvertera token <span class='synopsis'><em>&lt;från&gt;</em></span> till <span class='synopsis'><em>&lt;till&gt;</em></span> i den anonymiserade utdatan. Om <span class='synopsis'><em>&lt;till&gt;</em></span> utelämnas, mappa <span class='synopsis'><em>&lt;från&gt;</em></span> till sig själv (dvs. anonymisera den inte). Se avsnittet om <span class='synopsis'><code>ANONYMISERING</code></span> nedan.</p>
+<p>Konvertera token <span class='synopsis'><em>&lt;från&gt;</em></span> till <span class='synopsis'><em>&lt;till&gt;</em></span> i den anonymiserade utdatan. Om <span class='synopsis'><em>&lt;till&gt;</em></span> utelämnas, mappa <span class='synopsis'><em>&lt;från&gt;</em></span> till sig själv (d.v.s. anonymisera den inte). Se avsnittet om <span class='synopsis'><code>ANONYMISERING</code></span> nedan.</p>
 </dd>
 <dt class="hdlist1" id="git-fast-export---reference-excluded-parents"> <a class="anchor" href="#git-fast-export---reference-excluded-parents"></a>--reference-excluded-parents </dt>
 <dd>
-<p>Som standard, kommer ett kommando som <span class='synopsis'><code>git</code> <code>fast-export</code> <code>master~5..master</code></span> inte att inkludera incheckning master~5 och kommer att göra att master~4 inte längre har master~5 som förälder (även om både den gamla master~4 och den nya master~4 kommer att ha samma filer). Använd --reference-excluded-parents för att istället låta strömmen referera till incheckningar i det undantagna historikområdet med deras sha1sum. Observera att den resulterande strömmen endast kan användas av ett kodförråd som redan innehåller de nödvändiga föräldraincheckningarna.</p>
+<p>Som standard kommer ett kommando som <span class='synopsis'><code>git</code> <code>fast-export</code> <code>master~5..master</code></span> inte att inkludera incheckning master~5 och kommer att göra att master~4 inte längre har master~5 som förälder (även om både den gamla master~4 och den nya master~4 kommer att ha samma filer). Använd --reference-excluded-parents för att i stället låta strömmen referera till incheckningar i det undantagna historikområdet med deras sha1sum. Observera att den resulterande strömmen endast kan användas av ett kodförråd som redan innehåller de nödvändiga föräldraincheckningarna.</p>
 </dd>
 <dt class="hdlist1" id="git-fast-export---show-original-ids"> <a class="anchor" href="#git-fast-export---show-original-ids"></a>--show-original-ids </dt>
 <dd>
-<p>Lägg till ett extra direktiv till utdata för incheckningar och blobs, <span class='synopsis'><code>original-oid</code> <em>&lt;SHA1SUM&gt;</em></span>. Även om sådana direktiv sannolikt kommer att ignoreras av importverktyg som git-fast-import, kan det vara användbart för mellanliggande filter (t.ex. för att skriva om inchecknings-meddelanden som refererar till äldre incheckningar, eller för att ta bort blobs efter id).</p>
+<p>Lägg till ett extra direktiv till utdata för incheckningar och blobs, <span class='synopsis'><code>original-oid</code> <em>&lt;SHA1SUM&gt;</em></span>. Även om sådana direktiv sannolikt kommer att ignoreras av importverktyg som git-fast-import, kan det vara användbart för mellanliggande filter (t.ex. för att skriva om incheckningsmeddelanden som refererar till äldre incheckningar, eller för att ta bort blobs efter id).</p>
 </dd>
 <dt class="hdlist1" id="git-fast-export---reencodeyesnoabort"> <a class="anchor" href="#git-fast-export---reencodeyesnoabort"></a>--reencode=(yes|no|abort) </dt>
 <dd>
-<p>Ange hur <span class='synopsis'><code>encoding</code></span>-huvudet ska hanteras i inchecknings-objekt. När man frågar om att <em>avbryta</em> (vilket är standard), kommer programmet att avbrytas när det stöter på ett sådant inchecknings-objekt. Med <span class='synopsis'><code>yes</code></span> (ja) kommer inchecknings-meddelandet att kodas om till UTF-8. Med <span class='synopsis'><code>no</code></span> (nej) kommer den ursprungliga kodningen att bevaras.</p>
+<p>Ange hur <span class='synopsis'><code>encoding</code></span>-headern ska hanteras i incheckningsobjekt. När man frågar om att <em>avbryta</em> (vilket är standard), kommer programmet att avbrytas när det stöter på ett sådant incheckningsobjekt. Med <span class='synopsis'><code>yes</code></span> (ja) kommer incheckningsmeddelandet att kodas om till UTF-8. Med <span class='synopsis'><code>no</code></span> (nej) kommer den ursprungliga kodningen att bevaras.</p>
 </dd>
-<dt class="hdlist1" id="git-fast-export---referensspecifikation"> <a class="anchor" href="#git-fast-export---referensspecifikation"></a>--referensspecifikation </dt>
+<dt class="hdlist1" id="git-fast-export---refspec"> <a class="anchor" href="#git-fast-export---refspec"></a>--refspec </dt>
 <dd>
 <p>Tillämpa den angivna referensspecifikation:en på varje exporterad referens. Flera av dem kan anges.</p>
 </dd>
@@ -190,7 +190,7 @@ Detta är mycket experimentellt och formatet på dataströmmen kan komma att än
 </div>
 </div>
 <div class="paragraph">
-<p>Detta kommer att exportera hela kodförrådet och importera det till det befintliga tomma kodförrådet. Förutom omkodning av incheckningar som inte är i UTF-8, skulle det vara en en-till-en-spegel.</p>
+<p>Det här kommer att exportera hela kodförrådet och importera det till det befintliga tomma kodförrådet. Förutom omkodning av incheckningar som inte är i UTF-8, skulle det vara en en-till-en-spegel.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -200,10 +200,10 @@ Detta är mycket experimentellt och formatet på dataströmmen kan komma att än
 </div>
 </div>
 <div class="paragraph">
-<p>Detta skapar en ny gren som heter <em>other</em> från <em>master~5..master</em> (dvs. om <em>master</em> har linjär historik kommer den att ta de senaste 5 incheckningar).</p>
+<p>Det här skapar en ny gren som heter <em>other</em> från <em>master~5..master</em> (d.v.s. om <em>master</em> har linjär historik kommer den att ta de senaste 5 incheckningar).</p>
 </div>
 <div class="paragraph">
-<p>Observera att detta förutsätter att ingen av de blobbar och inchecknings-meddelanden som refereras till av det revisionsintervallet innehåller strängen <em>refs/heads/master</em>.</p>
+<p>Observera att detta förutsätter att ingen av de blobbar och incheckningsmeddelanden som refereras till av det revisionsintervallet innehåller strängen <em>refs/heads/master</em>.</p>
 </div>
 </div>
 </div>
@@ -211,13 +211,13 @@ Detta är mycket experimentellt och formatet på dataströmmen kan komma att än
 <h2 id="_anonymisering"><a class="anchor" href="#_anonymisering"></a>ANONYMISERING</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Om alternativet <span class='synopsis'><code>--anonymize</code></span> anges, kommer git att försöka ta bort all identifierande information från kodförrådet samtidigt som tillräckligt med ursprungliga träd- och historik-mönster behålls för att reproducera vissa programfel. Målet är att en git-bugg som hittas i ett privat kodförråd kommer att finnas kvar i det anonymiserade arkivet, och det senare kan delas med git-utvecklare för att hjälpa till att lösa programfelet.</p>
+<p>Om alternativet <span class='synopsis'><code>--anonymize</code></span> anges, kommer git att försöka ta bort all identifierande information från kodförrådet samtidigt som tillräckligt med ursprungliga träd- och historik-mönster behålls för att reproducera vissa programfel. Målet är att ett git-programfel som hittas i ett privat kodförråd kommer att finnas kvar i det anonymiserade kodförrådet, och det senare kan delas med git-utvecklare för att hjälpa till att lösa programfelet.</p>
 </div>
 <div class="paragraph">
-<p>Med det här alternativet, kommer git att ersätta alla refnamn, sökvägar, blobinnehåll, inchecknings- och tagg-meddelanden, namn och e-postadresser i utdata med anonymiserad data. Två instanser av samma sträng kommer att ersättas motsvarande (t.ex. två incheckningar med samma författare kommer att ha samma anonymiserade författare i utdata, men har ingen likhet med den ursprungliga författarsträngen). Relationen mellan incheckningar, grenar och taggar behålls, liksom inchecknings-tidsstämplarna (men inchecknings-meddelandena och refnamnen har ingen likhet med originalen). Trädets relativa sammansättning behålls (t.ex. om du har ett rotträd med 10 filer och 3 träd, kommer även utdata att göra det), men deras namn och innehållet i filerna kommer att ersättas.</p>
+<p>Med det här alternativet, kommer git att ersätta alla refnamn, sökvägar, blobinnehåll, inchecknings- och taggmeddelanden, namn och e-postadresser i utdata med anonymiserad data. Två instanser av samma sträng kommer att ersättas motsvarande (t.ex. två incheckningar med samma författare kommer att ha samma anonymiserade författare i utdata, men har ingen likhet med den ursprungliga författarsträngen). Relationen mellan incheckningar, grenar och taggar behålls, liksom incheckningstidsstämplarna (men incheckningsmeddelandena och refnamnen har ingen likhet med originalen). Trädets relativa sammansättning behålls (t.ex. om du har ett rotträd med 10 filer och 3 träd, kommer även utdata att göra det), men deras namn och innehållet i filerna kommer att ersättas.</p>
 </div>
 <div class="paragraph">
-<p>Om du tror att du har hittat en git-bugg kan du börja med att exportera en anonymiserad ström av hela kodförrådet:</p>
+<p>Om du tror att du har hittat ett git-programfel kan du börja med att exportera en anonymiserad ström av hela kodförrådet:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -232,7 +232,7 @@ Detta är mycket experimentellt och formatet på dataströmmen kan komma att än
 <pre>$ git init anon-kodförråd
 $ cd anon-kodförråd
 $ git fast-import &lt;../anon-stream
-$ ... testa din bugg ...</pre>
+$ ... testa ditt programfel ...</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -253,15 +253,15 @@ $ ... testa din bugg ...</pre>
 <div class="content">
 <pre>$ git fast-export --anonymize --all \
       --anonymize-map=sensitive:foo \
-      --anonymize-map=hemligt.c:bar.c \
+      --anonymize-map=secret.c:bar.c \
       &gt;stream</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Efter att du har importerat strömmen, kan du köra <span class='synopsis'><code>git</code> <code>rev-list</code> <code>foo</code> <code>--</code> <code>bar.c</code></span> i det anonymiserade arkivet.</p>
+<p>Efter att du har importerat strömmen, kan du köra <span class='synopsis'><code>git</code> <code>rev-list</code> <code>foo</code> <code>--</code> <code>bar.c</code></span> i det anonymiserade kodförrådet.</p>
 </div>
 <div class="paragraph">
-<p>Observera att sökvägar och referensnamn delas upp i tokens vid snedstreckgränser. Kommandot ovan skulle anonymisera <span class='synopsis'><code>subdir/hemligt.c</code></span> till något i stil med <span class='synopsis'><code>path123/bar.c</code></span>; du kan sedan söka efter <span class='synopsis'><code>bar.c</code></span> i det anonymiserade arkivet för att bestämma det slutliga sökvägsnamnet.</p>
+<p>Observera att sökvägar och referensnamn delas upp i tokens vid snedstreckgränser. Kommandot ovan skulle anonymisera <span class='synopsis'><code>subdir/hemligt.c</code></span> till något i stil med <span class='synopsis'><code>path123/bar.c</code></span>; du kan sedan söka efter <span class='synopsis'><code>bar.c</code></span> i det anonymiserade kodförrådet för att bestämma det slutliga sökvägsnamnet.</p>
 </div>
 <div class="paragraph">
 <p>För att göra det enklare att referera till det slutliga sökvägsnamnet, kan du mappa varje sökvägskomponent; så om du också anonymiserar <span class='synopsis'><code>subdir</code></span> till <span class='synopsis'><code>publicdir</code></span>, så blir det slutliga sökvägsnamnet <span class='synopsis'><code>publicdir/bar.c</code></span>.</p>
@@ -272,7 +272,7 @@ $ ... testa din bugg ...</pre>
 <h2 id="_begränsningar"><a class="anchor" href="#_begränsningar"></a>BEGRÄNSNINGAR</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Eftersom <em>git fast-import</em> inte kan tagga träd, kommer du inte att kunna exportera linux.git-kodförrådet helt, eftersom det innehåller en tagg som refererar till ett träd istället för en incheckning.</p>
+<p>Eftersom <em>git fast-import</em> inte kan tagga träd, kommer du inte att kunna exportera linux.git-kodförrådet helt, eftersom det innehåller en tagg som refererar till ett träd i stället för en incheckning.</p>
 </div>
 </div>
 </div>

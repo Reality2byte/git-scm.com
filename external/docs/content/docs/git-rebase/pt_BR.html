@@ -566,6 +566,13 @@ The history walking machinery assumes that commits have non-decreasing commit ti
 <p>Consulte também a seção "OPÇÕES INCOMPATÍVEIS" logo abaixo.</p>
 </div>
 </dd>
+<dt class="hdlist1" id="git-rebase---trailerlttrailergt"> <a class="anchor" href="#git-rebase---trailertrailer"></a> <a class="anchor" href="#git-rebase---trailerlttrailergt"></a>--trailer=&lt;trailer&gt; </dt>
+<dd>
+<p>Append the given trailer to every rebased commit message, processed via <a href='{{< relurl "docs/git-interpret-trailers/pt_BR" >}}'>git-interpret-trailers[1]</a>. This option implies <span class='synopsis'><code>--force-rebase</code></span>.</p>
+<div class="paragraph">
+<p>Consulte também a seção "OPÇÕES INCOMPATÍVEIS" logo abaixo.</p>
+</div>
+</dd>
 <dt class="hdlist1" id="git-rebase--i"> <a class="anchor" href="#git-rebase--i"></a>-i </dt>
 <dt class="hdlist1" id="git-rebase---interactive"> <a class="anchor" href="#git-rebase---interactive"></a>--interactive </dt>
 <dd>
@@ -736,6 +743,9 @@ The history walking machinery assumes that commits have non-decreasing commit ti
 </li>
 <li>
 <p>--root quando utilizado sem o --onto</p>
+</li>
+<li>
+<p>--trailer</p>
 </li>
 </ul>
 </div>

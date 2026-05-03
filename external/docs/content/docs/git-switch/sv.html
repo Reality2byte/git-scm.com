@@ -53,10 +53,10 @@ headings:
 <p>Växla till en angiven gren. Arbetskatalogen och indexet uppdateras för att matcha grenen. Alla nya incheckningar läggs till i toppen av denna gren.</p>
 </div>
 <div class="paragraph">
-<p>Valfritt kan en ny gren skapas med antingen <span class='synopsis'><code>-c</code></span>, <span class='synopsis'><code>-C</code></span>, automatiskt från en fjärrgren med samma namn (se <span class='synopsis'><code>--guess</code></span>), eller koppla bort arbetskatalogen från vilken gren som helst med <span class='synopsis'><code>--detach</code></span>, tillsammans med växling.</p>
+<p>Valfritt kan en ny gren skapas med antingen <span class='synopsis'><code>-c</code></span>, <span class='synopsis'><code>-C</code></span>, automatiskt från en fjärrgren med samma namn (se <span class='synopsis'><code>--guess</code></span>), eller koppla bort arbetsträdet från vilken gren som helst med <span class='synopsis'><code>--detach</code></span>, tillsammans med växling.</p>
 </div>
 <div class="paragraph">
-<p>Att byta gren kräver inte ett rent index och arbetskatalog (dvs. inga skillnader jämfört med <span class='synopsis'><code>HEAD</code></span>). Operationen avbryts dock om operationen leder till förlust av lokala ändringar, om inte annat anges med <span class='synopsis'><code>--discard-changes</code></span> eller <span class='synopsis'><code>--merge</code></span>.</p>
+<p>Att byta gren kräver inte ett rent index och arbetsträd (d.v.s. inga skillnader jämfört med <span class='synopsis'><code>HEAD</code></span>). Operationen avbryts dock om operationen leder till förlust av lokala ändringar, om inte annat anges med <span class='synopsis'><code>--discard-changes</code></span> eller <span class='synopsis'><code>--merge</code></span>.</p>
 </div>
 </div>
 </div>
@@ -123,7 +123,7 @@ $ git switch _&lt;ny-gren&gt;_</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Om grenen finns i flera fjärrer och en av dem namnges av konfigurationsvariabeln <span class='synopsis'><code>checkout.defaultRemote</code></span>, kommer vi att använda den för att göra det tydligare, även om <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em> inte är unik för alla fjärrer. Ställ in den till t.ex. <span class='synopsis'><code>checkout.defaultRemote=origin</code></span> för att alltid checka ut fjärrgrenar därifrån om <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em> är tvetydig men finns på fjärren <em>origin</em>. Se även <span class='synopsis'><code>checkout.defaultRemote</code></span> i <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>.</p>
+<p>Om grenen finns i flera fjärrar och en av dem namnges av konfigurationsvariabeln <span class='synopsis'><code>checkout.defaultRemote</code></span> använder vi den för att göra tolkningen tydligare, även om <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em> inte är unik över alla fjärrar. Sätt den till t.ex. <span class='synopsis'><code>checkout.defaultRemote=origin</code></span> för att alltid checka ut fjärrgrenar därifrån om <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em> är tvetydig men finns på fjärren <span class='synopsis'><code>origin</code></span>. Se även <span class='synopsis'><code>checkout.defaultRemote</code></span> i <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>.</p>
 </div>
 <div class="paragraph">
 <p><span class='synopsis'><code>--guess</code></span> är standardbeteendet. Använd <span class='synopsis'><code>--no-guess</code></span> för att inaktivera det.</p>
@@ -139,12 +139,12 @@ $ git switch _&lt;ny-gren&gt;_</pre>
 </dd>
 <dt class="hdlist1" id="git-switch-spanclasssynopsiscode--discard-changescodespan"> <a class="anchor" href="#git-switch---discard-changes"></a> <a class="anchor" href="#git-switch-spanclasssynopsiscode--discard-changescodespan"></a><span class='synopsis'><code>--discard-changes</code></span> </dt>
 <dd>
-<p>Fortsätt även om indexet eller arbetskatalogen skiljer sig från <span class='synopsis'><code>HEAD</code></span>. Både indexet och arbetskatalogen återställs för att matcha växlingsmålet. Om <span class='synopsis'><code>--recurse-submodules</code></span> anges återställs även undermoduls-innehållet för att matcha växlingsmålet. Detta används för att ignorera lokala ändringar.</p>
+<p>Fortsätt även om indexet eller arbetsträdet skiljer sig från <span class='synopsis'><code>HEAD</code></span>. Både indexet och arbetsträdet återställs för att matcha växlingsmålet. Om <span class='synopsis'><code>--recurse-submodules</code></span> anges återställs även undermoduls-innehållet för att matcha växlingsmålet. Detta används för att ignorera lokala ändringar.</p>
 </dd>
 <dt class="hdlist1" id="git-switch-spanclasssynopsiscode-mcodespan"> <a class="anchor" href="#git-switch--m"></a> <a class="anchor" href="#git-switch-spanclasssynopsiscode-mcodespan"></a><span class='synopsis'><code>-m</code></span> </dt>
 <dt class="hdlist1" id="git-switch-spanclasssynopsiscode--mergecodespan"> <a class="anchor" href="#git-switch---merge"></a> <a class="anchor" href="#git-switch-spanclasssynopsiscode--mergecodespan"></a><span class='synopsis'><code>--merge</code></span> </dt>
 <dd>
-<p>Om du har lokala ändringar i en eller flera filer som skiljer sig mellan den aktuella grenen och den gren du växlar till, vägrar kommandot att växla grenar för att bevara dina ändringar i kontext. Med det här alternativet sker dock en trevägssammanslagning mellan den aktuella grenen, innehållet i ditt arbetskatalog och den nya grenen, och du kommer att vara på den nya grenen.</p>
+<p>Om du har lokala ändringar i en eller flera filer som skiljer sig mellan den aktuella grenen och den gren du växlar till, vägrar kommandot att växla grenar för att bevara dina ändringar i kontext. Med det här alternativet sker dock en trevägssammanslagning mellan den aktuella grenen, innehållet i ditt arbetsträd och den nya grenen, och du kommer att vara på den nya grenen.</p>
 <div class="paragraph">
 <p>När en sammanslagningskonflikt inträffar, lämnas indexposterna för motstridiga sökvägar ej sammanslagna, och du måste lösa konflikterna och markera de lösta sökvägarna med <span class='synopsis'><code>git</code> <code>add</code></span> (eller <span class='synopsis'><code>git</code> <code>rm</code></span> om sammanslagningen ska resultera i borttagning av sökvägen).</p>
 </div>
@@ -186,7 +186,7 @@ $ git switch _&lt;ny-gren&gt;_</pre>
 <dt class="hdlist1" id="git-switch-spanclasssynopsiscode--recurse-submodulescodespan"> <a class="anchor" href="#git-switch---recurse-submodules"></a> <a class="anchor" href="#git-switch-spanclasssynopsiscode--recurse-submodulescodespan"></a><span class='synopsis'><code>--recurse-submodules</code></span> </dt>
 <dt class="hdlist1" id="git-switch-spanclasssynopsiscode--no-recurse-submodulescodespan"> <a class="anchor" href="#git-switch---no-recurse-submodules"></a> <a class="anchor" href="#git-switch-spanclasssynopsiscode--no-recurse-submodulescodespan"></a><span class='synopsis'><code>--no-recurse-submodules</code></span> </dt>
 <dd>
-<p>Genom att använda <span class='synopsis'><code>--recurse-submodules</code></span> uppdateras innehållet i alla aktiva undermoduler enligt den incheckningen som registrerats i superprojektet. Om ingenting (eller <span class='synopsis'><code>--no-recurse-submodules</code></span>) används, kommer inte undermodulernas arbetskatalogerer att uppdateras. Precis som i <a href='{{< relurl "docs/git-submodule/sv" >}}'>git-submodule[1]</a> kommer detta att koppla bort <span class='synopsis'><code>HEAD</code></span> från undermodulerna.</p>
+<p>Genom att använda <span class='synopsis'><code>--recurse-submodules</code></span> uppdateras innehållet i alla aktiva undermoduler enligt den incheckningen som registrerats i superprojektet. Om ingenting (eller <span class='synopsis'><code>--no-recurse-submodules</code></span>) används, kommer inte undermodulernas arbetsträder att uppdateras. Precis som i <a href='{{< relurl "docs/git-submodule/sv" >}}'>git-submodule[1]</a> kommer detta att koppla bort <span class='synopsis'><code>HEAD</code></span> från undermodulerna.</p>
 </dd>
 </dl>
 </div>
@@ -233,7 +233,7 @@ Slår ihop frotz automatiskt</pre>
 <p>Efter denna trevägssammanslagning registreras de lokala modifieringarna <em>inte</em> i din indexfil, så <span class='synopsis'><code>git</code> <code>diff</code></span> skulle visa dig vilka ändringar du gjort sedan starten av den nya grenen.</p>
 </div>
 <div class="paragraph">
-<p>För att växla tillbaka till föregående gren innan vi bytte till mittämne (dvs. "master"-grenen):</p>
+<p>För att växla tillbaka till föregående gren innan vi bytte till mittämne (d.v.s. "master"-grenen):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -299,7 +299,7 @@ HEAD is now at 9fc9555312 Merge branch 'cc/shared-index-permbits'</pre>
 </dd>
 <dt class="hdlist1" id="git-switch-spanclasssynopsiscodecheckoutworkerscodespan"> <a class="anchor" href="#git-switch-checkoutworkers"></a> <a class="anchor" href="#git-switch-spanclasssynopsiscodecheckoutworkerscodespan"></a><span class='synopsis'><code>checkout.workers</code></span> </dt>
 <dd>
-<p>Antalet parallella arbetare som ska användas vid uppdatering av arbetskatalogen. Standardvärdet är ett, dvs. sekventiell exekvering. Om det sätts till ett värde mindre än ett, kommer Git att använda lika många arbetare som antalet tillgängliga logiska kärnor. Denna inställning och <span class='synopsis'><code>checkout.thresholdForParallelism</code></span> påverkar alla kommandon som utför utcheckning. T.ex. checkout, clone, reset, sparse-checkout, etc.</p>
+<p>Antalet parallella arbetare som ska användas vid uppdatering av arbetsträdet. Standardvärdet är ett, d.v.s. sekventiell exekvering. Om det sätts till ett värde mindre än ett, kommer Git att använda lika många arbetare som antalet tillgängliga logiska kärnor. Inställningen och <span class='synopsis'><code>checkout.thresholdForParallelism</code></span> påverkar alla kommandon som utför utcheckning. T.ex. checkout, clone, reset, sparse-checkout, etc.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -307,7 +307,7 @@ HEAD is now at 9fc9555312 Merge branch 'cc/shared-index-permbits'</pre>
 <div class="title">Note</div>
 </td>
 <td class="content">
-Parallell utcheckning ger vanligtvis bättre prestanda för förvar som finns på SSD-diskar eller över NFS. För förvar på roterande diskar och/eller maskiner med ett litet antal kärnor fungerar standard sekventiell utcheckning ofta bättre. Storleken och komprimeringsnivån för ett förvaret kan också påverka hur bra den parallella versionen presterar.
+Parallell utcheckning ger vanligtvis bättre prestanda för kodförråd som finns på SSD-diskar eller över NFS. För kodförråd på roterande diskar och/eller maskiner med ett litet antal kärnor fungerar standard sekventiell utcheckning ofta bättre. Storleken och komprimeringsnivån för ett kodförrådet kan också påverka hur bra den parallella versionen presterar.
 </td>
 </tr>
 </table>

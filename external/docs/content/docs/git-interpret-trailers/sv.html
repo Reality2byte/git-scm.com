@@ -31,7 +31,7 @@ headings:
 <h2 id="_namn"><a class="anchor" href="#_namn"></a>NAMN</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>git-interpret-trailers - Lägg till eller analysera strukturerad information i inchecknings-meddelanden</p>
+<p>git-interpret-trailers - Lägg till eller analysera strukturerad information i incheckningsmeddelanden</p>
 </div>
 </div>
 </div>
@@ -49,7 +49,7 @@ headings:
 <h2 id="_beskrivning"><a class="anchor" href="#_beskrivning"></a>BESKRIVNING</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Lägg till eller analysera <em>släp</em>-rader som liknar RFC 822-epost-huvuden, i slutet av den annars fria delen av ett inchecknings-meddelande. Till exempel, i följande inchecknings-meddelande</p>
+<p>Lägg till eller analysera <em>släp</em>-rader som liknar RFC 822-epost-huvuden, i slutet av den annars fria delen av ett incheckningsmeddelande. Till exempel i följande incheckningsmeddelande</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -62,22 +62,22 @@ Signed-off-by: Bob &lt;bob@example.com&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>De två sista raderna som börjar med "Signed-off-by" är släprader.</p>
+<p>De två sista raderna som börjar med "Signed-off-by" är slutrader.</p>
 </div>
 <div class="paragraph">
-<p>Det här kommandot läser inchecknings-meddelanden från antingen &lt;fil&gt;-argumenten eller standardindata om ingen &lt;fil&gt; anges. Om <span class='synopsis'><code>--parse</code></span> anges består utdata av de parsade släpraderna som kommer från indata, utan att påverka dem med några kommandoradsalternativ eller konfigurationsvariabler.</p>
+<p>Kommandot läser incheckningsmeddelanden från antingen &lt;fil&gt;-argumenten eller standardindata om ingen &lt;fil&gt; anges. Om <span class='synopsis'><code>--parse</code></span> anges består utdata av de parsade slutraderna som kommer från indata, utan att påverka dem med några kommandoradsalternativ eller konfigurationsvariabler.</p>
 </div>
 <div class="paragraph">
-<p>Annars, tillämpar detta kommando konfigurationsvariabler som <span class='synopsis'><code>trailer.*</code></span> (som potentiellt kan lägga till nya släprader, samt flytta dem), såväl som eventuella kommandoradsargument som kan åsidosätta konfigurationsvariabler (som <span class='synopsis'><code>--trailer=...</code></span> som också kan lägga till nya släprader), på varje indatafil. Resultatet genereras på standardutdata.</p>
+<p>Annars, tillämpar detta kommando konfigurationsvariabler som <span class='synopsis'><code>trailer.*</code></span> (som potentiellt kan lägga till nya slutrader, samt flytta dem), såväl som eventuella kommandoradsargument som kan åsidosätta konfigurationsvariabler (som <span class='synopsis'><code>--trailer=...</code></span> som också kan lägga till nya slutrader), på varje indatafil. Resultatet genereras på standardutdata.</p>
 </div>
 <div class="paragraph">
-<p>Detta kommando kan också fungera på utdata från <a href='{{< relurl "docs/git-format-patch/sv" >}}'>git-format-patch[1]</a>, vilket är mer omfattande än ett vanligt inchecknings-meddelande. Sådan utdata inkluderar nämligen ett inchecknings-meddelande (som ovan), en "---"-avdelarrad och en patch-del. För dessa indata modifieras inte avdelar- och patch-delarna av detta kommando och skickas som de är på utdata, såvida inte <span class='synopsis'><code>--no-divider</code></span> anges.</p>
+<p>Kommandot kan också fungera på utdata från <a href='{{< relurl "docs/git-format-patch/sv" >}}'>git-format-patch[1]</a>, vilket är mer omfattande än ett vanligt incheckningsmeddelande. Sådan utdata inkluderar nämligen ett incheckningsmeddelande (som ovan), en "---"-avdelarrad och en patch-del. För dessa indata modifieras inte avdelar- och patch-delarna av detta kommando och skickas som de är på utdata, såvida inte <span class='synopsis'><code>--no-divider</code></span> anges.</p>
 </div>
 <div class="paragraph">
-<p>Vissa konfigurationsvariabler styr hur <span class='synopsis'><code>--trailer</code></span>-argumenten tillämpas på varje indata och hur eventuella befintliga släprader i indata ändras. De gör det också möjligt att automatiskt lägga till vissa släprader.</p>
+<p>Vissa konfigurationsvariabler styr hur <span class='synopsis'><code>--trailer</code></span>-argumenten tillämpas på varje indata och hur eventuella befintliga slutrader i indata ändras. De gör det också möjligt att automatiskt lägga till vissa slutrader.</p>
 </div>
 <div class="paragraph">
-<p>Som standard, läggs argumentet <em>&lt;nyckel&gt;=&lt;värde&gt;</em> eller <em>&lt;nyckel&gt;:&lt;värde&gt;</em> som anges med <span class='synopsis'><code>--trailer</code></span> till efter de befintliga släprader endast om den sista släpraden har ett annat (&lt;nyckel&gt;, &lt;värde&gt;) par (eller om det inte finns någon befintlig släprad). Delarna &lt;nyckel&gt; och &lt;värde&gt; trimmas för att ta bort inledande- och efterföljande blanksteg, och de resulterande trimmade &lt;nyckel&gt; och &lt;värde&gt; kommer att visas i utdata så här:</p>
+<p>Som standard läggs argumentet <em>&lt;nyckel&gt;=&lt;värde&gt;</em> eller <em>&lt;nyckel&gt;:&lt;värde&gt;</em> som anges med <span class='synopsis'><code>--trailer</code></span> till efter de befintliga slutraderna endast om den sista slutraden har ett annat par (&lt;nyckel&gt;, &lt;värde&gt;) (eller om det inte finns någon befintlig slutrad). Delarna &lt;nyckel&gt; och &lt;värde&gt; trimmas för att ta bort inledande och efterföljande blanksteg, och de resulterande trimmade &lt;nyckel&gt; och &lt;värde&gt; kommer att visas i utdata så här:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -85,7 +85,7 @@ Signed-off-by: Bob &lt;bob@example.com&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Det här betyder att de trimmade &lt;nyckel&gt; och &lt;värde&gt; kommer att separeras med <span class='synopsis'><code>:</code> </span> (ett kolon följt av ett mellanslag).</p>
+<p>Det betyder att de trimmade &lt;nyckel&gt; och &lt;värde&gt; kommer att separeras med <span class='synopsis'><code>:</code> </span> (ett kolon följt av ett mellanslag).</p>
 </div>
 <div class="paragraph">
 <p>För enkelhetens skull kan en &lt;nyckel-alias&gt; konfigureras för att göra det kortare att skriva på kommandoraden med <span class='synopsis'><code>--trailer</code></span>. Detta kan konfigureras med konfigurationsvariabeln <em>trailer.&lt;nyckel-alias&gt;.key</em>. &lt;nyckelAlias&gt; måste vara ett prefix för hela &lt;nyckel&gt;-strängen, även om skiftlägeskänsligheten inte spelar någon roll. Om du till exempel har</p>
@@ -96,16 +96,16 @@ Signed-off-by: Bob &lt;bob@example.com&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>I din konfiguration behöver du bara ange <span class='synopsis'><code>--trailer="sign:</code> <code>foo"</code></span> på kommandoraden istället för <span class='synopsis'><code>--trailer="Signed-off-by:</code> <code>foo"</code></span>.</p>
+<p>I din konfiguration behöver du bara ange <span class='synopsis'><code>--trailer="sign:</code> <code>foo"</code></span> på kommandoraden i stället för <span class='synopsis'><code>--trailer="Signed-off-by:</code> <code>foo"</code></span>.</p>
 </div>
 <div class="paragraph">
-<p>Som standard visas den nya släpraden i slutet av alla befintliga släprader. Om det inte finns någon befintlig släprad visas den nya släpraden i slutet av inmatningen. En tom rad läggs till före den nya släpraden om det inte redan finns en.</p>
+<p>Som standard visas den nya slutraden i slutet av alla befintliga slutrader. Om det inte finns någon befintlig slutrad visas den nya slutraden i slutet av inmatningen. En tom rad läggs till före den nya slutraden om det inte redan finns en.</p>
 </div>
 <div class="paragraph">
-<p>Befintliga släprader extraheras från indata genom att söka efter en grupp med en eller flera rader som (i) alla är släprader, eller (ii) innehåller minst en Git-genererad eller användarkonfigurerad släprad och består av minst 25 % släprader. Gruppen måste föregås av en eller flera tomma (eller endast blanksteg) rader. Gruppen måste antingen finnas i slutet av indata eller vara de sista raderna utan blanksteg före en rad som börjar med <em>---</em> (följt av ett mellanslag eller slutet av raden).</p>
+<p>Befintliga slutrader extraheras från indata genom att söka efter en grupp med en eller flera rader som (i) alla är slutrader, eller (ii) innehåller minst en Git-genererad eller användarkonfigurerad slutrad och består av minst 25 % slutrader. Gruppen måste föregås av en eller flera tomma (eller endast blanksteg) rader. Gruppen måste antingen finnas i slutet av indata eller vara de sista raderna utan blanksteg före en rad som börjar med <em>---</em> (följt av ett mellanslag eller slutet av raden).</p>
 </div>
 <div class="paragraph">
-<p>När man läser släprader får det inte finnas något mellanslag före eller innanför &lt;nyckel&gt;, men ett valfritt antal vanliga mellanslag och tabbtecken är tillåtna mellan &lt;nyckel&gt; och avgränsaren. Det kan finnas mellanslag före, innanför eller efter &lt;värde&gt;. &lt;värde&gt; kan delas upp över flera rader där varje efterföljande rad börjar med minst ett mellanslag, som "fällbar" i RFC 822. Exempel:</p>
+<p>När man läser slutrader får det inte finnas något mellanslag före eller innanför &lt;nyckel&gt;, men ett valfritt antal vanliga mellanslag och tabbtecken är tillåtna mellan &lt;nyckel&gt; och avgränsaren. Det kan finnas mellanslag före, innanför eller efter &lt;värde&gt;. &lt;värde&gt; kan delas upp över flera rader där varje efterföljande rad börjar med minst ett mellanslag, som "fällbar" i RFC 822. Exempel:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -114,7 +114,7 @@ Signed-off-by: Bob &lt;bob@example.com&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Observera att släprader inte följer (och inte heller är avsedda att följa) många av reglerna för RFC 822-huvuden. Till exempel följer de inte kodningsregeln.</p>
+<p>Observera att slutrader inte följer (och inte heller är avsedda att följa) många av reglerna för RFC 822-huvuden. Till exempel följer de inte kodningsregeln.</p>
 </div>
 </div>
 </div>
@@ -129,7 +129,7 @@ Signed-off-by: Bob &lt;bob@example.com&gt;</pre>
 </dd>
 <dt class="hdlist1" id="git-interpret-trailers---trim-empty"> <a class="anchor" href="#git-interpret-trailers---trim-empty"></a>--trim-empty </dt>
 <dd>
-<p>Om &lt;värde&gt;-delen av en släprad endast innehåller blanktecken, kommer hela släpraden att tas bort från utdata. Detta gäller både befintliga släprader och nya släprader.</p>
+<p>Om &lt;värde&gt;-delen av en slutrad endast innehåller blanktecken, kommer hela slutraden att tas bort från utdata. Detta gäller både befintliga slutrader och nya slutrader.</p>
 </dd>
 <dt class="hdlist1" id="git-interpret-trailers---trailerltnyckelgtltvrdegt"> <a class="anchor" href="#git-interpret-trailers---trailernyckelvrde"></a> <a class="anchor" href="#git-interpret-trailers---trailerltnyckelgtltvrdegt"></a>--trailer &lt;nyckel&gt;[(=|:)&lt;värde&gt;] </dt>
 <dd>
@@ -138,7 +138,7 @@ Signed-off-by: Bob &lt;bob@example.com&gt;</pre>
 <dt class="hdlist1" id="git-interpret-trailers---whereltplaceringgt"> <a class="anchor" href="#git-interpret-trailers---whereplacering"></a> <a class="anchor" href="#git-interpret-trailers---whereltplaceringgt"></a>--where &lt;placering&gt; </dt>
 <dt class="hdlist1" id="git-interpret-trailers---no-where"> <a class="anchor" href="#git-interpret-trailers---no-where"></a>--no-where </dt>
 <dd>
-<p>Ange var alla nya släprader ska läggas till. En inställning som anges med <em>--where</em> åsidosätter <span class='synopsis'><code>trailer.where</code></span> och alla tillämpliga konfigurationsvariabler <span class='synopsis'><code>trailer.</code><em>&lt;nyckelAlias&gt;</em><code>.where</code></span> och gäller för alla <em>--trailer</em>-alternativ tills nästa förekomst av <em>--where</em> eller <em>--no-where</em>. När <em>--no-where</em> påträffas, avmarkera effekten av tidigare användning av <em>--where</em>, så att de relevanta konfigurationsvariablerna inte längre åsidosätts. Möjliga placeringar är <span class='synopsis'><code>after</code></span>, <span class='synopsis'><code>before</code></span>, <span class='synopsis'><code>end</code></span> eller <span class='synopsis'><code>start</code></span>.</p>
+<p>Ange var alla nya slutrader ska läggas till. En inställning som anges med <em>--where</em> åsidosätter <span class='synopsis'><code>trailer.where</code></span> och alla tillämpliga konfigurationsvariabler <span class='synopsis'><code>trailer.</code><em>&lt;nyckelAlias&gt;</em><code>.where</code></span> och gäller för alla <em>--trailer</em>-alternativ tills nästa förekomst av <em>--where</em> eller <em>--no-where</em>. När <em>--no-where</em> påträffas, avmarkera effekten av tidigare användning av <em>--where</em>, så att de relevanta konfigurationsvariablerna inte längre åsidosätts. Möjliga placeringar är <span class='synopsis'><code>after</code></span>, <span class='synopsis'><code>before</code></span>, <span class='synopsis'><code>end</code></span> eller <span class='synopsis'><code>start</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-interpret-trailers---if-existslthandlinggt"> <a class="anchor" href="#git-interpret-trailers---if-existshandling"></a> <a class="anchor" href="#git-interpret-trailers---if-existslthandlinggt"></a>--if-exists &lt;handling&gt; </dt>
 <dt class="hdlist1" id="git-interpret-trailers---no-if-exists"> <a class="anchor" href="#git-interpret-trailers---no-if-exists"></a>--no-if-exists </dt>
@@ -148,27 +148,27 @@ Signed-off-by: Bob &lt;bob@example.com&gt;</pre>
 <dt class="hdlist1" id="git-interpret-trailers---if-missinglthandlinggt"> <a class="anchor" href="#git-interpret-trailers---if-missinghandling"></a> <a class="anchor" href="#git-interpret-trailers---if-missinglthandlinggt"></a>--if-missing &lt;handling&gt; </dt>
 <dt class="hdlist1" id="git-interpret-trailers---no-if-missing"> <a class="anchor" href="#git-interpret-trailers---no-if-missing"></a>--no-if-missing </dt>
 <dd>
-<p>Ange vilken åtgärd som ska utföras när det inte finns någon annan släprad med samma &lt;nyckel&gt; i indatafältet. En inställning som anges med <em>--if-missing</em> åsidosätter <span class='synopsis'><code>trailer.ifMissing</code></span> och alla tillämpliga konfigurationsvariabler <span class='synopsis'><code>trailer.</code><em>&lt;nyckelAlias&gt;</em><code>.ifMissing</code></span> och gäller för alla <em>--trailer</em>-alternativ tills nästa förekomst av <em>--if-missing</em> eller <em>--no-if-missing</em>. Vid påträffande av <em>--no-if-missing</em>, rensas effekten av tidigare användning av <em>--if-missing</em>, så att de relevanta konfigurationsvariablerna inte längre åsidosätts. Möjliga åtgärder är <span class='synopsis'><code>doNothing</code></span> eller <span class='synopsis'><code>add</code></span>.</p>
+<p>Ange vilken åtgärd som ska utföras när det inte finns någon annan slutrad med samma &lt;nyckel&gt; i indatafältet. En inställning som anges med <em>--if-missing</em> åsidosätter <span class='synopsis'><code>trailer.ifMissing</code></span> och alla tillämpliga konfigurationsvariabler <span class='synopsis'><code>trailer.</code><em>&lt;nyckelAlias&gt;</em><code>.ifMissing</code></span> och gäller för alla <em>--trailer</em>-alternativ tills nästa förekomst av <em>--if-missing</em> eller <em>--no-if-missing</em>. Vid påträffande av <em>--no-if-missing</em>, rensas effekten av tidigare användning av <em>--if-missing</em>, så att de relevanta konfigurationsvariablerna inte längre åsidosätts. Möjliga åtgärder är <span class='synopsis'><code>doNothing</code></span> eller <span class='synopsis'><code>add</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-interpret-trailers---only-trailers"> <a class="anchor" href="#git-interpret-trailers---only-trailers"></a>--only-trailers </dt>
 <dd>
-<p>Endast utmating ut släprader, inte några andra delar av indata.</p>
+<p>Skriv endast ut slutrader, inte några andra delar av indata.</p>
 </dd>
 <dt class="hdlist1" id="git-interpret-trailers---only-input"> <a class="anchor" href="#git-interpret-trailers---only-input"></a>--only-input </dt>
 <dd>
-<p>Skriv endast ut släprader som finns i indata; lägg inte till några från kommandoraden eller genom att använda konfigurationsvariabler som <span class='synopsis'><code>trailer.*</code></span>.</p>
+<p>Skriv endast ut slutrader som finns i indata; lägg inte till några från kommandoraden eller genom att använda konfigurationsvariabler som <span class='synopsis'><code>trailer.*</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-interpret-trailers---unfold"> <a class="anchor" href="#git-interpret-trailers---unfold"></a>--unfold </dt>
 <dd>
-<p>Om en släprad har ett värde som löper över flera rader (även kallat "radbruten"), formatera om värdet till en enda rad.</p>
+<p>Om en slutrad har ett värde som löper över flera rader (även kallat "radbruten"), formatera om värdet till en enda rad.</p>
 </dd>
 <dt class="hdlist1" id="git-interpret-trailers---parse"> <a class="anchor" href="#git-interpret-trailers---parse"></a>--parse </dt>
 <dd>
-<p>Ett bekvämt alias för <span class='synopsis'><code>--only-trailers</code> <code>--only-input</code> <code>--unfold</code></span>. Detta gör det enklare att bara se släprader som kommer från indata utan att påverka dem med några kommandoradsalternativ eller konfigurationsvariabler, samtidigt som det gör utdata maskinvänligt med --unfold.</p>
+<p>Ett bekvämt alias för <span class='synopsis'><code>--only-trailers</code> <code>--only-input</code> <code>--unfold</code></span>. Detta gör det enklare att bara se slutrader som kommer från indata utan att påverka dem med några kommandoradsalternativ eller konfigurationsvariabler, samtidigt som det gör utdata maskinvänligt med --unfold.</p>
 </dd>
 <dt class="hdlist1" id="git-interpret-trailers---no-divider"> <a class="anchor" href="#git-interpret-trailers---no-divider"></a>--no-divider </dt>
 <dd>
-<p>Behandla inte <span class='synopsis'><code>---</code></span> som slutet på inchecknings-meddelandet. Använd detta när du vet att din inmatning bara innehåller själva inchecknings-meddelandet (och inte ett e-postmeddelande eller utdata från <span class='synopsis'><code>git</code> <code>format-patch</code></span>).</p>
+<p>Behandla inte <span class='synopsis'><code>---</code></span> som slutet på incheckningsmeddelandet. Använd detta när du vet att din inmatning bara innehåller själva incheckningsmeddelandet (och inte ett e-postmeddelande eller utdata från <span class='synopsis'><code>git</code> <code>format-patch</code></span>).</p>
 </dd>
 </dl>
 </div>
@@ -205,7 +205,7 @@ Signed-off-by: Bob &lt;bob@example.com&gt;</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Konfigurera en <em>sign</em>-släpraden med en <em>Signed-off-by</em>-nyckel och lägg sedan till två av dessa släprader i en inchecknings-meddelandefil:</p>
+<p>Konfigurera en <em>sign</em>-slutraden med en <em>Signed-off-by</em>-nyckel och lägg sedan till två av dessa slutrader i en incheckningsmeddelandefil:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ git config trailer.sign.key "Signed-off-by"
@@ -224,7 +224,7 @@ Signed-off-by: Bob &lt;bob@example.com&gt;</pre>
 </div>
 </li>
 <li>
-<p>Använd alternativet <span class='synopsis'><code>--in-place</code></span> för att redigera en inchecknings-meddelandefil på plats:</p>
+<p>Använd alternativet <span class='synopsis'><code>--in-place</code></span> för att redigera en incheckningsmeddelandefil på plats:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ cat msg.txt
@@ -255,7 +255,7 @@ $ git interpret-trailers --trailer 'Cc: Alice &lt;alice@example.com&gt;' --trail
 </div>
 </li>
 <li>
-<p>Konfigurera en <em>sign</em>-släprad med ett kommando för att automatiskt lägga till en 'Signed-off-by: ' med författar-informationen endast om det inte redan finns någon 'Signed-off-by: ', och visa hur det fungerar:</p>
+<p>Konfigurera en <em>sign</em>-slutrad med ett kommando för att automatiskt lägga till en 'Signed-off-by: ' med författar-informationen endast om det inte redan finns någon 'Signed-off-by: ', och visa hur det fungerar:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ cat msg1.txt
@@ -288,7 +288,7 @@ Signed-off-by: Alice &lt;alice@example.com&gt;</pre>
 </div>
 </li>
 <li>
-<p>Konfigurera en <em>fix</em>-släprad med en nyckel som innehåller ett <em>#</em> och inget mellanslag efter detta tecken, och visa hur det fungerar:</p>
+<p>Konfigurera en <em>fix</em>-slutrad med en nyckel som innehåller ett <em>#</em> och inget mellanslag efter detta tecken, och visa hur det fungerar:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ git config trailer.separators ":#"
@@ -301,7 +301,7 @@ Fix #42</pre>
 </div>
 </li>
 <li>
-<p>Konfigurera en <em>hjälp</em>-släprad med ett kommando använd skriptet <span class='synopsis'><code>glog-find-author</code></span> som söker efter specificerad författar-identitet från git log i git förvaret och visar hur det fungerar:</p>
+<p>Konfigurera en <em>hjälp</em>-slutrad med ett <span class='synopsis'><code>cmd</code></span>-värde som använder skriptet <span class='synopsis'><code>glog-find-author</code></span>, vilket söker efter den angivna författaridentiteten i git-loggen i kodförrådet och visar hur det fungerar:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ cat ~/bin/glog-find-author
@@ -325,7 +325,7 @@ Helped-by: Christian Couder &lt;christian.couder@gmail.com&gt;</pre>
 </div>
 </li>
 <li>
-<p>Konfigurera en <em>ref</em>-släprad med ett kommando använd skriptet <span class='synopsis'><code>glog-grep</code></span> för att hämta den senaste relevanta incheckningen från git-loggen i git-förvaret och visa hur det fungerar:</p>
+<p>Konfigurera en <em>ref</em>-slutrad med ett kommando och använd skriptet <span class='synopsis'><code>glog-grep</code></span> för att hämta den senaste relevanta incheckningen från git-loggen i Git-kodförrådet och visa hur det fungerar:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ cat ~/bin/glog-grep
@@ -348,7 +348,7 @@ Reference-to: 8bc9a0c769 (Lägg till upphovsrättsmeddelanden., 2005-04-07)</pre
 </div>
 </li>
 <li>
-<p>Konfigurera en <em>see</em>-släprad med ett kommando för att visa ämnet för en relaterad incheckning, och visa hur det fungerar:</p>
+<p>Konfigurera en <em>see</em>-slutrad med ett kommando för att visa ämnet för en relaterad incheckning, och visa hur det fungerar:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ cat msg.txt
@@ -374,7 +374,7 @@ See-also: fe3187489d69c4 (ämne för relaterad incheckning)</pre>
 </div>
 </li>
 <li>
-<p>Konfigurera en inchecknings-mall med några släprader med tomma värden (använd sed för att visa och behålla de efterföljande mellanslagen i slutet av släprader), konfigurera sedan en inchecknings-medd-krok som använder <em>git interpret-trailers</em> för att ta bort släprader med tomma värden och för att lägga till en <em>git-version</em>-släprad:</p>
+<p>Konfigurera en incheckningsmall med några slutrader med tomma värden (använd sed för att visa och behålla de efterföljande mellanslagen i slutet av slutrader), konfigurera sedan en commit-msg-krok som använder <em>git interpret-trailers</em> för att ta bort slutrader med tomma värden och för att lägga till en <em>git-version</em>-slutrad:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ cat temp.txt

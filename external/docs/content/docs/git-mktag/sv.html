@@ -46,7 +46,7 @@ headings:
 <p>Läser innehållet i en tagg på standardinmatning och skapar ett taggobjekt. Utdata är den nya taggens <span class="hover-term" data-term="objekt">&lt;objekt&gt;</span>-identifierare.</p>
 </div>
 <div class="paragraph">
-<p>Detta kommando är i stort sett likvärdigt med <a href='{{< relurl "docs/git-hash-object/sv" >}}'>git-hash-object[1]</a> anropat med <span class='synopsis'><code>-t</code> <code>tag</code> <code>-w</code> <code>--stdin</code></span>. Dvs. båda dessa kommer att skapa och skriva en tagg som finns i <span class='synopsis'><code>my-tag</code></span>:</p>
+<p>Kommandot är i stort sett likvärdigt med <a href='{{< relurl "docs/git-hash-object/sv" >}}'>git-hash-object[1]</a> anropat med <span class='synopsis'><code>-t</code> <code>tag</code> <code>-w</code> <code>--stdin</code></span>. Dvs. båda dessa kommer att skapa och skriva en tagg som finns i <span class='synopsis'><code>my-tag</code></span>:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -61,11 +61,11 @@ git hash-object -t tag -w --stdin &lt;min-tagg</pre>
 <p>"Fsck"-kontrollen som utförs av mktag är strängare än vad <a href='{{< relurl "docs/git-fsck/sv" >}}'>git-fsck[1]</a> skulle köra som standard, i det att alla <span class='synopsis'><code>fsck.</code><em>&lt;medd-id&gt;</em></span>-meddelanden flyttas från varningar till fel (så t.ex. är en saknad "tagger"-rad ett fel).</p>
 </div>
 <div class="paragraph">
-<p>Extra huvuden i objektet är också ett fel under mktag, men ignoreras av <a href='{{< relurl "docs/git-fsck/sv" >}}'>git-fsck[1]</a>. Denna extra kontroll kan stängas av genom att sätta lämplig variabel <span class='synopsis'><code>fsck.</code><em>&lt;medd-id&gt;</em></span>:</p>
+<p>Extra rubriker i objektet är också ett fel under mktag, men ignoreras av <a href='{{< relurl "docs/git-fsck/sv" >}}'>git-fsck[1]</a>. Denna extra kontroll kan stängas av genom att sätta lämplig variabel <span class='synopsis'><code>fsck.</code><em>&lt;medd-id&gt;</em></span>:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>git -c fsck.extraHeaderEntry=ignore mktag &lt;min-tagg-med-huvuden</pre>
+<pre>git -c fsck.extraHeaderEntry=ignore mktag &lt;min-tagg-med-rubriker</pre>
 </div>
 </div>
 </div>
@@ -98,7 +98,7 @@ tagger &lt;taggare&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>följt av ett "valfritt" meddelande i fritt format (vissa taggar skapade av äldre Git kanske inte har en "taggare"-rad). Meddelandet, när det finns, separeras från huvudet med en tom rad. Meddelandedelen kan innehålla en signatur som Git självt inte bryr sig om, men som kan verifieras med gpg.</p>
+<p>följt av ett "valfritt" meddelande i fritt format (vissa taggar skapade av äldre Git kanske inte har en "taggare"-rad). Meddelandet, när det finns, separeras från rubriken med en tom rad. Meddelandedelen kan innehålla en signatur som Git självt inte bryr sig om, men som kan verifieras med gpg.</p>
 </div>
 </div>
 </div>

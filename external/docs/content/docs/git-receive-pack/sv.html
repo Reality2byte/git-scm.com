@@ -53,10 +53,10 @@ headings:
 <h2 id="_beskrivning"><a class="anchor" href="#_beskrivning"></a>BESKRIVNING</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Anropas av <em>git send-pack</em> och uppdaterar förvaret med informationen som matas från fjärränden.</p>
+<p>Anropas av <em>git send-pack</em> och uppdaterar kodförrådet med informationen som matas från fjärränden.</p>
 </div>
 <div class="paragraph">
-<p>Detta kommando anropas vanligtvis inte direkt av slutanvändaren. Användargränssnittet för protokollet finns på <em>git send-pack</em>-sidan, och programparet är avsett att användas för att skicka uppdateringar till ett fjärrarkiv. För pull-operationer, se <a href='{{< relurl "docs/git-fetch-pack/sv" >}}'>git-fetch-pack[1]</a>.</p>
+<p>Kommandot anropas vanligtvis inte direkt av slutanvändaren. Användargränssnittet för protokollet finns på <em>git send-pack</em>-sidan, och programparet är avsett att användas för att skicka uppdateringar till ett fjärrkodförråd. För pull-operationer, se <a href='{{< relurl "docs/git-fetch-pack/sv" >}}'>git-fetch-pack[1]</a>.</p>
 </div>
 <div class="paragraph">
 <p>Kommandot möjliggör skapande och snabbspolning av sha1-referenser (huvuden/taggar) på fjärrsidan (strikt taget är det den lokala änden som <em>git-receive-pack</em> körs, men för användaren som sitter i send-pack-änden uppdaterar det fjärrsidan. Förvirrad?)</p>
@@ -79,7 +79,7 @@ headings:
 <dl>
 <dt class="hdlist1" id="git-receive-pack-ltgit-katgt"> <a class="anchor" href="#git-receive-pack-git-kat"></a> <a class="anchor" href="#git-receive-pack-ltgit-katgt"></a>&lt;git-kat&gt; </dt>
 <dd>
-<p>Förvaret att synkronisera till.</p>
+<p>Kodförrådet att synkronisera till.</p>
 </dd>
 <dt class="hdlist1" id="git-receive-pack---http-backend-info-refs"> <a class="anchor" href="#git-receive-pack---http-backend-info-refs"></a>--http-backend-info-refs </dt>
 <dd>
@@ -87,7 +87,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-receive-pack---skip-connectivity-check"> <a class="anchor" href="#git-receive-pack---skip-connectivity-check"></a>--skip-connectivity-check </dt>
 <dd>
-<p>Kringgår anslutningskontrollerna som validerar förekomsten av alla objekt i den transitiva stängningen av nåbara objekt. Det här alternativet är avsett för serveroperatörer som vill implementera sin egen objektanslutningsvalidering utanför Git. Detta är användbart i sådana fall där serversidan känner till ytterligare information om hur Git används och därmed kan förlita sig på vissa garantier för att mer effektivt beräkna objektanslutning som Git självt inte kan ge. Användning av det här alternativet utan en tillförlitlig extern mekanism för att säkerställa fullständig nåbar objektanslutning riskerar att korrumpera arkivet och bör inte användas i det allmänna fallet.</p>
+<p>Kringgår anslutningskontrollerna som validerar förekomsten av alla objekt i den transitiva stängningen av nåbara objekt. Det här alternativet är avsett för serveroperatörer som vill implementera sin egen objektanslutningsvalidering utanför Git. Detta är användbart i sådana fall där serversidan känner till ytterligare information om hur Git används och därmed kan förlita sig på vissa garantier för att mer effektivt beräkna objektanslutning som Git självt inte kan ge. Användning av det här alternativet utan en tillförlitlig extern mekanism för att säkerställa fullständig nåbar objektanslutning riskerar att korrumpera kodförrådet och bör inte användas i det allmänna fallet.</p>
 </dd>
 </dl>
 </div>
@@ -105,7 +105,7 @@ headings:
 </div>
 </div>
 <div class="paragraph">
-<p>Refnamnsvärdet är relativt till $GIT_DIR; t.ex. för master-huvidet är detta "refs/heads/master". De två sha1-värdena före varje refnamn är objektnamnen för refnamnet före och efter uppdateringen. Referenser som ska skapas kommer att ha sha1-gammal lika med 0{40}, medan referenser som ska raderas kommer att ha sha1-ny lika med 0{40}, annars bör sha1-gammal och sha1-ny vara giltiga objekt i arkivet.</p>
+<p>Refnamnsvärdet är relativt till $GIT_DIR; t.ex. för master-huvidet är detta "refs/heads/master". De två sha1-värdena före varje refnamn är objektnamnen för refnamnet före och efter uppdateringen. Referenser som ska skapas kommer att ha sha1-gammal lika med 0{40}, medan referenser som ska raderas kommer att ha sha1-ny lika med 0{40}, annars bör sha1-gammal och sha1-ny vara giltiga objekt i kodförrådet.</p>
 </div>
 <div class="paragraph">
 <p>När en signerad push accepteras (se <a href='{{< relurl "docs/git-push/sv" >}}'>git-push[1]</a>) lagras det signerade push-certifikatet i en blob och en miljövariabel <span class='synopsis'><code>GIT_PUSH_CERT</code></span> kan konsulteras för dess objektnamn. Se beskrivningen av <span class='synopsis'><code>post-receive</code></span> krok för ett exempel. Dessutom verifieras certifikatet med GPG och resultatet exporteras med följande miljövariabler:</p>
@@ -165,7 +165,7 @@ headings:
 <p>Denna krok anropas innan något refname uppdateras och innan några snabbspolningskontroller utförs.</p>
 </div>
 <div class="paragraph">
-<p>Om pre-receive-krokenen avslutas med en avslutningsstatus som inte är noll kommer inga uppdateringar att utföras, och krokarna update, post-receive och post-update kommer inte heller att anropas. Detta kan vara användbart för att snabbt kunna lösa ut om uppdateringen inte ska stödjas.</p>
+<p>Om pre-receive-kroken avslutas med en avslutningsstatus som inte är noll kommer inga uppdateringar att utföras, och krokarna update, post-receive och post-update kommer inte heller att anropas. Detta kan vara användbart för att snabbt avbryta om uppdateringen inte ska tillåtas.</p>
 </div>
 <div class="paragraph">
 <p>Se anvisningarna om karantänmiljön nedan.</p>
@@ -190,7 +190,7 @@ headings:
 <p>Kroken ska avslutas med status som inte är noll om den vill förhindra uppdatering av den namngivna referensen. Annars ska den avslutas med noll.</p>
 </div>
 <div class="paragraph">
-<p>Lyckad exekvering (noll exitstatus) av denna krok garanterar inte att referensen faktiskt kommer att uppdateras, det är bara en förutsättning. Därför är det inte en bra idé att skicka meddelanden (t.ex. e-post) från denna krok. Överväg att använda post-receive-kroken istället.</p>
+<p>Lyckad exekvering (noll exitstatus) av denna krok garanterar inte att referensen faktiskt kommer att uppdateras, det är bara en förutsättning. Därför är det inte en bra idé att skicka meddelanden (t.ex. e-post) från denna krok. Överväg att använda post-receive-kroken i stället.</p>
 </div>
 </div>
 </div>
@@ -206,13 +206,13 @@ headings:
 </div>
 </div>
 <div class="paragraph">
-<p>Refnamnsvärdet är relativt till $GIT_DIR; t.ex. för master-huvudet är detta "refs/heads/master". De två sha1-värdena före varje refnamn är objektnamnen för refnamnet före och efter uppdateringen. Referenser som skapades kommer att ha sha1-gammal lika med 0{40}, medan referenser som raderades kommer att ha sha1-ny lika med 0{40}, annars bör sha1-gammal och sha1-ny vara giltiga objekt i fövaret.</p>
+<p>Refnamnsvärdet är relativt till $GIT_DIR; t.ex. för master-huvudet är detta "refs/heads/master". De två sha1-värdena före varje refnamn är objektnamnen för refnamnet före och efter uppdateringen. Referenser som skapades kommer att ha sha1-gammal lika med 0{40}, medan referenser som raderades kommer att ha sha1-ny lika med 0{40}; annars ska sha1-gammal och sha1-ny vara giltiga objekt i kodförrådet.</p>
 </div>
 <div class="paragraph">
 <p>Miljövariablerna <span class='synopsis'><code>GIT_PUSH_CERT*</code></span> kan inspekteras, precis som i <span class='synopsis'><code>pre-receive</code></span> kroken, efter att en signerad push har accepterats.</p>
 </div>
 <div class="paragraph">
-<p>Med hjälp av denna krok är det enkelt att generera e-postmeddelanden som beskriver uppdateringarna till kodförrådet. Detta exempelskript skickar ett e-postmeddelande per referens som listar de incheckningar som pushas till kodförrådet och loggar push-certifikaten för signerade pushes med godkända signaturer till en loggtjänst:</p>
+<p>Med hjälp av denna krok är det enkelt att generera e-postmeddelanden som beskriver uppdateringarna till kodförrådet. Detta exempelskript skickar ett e-postmeddelande per referens som listar de incheckningar som skickas till kodförrådet och loggar push-certifikaten för signerade pushes med godkända signaturer till en loggtjänst:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -228,7 +228,7 @@ do
 		echo "Nya incheckningar:"
 		git rev-list --pretty "$nval" "^$oval"
 	fi |
-	mail -s "Ändringar i ref $ref" inchecknings-lista@mindomän
+	mail -s "Ändringar i ref $ref" incheckningslista@mindomän
 done
 # logga signerat push-certifikat, om något
 if test -n "${GIT_PUSH_CERT-}" &amp;&amp; test ${GIT_PUSH_CERT_STATUS} = G
@@ -253,7 +253,7 @@ exit 0</pre>
 <h2 id="_efter_uppdaterings_krok"><a class="anchor" href="#_efter_uppdaterings_krok"></a>EFTER-UPPDATERINGS KROK</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Efter all annan bearbetning, om minst en referens uppdaterades, och om filen $GIT_DIR/hooks/post-update finns och är körbar, kommer post-update att anropas med listan över referenser som har uppdaterats. Detta kan användas för att implementera alla typer av rensningsuppgifter för hela arkivet.</p>
+<p>Efter all annan bearbetning, om minst en referens uppdaterades, och om filen $GIT_DIR/hooks/post-update finns och är körbar, kommer post-update att anropas med listan över referenser som har uppdaterats. Detta kan användas för att implementera alla typer av rensningsuppgifter för hela kodförrådet.</p>
 </div>
 <div class="paragraph">
 <p>Avslutningskoden från detta krok-anrop ignoreras; det enda som återstår för <em>git-receive-pack</em> att göra vid den tidpunkten är att avsluta sig själv ändå.</p>
@@ -276,7 +276,7 @@ exec git update-server-info</pre>
 <p>När <span class='synopsis'><code>receive-pack</code></span> tar emot objekt placeras de i en tillfällig "karantän"-katalog i <span class='synopsis'><code>$GIT_DIR/objects</code></span>-katalogen och migreras till huvudobjektlagringen först efter att <span class='synopsis'><code>pre-receive</code></span>-kroken har slutförts. Om push-funktionen misslyckas innan dess tas den tillfälliga katalogen bort helt.</p>
 </div>
 <div class="paragraph">
-<p>Detta har några effekter och förbehåll som är synliga för användaren:</p>
+<p>Det har några effekter och förbehåll som är synliga för användaren:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -287,7 +287,7 @@ exec git update-server-info</pre>
 <p>Alla objekt som skapas av <span class='synopsis'><code>pre-receive</code></span>-kroken skapas i karantäns-katalogen (och migreras endast om det lyckas).</p>
 </li>
 <li>
-<p><span class='synopsis'><code>pre-receive</code></span>-kroken FÅR INTE uppdatera några referenser för att peka på objekt i karantän. Andra program som använder arkivet kommer inte att kunna se objekten (och om pre-receive-kroken misslyckas kommer dessa referenser att bli skadade). Av säkerhetsskäl avvisas alla referensuppdateringar inifrån <span class='synopsis'><code>pre-receive</code></span> automatiskt.</p>
+<p><span class='synopsis'><code>pre-receive</code></span>-kroken FÅR INTE uppdatera några referenser för att peka på objekt i karantän. Andra program som använder kodförrådet kommer inte att kunna se objekten (och om pre-receive-kroken misslyckas kommer dessa referenser att bli skadade). Av säkerhetsskäl avvisas alla referensuppdateringar inifrån <span class='synopsis'><code>pre-receive</code></span> automatiskt.</p>
 </li>
 </ol>
 </div>

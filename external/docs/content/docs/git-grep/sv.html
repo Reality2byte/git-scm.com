@@ -78,17 +78,17 @@ headings:
 <dl>
 <dt class="hdlist1" id="git-grep---cached"> <a class="anchor" href="#git-grep---cached"></a>--cached </dt>
 <dd>
-<p>Istället för att söka efter spårade filer i arbetskatalogen, sök efter blobbar som är registrerade i indexfilen.</p>
+<p>I stället för att söka efter spårade filer i arbetsträdet, sök efter blobbar som är registrerade i indexfilen.</p>
 </dd>
 <dt class="hdlist1" id="git-grep---untracked"> <a class="anchor" href="#git-grep---untracked"></a>--untracked </dt>
 <dd>
-<p>Förutom att söka i de spårade filerna i arbetskatalogen, sök även i ospårade filer.</p>
+<p>Förutom att söka i de spårade filerna i arbetsträdet, sök även i ospårade filer.</p>
 </dd>
 <dt class="hdlist1" id="git-grep---no-index"> <a class="anchor" href="#git-grep---no-index"></a>--no-index </dt>
 <dd>
-<p>Sök efter filer i den aktuella katalogen som inte hanteras av Git, eller genom att ignorera att den aktuella katalogen hanteras av Git. Detta liknar i stort sett att köra det vanliga verktyget <span class='synopsis'><code>grep</code>(<code>1</code>)</span> med dess <span class='synopsis'><code>-r</code></span>-alternativ specificerat, men med några ytterligare fördelar, som att använda sökvägsmönster-mönster för att begränsa sökvägar; se posten <em>sökvägsmönster</em> i <a href='{{< relurl "docs/gitglossary/sv" >}}'>gitglossary[7]</a> för mer information.</p>
+<p>Sök efter filer i den aktuella katalogen som inte hanteras av Git, eller genom att ignorera att den aktuella katalogen hanteras av Git. Detta liknar i stort sett att köra det vanliga verktyget <span class='synopsis'><code>grep</code>(<code>1</code>)</span> med dess <span class='synopsis'><code>-r</code></span>-alternativ angivet, men med några ytterligare fördelar, som att använda sökvägsmönster-mönster för att begränsa sökvägar; se posten <em>sökvägsmönster</em> i <a href='{{< relurl "docs/gitglossary/sv" >}}'>gitglossary[7]</a> för mer information.</p>
 <div class="paragraph">
-<p>Det här alternativet kan inte användas tillsammans med <span class='synopsis'><code>--cached</code></span> eller <span class='synopsis'><code>--untracked</code></span>. Se även <span class='synopsis'><code>grep.fallbackToNoIndex</code></span> i <em>KONFIGURATION</em> nedan.</p>
+<p>Alternativet kan inte användas tillsammans med <span class='synopsis'><code>--cached</code></span> eller <span class='synopsis'><code>--untracked</code></span>. Se även <span class='synopsis'><code>grep.fallbackToNoIndex</code></span> i <em>KONFIGURATION</em> nedan.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-grep---no-exclude-standard"> <a class="anchor" href="#git-grep---no-exclude-standard"></a>--no-exclude-standard </dt>
@@ -101,7 +101,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-grep---recurse-submodules"> <a class="anchor" href="#git-grep---recurse-submodules"></a>--recurse-submodules </dt>
 <dd>
-<p>Sök rekursivt i varje undermodul som är aktiv och utcheckad i arkivet. När den används i kombination med alternativet <em><span class="hover-term" data-term="träd">&lt;träd&gt;</span></em> kommer prefixet för all undermodulutdata att vara namnet på det överordnade projektets <em><span class="hover-term" data-term="träd">&lt;träd&gt;</span></em>-objekt. Detta alternativ kan inte användas tillsammans med <span class='synopsis'><code>--untracked</code></span>, och det har ingen effekt om <span class='synopsis'><code>--no-index</code></span> anges.</p>
+<p>Sök rekursivt i varje undermodul som är aktiv och utcheckad i kodförrådet. När den används i kombination med alternativet <em><span class="hover-term" data-term="träd">&lt;träd&gt;</span></em> kommer prefixet för all undermodulutdata att vara namnet på det överordnade projektets <em><span class="hover-term" data-term="träd">&lt;träd&gt;</span></em>-objekt. Detta alternativ kan inte användas tillsammans med <span class='synopsis'><code>--untracked</code></span>, och det har ingen effekt om <span class='synopsis'><code>--no-index</code></span> anges.</p>
 </dd>
 <dt class="hdlist1" id="git-grep--a"> <a class="anchor" href="#git-grep--a"></a>-a </dt>
 <dt class="hdlist1" id="git-grep---text"> <a class="anchor" href="#git-grep---text"></a>--text </dt>
@@ -151,11 +151,11 @@ headings:
 <dt class="hdlist1" id="git-grep--h"> <a class="anchor" href="#git-grep--h"></a>-h </dt>
 <dt class="hdlist1" id="git-grep--H"> <a class="anchor" href="#git-grep--H"></a>-H </dt>
 <dd>
-<p>Som standard, visar kommandot filnamnet för varje matchning. Alternativet <span class='synopsis'><code>-h</code></span> används för att undertrycka denna utdata. <span class='synopsis'><code>-H</code></span> finns där för fullständighetens skull och gör ingenting förutom att det åsidosätter <span class='synopsis'><code>-h</code></span> som angavs tidigare på kommandoraden.</p>
+<p>Som standard visar kommandot filnamnet för varje träff. Alternativet <span class='synopsis'><code>-h</code></span> används för att undertrycka denna utdata. <span class='synopsis'><code>-H</code></span> finns där för fullständighetens skull och gör ingenting förutom att det åsidosätter <span class='synopsis'><code>-h</code></span> som angavs tidigare på kommandoraden.</p>
 </dd>
 <dt class="hdlist1" id="git-grep---full-name"> <a class="anchor" href="#git-grep---full-name"></a>--full-name </dt>
 <dd>
-<p>När kommandot körs från en underkatalog, matar det vanligtvis ut sökvägar i förhållande till den aktuella katalogen. Det här alternativet tvingar att sökvägar matas ut i förhållande till projektets översta katalog.</p>
+<p>När kommandot körs från en underkatalog matar det vanligtvis ut sökvägar relativt den aktuella katalogen. Alternativet tvingar i stället sökvägar att matas ut relativt projektets toppkatalog.</p>
 </dd>
 <dt class="hdlist1" id="git-grep--E"> <a class="anchor" href="#git-grep--E"></a>-E </dt>
 <dt class="hdlist1" id="git-grep---extended-regexp"> <a class="anchor" href="#git-grep---extended-regexp"></a>--extended-regexp </dt>
@@ -192,7 +192,7 @@ headings:
 <dt class="hdlist1" id="git-grep--L"> <a class="anchor" href="#git-grep--L"></a>-L </dt>
 <dt class="hdlist1" id="git-grep---files-without-match"> <a class="anchor" href="#git-grep---files-without-match"></a>--files-without-match </dt>
 <dd>
-<p>Istället för att visa alla matchande rader, visa bara namnen på filer som innehåller (eller inte innehåller) matchningar. För bättre kompatibilitet med <em>git diff</em> är <span class='synopsis'><code>--name-only</code></span> en synonym för <span class='synopsis'><code>--files-with-matches</code></span>.</p>
+<p>I stället för att visa alla matchande rader, visa bara namnen på filer som innehåller (eller inte innehåller) matchningar. För bättre kompatibilitet med <em>git diff</em> är <span class='synopsis'><code>--name-only</code></span> en synonym för <span class='synopsis'><code>--files-with-matches</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-grep--Oltblddraregt"> <a class="anchor" href="#git-grep--Oblddrare"></a> <a class="anchor" href="#git-grep--Oltblddraregt"></a>-O[&lt;bläddrare&gt;] </dt>
 <dt class="hdlist1" id="git-grep---open-files-in-pagerltblddraregt"> <a class="anchor" href="#git-grep---open-files-in-pagerblddrare"></a> <a class="anchor" href="#git-grep---open-files-in-pagerltblddraregt"></a>--open-files-in-pager[=&lt;bläddrare&gt;] </dt>
@@ -212,7 +212,7 @@ headings:
 <dt class="hdlist1" id="git-grep--c"> <a class="anchor" href="#git-grep--c"></a>-c </dt>
 <dt class="hdlist1" id="git-grep---count"> <a class="anchor" href="#git-grep---count"></a>--count </dt>
 <dd>
-<p>Istället för att visa varje matchande rad, visa antalet rader som matchar.</p>
+<p>I stället för att visa varje matchande rad, visa antalet rader som matchar.</p>
 </dd>
 <dt class="hdlist1" id="git-grep---colorltnrgt"> <a class="anchor" href="#git-grep---colornr"></a> <a class="anchor" href="#git-grep---colorltnrgt"></a>--color[=&lt;när&gt;] </dt>
 <dd>
@@ -228,7 +228,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-grep---heading"> <a class="anchor" href="#git-grep---heading"></a>--heading </dt>
 <dd>
-<p>Visa filnamnet ovanför träffarna i den filen istället för i början av varje rad som visas.</p>
+<p>Visa filnamnet ovanför träffarna i den filen i stället för i början av varje rad som visas.</p>
 </dd>
 <dt class="hdlist1" id="git-grep--p"> <a class="anchor" href="#git-grep--p"></a>-p </dt>
 <dt class="hdlist1" id="git-grep---show-function"> <a class="anchor" href="#git-grep---show-function"></a>--show-function </dt>
@@ -272,7 +272,7 @@ headings:
 <p>Att skicka mönstret via &lt;fil&gt; möjliggör att ett sökmönster som innehåller \0 kan tillhandahållas.</p>
 </div>
 <div class="paragraph">
-<p>Inte alla mönstertyper stöder mönster som innehåller \0. Git kommer att fallera ut om en given mönstertyp inte kan stödja ett sådant mönster. Mönstertypen <span class='synopsis'><code>--perl-regexp</code></span> har, när den kompileras mot PCRE v2-backend, det bredaste stödet för dessa typer av mönster.</p>
+<p>Inte alla mönstertyper stöder mönster som innehåller \0. Git kommer att avbryta med fel om en given mönstertyp inte stöder ett sådant mönster. Mönstertypen <span class='synopsis'><code>--perl-regexp</code></span> har, när den kompileras mot PCRE v2-backend, det bredaste stödet för dessa typer av mönster.</p>
 </div>
 <div class="paragraph">
 <p>I versioner av Git före 2.23.0 skulle mönster som innehöll \0 i tysthet anses vara fasta. Detta dokumenterades aldrig, det fanns också udda och odokumenterade interaktioner mellan t.ex. icke-ASCII-mönster som innehöll \0 och <span class='synopsis'><code>--ignore-case</code></span>.</p>
@@ -299,11 +299,11 @@ headings:
 <dt class="hdlist1" id="git-grep--q"> <a class="anchor" href="#git-grep--q"></a>-q </dt>
 <dt class="hdlist1" id="git-grep---quiet"> <a class="anchor" href="#git-grep---quiet"></a>--quiet </dt>
 <dd>
-<p>Skriv inte ut matchande rader; avsluta istället med status 0 när det finns en matchning och med status som inte är noll när det inte finns någon.</p>
+<p>Skriv inte ut matchande rader; avsluta i stället med status 0 när det finns en matchning och med status som inte är noll när det inte finns någon.</p>
 </dd>
 <dt class="hdlist1" id="git-grep-lttrdgt82308203"> <a class="anchor" href="#git-grep-trd"></a> <a class="anchor" href="#git-grep-lttrdgt82308203"></a><span class="hover-term" data-term="träd">&lt;träd&gt;</span>&#8230;&#8203; </dt>
 <dd>
-<p>Istället för att söka efter spårade filer i arbetskatalogen, sök efter blobbar i de angivna träden.</p>
+<p>I stället för att söka efter spårade filer i arbetsträdet, sök efter blobbar i de angivna träden.</p>
 </dd>
 <dt class="hdlist1" id="git-grep---"> <a class="anchor" href="#git-grep---"></a>-- </dt>
 <dd>

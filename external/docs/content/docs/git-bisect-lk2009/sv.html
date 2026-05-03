@@ -14,8 +14,8 @@ headings:
   id: _abstrakt
 - text: Introduktion till "git bisect"
   id: _introduktion_till_git_bisect
-- text: Fighting regressions overview
-  id: _fighting_regressions_overview
+- text: Översikt över regressionsbekämpning
+  id: _översikt_över_regressionsbekämpning
 - text: '"git bisect" översikt'
   id: _git_bisect_översikt
 - text: Detaljer om "git bisect"
@@ -60,7 +60,7 @@ headings:
 </div>
 </div>
 <div class="sect1">
-<h2 id="_fighting_regressions_overview"><a class="anchor" href="#_fighting_regressions_overview"></a>Fighting regressions overview</h2>
+<h2 id="_översikt_över_regressionsbekämpning"><a class="anchor" href="#_översikt_över_regressionsbekämpning"></a>Översikt över regressionsbekämpning</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_regressioner_ett_stort_problem"><a class="anchor" href="#_regressioner_ett_stort_problem"></a>Regressioner: ett stort problem</h3>
@@ -346,13 +346,13 @@ bisect run success</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>There are only 'skip'ped commits left to test.
-The first bad commit could be any of:
+<pre>Det finns bara överhoppade incheckningar kvar att testa.
+Den första dåliga incheckningen kan vara någon av:
 15722f2fa328eaba97022898a305ffc8172db6b1
 78e86cf3e850bd755bb71831f42e200626fbd1e0
 e15b73ad3db9b48d7d1ade32f8cd23a751fe0ace
 070eab2303024706f2924822bfec8b9847e4ac1b
-We cannot bisect more!</pre>
+Det går inte att bisektera mer!</pre>
 </div>
 </div>
 </div>
@@ -1167,7 +1167,7 @@ fi</pre>
 <div class="quoteblock">
 <blockquote>
 <div class="paragraph">
-<p>BBChop är som <em>git bisect</em> (eller motsvarande), men fungerar när din bugg är intermittent. Det vill säga, den fungerar i närvaro av falska negativa resultat (när en version råkar fungera den här gången trots att den innehåller programfelet). Den antar att det inte finns några falska positiva resultat (i princip skulle samma tillvägagångssätt fungera, men att lägga till den kan vara icke-trivialt).</p>
+<p>BBChop är som <em>git bisect</em> (eller motsvarande), men fungerar när ditt programfel är intermittent. Det vill säga, den fungerar i närvaro av falska negativa resultat (när en version råkar fungera den här gången trots att den innehåller programfelet). Den antar att det inte finns några falska positiva resultat (i princip skulle samma tillvägagångssätt fungera, men att lägga till den kan vara icke-trivialt).</p>
 </div>
 </blockquote>
 </div>
@@ -1192,7 +1192,7 @@ fi</pre>
 <p><em>mycket</em>.</p>
 </div>
 <div class="paragraph">
-<p>För ungefär tio år sedan gjorde jag min första "bisection" av en Linux-patchkö. Det var före Git- (och till och med före BitKeeper-) dagarna. Jag tillbringade bokstavligen dagar med att sortera patchar och skapa vad som i praktiken var fristående incheckningar som jag gissade var relaterade till den programfelet.</p>
+<p>För ungefär tio år sedan gjorde jag min första "bisection" av en Linux-patchkö. Det var före Git- (och till och med före BitKeeper-) dagarna. Jag tillbringade bokstavligen dagar med att sortera patchar och skapa vad som i praktiken var fristående incheckningar som jag gissade var relaterade till det programfelet.</p>
 </div>
 <div class="paragraph">
 <p>Det var ett verktyg för absolut sista utvägen. Jag skulle hellre spendera dagar med att titta på printk-utdata än att göra en manuell <em>patch-bisektion</em>.</p>
@@ -1201,7 +1201,7 @@ fi</pre>
 <p>Med Git bisect är det en barnlek: i bästa fall kan jag göra en kärnbisektering på cirka 15 steg på 20-30 minuter, automatiserat. Även med manuell hjälp eller vid bisektering av flera överlappande programfel är det sällan mer än en timme.</p>
 </div>
 <div class="paragraph">
-<p>Det är faktiskt ovärderligt eftersom det finns programfel som jag aldrig ens skulle <em>försöka</em> felsöka om det inte vore för git bisect. Förr fanns det felmönster som omedelbart var hopplösa för mig att felsöka - i bästa fall kunde jag skicka krasch-/buggsignaturen till lkml och hoppas att någon annan kan komma på något.</p>
+<p>Det är faktiskt ovärderligt eftersom det finns programfel som jag aldrig ens skulle <em>försöka</em> felsöka om det inte vore för git bisect. Förr fanns det felmönster som omedelbart var hopplösa för mig att felsöka - i bästa fall kunde jag skicka krasch-/programfelsignaturen till lkml och hoppas att någon annan kan komma på något.</p>
 </div>
 <div class="paragraph">
 <p>Och även om en bisektering misslyckas i dag säger det oss något värdefullt om programfelet: att den är icke-deterministisk, beroende av timing eller kärnans avbildningslayout.</p>

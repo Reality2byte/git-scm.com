@@ -26,7 +26,7 @@ headings:
   id: _конфігурація
 - text: ФАЙЛИ
   id: FILES
-- text: ПРИЛАДИ
+- text: ОБЛАСТІ ДІЇ
   id: SCOPES
 - text: НАВКОЛИШНЄ СЕРЕДОВИЩЕ
   id: ENVIRONMENT
@@ -43,7 +43,7 @@ headings:
 <h2 id="_назва"><a class="anchor" href="#_назва"></a>НАЗВА</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>git-config - Отримання та встановлення параметрів репозиторію або глобальних параметрів</p>
+<p>git-config  — Отримання та встановлення параметрів репозиторію або глобальних параметрів</p>
 </div>
 </div>
 </div>
@@ -66,19 +66,19 @@ headings:
 <h2 id="_опис"><a class="anchor" href="#_опис"></a>ОПИС</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>За допомогою цієї команди ви можете запитувати/встановлювати/замінювати/скидати параметри. Назва насправді є секцією та ключем, розділеними крапкою, а значення буде екрановано.</p>
+<p>За допомогою цієї команди можна запитувати, встановлювати, замінювати або скидати параметри. Ім’я фактично складається з назви розділу та ключа, розділених крапкою, а значення буде екрановане.</p>
 </div>
 <div class="paragraph">
-<p>До опції можна додати кілька рядків за допомогою опції <span class='synopsis'><code>--append</code></span>. Якщо ви хочете оновити або скасувати значення опції, яка може зустрічатися в кількох рядках, потрібно вказати <span class='synopsis'><code>--value=</code><em>&lt;шаблон&gt;</em></span> (що є розширеним регулярним виразом, якщо не вказано опцію <span class='synopsis'><code>--fixed-value</code></span>). Оновлюються або скасовуються лише існуючі значення, які відповідають шаблону. Якщо ви хочете обробити рядки, які <strong>не</strong> відповідають шаблону, просто додайте один знак оклику попереду (див. також <a href="#EXAMPLES">ПРИКЛАДИ</a>), але зверніть увагу, що це працює лише тоді, коли опція <span class='synopsis'><code>--fixed-value</code></span> не використовується.</p>
+<p>До опції можна додати кілька рядків за допомогою опції <span class='synopsis'><code>--append</code></span>. Якщо ви хочете оновити або скасувати значення опції, яка може зустрічатися в кількох рядках, потрібно вказати <span class='synopsis'><code>--value=</code><em>&lt;шаблон&gt;</em></span> (що є розширеним регулярним виразом, якщо не вказано опцію <span class='synopsis'><code>--fixed-value</code></span>). Оновлюються або скасовуються лише наявні значення, які відповідають шаблону. Якщо ви хочете обробити рядки, які <strong>не</strong> відповідають шаблону, просто додайте один знак оклику попереду (див. також <a href="#EXAMPLES">ПРИКЛАДИ</a>), але зверніть увагу, що це працює лише тоді, коли опція <span class='synopsis'><code>--fixed-value</code></span> не використовується.</p>
 </div>
 <div class="paragraph">
-<p>Опція <span class='synopsis'><code>--type=</code><em>&lt;тип&gt;</em></span> вказує <em>git config</em> забезпечити канонізацію вхідних та вихідних значень для заданого &lt;тип&gt;. Якщо <span class='synopsis'><code>--type=</code><em>&lt;тип&gt;</em></span> не вказано, канонізація не виконуватиметься. Викликаючі сторони можуть скинути існуючий специфікатор <span class='synopsis'><code>--type</code></span> за допомогою <span class='synopsis'><code>--no-type</code></span>.</p>
+<p>Параметр <span class='synopsis'><code>--type=</code><em>&lt;type&gt;</em></span> вказує команді <em>git config</em> забезпечити можливість канонізації вхідних і вихідних значень відповідно до заданого &lt;type&gt;. Якщо параметр <span class='synopsis'><code>--type=</code><em>&lt;type&gt;</em></span> не вказано, канонізація не виконуватиметься. Користувачі можуть скасувати дію наявного параметра <span class='synopsis'><code>--type</code></span> за допомогою <span class='synopsis'><code>--no-type</code></span>.</p>
 </div>
 <div class="paragraph">
-<p>Під час читання значення за замовчуванням зчитуються із системних, глобальних та локальних файлів конфігурації репозиторію, а опції <span class='synopsis'><code>--system</code></span>, <span class='synopsis'><code>--global</code></span>, <span class='synopsis'><code>--local</code></span>, <span class='synopsis'><code>--worktree</code></span> та <span class='synopsis'><em>--file &lt;ім'я файлу&gt;</em></span> можна використовувати, щоб вказати команді читати лише з цього місця (див. <a href="#FILES">ФАЙЛИ</a>).</p>
+<p>Під час зчитування, значення зазвичай беруться з системних, глобальних та локальних файлів конфігурації репозиторію, а параметри <span class='synopsis'><code>--system</code></span>, <span class='synopsis'><code>--global</code></span>, <span class='synopsis'><code>--local</code></span>, <span class='synopsis'><code>--worktree</code></span> та <span class='synopsis'><code>--file</code> <em>&lt;filename&gt;</em></span> дозволяють вказати команді зчитувати дані лише з цього місця (див. <a href="#FILES">ФАЙЛИ</a>).</p>
 </div>
 <div class="paragraph">
-<p>Під час запису нове значення за замовчуванням записується до локального файлу конфігурації репозиторію, а опції <span class='synopsis'><code>--system</code></span>, <span class='synopsis'><code>--global</code></span>, <span class='synopsis'><code>--worktree</code></span>, <span class='synopsis'><em>--file &lt;ім'я файлу&gt;</em></span> можна використовувати, щоб вказати команді записувати до цього місця (можна сказати <span class='synopsis'><code>--local</code></span>, але це значення за замовчуванням).</p>
+<p>Під час запису, нове значення зазвичай записується у локальний файл конфігурації репозиторію, а параметри <span class='synopsis'><code>--system</code></span>, <span class='synopsis'><code>--global</code></span>, <span class='synopsis'><code>--worktree</code></span>, <span class='synopsis'><code>--file</code> <em>&lt;filename&gt;</em></span> можна використовувати, щоб вказати команді, куди саме слід записати дані (можна вказати <span class='synopsis'><code>--local</code></span>, але це і так є стандартним значенням).</p>
 </div>
 <div class="paragraph">
 <p>Ця команда завершиться невдачею з ненульовим статусом у разі помилки. Деякі коди виходу:</p>
@@ -101,7 +101,7 @@ headings:
 <p>ви намагаєтеся скасувати значення параметра, якого не існує (ret=5),</p>
 </li>
 <li>
-<p>ви намагаєтеся встановити/скасувати опцію, для якої збігається кілька рядків (ret=5), або</p>
+<p>ви намагаєтеся скасувати/встановити параметр, якому відповідають кілька рядків (ret=5), або</p>
 </li>
 <li>
 <p>ви намагаєтеся використати недійсний регулярний вираз (ret=6).</p>
@@ -123,31 +123,31 @@ headings:
 <dl>
 <dt class="hdlist1" id="git-config-list"> <a class="anchor" href="#git-config-list"></a>list </dt>
 <dd>
-<p>Перелічіть усі змінні, встановлені у конфігураційному файлі, разом з їхніми значеннями.</p>
+<p>Вивести перелік всіх змінних, заданих у файлі конфігурації, разом із їхніми значеннями.</p>
 </dd>
 <dt class="hdlist1" id="git-config-get"> <a class="anchor" href="#git-config-get"></a>get </dt>
 <dd>
-<p>Видає значення вказаного ключа. Якщо ключ присутній кілька разів у конфігурації, видає останнє значення. Якщо вказано <span class='synopsis'><code>--all</code></span>, видає всі значення, пов&#8217;язані з ключем. Повертає код помилки 1, якщо ключ відсутній.</p>
+<p>Видає значення вказаного ключа. Якщо ключ присутній кілька разів у конфігурації, видає останнє значення. Якщо вказано <span class='synopsis'><code>--all</code></span>, видає всі значення, повʼязані з ключем. Повертає код помилки 1, якщо ключ відсутній.</p>
 </dd>
 <dt class="hdlist1" id="git-config-set"> <a class="anchor" href="#git-config-set"></a>set </dt>
 <dd>
-<p>Встановити значення для одного або кількох параметрів конфігурації. За замовчуванням ця команда відмовляється записувати багатозначні параметри конфігурації. Передача <span class='synopsis'><code>--all</code></span> замінить усі багатозначні параметри конфігурації новим значенням, тоді як <span class='synopsis'><code>--value=</code></span> замінить усі параметри конфігурації, значення яких відповідають заданому шаблону.</p>
+<p>Встановити значення для одного або кількох параметрів конфігурації. Зазвичай ця команда відмовляється записувати багатозначні параметри конфігурації. Передача <span class='synopsis'><code>--all</code></span> замінить усі багатозначні параметри конфігурації новим значенням, тоді як <span class='synopsis'><code>--value=</code></span> замінить усі параметри конфігурації, значення яких відповідають заданому шаблону.</p>
 </dd>
 <dt class="hdlist1" id="git-config-unset"> <a class="anchor" href="#git-config-unset"></a>unset </dt>
 <dd>
-<p>Скасувати значення для одного або кількох параметрів конфігурації. За замовчуванням ця команда відмовляється скидати значення багатозначних ключів. Передача <span class='synopsis'><code>--all</code></span> скине всі багатозначні параметри конфігурації, тоді як <span class='synopsis'><code>--value</code></span> скине всі параметри конфігурації, значення яких відповідають заданому шаблону.</p>
+<p>Скинути значення для одного або кількох параметрів конфігурації. Зазвичай ця команда відмовляється скидати значення багатозначних ключів. Передача <span class='synopsis'><code>--all</code></span> скине всі багатозначні параметри конфігурації, тоді як <span class='synopsis'><code>--value</code></span> скине всі параметри конфігурації, значення яких відповідають заданому шаблону.</p>
 </dd>
 <dt class="hdlist1" id="git-config-rename-section"> <a class="anchor" href="#git-config-rename-section"></a>rename-section </dt>
 <dd>
-<p>Перейменуйте заданий розділ на нове ім&#8217;я.</p>
+<p>Перейменує вказаний розділ на нову назву.</p>
 </dd>
 <dt class="hdlist1" id="git-config-remove-section"> <a class="anchor" href="#git-config-remove-section"></a>remove-section </dt>
 <dd>
-<p>Видаліть вказаний розділ з файлу конфігурації.</p>
+<p>Видалить вказаний розділ з файлу конфігурації.</p>
 </dd>
 <dt class="hdlist1" id="git-config-edit"> <a class="anchor" href="#git-config-edit"></a>edit </dt>
 <dd>
-<p>Відкриває редактор для зміни вказаного конфігураційного файлу; <span class='synopsis'><code>--system</code></span>, <span class='synopsis'><code>--global</code></span>, <span class='synopsis'><code>--local</code></span> (за замовчуванням), <span class='synopsis'><code>--worktree</code></span> або <span class='synopsis'><code>--file</code> <em>&lt;файл-конфігурації&gt;</em></span>.</p>
+<p>Відкриває редактор для зміни вказаного конфігураційного файлу; <span class='synopsis'><code>--system</code></span>, <span class='synopsis'><code>--global</code></span>, <span class='synopsis'><code>--local</code></span> (зазвичай), <span class='synopsis'><code>--worktree</code></span> або <span class='synopsis'><code>--file</code> <em>&lt;файл-конфігурації&gt;</em></span>.</p>
 </dd>
 </dl>
 </div>
@@ -160,36 +160,36 @@ headings:
 <dl>
 <dt class="hdlist1" id="git-config---replace-all"> <a class="anchor" href="#git-config---replace-all"></a>--replace-all </dt>
 <dd>
-<p>За замовчуванням замінюється максимум один рядок. Це замінює всі рядки, що відповідають ключу (і, за бажанням, <span class='synopsis'><code>--value=</code><em>&lt;шаблон&gt;</em></span>).</p>
+<p>Стандартною поведінкою є заміна не більше одного рядка. При цьому замінюються всі рядки, що відповідають ключу (а також, за бажанням, <span class='synopsis'><code>--value=</code><em>&lt;pattern&gt;</em></span>).</p>
 </dd>
 <dt class="hdlist1" id="git-config---append"> <a class="anchor" href="#git-config---append"></a>--append </dt>
 <dd>
-<p>Додає новий рядок до опції, не змінюючи жодних існуючих значень. Це те саме, що й надання <em>--value=^$</em> у <span class='synopsis'><code>set</code></span>.</p>
+<p>Додає новий рядок до опції, не змінюючи жодних наявних значень. Це те саме, що й надання <em>--value=^$</em> у <span class='synopsis'><code>set</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-config---commentltgt"> <a class="anchor" href="#git-config---comment"></a> <a class="anchor" href="#git-config---commentltgt"></a>--comment &lt;повідомлення&gt; </dt>
 <dd>
-<p>Додайте коментар у кінці нових або змінених рядків.</p>
+<p>Додає коментар у кінці нових або змінених рядків.</p>
 <div class="paragraph">
-<p>Якщо <em>&lt;повідомлення&gt;</em> починається з одного або кількох пробілів, за якими йде "<mark>", воно використовується як є. Якщо воно починається з "</mark>", перед його використанням додається пробіл. В іншому випадку до нього додається рядок "#" (пробіл, за яким йде хеш, а потім пробіл). Отриманий рядок розміщується одразу після значення, визначеного для змінної. <em>&lt;повідомлення&gt;</em> не повинно містити символів переведення рядка (багаторядкові коментарі не дозволені).</p>
+<p>Якщо <em>&lt;повідомлення&gt;</em> починається з одного або кількох пробілів, за якими йде "<mark>", воно використовується як є. Якщо воно починається з "</mark>", перед ним додається пробіл. В іншому випадку до нього додається рядок " # " (пробіл, за яким йде хеш, а потім пробіл). Отриманий рядок розміщується одразу після значення, визначеного для змінної. <em>&lt;Повідомлення&gt;</em> не повинно містити символів переведення рядка (багаторядкові коментарі не дозволені).</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-config---all"> <a class="anchor" href="#git-config---all"></a>--all </dt>
 <dd>
-<p>За допомогою функції <span class='synopsis'><code>get</code></span> повернути всі значення для багатозначного ключа.</p>
+<p>За допомогою функції <span class='synopsis'><code>get</code></span> повертає всі значення для багатозначного ключа.</p>
 </dd>
 <dt class="hdlist1" id="git-config---regexp"> <a class="anchor" href="#git-config---regexp"></a>--regexp </dt>
 <dd>
-<p>За допомогою команди <span class='synopsis'><code>get</code></span> інтерпретувати назву як регулярний вираз. Зіставлення регулярних виразів наразі враховує регістр і виконується з канонізованою версією ключа, в якій назви розділів і змінних пишуться з нижнього регістру, а назви підрозділів – ні.</p>
+<p>За допомогою команди <span class='synopsis'><code>get</code></span> інтерпретує назву як регулярний вираз. Зіставлення регулярних виразів наразі враховує регістр і виконується з канонізованою версією ключа, в якій назви розділів і змінних пишуться у нижнього регістру, а назви підрозділів — ні.</p>
 </dd>
 <dt class="hdlist1" id="git-config---urlltURLgt"> <a class="anchor" href="#git-config---urlURL"></a> <a class="anchor" href="#git-config---urlltURLgt"></a>--url=&lt;URL&gt; </dt>
 <dd>
-<p>Якщо як &lt;section&gt;.&lt;key&gt; задано двокомпонентний &lt;name&gt;, повертається значення для &lt;section&gt;.&lt;URL&gt;.&lt;key&gt;, частина &lt;URL&gt; якого найкраще відповідає заданій URL-адресі (якщо такого ключа не існує, значення для &lt;section&gt;.&lt;key&gt; використовується як резервний варіант). Якщо як ім&#8217;я задано лише &lt;section&gt;, це робиться для всіх ключів у розділі та перераховується їх. Повертає код помилки 1, якщо значення не знайдено.</p>
+<p>Якщо вказано двокомпонентне імʼя &lt;name&gt; у форматі &lt;section&gt;.&lt;key&gt;, повертається значення для &lt;section&gt;.&lt;URL&gt;.&lt;key&gt;, частина &lt;URL&gt; якого найкраще збігається із вказаним URL (якщо такого ключа не існує, як запасний варіант використовується значення для &lt;section&gt;.&lt;key&gt;). Якщо вказано лише &lt;section&gt; як ім’я, ця операція виконується для всіх ключів у розділі та виводиться їх список. Повертає код помилки 1, якщо значення не знайдено.</p>
 </dd>
 <dt class="hdlist1" id="git-config---global"> <a class="anchor" href="#git-config---global"></a>--global </dt>
 <dd>
-<p>Щодо параметрів запису: записувати у глобальний файл <span class='synopsis'><code>~/.gitconfig</code></span>, а не в репозиторій <span class='synopsis'><code>.git/config</code></span>, записувати у файл <span class='synopsis'><code>$XDG_CONFIG_HOME/git/config</code></span>, якщо цей файл існує, а файл <span class='synopsis'><code>~/.gitconfig</code></span> ні.</p>
+<p>Для параметрів запису: записувати у глобальний файл <span class='synopsis'><code>~/.gitconfig</code></span>, а не в репозиторій <span class='synopsis'><code>.git/config</code></span>, записувати у файл <span class='synopsis'><code>$XDG_CONFIG_HOME/git/config</code></span>, якщо цей файл існує, а файл <span class='synopsis'><code>~/.gitconfig</code></span> ні.</p>
 <div class="paragraph">
-<p>Щодо параметрів читання: читати лише з глобального <span class='synopsis'><code>~/.gitconfig</code></span> та з <span class='synopsis'><code>$XDG_CONFIG_HOME/git/config</code></span>, а не з усіх доступних файлів.</p>
+<p>Для параметрів читання: читати лише з глобального <span class='synopsis'><code>~/.gitconfig</code></span> та з <span class='synopsis'><code>$XDG_CONFIG_HOME/git/config</code></span>, а не з усіх доступних файлів.</p>
 </div>
 <div class="paragraph">
 <p>Див. також <a href="#FILES">ФАЙЛИ</a>.</p>
@@ -197,9 +197,9 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-config---system"> <a class="anchor" href="#git-config---system"></a>--system </dt>
 <dd>
-<p>Щодо параметрів запису: записуйте до системного файлу <span class='synopsis'><code>$</code>(<code>prefix</code>)<code>/etc/gitconfig</code></span>, а не до репозиторію <span class='synopsis'><code>.git/config</code></span>.</p>
+<p>Для параметрів запису: записувати до системного файлу <span class='synopsis'><code>$</code>(<code>prefix</code>)<code>/etc/gitconfig</code></span>, а не до репозиторію <span class='synopsis'><code>.git/config</code></span>.</p>
 <div class="paragraph">
-<p>Щодо параметрів читання: читати лише з загальносистемного <span class='synopsis'><code>$</code>(<code>prefix</code>)<code>/etc/gitconfig</code></span>, а не з усіх доступних файлів.</p>
+<p>Для параметрів читання: читати лише з загальносистемного <span class='synopsis'><code>$</code>(<code>prefix</code>)<code>/etc/gitconfig</code></span>, а не з усіх доступних файлів.</p>
 </div>
 <div class="paragraph">
 <p>Див. також <a href="#FILES">ФАЙЛИ</a>.</p>
@@ -207,9 +207,9 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-config---local"> <a class="anchor" href="#git-config---local"></a>--local </dt>
 <dd>
-<p>Щодо параметрів запису: запишіть у файл репозиторію <span class='synopsis'><code>.git/config</code></span>. Це поведінка за замовчуванням.</p>
+<p>Для параметрів запису: записувати у файл репозиторію <span class='synopsis'><code>.git/config</code></span>. Це стандартна поведінка.</p>
 <div class="paragraph">
-<p>Щодо параметрів читання: читати лише з репозиторію <span class='synopsis'><code>.git/config</code></span>, а не з усіх доступних файлів.</p>
+<p>Для параметрів читання: читати лише з репозиторію <span class='synopsis'><code>.git/config</code></span>, а не з усіх доступних файлів.</p>
 </div>
 <div class="paragraph">
 <p>Див. також <a href="#FILES">ФАЙЛИ</a>.</p>
@@ -222,9 +222,9 @@ headings:
 <dt class="hdlist1" id="git-config--fltconfig-filegt"> <a class="anchor" href="#git-config--fconfig-file"></a> <a class="anchor" href="#git-config--fltconfig-filegt"></a>-f &lt;config-file&gt; </dt>
 <dt class="hdlist1" id="git-config---fileltconfig-filegt"> <a class="anchor" href="#git-config---fileconfig-file"></a> <a class="anchor" href="#git-config---fileltconfig-filegt"></a>--file &lt;config-file&gt; </dt>
 <dd>
-<p>Щодо параметрів запису: записуйте у вказаний файл, а не в репозиторій <span class='synopsis'><code>.git/config</code></span>.</p>
+<p>Для параметрів запису: записувати у вказаний файл, а не в репозиторій <span class='synopsis'><code>.git/config</code></span>.</p>
 <div class="paragraph">
-<p>Щодо параметрів читання: читати лише з вказаного файлу, а не з усіх доступних файлів.</p>
+<p>Для параметрів читання: читати лише з вказаного файлу, а не з усіх доступних файлів.</p>
 </div>
 <div class="paragraph">
 <p>Див. також <a href="#FILES">ФАЙЛИ</a>.</p>
@@ -237,18 +237,18 @@ headings:
 <dt class="hdlist1" id="git-config-spanclasssynopsiscode--valuecodeemltpatterngtemspan"> <a class="anchor" href="#git-config---valuepattern"></a> <a class="anchor" href="#git-config-spanclasssynopsiscode--valuecodeemltpatterngtemspan"></a><span class='synopsis'><code>--value=</code><em>&lt;pattern&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscode--no-valuecodespan"> <a class="anchor" href="#git-config---no-value"></a> <a class="anchor" href="#git-config-spanclasssynopsiscode--no-valuecodespan"></a><span class='synopsis'><code>--no-value</code></span> </dt>
 <dd>
-<p>З <span class='synopsis'><code>get</code></span>, <span class='synopsis'><code>set</code></span> та <span class='synopsis'><code>unset</code></span>, зіставлення здійснюється лише з <em>&lt;шаблон&gt;</em>. Шаблон є розширеним регулярним виразом, якщо не вказано <span class='synopsis'><code>--fixed-value</code></span>.</p>
+<p>З <span class='synopsis'><code>get</code></span>, <span class='synopsis'><code>set</code></span> та <span class='synopsis'><code>unset</code></span>, зіставлення здійснюється лише з <em>&lt;шаблоном&gt;</em>. Шаблон є розширеним регулярним виразом, якщо не вказано <span class='synopsis'><code>--fixed-value</code></span>.</p>
 <div class="paragraph">
-<p>Використовуйте <span class='synopsis'><code>--no-value</code></span>, щоб скасувати встановлення <em>&lt;шаблон&gt;</em>.</p>
+<p>Використовуйте <span class='synopsis'><code>--no-value</code></span>, щоб скасувати встановлення <em>&lt;шаблону&gt;</em>.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-config---fixed-value"> <a class="anchor" href="#git-config---fixed-value"></a>--fixed-value </dt>
 <dd>
-<p>При використанні з <span class='synopsis'><code>--value=</code><em>&lt;шаблон&gt;</em></span>, <em>&lt;шаблон&gt;</em> розглядайте як точний рядок, а не як регулярний вираз. Це обмежить пари ім&#8217;я/значення, які збігаються, лише тими, де значення точно дорівнює <em>&lt;шаблон&gt;</em>.</p>
+<p>При використанні з <span class='synopsis'><code>--value=</code><em>&lt;шаблон&gt;</em></span>, <em>&lt;шаблон&gt;</em> розглядається як точний рядок, а не як регулярний вираз. Це обмежить пари імʼя/значення, які збігаються, лише тими, де значення точно дорівнює <em>&lt;шаблону&gt;</em>.</p>
 </dd>
 <dt class="hdlist1" id="git-config---typelttypegt"> <a class="anchor" href="#git-config---typetype"></a> <a class="anchor" href="#git-config---typelttypegt"></a>--type &lt;type&gt; </dt>
 <dd>
-<p>Команда «git config» гарантуватиме, що будь-які вхідні або вихідні дані є коректними згідно з заданими обмеженнями типу, та канонізуватиме вихідні значення в канонічну форму <span class='synopsis'><em>&lt;type&gt;</em></span>.</p>
+<p>Команда <em>git config</em> гарантує, що будь-які вхідні або вихідні дані відповідають заданим обмеженням типів, а також перетворює вихідні значення у канонічну форму типу <span class='synopsis'><em>&lt;type&gt;</em></span>.</p>
 <div class="paragraph">
 <p>Дійсні <span class='synopsis'><em>&lt;type&gt;</em></span> включають:</p>
 </div>
@@ -264,13 +264,13 @@ headings:
 <p><em>bool-or-int</em>: канонізувати відповідно до <em>bool</em> або <em>int</em>, як описано вище.</p>
 </li>
 <li>
-<p><em>path</em>: канонізувати, розширюючи початковий символ <span class='synopsis'><code>~</code></span> до значення <span class='synopsis'><code>$HOME</code></span> та <span class='synopsis'><code>~user</code></span> до домашнього каталогу для зазначеного користувача. Цей специфікатор не впливає на встановлення значення (але ви можете використати <span class='synopsis'><code>git</code> <code>config</code> <code>section.variable</code> <code>~/</code></span> з командного рядка, щоб ваша оболонка виконала розширення).</p>
+<p><em>path</em>: канонізувати, розгортаючи початковий символ <span class='synopsis'><code>~</code></span> до значення <span class='synopsis'><code>$HOME</code></span> та <span class='synopsis'><code>~user</code></span> до домашньої теки зазначеного користувача. Цей специфікатор не впливає на встановлення значення (але ви можете використати <span class='synopsis'><code>git</code> <code>config</code> <code>section.variable</code> <code>~/</code></span> з командного рядка, щоб ваша оболонка виконала розгортання).</p>
 </li>
 <li>
-<p><em>expiry-date</em>: канонізувати шляхом перетворення фіксованого або відносного рядка дати на позначку часу. Цей специфікатор не впливає на встановлення значення.</p>
+<p><em>expiry-date</em>: канонізувати шляхом перетворення фіксованого або відносного рядка дати на відбиток часу. Цей специфікатор не впливає на встановлення значення.</p>
 </li>
 <li>
-<p><em>колір</em>: Під час отримання значення канонізувати шляхом перетворення на керуючу послідовність кольору ANSI. Під час встановлення значення виконується перевірка на бездоганність, щоб переконатися, що задане значення можна канонізувати як колір ANSI, але воно записується як є.</p>
+<p><em>color</em>: під час отримання значення виконується канонізація шляхом перетворення у послідовність кодування кольорів ANSI. Під час встановлення значення виконується перевірка на коректність, щоб переконатися, що задане значення можна канонізувати як колір ANSI, але воно записується без змін.</p>
 </li>
 </ul>
 </div>
@@ -281,7 +281,7 @@ headings:
 <dt class="hdlist1" id="git-config---path"> <a class="anchor" href="#git-config---path"></a>--path </dt>
 <dt class="hdlist1" id="git-config---expiry-date"> <a class="anchor" href="#git-config---expiry-date"></a>--expiry-date </dt>
 <dd>
-<p>Історичні опції вибору специфікатора типу. Замість цього надайте перевагу <span class='synopsis'><code>--type</code></span> (див. вище).</p>
+<p>Історичні опції вибору специфікатора типу. Використовуйте замість цього <span class='synopsis'><code>--type</code></span> (див. вище).</p>
 </dd>
 <dt class="hdlist1" id="git-config---no-type"> <a class="anchor" href="#git-config---no-type"></a>--no-type </dt>
 <dd>
@@ -290,37 +290,37 @@ headings:
 <dt class="hdlist1" id="git-config--z"> <a class="anchor" href="#git-config--z"></a>-z </dt>
 <dt class="hdlist1" id="git-config---null"> <a class="anchor" href="#git-config---null"></a>--null </dt>
 <dd>
-<p>Для всіх опцій, що виводять значення та/або ключі, завжди завершуйте значення символом null (замість символу нового рядка). Використовуйте символ нового рядка як роздільник між ключем і значенням. Це дозволяє безпечно обробляти вивід, не плутаючись, наприклад, зі значеннями, що містять розриви рядків.</p>
+<p>Для всіх опцій, що виводять значення та/або ключі, завжди завершувати значення символом null (замість символу нового рядка). Використовувати символ нового рядка як роздільник між ключем і значенням. Це дозволяє безпечно обробляти вивід, не плутаючись, наприклад, зі значеннями, що містять розриви рядків.</p>
 </dd>
 <dt class="hdlist1" id="git-config---name-only"> <a class="anchor" href="#git-config---name-only"></a>--name-only </dt>
 <dd>
-<p>Виведіть лише назви змінних конфігурації для <span class='synopsis'><code>list</code></span> або <span class='synopsis'><code>get</code></span>.</p>
+<p>Виводити лише назви змінних конфігурації для <span class='synopsis'><code>list</code></span> або <span class='synopsis'><code>get</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscode--show-namescodespan"> <a class="anchor" href="#git-config---show-names"></a> <a class="anchor" href="#git-config-spanclasssynopsiscode--show-namescodespan"></a><span class='synopsis'><code>--show-names</code></span> </dt>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscode--no-show-namescodespan"> <a class="anchor" href="#git-config---no-show-names"></a> <a class="anchor" href="#git-config-spanclasssynopsiscode--no-show-namescodespan"></a><span class='synopsis'><code>--no-show-names</code></span> </dt>
 <dd>
-<p>За допомогою <span class='synopsis'><code>get</code></span> відображаються ключі конфігурації на додаток до їхніх значень. Значення за замовчуванням — <span class='synopsis'><code>--no-show-names</code></span>, якщо не вказано <span class='synopsis'><code>--url</code></span> і в <em>&lt;назва&gt;</em> немає підрозділів.</p>
+<p>З опцією <span class='synopsis'><code>get</code></span> показуються ключі конфігурації разом із їхніми значеннями. Стандартним значенням є <span class='synopsis'><code>--no-show-names</code></span>, якщо не вказано <span class='synopsis'><code>--url</code></span> і в <em>&lt;name&gt;</em> немає підрозділів.</p>
 </dd>
 <dt class="hdlist1" id="git-config---show-origin"> <a class="anchor" href="#git-config---show-origin"></a>--show-origin </dt>
 <dd>
-<p>Доповніть вивід усіх запитуваних параметрів конфігурації типом походження (файл, стандартний ввід, блоб, командний рядок) та фактичним походженням (шлях до файлу конфігурації, посилання або ідентифікатор блобу, якщо застосовно).</p>
+<p>Доповнює вивід усіх запитуваних параметрів конфігурації типом походження (файл, стандартний ввід, блоб, командний рядок) та фактичним походженням (шлях до файлу конфігурації, посилання або ідентифікатор блобу, якщо застосовно).</p>
 </dd>
 <dt class="hdlist1" id="git-config---show-scope"> <a class="anchor" href="#git-config---show-scope"></a>--show-scope </dt>
 <dd>
-<p>Подібно до <span class='synopsis'><code>--show-origin</code></span> тим, що він доповнює вивід усіх запитуваних параметрів конфігурації областю дії цього значення (робоче дерево, локальний, глобальний, системний, команда).</p>
+<p>Подібно до параметра <span class='synopsis'><code>--show-origin</code></span>, доповнює вивід усіх запитаних параметрів конфігурації інформацією про область дії цього значення (worktree, local, global, system, command).</p>
 </dd>
 <dt class="hdlist1" id="git-config---get-colorboolltnamegtltstdout-is-ttygt"> <a class="anchor" href="#git-config---get-colorboolnamestdout-is-tty"></a> <a class="anchor" href="#git-config---get-colorboolltnamegtltstdout-is-ttygt"></a>--get-colorbool &lt;name&gt; [&lt;stdout-is-tty&gt;] </dt>
 <dd>
-<p>Знайдіть налаштування кольору для <span class='synopsis'><em>&lt;name&gt;</em></span> (наприклад, <span class='synopsis'><code>color.diff</code></span>) та виведіть "true" або "false". <span class='synopsis'><em>&lt;stdout-is-tty&gt;</em></span> має бути або "true", або "false", і враховується, коли конфігурація вказує на "auto". Якщо <span class='synopsis'><em>&lt;stdout-is-tty&gt;</em></span> відсутній, то перевіряється стандартний вивід самої команди та завершується зі статусом 0, якщо має використовуватися колір, або зі статусом 1 в іншому випадку. Коли налаштування кольору для <span class='synopsis'><code>name</code></span> не визначено, команда використовує <span class='synopsis'><code>color.ui</code></span> як резервний варіант.</p>
+<p>Шукати налаштування кольору для <span class='synopsis'><em>&lt;name&gt;</em></span> (наприклад, <span class='synopsis'><code>color.diff</code></span>) та вивести "true" або "false". <span class='synopsis'><em>&lt;stdout-is-tty&gt;</em></span> має бути або "true", або "false", і враховується, коли конфігурація вказує на "auto". Якщо <span class='synopsis'><em>&lt;stdout-is-tty&gt;</em></span> відсутній, то перевіряється стандартний вивід самої команди та завершується зі статусом 0, якщо має використовуватися колір, або зі статусом 1 в іншому випадку. Коли налаштування кольору для <span class='synopsis'><code>name</code></span> не визначено, команда використовує <span class='synopsis'><code>color.ui</code></span> як резервний варіант.</p>
 </dd>
 <dt class="hdlist1" id="git-config---includes"> <a class="anchor" href="#git-config---includes"></a>--includes </dt>
 <dt class="hdlist1" id="git-config---no-includes"> <a class="anchor" href="#git-config---no-includes"></a>--no-includes </dt>
 <dd>
-<p>Враховуйте директиви <span class='synopsis'><code>include.*</code></span> у конфігураційних файлах під час пошуку значень. За замовчуванням встановлено значення <span class='synopsis'><code>off</code></span>, коли вказано певний файл (наприклад, за допомогою <span class='synopsis'><code>--file</code></span>, <span class='synopsis'><code>--global</code></span> тощо), та <span class='synopsis'><code>on</code></span> під час пошуку у всіх конфігураційних файлах.</p>
+<p>Під час пошуку значень враховувати директиви <span class='synopsis'><code>include.*</code></span> у файлах конфігурації. Стандартне значення — <span class='synopsis'><code>off</code></span>, якщо вказано конкретний файл (наприклад, за допомогою опцій <span class='synopsis'><code>--file</code></span>, <span class='synopsis'><code>--global</code></span> тощо), і <span class='synopsis'><code>on</code></span> — під час пошуку у всіх файлах конфігурації.</p>
 </dd>
 <dt class="hdlist1" id="git-config---defaultltvaluegt"> <a class="anchor" href="#git-config---defaultvalue"></a> <a class="anchor" href="#git-config---defaultltvaluegt"></a>--default &lt;value&gt; </dt>
 <dd>
-<p>Якщо використовується функція <span class='synopsis'><code>get</code></span>, а запитувана змінна не знайдена, поводьтеся так, ніби &lt;value&gt; — це значення, призначене цій змінній.</p>
+<p>Якщо використовується функція <span class='synopsis'><code>get</code></span>, а запитувана змінна не знайдена, поводитись так, ніби &lt;value&gt; — це значення, призначене цій змінній.</p>
 </dd>
 </dl>
 </div>
@@ -330,7 +330,7 @@ headings:
 <h2 id="_застарілі_режими"><a class="anchor" href="#_застарілі_режими"></a>ЗАСТАРІЛІ РЕЖИМИ</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Наступні режими застаріли на користь підкоманд. Рекомендується перейти на новий синтаксис.</p>
+<p>Наступні режими застаріли на користь субкоманд. Рекомендується перейти на новий синтаксис.</p>
 </div>
 <div class="dlist">
 <dl>
@@ -383,7 +383,7 @@ headings:
 <dd>
 <p>Замінено на <span class='synopsis'><code>git</code> <code>config</code> <code>rename-section</code> <em>&lt;old-name&gt;</em> <em>&lt;new-name&gt;</em></span>.</p>
 </dd>
-<dt class="hdlist1" id="git-config---remove-sectionlt8217gt"> <a class="anchor" href="#git-config---remove-section"></a> <a class="anchor" href="#git-config---remove-sectionlt8217gt"></a>--remove-section &lt;ім&#8217;я&gt; </dt>
+<dt class="hdlist1" id="git-config---remove-sectionltgt"> <a class="anchor" href="#git-config---remove-section"></a> <a class="anchor" href="#git-config---remove-sectionltgt"></a>--remove-section &lt;імʼя&gt; </dt>
 <dd>
 <p>Замінено на <span class='synopsis'><code>git</code> <code>config</code> <code>remove-section</code> <em>&lt;name&gt;</em></span>.</p>
 </dd>
@@ -400,7 +400,7 @@ headings:
 <h2 id="_конфігурація"><a class="anchor" href="#_конфігурація"></a>КОНФІГУРАЦІЯ</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><span class='synopsis'><code>pager.config</code></span> враховується лише під час виведення списку конфігурації, тобто під час використання <span class='synopsis'><code>list</code></span> або <span class='synopsis'><code>get</code></span>, які можуть повертати кілька результатів. За замовчуванням використовується пейджер.</p>
+<p><span class='synopsis'><code>pager.config</code></span> враховується лише під час перегляду списку конфігурацій, тобто при використанні команд <span class='synopsis'><code>list</code></span> або <span class='synopsis'><code>get</code></span>, які можуть повертати кілька результатів. Стандартним є використання pager.</p>
 </div>
 </div>
 </div>
@@ -408,7 +408,7 @@ headings:
 <h2 id="FILES"><a class="anchor" href="#FILES"></a>ФАЙЛИ</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>За замовчуванням, <em>git config</em> зчитуватиме параметри конфігурації з кількох файлів:</p>
+<p>Зазвичай, <em>git config</em> зчитуватиме параметри конфігурації з кількох файлів:</p>
 </div>
 <div class="dlist">
 <dl>
@@ -419,18 +419,18 @@ headings:
 <dt class="hdlist1" id="git-config-XDGCONFIGHOMEgitconfig"> <a class="anchor" href="#git-config-XDGCONFIGHOMEgitconfig"></a>$XDG_CONFIG_HOME/git/config </dt>
 <dt class="hdlist1" id="git-config-gitconfig"> <a class="anchor" href="#git-config-gitconfig"></a>~/.gitconfig </dt>
 <dd>
-<p>Файли конфігурації, специфічні для користувача. Коли змінна середовища XDG_CONFIG_HOME не встановлена або порожня, $HOME/.config/ використовується як $XDG_CONFIG_HOME.</p>
+<p>Файли конфігурації для конкретного користувача. Якщо змінна середовища XDG_CONFIG_HOME не задана або має порожнє значення, як $XDG_CONFIG_HOME використовується тека $HOME/.config/.</p>
 <div class="paragraph">
 <p>Їх також називають «глобальними» файлами конфігурації. Якщо обидва файли існують, вони зчитуються в порядку, зазначеному вище.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-config-GITDIRconfig"> <a class="anchor" href="#git-config-GITDIRconfig"></a>$GIT_DIR/config </dt>
 <dd>
-<p>Файл конфігурації, специфічний для репозиторію.</p>
+<p>Файл конфігурації для конкретного репозиторію.</p>
 </dd>
 <dt class="hdlist1" id="git-config-GITDIRconfigworktree"> <a class="anchor" href="#git-config-GITDIRconfigworktree"></a>$GIT_DIR/config.worktree </dt>
 <dd>
-<p>Це необов&#8217;язково та пошук виконується лише тоді, коли <span class='synopsis'><code>extensions.worktreeConfig</code></span> присутній у $GIT_DIR/config.</p>
+<p>Є необовʼязковим, пошук виконується лише тоді, коли <span class='synopsis'><code>extensions.worktreeConfig</code></span> присутній у $GIT_DIR/config.</p>
 </dd>
 </dl>
 </div>
@@ -438,24 +438,24 @@ headings:
 <p>Ви також можете надати додаткові параметри конфігурації під час виконання будь-якої команди git, використовуючи опцію <span class='synopsis'><code>-c</code></span>. Див. <a href='{{< relurl "docs/git/uk" >}}'>git[1]</a> для отримання детальної інформації.</p>
 </div>
 <div class="paragraph">
-<p>Опції будуть зчитуватися з усіх доступних файлів. Якщо глобальні або системні файли конфігурації відсутні або нечитабельні, вони будуть проігноровані. Якщо файл конфігурації репозиторію відсутній або нечитабельний, «git config» завершиться з ненульовим кодом помилки. Повідомлення про помилку виводиться, якщо файл нечитабельний, але не якщо він відсутній.</p>
+<p>Опції будуть зчитуватися з усіх доступних файлів. Якщо глобальні або системні файли конфігурації відсутні або нечитабельні, вони будуть проігноровані. Якщо файл конфігурації репозиторію відсутній або нечитабельний, <em>git config</em> завершиться з ненульовим кодом помилки. Повідомлення про помилку виводиться, якщо файл нечитабельний, але не якщо він відсутній.</p>
 </div>
 <div class="paragraph">
 <p>Файли зчитуються в порядку, зазначеному вище, причому останнє знайдене значення має пріоритет над значеннями, зчитаними раніше. Якщо взято кілька значень, то будуть використані всі значення ключа з усіх файлів.</p>
 </div>
 <div class="paragraph">
-<p>За замовчуванням, параметри записуються лише до конфігураційного файлу репозиторію. Зверніть увагу, що це також впливає на параметри, такі як <span class='synopsis'><code>set</code></span> та <span class='synopsis'><code>unset</code></span>. <strong><em>git config</em> змінюватиме лише один файл за раз</strong>.</p>
+<p>Зазвичай, параметри записуються лише до конфігураційного файлу репозиторію. Зверніть увагу, що це також впливає на параметри, такі як <span class='synopsis'><code>set</code></span> та <span class='synopsis'><code>unset</code></span>. <strong><em>git config</em> змінюватиме лише один файл за раз</strong>.</p>
 </div>
 <div class="paragraph">
-<p>Ви можете обмежити джерела конфігурації, з яких зчитуються або куди записуються дані, вказавши шлях до файлу за допомогою опції <span class='synopsis'><code>--file</code></span> або вказавши область конфігурації за допомогою <span class='synopsis'><code>--system</code></span>, <span class='synopsis'><code>--global</code></span>, <span class='synopsis'><code>--local</code></span> або <span class='synopsis'><code>--worktree</code></span>. Докладніше див. у <a href="#OPTIONS">ОПЦІЇ</a> вище.</p>
+<p>Ви можете обмежити джерела конфігурації, з яких зчитуються або куди записуються дані, вказавши шлях до файлу за допомогою опції <span class='synopsis'><code>--file</code></span> або вказавши область конфігурації за допомогою <span class='synopsis'><code>--system</code></span>, <span class='synopsis'><code>--global</code></span>, <span class='synopsis'><code>--local</code></span> або <span class='synopsis'><code>--worktree</code></span>. Докладніше див. у <a href="#OPTIONS">ПАРАМЕТРИ</a> вище.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="SCOPES"><a class="anchor" href="#SCOPES"></a>ПРИЛАДИ</h2>
+<h2 id="SCOPES"><a class="anchor" href="#SCOPES"></a>ОБЛАСТІ ДІЇ</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Кожне джерело конфігурації потрапляє в певну область конфігурації. Ці області дії:</p>
+<p>Кожне джерело конфігурації потрапляє в певну область конфігурації. Це області дії:</p>
 </div>
 <div class="dlist">
 <dl>
@@ -474,7 +474,7 @@ headings:
 <dd>
 <p>$GIT_DIR/config</p>
 </dd>
-<dt class="hdlist1" id="git-config-"> <a class="anchor" href="#git-config-"></a>робоче дерево </dt>
+<dt class="hdlist1" id="git-config-worktree"> <a class="anchor" href="#git-config-worktree"></a>worktree </dt>
 <dd>
 <p>$GIT_DIR/config.worktree</p>
 </dd>
@@ -488,10 +488,10 @@ headings:
 </dl>
 </div>
 <div class="paragraph">
-<p>За винятком «command», кожна область видимості відповідає параметру командного рядка: <span class='synopsis'><code>--system</code></span>, <span class='synopsis'><code>--global</code></span>, <span class='synopsis'><code>--local</code></span>, <span class='synopsis'><code>--worktree</code></span>.</p>
+<p>За винятком <em>command</em>, кожна область дії відповідає параметру командного рядка: <span class='synopsis'><code>--system</code></span>, <span class='synopsis'><code>--global</code></span>, <span class='synopsis'><code>--local</code></span>, <span class='synopsis'><code>--worktree</code></span>.</p>
 </div>
 <div class="paragraph">
-<p>Під час читання параметрів, якщо вказати область видимості, параметри будуть зчитуватися лише з файлів у межах цієї області видимості. Під час запису параметрів, якщо вказати область видимості, параметри будуть записуватися у файли в межах цієї області видимості (замість файлу конфігурації репозиторію). Повний опис див. у <a href="#OPTIONS">ОПЦІЇ</a> вище.</p>
+<p>Під час читання параметрів, якщо вказати область дії, параметри будуть зчитуватися лише з файлів у межах цієї області дії. Під час запису параметрів, якщо вказати область дії, параметри будуть записуватися у файли в межах цієї області (замість файлу конфігурації репозиторію). Повний опис див. у <a href="#OPTIONS">ПАРАМЕТРАХ</a> вище.</p>
 </div>
 <div class="paragraph">
 <p>Більшість параметрів конфігурації враховуються незалежно від області їх визначення, але деякі параметри враховуються лише в певних областях. Повні відомості дивіться в документації відповідного параметра.</p>
@@ -499,10 +499,10 @@ headings:
 <div class="sect2">
 <h3 id="_захищена_конфігурація"><a class="anchor" href="#_захищена_конфігурація"></a>Захищена конфігурація</h3>
 <div class="paragraph">
-<p>Захищена конфігурація стосується областей видимості «система», «глобальна» та «команда». З міркувань безпеки певні параметри враховуються лише тоді, коли вони вказані в захищеній конфігурації, та ігноруються в іншому випадку.</p>
+<p>Захищена конфігурація стосується областей дії <em>system</em>, <em>global</em> та <em>command</em> . З міркувань безпеки певні параметри враховуються лише тоді, коли вони вказані в захищеній конфігурації, та ігноруються в іншому випадку.</p>
 </div>
 <div class="paragraph">
-<p>Git обробляє ці області видимості так, ніби вони контролюються користувачем або довіреним адміністратором. Це пояснюється тим, що зловмисник, який контролює ці області видимості, може завдати значної шкоди без використання Git, тому передбачається, що середовище користувача захищає ці області видимості від зловмисників.</p>
+<p>Git обробляє ці області дії так, ніби вони контролюються користувачем або довіреним адміністратором. Це пояснюється тим, що зловмисник, який контролює ці області дії, може завдати значної шкоди без використання Git, тому передбачається, що середовище користувача захищає ці області дії від зловмисників.</p>
 </div>
 </div>
 </div>
@@ -515,7 +515,7 @@ headings:
 <dt class="hdlist1" id="git-config-GITCONFIGGLOBAL"> <a class="anchor" href="#git-config-GITCONFIGGLOBAL"></a>GIT_CONFIG_GLOBAL </dt>
 <dt class="hdlist1" id="git-config-GITCONFIGSYSTEM"> <a class="anchor" href="#git-config-GITCONFIGSYSTEM"></a>GIT_CONFIG_SYSTEM </dt>
 <dd>
-<p>Візьміть конфігурацію з наданих файлів, а не з глобальної або системної конфігурації. Див. <a href='{{< relurl "docs/git/uk" >}}'>git[1]</a> для отримання детальної інформації.</p>
+<p>Використовує налаштування з вказаних файлів замість глобальних налаштувань або налаштувань на рівні системи. Детальніше див. <a href='{{< relurl "docs/git/uk" >}}'>git[1]</a>.</p>
 </dd>
 <dt class="hdlist1" id="git-config-GITCONFIGNOSYSTEM"> <a class="anchor" href="#git-config-GITCONFIGNOSYSTEM"></a>GIT_CONFIG_NOSYSTEM </dt>
 <dd>
@@ -539,7 +539,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-config-GITCONFIG"> <a class="anchor" href="#git-config-GITCONFIG"></a>GIT_CONFIG </dt>
 <dd>
-<p>Якщо для <span class='synopsis'><code>git</code> <code>config</code></span> не надано опцію <span class='synopsis'><code>--file</code></span>, використовуйте файл, наданий <span class='synopsis'><code>GIT_CONFIG</code></span>, так, ніби він надано через <span class='synopsis'><code>--file</code></span>. Ця змінна не впливає на інші команди Git і здебільшого призначена для історичної сумісності; зазвичай немає причин використовувати її замість опції <span class='synopsis'><code>--file</code></span>.</p>
+<p>Якщо для <span class='synopsis'><code>git</code> <code>config</code></span> не надано опцію <span class='synopsis'><code>--file</code></span>, використовується файл, наданий <span class='synopsis'><code>GIT_CONFIG</code></span>, так, ніби його надано через <span class='synopsis'><code>--file</code></span>. Ця змінна не впливає на інші команди Git і здебільшого призначена для історичної сумісності; зазвичай немає причин використовувати її замість опції <span class='synopsis'><code>--file</code></span>.</p>
 </dd>
 </dl>
 </div>
@@ -549,7 +549,7 @@ headings:
 <h2 id="EXAMPLES"><a class="anchor" href="#EXAMPLES"></a>ПРИКЛАДИ</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Враховуючи .git/config like this:</p>
+<p>Враховуючи що .git/config виглядає подібним чином:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -561,10 +561,10 @@ headings:
 
 ; основні змінні
 [core]
-	; Не довіряйте режимам файлів
+	; Не покладатися на атрибути файлів
 	filemode = false
 
-; Наш алгоритм диференціації
+; Наш diff алгоритм
 [diff]
 	external = /usr/local/bin/diff-wrapper
 	renames = true
@@ -583,7 +583,7 @@ headings:
 </div>
 </div>
 <div class="paragraph">
-<p>Ви можете встановити файловий режим на true за допомогою</p>
+<p>ви можете встановити файловий режим на true за допомогою</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -610,7 +610,7 @@ headings:
 </div>
 </div>
 <div class="paragraph">
-<p>Якщо ви хочете видалити запис для багатозмінної (як core.gitproxy вище), вам потрібно надати регулярний вираз, що відповідає значенню рівно одного рядка.</p>
+<p>Якщо ви хочете видалити запис для багатозначного параметра (наприклад, core.gitproxy, як показано вище), вам потрібно вказати регулярний вираз, який відповідає значенню тільки одного рядка.</p>
 </div>
 <div class="paragraph">
 <p>Щоб запитати значення для заданого ключа, виконайте такі дії</p>
@@ -621,7 +621,7 @@ headings:
 </div>
 </div>
 <div class="paragraph">
-<p>або, щоб запитати багатовимірну змінну:</p>
+<p>або, щоб запитати багатозначний параметр:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -629,7 +629,7 @@ headings:
 </div>
 </div>
 <div class="paragraph">
-<p>Якщо ви хочете знати всі значення для багатоваріантної величини, виконайте такі дії:</p>
+<p>Якщо ви хочете дізнатися всі значення для змінної з кількома значеннями, виконайте наступне:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -645,7 +645,7 @@ headings:
 </div>
 </div>
 <div class="paragraph">
-<p>Однак, якщо ви дійсно хочете замінити лише рядок для проксі-сервера за замовчуванням, тобто той, що без постфікса "for &#8230;&#8203;", зробіть щось подібне:</p>
+<p>Однак, якщо ви дійсно хочете замінити лише рядок для стандартного проксі-сервера, тобто той, що без постфікса "for &#8230;&#8203;", зробіть щось подібне:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -661,7 +661,7 @@ headings:
 </div>
 </div>
 <div class="paragraph">
-<p>Щоб додати новий проксі-сервер, не змінюючи жодного з існуючих, використовуйте</p>
+<p>Щоб додати новий проксі-сервер, не змінюючи жодного з наявних, використовуйте</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -699,21 +699,21 @@ http.sslverify false</pre>
 <h2 id="_файл_конфігурації"><a class="anchor" href="#_файл_конфігурації"></a>ФАЙЛ КОНФІГУРАЦІЇ</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Файл конфігурації Git містить низку змінних, які впливають на поведінку команд Git. Файли <span class='synopsis'><code>.git/config</code></span> та, за бажанням, <span class='synopsis'><code>config.worktree</code></span> (див. розділ "ФАЙЛ КОНФІГУРАЦІЇ" у <a href='{{< relurl "docs/git-worktree/uk" >}}'>git-worktree[1]</a>) у кожному репозиторії використовуються для зберігання конфігурації цього репозиторію, а <span class='synopsis'><code>$HOME/.gitconfig</code></span> використовується для зберігання конфігурації для кожного користувача як резервних значень для файлу <span class='synopsis'><code>.git/config</code></span>. Файл <span class='synopsis'><code>/etc/gitconfig</code></span> можна використовувати для зберігання загальносистемної конфігурації за замовчуванням.</p>
+<p>Файл конфігурації Git містить низку змінних, які впливають на поведінку команд Git. Файли <span class='synopsis'><code>.git/config</code></span> та, за бажанням, <span class='synopsis'><code>config.worktree</code></span> (див. розділ «ФАЙЛ КОНФІГУРАЦІЇ» у <a href='{{< relurl "docs/git-worktree/uk" >}}'>git-worktree[1]</a>) у кожному репозиторії використовуються для зберігання конфігурації цього репозиторію, а <span class='synopsis'><code>$HOME/.gitconfig</code></span> використовується для зберігання конфігурації для кожного користувача як резервних значень для файлу <span class='synopsis'><code>.git/config</code></span>. Файл <span class='synopsis'><code>/etc/gitconfig</code></span> можна використовувати для зберігання стандартної конфігурації для всієї системи.</p>
 </div>
 <div class="paragraph">
-<p>Змінні конфігурації використовуються як командами Git plumbing, так і командами porcelain. Змінні поділені на секції, де повна назва змінної – це останній сегмент, розділений крапками, а назва секції – це все, що знаходиться перед останньою крапкою. Назви змінних не враховують регістр, дозволяють використовувати лише буквено-цифрові символи та <span class='synopsis'><code>-</code></span>, і повинні починатися з літери. Деякі змінні можуть зустрічатися кілька разів; тоді ми кажемо, що змінна є багатозначною.</p>
+<p>Змінні конфігурації використовуються як внутрішніми механізмами Git (plumbing), так і зовнішніми командами (porcelain). Змінні поділяються на секції, де повне ім’я самої змінної є останнім сегментом, відокремленим крапкою, а ім’я секції — це все, що знаходиться перед останньою крапкою. У назвах змінних не враховується регістр, допускаються лише алфавітно-цифрові символи та <span class='synopsis'><code>-</code></span>, а починатися вони повинні з літери. Деякі змінні можуть зустрічатися кілька разів; у такому випадку ми говоримо, що змінна є багатозначною.</p>
 </div>
 <div class="sect2">
 <h3 id="_синтаксис"><a class="anchor" href="#_синтаксис"></a>Синтаксис</h3>
 <div class="paragraph">
-<p>Синтаксис досить гнучкий та дозвільний. Пробільні символи, якими в цьому контексті є пробіл (SP) та горизонтальна табуляція (HT), здебільшого ігноруються. Символи <em>#</em> та <em>;</em> розпочинають коментарі до кінця рядка. Порожні рядки ігноруються.</p>
+<p>Синтаксис є досить гнучким і несуворим. Символи пробілів, до яких у цьому контексті належать пробіл (SP) та горизонтальна табуляція (HT), здебільшого ігноруються. Символи «#» та «;» позначають початок коментарів, що тривають до кінця рядка. Порожні рядки ігноруються.</p>
 </div>
 <div class="paragraph">
-<p>Файл складається з розділів та змінних. Розділ починається з назви розділу в квадратних дужках і триває до початку наступного розділу. Назви розділів не враховують регістр. В іменах розділів дозволені лише буквено-цифрові символи, <span class='synopsis'><code>-</code></span> та <span class='synopsis'><code>.</code></span>. Кожна змінна повинна належати до певного розділу, що означає, що перед першим налаштуванням змінної має бути заголовок розділу.</p>
+<p>Файл складається з розділів і змінних. Розділ починається з назви розділу в квадратних дужках і триває до початку наступного розділу. У назвах розділів не враховується регістр. У назвах розділів допускаються лише алфавітно-цифрові символи, а також символи <span class='synopsis'><code>-</code></span> і <span class='synopsis'><code>.</code></span>. Кожна змінна повинна належати до якогось розділу, тобто перед першим значенням змінної має бути заголовок розділу.</p>
 </div>
 <div class="paragraph">
-<p>Розділи можна додатково розділити на підрозділи. Щоб розпочати підрозділ, візьміть його назву в подвійні лапки, відокремивши її пробілом від назви розділу, у заголовку розділу, як у прикладі нижче:</p>
+<p>Розділи можна додатково поділяти на підрозділи. Щоб створити підрозділ, вкажіть його назву в подвійних лапках, відокремивши її пробілом від назви розділу, у заголовку розділу, як показано в прикладі нижче:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -721,40 +721,40 @@ http.sslverify false</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Назви підрозділів чутливі до регістру та можуть містити будь-які символи, окрім символу нового рядка та нульового байта. Подвійні лапки <span class='synopsis'><code>"</code></span> та зворотну скісну риску можна включати, екрануючи їх як <span class='synopsis'><em>\"</em></span> та <span class='synopsis'><em>\\</em></span> відповідно. Зворотні скісну риску перед іншими символами пропускаються під час читання; наприклад, <span class='synopsis'><em>\t</em></span> читається як <span class='synopsis'><code>t</code></span>, а <span class='synopsis'><em>\0</em></span> читається як <span class='synopsis'><code>0</code></span>. Заголовки розділів не можуть охоплювати кілька рядків. Змінні можуть належати безпосередньо до розділу або до заданого підрозділу. Ви можете мати <span class='synopsis'><em>[розділ]</em></span>, якщо у вас є <span class='synopsis'><em>[розділ "підрозділ"]</em></span>, але це не обов&#8217;язково.</p>
+<p>Назви підрозділів чутливі до регістру та можуть містити будь-які символи, окрім символу нового рядка та нульового байта. Подвійні лапки <span class='synopsis'><code>"</code></span> та зворотну скісну риску можна включати, екрануючи їх як <span class='synopsis'><em>\"</em></span> та <span class='synopsis'><em>\\</em></span> відповідно. Зворотну скісну риску перед іншими символами пропускаються під час читання; наприклад, <span class='synopsis'><em>\t</em></span> читається як <span class='synopsis'><code>t</code></span>, а <span class='synopsis'><em>\0</em></span> читається як <span class='synopsis'><code>0</code></span>. Заголовки розділів не можуть охоплювати кілька рядків. Змінні можуть належати безпосередньо до розділу або до заданого підрозділу. Ви можете мати <span class='synopsis'><em>[розділ]</em></span>, якщо у вас є <span class='synopsis'><em>[розділ "підрозділ"]</em></span>, але це не обовʼязково.</p>
 </div>
 <div class="paragraph">
 <p>Також існує застарілий синтаксис <span class='synopsis'>[<code>section.subsection</code>]</span>. У цьому синтаксисі назва підрозділу перетворюється на малу літеру та порівнюється з урахуванням регістру. Ці назви підрозділів дотримуються тих самих обмежень, що й назви розділів.</p>
 </div>
 <div class="paragraph">
-<p>Усі інші рядки (і решта рядка після заголовка розділу) розпізнаються як змінні-налаштування у формі «назва = значення» (або просто «назва», що є скороченням від логічного значення «true»). Назви змінних не враховують регістр, дозволяють використовувати лише буквено-цифрові символи та <span class='synopsis'><code>-</code></span>, і повинні починатися з літери.</p>
+<p>Усі інші рядки (а також частина рядка, що йде після заголовка розділу) розпізнаються як визначення змінних у форматі <em>name = value</em> (або просто <em>name</em> що є скороченим записом, який означає, що змінна має булеве значення «true»). У назвах змінних не враховується регістр, допускаються лише алфавітно-цифрові символи та <span class='synopsis'><code>-</code></span>, а починатися вони повинні з літери.</p>
 </div>
 <div class="paragraph">
-<p>Пробільні символи навколо <span class='synopsis'><code>name</code></span>, <span class='synopsis'><code>=</code></span> та <span class='synopsis'><code>value</code></span> відкидаються. Внутрішні пробільні символи всередині <span class='synopsis'><code>value</code></span> зберігаються дослівно. Коментарі, що починаються з <span class='synopsis'><code>#</code></span> або <span class='synopsis'><em>;</em></span> і продовжуються до кінця рядка, відкидаються. Рядок, який визначає значення, можна продовжити до наступного рядка, завершивши його зворотною скісну рискою (<span class='synopsis'><em>\</em></span>); зворотна скісну риску та символи кінця рядка відкидаються.</p>
+<p>Пробільні символи навколо <span class='synopsis'><code>name</code></span>, <span class='synopsis'><code>=</code></span> та <span class='synopsis'><code>value</code></span> відкидаються. Внутрішні пробільні символи всередині <span class='synopsis'><code>value</code></span> зберігаються дослівно. Коментарі, що починаються з <span class='synopsis'><code>#</code></span> або <span class='synopsis'><em>;</em></span> і продовжуються до кінця рядка, відкидаються. Рядок, який визначає значення, можна продовжити до наступного рядка, завершивши його зворотною скісною рискою (<span class='synopsis'><em>\</em></span>); зворотна скісна риска та символи кінця рядка відкидаються.</p>
 </div>
 <div class="paragraph">
 <p>Якщо <span class='synopsis'><code>value</code></span> має містити початкові або кінцеві пробіли, його потрібно взяти в подвійні лапки (<span class='synopsis'><code>"</code></span>). Усередині подвійних лапок символи подвійних лапок (<span class='synopsis'><code>"</code></span>) та зворотної скісної риски (<span class='synopsis'><em>\</em></span>) повинні бути екрановані: використовуйте <span class='synopsis'><em>\"</em></span> замість <span class='synopsis'><code>"</code></span> та <span class='synopsis'><em>\\</em></span> замість <span class='synopsis'><em>\</em></span>.</p>
 </div>
 <div class="paragraph">
-<p>Розпізнаються такі escape-послідовності (окрім <span class='synopsis'><em>\"</em></span> та <span class='synopsis'><em>\\</em></span>): <span class='synopsis'><em>\n</em></span> для символу нового рядка (NL), <span class='synopsis'><em>\t</em></span> для горизонтальної табуляції (HT, TAB) та <span class='synopsis'><em>\b</em></span> для символу повернення до коду (BS). Інші escape-послідовності символів (включаючи вісімкові escape-послідовності) є недійсними.</p>
+<p>Розпізнаються такі escape-послідовності (окрім <span class='synopsis'><em>\"</em></span> та <span class='synopsis'><em>\\</em></span>): <span class='synopsis'><em>\n</em></span> для символу нового рядка (NL), <span class='synopsis'><em>\t</em></span> для горизонтальної табуляції (HT, TAB) та <span class='synopsis'><em>\b</em></span> для символу backspace (BS). Інші escape-послідовності символів (включаючи вісімкові escape-послідовності) є недійсними.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_включає"><a class="anchor" href="#_включає"></a>Включає</h3>
+<h3 id="_розділ_include"><a class="anchor" href="#_розділ_include"></a>Розділ Include</h3>
 <div class="paragraph">
 <p>Розділи <span class='synopsis'><code>include</code></span> та <span class='synopsis'><code>includeIf</code></span> дозволяють вам включати директиви конфігурації з іншого джерела. Ці розділи поводяться ідентично один одному, за винятком того, що розділи <span class='synopsis'><code>includeIf</code></span> можуть ігноруватися, якщо їхня умова не є true; див. "Умовні включення" нижче.</p>
 </div>
 <div class="paragraph">
-<p>Ви можете включити конфігураційний файл з іншого файлу, встановивши спеціальну змінну <span class='synopsis'><code>include.path</code></span> (або <span class='synopsis'><code>includeIf.*.path</code></span>) на ім&#8217;я файлу, який потрібно включити. Змінна приймає шлях як значення та підлягає розширенню тильдою. Ці змінні можна вводити кілька разів.</p>
+<p>Ви можете включити файл конфігурації з іншого місця, встановивши для спеціальної змінної <span class='synopsis'><code>include.path</code></span> (або <span class='synopsis'><code>includeIf.*.path</code></span>) ім’я файлу, який потрібно включити. Ця змінна приймає шлях до файлу як значення, причому в ньому відбувається розгортання символів тильди. Ці змінні можна вказати кілька разів.</p>
 </div>
 <div class="paragraph">
-<p>Вміст підключаного файлу вставляється негайно, ніби він був знайдений у місці розташування директиви include. Якщо значення змінної є відносним шляхом, шлях вважається відносним до файлу конфігурації, в якому було знайдено директиву include. Див. приклади нижче.</p>
+<p>Вміст файлу, що включається, вставляється безпосередньо, ніби він був знайдений у місці розташування директиви include. Якщо значення змінної є відносним шляхом, цей шлях вважається відносним до конфігураційного файлу, в якому була знайдена директива include. Приклади наведено нижче.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_умовне_включення"><a class="anchor" href="#_умовне_включення"></a>Умовне включення</h3>
 <div class="paragraph">
-<p>Ви можете умовно включити конфігураційний файл з іншого, встановивши змінну <span class='synopsis'><code>includeIf.</code><em>&lt;condition&gt;</em><code>.path</code></span> на ім&#8217;я файлу, який потрібно включити.</p>
+<p>Ви можете умовно включити файл конфігурації з іншого, встановивши для змінної <span class='synopsis'><code>includeIf.</code><em>&lt;умова&gt;</em><code>.path</code></span> імʼя файлу, який потрібно включити.</p>
 </div>
 <div class="paragraph">
 <p>Умова починається з ключового слова, за яким йде двокрапка та деякі дані, формат та значення яких залежать від ключового слова. Підтримувані ключові слова:</p>
@@ -763,9 +763,9 @@ http.sslverify false</pre>
 <dl>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodegitdircodespan"> <a class="anchor" href="#git-config-gitdir"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodegitdircodespan"></a><span class='synopsis'><code>gitdir</code></span> </dt>
 <dd>
-<p>Дані, що йдуть після ключового слова <span class='synopsis'><code>gitdir</code></span> та двокрапки, використовуються як шаблон glob. Якщо розташування каталогу .git відповідає шаблону, умова включення виконується.</p>
+<p>Дані, що йдуть після ключового слова <span class='synopsis'><code>gitdir</code></span> та двокрапки, використовуються як шаблон glob. Якщо розташування теки .git відповідає шаблону, умова включення виконується.</p>
 <div class="paragraph">
-<p>Розташування .git може бути автоматично виявлене або походити зі змінної середовища <span class='synopsis'><code>$GIT_DIR</code></span>. Якщо репозиторій автоматично виявлено через файл .git (наприклад, з підмодулів або пов&#8217;язаного робочого дерева), розташування .git буде кінцевим розташуванням, де знаходиться каталог .git, а не місцем, де знаходиться файл .git.</p>
+<p>Розташування .git може бути автоматично виявлене або походити зі змінної середовища <span class='synopsis'><code>$GIT_DIR</code></span>. Якщо репозиторій автоматично виявлено через файл .git (наприклад, з субмодулів або повʼязаного робочого дерева), розташування .git буде кінцевим розташуванням, де знаходиться тека .git, а не місцем, де знаходиться файл .git.</p>
 </div>
 <div class="paragraph">
 <p>Шаблон може містити стандартні шаблони підстановки та два додаткові, <span class='synopsis'><code>**/</code></span> та <span class='synopsis'><code>/**</code></span>, які можуть відповідати кільком компонентам шляху. Для отримання детальної інформації зверніться до <a href='{{< relurl "docs/gitignore/uk" >}}'>gitignore[5]</a>. Для зручності:</p>
@@ -776,7 +776,7 @@ http.sslverify false</pre>
 <p>Якщо шаблон починається з <span class='synopsis'><code>~/</code></span>, <span class='synopsis'><code>~</code></span> буде замінено вмістом змінної середовища <span class='synopsis'><code>HOME</code></span>.</p>
 </li>
 <li>
-<p>Якщо шаблон починається з <span class='synopsis'><code>./</code></span>, він замінюється назвою каталогу, що містить поточний файл конфігурації.</p>
+<p>Якщо шаблон починається з <span class='synopsis'><code>./</code></span>, він замінюється назвою теки, що містить поточний файл конфігурації.</p>
 </li>
 <li>
 <p>Якщо шаблон не починається з <span class='synopsis'><code>~/</code></span>, <span class='synopsis'><code>./</code></span> або <span class='synopsis'><code>/</code></span>, автоматично буде додано <span class='synopsis'><code>**/</code></span>. Наприклад, шаблон <span class='synopsis'><code>foo/bar</code></span> стає <span class='synopsis'><code>**/foo/bar</code></span> і відповідатиме <span class='synopsis'><code>/any/path/to/foo/bar</code></span>.</p>
@@ -789,23 +789,23 @@ http.sslverify false</pre>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodegitdiricodespan"> <a class="anchor" href="#git-config-gitdiri"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodegitdiricodespan"></a><span class='synopsis'><code>gitdir/i</code></span> </dt>
 <dd>
-<p>Це те саме, що й <span class='synopsis'><code>gitdir</code></span>, за винятком того, що зіставлення виконується без урахування регістру (наприклад, на файлових системах без урахування регістру)</p>
+<p>Це те саме, що й <span class='synopsis'><code>gitdir</code></span>, за винятком того, що під час порівняння не враховується регістр (наприклад, у файлових системах, що не розрізняють регістр)</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodeonbranchcodespan"> <a class="anchor" href="#git-config-onbranch"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodeonbranchcodespan"></a><span class='synopsis'><code>onbranch</code></span> </dt>
 <dd>
-<p>Дані, що йдуть після ключового слова <span class='synopsis'><code>onbranch</code></span> та двокрапки, вважаються шаблоном зі стандартними шаблонами глобального підстановлення та двома додатковими, <span class='synopsis'><code>**/</code></span> та <span class='synopsis'><code>/**</code></span>, які можуть відповідати кільком компонентам шляху. Якщо ми знаходимося в робочому дереві, де назва гілки, яка наразі витягується, відповідає шаблону, умова включення виконується.</p>
+<p>Дані, що йдуть після ключового слова <span class='synopsis'><code>onbranch</code></span> та двокрапки, розглядаються як шаблон зі стандартними символами-замінниками для розширення та двома додатковими — <span class='synopsis'><code>**/</code></span> і <span class='synopsis'><code>/**</code></span>, які можуть відповідати кільком компонентам шляху. Якщо ми перебуваємо в робочому дереві, де назва гілки, яка наразі вибрана, відповідає цьому шаблону, умова включення вважається виконаною.</p>
 <div class="paragraph">
 <p>Якщо шаблон закінчується на <span class='synopsis'><code>/</code></span>, автоматично буде додано <span class='synopsis'><code>**</code></span>. Наприклад, шаблон <span class='synopsis'><code>foo/</code></span> стає <span class='synopsis'><code>foo/**</code></span>. Іншими словами, він відповідає всім гілкам, які починаються з <span class='synopsis'><code>foo/</code></span>. Це корисно, якщо ваші гілки організовані ієрархічно, і ви хочете застосувати конфігурацію до всіх гілок у цій ієрархії.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodehasconfigremoteurlcodespan"> <a class="anchor" href="#git-config-hasconfigremoteurl"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodehasconfigremoteurlcodespan"></a><span class='synopsis'><code>hasconfig:remote.*.url</code></span> </dt>
 <dd>
-<p>Дані, що йдуть після цього ключового слова та двокрапки, вважаються шаблоном зі стандартними шаблонами підстановки та двома додатковими, <span class='synopsis'><code>**/</code></span> та <span class='synopsis'><code>/**</code></span>, які можуть відповідати кільком компонентам. При першому зустрічі цього ключового слова решта конфігураційних файлів будуть проскановані на наявність віддалених URL-адрес (без застосування будь-яких значень). Якщо існує хоча б одна віддалена URL-адреса, яка відповідає цьому шаблону, умова включення виконується.</p>
+<p>Дані, що йдуть після цього ключового слова та двокрапки, розглядаються як шаблон із стандартними символами-замінниками та двома додатковими — <span class='synopsis'><code>**/</code></span> і <span class='synopsis'><code>/**</code></span>, які можуть відповідати кільком компонентам. При першому виявленні цього ключового слова решта конфігураційних файлів буде перевірена на наявність віддалених URL-адрес (без застосування будь-яких значень). Якщо існує хоча б одна віддалена URL-адреса, що відповідає цьому шаблону, умова включення вважається виконаною.</p>
 <div class="paragraph">
 <p>Файли, що включаються цією опцією (прямо чи опосередковано), не можуть містити віддалені URL-адреси.</p>
 </div>
 <div class="paragraph">
-<p>Зверніть увагу, що на відміну від інших умов includeIf, вирішення цієї умови залежить від інформації, яка ще не відома на момент зчитування умови. Типовим варіантом використання є присутність цього параметра як конфігурації системного або глобального рівня, а віддалена URL-адреса знаходиться в конфігурації локального рівня; звідси виникає необхідність попереднього сканування під час вирішення цієї умови. Щоб уникнути проблеми курки та яйця, коли потенційно включені файли можуть впливати на те, чи будуть такі файли потенційно включені, Git розриває це коло, забороняючи цим файлам впливати на вирішення цих умов (таким чином, забороняючи їм оголошувати віддалені URL-адреси).</p>
+<p>Зверніть увагу, що на відміну від інших умов includeIf, виконання цієї умови залежить від інформації, яка на момент зчитування умови ще не відома. Типовим випадком використання є ситуація, коли цей параметр присутній у конфігурації системного або глобального рівня, а віддалений URL — у конфігурації локального рівня; тому під час виконання цієї умови потребує попереднього сканування. Щоб уникнути проблеми «яйця та курки», в якій файли, що потенційно можуть бути включені, можуть впливати на те, чи будуть такі файли потенційно включені, Git розриває цей цикл, забороняючи цим файлам впливати на виконання цих умов (таким чином, забороняючи їм оголошувати віддалені URL-адреси).</p>
 </div>
 <div class="paragraph">
 <p>Що стосується найменування цього ключового слова, то воно призначене для прямої сумісності зі схемою іменування, яка підтримує більше умов включення на основі змінних, але наразі Git підтримує лише точне ключове слово, описане вище.</p>
@@ -819,16 +819,16 @@ http.sslverify false</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Символічні посилання в <span class='synopsis'><code>$GIT_DIR</code></span> не вирішуються перед зіставленням.</p>
+<p>Символічні посилання в <span class='synopsis'><code>$GIT_DIR</code></span> не розгортаються перед зіставленням.</p>
 </li>
 <li>
-<p>Як символічне посилання, так і реальний шлях будуть збігатися поза <span class='synopsis'><code>$GIT_DIR</code></span>. Наприклад, якщо ~/git є символічним посиланням на /mnt/storage/git, то збігатимуться як <span class='synopsis'><code>gitdir:~/git</code></span>, так і <span class='synopsis'><code>gitdir:/mnt/storage/git</code></span>.</p>
+<p>Поза межами <span class='synopsis'><code>$GIT_DIR</code></span> будуть порівнюватися як символічні посилання, так і реальні шляхи. Наприклад, якщо ~/git є символічним посиланням на /mnt/storage/git, то обидва <span class='synopsis'><code>gitdir:~/git</code></span> та <span class='synopsis'><code>gitdir:/mnt/storage/git</code></span> будуть мати збіг.</p>
 <div class="paragraph">
-<p>У початковому випуску цієї функції версії 2.13.0, який відповідав лише версії realpath, такого не було. Конфігурація, сумісна з початковим випуском цієї функції, повинна вказувати або лише версію realpath, або обидві версії.</p>
+<p>У першому випуску цієї функції у версії 2.13.0 ситуація була іншою: там перевірялася лише версія realpath. У конфігурації, яка має бути сумісною з першим випуском цієї функції, потрібно вказати або лише версію realpath, або обидві версії.</p>
 </div>
 </li>
 <li>
-<p>Зверніть увагу, що "../" не є спеціальним символом і відповідатиме буквально, що навряд чи вам потрібно.</p>
+<p>Зверніть увагу, що "../" не є спеціальним символом і буде інтерпретуватися буквально, що, ймовірно, не відповідає вашим намірам.</p>
 </li>
 </ul>
 </div>
@@ -839,10 +839,10 @@ http.sslverify false</pre>
 <div class="content">
 <pre># Основні змінні
 [core]
-	; Не довіряйте режимам файлів
+	; Не довіряти режимам файлів
 	filemode = false
 
-# Наш алгоритм диференціації
+# Наш алгоритм diff
 [diff]
 	external = /usr/local/bin/diff-wrapper
 	renames = true
@@ -895,24 +895,24 @@ http.sslverify false</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_значенні"><a class="anchor" href="#_значенні"></a>Значенні</h3>
+<h3 id="_значення"><a class="anchor" href="#_значення"></a>Значення</h3>
 <div class="paragraph">
 <p>Значення багатьох змінних обробляються як простий рядок, але є змінні, які приймають значення певних типів, і існують правила їх написання.</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1" id="git-config--1"> <a class="anchor" href="#git-config--1"></a>логічний </dt>
+<dt class="hdlist1" id="git-config-"> <a class="anchor" href="#git-config-"></a>булеві </dt>
 <dd>
-<p>Коли кажуть, що змінна приймає логічне значення, для «true» та «false» прийнятно багато синонімів; усі вони не враховують регістр.</p>
+<p>Коли кажуть, що змінна приймає булеве значення, для слів «true» і «false» допускається багато синонімів; у всіх цих випадках регістр літер не має значення.</p>
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-config-true"> <a class="anchor" href="#git-config-true"></a>true </dt>
 <dd>
-<p>Булеві літерали, що відповідають дійсності, це <span class='synopsis'><code>yes</code></span>, <span class='synopsis'><code>on</code></span>, <span class='synopsis'><code>true</code></span> та <span class='synopsis'><code>1</code></span>. Також змінна, визначена без <span class='synopsis'><code>=</code> <em>&lt;value&gt;</em></span>, сприймається як true.</p>
+<p>Булевими літералами, що означають «істина», є <span class='synopsis'><code>yes</code></span>, <span class='synopsis'><code>on</code></span>, <span class='synopsis'><code>true</code></span> та <span class='synopsis'><code>1</code></span>. Крім того, змінна, визначена без <span class='synopsis'><code>=</code> <em>&lt;значення&gt;</em></span>, вважається істинною.</p>
 </dd>
 <dt class="hdlist1" id="git-config-false"> <a class="anchor" href="#git-config-false"></a>false </dt>
 <dd>
-<p>Булеві літерали типу «хибно» – це <span class='synopsis'><code>no</code></span>, <span class='synopsis'><code>off</code></span>, <span class='synopsis'><code>false</code></span>, <span class='synopsis'><code>0</code></span> та порожній рядок.</p>
+<p>Булеві літерали «хибності» це: <span class='synopsis'><code>no</code></span>, <span class='synopsis'><code>off</code></span>, <span class='synopsis'><code>false</code></span>, <span class='synopsis'><code>0</code></span> та порожній рядок.</p>
 <div class="paragraph">
 <p>Під час перетворення значення до його канонічної форми за допомогою специфікатора типу <span class='synopsis'><code>--type=bool</code></span>, <em>git config</em> гарантуватиме, що вивід буде "true" або "false" (пишеться малими літерами).</p>
 </div>
@@ -926,15 +926,15 @@ http.sslverify false</pre>
 </dd>
 <dt class="hdlist1" id="git-config-color"> <a class="anchor" href="#git-config-color"></a>color </dt>
 <dd>
-<p>Значенням змінної, яка приймає колір, є список кольорів (щонайбільше два, один для переднього плану та один для фону) та атрибутів (скільки завгодно), розділених пробілами.</p>
+<p>Значенням змінної, яка приймає колір, є список кольорів (щонайбільше два, один для символів та один для фону) та атрибутів (скільки завгодно), розділених пробілами.</p>
 <div class="paragraph">
-<p>Прийнятні основні кольори: «звичайний», «чорний», «червоний», «зелений», «жовтий», «синій», «пурпуровий», «блакитний», «білий» та «за замовчуванням». Перший заданий колір — це колір переднього плану; другий — колір фону. Усі основні кольори, крім «звичайного» та «за замовчуванням», мають яскравий варіант, який можна вказати, додавши перед кольором префікс «яскравий», наприклад, «яскраво-червоний».</p>
+<p>Прийнятні основні кольори: <span class='synopsis'><code>normal</code></span>, <span class='synopsis'><code>black</code></span>, <span class='synopsis'><code>red</code></span>, <span class='synopsis'><code>green</code></span>, <span class='synopsis'><code>yellow</code></span>, <span class='synopsis'><code>blue</code></span>, <span class='synopsis'><code>magenta</code></span>, <span class='synopsis'><code>cyan</code></span>, <span class='synopsis'><code>white</code></span> та <span class='synopsis'><code>default</code></span>. Перший заданий колір — це колір символів; другий — колір фону. Усі основні кольори, крім <span class='synopsis'><code>normal</code></span> та <span class='synopsis'><code>default</code></span>, мають яскравий варіант, який можна вказати, додавши перед кольором префікс <span class='synopsis'><code>bright</code></span>, наприклад, <span class='synopsis'><code>brightred</code></span>.</p>
 </div>
 <div class="paragraph">
-<p>Колір <span class='synopsis'><code>normal</code></span> не змінює колір. Він такий самий, як порожній рядок, але може використовуватися як колір переднього плану, якщо вказати лише колір фону (наприклад, "normal red").</p>
+<p>Колір <span class='synopsis'><code>normal</code></span> не змінює колір. Він такий самий, як порожній рядок, але може використовуватися як колір сиволів, якщо вказати лише колір фону (наприклад, "normal red").</p>
 </div>
 <div class="paragraph">
-<p>Колір <span class='synopsis'><code>default</code></span> явно скидає колір термінала до значення за замовчуванням, наприклад, щоб вказати очищений фон. Хоча це залежить від терміналу, зазвичай це не те саме, що встановити значення "білий/чорний".</p>
+<p>Колір <span class='synopsis'><code>default</code></span> явно скидає колір термінала до стандартного значення, наприклад, щоб вказати що потрібно очистити фон. Хоча це залежить від терміналу, зазвичай це не те саме, що встановити значення "white black".</p>
 </div>
 <div class="paragraph">
 <p>Кольори також можуть бути задані числами від 0 до 255; вони використовують 256-кольоровий режим ANSI (але зауважте, що не всі термінали можуть підтримувати це). Якщо ваш термінал підтримує це, ви також можете вказати 24-бітні значення RGB у шістнадцятковому форматі, наприклад <span class='synopsis'><code>#ff0ab3</code></span>, або 12-бітні значення RGB, наприклад <span class='synopsis'><code>#f1b</code></span>, що еквівалентно 24-бітному кольору <span class='synopsis'><code>#ff11bb</code></span>.</p>
@@ -943,35 +943,35 @@ http.sslverify false</pre>
 <p>Допустимі атрибути: <span class='synopsis'><code>bold</code></span>, <span class='synopsis'><code>dim</code></span>, <span class='synopsis'><code>ul</code></span>, <span class='synopsis'><code>blink</code></span>, <span class='synopsis'><code>reverse</code></span>, <span class='synopsis'><code>italic</code></span> та <span class='synopsis'><code>strike</code></span> (для перекреслених або «закреслених» літер). Положення будь-яких атрибутів відносно кольорів (до, після або посередині) не має значення. Певні атрибути можна вимкнути, додавши перед ними префікс <span class='synopsis'><code>no</code></span> або <span class='synopsis'><code>no-</code></span> (наприклад, <span class='synopsis'><code>noreverse</code></span>, <span class='synopsis'><code>no-ul</code></span> тощо).</p>
 </div>
 <div class="paragraph">
-<p>Псевдоатрибут <span class='synopsis'><code>reset</code></span> скидає всі кольори та атрибути перед застосуванням заданого кольору. Наприклад, <span class='synopsis'><code>reset</code> <code>green</code></span> призведе до зеленого переднього плану та фону за замовчуванням без будь-яких активних атрибутів.</p>
+<p>Псевдоатрибут <span class='synopsis'><code>reset</code></span> скидає всі кольори та атрибути перед застосуванням заданого кольору. Наприклад, <span class='synopsis'><code>reset</code> <code>green</code></span> призведе до зеленого кольору символів на стандартному фоні без будь-яких активних атрибутів.</p>
 </div>
 <div class="paragraph">
 <p>Порожній рядок кольору взагалі не створює жодного колірного ефекту. Це можна використовувати, щоб уникнути забарвлення певних елементів, не вимикаючи колір повністю.</p>
 </div>
 <div class="paragraph">
-<p>Для попередньо визначених кольорових слотів git атрибути мають скидатися на початку кожного елемента у кольоровому виводі. Тож встановлення <span class='synopsis'><code>color.decorate.branch</code></span> на <span class='synopsis'><code>black</code></span> зафарбує назву цієї гілки у звичайний <span class='synopsis'><em>чорний</em></span>, навіть якщо попередній елемент у тому ж рядку виводу (наприклад, відкриваюча дужка перед списком назв гілок у виводі <span class='synopsis'><code>log</code> <code>--decorate</code></span>) налаштовано на зафарбовування <span class='synopsis'><code>bold</code></span> або якимось іншим атрибутом. Однак, користувацькі формати журналів можуть мати складніше та шаруватіше забарвлення, і заперечені форми можуть бути там корисними.</p>
+<p>Для попередньо визначених кольорових слотів git атрибути мають скидатися на початку кожного елемента у кольоровому виводі. Тож встановлення <span class='synopsis'><code>color.decorate.branch</code></span> на <span class='synopsis'><code>black</code></span> зафарбує назву цієї гілки у звичайний <span class='synopsis'><code>black</code></span>, навіть якщо попередній елемент у тому ж рядку виводу (наприклад, відкриваюча дужка перед списком назв гілок у виводі <span class='synopsis'><code>log</code> <code>--decorate</code></span>) налаштовано на зафарбовування <span class='synopsis'><code>bold</code></span> або якимось іншим атрибутом. Однак, у власних форматах логів може використовуватися більш складне та багатошарове забарвлення, і там можуть стати в нагоді форми з запереченням.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-config-pathname"> <a class="anchor" href="#git-config-pathname"></a>pathname </dt>
 <dd>
-<p>Змінній, яка приймає значення шляху, можна надати рядок, що починається з "<span class='synopsis'><code>~/</code></span>" або "<span class='synopsis'><code>~user/</code></span>", і для такого рядка відбувається звичайне розкриття тильдою: <span class='synopsis'><code>~/</code></span> розгортається до значення <span class='synopsis'><code>$HOME</code></span>, а <span class='synopsis'><code>~user/</code></span> — до домашнього каталогу вказаного користувача.</p>
+<p>Змінній, яка приймає значення шляху, можна надати рядок, що починається з "<span class='synopsis'><code>~/</code></span>" або "<span class='synopsis'><code>~user/</code></span>", і для такого рядка відбувається звичайне розгортання тильди: <span class='synopsis'><code>~/</code></span> розгортається до значення <span class='synopsis'><code>$HOME</code></span>, а `~user/  — до домашньої теки вказаного користувача.</p>
 <div class="paragraph">
-<p>Якщо шлях починається з <span class='synopsis'><code>%</code>(<code>prefix</code>)<code>/</code></span>, решта інтерпретується як шлях відносно "префікса середовища виконання" Git, тобто відносно місця, де було встановлено сам Git. Наприклад, <span class='synopsis'><code>%</code>(<code>prefix</code>)<code>/bin/</code></span> посилається на каталог, в якому знаходиться сам виконуваний файл Git. Якщо Git було скомпільовано без підтримки префіксів середовища виконання, замість нього буде підставлено скомпільований префікс. У малоймовірному випадку, якщо потрібно вказати літерал шляху, який <em>не</em> слід розширювати, його потрібно починати з <span class='synopsis'><code>./</code></span>, ось так: <span class='synopsis'><code>./%</code>(<code>prefix</code>)<code>/bin</code></span>.</p>
+<p>Якщо шлях починається з <span class='synopsis'><code>%</code>(<code>prefix</code>)<code>/</code></span>, решта інтерпретується як шлях відносно "префікса середовища виконання" Git, тобто відносно місця, де було встановлено сам Git. Наприклад, <span class='synopsis'><code>%</code>(<code>prefix</code>)<code>/bin/</code></span> посилається на теку, в якій знаходиться сам виконуваний файл Git. Якщо Git було скомпільовано без підтримки префіксів середовища виконання, замість нього буде підставлено скомпільований префікс. У малоймовірному випадку, якщо потрібно вказати літерал шляху, який <em>не</em> слід розгортати, його потрібно починати з <span class='synopsis'><code>./</code></span>, ось так: <span class='synopsis'><code>./%</code>(<code>prefix</code>)<code>/bin</code></span>.</p>
 </div>
 <div class="paragraph">
-<p>Якщо перед змінною є префікс <span class='synopsis'><em>:(необов'язково)</em></span>, вона трактується так, ніби її не існує, якщо вказаний шлях не існує.</p>
+<p>Якщо перед змінною є префікс <span class='synopsis'><code>:</code>(<code>optional</code>)</span>, вона трактується так, ніби її не існує, якщо вказаний шлях не існує.</p>
 </div>
 </dd>
 </dl>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_варіантів"><a class="anchor" href="#_варіантів"></a>Варіантів</h3>
+<h3 id="_змінні"><a class="anchor" href="#_змінні"></a>Змінні</h3>
 <div class="paragraph">
-<p>Зверніть увагу, що цей список не є вичерпним і не обов&#8217;язково повним. Для змінних, що стосуються певних команд, ви знайдете детальніший опис на відповідній сторінці довідки.</p>
+<p>Зверніть увагу, що цей список не є вичерпним і не обовʼязково повним. Для змінних, що стосуються певних команд, ви знайдете детальніший опис у відповідній сторінці довідки.</p>
 </div>
 <div class="paragraph">
-<p>Інші інструменти, пов&#8217;язані з git, можуть використовувати власні змінні та використовують їх. Вигадуючи нові змінні для використання у власному інструменті, переконайтеся, що їхні назви не конфліктують з тими, що використовуються самим Git та іншими популярними інструментами, і опишіть їх у своїй документації.</p>
+<p>Інші інструменти, пов’язані з Git, можуть використовувати власні змінні і насправді це роблять. Створюючи нові змінні для використання у власному інструменті, переконайтеся, що їхні імена не суперечать іменам, які використовує сам Git та інші популярні інструменти, і опишіть їх у своїй документації.</p>
 </div>
 <div class="dlist">
 <dl>
@@ -1149,7 +1149,7 @@ http.sslverify false</pre>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscoderemotecodespan"> <a class="anchor" href="#git-config-remote"></a> <a class="anchor" href="#git-config-spanclasssynopsiscoderemotecodespan"></a><span class='synopsis'><code>remote</code></span> </dt>
 <dd>
-<p>rebase встановлюється в значення true для відстежуваних гілок гілок дистанційного відстеження.</p>
+<p>rebase встановлюється в значення true для відстежуваних гілок  — гілок дистанційного відстеження.</p>
 </dd>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodealwayscodespan-1"> <a class="anchor" href="#git-config-always-1"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodealwayscodespan-1"></a><span class='synopsis'><code>always</code></span> </dt>
 <dd>
@@ -1723,22 +1723,84 @@ http.sslverify false</pre>
 </tr>
 </table>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchrecurseSubmodulescodespan"> <a class="anchor" href="#git-config-fetchrecurseSubmodules"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchrecurseSubmodulescodespan"></a><span class='synopsis'><code>fetch.recurseSubmodules</code></span> </dt>
+<dd>
+<p>Ця опція визначає, чи буде команда <span class='synopsis'><code>git</code> <code>fetch</code></span> (а також відповідний виклик fetch у команді <span class='synopsis'><code>git</code> <code>pull</code></span>) рекурсивно завантажувати дані в субмодулі. Цю опцію можна встановити як булеве значення або як <span class='synopsis'><code>on-demand</code></span>. Встановлення булевого значення змінює поведінку команд fetch і pull: при значенні true вони беззастережно виконують рекурсію в субмодулях, а при значенні false — не виконують її взагалі. При значенні <span class='synopsis'><code>on-demand</code></span>, команди fetch та pull будуть рекурсивно завантажувати дані в заповнений субмодуль тільки тоді, коли його суперпроєкт отримує коміт, що оновлює посилання субмодуля. Стандартним значенням є <span class='synopsis'><code>on-demand</code></span>, або значення <span class='synopsis'><code>submodule.recurse</code></span>, якщо воно встановлено.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchfsckObjectscodespan"> <a class="anchor" href="#git-config-fetchfsckObjects"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchfsckObjectscodespan"></a><span class='synopsis'><code>fetch.fsckObjects</code></span> </dt>
+<dd>
+<p>Якщо встановлено — true, git-fetch-pack перевірятиме всі отримані обʼєкти. Див. transfer.fsckObjects щоб дізнатись що перевіряється. Стандартно – <span class='synopsis'><code>false</code></span>. Якщо не встановлено, використовується значення з transfer.fsckObjects.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchfsckcodeemltmsg-idgtemspan"> <a class="anchor" href="#git-config-fetchfsckmsg-id"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchfsckcodeemltmsg-idgtemspan"></a><span class='synopsis'><code>fetch.fsck.</code><em>&lt;msg-id&gt;</em></span> </dt>
+<dd>
+<p>Діє так само як <span class='synopsis'><code>fsck.</code><em>&lt;msg-id&gt;</em></span> але використовується <a href='{{< relurl "docs/git-fetch-pack/uk" >}}'>git-fetch-pack[1]</a> а не <a href='{{< relurl "docs/git-fsck/uk" >}}'>git-fsck[1]</a>. Див. <span class='synopsis'><code>fsck.</code><em>&lt;msg-id&gt;</em></span> для отримання докладних відомостей.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchfsckskipListcodespan"> <a class="anchor" href="#git-config-fetchfsckskipList"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchfsckskipListcodespan"></a><span class='synopsis'><code>fetch.fsck.skipList</code></span> </dt>
+<dd>
+<p>Діє так само як й <span class='synopsis'><em>fsck.skipList`але використовується в <a href='{{< relurl "docs/git-fetch-pack/uk" >}}'>git-fetch-pack[1]</a> а не в <a href='{{< relurl "docs/git-fsck/uk" >}}'>git-fsck[1]</a>. Див. `fsck.skipList</em></span> для отримання докладних відомостей.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchunpackLimitcodespan"> <a class="anchor" href="#git-config-fetchunpackLimit"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchunpackLimitcodespan"></a><span class='synopsis'><code>fetch.unpackLimit</code></span> </dt>
+<dd>
+<p>Якщо кількість об’єктів, отриманих за допомогою вбудованої функції передачі Git, не перевищує цього обмеження, об’єкти будуть розпаковані у вигляді окремих файлів. Однак якщо кількість отриманих об’єктів дорівнює цьому обмеженню або перевищує його, отриманий пакунок буде збережено як пакунок після додавання будь-яких відсутніх базових файлів дельта. Збереження пакунка з операції push може прискорити завершення цієї операції, особливо на повільних файлових системах. Якщо це значення не вказано, замість нього використовується значення <span class='synopsis'><code>transfer.unpackLimit</code></span>.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchprunecodespan"> <a class="anchor" href="#git-config-fetchprune"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchprunecodespan"></a><span class='synopsis'><code>fetch.prune</code></span> </dt>
+<dd>
+<p>Якщо значення —true, fetch буде поводитись так ніби опцію <span class='synopsis'><code>--prune</code></span> було вказано в командному рядку. Див. також <span class='synopsis'><code>remote.</code><em>&lt;name&gt;</em><code>.prune</code></span> та розділ ОЧИЩЕННЯ в <a href='{{< relurl "docs/git-fetch/uk" >}}'>git-fetch[1]</a>.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchpruneTagscodespan"> <a class="anchor" href="#git-config-fetchpruneTags"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchpruneTagscodespan"></a><span class='synopsis'><code>fetch.pruneTags</code></span> </dt>
+<dd>
+<p>Якщо значення — true, то під час очищення <span class='synopsis'><code>fetch</code></span> автоматично поводитиметься так, ніби під час очищення було вказано refspec <span class='synopsis'><code>refs/tags/*:refs/tags/*</code></span>, якщо він ще не встановлений. Це дозволяє встановити як цей параметр, так і <span class='synopsis'><code>fetch.prune</code></span>, щоб зберегти співвідношення 1:1 з refs upstream. Див. також <span class='synopsis'><code>remote.</code><em>&lt;name&gt;</em><code>.pruneTags</code></span> та розділ ОЧИЩЕННЯ в <a href='{{< relurl "docs/git-fetch/uk" >}}'>git-fetch[1]</a>.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchallcodespan"> <a class="anchor" href="#git-config-fetchall"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchallcodespan"></a><span class='synopsis'><code>fetch.all</code></span> </dt>
+<dd>
+<p>Якщо значення — true, fetch намагатиметеся оновлювати всі доступні remotes. Цю поведінку можна перевизначити використанням параметра <span class='synopsis'><code>--no-all</code></span> або явним вказанням одного чи більше remote для fetch. Стандартно – <span class='synopsis'><code>false</code></span>.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchoutputcodespan"> <a class="anchor" href="#git-config-fetchoutput"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchoutputcodespan"></a><span class='synopsis'><code>fetch.output</code></span> </dt>
+<dd>
+<p>Керує тим, як показується статус оновлення ref. Допустимі значення: <span class='synopsis'><code>full</code></span> та <span class='synopsis'><code>compact</code></span>. Стандартне значення — <span class='synopsis'><code>full</code></span>. Детальніше див. розділ ВИВІД у документації <a href='{{< relurl "docs/git-fetch/uk" >}}'>git-fetch[1]</a>.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchnegotiationAlgorithmcodespan"> <a class="anchor" href="#git-config-fetchnegotiationAlgorithm"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchnegotiationAlgorithmcodespan"></a><span class='synopsis'><code>fetch.negotiationAlgorithm</code></span> </dt>
+<dd>
+<p>Керує тим, як надсилається інформація про коміти в локальному репозиторії під час узгодження вмісту файлу packfile, який має надіслати сервер. Встановіть значення <span class='synopsis'><code>consecutive</code></span>, щоб використовувати алгоритм, який послідовно перевіряє кожен з послідовних комітів. Встановіть значення <span class='synopsis'><code>skipping</code></span>, щоб використовувати алгоритм, який пропускає коміти з метою швидшого збігу, але це може призвести до створення файлу packfile, розмір якого перевищує необхідний; або встановіть значення <span class='synopsis'><code>noop</code></span>, щоб не надсилати жодної інформації, що майже напевно призведе до створення файлу packfile, розмір якого перевищує необхідний, але дозволить пропустити етап узгодження. Встановіть значення <span class='synopsis'><code>default</code></span>, щоб замінити попередні налаштування та скористатися стандартною поведінкою. Стандартним значенням зазвичай є <span class='synopsis'><code>consecutive</code></span>, але якщо <span class='synopsis'><code>feature.experimental</code></span> має значення <span class='synopsis'><code>true</code></span>, то стандартним значенням є <span class='synopsis'><code>skipping</code></span>. Невідомі значення призведуть до помилки <span class='synopsis'><code>git</code> <code>fetch</code></span>.</p>
 <div class="paragraph">
-<p>Missing <span class='synopsis'><code>uk/config/fetch.adoc</code></span></p>
+<p>Дивіться також <span class='synopsis'><code>--negotiate-only</code></span> та <span class='synopsis'><code>--negotiation-tip</code></span> в <a href='{{< relurl "docs/git-fetch/uk" >}}'>git-fetch[1]</a>.</p>
+</div>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchshowForcedUpdatescodespan"> <a class="anchor" href="#git-config-fetchshowForcedUpdates"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchshowForcedUpdatescodespan"></a><span class='synopsis'><code>fetch.showForcedUpdates</code></span> </dt>
+<dd>
+<p>Значення <span class='synopsis'><code>false</code></span> дозволяє використовувати <span class='synopsis'><code>--no-show-forced-updates</code></span> в командах <a href='{{< relurl "docs/git-fetch/uk" >}}'>git-fetch[1]</a> та <a href='{{< relurl "docs/git-pull/uk" >}}'>git-pull[1]</a>. Стандартно — <span class='synopsis'><code>true</code></span>.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchparallelcodespan"> <a class="anchor" href="#git-config-fetchparallel"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchparallelcodespan"></a><span class='synopsis'><code>fetch.parallel</code></span> </dt>
+<dd>
+<p>Вказує максимальну кількість операцій завантаження, які одночасно виконуються паралельно (субмодулі або віддалені репозиторії, якщо активна опція <span class='synopsis'><code>--multiple</code></span> команди <a href='{{< relurl "docs/git-fetch/uk" >}}'>git-fetch[1]</a>).</p>
+<div class="paragraph">
+<p>Значення 0 забезпечить обґрунтовані стандартні налаштування. Якщо параметр не вказано, стандартним значенням буде 1.</p>
 </div>
 <div class="paragraph">
-<p>See original version for this content.</p>
+<p>Для субмодулів це налаштування можна замінити за допомогою параметра конфігурації <span class='synopsis'><code>submodule.fetchJobs</code></span>.</p>
 </div>
-</td>
-</tr>
-</table>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchwriteCommitGraphcodespan"> <a class="anchor" href="#git-config-fetchwriteCommitGraph"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchwriteCommitGraphcodespan"></a><span class='synopsis'><code>fetch.writeCommitGraph</code></span> </dt>
+<dd>
+<p>Встановіть значення true, щоб записувати граф комітів після кожної команди <span class='synopsis'><code>git</code> <code>fetch</code></span>, яка завантажує файл pack з віддаленого репозиторію. При використанні опції <span class='synopsis'><code>--split</code></span> більшість операцій створюватимуть дуже невеликий файл графа комітів поверх наявних файлів графа комітів. Іноді ці файли обʼєднуються, і запис може тривати довше. Наявність оновленого файлу графа комітів покращує продуктивність багатьох команд Git, зокрема <span class='synopsis'><code>git</code> <code>merge-base</code></span>, <span class='synopsis'><code>git</code> <code>push</code> <code>-f</code></span> та <span class='synopsis'><code>git</code> <code>log</code> <code>--graph</code></span>. Стандартне значення — <span class='synopsis'><code>false</code></span>.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchbundleURIcodespan"> <a class="anchor" href="#git-config-fetchbundleURI"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchbundleURIcodespan"></a><span class='synopsis'><code>fetch.bundleURI</code></span> </dt>
+<dd>
+<p>Це значення зберігає URI для завантаження даних об’єктів Git із URI набору перед виконанням інкрементального завантаження з оригінального сервера Git. Це схоже на те, як працює опція <span class='synopsis'><code>--bundle-uri</code></span> у команді <a href='{{< relurl "docs/git-clone/uk" >}}'>git-clone[1]</a>. Команда <span class='synopsis'><code>git</code> <code>clone</code> <code>--bundle-uri</code></span> встановить значення <span class='synopsis'><code>fetch.bundleURI</code></span>, якщо вказаний URI набору містить список наборів, організований для інкрементального завантаження.</p>
+<div class="paragraph">
+<p>Якщо ви зміните це значення, а у вашому репозиторії вже є значення <span class='synopsis'><code>fetch.bundleCreationToken</code></span>, то перед завантаженням за новим URI набору видаліть це значення <span class='synopsis'><code>fetch.bundleCreationToken</code></span>.</p>
+</div>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodefetchbundleCreationTokencodespan"> <a class="anchor" href="#git-config-fetchbundleCreationToken"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodefetchbundleCreationTokencodespan"></a><span class='synopsis'><code>fetch.bundleCreationToken</code></span> </dt>
+<dd>
+<p>При використанні <span class='synopsis'><code>fetch.bundleURI</code></span> для поступового завантаження зі списку наборів, що використовує евристику «<span class='synopsis'><code>creationToken</code></span>», це значення конфігурації зберігає максимальне значення <span class='synopsis'><code>creationToken</code></span> завантажених наборів. Це значення використовується для запобігання завантаженню наборів у майбутньому, якщо оголошене значення <span class='synopsis'><code>creationToken</code></span> не є строго більшим за це значення.</p>
+<div class="paragraph">
+<p>Значення токенів створення обирає провайдер, який обслуговує конкретний URI набору. Якщо ви змінюєте URI в <span class='synopsis'><code>fetch.bundleURI</code></span>, не забудьте видалити значення <span class='synopsis'><code>fetch.bundleCreationToken</code></span> перед завантаженням.</p>
+</div>
+</dd>
+</dl>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -2046,6 +2108,10 @@ http.sslverify false</pre>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodeinitdefaultRefFormatcodespan"> <a class="anchor" href="#git-config-initdefaultRefFormat"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodeinitdefaultRefFormatcodespan"></a><span class='synopsis'><code>init.defaultRefFormat</code></span> </dt>
 <dd>
 <p>Дозволяє перевизначити стандартний формат зберігання посилань для нових репозиторіїв. Див. <span class='synopsis'><code>--ref-format=</code></span> у <a href='{{< relurl "docs/git-init/uk" >}}'>git-init[1]</a>. Як параметр командного рядка, так і змінна середовища <span class='synopsis'><code>GIT_DEFAULT_REF_FORMAT</code></span> мають пріоритет над цією конфігурацією.</p>
+</dd>
+<dt class="hdlist1" id="git-config-initdefaultSubmodulePathConfig"> <a class="anchor" href="#git-config-initdefaultSubmodulePathConfig"></a>init.defaultSubmodulePathConfig </dt>
+<dd>
+<p>Булеве значення, яке визначає, чи повинні команди <span class='synopsis'><code>git</code> <code>init</code></span> та <span class='synopsis'><code>git</code> <code>clone</code></span> автоматично встановлювати для параметра <span class='synopsis'><code>extensions.submodulePathConfig</code></span> значення <span class='synopsis'><code>true</code></span>. Воно дозволяє всім новим репозиторіям автоматично використовувати розширення шляху до субмодулів. Якщо параметр не встановлено, зазвичай використовується значення <span class='synopsis'><code>false</code></span>.</p>
 </dd>
 </dl>
 </div>
@@ -2614,39 +2680,182 @@ http.sslverify false</pre>
 </tr>
 </table>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodepushautoSetupRemotecodespan"> <a class="anchor" href="#git-config-pushautoSetupRemote"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodepushautoSetupRemotecodespan"></a><span class='synopsis'><code>push.autoSetupRemote</code></span> </dt>
+<dd>
+<p>Якщо встановлено значення <span class='synopsis'><code>true</code></span>, під час стандартного надсилання (push) передбачається використання параметра <span class='synopsis'><code>--set-upstream</code></span>, якщо для поточної гілки відсутнє відстеження upstream; ця опція діє разом із значеннями параметра <span class='synopsis'><code>push.default</code></span>: <span class='synopsis'><code>simple</code></span>, <span class='synopsis'><code>upstream</code></span> та <span class='synopsis'><code>current</code></span>. Це корисно, якщо ви хочете, щоб нові гілки стандартно надсилалися до стандартного віддаленого репозиторію (як у випадку з <span class='synopsis'><code>push.default=current</code></span>) і водночас бажаєте встановити відстеження upstream. Робочі процеси, які, найімовірніше, отримають користь від цієї опції, — це централізовані робочі процеси <span class='synopsis'><code>simple</code></span>, де очікується, що всі гілки матимуть однакову назву на віддаленому сервері.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodepushdefaultcodespan"> <a class="anchor" href="#git-config-pushdefault"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodepushdefaultcodespan"></a><span class='synopsis'><code>push.default</code></span> </dt>
+<dd>
+<p>Визначає, яку дію має виконати команда <span class='synopsis'><code>git</code> <code>push</code></span>, якщо не вказано refspec (ні в командному рядку, ні в конфігурації, ні деінде). Різні значення підходять для конкретних робочих процесів; наприклад, у суто централізованому робочому процесі (тобто джерело fetch збігається з пунктом призначення push) вам, ймовірно, підійде значення <span class='synopsis'><code>upstream</code></span>. Можливі значення:</p>
+<div class="openblock">
+<div class="content">
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodenothingcodespan"> <a class="anchor" href="#git-config-nothing"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodenothingcodespan"></a><span class='synopsis'><code>nothing</code></span> </dt>
+<dd>
+<p>не виконувати жодних дій (видавати помилку), якщо не вказано refspec. Ця функція призначена насамперед для тих, хто хоче уникнути помилок, завжди вказуючи параметри явно.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodecurrentcodespan"> <a class="anchor" href="#git-config-current"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodecurrentcodespan"></a><span class='synopsis'><code>current</code></span> </dt>
+<dd>
+<p>надсилати поточну гілку, щоб оновити гілку з такою самою назвою на стороні одержувача. Працює як у централізованих, так і в децентралізованих робочих процесах.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodeupstreamcodespan"> <a class="anchor" href="#git-config-upstream"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodeupstreamcodespan"></a><span class='synopsis'><code>upstream</code></span> </dt>
+<dd>
+<p>надсилати поточну гілку назад до гілки, зміни якої зазвичай інтегруються в поточну гілку (яка називається <span class='synopsis'><code>@{upstream}</code></span>). Цей режим має сенс лише в тому випадку, якщо ви надсилаєте дані до того самого репозиторію, з якого зазвичай отримуєте оновлення (тобто централізований робочий процес).</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodetrackingcodespan"> <a class="anchor" href="#git-config-tracking"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodetrackingcodespan"></a><span class='synopsis'><code>tracking</code></span> </dt>
+<dd>
+<p>це застарілий синонім для <span class='synopsis'><code>upstream</code></span>.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodesimplecodespan-1"> <a class="anchor" href="#git-config-simple-1"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodesimplecodespan-1"></a><span class='synopsis'><code>simple</code></span> </dt>
+<dd>
+<p>надсилати поточну гілку з такою ж назвою до віддаленого репозиторію.</p>
 <div class="paragraph">
-<p>Missing <span class='synopsis'><code>uk/config/push.adoc</code></span></p>
+<p>Якщо ви працюєте в централізованому робочому процесі (надсилаєте зміни до того ж репозиторію звідки ви отримуєте дані, який типово є <span class='synopsis'><code>origin</code></span>), — вам треба налаштувати висхідну гілку з такою ж назвою.</p>
 </div>
 <div class="paragraph">
-<p>See original version for this content.</p>
+<p>Цей режим є стандартним в Git 2.0 та найбезпечнішим варіантом для початківців.</p>
 </div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodematchingcodespan"> <a class="anchor" href="#git-config-matching"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodematchingcodespan"></a><span class='synopsis'><code>matching</code></span> </dt>
+<dd>
+<p>надсилати всі гілки, що мають однакову назву на обох сторонах. Це дозволяє репозиторію, куди ви надсилаєте дані, запам’ятати набір гілок, які будуть надіслані (наприклад, якщо ви завжди надсилаєте туди гілки <span class='synopsis'><code>maint</code></span> і <span class='synopsis'><code>master</code></span>, а не інші, репозиторій, куди ви надсилаєте дані, матиме ці дві гілки, і ваші локальні гілки <span class='synopsis'><code>maint</code></span> та <span class='synopsis'><code>master</code></span> будуть туди надіслані).</p>
 <div class="paragraph">
-<p>Missing <span class='synopsis'><code>uk/config/rebase.adoc</code></span></p>
+<p>Щоб ефективно використовувати цей режим, перед виконанням команди <span class='synopsis'><code>git</code> <code>push</code></span> потрібно переконатися, що <em>всі</em> гілки, які ви збираєтеся надіслати, готові до надсилання, оскільки суть цього режиму полягає в тому, щоб дозволити вам надіслати всі гілки за один раз. Якщо ви зазвичай закінчуєте роботу лише над однією гілкою і надсилаєте результат, тоді як інші гілки залишаються незавершеними, цей режим вам не підходить. Також цей режим не підходить для надсилання до спільного центрального репозиторію, оскільки інші люди можуть додавати туди нові гілки або оновлювати вершини наявних гілок поза вашим контролем.</p>
 </div>
 <div class="paragraph">
-<p>See original version for this content.</p>
+<p>Раніше це було стандартним налаштуванням, але з версії Git 2.0 це змінилося (тепер стандартним налаштуванням є <span class='synopsis'><code>simple</code></span>).</p>
 </div>
-</td>
-</tr>
-</table>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodepushfollowTagscodespan"> <a class="anchor" href="#git-config-pushfollowTags"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodepushfollowTagscodespan"></a><span class='synopsis'><code>push.followTags</code></span> </dt>
+<dd>
+<p>Якщо встановлено — true, стандартно увімкнути опцію <span class='synopsis'><code>--follow-tags</code></span>. Ви можете перевизначити це налаштування будь-коли за допомогою <span class='synopsis'><code>--no-follow-tags</code></span>.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodepushgpgSigncodespan"> <a class="anchor" href="#git-config-pushgpgSign"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodepushgpgSigncodespan"></a><span class='synopsis'><code>push.gpgSign</code></span> </dt>
+<dd>
+<p>Може приймати булеве значення або рядок <span class='synopsis'><code>if-asked</code></span>. Значення true призводить до того, що всі операції push підписуються GPG, так само, якби до команди <a href='{{< relurl "docs/git-push/uk" >}}'>git-push[1]</a> було передано параметр <span class='synopsis'><code>--signed</code></span>. Рядок <span class='synopsis'><code>if-asked</code></span> призводить до того, що надсилання підписуються, якщо сервер це підтримує, так само, якби до <span class='synopsis'><code>git</code> <code>push</code></span> було передано <span class='synopsis'><code>--signed=if-asked</code></span>. Значення false може замінити значення з файлу конфігурації з нижчим пріоритетом. Явний прапорець командного рядка завжди замінює цю опцію конфігурації.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodepushpushOptioncodespan"> <a class="anchor" href="#git-config-pushpushOption"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodepushpushOptioncodespan"></a><span class='synopsis'><code>push.pushOption</code></span> </dt>
+<dd>
+<p>Коли в командному рядку немає аргументу <span class='synopsis'><code>--push-option=</code><em>&lt;option&gt;</em></span>, <span class='synopsis'><code>git</code> <code>push</code></span> поводиться так ніби кожне значення <em>&lt;option&gt;</em> цієї змінної було вказано через <span class='synopsis'><code>--push-option=</code><em>&lt;option&gt;</em></span>.</p>
+<div class="paragraph">
+<p>Це багатозначна змінна, і в конфігураційному файлі з вищим пріоритетом (наприклад, <span class='synopsis'><code>.git/config</code></span> у репозиторії) можна вказати порожнє значення, щоб скинути значення, успадковані з конфігураційних файлів з нижчим пріоритетом (наприклад, <span class='synopsis'><code>$HOME/.gitconfig</code></span>).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Приклад:
+
+/etc/gitconfig
+  push.pushoption = a
+  push.pushoption = b
+
+~/.gitconfig
+  push.pushoption = c
+
+repo/.git/config
+  push.pushoption =
+  push.pushoption = b
+
+У результаті залишиться лише b (a та c будуть очищені).</pre>
+</div>
+</div>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodepushrecurseSubmodulescodespan"> <a class="anchor" href="#git-config-pushrecurseSubmodules"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodepushrecurseSubmodulescodespan"></a><span class='synopsis'><code>push.recurseSubmodules</code></span> </dt>
+<dd>
+<p>Може бути <span class='synopsis'><code>check</code></span>, <span class='synopsis'><code>on-demand</code></span>, <span class='synopsis'><code>only</code></span> або <span class='synopsis'><code>no</code></span>, з такою ж поведінкою як і в <span class='synopsis'><code>push</code> <code>--recurse-submodules</code></span>. Якщо не встановлено, стандартним вважається значення — <span class='synopsis'><code>no</code></span>, якщо тільки не встановлено submodule.recurse (в такому випадку <span class='synopsis'><code>true</code></span> означатиме <span class='synopsis'><code>on-demand</code></span>).</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodepushuseForceIfIncludescodespan"> <a class="anchor" href="#git-config-pushuseForceIfIncludes"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodepushuseForceIfIncludescodespan"></a><span class='synopsis'><code>push.useForceIfIncludes</code></span> </dt>
+<dd>
+<p>Якщо встановлено — true, це є еквівалентом до використання <span class='synopsis'><code>--force-if-includes</code></span> як параметра <a href='{{< relurl "docs/git-push/uk" >}}'>git-push[1]</a> в командному рядку. Додавання <span class='synopsis'><code>--no-force-if-includes</code></span> під час виконання надсилання перевизначає це налаштування.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodepushnegotiatecodespan"> <a class="anchor" href="#git-config-pushnegotiate"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodepushnegotiatecodespan"></a><span class='synopsis'><code>push.negotiate</code></span> </dt>
+<dd>
+<p>Якщо встановлено — true, намагатись зменшити розмір файлу pack через спроби узгодження, де клієнт та сервер намагаються знайти спільні коміти. Якщо значення — <span class='synopsis'><code>false</code></span>, Git буде покладатись виключно на посилання, оголошені сервером, для пошуку спільних комітів.</p>
+</dd>
+<dt class="hdlist1" id="git-config-spanclasssynopsiscodepushuseBitmapscodespan"> <a class="anchor" href="#git-config-pushuseBitmaps"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodepushuseBitmapscodespan"></a><span class='synopsis'><code>push.useBitmaps</code></span> </dt>
+<dd>
+<p>Якщо встановлено — <span class='synopsis'><code>false</code></span>, використання бітових мап для команди <span class='synopsis'><code>git</code> <code>push</code></span> буде вимкнено, навіть якщо для параметра <span class='synopsis'><code>pack.useBitmaps</code></span> встановлено значення <span class='synopsis'><code>true</code></span>, однак це не заважатиме використанню бітових мап в інших операціях git. Стандартне значення — <span class='synopsis'><code>true</code></span>.</p>
+</dd>
+</dl>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="git-config-rebasebackend"> <a class="anchor" href="#git-config-rebasebackend"></a>rebase.backend </dt>
+<dd>
+<p>Стандартний бекенд, що використовується для перебазування. Можливі значення: <em>apply</em> або <em>merge</em>. В майбутньому, якщо бекенд <em>merge</em> набуде всіх можливостей бекенда 'apply, цей параметр перестане використовуватись.</p>
+</dd>
+<dt class="hdlist1" id="git-config-rebasestat"> <a class="anchor" href="#git-config-rebasestat"></a>rebase.stat </dt>
+<dd>
+<p>Чи виводити diffstat для того що було змінено в upstream з моменту останнього перебазування. Стандартне значення — false.</p>
+</dd>
+<dt class="hdlist1" id="git-config-rebaseautoSquash"> <a class="anchor" href="#git-config-rebaseautoSquash"></a>rebase.autoSquash </dt>
+<dd>
+<p>Якщо значення — true, параметр <span class='synopsis'><code>--autosquash</code></span> є стандартно увімкненим для <a href='{{< relurl "docs/git-rebase/uk" >}}'>git-rebase[1]</a> в інтерактивному режимі. Він може бути перевизначений за допомоги <span class='synopsis'><code>--no-autosquash</code></span>.</p>
+</dd>
+<dt class="hdlist1" id="git-config-rebaseautoStash"> <a class="anchor" href="#git-config-rebaseautoStash"></a>rebase.autoStash </dt>
+<dd>
+<p>Якщо значення — true, автоматично створюється тимчасовий елемент stash перед початком операції та застосовується після її завершення. Це означає, що ви можете запустити перебазування на робочому дереві, що містить незафіксовані зміни. Однак використовуйте з обережністю: остаточне застосування stash після успішного перебазування може призвести до складних конфліктів. Цей параметр можна перевизначити параметрами <span class='synopsis'><code>--no-autostash</code></span> та <span class='synopsis'><code>--autostash</code></span> команди <a href='{{< relurl "docs/git-rebase/uk" >}}'>git-rebase[1]</a>. Стандартне значення — false.</p>
+</dd>
+<dt class="hdlist1" id="git-config-rebaseupdateRefs"> <a class="anchor" href="#git-config-rebaseupdateRefs"></a>rebase.updateRefs </dt>
+<dd>
+<p>Якщо значення — true, опція <span class='synopsis'><code>--update-refs</code></span> є стандартно увімкненою.</p>
+</dd>
+<dt class="hdlist1" id="git-config-rebasemissingCommitsCheck"> <a class="anchor" href="#git-config-rebasemissingCommitsCheck"></a>rebase.missingCommitsCheck </dt>
+<dd>
+<p>Якщо значення — "warn", <span class='synopsis'><em>git rebase -i …`буде показувати попередження якщо деякі з комітів будуть вилучені (напр. рядок коміту було вилучено), однак перебазування буде продовжене. Якщо значення — "error", буде показане попереднє попередження, а перебазування буде призупинене, для виправлення помилки можна скористатись `git rebase --edit-todo</em></span>. Якщо значення — "ignore", перевірки не виконуються. Для того, щоб відкинути коміт без попереджень чи помилок використовуйте команду <span class='synopsis'><code>drop</code></span> в переліку завдань. Стандартне значення — "ignore".</p>
+</dd>
+<dt class="hdlist1" id="git-config-rebaseinstructionFormat"> <a class="anchor" href="#git-config-rebaseinstructionFormat"></a>rebase.instructionFormat </dt>
+<dd>
+<p>Рядок форматування, як зазначено в <a href='{{< relurl "docs/git-log/uk" >}}'>git-log[1]</a>, який використовується для списку завдань під час інтерактивного перебазування. До цього рядка автоматично додається хеш коміту.</p>
+</dd>
+<dt class="hdlist1" id="git-config-rebaseabbreviateCommands"> <a class="anchor" href="#git-config-rebaseabbreviateCommands"></a>rebase.abbreviateCommands </dt>
+<dd>
+<p>Якщо значення — true, <span class='synopsis'><code>git</code> <code>rebase</code></span> буде використовувати скорочені назви команд в переліку завдань, що призведе до чогось подібного:</p>
+<div class="listingblock">
+<div class="content">
+<pre>	p deadbee The oneline of the commit
+	p fa1afe1 The oneline of the next commit
+	...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>а не:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>	pick deadbee The oneline of the commit
+	pick fa1afe1 The oneline of the next commit
+	...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Стандартне значення — false.</p>
+</div>
+</dd>
+<dt class="hdlist1" id="git-config-rebaserescheduleFailedExec"> <a class="anchor" href="#git-config-rebaserescheduleFailedExec"></a>rebase.rescheduleFailedExec </dt>
+<dd>
+<p>Автоматично перепланувати команди <span class='synopsis'><code>exec</code></span>, виконання яких завершилося з помилкою. Це має сенс лише в інтерактивному режимі (або якщо вказано параметр <span class='synopsis'><code>--exec</code></span>). Це еквівалентно вказівці параметра <span class='synopsis'><code>--reschedule-failed-exec</code></span>.</p>
+</dd>
+<dt class="hdlist1" id="git-config-rebaseforkPoint"> <a class="anchor" href="#git-config-rebaseforkPoint"></a>rebase.forkPoint </dt>
+<dd>
+<p>Якщо значення — false, опція <span class='synopsis'><code>--no-fork-point</code></span> є стандартно увімкненою.</p>
+</dd>
+<dt class="hdlist1" id="git-config-rebaserebaseMerges"> <a class="anchor" href="#git-config-rebaserebaseMerges"></a>rebase.rebaseMerges </dt>
+<dd>
+<p>Чи стандартно встановлювати опцію <span class='synopsis'><code>--rebase-merges</code></span> і як саме. Може приймати значення <span class='synopsis'><code>rebase-cousins</code></span>, <span class='synopsis'><code>no-rebase-cousins</code></span> або булеве значення. Встановлення значення true або <span class='synopsis'><code>no-rebase-cousins</code></span> еквівалентно <span class='synopsis'><code>--rebase-merges=no-rebase-cousins</code></span>, встановлення значення <span class='synopsis'><code>rebase-cousins</code></span> еквівалентно <span class='synopsis'><code>--rebase-merges=rebase-cousins</code></span>, а встановлення значення false еквівалентно <span class='synopsis'><code>--no-rebase-merges</code></span>. Передача <span class='synopsis'><code>--rebase-merges</code></span> у командному рядку, з аргументом або без нього, замінює будь-яку конфігурацію <span class='synopsis'><code>rebase.rebaseMerges</code></span>.</p>
+</dd>
+<dt class="hdlist1" id="git-config-rebasemaxLabelLength"> <a class="anchor" href="#git-config-rebasemaxLabelLength"></a>rebase.maxLabelLength </dt>
+<dd>
+<p>Під час формування імен міток на основі тем комітів скорочувати імена до цієї довжини. Стандартно імена скорочуються до довжини, трохи меншої за <span class='synopsis'><code>NAME_MAX</code></span> (щоб, наприклад, можна було створювати файли <span class='synopsis'><code>.lock</code></span> для відповідних вільних посилань).</p>
+</dd>
+</dl>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -2801,22 +3010,13 @@ http.sslverify false</pre>
 </tr>
 </table>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Missing <span class='synopsis'><code>uk/config/sequencer.adoc</code></span></p>
-</div>
-<div class="paragraph">
-<p>See original version for this content.</p>
-</div>
-</td>
-</tr>
-</table>
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="git-config-sequenceeditor"> <a class="anchor" href="#git-config-sequenceeditor"></a>sequence.editor </dt>
+<dd>
+<p>Текстовий редактор, який використовується командою <span class='synopsis'><code>git</code> <code>rebase</code> <code>-i</code></span> для редагування файлу інструкцій перебазування. Це значення призначене для інтерпретації оболонкою під час використання. Його можна замінити за допомогою змінної середовища <span class='synopsis'><code>GIT_SEQUENCE_EDITOR</code></span>. Якщо це значення не вказано, замість нього використовується стандартний редактор повідомлень комітів.</p>
+</dd>
+</dl>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -2891,7 +3091,7 @@ http.sslverify false</pre>
 <dt class="hdlist1" id="git-config-spanclasssynopsiscodestashindexcodespan"> <a class="anchor" href="#git-config-stashindex"></a> <a class="anchor" href="#git-config-spanclasssynopsiscodestashindexcodespan"></a><span class='synopsis'><code>stash.index</code></span> </dt>
 <dd>
 <p>	Якщо для цього параметра встановлено значення true, команди <span class='synopsis'><code>git</code> <code>stash</code> <code>apply</code></span> та <span class='synopsis'><code>git</code> <code>stash</code> <code>pop</code></span> працюватимуть так, ніби було вказано параметр <span class='synopsis'><code>--index</code></span>. Стандартне значення — false.
-See the descriptions in <a href='{{< relurl "docs/git-stash/uk" >}}'>git-stash[1]</a>.</p>
+Дивись опис в <a href='{{< relurl "docs/git-stash/uk" >}}'>git-stash[1]</a>.</p>
 <div class="paragraph">
 <p>Це також впливає на виклики команди <a href='{{< relurl "docs/git-stash/uk" >}}'>git-stash[1]</a> з параметром <span class='synopsis'><code>--autostash</code></span> у таких командах, як <a href='{{< relurl "docs/git-merge/uk" >}}'>git-merge[1]</a>, <a href='{{< relurl "docs/git-rebase/uk" >}}'>git-rebase[1]</a> та <a href='{{< relurl "docs/git-pull/uk" >}}'>git-pull[1]</a>.</p>
 </div>

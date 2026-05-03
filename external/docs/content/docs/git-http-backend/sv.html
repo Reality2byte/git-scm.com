@@ -47,13 +47,13 @@ headings:
 <h2 id="_beskrivning"><a class="anchor" href="#_beskrivning"></a>BESKRIVNING</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Ett enkelt CGI-program för att leverera innehållet i ett Git-förvar till Git-klienter som kommer åt arkivet via protokollen http:// och https://. Programmet stöder klienter som hämtar data med både smart HTTP-protokollet och det bakåtkompatibla dumma HTTP-protokollet, samt klienter som skickar data med smart HTTP-protokollet. Det stöder även Gits mer effektiva "v2"-protokoll om det är korrekt konfigurerat; se diskussionen om <span class='synopsis'><code>GIT_PROTOCOL</code></span> i avsnittet MILJÖ nedan.</p>
+<p>Ett enkelt CGI-program för att leverera innehållet i ett Git-kodförråd till Git-klienter som kommer åt kodförrådet via protokollen http:// och https://. Programmet stöder klienter som hämtar data med både smart HTTP-protokollet och det bakåtkompatibla dumma HTTP-protokollet, samt klienter som skickar data med smart HTTP-protokollet. Det stöder även Gits mer effektiva "v2"-protokoll om det är korrekt konfigurerat; se diskussionen om <span class='synopsis'><code>GIT_PROTOCOL</code></span> i avsnittet MILJÖ nedan.</p>
 </div>
 <div class="paragraph">
 <p>Den verifierar att katalogen har den magiska filen "git-daemon-export-ok", och den kommer att vägra exportera alla Git-kataloger som inte uttryckligen har markerats för export på detta sätt (såvida inte miljövariabeln <span class='synopsis'><code>GIT_HTTP_EXPORT_ALL</code></span> är satt).</p>
 </div>
 <div class="paragraph">
-<p>Som standard, är endast tjänsten <span class='synopsis'><code>upload-pack</code></span> aktiverad, vilken betjänar klienterna <span class='synopsis'><code>git</code> <code>fetch-pack</code></span> och <span class='synopsis'><code>git</code> <code>ls-remote</code></span>, vilka anropas från <span class='synopsis'><code>git</code> <code>fetch</code></span>, <span class='synopsis'><code>git</code> <code>pull</code></span> och <span class='synopsis'><code>git</code> <code>clone</code></span>. Om klienten är autentiserad är tjänsten <span class='synopsis'><code>receive-pack</code></span> aktiverad, vilken betjänar klienterna <span class='synopsis'><code>git</code> <code>send-pack</code></span>, vilka anropas från <span class='synopsis'><code>git</code> <code>push</code></span>.</p>
+<p>Som standard är endast tjänsten <span class='synopsis'><code>upload-pack</code></span> aktiverad, vilken betjänar klienterna <span class='synopsis'><code>git</code> <code>fetch-pack</code></span> och <span class='synopsis'><code>git</code> <code>ls-remote</code></span>, vilka anropas från <span class='synopsis'><code>git</code> <code>fetch</code></span>, <span class='synopsis'><code>git</code> <code>pull</code></span> och <span class='synopsis'><code>git</code> <code>clone</code></span>. Om klienten är autentiserad är tjänsten <span class='synopsis'><code>receive-pack</code></span> aktiverad, vilken betjänar klienterna <span class='synopsis'><code>git</code> <code>send-pack</code></span>, vilka anropas från <span class='synopsis'><code>git</code> <code>push</code></span>.</p>
 </div>
 </div>
 </div>
@@ -61,25 +61,25 @@ headings:
 <h2 id="_tjänster"><a class="anchor" href="#_tjänster"></a>TJÄNSTER</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Dessa tjänster kan aktiveras/inaktiveras med hjälp av per-förvar konfigurations-fil:</p>
+<p>Dessa tjänster kan aktiveras/inaktiveras med hjälp av kodförrådets konfigurationsfil:</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-http-backend-httpgetanyfile"> <a class="anchor" href="#git-http-backend-httpgetanyfile"></a>http.getanyfile </dt>
 <dd>
-<p>Detta betjänar Git-klienter äldre än version 1.6.6 som inte kan använda uppladdnings-paket-tjänsten. När den är aktiverad kan klienter läsa vilken fil som helst i arkivet, inklusive objekt som inte längre är nåbara från en gren men som fortfarande finns. Den är aktiverad som standard, men ett förvar kan inaktivera den genom att ställa in detta konfigurationsvärde till <span class='synopsis'><code>false</code></span>.</p>
+<p>Det betjänar Git-klienter äldre än version 1.6.6 som inte kan använda uppladdnings-paket-tjänsten. När den är aktiverad kan klienter läsa vilken fil som helst i kodförrådet, inklusive objekt som inte längre är nåbara från en gren men som fortfarande finns. Den är aktiverad som standard, men ett kodförråd kan inaktivera den genom att ställa in detta konfigurationsvärde till <span class='synopsis'><code>false</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-http-backend-httpuploadpack"> <a class="anchor" href="#git-http-backend-httpuploadpack"></a>http.uploadpack </dt>
 <dd>
-<p>Detta betjänar klienterna <em>git fetch-pack</em> och <em>git ls-remote</em>. Det är aktiverat som standard, men ett förvar kan inaktivera det genom att ställa in konfigurationsvärdet till <em>false</em>.</p>
+<p>Det betjänar klienterna <em>git fetch-pack</em> och <em>git ls-remote</em>. Det är aktiverat som standard, men ett kodförråd kan inaktivera det genom att ställa in konfigurationsvärdet till <em>false</em>.</p>
 </dd>
 <dt class="hdlist1" id="git-http-backend-httpreceivepack"> <a class="anchor" href="#git-http-backend-httpreceivepack"></a>http.receivepack </dt>
 <dd>
-<p>Detta betjänar <em>git send-pack</em>-klienter och tillåter push (sändning). Det är inaktiverat som standard för anonyma användare och aktiverat som standard för användare som autentiserats av webbservern. Det kan inaktiveras genom att ställa in det här alternativet till <em>false</em>, eller aktiveras för alla användare, inklusive anonyma användare, genom att ställa in det till <em>true</em>.</p>
+<p>Det betjänar <em>git send-pack</em>-klienter och tillåter push (sändning). Det är inaktiverat som standard för anonyma användare och aktiverat som standard för användare som autentiserats av webbservern. Det kan inaktiveras genom att ställa in alternativet till <em>false</em>, eller aktiveras för alla användare, inklusive anonyma användare, genom att ställa in det till <em>true</em>.</p>
 </dd>
 <dt class="hdlist1" id="git-http-backend-httpuploadarchive"> <a class="anchor" href="#git-http-backend-httpuploadarchive"></a>http.uploadarchive </dt>
 <dd>
-<p>Detta betjänar <em>git archive</em>-klienter för fjärr-arkivering över HTTP/HTTPS-protokoll. Det är inaktiverat som standard. Det fungerar bara i protokoll v2.</p>
+<p>Detta betjänar <span class='synopsis'><code>git</code> <code>archive</code></span>-klienter för fjärrarkivering över HTTP/HTTPS-protokoll. Funktionen är inaktiverad som standard. Den fungerar endast i protokoll v2.</p>
 </dd>
 </dl>
 </div>
@@ -89,7 +89,7 @@ headings:
 <h2 id="_url_översättning"><a class="anchor" href="#_url_översättning"></a>URL-ÖVERSÄTTNING</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>För att bestämma platsen för förvaret på disken sammanfogar <em>git http-backend</em> miljövariablerna PATH_INFO, som ställs in automatiskt av webbservern, och GIT_PROJECT_ROOT, som måste ställas in manuellt i webbserver-konfigurationen. Om GIT_PROJECT_ROOT inte är angivet, läser <em>git http-backend</em> PATH_TRANSLATED, som också ställs in automatiskt av webbservern.</p>
+<p>För att bestämma platsen för kodförrådet på disken sammanfogar <em>git http-backend</em> miljövariablerna PATH_INFO, som ställs in automatiskt av webbservern, och GIT_PROJECT_ROOT, som måste ställas in manuellt i webbserver-konfigurationen. Om GIT_PROJECT_ROOT inte är angivet, läser <em>git http-backend</em> PATH_TRANSLATED, som också ställs in automatiskt av webbservern.</p>
 </div>
 </div>
 </div>
@@ -158,10 +158,10 @@ RewriteRule ^/git/ - [E=AUTHREQUIRED:yes]
 </div>
 </div>
 <div class="paragraph">
-<p>I det här läget, kommer servern inte att begära autentisering förrän klienten faktiskt startar objektförhandlingsfasen av push-begäran, snarare än under den initiala kontakten. Av denna anledning måste du också aktivera konfigurations-alternativet <span class='synopsis'><code>http.receivepack</code></span> i alla förvar som ska acceptera en push. Standardbeteendet, om <span class='synopsis'><code>http.receivepack</code></span> inte är inställt, är att avvisa alla push-begäran från oautentiserade användare; den initiala begäran kommer därför att rapportera <span class='synopsis'><code>403</code> <code>Forbidden</code></span> till klienten, utan att ens ge möjlighet till autentisering.</p>
+<p>I det här läget, kommer servern inte att begära autentisering förrän klienten faktiskt startar objektförhandlingsfasen av push-begäran, snarare än under den initiala kontakten. Av denna anledning måste du också aktivera konfigurations-alternativet <span class='synopsis'><code>http.receivepack</code></span> i alla kodförråd som ska acceptera en push. Standardbeteendet, om <span class='synopsis'><code>http.receivepack</code></span> inte är inställt, är att avvisa alla push-begäran från oautentiserade användare; den initiala begäran kommer därför att rapportera <span class='synopsis'><code>403</code> <code>Forbidden</code></span> till klienten, utan att ens ge möjlighet till autentisering.</p>
 </div>
 <div class="paragraph">
-<p>För att kräva autentisering för både läsning och skrivning, använd ett Location (plats) direktiv runt förvaret, eller en av dess överordnade kataloger:</p>
+<p>För att kräva autentisering för både läsning och skrivning, använd ett Location (plats) direktiv runt kodförrådet, eller en av dess överordnade kataloger:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -191,7 +191,7 @@ ScriptAlias /git/ /var/www/cgi-bin/gitweb.cgi/</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>För att hantera flera förvar från olika <a href='{{< relurl "docs/gitnamespaces/sv" >}}'>gitnamespaces[7]</a> i ett enda förvar:</p>
+<p>För att hantera flera kodförråd från olika <a href='{{< relurl "docs/gitnamespaces/sv" >}}'>gitnamespaces[7]</a> i ett enda kodförråd:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -213,7 +213,7 @@ ScriptAlias /git/ /usr/libexec/git-core/git-http-backend/</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Detta kan kombineras med gitweb-konfigurationen:</p>
+<p>Det kan kombineras med gitweb-konfigurationen:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -318,10 +318,10 @@ $HTTP["url"] =~ "^/git/.*/git-receive-pack$" {
 </ul>
 </div>
 <div class="paragraph">
-<p>Miljövariabeln <span class='synopsis'><code>GIT_HTTP_EXPORT_ALL</code></span> kan skickas till <em>git-http-backend</em> för att kringgå kontrollen av filen "git-daemon-export-ok" i varje förvar innan export av det förvaret tillåts.</p>
+<p>Miljövariabeln <span class='synopsis'><code>GIT_HTTP_EXPORT_ALL</code></span> kan skickas till <em>git-http-backend</em> för att kringgå kontrollen av filen "git-daemon-export-ok" i varje kodförråd innan export av det kodförrådet tillåts.</p>
 </div>
 <div class="paragraph">
-<p>Miljövariabeln <span class='synopsis'><code>GIT_HTTP_MAX_REQUEST_BUFFER</code></span> (eller konfigurationsalternativet <span class='synopsis'><code>http.maxRequestBuffer</code></span>) kan ställas in för att ändra den största referensförhandlingsbegäran som git hanterar under en hämtning; en hämtning som kräver en större buffert kommer inte att lyckas. Detta värde bör normalt inte behöva ändras, men kan vara användbart om du hämtar från ett förvar med ett extremt stort antal referenser. Värdet kan anges med en enhet (t.ex. <span class='synopsis'><code>100M</code></span> för 100 megabyte). Standardvärdet är 10 megabyte.</p>
+<p>Miljövariabeln <span class='synopsis'><code>GIT_HTTP_MAX_REQUEST_BUFFER</code></span> (eller konfigurationsalternativet <span class='synopsis'><code>http.maxRequestBuffer</code></span>) kan ställas in för att ändra den största referensförhandlingsbegäran som git hanterar under en hämtning; en hämtning som kräver en större buffert kommer inte att lyckas. Detta värde bör normalt inte behöva ändras, men kan vara användbart om du hämtar från ett kodförråd med ett extremt stort antal referenser. Värdet kan anges med en enhet (t.ex. <span class='synopsis'><code>100M</code></span> för 100 megabyte). Standardvärdet är 10 megabyte.</p>
 </div>
 <div class="paragraph">
 <p>Klienter kan söka efter valfria protokollfunktioner (som v2-protokollet) med hjälp av HTTP-huvudet <span class='synopsis'><code>Git-Protocol</code></span>. För att stödja dessa måste innehållet i den huvudet visas i miljövariabeln <span class='synopsis'><code>GIT_PROTOCOL</code></span>. De flesta webbservrar skickar denna huvud till CGI via variabeln <span class='synopsis'><code>HTTP_GIT_PROTOCOL</code></span>, och <span class='synopsis'><code>git-http-backend</code></span> kopierar den automatiskt till <span class='synopsis'><code>GIT_PROTOCOL</code></span>. Vissa webbservrar kan dock vara mer selektiva med vilka huvuden de skickar, i vilket fall de måste konfigureras explicit (se omnämnandet av <span class='synopsis'><code>Git-Protocol</code></span> i Apache-konfigurationen från det tidigare EXEMPEL-avsnittet).</p>

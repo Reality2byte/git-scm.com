@@ -43,10 +43,10 @@ headings:
 <h2 id="_beskrivning"><a class="anchor" href="#_beskrivning"></a>BESKRIVNING</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Skickar saknade objekt till fjärrförvaret, och uppdaterar fjärrgrenen.</p>
+<p>Skickar saknade objekt till fjärrkodförrådet och uppdaterar fjärrgrenen.</p>
 </div>
 <div class="paragraph">
-<p><strong>OBS</strong>: Det här kommandot är tillfälligt inaktiverat om din libcurl är äldre än 7.16, eftersom kombinationen har rapporterats inte fungera och ibland korrumperar förvaret.</p>
+<p><strong>OBS</strong>: Det här kommandot är tillfälligt inaktiverat om din libcurl är äldre än 7.16, eftersom kombinationen har rapporterats inte fungera och ibland korrumperar kodförrådet.</p>
 </div>
 </div>
 </div>
@@ -57,11 +57,11 @@ headings:
 <dl>
 <dt class="hdlist1" id="git-http-push---all"> <a class="anchor" href="#git-http-push---all"></a>--all </dt>
 <dd>
-<p>Anta inte att fjärrförvaret är komplett i sitt nuvarande tillstånd, och verifiera att alla objekt i hela den lokala referensens historik finns i fjärrförvaret.</p>
+<p>Anta inte att fjärrkodförrådet är komplett i sitt nuvarande tillstånd, och verifiera att alla objekt i hela den lokala referensens historik finns i fjärrkodförrådet.</p>
 </dd>
 <dt class="hdlist1" id="git-http-push---force"> <a class="anchor" href="#git-http-push---force"></a>--force </dt>
 <dd>
-<p>Vanligtvis, vägrar kommandot att uppdatera en fjärrreferens som inte är en förfader till den lokala referens som användes för att skriva över den. Denna flagga inaktiverar kontrollen. Det betyder att fjärrförvaret kan förlora incheckningar; använd den med försiktighet.</p>
+<p>Vanligtvis, vägrar kommandot att uppdatera en fjärrreferens som inte är en förfader till den lokala referens som användes för att skriva över den. Flaggan inaktiverar kontrollen. Det betyder att fjärrkodförrådet kan förlora incheckningar; använd den med försiktighet.</p>
 </dd>
 <dt class="hdlist1" id="git-http-push---dry-run"> <a class="anchor" href="#git-http-push---dry-run"></a>--dry-run </dt>
 <dd>
@@ -69,12 +69,12 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-http-push---verbose"> <a class="anchor" href="#git-http-push---verbose"></a>--verbose </dt>
 <dd>
-<p>Rapportera listan över objekt som genomgås lokalt och listan över objekt som har skickats till fjärrförvaret.</p>
+<p>Rapportera listan över objekt som genomgås lokalt och listan över objekt som har skickats till fjärrkodförrådet.</p>
 </dd>
 <dt class="hdlist1" id="git-http-push--d"> <a class="anchor" href="#git-http-push--d"></a>-d </dt>
 <dt class="hdlist1" id="git-http-push--D"> <a class="anchor" href="#git-http-push--D"></a>-D </dt>
 <dd>
-<p>Ta bort <span class="hover-term" data-term="ref">&lt;ref&gt;</span> från fjärrförvaret. Den angivna grenen kan inte vara fjärr-HEAD. Om -d anges måste följande andra villkor också vara uppfyllda:</p>
+<p>Ta bort <span class="hover-term" data-term="ref">&lt;ref&gt;</span> från fjärrkodförrådet. Den angivna grenen kan inte vara fjärr-HEAD. Om -d anges måste följande andra villkor också vara uppfyllda:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -127,13 +127,13 @@ headings:
 </ul>
 </div>
 <div class="paragraph">
-<p>Utan <span class='synopsis'><code>--force</code></span> lagras &lt;src&gt;-referensen på fjärren endast om &lt;dst&gt; inte existerar, eller om &lt;dst&gt; är en korrekt delmängd (dvs. en förfader) till &lt;src&gt;. Denna kontroll, känd som "snabbspola framåt", utförs för att undvika att av misstag skriva över fjärrren och förlora andra personers incheckningar därifrån.</p>
+<p>Utan <span class='synopsis'><code>--force</code></span> lagras &lt;src&gt;-referensen på fjärren endast om &lt;dst&gt; inte finns, eller om &lt;dst&gt; är en korrekt delmängd (d.v.s. en förfader) till &lt;src&gt;. Kontrollen, kallad "snabbspolningskontroll", görs för att undvika att av misstag skriva över fjärrreferensen och förlora andra personers incheckningar därifrån.</p>
 </div>
 <div class="paragraph">
-<p>Med <span class='synopsis'><code>--force</code></span> inaktiveras snabbspolning framåt för alla referenser.</p>
+<p>Med <span class='synopsis'><code>--force</code></span> inaktiveras snabbspolning för alla referenser.</p>
 </div>
 <div class="paragraph">
-<p>Valfritt, kan en <span class="hover-term" data-term="ref">&lt;ref&gt;</span>-parameter prefixas med ett plustecken <em>+</em> för att inaktivera snabbspolning framåt endast på den referensen.</p>
+<p>Valfritt, kan en <span class="hover-term" data-term="ref">&lt;ref&gt;</span>-parameter prefixas med ett plustecken <em>+</em> för att inaktivera snabbspolning endast på den referensen.</p>
 </div>
 </div>
 </div>

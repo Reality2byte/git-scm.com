@@ -100,15 +100,15 @@ git log --pretty=short | <em>git shortlog</em> [&lt;opções&gt;]</pre>
 </li>
 <li>
 <p><span class='synopsis'><code>trailer:</code><em>&lt;campo&gt;</em></span>, o <span class='synopsis'><em>&lt;campo&gt;</em></span> é interpretado como um trecho da mensagem do commit indiferente se for maiúsculas ou minúsculas (consulte <a href='{{< relurl "docs/git-interpret-trailers/pt_BR" >}}'>git-interpret-trailers[1]</a>). Por exemplo, caso o seu projeto use trechos <span class='synopsis'><code>Revisados</code> <code>por</code></span> (<span class='synopsis'><code>Reviewed-by</code></span>), é possível ver quem tem feito a revisão através do comando <span class='synopsis'><code>git</code> <code>shortlog</code> <code>-ns</code> <code>--group=trailer:reviewed-by</code></span>.</p>
-</li>
-<li>
-<p>O <span class='synopsis'><code>format:</code><em>&lt;formato&gt;</em></span>, qualquer string aceito pela opção <span class='synopsis'><code>--format</code></span> do comando <em>git log</em>. (Consulte a seção "FORMATOS BONITOS" do <a href='{{< relurl "docs/git-log/pt_BR" >}}'>git-log[1]</a>.)</p>
 <div class="paragraph">
 <p>Observe que os commits que não incluírem o caractere de resposta não serão contados. Da mesma maneira, os commits com vários caracteres de resposta (várias assinaturas por exemplo) podem ser contados mais de uma vez (mas apenas uma vez por valor do caractere de resposta exclusivo neste commit).</p>
 </div>
 <div class="paragraph">
 <p>O shortlog tentará analisar o valor de cada trecho com a identidade do <span class='synopsis'><code>nome</code> <em>&lt;email&gt;</em></span>. Caso seja bem-sucedido, o envio dos e-mails serão aplicados e o e-mail é omitido a menos que a opção <span class='synopsis'><code>--email</code></span> seja usada. Caso o valor não possa ser analisado como uma identidade, ele será entendido de forma literal e absoluta.</p>
 </div>
+</li>
+<li>
+<p>O <span class='synopsis'><code>format:</code><em>&lt;formato&gt;</em></span>, qualquer string aceito pela opção <span class='synopsis'><code>--format</code></span> do comando <em>git log</em>. (Consulte a seção "FORMATOS BONITOS" do <a href='{{< relurl "docs/git-log/pt_BR" >}}'>git-log[1]</a>.)</p>
 </li>
 </ul>
 </div>

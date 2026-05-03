@@ -66,10 +66,10 @@ headings:
 <p>Den verifierar att katalogen har den magiska filen "git-daemon-export-ok", och den kommer att vägra exportera alla Git-kataloger som inte uttryckligen har markerats för export på detta sätt (såvida inte parametern <span class='synopsis'><code>--export-all</code></span> anges). Om du skickar vissa katalogsökvägar som <span class='synopsis'><code>git</code> <code>daemon</code></span>-argument, är erbjudandena begränsade till arkiv inom dessa kataloger.</p>
 </div>
 <div class="paragraph">
-<p>Som standard, är endast tjänsten <span class='synopsis'><code>upload-pack</code></span> aktiverad, vilken betjänar klienterna <span class='synopsis'><code>git</code> <code>fetch-pack</code></span> och <span class='synopsis'><code>git</code> <code>ls-remote</code></span>, vilka anropas från <span class='synopsis'><code>git</code> <code>fetch</code></span>, <span class='synopsis'><code>git</code> <code>pull</code></span> och <span class='synopsis'><code>git</code> <code>clone</code></span>.</p>
+<p>Som standard är endast tjänsten <span class='synopsis'><code>upload-pack</code></span> aktiverad, vilken betjänar klienterna <span class='synopsis'><code>git</code> <code>fetch-pack</code></span> och <span class='synopsis'><code>git</code> <code>ls-remote</code></span>, vilka anropas från <span class='synopsis'><code>git</code> <code>fetch</code></span>, <span class='synopsis'><code>git</code> <code>pull</code></span> och <span class='synopsis'><code>git</code> <code>clone</code></span>.</p>
 </div>
 <div class="paragraph">
-<p>Detta är idealiskt för skrivskyddade uppdateringar, dvs. att dra in ("pulla") från Git-kodförråd.</p>
+<p>Detta är idealiskt för skrivskyddade uppdateringar, d.v.s. att dra in ("hämta") från Git-kodförråd.</p>
 </div>
 <div class="paragraph">
 <p>Ett <span class='synopsis'><code>upload-archive</code></span> finns också för att hantera <span class='synopsis'><code>git</code> <code>archive</code></span>.</p>
@@ -83,7 +83,7 @@ headings:
 <dl>
 <dt class="hdlist1" id="git-daemon-spanclasssynopsiscode--strict-pathscodespan"> <a class="anchor" href="#git-daemon---strict-paths"></a> <a class="anchor" href="#git-daemon-spanclasssynopsiscode--strict-pathscodespan"></a><span class='synopsis'><code>--strict-paths</code></span> </dt>
 <dd>
-<p>Matcha sökvägar exakt (dvs. tillåt inte "/foo/kodförråd" när den verkliga sökvägen är "/foo/kodförråd.git" eller "/foo/kodförråd/.git") och använd inte användarrelativa sökvägar. <span class='synopsis'><code>git</code> <code>daemon</code></span> kommer att vägra starta när det här alternativet är aktiverat och inga katalogargument anges.</p>
+<p>Matcha sökvägar exakt (d.v.s. tillåt inte "/foo/repo" när den verkliga sökvägen är "/foo/repo.git" eller "/foo/repo/.git") och använd inte användarrelativa sökvägar. <span class='synopsis'><code>git</code> <code>daemon</code></span> kommer att vägra starta när det här alternativet är aktiverat och inga katalogargument anges.</p>
 </dd>
 <dt class="hdlist1" id="git-daemon-spanclasssynopsiscode--base-pathcodeemltskvggtemspan"> <a class="anchor" href="#git-daemon---base-pathskvg"></a> <a class="anchor" href="#git-daemon-spanclasssynopsiscode--base-pathcodeemltskvggtemspan"></a><span class='synopsis'><code>--base-path=</code><em>&lt;sökväg&gt;</em></span> </dt>
 <dd>
@@ -95,11 +95,11 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-daemon-spanclasssynopsiscode--interpolated-pathcodeemltskvgsmallgtemspan"> <a class="anchor" href="#git-daemon---interpolated-pathskvgsmall"></a> <a class="anchor" href="#git-daemon-spanclasssynopsiscode--interpolated-pathcodeemltskvgsmallgtemspan"></a><span class='synopsis'><code>--interpolated-path=</code><em>&lt;sökvägsmall&gt;</em></span> </dt>
 <dd>
-<p>För att stödja virtuell värdskap (hosting) kan en interpolerad sökvägsmall användas för att dynamiskt konstruera alternativa sökvägar. Mallen stöder <span class='synopsis'><code>%H</code></span> för målvärdnamnet som tillhandahålls av klienten men konverterat till enbart gemener, <span class='synopsis'><code>%CH</code></span> för det kanoniska värdnamnet, <span class='synopsis'><code>%IP</code></span> för serverns IP-adress, <span class='synopsis'><code>%P</code></span> för portnumret och <span class='synopsis'><code>%D</code></span> för den absoluta sökvägen till det namngivna arkivet. Efter interpolering valideras sökvägen mot kataloglistan.</p>
+<p>För att stödja virtuell värdskap (hosting) kan en interpolerad sökvägsmall användas för att dynamiskt konstruera alternativa sökvägar. Mallen stöder <span class='synopsis'><code>%H</code></span> för målvärdnamnet som tillhandahålls av klienten men konverterat till enbart gemener, <span class='synopsis'><code>%CH</code></span> för det kanoniska värdnamnet, <span class='synopsis'><code>%IP</code></span> för serverns IP-adress, <span class='synopsis'><code>%P</code></span> för portnumret och <span class='synopsis'><code>%D</code></span> för den absoluta sökvägen till det namngivna kodförrådet. Efter interpolering valideras sökvägen mot kataloglistan.</p>
 </dd>
 <dt class="hdlist1" id="git-daemon-spanclasssynopsiscode--export-allcodespan"> <a class="anchor" href="#git-daemon---export-all"></a> <a class="anchor" href="#git-daemon-spanclasssynopsiscode--export-allcodespan"></a><span class='synopsis'><code>--export-all</code></span> </dt>
 <dd>
-<p>Tillåt dra in ("pulla") från alla kataloger som ser ut som Git-kodförråd (har underkatalogerna <em>objects</em> och <em>refs</em>), även om de inte har filen <span class='synopsis'><code>git-daemon-export-ok</code></span>.</p>
+<p>Tillåt dra in ("hämta") från alla kataloger som ser ut som Git-kodförråd (har underkatalogerna <em>objects</em> och <em>refs</em>), även om de inte har filen <span class='synopsis'><code>git-daemon-export-ok</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-daemon-spanclasssynopsiscode--inetdcodespan"> <a class="anchor" href="#git-daemon---inetd"></a> <a class="anchor" href="#git-daemon-spanclasssynopsiscode--inetdcodespan"></a><span class='synopsis'><code>--inetd</code></span> </dt>
 <dd>
@@ -159,7 +159,7 @@ headings:
 <dt class="hdlist1" id="git-daemon-spanclasssynopsiscode--user-pathcodespan"> <a class="anchor" href="#git-daemon---user-path"></a> <a class="anchor" href="#git-daemon-spanclasssynopsiscode--user-pathcodespan"></a><span class='synopsis'><code>--user-path</code></span> </dt>
 <dt class="hdlist1" id="git-daemon-spanclasssynopsiscode--user-pathcodeemltskvggtemspan"> <a class="anchor" href="#git-daemon---user-pathskvg"></a> <a class="anchor" href="#git-daemon-spanclasssynopsiscode--user-pathcodeemltskvggtemspan"></a><span class='synopsis'><code>--user-path=</code><em>&lt;sökväg&gt;</em></span> </dt>
 <dd>
-<p>Tillåt att ~användarnotation används i förfrågningar. När en begäran till git://host/~alice/foo anges utan parameter, tas den som en begäran om åtkomst till <em>foo</em>-arkivet i användarens <span class='synopsis'><code>alice</code></span> hemkatalog. Om <span class='synopsis'><code>--user-path=</code><em>&lt;sökväg&gt;</em></span> anges tas samma begäran som en begäran om åtkomst till <span class='synopsis'><em>&lt;sökväg&gt;</em><code>/foo</code></span>-arkivet i användarens <span class='synopsis'><code>alice</code></span> hemkatalog.</p>
+<p>Tillåt att ~användarnotation används i förfrågningar. När en begäran till git://host/~alice/foo anges utan parameter, tas den som en begäran om åtkomst till <em>foo</em>-kodförrådet i användarens <span class='synopsis'><code>alice</code></span> hemkatalog. Om <span class='synopsis'><code>--user-path=</code><em>&lt;sökväg&gt;</em></span> anges tas samma begäran som en begäran om åtkomst till <span class='synopsis'><em>&lt;sökväg&gt;</em><code>/foo</code></span>-kodförrådet i användarens <span class='synopsis'><code>alice</code></span> hemkatalog.</p>
 </dd>
 <dt class="hdlist1" id="git-daemon-spanclasssynopsiscode--verbosecodespan"> <a class="anchor" href="#git-daemon---verbose"></a> <a class="anchor" href="#git-daemon-spanclasssynopsiscode--verbosecodespan"></a><span class='synopsis'><code>--verbose</code></span> </dt>
 <dd>
@@ -228,15 +228,15 @@ headings:
 <dl>
 <dt class="hdlist1" id="git-daemon-upload-pack"> <a class="anchor" href="#git-daemon-upload-pack"></a>upload-pack </dt>
 <dd>
-<p>Detta betjänar klienterna <span class='synopsis'><code>git</code> <code>fetch-pack</code></span> och <span class='synopsis'><code>git</code> <code>ls-remote</code></span>. Det är aktiverat som standard, men ett arkiv kan inaktivera det genom att ställa in konfigurationsalternativet <span class='synopsis'><code>daemon.uploadpack</code></span> till <span class='synopsis'><code>false</code></span>.</p>
+<p>Kommandot betjänar klienterna <span class='synopsis'><code>git</code> <code>fetch-pack</code></span> och <span class='synopsis'><code>git</code> <code>ls-remote</code></span>. Det är aktiverat som standard, men ett kodförråd kan inaktivera det genom att ställa in konfigurationsalternativet <span class='synopsis'><code>daemon.uploadpack</code></span> till <span class='synopsis'><code>false</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-daemon-upload-archive"> <a class="anchor" href="#git-daemon-upload-archive"></a>upload-archive </dt>
 <dd>
-<p>Detta hanterar <span class='synopsis'><code>git</code> <code>archive</code> <code>--remote</code></span>. Det är inaktiverat som standard, men ett arkiv kan aktivera det genom att ställa in konfigurationsalternativet <span class='synopsis'><code>daemon.uploadarch</code></span> till <span class='synopsis'><code>true</code></span>.</p>
+<p>Kommandot hanterar <span class='synopsis'><code>git</code> <code>archive</code> <code>--remote</code></span>. Det är inaktiverat som standard, men ett kodförråd kan aktivera det genom att ställa in konfigurationsalternativet <span class='synopsis'><code>daemon.uploadarch</code></span> till <span class='synopsis'><code>true</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-daemon-receive-pack"> <a class="anchor" href="#git-daemon-receive-pack"></a>receive-pack </dt>
 <dd>
-<p>Detta betjänar <span class='synopsis'><code>git</code> <code>send-pack</code></span>-klienter och tillåter anonym sänding (push). Det är inaktiverat som standard eftersom det inte finns någon <em>no</em>-autentisering i protokollet (med andra ord, vem som helst kan pusha vad som helst in i arkivet, inklusive borttagning av referenser). Detta är enbart avsett för en stängd LAN-miljö där alla är vänliga. Den här tjänsten kan aktiveras genom att ställa in konfigurationsalternativet <span class='synopsis'><code>daemon.receivepack</code></span> till <span class='synopsis'><code>true</code></span>.</p>
+<p>Detta betjänar <span class='synopsis'><code>git</code> <code>send-pack</code></span>-klienter och tillåter anonym push. Funktionen är inaktiverad som standard eftersom protokollet saknar autentisering (med andra ord kan vem som helst skicka vad som helst till kodförrådet, inklusive att ta bort referenser). Detta är endast avsett för en sluten LAN-miljö där alla är betrodda. Tjänsten kan aktiveras genom att sätta konfigurationsalternativet <span class='synopsis'><code>daemon.receivepack</code></span> till <span class='synopsis'><code>true</code></span>.</p>
 </dd>
 </dl>
 </div>
@@ -318,7 +318,7 @@ git		9418/tcp		# Git Version Control System</pre>
 <h2 id="_miljö"><a class="anchor" href="#_miljö"></a>MILJÖ</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><span class='synopsis'><code>git</code> <code>daemon</code></span> kommer att sätta <span class='synopsis'><code>REMOTE_ADDR</code></span> till IP-adressen för klienten som anslöt till den, om IP-adressen är tillgänglig. <span class='synopsis'><code>REMOTE_ADDR</code></span> kommer att vara tillgänglig i miljön med krokar som anropas när tjänster utförs.</p>
+<p><span class='synopsis'><code>git</code> <code>daemon</code></span> sätter <span class='synopsis'><code>REMOTE_ADDR</code></span> till IP-adressen för klienten som anslöt, om IP-adressen är tillgänglig. <span class='synopsis'><code>REMOTE_ADDR</code></span> blir tillgänglig i miljön för krokar som anropas när tjänster körs.</p>
 </div>
 </div>
 </div>

@@ -130,6 +130,9 @@ headings:
 <li>
 <p><span class='synopsis'><code>strip-if-invalid</code></span> will check signatures and, if they are invalid, will strip them and display a warning. The validation is performed in the same way as <a href='{{< relurl "docs/git-verify-commit/fr" >}}'>git-verify-commit[1]</a> does it.</p>
 </li>
+<li>
+<p><span class='synopsis'><code>sign-if-invalid</code>[<code>=</code><em>&lt;keyid&gt;</em>]</span>, similar to <span class='synopsis'><code>strip-if-invalid</code></span>, verifies commit signatures and replaces invalid signatures with newly created ones. Valid signatures are left unchanged. If <span class='synopsis'><em>&lt;keyid&gt;</em></span> is provided, that key is used for signing; otherwise the configured default signing key is used.</p>
+</li>
 </ul>
 </div>
 </dd>
@@ -1097,7 +1100,7 @@ from :938</pre>
 <p>Voir <span class='synopsis'><code>filemodify</code></span> ci-dessus pour une description détaillée de <span class='synopsis'><em>&lt;chemin&gt;</em></span>.</p>
 </div>
 <div class="paragraph">
-<p>La sortie utilise le même format que <span class='synopsis'><code>git</code> <code>ls-tree</code> <em><span class="hover-term" data-term="arbre">&lt;arbre&gt;</span></em> <code>--</code> <em>&lt;chemin&gt;</em></span> :</p>
+<p>La sortie utilise le même format que <span class='synopsis'><code>git</code> <code>ls-tree</code> <em>&lt;arbre&gt;</em> <code>--</code> <em>&lt;chemin&gt;</em></span> :</p>
 </div>
 <div class="exampleblock">
 <div class="content">

@@ -69,11 +69,11 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-index-pack---stdin"> <a class="anchor" href="#git-index-pack---stdin"></a>--stdin </dt>
 <dd>
-<p>När denna flagga anges, läses paketet från stdin istället och en kopia skrivs sedan till &lt;pack-fil&gt;. Om &lt;pack-fil&gt; inte anges skrivs paketet till objects/pack/-katalogen i det aktuella Git-arkivet med ett standardnamn som bestäms utifrån paketinnehållet. Om &lt;pack-fil&gt; inte anges, överväg att använda --keep för att förhindra ett kapplöpningstillstånd (race condition) mellan denna process och <em>git repack</em>.</p>
+<p>När denna flagga anges läses paketet från stdin i stället och en kopia skrivs sedan till &lt;pack-fil&gt;. Om &lt;pack-fil&gt; inte anges skrivs paketet till katalogen objects/pack/ i det aktuella Git-kodförrådet med ett standardnamn som bestäms utifrån paketinnehållet. Om &lt;pack-fil&gt; inte anges, överväg att använda --keep för att förhindra ett kapplöpningstillstånd (race condition) mellan denna process och <em>git repack</em>.</p>
 </dd>
 <dt class="hdlist1" id="git-index-pack---fix-thin"> <a class="anchor" href="#git-index-pack---fix-thin"></a>--fix-thin </dt>
 <dd>
-<p>Åtgärda ett "tunt" paket som produceras av <span class='synopsis'><code>git</code> <code>pack-objects</code> <code>--thin</code></span> (se <a href='{{< relurl "docs/git-pack-objects/sv" >}}'>git-pack-objects[1]</a> för detaljer) genom att lägga till de exkluderade objekten som de deltifierade objekten är baserade på i paketet. Det här alternativet är bara meningsfullt i samband med --stdin.</p>
+<p>Åtgärda ett "tunt" paket som produceras av <span class='synopsis'><code>git</code> <code>pack-objects</code> <code>--thin</code></span> (se <a href='{{< relurl "docs/git-pack-objects/sv" >}}'>git-pack-objects[1]</a> för detaljer) genom att lägga till de exkluderade objekten som de deltifierade objekten är baserade på i paketet. Alternativet är bara meningsfullt tillsammans med <span class='synopsis'><code>--stdin</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-index-pack---keep"> <a class="anchor" href="#git-index-pack---keep"></a>--keep </dt>
 <dd>
@@ -81,7 +81,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-index-pack---keepltmeddgt"> <a class="anchor" href="#git-index-pack---keepmedd"></a> <a class="anchor" href="#git-index-pack---keepltmeddgt"></a>--keep=&lt;medd&gt; </dt>
 <dd>
-<p>Precis som med --keep, skapa en .keep-fil innan du flyttar indexet till dess slutdestination. Men istället för att skapa en tom fil, placera <em>&lt;medd&gt;</em> följt av ett LF i .keep-filen. Meddelandet <em>&lt;medd&gt;</em> kan senare sökas efter i alla .keep-filer för att hitta de som inte längre är användbara.</p>
+<p>Precis som med --keep, skapa en .keep-fil innan du flyttar indexet till dess slutdestination. Men i stället för att skapa en tom fil, placera <em>&lt;medd&gt;</em> följt av ett LF i .keep-filen. Meddelandet <em>&lt;medd&gt;</em> kan senare sökas efter i alla .keep-filer för att hitta de som inte längre är användbara.</p>
 </dd>
 <dt class="hdlist1" id="git-index-pack---index-versionltversiongtltoffsetgt"> <a class="anchor" href="#git-index-pack---index-versionversionoffset"></a> <a class="anchor" href="#git-index-pack---index-versionltversiongtltoffsetgt"></a>--index-version=&lt;version&gt;[,&lt;offset&gt;] </dt>
 <dd>
@@ -121,7 +121,7 @@ headings:
 <dd>
 <p>Ange det givna objektformatet (hashalgoritmen) för paketet. Giltiga värden är <em>sha1</em> och (om aktiverat) <em>sha256</em>. Standardvärdet är algoritmen för det aktuella kodförrådet (inställt av <span class='synopsis'><code>extensions.objectFormat</code></span>), eller <em>sha1</em> om inget värde är angivet eller ligger utanför ett kodförråd.</p>
 <div class="paragraph">
-<p>Det här alternativet kan inte användas med --stdin.</p>
+<p>Alternativet kan inte användas med --stdin.</p>
 </div>
 <div class="paragraph">
 <p>Obs: För närvarande finns det ingen interoperabilitet mellan SHA-256-kodförråd och SHA-1-kodförråd.</p>
@@ -136,7 +136,7 @@ headings:
 <dl>
 <dt class="hdlist1" id="git-index-pack---promisorltmeddelandegt"> <a class="anchor" href="#git-index-pack---promisormeddelande"></a> <a class="anchor" href="#git-index-pack---promisorltmeddelandegt"></a>--promisor[=&lt;meddelande&gt;] </dt>
 <dd>
-<p>Innan beslutet att spara pack-index, skapa en .promisor-fil för detta paket. Detta är särskilt användbart när du skriver ett löftesgivare-paket med --fix-thin eftersom namnet på paketet inte är slutgiltigt förrän paketet har skrivits helt. Om ett <span class='synopsis'><em>&lt;meddelande&gt;</em></span> anges kommer det innehållet att skrivas till .promisor-filen för framtida referens. Se <a href="{{< relurl "docs/partial-clone/sv" >}}">partial clone</a> för mer information.</p>
+<p>Innan pack-index checkas in, skapa en .promisor-fil för detta paket. Särskilt användbart när ett promisorpaket skrivs med --fix-thin eftersom paketets namn inte är slutligt förrän paketet har skrivits färdigt. Om ett <span class='synopsis'><em>&lt;message&gt;</em></span> anges skrivs innehållet till .promisor-filen för framtida referens. Se <a href="{{< relurl "docs/partial-clone/sv" >}}">partial clone</a> för mer information.</p>
 <div class="paragraph">
 <p>Also, if there are objects in the given pack that references non-promisor objects (in the repo), repacks those non-promisor objects into a promisor pack. This avoids a situation in which a repo has non-promisor objects that are accessible through promisor objects.</p>
 </div>

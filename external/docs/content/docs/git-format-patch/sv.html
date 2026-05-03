@@ -24,8 +24,8 @@ headings:
   id: _diskussion
 - text: MUA-SPECIFIKA TIPS
   id: _mua_specifika_tips
-- text: BASTRÄDS INFORMATION
-  id: _basträds_information
+- text: BASTRÄDSINFORMATION
+  id: _basträdsinformation
 - text: EXEMPEL
   id: _exempel
 - text: FÖRBEHÅLL
@@ -39,7 +39,7 @@ headings:
 <h2 id="_namn"><a class="anchor" href="#_namn"></a>NAMN</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>git-format-patch - Förbered patchar för e-postinlämning</p>
+<p>git-format-patch - Förbered patchar för att skickas via e-post</p>
 </div>
 </div>
 </div>
@@ -77,7 +77,7 @@ headings:
 <h2 id="_beskrivning"><a class="anchor" href="#_beskrivning"></a>BESKRIVNING</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Förbered varje icke-sammanslagnings-incheckning med dess "patch" i ett "meddelande" per incheckning, formaterat för att likna en UNIX-brevlåda. Utdata från detta kommando är praktiskt för e-postinlämning eller för användning med <em>git am</em>.</p>
+<p>Förbered varje incheckning som inte är en sammanslagning med sin "patch" i ett "meddelande" per incheckning, formaterat så att det liknar en UNIX-brevlåda. Utdata från kommandot är praktiskt för e-postutskick eller för användning med <em>git am</em>.</p>
 </div>
 <div class="paragraph">
 <p>Ett "meddelande" som genereras av kommandot består av tre delar:</p>
@@ -85,10 +85,10 @@ headings:
 <div class="ulist">
 <ul>
 <li>
-<p>En kort metadata-huvud som börjar med <span class='synopsis'><code>From</code> <em><span class="hover-term" data-term="incheckning">&lt;incheckning&gt;</span></em></span> med en fast <span class='synopsis'><code>Mon</code> <code>Sep</code> <code>17</code> <code>00:00:00</code> <code>2001</code></span> datumstämpel för att hjälpa program som "file(1)" att känna igen att filen är ett resultat av detta kommando, fält som registrerar författaridentiteten, författardatumet och titeln på ändringen (hämtad från första stycket i inchecknings-loggmeddelandet).</p>
+<p>En kort metadatarubrik som börjar med <span class='synopsis'><code>From</code> <em>&lt;commit&gt;</em></span> med en fast <span class='synopsis'><code>Mon</code> <code>Sep</code> <code>17</code> <code>00:00:00</code> <code>2001</code></span> datumstämpel för att hjälpa program som "file(1)" att känna igen att filen är ett resultat av detta kommando, fält som registrerar författaridentiteten, författardatumet och titeln på ändringen (hämtad från första stycket i incheckningsloggmeddelandet).</p>
 </li>
 <li>
-<p>Det andra och efterföljande styckena i inchecknings-loggmeddelandet.</p>
+<p>Det andra och efterföljande styckena i incheckningsloggmeddelandet.</p>
 </li>
 <li>
 <p>"Patchen", som är utdatan "diff -p --stat" (se <a href='{{< relurl "docs/git-diff/sv" >}}'>git-diff[1]</a>) mellan incheckningen och dess förälder.</p>
@@ -96,10 +96,10 @@ headings:
 </ul>
 </div>
 <div class="paragraph">
-<p>Loggmeddelandet och patchen är separerade med en linje med en tre-streckig linje.</p>
+<p>Loggmeddelandet och patchen skiljs åt av en rad med tre bindestreck (---).</p>
 </div>
 <div class="paragraph">
-<p>Det finns två sätt att ange vilka incheckningar som ska opereras på.</p>
+<p>Det finns två sätt att ange vilka incheckningar som ska behandlas.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -112,19 +112,19 @@ headings:
 </ol>
 </div>
 <div class="paragraph">
-<p>Den första regeln har företräde när det gäller en enskild <span class="hover-term" data-term="incheckning">&lt;incheckning&gt;</span>. För att tillämpa den andra regeln, dvs. formatera allt från början av historiken fram till <span class="hover-term" data-term="incheckning">&lt;incheckning&gt;</span>, använd alternativet <span class='synopsis'><code>--root</code></span>: <span class='synopsis'><code>git</code> <code>format-patch</code> <code>--root</code> <code>incheckning</code></span>. Om du bara vill formatera själva <span class="hover-term" data-term="incheckning">&lt;incheckning&gt;</span>en kan du göra detta med <span class='synopsis'><code>git</code> <code>format-patch</code> <code>-1</code> <em><span class="hover-term" data-term="incheckning">&lt;incheckning&gt;</span></em></span>.</p>
+<p>Den första regeln har företräde vid en enskild <span class="hover-term" data-term="incheckning">&lt;incheckning&gt;</span>. För att tillämpa den andra regeln, dvs. formatera allt från historikens början fram till <span class="hover-term" data-term="incheckning">&lt;incheckning&gt;</span>, använd <span class='synopsis'><code>--root</code></span>: <span class='synopsis'><code>git</code> <code>format-patch</code> <code>--root</code> <em><span class="hover-term" data-term="incheckning">&lt;incheckning&gt;</span></em></span>. Om du bara vill formatera själva <span class="hover-term" data-term="incheckning">&lt;incheckning&gt;</span> kan du göra det med <span class='synopsis'><code>git</code> <code>format-patch</code> <code>-1</code> <em><span class="hover-term" data-term="incheckning">&lt;incheckning&gt;</span></em></span>.</p>
 </div>
 <div class="paragraph">
-<p>Som standard, numreras varje utdatafil sekventiellt från 1, och använder den första raden i inchecknings-meddelandet (modifierat för sökvägssäkerhet) som filnamn. Med alternativet <span class='synopsis'><code>--numbered-files</code></span> kommer utdatafilernas namn endast att vara siffror, utan att den första raden i inchecknings-meddelandet läggs till. Namnen på utdatafilerna skrivs ut som standardutdata, såvida inte alternativet <span class='synopsis'><code>--stdout</code></span> anges.</p>
+<p>Som standard numreras varje utdatafil sekventiellt från 1 och använder den första raden i incheckningsmeddelandet (anpassad för sökvägssäkerhet) som filnamn. Med <span class='synopsis'><code>--numbered-files</code></span> blir utdatafilernas namn bara siffror, utan att första raden i incheckningsmeddelandet läggs till. Namnen på utdatafilerna skrivs ut till standardut, om inte <span class='synopsis'><code>--stdout</code></span> anges.</p>
 </div>
 <div class="paragraph">
 <p>Om <span class='synopsis'><code>-o</code></span> anges, skapas utdatafiler i &lt;kat&gt;. Annars skapas de i den aktuella arbetskatalogen. Standardsökvägen kan ställas in med konfigurationsalternativet <span class='synopsis'><code>format.outputDirectory</code></span>. Alternativet <span class='synopsis'><code>-o</code></span> har företräde framför <span class='synopsis'><code>format.outputDirectory</code></span>. För att lagra patchar i den aktuella arbetskatalogen även när <span class='synopsis'><code>format.outputDirectory</code></span> pekar någon annanstans, använd <span class='synopsis'><code>-o</code> <code>.</code></span>. Alla katalogkomponenter kommer att skapas.</p>
 </div>
 <div class="paragraph">
-<p>Som standard, är ämnet för en enskild patch "[PATCH]" följt av sammanfogningen av rader från inchecknings-meddelandet upp till den första tomma raden (se DISKUSSIONS avsnittet i <a href='{{< relurl "docs/git-commit/sv" >}}'>git-commit[1]</a>).</p>
+<p>Som standard är ämnet för en enskild patch "[PATCH]" följt av en sammanslagning av rader från incheckningsmeddelandet fram till första tomma raden (se avsnittet DISCUSSION i <a href='{{< relurl "docs/git-commit/sv" >}}'>git-commit[1]</a>).</p>
 </div>
 <div class="paragraph">
-<p>När flera patchar matas ut blir ämnesprefixet istället "[PATCH n/m]". För att tvinga fram tillägg av 1/1 för en enskild patch, använd <span class='synopsis'><code>-n</code></span>. För att utelämna patchnummer från ämnet, använd <span class='synopsis'><code>-N</code></span>.</p>
+<p>När flera patchar skrivs ut blir ämnesprefixet i stället "[PATCH n/m]". För att tvinga fram 1/1 för en enskild patch, använd <span class='synopsis'><code>-n</code></span>. För att utelämna patchnummer i ämnet, använd <span class='synopsis'><code>-N</code></span>.</p>
 </div>
 <div class="paragraph">
 <p>Om <span class='synopsis'><code>--thread</code></span> anges, kommer <span class='synopsis'><code>git-format-patch</code></span> att generera huvudena <span class='synopsis'><code>In-Reply-To</code></span> och <span class='synopsis'><code>References</code></span> för att få det andra och efterföljande patch-meddelandena att visas som svar på det första meddelandet; detta genererar också en <span class='synopsis'><code>Message-ID</code></span>-rubrik att referera till.</p>
@@ -139,16 +139,16 @@ headings:
 <dt class="hdlist1" id="git-format-patch--p"> <a class="anchor" href="#git-format-patch--p"></a>-p </dt>
 <dt class="hdlist1" id="git-format-patch---no-stat"> <a class="anchor" href="#git-format-patch---no-stat"></a>--no-stat </dt>
 <dd>
-<p>Generera vanliga patchar utan några diffstatistik.</p>
+<p>Generera vanliga patchar utan diffstat.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscode-Ucodeemltngtemspan"> <a class="anchor" href="#git-format-patch--Un"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscode-Ucodeemltngtemspan"></a><span class='synopsis'><code>-U</code><em>&lt;n&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscode--unifiedcodeemltngtemspan"> <a class="anchor" href="#git-format-patch---unifiedn"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscode--unifiedcodeemltngtemspan"></a><span class='synopsis'><code>--unified=</code><em>&lt;n&gt;</em></span> </dt>
 <dd>
-<p>Generera skillnader med <em>&lt;n&gt;</em> kontextrader istället för de vanliga tre.</p>
+<p>Generate diffs with <em>&lt;n&gt;</em> lines of context. The number of context lines defaults to <span class='synopsis'><code>diff.context</code></span> or 3 if the configuration variable is unset. (<span class='synopsis'><code>-U</code></span> without <span class='synopsis'><em>&lt;n&gt;</em></span> is silently accepted as a synonym for <span class='synopsis'><code>-p</code></span> due to a historical accident).</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscode--outputcodeemltfilgtemspan"> <a class="anchor" href="#git-format-patch---outputfil"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscode--outputcodeemltfilgtemspan"></a><span class='synopsis'><code>--output=</code><em>&lt;fil&gt;</em></span> </dt>
 <dd>
-<p>Utdata till en specifik fil istället för stdout.</p>
+<p>Skriv utdata till en specifik fil i stället för stdout.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscode--output-indicator-newcodeemltteckengtemspan"> <a class="anchor" href="#git-format-patch---output-indicator-newtecken"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscode--output-indicator-newcodeemltteckengtemspan"></a><span class='synopsis'><code>--output-indicator-new=</code><em>&lt;tecken&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscode--output-indicator-oldcodeemltteckengtemspan"> <a class="anchor" href="#git-format-patch---output-indicator-oldtecken"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscode--output-indicator-oldcodeemltteckengtemspan"></a><span class='synopsis'><code>--output-indicator-old=</code><em>&lt;tecken&gt;</em></span> </dt>
@@ -235,7 +235,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscode--numstatcodespan"> <a class="anchor" href="#git-format-patch---numstat"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscode--numstatcodespan"></a><span class='synopsis'><code>--numstat</code></span> </dt>
 <dd>
-<p>Liknar <span class='synopsis'><code>--stat</code></span>, men visar antalet tillagda och borttagna rader i decimalnotation och sökväg utan förkortning, för att göra det mer maskinvänligt. För binära filer matas två <span class='synopsis'><code>-</code></span> ut istället för att säga <span class='synopsis'><code>0</code> <code>0</code></span>.</p>
+<p>Liknar <span class='synopsis'><code>--stat</code></span>, men visar antalet tillagda och borttagna rader i decimalnotation och sökväg utan förkortning, för att göra det mer maskinvänligt. För binära filer matas två <span class='synopsis'><code>-</code></span> ut i stället för <span class='synopsis'><code>0</code> <code>0</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscode--shortstatcodespan"> <a class="anchor" href="#git-format-patch---shortstat"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscode--shortstatcodespan"></a><span class='synopsis'><code>--shortstat</code></span> </dt>
 <dd>
@@ -255,7 +255,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscodelinescodespan"> <a class="anchor" href="#git-format-patch-lines"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscodelinescodespan"></a><span class='synopsis'><code>lines</code></span> </dt>
 <dd>
-<p>Beräkna dirstat-talen genom att göra den vanliga radbaserade diff-analysen och summera antalet borttagna/tillagda rader. (För binära filer, räkna istället 64-byte-block, eftersom binära filer inte har något naturligt koncept för rader). Detta är ett dyrare <span class='synopsis'><code>--dirstat</code></span>-beteende än <span class='synopsis'><code>changes</code></span>-beteendet, men det räknar omordnade rader i en fil lika mycket som andra ändringar. Den resulterande utdata överensstämmer med vad du får från de andra <span class='synopsis'><code>--*stat</code></span>-alternativen.</p>
+<p>Beräkna dirstat-talen genom att göra den vanliga radbaserade diff-analysen och summera antalet borttagna/tillagda rader. (För binära filer, räkna i stället 64-byte-block, eftersom binära filer inte har något naturligt koncept för rader). Detta är ett dyrare <span class='synopsis'><code>--dirstat</code></span>-beteende än <span class='synopsis'><code>changes</code></span>-beteendet, men det räknar omordnade rader i en fil lika mycket som andra ändringar. Den resulterande utdata överensstämmer med vad du får från de andra <span class='synopsis'><code>--*stat</code></span>-alternativen.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscodefilescodespan"> <a class="anchor" href="#git-format-patch-files"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscodefilescodespan"></a><span class='synopsis'><code>files</code></span> </dt>
 <dd>
@@ -300,7 +300,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscode--full-indexcodespan"> <a class="anchor" href="#git-format-patch---full-index"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscode--full-indexcodespan"></a><span class='synopsis'><code>--full-index</code></span> </dt>
 <dd>
-<p>Istället för de första tecknen, visa de fullständiga namnen på blob-objekten före och efter avbildningen på "index"-raden när du genererar utdata för patch-format.</p>
+<p>I stället för de första tecknen, visa de fullständiga namnen på blob-objekten före och efter avbildningen på "index"-raden när du genererar utdata för patch-format.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscode--binarycodespan"> <a class="anchor" href="#git-format-patch---binary"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscode--binarycodespan"></a><span class='synopsis'><code>--binary</code></span> </dt>
 <dd>
@@ -308,14 +308,14 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscode--abbrevcodecodecodeemltngtemspan"> <a class="anchor" href="#git-format-patch---abbrevn"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscode--abbrevcodecodecodeemltngtemspan"></a><span class='synopsis'><code>--abbrev</code>[<code>=</code><em>&lt;n&gt;</em>]</span> </dt>
 <dd>
-<p>Istället för att visa det fullständiga 40-byte hexadecimala objektnamnet i utdata i diff-raw-format och diff-tree-huvud-rader, visa det kortaste prefixet som är minst <em>&lt;n&gt;</em> hexdigits långt och som unikt refererar till objektet. I diff-patch-utdataformat har <span class='synopsis'><code>--full-index</code></span> högre prioritet, d.v.s. om <span class='synopsis'><code>--full-index</code></span> anges kommer fullständiga blobnamn att visas oavsett <span class='synopsis'><code>--abbrev</code></span>. Antal siffror som inte är standard kan anges med <span class='synopsis'><code>--abbrev=</code><em>&lt;n&gt;</em></span>.</p>
+<p>I stället för att visa det fullständiga 40-byte hexadecimala objektnamnet i utdata i diff-raw-format och diff-tree-rubrikrader, visa det kortaste prefixet som är minst <em>&lt;n&gt;</em> hexdigits långt och som unikt refererar till objektet. I diff-patch-utdataformat har <span class='synopsis'><code>--full-index</code></span> högre prioritet, d.v.s. om <span class='synopsis'><code>--full-index</code></span> anges kommer fullständiga blobnamn att visas oavsett <span class='synopsis'><code>--abbrev</code></span>. Antal siffror som inte är standard kan anges med <span class='synopsis'><code>--abbrev=</code><em>&lt;n&gt;</em></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscode-Bcodeemltngtemcodecodeemltmgtemspan"> <a class="anchor" href="#git-format-patch--Bnm"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscode-Bcodeemltngtemcodecodeemltmgtemspan"></a><span class='synopsis'><code>-B</code>[<em>&lt;n&gt;</em>][<code>/</code><em>&lt;m&gt;</em>]</span> </dt>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscode--break-rewritescodecodecodeemltngtemcodecodeemltmgtemspan"> <a class="anchor" href="#git-format-patch---break-rewritesnm"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscode--break-rewritescodecodecodeemltngtemcodecodeemltmgtemspan"></a><span class='synopsis'><code>--break-rewrites</code>[<code>=</code>[<em>&lt;n&gt;</em>][<code>/</code><em>&lt;m&gt;</em>]]</span> </dt>
 <dd>
 <p>Dela upp fullständiga omskrivningsändringar i par av radera och skapa. Detta tjänar två syften:</p>
 <div class="paragraph">
-<p>Det påverkar hur en förändring som innebär en total omskrivning av en fil, inte som en serie borttagningar och infogningar blandade med ett fåtal rader som råkar matcha textuellt som kontexten, utan som en enda borttagning av allt gammalt följt av en enda infogning av allt nytt, och siffran <em>&lt;m&gt;</em> styr denna aspekt av <span class='synopsis'><code>-B</code></span>-alternativet (standard är 60%). <span class='synopsis'><code>-B/70%</code></span> anger att mindre än 30% av originalet ska finnas kvar i resultatet för att Git ska betrakta det som en total omskrivning (dvs. annars kommer den resulterande patchen att vara en serie borttagningar och infogningar blandade med kontextrader).</p>
+<p>Det påverkar hur en förändring som innebär en total omskrivning av en fil, inte som en serie borttagningar och infogningar blandade med ett fåtal rader som råkar matcha textuellt som kontexten, utan som en enda borttagning av allt gammalt följt av en enda infogning av allt nytt, och siffran <em>&lt;m&gt;</em> styr denna aspekt av <span class='synopsis'><code>-B</code></span>-alternativet (standard är 60%). <span class='synopsis'><code>-B/70%</code></span> anger att mindre än 30% av originalet ska finnas kvar i resultatet för att Git ska betrakta det som en total omskrivning (d.v.s. annars kommer den resulterande patchen att vara en serie borttagningar och infogningar blandade med kontextrader).</p>
 </div>
 <div class="paragraph">
 <p>När den används med <span class='synopsis'><code>-M</code></span> betraktas även en helt omskriven fil som källa till ett namnbyte (vanligtvis betraktar <span class='synopsis'><code>-M</code></span> bara en fil som försvunnit som källa till ett namnbyte), och siffran <em>&lt;n&gt;</em> styr denna aspekt av alternativet <span class='synopsis'><code>-B</code></span> (standard är 50%). <span class='synopsis'><code>-B20%</code></span> anger att en ändring med tillägg och borttagning jämfört med 20% eller mer av filens storlek är berättigad att plockas upp som en möjlig källa till ett namnbyte till en annan fil.</p>
@@ -354,7 +354,7 @@ till exakta namnbyten, använd <span class='synopsis'><code>-M100%</code></span>
 </dd>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscode-lcodeemltnumgtemspan"> <a class="anchor" href="#git-format-patch--lnum"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscode-lcodeemltnumgtemspan"></a><span class='synopsis'><code>-l</code><em>&lt;num&gt;</em></span> </dt>
 <dd>
-<p>Alternativen <span class='synopsis'><code>-M</code></span> och <span class='synopsis'><code>-C</code></span> involverar några preliminära steg som kan upptäcka delmängder av namnbyten/kopior billigt, följt av en uttömmande reservdel som jämför alla återstående oparade destinationer med alla relevanta källor. (För namnbyten är endast återstående oparade källor relevanta; för kopior är alla originalkällor relevanta.) För N källor och destinationer är denna uttömmande kontroll O(N^2). Detta alternativ förhindrar att den uttömmande delen av namnbytes-/kopieringsdetektering körs om antalet inblandade käll-/destinationsfiler överstiger det angivna antalet. Standardvärdet är <span class='synopsis'><code>diff.renameLimit</code></span>. Observera att värdet 0 behandlas som obegränsat.</p>
+<p>Alternativen <span class='synopsis'><code>-M</code></span> och <span class='synopsis'><code>-C</code></span> involverar några preliminära steg som kan upptäcka delmängder av namnbyten/kopior billigt, följt av en uttömmande del som jämför alla återstående oparade destinationer med alla relevanta källor. (För namnbyten är endast återstående oparade källor relevanta; för kopior är alla originalkällor relevanta.) För N källor och destinationer är denna uttömmande kontroll O(N^2). Detta alternativ förhindrar att den uttömmande delen av namnbytes-/kopieringsdetektering körs om antalet inblandade käll-/destinationsfiler överstiger det angivna antalet. Standardvärdet är <span class='synopsis'><code>diff.renameLimit</code></span>. Observera att värdet 0 behandlas som obegränsat.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscode-Ocodeemltordingsfilgtemspan"> <a class="anchor" href="#git-format-patch--Oordingsfil"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscode-Ocodeemltordingsfilgtemspan"></a><span class='synopsis'><code>-O</code><em>&lt;ordingsfil&gt;</em></span> </dt>
 <dd>
@@ -389,7 +389,7 @@ till exakta namnbyten, använd <span class='synopsis'><code>-M100%</code></span>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscode--skip-tocodeemltfilgtemspan"> <a class="anchor" href="#git-format-patch---skip-tofil"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscode--skip-tocodeemltfilgtemspan"></a><span class='synopsis'><code>--skip-to=</code><em>&lt;fil&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscode--rotate-tocodeemltfilgtemspan"> <a class="anchor" href="#git-format-patch---rotate-tofil"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscode--rotate-tocodeemltfilgtemspan"></a><span class='synopsis'><code>--rotate-to=</code><em>&lt;fil&gt;</em></span> </dt>
 <dd>
-<p>Släng filerna före den namngivna <em>&lt;fil&gt;</em> från utdata (dvs. <em>hoppa till</em>), eller flytta dem till slutet av utdata (dvs. <em>rotera till</em>). Dessa alternativ uppfanns främst för användning av <span class='synopsis'><code>git</code> <code>difftool</code></span>-kommandot, och kanske inte är särskilt användbara annars.</p>
+<p>Släng filerna före den namngivna <em>&lt;fil&gt;</em> från utdata (d.v.s. <em>hoppa till</em>), eller flytta dem till slutet av utdata (d.v.s. <em>rotera till</em>). Dessa alternativ uppfanns främst för användning av <span class='synopsis'><code>git</code> <code>difftool</code></span>-kommandot, och kanske inte är särskilt användbara annars.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscode--relativecodecodecodeemltskvggtemspan"> <a class="anchor" href="#git-format-patch---relativeskvg"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscode--relativecodecodecodeemltskvggtemspan"></a><span class='synopsis'><code>--relative</code>[<code>=</code><em>&lt;sökväg&gt;</em>]</span> </dt>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscode--no-relativecodespan"> <a class="anchor" href="#git-format-patch---no-relative"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscode--no-relativecodespan"></a><span class='synopsis'><code>--no-relative</code></span> </dt>
@@ -456,11 +456,11 @@ till exakta namnbyten, använd <span class='synopsis'><code>-M100%</code></span>
 </dd>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscode--src-prefixcodeemltprefixgtemspan"> <a class="anchor" href="#git-format-patch---src-prefixprefix"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscode--src-prefixcodeemltprefixgtemspan"></a><span class='synopsis'><code>--src-prefix=</code><em>&lt;prefix&gt;</em></span> </dt>
 <dd>
-<p>Visa givet käll_&lt;prefix&gt;_ istället för ”a/”.</p>
+<p>Visa det angivna käll_&lt;prefix&gt;_ i stället för "a/".</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscode--dst-prefixcodeemltprefixgtemspan"> <a class="anchor" href="#git-format-patch---dst-prefixprefix"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscode--dst-prefixcodeemltprefixgtemspan"></a><span class='synopsis'><code>--dst-prefix=</code><em>&lt;prefix&gt;</em></span> </dt>
 <dd>
-<p>Visa den angivna mål <em>&lt;prefix&gt;</em> istället för "b/".</p>
+<p>Visa det angivna mål_&lt;prefix&gt;_ i stället för "b/".</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch-spanclasssynopsiscode--no-prefixcodespan"> <a class="anchor" href="#git-format-patch---no-prefix"></a> <a class="anchor" href="#git-format-patch-spanclasssynopsiscode--no-prefixcodespan"></a><span class='synopsis'><code>--no-prefix</code></span> </dt>
 <dd>
@@ -505,10 +505,10 @@ till exakta namnbyten, använd <span class='synopsis'><code>-M100%</code></span>
 </div>
 </div>
 <div class="paragraph">
-<p>Om ingen sökvägsmönster anges mäts djupet som om alla poster på toppnivå vore specificerade. Observera att detta skiljer sig från att mäta från roten, eftersom <span class='synopsis'><code>--max-depth=0</code></span> fortfarande skulle returnera <span class='synopsis'><code>foo</code></span>. Detta låter dig fortfarande begränsa djupet samtidigt som du frågar efter en delmängd av posterna på toppnivå.</p>
+<p>Om ingen sökvägsmönster anges mäts djupet som om alla poster på toppnivå vore angivna. Observera att detta skiljer sig från att mäta från roten, eftersom <span class='synopsis'><code>--max-depth=0</code></span> fortfarande skulle returnera <span class='synopsis'><code>foo</code></span>. Detta gör det fortfarande möjligt att begränsa djupet samtidigt som en delmängd av posterna på toppnivå.</p>
 </div>
 <div class="paragraph">
-<p>Observera att det här alternativet endast stöds för skillnader mellan trädobjekt, inte mot indexet eller arbetskatalog.</p>
+<p>Observera att det här alternativet endast stöds för skillnader mellan trädobjekt, inte mot indexet eller arbetsträd.</p>
 </div>
 </dd>
 </dl>
@@ -520,48 +520,48 @@ till exakta namnbyten, använd <span class='synopsis'><code>-M100%</code></span>
 <dl>
 <dt class="hdlist1" id="git-format-patch--ltngt"> <a class="anchor" href="#git-format-patch--n"></a> <a class="anchor" href="#git-format-patch--ltngt"></a>-&lt;n&gt; </dt>
 <dd>
-<p>Förbered patchar från de översta &lt;n&gt; incheckningar.</p>
+<p>Förbered patchar från de senaste &lt;n&gt; incheckningarna.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch--oltkatgt"> <a class="anchor" href="#git-format-patch--okat"></a> <a class="anchor" href="#git-format-patch--oltkatgt"></a>-o &lt;kat&gt; </dt>
 <dt class="hdlist1" id="git-format-patch---output-directoryltkatgt"> <a class="anchor" href="#git-format-patch---output-directorykat"></a> <a class="anchor" href="#git-format-patch---output-directoryltkatgt"></a>--output-directory &lt;kat&gt; </dt>
 <dd>
-<p>Använd &lt;kat&gt; för att lagra de resulterande filerna, istället för den aktuella arbetskatalogen.</p>
+<p>Använd &lt;kat&gt; för att lagra de resulterande filerna, i stället för den aktuella arbetskatalogen.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch--n-1"> <a class="anchor" href="#git-format-patch--n-1"></a>-n </dt>
 <dt class="hdlist1" id="git-format-patch---numbered"> <a class="anchor" href="#git-format-patch---numbered"></a>--numbered </dt>
 <dd>
-<p>Namnge utdata i <em>[PATCH n/m]</em> formatet, även med en enda patch.</p>
+<p>Namnge utdata i formatet <em>[PATCH n/m]</em>, även med en enda patch.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch--N"> <a class="anchor" href="#git-format-patch--N"></a>-N </dt>
 <dt class="hdlist1" id="git-format-patch---no-numbered"> <a class="anchor" href="#git-format-patch---no-numbered"></a>--no-numbered </dt>
 <dd>
-<p>Namnge utdata i <em>[PATCH]</em> formatet.</p>
+<p>Namnge utdata i formatet <em>[PATCH]</em>.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---start-numberltngt"> <a class="anchor" href="#git-format-patch---start-numbern"></a> <a class="anchor" href="#git-format-patch---start-numberltngt"></a>--start-number &lt;n&gt; </dt>
 <dd>
-<p>Börja numrera patcherna vid &lt;n&gt; istället för 1.</p>
+<p>Börja numrera patcherna vid &lt;n&gt; i stället för 1.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---numbered-files"> <a class="anchor" href="#git-format-patch---numbered-files"></a>--numbered-files </dt>
 <dd>
-<p>Namnen på utdatafilerna kommer att vara en enkel numerisk sekvens utan den tillagda första raden i incheckning-filen.</p>
+<p>Utdatafilernas namn blir en enkel nummersekvens utan den normala första raden från incheckningsmeddelandet.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch--k"> <a class="anchor" href="#git-format-patch--k"></a>-k </dt>
 <dt class="hdlist1" id="git-format-patch---keep-subject"> <a class="anchor" href="#git-format-patch---keep-subject"></a>--keep-subject </dt>
 <dd>
-<p>Ta inte bort/lägg inte till <em>[PATCH]</em> från den första raden i incheckning-loggmeddelandet.</p>
+<p>Ta inte bort/lägg inte till <em>[PATCH]</em> i första raden av incheckningsloggmeddelandet.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch--s"> <a class="anchor" href="#git-format-patch--s"></a>-s </dt>
 <dt class="hdlist1" id="git-format-patch---signoff"> <a class="anchor" href="#git-format-patch---signoff"></a>--signoff </dt>
 <dd>
-<p>Lägg till en <span class='synopsis'><code>Signed-off-by</code></span>-slutrad till inchecknings-meddelandet, med din egen incheckare-identitet. Se signoff-alternativet i <a href='{{< relurl "docs/git-commit/sv" >}}'>git-commit[1]</a> för mer information.</p>
+<p>Lägg till en <span class='synopsis'><code>Signed-off-by</code></span>-slutrad till incheckningsmeddelandet, med din egen incheckare-identitet. Se signoff-alternativet i <a href='{{< relurl "docs/git-commit/sv" >}}'>git-commit[1]</a> för mer information.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---stdout"> <a class="anchor" href="#git-format-patch---stdout"></a>--stdout </dt>
 <dd>
-<p>Skriv ut alla incheckningar till standardutdata i mbox-format, istället för att skapa en fil för varje enskild incheckning.</p>
+<p>Skriv ut alla incheckningar till standardutdata i mbox-format, i stället för att skapa en fil för varje enskild incheckning.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---attachltgrnsgt"> <a class="anchor" href="#git-format-patch---attachgrns"></a> <a class="anchor" href="#git-format-patch---attachltgrnsgt"></a>--attach[=&lt;gräns&gt;] </dt>
 <dd>
-<p>Skapa en flerdelad/blandad bilaga, vars första del är inchecknings-meddelandet och själva patchen i den andra delen, med <span class='synopsis'><code>Content-Disposition:</code> <code>attachment</code></span>.</p>
+<p>Skapa en multipart/mixed-bilaga där första delen är incheckningsmeddelandet och patchen själv ligger i andra delen, med <span class='synopsis'><code>Content-Disposition:</code> <code>attachment</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---no-attach"> <a class="anchor" href="#git-format-patch---no-attach"></a>--no-attach </dt>
 <dd>
@@ -569,12 +569,12 @@ till exakta namnbyten, använd <span class='synopsis'><code>-M100%</code></span>
 </dd>
 <dt class="hdlist1" id="git-format-patch---inlineltgrnsgt"> <a class="anchor" href="#git-format-patch---inlinegrns"></a> <a class="anchor" href="#git-format-patch---inlineltgrnsgt"></a>--inline[=&lt;gräns&gt;] </dt>
 <dd>
-<p>Skapa en flerdelad/blandad bilaga, vars första del är inchecknings-meddelandet och själva patchen i den andra delen, med <span class='synopsis'><code>Content-Disposition:</code> <code>inline</code></span>.</p>
+<p>Skapa en multipart/mixed-bilaga där första delen är incheckningsmeddelandet och patchen själv ligger i andra delen, med <span class='synopsis'><code>Content-Disposition:</code> <code>inline</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---threadltstilgt"> <a class="anchor" href="#git-format-patch---threadstil"></a> <a class="anchor" href="#git-format-patch---threadltstilgt"></a>--thread[=&lt;stil&gt;] </dt>
 <dt class="hdlist1" id="git-format-patch---no-thread"> <a class="anchor" href="#git-format-patch---no-thread"></a>--no-thread </dt>
 <dd>
-<p>Styr tillägg av huvudena <span class='synopsis'><code>In-Reply-To</code></span> och <span class='synopsis'><code>References</code></span> för att få det andra och efterföljande e-postmeddelandena att visas som svar på det första. Styr även genereringen av huvudet <span class='synopsis'><code>Message-ID</code></span> att referera till.</p>
+<p>Styr tillägg av rubrikerna <span class='synopsis'><code>In-Reply-To</code></span> och <span class='synopsis'><code>References</code></span> för att få det andra och efterföljande e-postmeddelandena att visas som svar på det första. Styr också genereringen av rubriken <span class='synopsis'><code>Message-ID</code></span> att referera till.</p>
 <div class="paragraph">
 <p>Det valfria argumentet &lt;stil&gt; kan vara antingen <span class='synopsis'><code>shallow</code></span> eller <span class='synopsis'><code>deep</code></span>. <em>Shallow</em>-trådning gör varje e-postmeddelande till ett svar på seriens rubrik, där rubriken väljs från följebrevet, <span class='synopsis'><code>--in-reply-to</code></span> och det första patch-mejlet, i denna ordning. <em>Deep</em>-trådning gör varje e-postmeddelande till ett svar på det föregående.</p>
 </div>
@@ -599,7 +599,7 @@ till exakta namnbyten, använd <span class='synopsis'><code>-M100%</code></span>
 </dd>
 <dt class="hdlist1" id="git-format-patch---cover-from-descriptionltlgegt"> <a class="anchor" href="#git-format-patch---cover-from-descriptionlge"></a> <a class="anchor" href="#git-format-patch---cover-from-descriptionltlgegt"></a>--cover-from-description=&lt;läge&gt; </dt>
 <dd>
-<p>Styr vilka delar av följebrevet-brevet som ska fyllas i automatiskt med hjälp av grenens beskrivning.</p>
+<p>Styr vilka delar av följebrevet som fylls i automatiskt med hjälp av grenens beskrivning.</p>
 <div class="paragraph">
 <p>Om <span class='synopsis'><em>&lt;läge&gt;</em></span> är <span class='synopsis'><code>message</code></span> eller <span class='synopsis'><code>default</code></span> kommer ämnet för följebrevet att fyllas med platshållartext. Huvuddelen av följebrevet kommer att fyllas med grenens beskrivning. Detta är standardläget när ingen konfiguration eller kommandoradsalternativ har angetts.</p>
 </div>
@@ -615,93 +615,93 @@ till exakta namnbyten, använd <span class='synopsis'><code>-M100%</code></span>
 </dd>
 <dt class="hdlist1" id="git-format-patch---description-fileltfilgt"> <a class="anchor" href="#git-format-patch---description-filefil"></a> <a class="anchor" href="#git-format-patch---description-fileltfilgt"></a>--description-file=&lt;fil&gt; </dt>
 <dd>
-<p>Använd innehållet i &lt;fil&gt; istället för grenens beskrivning för att generera följebrevet.</p>
+<p>Använd innehållet i &lt;fil&gt; i stället för grenens beskrivning för att generera följebrevet.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---subject-prefixltmnesprefixgt"> <a class="anchor" href="#git-format-patch---subject-prefixmnesprefix"></a> <a class="anchor" href="#git-format-patch---subject-prefixltmnesprefixgt"></a>--subject-prefix=&lt;ämnesprefix&gt; </dt>
 <dd>
-<p>Istället för standardprefixet <em>[PATCH]</em> i ämnesraden, använd istället <em>[&lt;ämnesprefix&gt;]</em>. Detta kan användas för att namnge en patchserie och kan kombineras med alternativet <span class='synopsis'><code>--numbered</code></span>.</p>
+<p>I stället för standardprefixet <em>[PATCH]</em> i ämnesraden, använd i stället <em>[&lt;ämnesprefix&gt;]</em>. Detta kan användas för att namnge en patchserie och kan kombineras med alternativet <span class='synopsis'><code>--numbered</code></span>.</p>
 <div class="paragraph">
-<p>Konfigurationsvariabeln <span class='synopsis'><code>format.subjectPrefix</code></span> kan också användas för att konfigurera ett ämnesprefix som ska gälla för ett givet arkiv för alla patchar. Detta är ofta användbart på e-postlistor som tar emot patchar för flera förvar och kan användas för att tydliggöra patcharna (med ett värde på t.ex. "PATCH mitt-projekt").</p>
+<p>Konfigurationsvariabeln <span class='synopsis'><code>format.subjectPrefix</code></span> kan också användas för att ange ett ämnesprefix som ska gälla för alla patchar i ett visst kodförråd. Det är ofta användbart på e-postlistor som tar emot patchar för flera kodförråd och kan användas för att skilja patcharna åt (med ett värde som till exempel "PATCH mitt-projekt").</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-format-patch---filename-max-lengthltngt"> <a class="anchor" href="#git-format-patch---filename-max-lengthn"></a> <a class="anchor" href="#git-format-patch---filename-max-lengthltngt"></a>--filename-max-length=&lt;n&gt; </dt>
 <dd>
-<p>Istället för standard 64 byte, klipp ut de genererade utdata-filnamnen till cirka <em>&lt;n&gt;</em> byte (ett för kort värde kommer tyst att höjas till en rimlig längd). Standardvärdet är värdet för konfigurationsvariabeln <span class='synopsis'><code>format.filenameMaxLength</code></span>, eller 64 om den inte är konfigurerad.</p>
+<p>I stället för standardvärdet 64 byte kapas de genererade utdatafilnamnen till ungefär <em>&lt;n&gt;</em> byte (ett för kort värde höjs tyst till en rimlig längd). Standardvärdet är värdet i konfigurationsvariabeln <span class='synopsis'><code>format.filenameMaxLength</code></span>, eller 64 om den inte är satt.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---rfcltrfcgt"> <a class="anchor" href="#git-format-patch---rfcrfc"></a> <a class="anchor" href="#git-format-patch---rfcltrfcgt"></a>--rfc[=&lt;rfc&gt;] </dt>
 <dd>
 <p>Lägger till strängen <em>&lt;rfc&gt;</em> (standardinställningen är "RFC") framför ämnesprefixet. Eftersom ämnesprefixet är standardinställt på "PATCH" får du "RFC PATCH" som standard.</p>
 <div class="paragraph">
-<p>RFC står för "Request For Comments" (Begäran om kommentarer); använd detta när du skickar en experimentell patch för diskussion snarare än applikation. "--rfc=WIP" kan också vara ett användbart sätt att indikera att en patch inte är klar ännu ("WIP" står för "Work In Progress" (Pågående Arbete)).</p>
+<p>RFC står för "Request For Comments"; använd detta när du skickar en experimentell patch för diskussion snarare än för direkt användning. "--rfc=WIP" kan också vara ett bra sätt att visa att en patch ännu inte är färdig ("WIP" står för "Work In Progress").</p>
 </div>
 <div class="paragraph">
-<p>Om konventionen hos den mottagande egenskapen för en viss extra sträng är att den ska läggas till <em>efter_ärendeprefixet, kan strängen _&lt;rfc&gt;</em> prefixeras med ett bindestreck ("<span class='synopsis'><code>-</code></span>") för att signalera att resten av <em>&lt;rfc&gt;</em> strängen ska läggas till _efter_ärendeprefixet istället, t.ex. resulterar <span class='synopsis'><code>--rfc='-</code>(<code>WIP</code>)</span> i "PATCH (WIP)".</p>
+<p>Om konventionen i den mottagande gemenskapen för en viss extra sträng är att den ska stå <em>efter</em> ämnesprefixet, kan strängen <em>&lt;rfc&gt;</em> inledas med ett bindestreck ("<span class='synopsis'><code>-</code></span>") för att signalera att resten av <em>&lt;rfc&gt;</em>-strängen ska läggas till efter ämnesprefixet i stället, till exempel ger <span class='synopsis'><code>--rfc='-</code>(<code>WIP</code>)</span> "PATCH (WIP)".</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-format-patch--vltngt"> <a class="anchor" href="#git-format-patch--vn"></a> <a class="anchor" href="#git-format-patch--vltngt"></a>-v &lt;n&gt; </dt>
 <dt class="hdlist1" id="git-format-patch---reroll-countltngt"> <a class="anchor" href="#git-format-patch---reroll-countn"></a> <a class="anchor" href="#git-format-patch---reroll-countltngt"></a>--reroll-count=&lt;n&gt; </dt>
 <dd>
-<p>Markera serien som den &lt;n&gt;:te iterationen av ämnet. Utdatafilnamnen har <span class='synopsis'><code>v</code><em>&lt;n&gt;</em></span> lagt till, och ämnesprefixet ("PATCH" som standard, men konfigurerbart via alternativet <span class='synopsis'><code>--subject-prefix</code></span>) har <span class='synopsis'><code>v</code><em>&lt;n&gt;</em></span> tillagt. T.ex. kan <span class='synopsis'><code>--reroll-count=4</code></span> producera filen <span class='synopsis'><code>v4-0001-add-makefile.patch</code></span> som innehåller "Ämne: [PATCH v4 1/20] Add makefile". <span class='synopsis'><em>&lt;n&gt;</em></span> behöver inte vara ett heltal (t.ex. "--reroll-count=4.4" eller "--reroll-count=4rev2" är tillåtna), men nackdelen med att använda en sådan reroll-count är att range-diff/interdiff med den tidigare versionen inte anger exakt vilken version den nya iterationen jämförs mot.</p>
+<p>Markera serien som den &lt;n&gt;:te iterationen av ämnet. Utdatafilnamnen får prefixet <span class='synopsis'><code>v</code><em>&lt;n&gt;</em></span>, och ämnesprefixet ("PATCH" som standard, men konfigurerbart med alternativet <span class='synopsis'><code>--subject-prefix</code></span>) får tillägget ` v&lt;n&gt;<span class='synopsis'><code>.</code> <code>Till</code> <code>exempel</code> <code>kan</code> <code>--reroll-count=4</code></span> skapa filen <span class='synopsis'><code>v4-0001-add-makefile.patch</code></span>, som innehåller "Subject: [PATCH v4 1/20] Add makefile". <span class='synopsis'><em>&lt;n&gt;</em></span> behöver inte vara ett heltal (till exempel tillåts "--reroll-count=4.4" eller "--reroll-count=4rev2"), men nackdelen med ett sådant värde är att range-diff/interdiff mot föregående version inte exakt anger vilken version den nya iterationen jämförs med.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---toltmejlgt"> <a class="anchor" href="#git-format-patch---tomejl"></a> <a class="anchor" href="#git-format-patch---toltmejlgt"></a>--to=&lt;mejl&gt; </dt>
 <dd>
-<p>Lägg till en <span class='synopsis'><code>Till:</code></span>-huvud i e-postrubrikerna. Detta är utöver alla konfigurerade huvuden och kan användas flera gånger. Den negerade formen <span class='synopsis'><code>--no-to</code></span> ignorerar alla <span class='synopsis'><code>Till:</code></span>-huvudet som lagts till hittills (från konfigurations- eller kommandoraden).</p>
+<p>Lägg till en <span class='synopsis'><code>To:</code></span>-huvudrad i e-posthuvudena. Detta läggs ovanpå eventuella konfigurerade huvudrader och kan användas flera gånger. Den negerade formen <span class='synopsis'><code>--no-to</code></span> kastar bort alla <span class='synopsis'><code>To:</code></span>-huvudrader som lagts till hittills (från konfiguration eller kommandorad).</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---ccltmejlgt"> <a class="anchor" href="#git-format-patch---ccmejl"></a> <a class="anchor" href="#git-format-patch---ccltmejlgt"></a>--cc=&lt;mejl&gt; </dt>
 <dd>
-<p>Lägg till en <span class='synopsis'><code>Cc:</code></span>-huvud i e-postrubhuvudena. Detta är utöver alla konfigurerade huvuden och kan användas flera gånger. Den negerade formen <span class='synopsis'><code>--no-cc</code></span> ignorerar alla <span class='synopsis'><code>Cc:</code></span>-huvudena som lagts till hittills (från konfigurations- eller kommandoraden).</p>
+<p>Lägg till en <span class='synopsis'><code>Cc:</code></span>-huvudrad i e-posthuvudena. Detta läggs ovanpå eventuella konfigurerade huvudrader och kan användas flera gånger. Den negerade formen <span class='synopsis'><code>--no-cc</code></span> kastar bort alla <span class='synopsis'><code>Cc:</code></span>-huvudrader som lagts till hittills (från konfiguration eller kommandorad).</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---from"> <a class="anchor" href="#git-format-patch---from"></a>--from </dt>
 <dt class="hdlist1" id="git-format-patch---fromltidentgt"> <a class="anchor" href="#git-format-patch---fromident"></a> <a class="anchor" href="#git-format-patch---fromltidentgt"></a>--from=&lt;ident&gt; </dt>
 <dd>
-<p>Använd <span class='synopsis'><code>ident</code></span> i <span class='synopsis'><em>Från:</em></span>-huvudet i varje inchecknings-e-postmeddelande. Om författar-identiteten för incheckningen inte är textuellt identiskt med den angivna <span class='synopsis'><code>ident</code></span>, placera en <span class='synopsis'><em>Från:</em></span>-huvud i meddelandets kropp med den ursprungliga författaren. Om ingen <span class='synopsis'><code>ident</code></span> anges, använd incheckare-identiteten.</p>
+<p>Använd <span class='synopsis'><code>ident</code></span> i <span class='synopsis'><code>From:</code></span>-huvudraden i varje incheckningsmejl. Om författaridentiteten för incheckningen inte textuellt matchar angiven <span class='synopsis'><code>ident</code></span>, lägg en <span class='synopsis'><code>From:</code></span>-huvudrad i meddelandets brödtext med den ursprungliga författaren. Om ingen <span class='synopsis'><code>ident</code></span> anges används incheckarens identitet.</p>
 <div class="paragraph">
-<p>Observera att det här alternativet bara är användbart om du faktiskt skickar e-postmeddelandena och vill identifiera dig själv som avsändare, men behålla den ursprungliga författaren (och <span class='synopsis'><code>git</code> <code>am</code></span> kommer korrekt att hämta i-krppen huvudet). Observera också att <span class='synopsis'><code>git</code> <code>send-email</code></span> redan hanterar den här transformationen åt dig, och det här alternativet bör inte användas om du matar resultatet till <span class='synopsis'><code>git</code> <code>send-email</code></span>.</p>
+<p>Observera att det här alternativet bara är användbart om du faktiskt skickar e-postmeddelandena och vill identifiera dig som avsändare men behålla den ursprungliga författaren (och <span class='synopsis'><code>git</code> <code>am</code></span> läser då korrekt in huvudet i brödtexten). Observera också att <span class='synopsis'><code>git</code> <code>send-email</code></span> redan hanterar den här omvandlingen åt dig, och att det här alternativet inte bör användas om du skickar resultatet till <span class='synopsis'><code>git</code> <code>send-email</code></span>.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-format-patch---force-in-body-from"> <a class="anchor" href="#git-format-patch---force-in-body-from"></a>--force-in-body-from </dt>
 <dt class="hdlist1" id="git-format-patch---no-force-in-body-from"> <a class="anchor" href="#git-format-patch---no-force-in-body-from"></a>--no-force-in-body-from </dt>
 <dd>
-<p>Med e-postavsändaren angiven via alternativet <span class='synopsis'><code>--from</code></span> läggs som standard en inbyggd "Från:" till högst upp i inchecknings-loggmeddelandet för att identifiera den verkliga författaren till incheckningen om avsändaren är en annan än författaren. Med det här alternativet läggs "Från:" till även om avsändaren och författaren har samma namn och adress, vilket kan vara till hjälp om e-postlistans programvara manipulerar avsändarens identitet. Standardvärdet är värdet för konfigurationsvariabeln <span class='synopsis'><code>format.forceInBodyFrom</code></span>.</p>
+<p>När e-postavsändaren anges via alternativet <span class='synopsis'><code>--from</code></span> läggs som standard en in-body-<span class='synopsis'><code>From:</code></span> högst upp i incheckningsloggmeddelandet för att identifiera den verkliga författaren, om avsändaren skiljer sig från författaren. Med det här alternativet läggs in-body-<span class='synopsis'><code>From:</code></span> till även när avsändaren och författaren har samma namn och adress, vilket kan hjälpa om e-postlistans programvara förvanskar avsändaridentiteten. Standardvärdet hämtas från konfigurationsvariabeln <span class='synopsis'><code>format.forceInBodyFrom</code></span>.</p>
 </dd>
-<dt class="hdlist1" id="git-format-patch---add-headerlthuvudgt"> <a class="anchor" href="#git-format-patch---add-headerhuvud"></a> <a class="anchor" href="#git-format-patch---add-headerlthuvudgt"></a>--add-header=<span class="hover-term" data-term="huvud">&lt;huvud&gt;</span> </dt>
+<dt class="hdlist1" id="git-format-patch---add-headerlthuvudradgt"> <a class="anchor" href="#git-format-patch---add-headerhuvudrad"></a> <a class="anchor" href="#git-format-patch---add-headerlthuvudradgt"></a>--add-header=&lt;huvudrad&gt; </dt>
 <dd>
-<p>Lägg till en godtycklig huvud till e-post-huvudena. Detta är utöver alla konfigurerade huvuden och kan användas flera gånger. Till exempel, <span class='synopsis'><code>--add-header="Organisation:</code> <code>git-foo"</code></span>. Den negerade formen <span class='synopsis'><code>--no-add-header</code></span> ignorerar <strong>alla</strong> (<span class='synopsis'><code>Till:</code></span>, <span class='synopsis'><code>Cc:</code></span> och anpassade) huvuden som lagts till hittills från konfigurations- eller kommandoraden.</p>
+<p>Lägg till en godtycklig huvudrad i e-posthuvudena. Detta läggs ovanpå eventuella konfigurerade huvudrader och kan användas flera gånger. Till exempel <span class='synopsis'><code>--add-header="Organization:</code> <code>git-foo"</code></span>. Den negerade formen <span class='synopsis'><code>--no-add-header</code></span> kastar bort <strong>alla</strong> (<span class='synopsis'><code>To:</code></span>, <span class='synopsis'><code>Cc:</code></span> och anpassade) huvudrader som hittills lagts till från konfiguration eller kommandorad.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---cover-letter"> <a class="anchor" href="#git-format-patch---cover-letter"></a>--cover-letter </dt>
 <dt class="hdlist1" id="git-format-patch---no-cover-letter"> <a class="anchor" href="#git-format-patch---no-cover-letter"></a>--no-cover-letter </dt>
 <dd>
-<p>Utöver patcharna, generera en fil med ett följebrev som innehåller grenbeskrivningen, kortloggen och den övergripande diffstat-filen. Du kan fylla i en beskrivning i filen innan du skickar ut den.</p>
+<p>Generera, utöver patcharna, en följebrevsfil som innehåller grenbeskrivningen, shortlog och den övergripande diffstat. Du kan fylla i en beskrivning i filen innan du skickar den.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---encode-email-headers"> <a class="anchor" href="#git-format-patch---encode-email-headers"></a>--encode-email-headers </dt>
 <dt class="hdlist1" id="git-format-patch---no-encode-email-headers"> <a class="anchor" href="#git-format-patch---no-encode-email-headers"></a>--no-encode-email-headers </dt>
 <dd>
-<p>Koda e-post-huvudenr som inte innehåller ASCII-tecken med "Q-encoding" (beskrivet i RFC 2047), istället för att skriva ut rubrikerna ordagrant. Standardvärdet är värdet för konfigurationsvariabeln <span class='synopsis'><code>format.encodeEmailHeaders</code></span>.</p>
+<p>Koda e-posthuvuden som innehåller icke-ASCII-tecken med "Q-encoding" (beskrivet i RFC 2047), i stället för att skriva ut huvudraderna ordagrant. Standardvärdet hämtas från konfigurationsvariabeln <span class='synopsis'><code>format.encodeEmailHeaders</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---interdiffltfregendegt"> <a class="anchor" href="#git-format-patch---interdifffregende"></a> <a class="anchor" href="#git-format-patch---interdiffltfregendegt"></a>--interdiff=&lt;föregående&gt; </dt>
 <dd>
-<p>Som ett hjälpmedel för granskare, infoga en interdiff i följebrevet, eller som en kommentar till den enda patchen i en serie med en patch, som visar skillnaderna mellan den tidigare versionen av patchserien och den serie som för närvarande formateras. <span class='synopsis'><em>föregående</em></span> är en enda revision som namnger spetsen för den föregående serien som delar en gemensam bas med den serie som formateras (till exempel <span class='synopsis'><code>git</code> <code>format-patch</code> <code>--cover-letter</code> <code>--interdiff=feature/v1</code> <code>-3</code> <code>feature/v2</code></span>).</p>
+<p>Som hjälp för granskare kan du infoga en interdiff i följebrevet, eller som kommentar till den enda patchen i en 1-patchserie, som visar skillnaderna mellan den tidigare versionen av patchserien och serien som formateras nu. <span class='synopsis'><em>föregående</em></span> är en enskild revision som anger toppen för den föregående serien, vilken delar en gemensam bas med serien som formateras (till exempel <span class='synopsis'><code>git</code> <code>format-patch</code> <code>--cover-letter</code> <code>--interdiff=feature/v1</code> <code>-3</code> <code>feature/v2</code></span>).</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---range-diffltfregendegt"> <a class="anchor" href="#git-format-patch---range-difffregende"></a> <a class="anchor" href="#git-format-patch---range-diffltfregendegt"></a>--range-diff=&lt;föregående&gt; </dt>
 <dd>
-<p>Som ett hjälpmedel för granskare, infoga en range-diff (se <a href='{{< relurl "docs/git-range-diff/sv" >}}'>git-range-diff[1]</a>) i följebrevet, eller som en kommentar till den enda patchen i en serie med 1 patch, som visar skillnaderna mellan den tidigare versionen av patchserien och serien som för närvarande formateras. <span class='synopsis'><em>föregående</em></span> kan vara en enda revision som namnger toppen för den föregående serien om den delar en gemensam bas med serien som formateras (till exempel <span class='synopsis'><code>git</code> <code>format-patch</code> <code>--cover-letter</code> <code>--range-diff=feature/v1</code> <code>-3</code> <code>feature/v2</code></span>), eller ett revisionsintervall om de två versionerna av serien är disjunkta (till exempel <span class='synopsis'><code>git</code> <code>format-patch</code> <code>--cover-letter</code> <code>--range-diff=feature/v1~3..feature/v1</code> <code>-3</code> <code>feature/v2</code></span>).</p>
+<p>Som hjälp för granskare kan du infoga en range-diff (se <a href='{{< relurl "docs/git-range-diff/sv" >}}'>git-range-diff[1]</a>) i följebrevet, eller som kommentar till den enda patchen i en 1-patchserie, som visar skillnaderna mellan den tidigare versionen av patchserien och serien som formateras nu. <span class='synopsis'><em>föregående</em></span> kan vara en enskild revision som anger toppen för den tidigare serien om den delar en gemensam bas med serien som formateras (till exempel <span class='synopsis'><code>git</code> <code>format-patch</code> <code>--cover-letter</code> <code>--range-diff=feature/v1</code> <code>-3</code> <code>feature/v2</code></span>), eller ett revisionsintervall om de två versionerna av serien är åtskilda (till exempel <span class='synopsis'><code>git</code> <code>format-patch</code> <code>--cover-letter</code> <code>--range-diff=feature/v1~3..feature/v1</code> <code>-3</code> <code>feature/v2</code></span>).</p>
 <div class="paragraph">
-<p>Observera att diff-alternativ som skickas till kommandot påverkar hur den primära produkten av <span class='synopsis'><code>format-patch</code></span> genereras, och de skickas inte till den underliggande <span class='synopsis'><code>range-diff</code></span>-maskineriet som används för att generera följebrevsmaterialet (detta kan ändras i framtiden).</p>
+<p>Observera att diff-alternativ som skickas till kommandot påverkar hur huvudresultatet från <span class='synopsis'><code>format-patch</code></span> genereras, och de skickas inte vidare till den underliggande <span class='synopsis'><code>range-diff</code></span>-mekanismen som används för att skapa följebrevsinnehållet (detta kan ändras i framtiden).</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-format-patch---creation-factorltprocentgt"> <a class="anchor" href="#git-format-patch---creation-factorprocent"></a> <a class="anchor" href="#git-format-patch---creation-factorltprocentgt"></a>--creation-factor=&lt;procent&gt; </dt>
 <dd>
-<p>Används med <span class='synopsis'><code>--range-diff</code></span>, justerar heuristiken som matchar incheckningar mellan föregående och nuvarande serien av patchar genom att justera kostnadsfudgefaktorn för skapande/borttagning. Se <a href='{{< relurl "docs/git-range-diff/sv" >}}'>git-range-diff[1]</a>) för detaljer.</p>
+<p>Använd tillsammans med <span class='synopsis'><code>--range-diff</code></span> för att justera heuristiken som matchar incheckningar mellan den föregående och den aktuella patchserien genom att ändra justeringsfaktorn för kostnad vid skapande/borttagning. Se <a href='{{< relurl "docs/git-range-diff/sv" >}}'>git-range-diff[1]</a> för detaljer.</p>
 <div class="paragraph">
-<p>Standardvärdet är 999 (<a href='{{< relurl "docs/git-range-diff/sv" >}}'>git-range-diff[1]</a> använder 60), eftersom användningsfallet är att visa jämförelse med en äldre iteration av samma ämne och verktyget bör hitta mer överensstämmelse mellan de två uppsättningarna patchar.</p>
+<p>Standardvärdet är 999 (<a href='{{< relurl "docs/git-range-diff/sv" >}}'>git-range-diff[1]</a> använder 60), eftersom användningsfallet är att jämföra med en äldre iteration av samma ämne och verktyget då bör hitta fler motsvarigheter mellan de två patchuppsättningarna.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-format-patch---notesltrefgt"> <a class="anchor" href="#git-format-patch---notesref"></a> <a class="anchor" href="#git-format-patch---notesltrefgt"></a>--notes[=<span class="hover-term" data-term="ref">&lt;ref&gt;</span>] </dt>
 <dt class="hdlist1" id="git-format-patch---no-notes"> <a class="anchor" href="#git-format-patch---no-notes"></a>--no-notes </dt>
 <dd>
-<p>Lägg till noterna (se <a href='{{< relurl "docs/git-notes/sv" >}}'>git-notes[1]</a>) för incheckningen efter den tre streckade raden.</p>
+<p>Lägg till anteckningarna (se <a href='{{< relurl "docs/git-notes/sv" >}}'>git-notes[1]</a>) för incheckningen efter raden med tre bindestreck.</p>
 <div class="paragraph">
-<p>Det förväntade användningsfallet för detta är att skriva en stödjande förklaring för incheckningen som inte hör till själva inchecknings-loggmeddelandet, och inkludera den i patch-inlämningen. Även om man helt enkelt kan skriva dessa förklaringar efter att <span class='synopsis'><code>format-patch</code></span> har körts men innan de skickas, gör det att de kan behållas mellan versioner av patch-serien om de behålls som Git-anteckningar (men se diskussionen om konfigurationsalternativen <span class='synopsis'><code>notes.rewrite</code></span> i <a href='{{< relurl "docs/git-notes/sv" >}}'>git-notes[1]</a> för att använda detta arbetsflöde).</p>
+<p>Det avsedda användningsfallet är att skriva kompletterande förklaring till en incheckning som inte hör hemma i själva incheckningsloggmeddelandet, och ta med den i patchinskicket. Man kan förstås skriva sådana förklaringar efter att <span class='synopsis'><code>format-patch</code></span> har körts men före utskick, men om de sparas som Git-anteckningar kan de underhållas mellan olika versioner av patchserien (se diskussionen om konfigurationsalternativen <span class='synopsis'><code>notes.rewrite</code></span> i <a href='{{< relurl "docs/git-notes/sv" >}}'>git-notes[1]</a> för detta arbetsflöde).</p>
 </div>
 <div class="paragraph">
 <p>Standardvärdet är <span class='synopsis'><code>--no-notes</code></span>, såvida inte konfigurationen <span class='synopsis'><code>format.notes</code></span> är inställd.</p>
@@ -710,15 +710,15 @@ till exakta namnbyten, använd <span class='synopsis'><code>-M100%</code></span>
 <dt class="hdlist1" id="git-format-patch---signatureltsignaturgt"> <a class="anchor" href="#git-format-patch---signaturesignatur"></a> <a class="anchor" href="#git-format-patch---signatureltsignaturgt"></a>--signature=&lt;signatur&gt; </dt>
 <dt class="hdlist1" id="git-format-patch---no-signature"> <a class="anchor" href="#git-format-patch---no-signature"></a>--no-signature </dt>
 <dd>
-<p>Lägg till en signatur till varje meddelande som produceras. Enligt RFC 3676 separeras signaturen från brödtexten med en rad med '-- ' på. Om signaturalternativet utelämnas används standardversionsnumret för signaturen Git.</p>
+<p>Lägg till en signatur i varje meddelande som skapas. Enligt RFC 3676 separeras signaturen från brödtexten med en rad som innehåller '-- '. Om signaturalternativet utelämnas används Git-versionsnumret som standardsignatur.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---signature-fileltfilgt"> <a class="anchor" href="#git-format-patch---signature-filefil"></a> <a class="anchor" href="#git-format-patch---signature-fileltfilgt"></a>--signature-file=&lt;fil&gt; </dt>
 <dd>
-<p>Fungerar precis som --signature förutom att signaturen läses från en fil.</p>
+<p>Fungerar precis som <span class='synopsis'><code>--signature</code></span>, förutom att signaturen läses från en fil.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---suffixltsfxgt"> <a class="anchor" href="#git-format-patch---suffixsfx"></a> <a class="anchor" href="#git-format-patch---suffixltsfxgt"></a>--suffix=.&lt;sfx&gt; </dt>
 <dd>
-<p>Istället för att använda <span class='synopsis'><code>.patch</code></span> som suffix för genererade filnamn, använd det angivna suffixet. Ett vanligt alternativ är <span class='synopsis'><code>--suffix=.txt</code></span>. Om du lämnar detta tomt tas suffixet <span class='synopsis'><code>.patch</code></span> bort.</p>
+<p>I stället för att använda <span class='synopsis'><code>.patch</code></span> som suffix för genererade filnamn, använd det angivna suffixet. Ett vanligt alternativ är <span class='synopsis'><code>--suffix=.txt</code></span>. Om du lämnar detta tomt tas suffixet <span class='synopsis'><code>.patch</code></span> bort.</p>
 <div class="paragraph">
 <p>Observera att inledande tecken inte behöver vara en punkt; du kan till exempel använda <span class='synopsis'><code>--suffix=-patch</code></span> för att få <span class='synopsis'><em>0001-beskrivning-av-min-ändringspatch</em></span>.</p>
 </div>
@@ -730,11 +730,11 @@ till exakta namnbyten, använd <span class='synopsis'><code>-M100%</code></span>
 </dd>
 <dt class="hdlist1" id="git-format-patch---no-binary"> <a class="anchor" href="#git-format-patch---no-binary"></a>--no-binary </dt>
 <dd>
-<p>Visa inte innehållet i ändringarna i binära filer, utan visa istället ett meddelande om att filerna har ändrats. Patchar som genereras med det här alternativet kan inte tillämpas korrekt, men de är fortfarande användbara för kodgranskning.</p>
+<p>Visa inte innehållet i ändringarna i binära filer, utan visa i stället ett meddelande om att filerna har ändrats. Patchar som genereras med det här alternativet kan inte tillämpas korrekt, men de är fortfarande användbara för kodgranskning.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---zero-commit"> <a class="anchor" href="#git-format-patch---zero-commit"></a>--zero-commit </dt>
 <dd>
-<p>Skriv ut en hash bestående av bara nollor i varje patch:ens From-huvud istället för hashen för incheckningen.</p>
+<p>Skriv ut en hash med enbart nollor i varje patchs <span class='synopsis'><code>From:</code></span>-huvud i stället för incheckningens hash.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---no-base"> <a class="anchor" href="#git-format-patch---no-base"></a>--no-base </dt>
 <dt class="hdlist1" id="git-format-patch---baseltincheckninggt"> <a class="anchor" href="#git-format-patch---baseincheckning"></a> <a class="anchor" href="#git-format-patch---baseltincheckninggt"></a>--base[=<span class="hover-term" data-term="incheckning">&lt;incheckning&gt;</span>] </dt>
@@ -743,7 +743,7 @@ till exakta namnbyten, använd <span class='synopsis'><code>-M100%</code></span>
 </dd>
 <dt class="hdlist1" id="git-format-patch---root"> <a class="anchor" href="#git-format-patch---root"></a>--root </dt>
 <dd>
-<p>Behandla revisionsargumentet som en &lt;revisionsintervall&gt;, även om det bara är en enda incheckning (som normalt skulle behandlas som en &lt;sedan&gt;). Observera att root-incheckningar som ingår i det angivna intervallet alltid formateras som skapandepatchar, oberoende av denna flagga.</p>
+<p>Behandla revisionsargumentet som ett &lt;revisionsintervall&gt;, även om det bara är en enda incheckning (som normalt skulle behandlas som en &lt;sedan&gt;). Observera att rotincheckningar som ingår i det angivna intervallet alltid formateras som skapandepatchar, oberoende av denna flagga.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---progress"> <a class="anchor" href="#git-format-patch---progress"></a>--progress </dt>
 <dd>
@@ -757,7 +757,7 @@ till exakta namnbyten, använd <span class='synopsis'><code>-M100%</code></span>
 <h2 id="_konfiguration"><a class="anchor" href="#_konfiguration"></a>KONFIGURATION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Du kan ange extra e-post-huvuden som ska läggas till i varje meddelande, standardvärden för ämnesprefix och filsuffix, numrera patchar när mer än en patch matas ut, lägga till huvuden som "Till:" eller "Cc:", konfigurera bilagor, ändra utdatakatalogen för patchen och signera av patchar med konfigurationsvariabler.</p>
+<p>Du kan med konfigurationsvariabler ange extra e-posthuvudrader som ska läggas till i varje meddelande, standardvärden för ämnesprefix och filsuffix, numrering av patchar när fler än en patch skrivs ut, <span class='synopsis'><code>To:</code></span>- eller <span class='synopsis'><code>Cc:</code></span>-huvudrader, bilagor, utdatakatalog för patchar samt signoff för patchar.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -785,14 +785,8 @@ till exakta namnbyten, använd <span class='synopsis'><code>-M100%</code></span>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>From 8f72bad1baf19a53459661343e21d6491c3908d3 Mon Sep 17 00:00:00 2001
-From: Tony Luck &lt;tony.luck@intel.com&gt;
-Date: Tue, 13 Jul 2010 11:42:59 -0700
-Subject: [PATCH] =3D?UTF-8?q?[IA64] L=C3=A4gga ia64-konfigurationsfiler p=C3=A5 ? =
-=3D?UTF-8?q?Uwe Kleine-K=C3=B6nig-dieten?
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+<pre>arch/arm-konfigurationsfiler bantades ner med hjälp av ett python-skript
+(Se kommentaren i incheckning c2330e286f68f1c408b4aa6515ba49d57f05beae)
 
 arch/arm config files were slimmed down using a python script
 (See commit c2330e286f68f1c408b4aa6515ba49d57f05beae comment)
@@ -802,10 +796,10 @@ Gör samma sak för ia64 så att vi kan få ett elegant och prydligt utseende
 </div>
 </div>
 <div class="paragraph">
-<p>Vanligtvis placeras den i en MUA:s utkastmapp, redigeras för att lägga till aktuella kommentarer som inte ska hamna i ändringsloggen efter de tre strecken, och skickas sedan som ett meddelande vars brödtext, i vårt exempel, börjar med "arch/arm config files were&#8230;&#8203;". I mottagaränden kan läsare spara intressanta patchar i en UNIX-brevlåda och tillämpa dem med <a href='{{< relurl "docs/git-am/sv" >}}'>git-am[1]</a>.</p>
+<p>Vanligtvis placeras den i en MUA:s utkastmapp, redigeras för att lägga till aktuell kommentar som inte ska in i ändringsloggen efter de tre strecken, och skickas sedan som ett meddelande vars brödtext i vårt exempel börjar med "arch/arm config files were&#8230;&#8203;". Hos mottagaren kan läsare spara intressanta patchar i en UNIX-brevlåda och applicera dem med <a href='{{< relurl "docs/git-am/sv" >}}'>git-am[1]</a>.</p>
 </div>
 <div class="paragraph">
-<p>När en patch är en del av en pågående diskussion kan patchen som genereras av <em>git format-patch</em> justeras för att dra nytta av funktionen <em>git am --scissors</em>. Efter ditt svar på diskussionen kommer en rad som enbart består av "<span class='synopsis'><em>-- &gt;8 --</em></span>" (sax och perforering), följt av patchen med onödiga huvud-fält borttagna:</p>
+<p>När en patch är del av en pågående diskussion kan patchen som genereras av <em>git format-patch</em> justeras för att dra nytta av funktionen <em>git am --scissors</em>. Efter ditt svar i diskussionen kommer en rad som enbart består av "<span class='synopsis'><em>-- &gt;8 --</em></span>" (sax och perforering), följd av patchen med onödiga huvudrader borttagna:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -827,7 +821,7 @@ arch/arm-konfigurationsfiler bantades ner med hjälp av ett python-skript
 <div class="sect2">
 <h3 id="_kontrollerar_om_patchkorruption_uppstår"><a class="anchor" href="#_kontrollerar_om_patchkorruption_uppstår"></a>Kontrollerar om patchkorruption uppstår</h3>
 <div class="paragraph">
-<p>Många utskicksprogram kommer att skada blanksteg om de inte konfigureras korrekt. Här är två vanliga typer av skada:</p>
+<p>Många e-postklienter korrumperar blanktecken om de inte är rätt konfigurerade. Här är två vanliga typer av korruption:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -845,13 +839,13 @@ arch/arm-konfigurationsfiler bantades ner med hjälp av ett python-skript
 <div class="ulist">
 <ul>
 <li>
-<p>Skicka patchen till dig själv, precis som du skulle göra, förutom med Till: och Kopia: rader som inte innehåller listan och underhållsadressen.</p>
+<p>Skicka patchen till dig själv, exakt som du annars skulle göra, men med <span class='synopsis'><code>To:</code></span>- och <span class='synopsis'><code>Cc:</code></span>-rader som inte innehåller listans och underhållarens adresser.</p>
 </li>
 <li>
 <p>Spara den där patchen till en fil i UNIX-brevlådans format. Kalla den a.patch, till exempel.</p>
 </li>
 <li>
-<p>Tillämpa det:</p>
+<p>Applicera den:</p>
 <div class="literalblock">
 <div class="content">
 <pre>$ git fetch &lt;projekt&gt; master:test-apply
@@ -864,7 +858,7 @@ $ git am a.patch</pre>
 </ul>
 </div>
 <div class="paragraph">
-<p>Om det inte tillämpas korrekt, kan det finnas olika orsaker.</p>
+<p>Om den inte går att applicera korrekt kan det bero på flera saker.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -872,10 +866,10 @@ $ git am a.patch</pre>
 <p>Själva patchen appliceras inte ordentligt. Det är <em>dåligt</em> men har inte mycket att göra med din MUA. I det här fallet kanske du vill ombasera patchen med <a href='{{< relurl "docs/git-rebase/sv" >}}'>git-rebase[1]</a> innan du genererar den på nytt.</p>
 </li>
 <li>
-<p>MUA:n korrumperade din patch; "am" skulle klaga på att patchen inte gäller. Titta i underkatalogen .git/rebase-apply/ och se vad <em>patch</em>-filen innehåller och kontrollera om det finns några vanliga skademönster som nämns ovan.</p>
+<p>MUA:n korrumperade din patch; <span class='synopsis'><code>am</code></span> kommer då att klaga på att patchen inte går att applicera. Titta i underkatalogen <span class='synopsis'><code>.git/rebase-apply/</code></span>, se vad filen <span class='synopsis'><code>patch</code></span> innehåller och kontrollera efter de vanliga korruptionsmönster som nämns ovan.</p>
 </li>
 <li>
-<p>Kontrollera även filerna <em>info</em> och <em>final-commit</em>. Om det som står i <em>final-commit</em> inte är exakt vad du vill se i inchecknings-loggmeddelandet är det mycket troligt att mottagaren kommer att redigera loggmeddelandet för hand när de tillämpar din patch. Saker som "Hej, det här är min första patch.\n" i patch-e-postmeddelandet ska komma efter den tre streckiga raden som signalerar slutet på inchecknings-meddelandet.</p>
+<p>När du ändå är igång, kontrollera även filerna <span class='synopsis'><code>info</code></span> och <span class='synopsis'><code>final-commit</code></span>. Om innehållet i <span class='synopsis'><code>final-commit</code></span> inte är exakt det du vill se i incheckningsloggmeddelandet är det mycket troligt att mottagaren behöver handredigera loggmeddelandet när patchen appliceras. Saker som "Hi, this is my first patch.\n" i patchmejlet ska komma efter raden med tre bindestreck som markerar slutet på incheckningsmeddelandet.</p>
 </li>
 </ul>
 </div>
@@ -886,7 +880,7 @@ $ git am a.patch</pre>
 <h2 id="_mua_specifika_tips"><a class="anchor" href="#_mua_specifika_tips"></a>MUA-SPECIFIKA TIPS</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Här är några tips om hur du framgångsrikt skickar in patchar inline med hjälp av olika mejl-program.</p>
+<p>Här är några tips för hur du skickar in patchar inline på ett fungerande sätt med olika e-postklienter.</p>
 </div>
 <div class="sect2">
 <h3 id="_gmail"><a class="anchor" href="#_gmail"></a>GMail</h3>
@@ -903,10 +897,10 @@ $ git am a.patch</pre>
 <div class="sect2">
 <h3 id="_thunderbird"><a class="anchor" href="#_thunderbird"></a>Thunderbird</h3>
 <div class="paragraph">
-<p>Som standard kommer Thunderbird både att slå in e-postmeddelanden och flagga dem som "format=flowed", vilket båda kommer att göra det resulterande e-postmeddelandet oanvändbart för Git.</p>
+<p>Som standard radbryter Thunderbird både e-postmeddelanden och märker dem som <em>format=flowed</em>, vilket gör det resulterande mejlet oanvändbart för Git.</p>
 </div>
 <div class="paragraph">
-<p>Det finns tre olika tillvägagångssätt: använd ett tillägg för att stänga av radomslag, konfigurera Thunderbird så att det inte manipulerar patchar, eller använd en extern editor för att hindra Thunderbird från att manipulera patcharna.</p>
+<p>Det finns tre olika sätt: använd ett tillägg för att stänga av radbrytning, konfigurera Thunderbird så att det inte förvanskar patchar, eller använd en extern redigerare för att hindra Thunderbird från att förvanska patcharna.</p>
 </div>
 <div class="sect3">
 <h4 id="_metod_1_tillägg"><a class="anchor" href="#_metod_1_tillägg"></a>Metod #1 (tillägg)</h4>
@@ -914,7 +908,7 @@ $ git am a.patch</pre>
 <p>Installera tillägget Toggle Line Wrap som finns tillgängligt från <a href="https://addons.thunderbird.net/thunderbird/addon/toggle-line-wrap" class="bare">https://addons.thunderbird.net/thunderbird/addon/toggle-line-wrap</a>. Det lägger till en knapp "Line Wrap" i verktygsfältet för skrivandet som du kan bocka av. Nu kan du skriva meddelandet som du annars gör (klipp ut + klistra in, <em>git format-patch</em> | <em>git imap-send</em>, etc.), men du måste infoga radbrytningar manuellt i all text du skriver.</p>
 </div>
 <div class="paragraph">
-<p>Som en bonusfunktion, kan tillägget upptäcka patchtext i kompositören och varnar när radbrytning ännu inte har stängts av.</p>
+<p>Som bonus kan tillägget upptäcka patchtext i redigeringsfönstret och varna när radbrytning ännu inte har stängts av.</p>
 </div>
 <div class="paragraph">
 <p>Tillägget kräver några justeringar av den avancerade konfigurationen (about:config). Dessa listas på nedladdningssidan.</p>
@@ -928,15 +922,15 @@ $ git am a.patch</pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Konfigurera din e-postservers sammansättning som vanlig text: Redigera&#8230;&#8203;Kontoinställningar&#8230;&#8203;Sammansättning och adressering, avmarkera "Skriv meddelanden i HTML".</p>
+<p>Konfigurera meddelandeskrivning för kontot som vanlig text: Redigera&#8230;&#8203;Kontoinställningar&#8230;&#8203;Sammansättning och adressering, avmarkera "Skriv meddelanden i HTML".</p>
 </li>
 <li>
 <p>Konfigurera ditt allmänna kompositionsfönster så att det inte radbryts.</p>
 <div class="paragraph">
-<p>I Thunderbird 2: Redigera..Inställningar..Komposition, radbryt meddelanden i 0</p>
+<p>I Thunderbird 2: Redigera..Inställningar..Komposition, radbryt vanliga textmeddelanden vid 0</p>
 </div>
 <div class="paragraph">
-<p>I Thunderbird 3: Redigera..Inställningar..Avancerat..Konfigurationsredigerare. Sök efter "mail.wrap_long_lines". Aktivera den för att se till att den är inställd på <span class='synopsis'><code>false</code></span>. Sök också efter "mailnews.wraplength" och sätt värdet till 0.</p>
+<p>I Thunderbird 3: Redigera..Inställningar..Avancerat..Konfigurationsredigerare. Sök efter "mail.wrap_long_lines". Växla den så att den är inställd på <span class='synopsis'><code>false</code></span>. Sök också efter "mailnews.wraplength" och sätt värdet till 0.</p>
 </div>
 </li>
 <li>
@@ -945,13 +939,13 @@ $ git am a.patch</pre>
 </ol>
 </div>
 <div class="paragraph">
-<p>När det är klart borde du kunna skriva e-post som du annars skulle göra (klippa ut + klistra, <em>git format-patch</em> | <em>git imap-send</em>, etc.), och patcharna kommer inte att förstöras.</p>
+<p>När detta är gjort bör du kunna skriva e-post som vanligt (klipp + klistra, <em>git format-patch</em> | <em>git imap-send</em>, etc.), och patcharna förvanskas inte.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_metod_3_extern_redigerare"><a class="anchor" href="#_metod_3_extern_redigerare"></a>Metod #3 (extern redigerare)</h4>
 <div class="paragraph">
-<p>Följande Thunderbird-tillägg behövs: AboutConfig från <a href="https://mjg.github.io/AboutConfig/" class="bare">https://mjg.github.io/AboutConfig/</a> och Extern Editor från <a href="https://globs.org/articles.php?lng=en&amp;pg=8" class="bare">https://globs.org/articles.php?lng=en&amp;pg=8</a></p>
+<p>Följande Thunderbird-tillägg behövs: AboutConfig från <a href="https://mjg.github.io/AboutConfig/" class="bare">https://mjg.github.io/AboutConfig/</a> och External Editor från <a href="https://globs.org/articles.php?lng=en&amp;pg=8" class="bare">https://globs.org/articles.php?lng=en&amp;pg=8</a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -959,7 +953,7 @@ $ git am a.patch</pre>
 <p>Förbered patchen som en textfil med hjälp av din valda metod.</p>
 </li>
 <li>
-<p>Innan du öppnar ett skrivfönster, använd Redigera&#8594;Kontoinställningar för att avmarkera inställningen "Skriv meddelanden i HTML-format" i panelen "Skriv och adressering" för det konto som ska användas för att skicka patchen.</p>
+<p>Innan du öppnar ett skrivfönster, använd Redigera&#8594;Kontoinställningar för att avmarkera inställningen "Skriv meddelanden i HTML-format" i panelen "Sammansättning och adressering" för kontot som ska användas för att skicka patchen.</p>
 </li>
 <li>
 <p>I huvudfönstret i Thunderbird, innan du öppnar skrivfönstret för patchen, använd Verktyg&#8594;om:config för att ställa in följande till de angivna värdena:</p>
@@ -974,7 +968,7 @@ $ git am a.patch</pre>
 <p>Öppna ett skrivfönster och klicka på ikonen för den externa redigeraren.</p>
 </li>
 <li>
-<p>I det externa redigeringsfönstret, läser du in patchfilen och avslutar redigeraren normalt.</p>
+<p>I det externa redigeringsfönstret läser du in patchfilen och avslutar redigeraren normalt.</p>
 </li>
 </ol>
 </div>
@@ -996,7 +990,7 @@ $ git am a.patch</pre>
 <div class="sect2">
 <h3 id="_kmail"><a class="anchor" href="#_kmail"></a>KMail</h3>
 <div class="paragraph">
-<p>Detta borde hjälpa dig att skicka in patchar inline med KMail.</p>
+<p>Det här bör hjälpa dig att skicka in patchar inline med KMail.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1007,7 +1001,7 @@ $ git am a.patch</pre>
 <p>Klicka på Nytt meddelande.</p>
 </li>
 <li>
-<p>Gå under "Alternativ" i Composer-fönstret och se till att "Word wrap" inte är inställt.</p>
+<p>Gå till "Alternativ" i skrivfönstret och se till att "Word wrap" inte är aktiverat.</p>
 </li>
 <li>
 <p>Använd Meddelande &#8594; Infoga fil&#8230;&#8203; och infoga patchen.</p>
@@ -1021,16 +1015,16 @@ $ git am a.patch</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_basträds_information"><a class="anchor" href="#_basträds_information"></a>BASTRÄDS INFORMATION</h2>
+<h2 id="_basträdsinformation"><a class="anchor" href="#_basträdsinformation"></a>BASTRÄDSINFORMATION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Basträdets informationsblock används för att underhållare eller tredjepartstestare ska kunna veta exakt vilket tillstånd patchserien gäller för. Det består av "base incheckning", vilket är en välkänd incheckning som är en del av den stabila delen av projekthistoriken som alla andra arbetar utifrån, och noll eller fler "förutsatta patchar", vilka är välkända patchar under drift som ännu inte är en del av "base incheckning" och som måste tillämpas ovanpå "base incheckning" i topologisk ordning innan patcharna kan tillämpas.</p>
+<p>Informationsblocket för basträdet används så att underhållare eller testare från tredje part ska veta exakt vilket tillstånd patchserien gäller för. Det består av en "base commit", vilket är en välkänd incheckning i den stabila delen av projekthistoriken som andra arbetar utifrån, och noll eller flera "prerequisite patches", det vill säga välkända patchar under arbete som ännu inte ingår i "base commit" och som måste appliceras ovanpå "base commit" i topologisk ordning innan patcharna kan appliceras.</p>
 </div>
 <div class="paragraph">
-<p><em>Base incheckning</em> visas som "base-commit:" följt av 40-hexadecimalen i inchecknings-objektnamnet. En <em>prerequisite patch</em> visas som "prerequisite-patch-id:" följt av 40-hexadecimalen <em>patch id</em>, vilket kan erhållas genom att skicka patchen via kommandot <span class='synopsis'><code>git</code> <code>patch-id</code> <code>--stable</code></span>.</p>
+<p><em>Base commit</em> visas som "base-commit: " följt av incheckningsobjektnamnets 40-hex. En <em>prerequisite patch</em> visas som "prerequisite-patch-id: " följt av 40-hex-"patch id", som kan fås genom att köra patchen genom kommandot <span class='synopsis'><code>git</code> <code>patch-id</code> <code>--stable</code></span>.</p>
 </div>
 <div class="paragraph">
-<p>Tänk dig att du utöver den publika incheckningen P, applicerade välkända patchar X, Y och Z från någon annan, och sedan byggde din tre-patch-serie A, B, C, så skulle historiken se ut så här:</p>
+<p>Tänk dig att du, ovanpå den publika incheckningen P, applicerade välkända patchar X, Y och Z från någon annan och sedan byggde din patchserie med tre patchar: A, B, C. Historiken skulle då se ut så här:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -1038,7 +1032,7 @@ $ git am a.patch</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Med <span class='synopsis'><code>git</code> <code>format-patch</code> <code>--base=P</code> <code>-3</code> <code>C</code></span> (eller varianter därav, t.ex. med <span class='synopsis'><code>--cover-letter</code></span> eller med <span class='synopsis'><code>Z..C</code></span> istället för <span class='synopsis'><code>-3</code> <code>C</code></span> för att ange intervallet), visas informationsblocket i basträdet i slutet av det första meddelandet som kommandot matar ut (antingen den första patchen eller följebrevet), så här:</p>
+<p>Med <span class='synopsis'><code>git</code> <code>format-patch</code> <code>--base=P</code> <code>-3</code> <code>C</code></span> (eller varianter av det, till exempel med <span class='synopsis'><code>--cover-letter</code></span> eller med <span class='synopsis'><code>Z..C</code></span> i stället för <span class='synopsis'><code>-3</code> <code>C</code></span> för att ange intervallet) visas informationsblocket för basträdet i slutet av det första meddelande som kommandot skriver ut (antingen den första patchen eller följebrevet), så här:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1049,7 +1043,7 @@ prerequisite-patch-id: Z</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>För icke-linjär topologi, såsom</p>
+<p>För icke-linjär topologi, som</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -1062,7 +1056,7 @@ prerequisite-patch-id: Z</pre>
 <p>Du kan också använda <span class='synopsis'><code>git</code> <code>format-patch</code> <code>--base=P</code> <code>-3</code> <code>C</code></span> för att generera patchar för A, B och C, och identifierarna för P, X, Y, Z läggs till i slutet av det första meddelandet.</p>
 </div>
 <div class="paragraph">
-<p>Om <span class='synopsis'><code>--base=auto</code></span> sätts i kommandoraden, beräknas base incheckningen automatiskt som sammanslagings-bas för top incheckning för fjärrspårningsgrenen och revisionsintervallet som anges på kommandoraden. För en lokal gren måste du få den att spåra en fjärrgren med <span class='synopsis'><code>git</code> <code>branch</code> <code>--set-upstream-to</code></span> innan du använder det här alternativet.</p>
+<p>Om <span class='synopsis'><code>--base=auto</code></span> anges på kommandoraden beräknas <span class='synopsis'><code>base</code> <code>commit</code></span> automatiskt som merge-bas mellan toppincheckningen för fjärrspårade grenen och revisionsintervallet som anges på kommandoraden. För en lokal gren behöver du först låta den spåra en fjärrgren med <span class='synopsis'><code>git</code> <code>branch</code> <code>--set-upstream-to</code></span> innan du använder detta alternativ.</p>
 </div>
 </div>
 </div>
@@ -1072,7 +1066,7 @@ prerequisite-patch-id: Z</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Extrahera incheckningar mellan revisionerna R1 och R2 och applicera dem ovanpå den aktuella grenen med hjälp av <em>git am</em> för att välja ut dem:</p>
+<p>Extrahera incheckningar mellan revisionerna R1 och R2, och applicera dem ovanpå den aktuella grenen med <em>git am</em> för att cherry-picka dem:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ git format-patch -k --stdout R1..R2 | git am -3 -k</pre>
@@ -1080,7 +1074,7 @@ prerequisite-patch-id: Z</pre>
 </div>
 </li>
 <li>
-<p>Extrahera alla incheckningar som finns i den aktuella grenen men inte i ursprungsgrenen:</p>
+<p>Extrahera alla incheckningar som finns i den aktuella grenen men inte i grenen origin:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ git format-patch origin</pre>
@@ -1106,11 +1100,11 @@ prerequisite-patch-id: Z</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Dessutom, upptäcker och hanterar den intelligent namnbyten och fullständiga omskrivningar för att skapa en namnbytes-patch. En namnbytes-patch minskar mängden text som utmatas och gör det generellt lättare att granska. Observera att icke-Git "patch" program inte förstår namnbytes-patchar, så använd den bara när du vet att mottagaren använder Git för att tillämpa din patch.</p>
+<p>Dessutom upptäcker och hanterar den namnbyten och fullständiga omskrivningar på ett intelligent sätt för att skapa en namnbytespatch. En namnbytespatch minskar mängden text som skrivs ut och gör det oftast enklare att granska. Observera att icke-Git-"patch"-program inte förstår namnbytespatchar, så använd detta bara när du vet att mottagaren använder Git för att applicera patchen.</p>
 </div>
 </li>
 <li>
-<p>Extrahera tre översta incheckningar från den aktuella grenen och formatera dem som e-postbara patchar:</p>
+<p>Extrahera de tre senaste incheckningarna från den aktuella grenen och formatera dem som patchar för e-post:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ git format-patch -3</pre>
@@ -1125,7 +1119,7 @@ prerequisite-patch-id: Z</pre>
 <h2 id="_förbehåll"><a class="anchor" href="#_förbehåll"></a>FÖRBEHÅLL</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Observera att <span class='synopsis'><code>format-patch</code></span> utelämnar sammanslagnings-incheckningar från utdata, även om de ingår i det begärda intervallet. En enkel "patch" innehåller inte tillräckligt med information för att mottagaren ska kunna reproducera samma sammanslagnings-incheckning.</p>
+<p>Observera att <span class='synopsis'><code>format-patch</code></span> utelämnar sammanslagningsincheckningar från utdata, även om de ingår i det begärda intervallet. En enkel "patch" innehåller inte tillräckligt med information för att mottagaren ska kunna återskapa samma sammanslagningsincheckning.</p>
 </div>
 </div>
 </div>

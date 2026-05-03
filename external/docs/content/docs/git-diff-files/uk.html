@@ -35,7 +35,7 @@ headings:
 <h2 id="_назва"><a class="anchor" href="#_назва"></a>НАЗВА</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>git-diff-files - Порівнює файли в робочому дереві та індексі</p>
+<p>git-diff-files — Порівняння файлів у робочому дереві та індексі</p>
 </div>
 </div>
 </div>
@@ -51,7 +51,7 @@ headings:
 <h2 id="_опис"><a class="anchor" href="#_опис"></a>ОПИС</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Порівнює файли в робочому дереві та індексі. Якщо шляхи вказані, порівнюються лише ті, що мають іменовані шляхи. В іншому випадку порівнюються всі записи в індексі. Формат виводу такий самий, як для <em>git diff-index</em> та <em>git diff-tree</em>.</p>
+<p>Порівнює файли в робочому дереві та індексі. Якщо вказано шляхи, порівнюються лише файли за вказаними шляхами. В іншому випадку порівнюються всі записи в індексі. Формат виводу такий самий, як у команд <em>git diff-index</em> та <em>git diff-tree</em>.</p>
 </div>
 </div>
 </div>
@@ -74,7 +74,7 @@ headings:
 <dt class="hdlist1" id="git-diff-files-spanclasssynopsiscode-Ucodeemltngtemspan"> <a class="anchor" href="#git-diff-files--Un"></a> <a class="anchor" href="#git-diff-files-spanclasssynopsiscode-Ucodeemltngtemspan"></a><span class='synopsis'><code>-U</code><em>&lt;n&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-diff-files-spanclasssynopsiscode--unifiedcodeemltngtemspan"> <a class="anchor" href="#git-diff-files---unifiedn"></a> <a class="anchor" href="#git-diff-files-spanclasssynopsiscode--unifiedcodeemltngtemspan"></a><span class='synopsis'><code>--unified=</code><em>&lt;n&gt;</em></span> </dt>
 <dd>
-<p>Генерувати diff з <em>&lt;n&gt;</em> рядками контексту замість звичайних трьох.
+<p>Створити diffs з <em>&lt;n&gt;</em> рядками контексту. Зазвичай кількість рядків контексту дорівнює значенню <span class='synopsis'><code>diff.context</code></span> або 3, якщо ця змінна конфігурації не встановлена. (Опція <span class='synopsis'><code>-U</code></span> без аргументу <span class='synopsis'><em>&lt;n&gt;</em></span> через історичну випадковість мовчки приймається як синонім опції <span class='synopsis'><code>-p</code></span>).
 Мається на увазі <span class='synopsis'><code>--patch</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-diff-files-spanclasssynopsiscode--outputcodeemltgtemspan"> <a class="anchor" href="#git-diff-files---output"></a> <a class="anchor" href="#git-diff-files-spanclasssynopsiscode--outputcodeemltgtemspan"></a><span class='synopsis'><code>--output=</code><em>&lt;файл&gt;</em></span> </dt>
@@ -648,7 +648,10 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-diff-files-spanclasssynopsiscode--default-prefixcodespan"> <a class="anchor" href="#git-diff-files---default-prefix"></a> <a class="anchor" href="#git-diff-files-spanclasssynopsiscode--default-prefixcodespan"></a><span class='synopsis'><code>--default-prefix</code></span> </dt>
 <dd>
-<p>Використовувати типові префікси джерела та призначення ("a/" та "b/"). Замінює змінні конфігурації, такі як <span class='synopsis'><code>diff.noprefix</code></span>, <span class='synopsis'><code>diff.srcPrefix</code></span>, <span class='synopsis'><code>diff.dstPrefix</code></span> та <span class='synopsis'><code>diff.mnemonicPrefix</code></span> (див. <a href='{{< relurl "docs/git-config/uk" >}}'>git-config[1]</a>).</p>
+<p>Використовувати типові префікси джерела та призначення ("a/" та "b/").
+Перевизначає змінні конфігурації, такі як <span class='synopsis'><code>diff.noprefix</code></span>,
+<span class='synopsis'><code>diff.srcPrefix</code></span>, <span class='synopsis'><code>diff.dstPrefix</code></span> та <span class='synopsis'><code>diff.mnemonicPrefix</code></span>
+(див. <a href='{{< relurl "docs/git-config/uk" >}}'>git-config[1]</a>).</p>
 </dd>
 <dt class="hdlist1" id="git-diff-files-spanclasssynopsiscode--line-prefixcodeemltprefixgtemspan"> <a class="anchor" href="#git-diff-files---line-prefixprefix"></a> <a class="anchor" href="#git-diff-files-spanclasssynopsiscode--line-prefixcodeemltprefixgtemspan"></a><span class='synopsis'><code>--line-prefix=</code><em>&lt;prefix&gt;</em></span> </dt>
 <dd>
@@ -703,19 +706,19 @@ headings:
 <dt class="hdlist1" id="git-diff-files--3--theirs"> <a class="anchor" href="#git-diff-files--3--theirs"></a>-3 --theirs </dt>
 <dt class="hdlist1" id="git-diff-files--0"> <a class="anchor" href="#git-diff-files--0"></a>-0 </dt>
 <dd>
-<p>Різниця з "базовою" версією, "нашою гілкою" або "їхньою гілкою" відповідно. З цими опціями різниці для об&#8217;єднаних записів не відображаються.</p>
+<p>Різниця з "базовою" версією, "нашою гілкою" або "їхньою гілкою" відповідно. З цими опціями різниці для обʼєднаних записів не показуються.</p>
 <div class="paragraph">
-<p>За замовчуванням виконується порівняння з нашою гілкою (-2) та чисто вирішеними шляхами. Можна задати опцію -0, щоб пропустити вивід порівняння для необ&#8217;єднаних записів і просто показати "Не об&#8217;єднано".</p>
+<p>Зазвичай виконується порівняння з нашою гілкою (-2) та правильно встановленими шляхами. Можна вказати опцію -0, щоб приховати вивід diff для не обʼєднаних записів і показувати лише «Unmerged».</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-diff-files--c"> <a class="anchor" href="#git-diff-files--c"></a>-c </dt>
 <dt class="hdlist1" id="git-diff-files---cc"> <a class="anchor" href="#git-diff-files---cc"></a>--cc </dt>
 <dd>
-<p>Це порівнює етап 2 (наша гілка), етап 3 (їхня гілка) та робочий файл дерева, і виводить об&#8217;єднану різницю, подібно до того, як <em>diff-tree</em> показує коміт злиття з цими прапорцями.</p>
+<p>Ця команда порівнює satge 2 (нашу гілку), satge 3 (їхню гілку) та файл робочого дерева і виводить об’єднаний diff, подібно до того, як команда «diff-tree» показує коміт злиття з цими прапорцями.</p>
 </dd>
 <dt class="hdlist1" id="git-diff-files--q"> <a class="anchor" href="#git-diff-files--q"></a>-q </dt>
 <dd>
-<p>Зберігайте тишу навіть для неіснуючих файлів</p>
+<p>Не виводити повідомлення навіть для файлів, яких не існує</p>
 </dd>
 </dl>
 </div>
@@ -959,7 +962,7 @@ unmerged       :000000 000000 0000000 0000000 U file6</pre>
 <em>перейменувати в &lt;шлях&gt;</em>
 <em>індекс подібності &lt;номер&gt;</em>
 <em>індекс несхожості &lt;номер&gt;</em>
-<em>індекс <span class="hover-term" data-term="хеш">&lt;хеш&gt;</span>..<span class="hover-term" data-term="хеш">&lt;хеш&gt;</span> &lt;режим&gt;</em></pre>
+<em>індекс &lt;хеш&gt;..&lt;хеш&gt; &lt;режим&gt;</em></pre>
 </div>
 <div class="paragraph">
 <p>Режими файлів <em>&lt;режим&gt;</em> виводиться у вигляді 6-значні вісімкових чисел, включаючи тип файлу та біти прав доступу до файлу.</p>

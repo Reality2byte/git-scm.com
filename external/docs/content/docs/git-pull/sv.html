@@ -70,7 +70,7 @@ headings:
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><span class='synopsis'><code>git</code> <code>pull</code> <code>--ff-only</code></span> kommer bara att göra "snabbspola framåt"-uppdateringar: det misslyckas om din lokala gren har divergerat från fjärrgrenen. Detta är standardinställningen.</p>
+<p><span class='synopsis'><code>git</code> <code>pull</code> <code>--ff-only</code></span> gör endast snabbspolningsuppdateringar: det misslyckas om din lokala gren har divergerat från fjärrgrenen. Detta är standard.</p>
 </li>
 <li>
 <p><span class='synopsis'><code>git</code> <code>pull</code> <code>--rebase</code></span> kör <span class='synopsis'><code>git</code> <code>rebase</code></span></p>
@@ -98,7 +98,7 @@ headings:
 <dl>
 <dt class="hdlist1" id="git-pull-emltrepositorygtem"> <a class="anchor" href="#git-pull-repository"></a> <a class="anchor" href="#git-pull-emltrepositorygtem"></a><em>&lt;repository&gt;</em> </dt>
 <dd>
-<p>"Fjärr"-arkivet att hämta från. Detta kan antingen vara en URL (se avsnittet <a href="#URLS">GIT URLS</a> nedan) eller namnet på en fjärrenhet (se avsnittet <a href="#REMOTES">FJÄRR</a> nedan).</p>
+<p>"Fjärr"-kodförrådet att hämta från. Detta kan antingen vara en URL (se avsnittet <a href="#URLS">GIT URLS</a> nedan) eller namnet på en fjärr (se avsnittet <a href="#REMOTES">FJÄRRAR</a> nedan).</p>
 <div class="paragraph">
 <p>Standardinställningen är den konfigurerade uppströmsfilen för den aktuella grenen, eller <span class='synopsis'><code>origin</code></span>. Se <a href="#UPSTREAM-BRANCHES">UPPSTRÖMS-GRENAR</a> nedan för mer information om hur man konfigurerar uppströmsfilar.</p>
 </div>
@@ -107,13 +107,13 @@ headings:
 <dd>
 <p>Vilken gren eller annan referens(er) som ska hämtas och integreras i den aktuella grenen, till exempel <span class='synopsis'><code>main</code></span> i <span class='synopsis'><code>git</code> <code>pull</code> <code>origin</code> <code>main</code></span>. Standardinställningen är den konfigurerade uppström för den aktuella grenen.</p>
 <div class="paragraph">
-<p>Detta kan vara en gren, tagg eller annan samling av referenser. Se <a href="#fetch-referensspecifikation"><em>&lt;refspec&gt;</em></a> nedan under "Alternativ relaterade till hämtning" för den fullständiga syntaxen, och <a href="#DEFAULT-BEHAVIOUR">STANDARDBETEENDE</a> nedan för hur <span class='synopsis'><code>git</code> <code>pull</code></span> använder detta argument för att avgöra vilken fjärrgren som ska integreras.</p>
+<p>Det kan vara en gren, tagg eller annan samling av referenser. Se <a href="#fetch-refspec"><em>&lt;refspec&gt;</em></a> nedan under "Alternativ relaterade till hämtning" för den fullständiga syntaxen, och <a href="#DEFAULT-BEHAVIOUR">STANDARDBETEENDE</a> nedan för hur <span class='synopsis'><code>git</code> <code>pull</code></span> använder detta argument för att avgöra vilken fjärrgren som ska integreras.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode-qcodespan"> <a class="anchor" href="#git-pull--q"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode-qcodespan"></a><span class='synopsis'><code>-q</code></span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--quietcodespan"> <a class="anchor" href="#git-pull---quiet"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--quietcodespan"></a><span class='synopsis'><code>--quiet</code></span> </dt>
 <dd>
-<p>Detta skickas till både underliggande git-fetch till kväva rapportering under överföring, och underliggande git-merge för att kväva-utdata under sammanslagning.</p>
+<p>Detta skickas både till underliggande git-fetch för att tysta rapporteringen under överföring och till underliggande git-merge för att tysta utdata under sammanslagning.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode-vcodespan"> <a class="anchor" href="#git-pull--v"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode-vcodespan"></a><span class='synopsis'><code>-v</code></span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--verbosecodespan"> <a class="anchor" href="#git-pull---verbose"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--verbosecodespan"></a><span class='synopsis'><code>--verbose</code></span> </dt>
@@ -123,7 +123,7 @@ headings:
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--recurse-submodulescodecodecodecodeyescodecodeon-demandcodecodenocodespan"> <a class="anchor" href="#git-pull---recurse-submodulesyeson-demandno"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--recurse-submodulescodecodecodecodeyescodecodeon-demandcodecodenocodespan"></a><span class='synopsis'><code>--recurse-submodules</code>[<code>=</code>(<code>yes</code>|<code>on-demand</code>|<code>no</code>)]</span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--no-recurse-submodulescodespan"> <a class="anchor" href="#git-pull---no-recurse-submodules"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--no-recurse-submodulescodespan"></a><span class='synopsis'><code>--no-recurse-submodules</code></span> </dt>
 <dd>
-<p>Det här alternativet styr om nya incheckningar för ifyllda undermoduler ska hämtas, och om de fungerande träden för aktiva undermoduler också ska uppdateras (se <a href='{{< relurl "docs/git-fetch/sv" >}}'>git-fetch[1]</a>, <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a> och <a href='{{< relurl "docs/gitmodules/sv" >}}'>gitmodules[5]</a>).</p>
+<p>Alternativet styr om nya incheckningar för ifyllda undermoduler ska hämtas, och om de fungerande träden för aktiva undermoduler också ska uppdateras (se <a href='{{< relurl "docs/git-fetch/sv" >}}'>git-fetch[1]</a>, <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a> och <a href='{{< relurl "docs/gitmodules/sv" >}}'>gitmodules[5]</a>).</p>
 <div class="paragraph">
 <p>Om utcheckningen görs via ombasering, ombaseras även lokala undermodul-incheckningar.</p>
 </div>
@@ -143,24 +143,24 @@ headings:
 <p>Utför sammanslagningen och spara resultatet. Det här alternativet kan användas för att åsidosätta <span class='synopsis'><code>--no-commit</code></span>.
 Endast användbart vid sammanslagning.</p>
 <div class="paragraph">
-<p>Med <span class='synopsis'><code>--no-commit</code></span> utför du sammanslagnings-funktionen och stoppar den precis innan du skapar en sammanslagnings-incheckning, för att ge användaren en chans att granska och ytterligare justera sammanslagnings-resultatet innan den checkar in.</p>
+<p>Med <span class='synopsis'><code>--no-commit</code></span> utför du sammanslagnings-funktionen och stoppar den precis innan du skapar en sammanslagningsincheckning, för att ge användaren en chans att granska och ytterligare justera sammanslagningsresultatet innan den checkar in.</p>
 </div>
 <div class="paragraph">
-<p>Observera att snabbspolningsuppdateringar inte skapar en sammanslagins-incheckning och därför finns det inget sätt att stoppa dessa sammanslagningar med <span class='synopsis'><code>--no-commit</code></span>. Om du vill se till att din gren inte ändras eller uppdateras av sammanslagings-kommandot, använd <span class='synopsis'><code>--no-ff</code></span> med <span class='synopsis'><code>--no-commit</code></span>.</p>
+<p>Observera att snabbspolningsuppdateringar inte skapar en sammanslagningsincheckning och därför finns det inget sätt att stoppa dessa sammanslagningar med <span class='synopsis'><code>--no-commit</code></span>. Om du vill se till att din gren inte ändras eller uppdateras av sammanslagnings-kommandot, använd <span class='synopsis'><code>--no-ff</code></span> med <span class='synopsis'><code>--no-commit</code></span>.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--editcodespan"> <a class="anchor" href="#git-pull---edit"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--editcodespan"></a><span class='synopsis'><code>--edit</code></span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode-ecodespan"> <a class="anchor" href="#git-pull--e"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode-ecodespan"></a><span class='synopsis'><code>-e</code></span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--no-editcodespan"> <a class="anchor" href="#git-pull---no-edit"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--no-editcodespan"></a><span class='synopsis'><code>--no-edit</code></span> </dt>
 <dd>
-<p>Anropa en editor innan den mekaniska sammanslagningen genomförs för att ytterligare redigera det automatiskt genererade sammanlagningsmeddelandet, så att användaren kan förklara och motivera sammanslagningen. Alternativet <span class='synopsis'><code>--no-edit</code></span> kan användas för att acceptera det automatiskt genererade meddelandet (detta avråds generellt).</p>
+<p>Anropa en redigerare innan den mekaniska sammanslagningen genomförs för att ytterligare redigera det automatiskt genererade sammanslagningsmeddelandet, så att användaren kan förklara och motivera sammanslagningen. Alternativet <span class='synopsis'><code>--no-edit</code></span> kan användas för att acceptera det automatiskt genererade meddelandet (detta avråds generellt).</p>
 <div class="paragraph">
-<p>Äldre skript kan bero på det historiska beteendet att inte tillåta användaren att redigera sammanslagningsloggmeddelandet. De kommer att se en editor öppen när de kör <span class='synopsis'><code>git</code> <code>merge</code></span>. För att göra det enklare att anpassa sådana skript till det uppdaterade beteendet kan miljövariabeln <span class='synopsis'><code>GIT_MERGE_AUTOEDIT</code></span> sättas till <span class='synopsis'><code>no</code></span> i början av dem.</p>
+<p>Äldre skript kan bero på det historiska beteendet att inte tillåta användaren att redigera sammanslagningsloggmeddelandet. De kommer att se en redigerare öppnas när de kör <span class='synopsis'><code>git</code> <code>merge</code></span>. För att göra det enklare att anpassa sådana skript till det uppdaterade beteendet kan miljövariabeln <span class='synopsis'><code>GIT_MERGE_AUTOEDIT</code></span> sättas till <span class='synopsis'><code>no</code></span> i början av dem.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--cleanupcodeemltlgegtemspan"> <a class="anchor" href="#git-pull---cleanuplge"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--cleanupcodeemltlgegtemspan"></a><span class='synopsis'><code>--cleanup=</code><em>&lt;läge&gt;</em></span> </dt>
 <dd>
-<p>Det här alternativet avgör hur sammanslagningsmeddelandet ska rensas innan det incheckas. Se <a href='{{< relurl "docs/git-commit/sv" >}}'>git-commit[1]</a> för mer information. Om <em>&lt;läge&gt;</em> dessutom ges värdet <span class='synopsis'><code>scissors</code></span>, kommer scissors att läggas till i <span class='synopsis'><code>MERGE_MSG</code></span> innan de skickas vidare till inchecknings-maskineriet i händelse av en sammanslagningskonflikt.</p>
+<p>Det här alternativet avgör hur sammanslagningsmeddelandet ska rensas innan det incheckas. Se <a href='{{< relurl "docs/git-commit/sv" >}}'>git-commit[1]</a> för mer information. Om <em>&lt;läge&gt;</em> dessutom ges värdet <span class='synopsis'><code>scissors</code></span>, kommer scissors att läggas till i <span class='synopsis'><code>MERGE_MSG</code></span> innan de skickas vidare till incheckningsmaskineriet i händelse av en sammanslagningskonflikt.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--ff-onlycodespan"> <a class="anchor" href="#git-pull---ff-only"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--ff-onlycodespan"></a><span class='synopsis'><code>--ff-only</code></span> </dt>
 <dd>
@@ -171,10 +171,10 @@ Endast användbart vid sammanslagning.</p>
 <dd>
 <p>Vid sammanslagning snarare än ombasering, anger detta hur en sammanslagning hanteras när den sammanslagna historiken redan är en underordnad del av den aktuella historiken. Om sammanslagning begärs är <span class='synopsis'><code>--ff</code></span> standardinställningen såvida inte en kommenterad (och eventuellt signerad) tagg som inte lagras på sin naturliga plats i <span class='synopsis'><code>refs/tags/</code></span>-hierarkin sammanfogas, i vilket fall <span class='synopsis'><code>--no-ff</code></span> antas.</p>
 <div class="paragraph">
-<p>Med <span class='synopsis'><code>--ff</code></span>, lös när det är möjligt sammanslagningen som en snabbspolning framåt (uppdatera endast grenpekaren så att den matchar den sammanslagna grenen; skapa inte en merge-commit). När det inte är möjligt (när den sammanslagna historiken inte är en underordnad del av den aktuella historiken), skapa en sammanslagings-incheckning.</p>
+<p>Med <span class='synopsis'><code>--ff</code></span>, lös när det är möjligt sammanslagningen som en snabbspolning (uppdatera endast grenpekaren så att den matchar den sammanslagna grenen; skapa inte en sammanslagningsincheckning). När det inte är möjligt (när den sammanslagna historiken inte är en underordnad del av den aktuella historiken), skapa en sammanslagningsincheckning.</p>
 </div>
 <div class="paragraph">
-<p>Med <span class='synopsis'><code>--no-ff</code></span>, skapa en sammanslagings-incheckning i alla fall, även när merge istället skulle kunna lösas som en snabbspolning framåt.</p>
+<p>Med <span class='synopsis'><code>--no-ff</code></span>, skapa en sammanslagningsincheckning i alla fall, även när sammanslagningen i stället skulle kunna lösas som en snabbspolning.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode-Scodeemltnyckel-idgtemspan"> <a class="anchor" href="#git-pull--Snyckel-id"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode-Scodeemltnyckel-idgtemspan"></a><span class='synopsis'><code>-S</code>[<em>&lt;nyckel-id&gt;</em>]</span> </dt>
@@ -195,7 +195,7 @@ Endast användbart vid sammanslagning.</p>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--signoffcodespan"> <a class="anchor" href="#git-pull---signoff"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--signoffcodespan"></a><span class='synopsis'><code>--signoff</code></span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--no-signoffcodespan"> <a class="anchor" href="#git-pull---no-signoff"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--no-signoffcodespan"></a><span class='synopsis'><code>--no-signoff</code></span> </dt>
 <dd>
-<p>Lägg till en `Signed-off-by`släprad av incheckaren i slutet av inchecknings-loggmeddelandet. Betydelsen av en signering beror på det projekt du checka-in till. Det kan till exempel intyga att incheckaren har rätt att skicka in arbetet under projektets licens eller godkänner någon bidragsgivares representation, till exempel ett Developer Certificate of Origin. (Se <a href="https://developercertificate.org" class="bare">https://developercertificate.org</a> för det som används av Linuxkärnan och Git-projekten.) Konsultera dokumentationen eller ledningen för projektet du bidrar till för att förstå hur signeringarna används i det projektet.</p>
+<p>Lägg till en <span class='synopsis'><code>Signed-off-by</code></span> i slutet av incheckningsloggmeddelandet. Betydelsen av en signering beror på det projekt som bidrag lämnas till. Det kan till exempel intyga att incheckaren har rätt att skicka in arbetet under projektets licens eller godkänner någon bidragsgivares representation, till exempel ett Developer Certificate of Origin. (Se <a href="https://developercertificate.org" class="bare">https://developercertificate.org</a> för det som används av Linuxkärnan och Git-projekten.) Konsultera dokumentationen eller ledningen för det aktuella projektet för att förstå hur signering används där.</p>
 <div class="paragraph">
 <p>Alternativet <span class='synopsis'><code>--no-signoff</code></span> kan användas för att upphäva ett tidigare <span class='synopsis'><code>--signoff</code></span>-alternativ på kommandoraden.</p>
 </div>
@@ -223,7 +223,7 @@ Endast användbart vid sammanslagning.</p>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--squashcodespan"> <a class="anchor" href="#git-pull---squash"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--squashcodespan"></a><span class='synopsis'><code>--squash</code></span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--no-squashcodespan"> <a class="anchor" href="#git-pull---no-squash"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--no-squashcodespan"></a><span class='synopsis'><code>--no-squash</code></span> </dt>
 <dd>
-<p>Skapa arbetsträdet och indextillståndet som om en riktig sammanslagning hade skett (förutom sammanslagningsinformationen), men gör inte en faktisk incheckning, flytta inte <span class='synopsis'><code>HEAD</code></span> eller registrera <span class='synopsis'><code>$GIT_DIR/MERGE_HEAD</code></span> (för att få nästa <span class='synopsis'><code>git</code> <code>commit</code></span>-kommando att skapa en sammanslagnings-incheckning). Detta låter dig skapa en enda incheckning ovanpå den aktuella grenen vars effekt är densamma som att sammanfoga en annan gren (eller fler i fallet med en bläckfisk).</p>
+<p>Skapa arbetsträdet och indextillståndet som om en riktig sammanslagning hade skett (förutom sammanslagningsinformationen), men gör inte en faktisk incheckning, flytta inte <span class='synopsis'><code>HEAD</code></span> eller registrera <span class='synopsis'><code>$GIT_DIR/MERGE_HEAD</code></span> (för att få nästa <span class='synopsis'><code>git</code> <code>commit</code></span>-kommando att skapa en sammanslagningsincheckning). Detta låter dig skapa en enda incheckning ovanpå den aktuella grenen vars effekt är densamma som att sammanfoga en annan gren (eller fler i fallet med en bläckfisk).</p>
 <div class="paragraph">
 <p>Med <span class='synopsis'><code>--no-squash</code></span> utförs sammanslagningen och chacka-in resultatet. Detta alternativ kan användas för att åsidosätta <span class='synopsis'><code>--squash</code></span>.</p>
 </div>
@@ -237,13 +237,13 @@ Endast användbart vid sammanslagning.</p>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--verifycodespan"> <a class="anchor" href="#git-pull---verify"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--verifycodespan"></a><span class='synopsis'><code>--verify</code></span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--no-verifycodespan"> <a class="anchor" href="#git-pull---no-verify"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--no-verifycodespan"></a><span class='synopsis'><code>--no-verify</code></span> </dt>
 <dd>
-<p>Som standard, körs pre-merge- och commit-msg-krokarna. När <span class='synopsis'><code>--no-verify</code></span> anges, kringgås dessa. Se även <a href='{{< relurl "docs/githooks/sv" >}}'>githooks[5]</a>.
+<p>Som standard körs pre-merge- och commit-msg-krokarna. När <span class='synopsis'><code>--no-verify</code></span> anges, kringgås dessa. Se även <a href='{{< relurl "docs/githooks/sv" >}}'>githooks[5]</a>.
 Endast användbart vid sammanslagning.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode-scodeemltstrategigtemspan"> <a class="anchor" href="#git-pull--sstrategi"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode-scodeemltstrategigtemspan"></a><span class='synopsis'><code>-s</code> <em>&lt;strategi&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--strategycodeemltstrategigtemspan"> <a class="anchor" href="#git-pull---strategystrategi"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--strategycodeemltstrategigtemspan"></a><span class='synopsis'><code>--strategy=</code><em>&lt;strategi&gt;</em></span> </dt>
 <dd>
-<p>Använd den givna sammanslagningsstrategin; kan anges mer än en gång för att ange dem i den ordning de ska provas. Om det inte finns något <span class='synopsis'><code>-s</code></span>-alternativ används en inbyggd lista med strategier istället (<span class='synopsis'><code>ort</code></span> vid sammanslagning av en enskild rubrik, <span class='synopsis'><code>octopus</code></span> annars).</p>
+<p>Använd den givna sammanslagningsstrategin; kan anges mer än en gång för att ange dem i den ordning de ska provas. Om det inte finns något <span class='synopsis'><code>-s</code></span>-alternativ används en inbyggd lista med strategier i stället (<span class='synopsis'><code>ort</code></span> vid sammanslagning av en enskild rubrik, <span class='synopsis'><code>octopus</code></span> annars).</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode-Xcodeemltalternativgtemspan"> <a class="anchor" href="#git-pull--Xalternativ"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode-Xcodeemltalternativgtemspan"></a><span class='synopsis'><code>-X</code> <em>&lt;alternativ&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--strategy-optioncodeemltalternativgtemspan"> <a class="anchor" href="#git-pull---strategy-optionalternativ"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--strategy-optioncodeemltalternativgtemspan"></a><span class='synopsis'><code>--strategy-option=</code><em>&lt;alternativ&gt;</em></span> </dt>
@@ -266,7 +266,7 @@ Endast användbart vid sammanslagning.</p>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--autostashcodespan"> <a class="anchor" href="#git-pull---autostash"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--autostashcodespan"></a><span class='synopsis'><code>--autostash</code></span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--no-autostashcodespan"> <a class="anchor" href="#git-pull---no-autostash"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--no-autostashcodespan"></a><span class='synopsis'><code>--no-autostash</code></span> </dt>
 <dd>
-<p>Skapa automatiskt en tillfällig gömma-post innan operationen börjar, registrera den i referensen <span class='synopsis'><code>MERGE_AUTOSTASH</code></span> och tillämpa den efter att operationen är avslutad. Det betyder att du kan köra operationen på ett smutsigt arbetsträd. Använd dock försiktigt: den slutliga gömma-applikationen efter en lyckad sammanslagning kan resultera i icke-triviala konflikter.</p>
+<p>Skapa automatiskt en tillfällig gömd post innan operationen börjar, registrera den i referensen <span class='synopsis'><code>MERGE_AUTOSTASH</code></span> och tillämpa den efter att operationen är avslutad. Det betyder att du kan köra operationen på ett smutsigt arbetsträd. Använd dock försiktigt: den slutliga tillämpningen av gömman efter en lyckad sammanslagning kan resultera i icke-triviala konflikter.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--allow-unrelated-historiescodespan"> <a class="anchor" href="#git-pull---allow-unrelated-histories"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--allow-unrelated-historiescodespan"></a><span class='synopsis'><code>--allow-unrelated-histories</code></span> </dt>
 <dd>
@@ -286,11 +286,11 @@ Endast användbart vid sammanslagning.</p>
 <dl>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscodetruecodespan"> <a class="anchor" href="#git-pull-true"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscodetruecodespan"></a><span class='synopsis'><code>true</code></span> </dt>
 <dd>
-<p>Ombasera den aktuella grenen ovanpå den uppströms grenen efter hämtning. Om det finns en fjärrspårningsgren som motsvarar den uppströms grenen och den uppströms grenen har ombaserats sedan den senaste hämtningen, använder ombasen den informationen för att undvika ombasering av icke-lokala ändringar. Detta är standardinställningen.</p>
+<p>Ombasera den aktuella grenen ovanpå den uppströms grenen efter hämtning. Om det finns en fjärrspårad gren som motsvarar den uppströms grenen och den uppströms grenen har ombaserats sedan den senaste hämtningen, använder ombasen den informationen för att undvika ombasering av icke-lokala ändringar. Detta är standardinställningen.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscodemergescodespan"> <a class="anchor" href="#git-pull-merges"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscodemergescodespan"></a><span class='synopsis'><code>merges</code></span> </dt>
 <dd>
-<p>ombasering med <span class='synopsis'><code>git</code> <code>rebase</code> <code>--rebase-merges</code></span> så att de lokala sammanslagnings-incheckningar inkluderas i rebasen (se <a href='{{< relurl "docs/git-rebase/sv" >}}'>git-rebase[1]</a> för detaljer).</p>
+<p>ombasering med <span class='synopsis'><code>git</code> <code>rebase</code> <code>--rebase-merges</code></span> så att de lokala sammanslagningsincheckningar inkluderas i rebasen (se <a href='{{< relurl "docs/git-rebase/sv" >}}'>git-rebase[1]</a> för detaljer).</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscodefalsecodespan"> <a class="anchor" href="#git-pull-false"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscodefalsecodespan"></a><span class='synopsis'><code>false</code></span> </dt>
 <dd>
@@ -303,7 +303,7 @@ Endast användbart vid sammanslagning.</p>
 </dl>
 </div>
 <div class="paragraph">
-<p>Se <span class='synopsis'><code>pull.rebase</code></span>, <span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.rebase</code></span> och <span class='synopsis'><code>branch.autoSetupRebase</code></span> i <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a> om du vill att <span class='synopsis'><code>git</code> <code>pull</code></span> alltid ska använda <span class='synopsis'><code>--rebase</code></span> istället för sammanslagning.</p>
+<p>Se <span class='synopsis'><code>pull.rebase</code></span>, <span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.rebase</code></span> och <span class='synopsis'><code>branch.autoSetupRebase</code></span> i <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a> om du vill att <span class='synopsis'><code>git</code> <code>pull</code></span> alltid ska använda <span class='synopsis'><code>--rebase</code></span> i stället för sammanslagning.</p>
 </div>
 <div class="paragraph">
 <p>+</p>
@@ -315,7 +315,7 @@ Endast användbart vid sammanslagning.</p>
 <div class="title">Note</div>
 </td>
 <td class="content">
-Detta är ett potentiellt <em>farligt</em> driftläge. Det skriver om historiken, vilket inte bådar gott när du redan har publicerat den historiken. Använd <strong>inte</strong> det här alternativet om du inte har läst <a href='{{< relurl "docs/git-rebase/sv" >}}'>git-rebase[1]</a> noggrant.
+Det är ett potentiellt <em>farligt</em> driftläge. Det skriver om historiken, vilket inte bådar gott när du redan har publicerat den historiken. Använd <strong>inte</strong> det här alternativet om du inte har läst <a href='{{< relurl "docs/git-rebase/sv" >}}'>git-rebase[1]</a> noggrant.
 </td>
 </tr>
 </table>
@@ -335,7 +335,7 @@ Detta är ett potentiellt <em>farligt</em> driftläge. Det skriver om historiken
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--allcodespan"> <a class="anchor" href="#git-pull---all"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--allcodespan"></a><span class='synopsis'><code>--all</code></span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--no-allcodespan"> <a class="anchor" href="#git-pull---no-all"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--no-allcodespan"></a><span class='synopsis'><code>--no-all</code></span> </dt>
 <dd>
-<p>Hämta ("fetcha") alla fjärrar, förutom de som har konfigurationsvariabeln <span class='synopsis'><code>remote.</code><em>&lt;namn&gt;</em><code>.skipFetchAll</code></span> angiven. Detta åsidosätter konfigurationsvariabeln <span class='synopsis'><code>fetch.all</code></span>.</p>
+<p>Hämta ("hämta") alla fjärrar, förutom de som har konfigurationsvariabeln <span class='synopsis'><code>remote.</code><em>&lt;namn&gt;</em><code>.skipFetchAll</code></span> angiven. Detta åsidosätter konfigurationsvariabeln <span class='synopsis'><code>fetch.all</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode-acodespan"> <a class="anchor" href="#git-pull--a"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode-acodespan"></a><span class='synopsis'><code>-a</code></span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--appendcodespan"> <a class="anchor" href="#git-pull---append"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--appendcodespan"></a><span class='synopsis'><code>--append</code></span> </dt>
@@ -348,11 +348,11 @@ Detta är ett potentiellt <em>farligt</em> driftläge. Det skriver om historiken
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--depthcodeemltdjupgtemspan"> <a class="anchor" href="#git-pull---depthdjup"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--depthcodeemltdjupgtemspan"></a><span class='synopsis'><code>--depth=</code><em>&lt;djup&gt;</em></span> </dt>
 <dd>
-<p>Begränsa hämtningen till det angivna antalet incheckningar från toppen av varje fjärrgrenhistorik. Om hämtning sker till ett ytligt-kodförråd (<em>shallow</em>) skapat av <span class='synopsis'><code>git</code> <code>clone</code></span> med alternativet <span class='synopsis'><code>--depth=</code><em>&lt;djup&gt;</em></span> (se <a href='{{< relurl "docs/git-clone/sv" >}}'>git-clone[1]</a>), fördjupa eller förkorta historiken till det angivna antalet incheckningar. Taggar för de fördjupade incheckningar hämtas inte.</p>
+<p>Begränsa hämtningen till det angivna antalet incheckningar från toppen av varje fjärrgrenhistorik. Om hämtning sker till ett ytligt kodförråd ("shallow") som skapats av <span class='synopsis'><code>git</code> <code>clone</code></span> med alternativet <span class='synopsis'><code>--depth=</code><em>&lt;djup&gt;</em></span> (se <a href='{{< relurl "docs/git-clone/sv" >}}'>git-clone[1]</a>), fördjupa eller förkorta historiken till det angivna antalet incheckningar. Taggar för de fördjupade incheckningarna hämtas inte.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--deepencodeemltdjupgtemspan"> <a class="anchor" href="#git-pull---deependjup"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--deepencodeemltdjupgtemspan"></a><span class='synopsis'><code>--deepen=</code><em>&lt;djup&gt;</em></span> </dt>
 <dd>
-<p>spetsenspetsenLiknar <span class='synopsis'><code>--depth</code></span>, förutom att den anger antalet incheckningar från den aktuella ytliga gränsen istället för från topen av varje fjärrgrenhistorik.</p>
+<p>Liknar <span class='synopsis'><code>--depth</code></span>, men anger antalet incheckningar från den aktuella ytliga gränsen i stället för från toppen av varje fjärrgrenhistorik.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--shallow-sincecodeemltdatumgtemspan"> <a class="anchor" href="#git-pull---shallow-sincedatum"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--shallow-sincecodeemltdatumgtemspan"></a><span class='synopsis'><code>--shallow-since=</code><em>&lt;datum&gt;</em></span> </dt>
 <dd>
@@ -364,7 +364,7 @@ Detta är ett potentiellt <em>farligt</em> driftläge. Det skriver om historiken
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--unshallowcodespan"> <a class="anchor" href="#git-pull---unshallow"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--unshallowcodespan"></a><span class='synopsis'><code>--unshallow</code></span> </dt>
 <dd>
-<p>Om käll-repot är komplett, konvertera ett ytligt kodförråd till ett komplett, och ta bort alla begränsningar som ytliga repon medför.</p>
+<p>Om källkodförrådet är komplett, konvertera ett ytligt kodförråd till ett komplett och ta bort alla begränsningar som ytliga kodförråd medför.</p>
 <div class="paragraph">
 <p>Om källkodförrådet är ytligt, hämta så mycket som möjligt så att det aktuella kodförrådet har samma historik som källkodförrådet.</p>
 </div>
@@ -375,12 +375,12 @@ Detta är ett potentiellt <em>farligt</em> driftläge. Det skriver om historiken
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--negotiation-tipcodeemltincheckninggtememltglobgtemspan"> <a class="anchor" href="#git-pull---negotiation-tipincheckningglob"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--negotiation-tipcodeemltincheckninggtememltglobgtemspan"></a><span class='synopsis'><code>--negotiation-tip=</code>(<em><span class="hover-term" data-term="incheckning">&lt;incheckning&gt;</span></em>|<em>&lt;glob&gt;</em>)</span> </dt>
 <dd>
-<p>Som standard, rapporterar Git incheckningar till servern som är nåbara från alla lokala referenser för att hitta gemensamma incheckningar i ett försök att minska storleken på den packfil som ska tas emot. Om detta anges kommer Git bara att rapportera incheckningar som är nåbara från de givna toppar. Detta är användbart för att påskynda hämtningar när användaren vet vilken lokal referens som sannolikt har incheckningar gemensamt med den uppströms referens som hämtas.</p>
+<p>Som standard rapporterar Git incheckningar till servern som är nåbara från alla lokala referenser för att hitta gemensamma incheckningar i ett försök att minska storleken på den packfil som ska tas emot. Om detta anges kommer Git bara att rapportera incheckningar som är nåbara från de angivna topparna. Detta är användbart för att påskynda hämtningar när användaren vet vilken lokal referens som sannolikt har incheckningar gemensamt med den uppströmsreferens som hämtas.</p>
 <div class="paragraph">
 <p>Det här alternativet kan anges mer än en gång; om så är fallet kommer Git att rapportera incheckningar som är åtkomliga från vilken som helst av de givna incheckningar.</p>
 </div>
 <div class="paragraph">
-<p>Argumentet till detta alternativ kan vara en glob på referensnamn, en ref eller (eventuellt förkortad) SHA-1 för en commit. Att ange en glob är liktydigt med att ange detta alternativ flera gånger, en för varje matchande referensnamn.</p>
+<p>Argumentet till detta alternativ kan vara en glob på referensnamn, en ref eller (eventuellt förkortad) SHA-1 för en incheckning. Att ange en glob är liktydigt med att ange detta alternativ flera gånger, en för varje matchande referensnamn.</p>
 </div>
 <div class="paragraph">
 <p>Se även konfigurationsvariablerna <span class='synopsis'><code>fetch.negotiationAlgorithm</code></span> och <span class='synopsis'><code>push.negotiate</code></span> som är dokumenterade i <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>, och alternativet <span class='synopsis'><code>--negotiate-only</code></span> nedan.</p>
@@ -388,7 +388,7 @@ Detta är ett potentiellt <em>farligt</em> driftläge. Det skriver om historiken
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--negotiate-onlycodespan"> <a class="anchor" href="#git-pull---negotiate-only"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--negotiate-onlycodespan"></a><span class='synopsis'><code>--negotiate-only</code></span> </dt>
 <dd>
-<p>Hämta ingenting från servern, och skriv istället ut de förfäder till den angivna <span class='synopsis'><code>--negotiation-tip=</code></span>-argumenten, som vi har gemensamt med servern.</p>
+<p>Hämta ingenting från servern, och skriv i stället ut de förfäder till de angivna <span class='synopsis'><code>--negotiation-tip=</code></span>-argumenten som vi har gemensamt med servern.</p>
 <div class="paragraph">
 <p>Detta är inkompatibelt med <span class='synopsis'><code>--recurse-submodules=</code>(<code>yes</code>|<code>on-demand</code>)</span>. Internt används detta för att implementera alternativet <span class='synopsis'><code>push.negotiate</code></span>, se <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>.</p>
 </div>
@@ -402,6 +402,19 @@ Detta är ett potentiellt <em>farligt</em> driftläge. Det skriver om historiken
 <p>Skriv ut utdata till standardutdata i ett lätttolkat format för skript. Se avsnittet UTMATNING i <a href='{{< relurl "docs/git-fetch/sv" >}}'>git-fetch[1]</a> för mer information.</p>
 <div class="paragraph">
 <p>Detta är inkompatibelt med <span class='synopsis'><code>--recurse-submodules=</code>(<code>yes</code>|<code>on-demand</code>)</span> och har företräde framför konfigurationsalternativet <span class='synopsis'><code>fetch.output</code></span>.</p>
+</div>
+</dd>
+<dt class="hdlist1" id="git-pull-spanclasssynopsiscode--filtercodeemltfilter-specgtemspan"> <a class="anchor" href="#git-pull---filterfilter-spec"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--filtercodeemltfilter-specgtemspan"></a><span class='synopsis'><code>--filter=</code><em>&lt;filter-spec&gt;</em></span> </dt>
+<dd>
+<p>Use the partial clone feature and request that the server sends a subset of reachable objects according to a given object filter. When using <span class='synopsis'><code>--filter</code></span>, the supplied <em>&lt;filter-spec&gt;</em> is used for the partial fetch.</p>
+<div class="paragraph">
+<p>If <span class='synopsis'><code>--filter=auto</code></span> is used, the filter specification is determined automatically by combining the filter specifications advertised by the server for the promisor remotes that the client accepts (see <a href='{{< relurl "docs/gitprotocol-v2/sv" >}}'>gitprotocol-v2[5]</a> and the <span class='synopsis'><code>promisor.acceptFromServer</code></span> configuration option in <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>).</p>
+</div>
+<div class="paragraph">
+<p>For details on all other available filter specifications, see the <span class='synopsis'><code>--filter=</code><em>&lt;filter-spec&gt;</em></span> option in <a href='{{< relurl "docs/git-rev-list/sv" >}}'>git-rev-list[1]</a>.</p>
+</div>
+<div class="paragraph">
+<p>For example, <span class='synopsis'><code>--filter=blob:none</code></span> will filter out all blobs (file contents) until needed by Git. Also, <span class='synopsis'><code>--filter=blob:limit=</code><em>&lt;size&gt;</em></span> will filter out all blobs of size at least <em>&lt;size&gt;</em>.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode-fcodespan"> <a class="anchor" href="#git-pull--f"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode-fcodespan"></a><span class='synopsis'><code>-f</code></span> </dt>
@@ -422,25 +435,28 @@ Det här alternativet åsidosätter den kontrollen.</p>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode-pcodespan"> <a class="anchor" href="#git-pull--p"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode-pcodespan"></a><span class='synopsis'><code>-p</code></span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--prunecodespan"> <a class="anchor" href="#git-pull---prune"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--prunecodespan"></a><span class='synopsis'><code>--prune</code></span> </dt>
 <dd>
-<p>Innan du hämtar, ta bort alla referenser till fjärrspårning som inte längre finns på fjärren. Taggar kan inte beskäras om de bara hämtas på grund av standardtaggens automatiska efterföljning eller på grund av ett <span class='synopsis'><code>--tags</code></span>-alternativ. Men om taggar hämtas på grund av en explicit referensspecifikation (antingen på kommandoraden eller i fjärrkonfigurationen, till exempel om fjärren klonades med alternativet <span class='synopsis'><code>--mirror</code></span>), kan de också beskäras. Att ange <span class='synopsis'><code>--prune-tags</code></span> är en förkortning för att ange taggens referensspecifikation.</p>
+<p>Innan hämtning, ta bort alla referenser till fjärrspårning som inte längre finns i fjärrkodförrådet. Taggar kan inte beskäras om de bara hämtas på grund av standardtaggens automatiska efterföljning eller på grund av ett <span class='synopsis'><code>--tags</code></span>-alternativ. Men om taggar hämtas på grund av en explicit refspec (antingen på kommandoraden eller i fjärrkonfigurationen, till exempel om fjärren klonades med alternativet <span class='synopsis'><code>--mirror</code></span>), kan de också beskäras. Att ange <span class='synopsis'><code>--prune-tags</code></span> är en förkortning för att ange taggens refspec.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--no-tagscodespan"> <a class="anchor" href="#git-pull---no-tags"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--no-tagscodespan"></a><span class='synopsis'><code>--no-tags</code></span> </dt>
 <dd>
-<p>Som standard, hämtas och lagras taggar som pekar på objekt som laddas ner från fjärrkodförrådet lokalt. Det här alternativet inaktiverar denna automatiska taggföljningen. Standardbeteendet för en fjärren kan anges med inställningen <span class='synopsis'><code>remote.</code><em>&lt;namn&gt;</em><code>.tagOpt</code></span>. Se <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>.</p>
+<p>Som standard hämtas och lagras taggar lokalt om de pekar på objekt som laddas ner från fjärrkodförrådet. Flaggan inaktiverar denna automatiska taggföljning. Standardbeteendet för en fjärr kan anges med inställningen <span class='synopsis'><code>remote.</code><em>&lt;name&gt;</em><code>.tagOpt</code></span>. Se <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--refmapcodeemltrefspecgtemspan"> <a class="anchor" href="#git-pull---refmaprefspec"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--refmapcodeemltrefspecgtemspan"></a><span class='synopsis'><code>--refmap=</code><em>&lt;refspec&gt;</em></span> </dt>
 <dd>
-<p>När du hämtar referenser som listas på kommandoraden, använd den angivna referensspecifikationen (kan anges mer än en gång) för att mappa referenserna till fjärrspårningsgrenar, istället för värdena för <span class='synopsis'><code>remote.</code><em>&lt;name&gt;</em><code>.fetch</code></span>-konfigurationsvariabler för fjärrkodförrådet. Om du anger en tomt <em>&lt;refspec&gt;</em> till alternativet <span class='synopsis'><code>--refmap</code></span> ignorerar Git de konfigurerade referensspecifikationer och förlitar sig helt på de referensspecifikationer som anges som kommandoradsargument. Se avsnittet om "Konfigurerade fjärrspårningsgrenar" för mer information.</p>
+<p>När referenser som listas på kommandoraden hämtas, använd den angivna refspecen (kan anges mer än en gång) för att mappa referenserna till fjärrspårade grenar, i stället för värdena i konfigurationsvariablerna <span class='synopsis'><code>remote.</code><em>&lt;name&gt;</em><code>.fetch</code></span> för fjärrkodförrådet. Om en tom <em>&lt;refspec&gt;</em> anges till alternativet <span class='synopsis'><code>--refmap</code></span> ignorerar Git de konfigurerade refspecerna och förlitar sig helt på de refspecer som anges som kommandoradsargument. Se avsnittet om "Konfigurerade fjärrspårade grenar" för mer information.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode-tcodespan"> <a class="anchor" href="#git-pull--t"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode-tcodespan"></a><span class='synopsis'><code>-t</code></span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--tagscodespan"> <a class="anchor" href="#git-pull---tags"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--tagscodespan"></a><span class='synopsis'><code>--tags</code></span> </dt>
 <dd>
-<p>Hämta alla taggar från fjärren (dvs. hämta fjärrtaggar <span class='synopsis'><code>refs/tags/*</code></span> till lokala taggar med samma namn), utöver vad som annars skulle hämtas. Att använda det här alternativet ensamt utsätter inte taggar för beskärning, även om <span class='synopsis'><code>--prune</code></span> används (även om taggar kan beskäras ändå om de också är destinationen för en explicit referensspecifikation; se <span class='synopsis'><code>--prune</code></span>).</p>
+<p>Hämta alla taggar från fjärren (d.v.s. hämta fjärrtaggar <span class='synopsis'><code>refs/tags/*</code></span> till lokala taggar med samma namn), utöver vad som annars skulle hämtas. Att använda det här alternativet ensamt utsätter inte taggar för beskärning, även om <span class='synopsis'><code>--prune</code></span> används (även om taggar ändå kan beskäras om de också är destination för en explicit refspec; se <span class='synopsis'><code>--prune</code></span>).</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode-jcodeemltngtemspan"> <a class="anchor" href="#git-pull--jn"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode-jcodeemltngtemspan"></a><span class='synopsis'><code>-j</code> <em>&lt;n&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--jobscodeemltngtemspan"> <a class="anchor" href="#git-pull---jobsn"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--jobscodeemltngtemspan"></a><span class='synopsis'><code>--jobs=</code><em>&lt;n&gt;</em></span> </dt>
 <dd>
 <p>Parallellisera alla former av hämtning upp till <em>&lt;n&gt;</em> jobb åt gången.</p>
+<div class="paragraph">
+<p>A value of 0 will use some reasonable default.</p>
+</div>
 <div class="paragraph">
 <p>Om alternativet <span class='synopsis'><code>--multiple</code></span> angavs kommer de olika fjärrar att hämtas parallellt. Om flera undermoduler hämtas kommer de att hämtas parallellt. För att styra dem oberoende av varandra, använd konfigurationsinställningarna <span class='synopsis'><code>fetch.parallel</code></span> och <span class='synopsis'><code>submodule.fetchJobs</code></span> (se <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>).</p>
 </div>
@@ -463,15 +479,15 @@ Det här alternativet åsidosätter den kontrollen.</p>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode-ocodeemltalternativgtemspan"> <a class="anchor" href="#git-pull--oalternativ"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode-ocodeemltalternativgtemspan"></a><span class='synopsis'><code>-o</code> <em>&lt;alternativ&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--server-optioncodeemltalternativgtemspan"> <a class="anchor" href="#git-pull---server-optionalternativ"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--server-optioncodeemltalternativgtemspan"></a><span class='synopsis'><code>--server-option=</code><em>&lt;alternativ&gt;</em></span> </dt>
 <dd>
-<p>Skicka den givna strängen till servern vid kommunikation med protokollversion 2. Den givna strängen får inte innehålla tecknet <em>NUL</em> eller <em>LF</em>. Serverns hantering av serveralternativ, inklusive okända, är serverspecifik. När flera <span class='synopsis'><code>--server-option=</code><em>&lt;alternativ&gt;</em></span> anges skickas de alla till den andra sidan i den ordning som anges på kommandoraden. När ingen <span class='synopsis'><code>--server-option=</code><em>&lt;alternativ&gt;</em></span> anges från kommandoraden används istället värdena för konfigurationsvariabeln <span class='synopsis'><code>remote.</code><em>&lt;namn&gt;</em><code>.serverOption</code></span>.</p>
+<p>Skicka den givna strängen till servern vid kommunikation med protokollversion 2. Den givna strängen får inte innehålla tecknet <em>NUL</em> eller <em>LF</em>. Serverns hantering av serveralternativ, inklusive okända, är serverspecifik. När flera <span class='synopsis'><code>--server-option=</code><em>&lt;alternativ&gt;</em></span> anges skickas de alla till den andra sidan i den ordning som anges på kommandoraden. När ingen <span class='synopsis'><code>--server-option=</code><em>&lt;alternativ&gt;</em></span> anges från kommandoraden används i stället värdena för konfigurationsvariabeln <span class='synopsis'><code>remote.</code><em>&lt;namn&gt;</em><code>.serverOption</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--show-forced-updatescodespan"> <a class="anchor" href="#git-pull---show-forced-updates"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--show-forced-updatescodespan"></a><span class='synopsis'><code>--show-forced-updates</code></span> </dt>
 <dd>
-<p>Som standard kontrollerar git om en branch tvångsuppdateras under hämtning. Detta kan inaktiveras via <span class='synopsis'><code>fetch.showForcedUpdates</code></span>, men alternativet <span class='synopsis'><code>--show-forced-updates</code></span> garanterar att denna kontroll sker. Se <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>.</p>
+<p>Som standard kontrollerar Git om en gren tvångsuppdateras under hämtning. Detta kan inaktiveras via <span class='synopsis'><code>fetch.showForcedUpdates</code></span>, men alternativet <span class='synopsis'><code>--show-forced-updates</code></span> garanterar att denna kontroll sker. Se <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--no-show-forced-updatescodespan"> <a class="anchor" href="#git-pull---no-show-forced-updates"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--no-show-forced-updatescodespan"></a><span class='synopsis'><code>--no-show-forced-updates</code></span> </dt>
 <dd>
-<p>Som standard kontrollerar git om en gren tvångsuppdateras under hämtning. Skicka <span class='synopsis'><code>--no-show-forced-updates</code></span> eller sätt <span class='synopsis'><code>fetch.showForcedUpdates</code></span> till "false" för att hoppa över denna kontroll av prestandaskäl. Om det används under <span class='synopsis'><code>git-pull</code></span> kommer alternativet <span class='synopsis'><code>--ff-only</code></span> fortfarande att kontrollera om det finns tvångsuppdateringar innan en snabbuppdatering försöker göras. Se <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>.</p>
+<p>Som standard kontrollerar Git om en gren tvångsuppdateras under hämtning. Skicka <span class='synopsis'><code>--no-show-forced-updates</code></span> eller sätt <span class='synopsis'><code>fetch.showForcedUpdates</code></span> till "false" för att hoppa över denna kontroll av prestandaskäl. Om det används under <span class='synopsis'><code>git-pull</code></span> kommer alternativet <span class='synopsis'><code>--ff-only</code></span> fortfarande att kontrollera om det finns tvångsuppdateringar innan en snabbspolningsuppdatering försöks. Se <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode-4codespan"> <a class="anchor" href="#git-pull--4"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode-4codespan"></a><span class='synopsis'><code>-4</code></span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscode--ipv4codespan"> <a class="anchor" href="#git-pull---ipv4"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscode--ipv4codespan"></a><span class='synopsis'><code>--ipv4</code></span> </dt>
@@ -673,7 +689,7 @@ Det är skillnad på att lista flera <em>&lt;refspec&gt;ar</em> direkt på <span
 <p>En URL som "arbete:kodförråd.git" eller "host.xz:/sokvag/till/kodförråd.git" kommer att skrivas om i alla sammanhang som antar att URL:en är "git://git.host.xz/kodförråd.git".</p>
 </div>
 <div class="paragraph">
-<p>Om du vill skriva om URL:er enbart för sändning (push), kan du skapa en konfigurationssektion i formen:</p>
+<p>Om URL:er bara ska skrivas om för skickning (push), kan en konfigurationssektion skapas i formen:</p>
 </div>
 <div class="verseblock">
 <pre class="content">	[url "<em>&lt;faktisk-url-bas&gt;</em>"]
@@ -689,7 +705,7 @@ Det är skillnad på att lista flera <em>&lt;refspec&gt;ar</em> direkt på <span
 </div>
 </div>
 <div class="paragraph">
-<p>En URL som "git://example.org/path/to/repo.git" kommer att skrivas om till "ssh://example.org/path/to/repo.git" för sändning ("pushas"), men pulls kommer fortfarande att använda den ursprungliga URL:en.</p>
+<p>En URL som "git://example.org/path/to/repo.git" kommer att skrivas om till "ssh://example.org/path/to/repo.git" för skickning ("skickas"), men pulls kommer fortfarande att använda den ursprungliga URL:en.</p>
 </div>
 </div>
 </div>
@@ -697,7 +713,7 @@ Det är skillnad på att lista flera <em>&lt;refspec&gt;ar</em> direkt på <span
 <h2 id="_fjärr"><a class="anchor" href="#_fjärr"></a>FJÄRR<a id="REMOTES"></a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Namnet på en av följande kan användas istället för en URL som <em><span class="hover-term" data-term="kodförråd">&lt;kodförråd&gt;</span></em> argument:</p>
+<p>Namnet på någon av följande kan användas i stället för en URL som argumentet <em><span class="hover-term" data-term="kodförråd">&lt;kodförråd&gt;</span></em>:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -718,7 +734,7 @@ Det är skillnad på att lista flera <em>&lt;refspec&gt;ar</em> direkt på <span
 <div class="sect2">
 <h3 id="_namngiven_fjärr_i_konfigurationsfilen"><a class="anchor" href="#_namngiven_fjärr_i_konfigurationsfilen"></a>Namngiven fjärr i konfigurationsfilen</h3>
 <div class="paragraph">
-<p>Du kan välja att ange namnet på en fjärren som du tidigare konfigurerat med hjälp av <a href='{{< relurl "docs/git-remote/sv" >}}'>git-remote[1]</a>, <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a> eller till och med genom en manuell redigering av filen <span class='synopsis'><code>$GIT_DIR/config</code></span>. URL:en för denna fjärr kommer att användas för att komma åt kodförrådet. Referensspecifikationen för denna fjärr kommer att användas som standard när du inte anger en referensspecifikation på kommandoraden. Posten i konfigurationsfilen skulle se ut så här:</p>
+<p>Du kan välja att ange namnet på en fjärr som du tidigare konfigurerat med hjälp av <a href='{{< relurl "docs/git-remote/sv" >}}'>git-remote[1]</a>, <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a> eller till och med genom en manuell redigering av filen <span class='synopsis'><code>$GIT_DIR/config</code></span>. URL:en för denna fjärr kommer att användas för att komma åt kodförrådet. Refspecen för denna fjärr kommer att användas som standard när du inte anger en refspec på kommandoraden. Posten i konfigurationsfilen skulle se ut så här:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -730,13 +746,13 @@ Det är skillnad på att lista flera <em>&lt;refspec&gt;ar</em> direkt på <span
 </div>
 </div>
 <div class="paragraph">
-<p><em>&lt;pushurl&gt;</em> används endast för sänding ("pusha"). Det är valfritt och standardvärdet är <em>&lt;URL&gt;</em>. Att säda till en fjärr påverkar alla definierade push-adresser eller alla definierade webbadresser om inga sänd-adresser (push) är definierade. Fetch hämtar dock bara från den först definierade webbadressen om flera webbadresser är definierade.</p>
+<p><em>&lt;pushurl&gt;</em> används bara när man skickar. Det är valfritt och standardvärdet är <em>&lt;URL&gt;</em>. Att skicka till en fjärr påverkar alla definierade push-adresser eller alla definierade webbadresser om inga push-adresser är definierade. Fetch hämtar dock bara från den först definierade webbadressen om flera webbadresser är definierade.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_namngiven_fil_i_git_dirremotes"><a class="anchor" href="#_namngiven_fil_i_git_dirremotes"></a>Namngiven fil i <span class='synopsis'><code>$GIT_DIR/remotes</code></span></h3>
 <div class="paragraph">
-<p>Du kan välja att ange namnet på en fil i <span class='synopsis'><code>$GIT_DIR/remotes</code></span>. URL:en i den här filen kommer att användas för att komma åt kodförrådet. Referensspecifikationen i den här filen kommer att användas som standard när du inte anger en referensspecifikation på kommandoraden. Den här filen ska ha följande format:</p>
+<p>Du kan välja att ange namnet på en fil i <span class='synopsis'><code>$GIT_DIR/remotes</code></span>. URL:en i den här filen kommer att användas för att komma åt kodförrådet. Referensspecifikationen i den här filen kommer att användas som standard när du inte anger en refspec på kommandoraden. Den här filen ska ha följande format:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -796,7 +812,7 @@ Det är skillnad på att lista flera <em>&lt;refspec&gt;ar</em> direkt på <span
 <p>Det är standardvärdet för <span class='synopsis'><code>git</code> <code>pull</code></span> eller <span class='synopsis'><code>git</code> <code>fetch</code></span> utan argument.</p>
 </li>
 <li>
-<p>Det är standardinställningen för <span class='synopsis'><code>git</code> <code>push</code></span> utan argument, med vissa undantag. Du kan till exempel använda alternativet <span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.pushRemote</code></span> för att pusha till en annan fjärr än den du hämtar från, och som standard med <span class='synopsis'><code>push.default=simple</code></span> måste den uppströmsgren du konfigurerar ha samma namn.</p>
+<p>Det är standardinställningen för <span class='synopsis'><code>git</code> <code>push</code></span> utan argument, med vissa undantag. Du kan till exempel använda alternativet <span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.pushRemote</code></span> för att skicka till en annan fjärr än den du hämtar från, och som standard med <span class='synopsis'><code>push.default=simple</code></span> måste den uppströmsgren du konfigurerar ha samma namn.</p>
 </li>
 <li>
 <p>Olika kommandon, inklusive <span class='synopsis'><code>git</code> <code>checkout</code></span> och <span class='synopsis'><code>git</code> <code>status</code></span>, visar hur många incheckningar som har lagts till i din nuvarande grenen och upstream sedan du avgrenade från den, till exempel "Din branch och <em>origin/main</em> har divergerat och har 2 respektive 3 olika incheckningar".</p>
@@ -814,18 +830,18 @@ Det är skillnad på att lista flera <em>&lt;refspec&gt;ar</em> direkt på <span
 </div>
 </div>
 <div class="paragraph">
-<p>Du kan explicit ställa in en uppströmsgren med <span class='synopsis'><code>git</code> <code>push</code> <code>--set-upstream</code> <em>&lt;fjärr&gt;</em> <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em></span> men Git kommer ofta automatiskt att ställa in uppströmsen åt dig, till exempel:</p>
+<p>Du kan explicit ställa in en uppströmsgren med <span class='synopsis'><code>git</code> <code>push</code> <code>--set-upstream</code> <em>&lt;fjärr&gt;</em> <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em></span> men Git ställer ofta automatiskt in uppström åt dig, till exempel:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>När du klonar ett kodförråd kommer Git automatiskt att ställa in uppströmmen för standardgrenen.</p>
+<p>När du klonar ett kodförråd ställer Git automatiskt in uppström för standardgrenen.</p>
 </li>
 <li>
-<p>Om du har konfigurationsalternativet <span class='synopsis'><code>push.autoSetupRemote</code></span> aktiverat, kommer <span class='synopsis'><code>git</code> <code>push</code></span> automatiskt att ställa in uppströmsen första gången du pushar en branch.</p>
+<p>Om du har konfigurationsalternativet <span class='synopsis'><code>push.autoSetupRemote</code></span> aktiverat ställer <span class='synopsis'><code>git</code> <code>push</code></span> automatiskt in uppström första gången du skickar en gren.</p>
 </li>
 <li>
-<p>Att checka ut en fjärrspårningsgren med <span class='synopsis'><code>git</code> <code>checkout</code> <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em></span> skapar automatiskt en lokal gren med det namnet och ställer in uppströmmen på den fjärranslutna grenen.</p>
+<p>Att checka ut en fjärrspårad gren med <span class='synopsis'><code>git</code> <code>checkout</code> <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em></span> skapar automatiskt en lokal gren med det namnet och ställer in uppström till den fjärrspårade grenen.</p>
 </li>
 </ul>
 </div>
@@ -847,13 +863,13 @@ Uppströms grenar kallas ibland för "spårningsinformation", som i "ange grenen
 <h2 id="_sammanslagningsstrategier"><a class="anchor" href="#_sammanslagningsstrategier"></a>SAMMANSLAGNINGSSTRATEGIER</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Sammanslagningsmekanismen (kommandona <span class='synopsis'><code>git</code> <code>merge</code></span> och <span class='synopsis'><code>git</code> <code>pull</code></span>) gör det möjligt att välja bakända-<em>sammanslagningsstrategier</em> med alternativet <span class='synopsis'><code>-s</code></span>. Vissa strategier kan också ta sina egna alternativ, vilka kan skickas genom att ge <span class='synopsis'><code>-X</code><em>&lt;alternativ&gt;</em></span>-argument till <span class='synopsis'><code>git</code> <code>merge</code></span> och/eller <span class='synopsis'><code>git</code> <code>pull</code></span>.</p>
+<p>Sammanslagningsmekanismen (kommandona <span class='synopsis'><code>git</code> <code>merge</code></span> och <span class='synopsis'><code>git</code> <code>pull</code></span>) gör det möjligt att välja bakändens sammanslagningsstrategier med alternativet <span class='synopsis'><code>-s</code></span>. Vissa strategier kan också ta sina egna alternativ, vilka kan skickas genom att ge <span class='synopsis'><code>-X</code><em>&lt;alternativ&gt;</em></span>-argument till <span class='synopsis'><code>git</code> <code>merge</code></span> och/eller <span class='synopsis'><code>git</code> <code>pull</code></span>.</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscodeortcodespan"> <a class="anchor" href="#git-pull-ort"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscodeortcodespan"></a><span class='synopsis'><code>ort</code></span> </dt>
 <dd>
-<p>Detta är standardstrategin för sammanslagning när man drar in ("pulla") eller sammanfogar en gren. Denna strategi kan bara lösa två huvuden med hjälp av en 3-vägs sammanslagningsalgoritm. När det finns mer än en gemensam förfader som kan användas för 3-vägs sammanslagning skapas ett sammanslaget träd av de gemensamma förfäderna och används som referensträd för 3-vägs sammanslagningen. Detta har rapporterats resultera i färre sammanslagningskonflikter utan att orsaka felsammanslagningar, enligt tester gjorda på faktiska sammanslagningscommits hämtade från Linux 2.6-kärnans utvecklingshistorik. Dessutom kan denna strategi upptäcka och hantera sammanslagningar som involverar namnbyten. Den använder inte upptäckta kopior. Namnet på denna algoritm är en akronym ("Ostensibly Recursive&#8217;s Twin") och kommer från det faktum att den skrevs som en ersättning för den tidigare standardalgoritmen, "rekursiv".</p>
+<p>Det är standardstrategin för sammanslagning när man hämtar eller sammanfogar en gren. Denna strategi kan bara lösa två huvuden med hjälp av en 3-vägs sammanslagningsalgoritm. När det finns mer än en gemensam förfader som kan användas för 3-vägs sammanslagning skapas ett sammanslaget träd av de gemensamma förfäderna och används som referensträd för 3-vägs sammanslagningen. Detta har rapporterats resultera i färre sammanslagningskonflikter utan att orsaka felsammanslagningar, enligt tester gjorda på faktiska sammanslagningsincheckningar hämtade från Linux 2.6-kärnans utvecklingshistorik. Dessutom kan denna strategi upptäcka och hantera sammanslagningar som involverar namnbyten. Den använder inte upptäckta kopior. Namnet på denna algoritm är en akronym ("Ostensibly Recursive&#8217;s Twin") och kommer från det faktum att den skrevs som en ersättning för den tidigare standardalgoritmen, "rekursiv".</p>
 <div class="paragraph">
 <p>I det fall där sökvägen är en undermodul, och undermodul-incheckningen som används på ena sidan av sammanslagnings-sekvensen är en underordnad undermodul-incheckning som används på den andra sidan av merge-sekvensen, försöker Git att snabbspola fram till underordnad. Annars kommer Git att behandla detta fall som en konflikt och föreslå som en lösning en undermodul-incheckningen som är underordnad de konflikterande, om en sådan finns.</p>
 </div>
@@ -864,14 +880,14 @@ Uppströms grenar kallas ibland för "spårningsinformation", som i "ange grenen
 <dl>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscodeourscodespan"> <a class="anchor" href="#git-pull-ours"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscodeourscodespan"></a><span class='synopsis'><code>ours</code></span> </dt>
 <dd>
-<p>Det här alternativet tvingar motstridiga stycken att automatiskt lösas upp på ett snyggt sätt genom att favorisera <em>vår</em> version. Ändringar från det andra trädet som inte står i konflikt med vår sida återspeglas i sammanslagningsresultatet. För en binär fil hämtas hela innehållet från vår sida.</p>
+<p>Alternativet tvingar motstridiga hunks att automatiskt lösas upp på ett snyggt sätt genom att favorisera <em>vår</em> version. Ändringar från det andra trädet som inte står i konflikt med vår sida återspeglas i sammanslagningsresultatet. För en binär fil hämtas hela innehållet från vår sida.</p>
 <div class="paragraph">
-<p>Detta bör inte förväxlas med <span class='synopsis'><code>ours</code></span> sammanslagningsstrategi, som inte ens tittar på vad det andra trädet innehåller alls. Den kasserar allt som det andra trädet gjorde och deklarerar att <em>vår</em> historia innehåller allt som hände i det.</p>
+<p>Det bör inte förväxlas med <span class='synopsis'><code>ours</code></span> sammanslagningsstrategi, som inte ens tittar på vad det andra trädet innehåller alls. Den kasserar allt som det andra trädet gjorde och deklarerar att <em>vår</em> historia innehåller allt som hände i det.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscodetheirscodespan"> <a class="anchor" href="#git-pull-theirs"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscodetheirscodespan"></a><span class='synopsis'><code>theirs</code></span> </dt>
 <dd>
-<p>Detta är motsatsen till <span class='synopsis'><code>ours</code></span>; observera att det, till skillnad från <span class='synopsis'><code>ours</code></span>, inte finns någon <span class='synopsis'><code>theirs</code></span>-sammanslagningsstrategi att förväxla detta sammanslagningsalternativ med.</p>
+<p>Det är motsatsen till <span class='synopsis'><code>ours</code></span>; observera att det, till skillnad från <span class='synopsis'><code>ours</code></span>, inte finns någon <span class='synopsis'><code>theirs</code></span>-sammanslagningsstrategi att förväxla detta sammanslagningsalternativ med.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscodeignore-space-changecodespan"> <a class="anchor" href="#git-pull-ignore-space-change"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscodeignore-space-changecodespan"></a><span class='synopsis'><code>ignore-space-change</code></span> </dt>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscodeignore-all-spacecodespan"> <a class="anchor" href="#git-pull-ignore-all-space"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscodeignore-all-spacecodespan"></a><span class='synopsis'><code>ignore-all-space</code></span> </dt>
@@ -895,7 +911,7 @@ Uppströms grenar kallas ibland för "spårningsinformation", som i "ange grenen
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscoderenormalizecodespan"> <a class="anchor" href="#git-pull-renormalize"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscoderenormalizecodespan"></a><span class='synopsis'><code>renormalize</code></span> </dt>
 <dd>
-<p>Detta kör en virtuell utcheckning och incheckning av alla tre stegen i alla filer som behöver en trevägssammanslagning. Det här alternativet är avsett att användas vid sammanslagning av grenar med olika rena filter eller normaliseringsregler för radslut. Se "Sammanfoga grenar med olika inchecknings-/utcheckningsattribut" i <a href='{{< relurl "docs/gitattributes/sv" >}}'>gitattributes[5]</a> för mer information.</p>
+<p>Det kör en virtuell utcheckning och incheckning av alla tre stegen i alla filer som behöver en trevägssammanslagning. Alternativet är avsett att användas vid sammanslagning av grenar med olika rena filter eller normaliseringsregler för radslut. Se "Sammanfoga grenar med olika inchecknings-/utcheckningsattribut" i <a href='{{< relurl "docs/gitattributes/sv" >}}'>gitattributes[5]</a> för mer information.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscodeno-renormalizecodespan"> <a class="anchor" href="#git-pull-no-renormalize"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscodeno-renormalizecodespan"></a><span class='synopsis'><code>no-renormalize</code></span> </dt>
 <dd>
@@ -923,39 +939,39 @@ Uppströms grenar kallas ibland för "spårningsinformation", som i "ange grenen
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscodediff-algorithmcodecodehistogramcodecodeminimalcodecodemyerscodecodepatiencecodespan"> <a class="anchor" href="#git-pull-diff-algorithmhistogramminimalmyerspatience"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscodediff-algorithmcodecodehistogramcodecodeminimalcodecodemyerscodecodepatiencecodespan"></a><span class='synopsis'><code>diff-algorithm=</code>(<code>histogram</code>|<code>minimal</code>|<code>myers</code>|<code>patience</code>)</span> </dt>
 <dd>
-<p>Använd en annan diff-algoritm vid sammanslagning, vilket kan bidra till att undvika felsammanslagningar som uppstår på grund av oviktiga matchande rader (som klammerparenteser från olika funktioner). Se även <a href='{{< relurl "docs/git-diff/sv" >}}'>git-diff[1]</a> <span class='synopsis'><code>--diff-algorithm</code></span>. Observera att <span class='synopsis'><code>ort</code></span> som standard har <span class='synopsis'><code>diff-algorithm=histogram</code></span>, medan vanliga diffs för närvarande har konfigurationsinställningen <span class='synopsis'><code>diff.algorithm</code></span>.</p>
+<p>Använd en annan diff-algoritm vid sammanslagning, vilket kan bidra till att undvika felsammanslagningar som uppstår på grund av oviktiga matchande rader (som klammerparenteser från olika funktioner). Se även <a href='{{< relurl "docs/git-diff/sv" >}}'>git-diff[1]</a> <span class='synopsis'><code>--diff-algorithm</code></span>. Observera att <span class='synopsis'><code>ort</code></span> som standard har <span class='synopsis'><code>diff-algorithm=histogram</code></span>, medan vanliga diffar för närvarande har konfigurationsinställningen <span class='synopsis'><code>diff.algorithm</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscodesubtreecodecodecodeemltskvggtemspan"> <a class="anchor" href="#git-pull-subtreeskvg"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscodesubtreecodecodecodeemltskvggtemspan"></a><span class='synopsis'><code>subtree</code>[<code>=</code><em>&lt;sökväg&gt;</em>]</span> </dt>
 <dd>
-<p>Det här alternativet är en mer avancerad form av "underträdsstrategi" (<em>subtree</em>), där strategin gissar hur två träd måste flyttas för att matcha varandra vid sammanslagning. Istället prefixeras den angivna sökvägen (eller tas bort från början) för att få formen på de två träden att matcha.</p>
+<p>Alternativet är en mer avancerad form av "underträdsstrategi" (<em>subtree</em>), där strategin gissar hur två träd måste flyttas för att matcha varandra vid sammanslagning. I stället prefixeras den angivna sökvägen (eller tas bort från början) för att få formen på de två träden att matcha.</p>
 </dd>
 </dl>
 </div>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscoderecursivecodespan"> <a class="anchor" href="#git-pull-recursive"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscoderecursivecodespan"></a><span class='synopsis'><code>recursive</code></span> </dt>
 <dd>
-<p>Detta är nu en synonym för <span class='synopsis'><code>ort</code></span>. Det var en alternativ implementering fram till v2.49.0, men omdirigerades till att betyda <span class='synopsis'><code>ort</code></span> i v2.50.0. Den tidigare rekursiva strategin var standardstrategin för att lösa två huvuden från Git v0.99.9k till v2.33.0.</p>
+<p>Det är nu en synonym för <span class='synopsis'><code>ort</code></span>. Det var en alternativ implementering fram till v2.49.0, men omdirigerades till att betyda <span class='synopsis'><code>ort</code></span> i v2.50.0. Den tidigare rekursiva strategin var standardstrategin för att lösa två huvuden från Git v0.99.9k till v2.33.0.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscoderesolvecodespan"> <a class="anchor" href="#git-pull-resolve"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscoderesolvecodespan"></a><span class='synopsis'><code>resolve</code></span> </dt>
 <dd>
-<p>Detta kan bara lösa två huvuden (dvs. den aktuella grenen och en annan gren du hämtade från) med hjälp av en 3-vägs merge-algoritm. Den försöker noggrant upptäcka korsvisa sammanslagings-tvetydigheter. Den hanterar inte namnbyten.</p>
+<p>Det kan bara lösa två huvuden (dvs. den aktuella grenen och en annan gren du hämtade från) med hjälp av en 3-vägs sammanslagningsalgoritm. Den försöker noggrant upptäcka korsvisa sammanslagningsambiguiteter. Den hanterar inte namnbyten.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscodeoctopuscodespan"> <a class="anchor" href="#git-pull-octopus"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscodeoctopuscodespan"></a><span class='synopsis'><code>octopus</code></span> </dt>
 <dd>
-<p>Detta löser fall med fler än två huvuden, men vägrar att göra en komplex sammanslagning som kräver manuell lösning. Det är främst avsett att användas för att paketera ämnesgrenhuvuden. Detta är standardsammanslagningsstrategin när man drar in ("pullar") eller sammanfogar mer än en gren.</p>
+<p>Det löser fall med fler än två huvuden, men vägrar att göra en komplex sammanslagning som kräver manuell lösning. Det är främst avsett att användas för att paketera ämnesgrenhuvuden. Detta är standardsammanslagningsstrategin när man hämtar eller sammanfogar mer än en gren.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscodeourscodespan-1"> <a class="anchor" href="#git-pull-ours-1"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscodeourscodespan-1"></a><span class='synopsis'><code>ours</code></span> </dt>
 <dd>
-<p>Detta kan bara lösa två huvuden (dvs. den aktuella grenen och en annan gren du hämtade från) med hjälp av en 3-vägs sammanslagnings-algoritm. Den försöker noggrant upptäcka korsvisa sammanslagnings-tvetydigheter. Den hanterar inte namnbyten.</p>
+<p>Det löser valfritt antal huvuden, men det resulterande trädet från sammanslagningen är alltid det från den aktuella grenens topp, vilket i praktiken ignorerar alla ändringar från alla andra grenar. Det är avsett att användas för att ersätta gammal utvecklingshistorik från sidogrenar. Observera att detta skiljer sig från alternativet <span class='synopsis'><code>-Xours</code></span> till sammanslagningsstrategin <span class='synopsis'><code>ort</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-pull-spanclasssynopsiscodesubtreecodespan"> <a class="anchor" href="#git-pull-subtree"></a> <a class="anchor" href="#git-pull-spanclasssynopsiscodesubtreecodespan"></a><span class='synopsis'><code>subtree</code></span> </dt>
 <dd>
-<p>Detta är en modifierad <span class='synopsis'><code>ort</code></span>-strategi. När träd A och B sammanfogas, och B motsvarar ett underträd till A, justeras B först för att matcha trädstrukturen för A, istället för att läsa träden på samma nivå. Denna justering görs också på det gemensamma förfader-trädet.</p>
+<p>Det är en modifierad <span class='synopsis'><code>ort</code></span>-strategi. När träd A och B sammanfogas, och B motsvarar ett underträd till A, justeras B först för att matcha trädstrukturen för A, i stället för att läsa träden på samma nivå. Denna justering görs också på det gemensamma förfader-trädet.</p>
 </dd>
 </dl>
 </div>
 <div class="paragraph">
-<p>Med strategier som använder 3-vägssammanslagning (inklusive standardvärdet <span class='synopsis'><code>ort</code></span>), om en ändring görs på båda grenarna, men senare ångrad på en av grenarna, kommer den ändringen att finnas i det sammanslagna resultatet; vissa personer tycker att detta beteende är förvirrande. Det inträffar eftersom endast huvuden och sammanslagningsbasen beaktas när en sammanslagning utförs, inte de enskilda incheckningarna. Sammanslagningsalgoritmen betraktar därför den ångrade ändringen som ingen ändring alls och ersätter den ändrade versionen istället.</p>
+<p>Med strategier som använder 3-vägssammanslagning (inklusive standardvärdet <span class='synopsis'><code>ort</code></span>), om en ändring görs på båda grenarna, men senare ångrad på en av grenarna, kommer den ändringen att finnas i det sammanslagna resultatet; vissa personer tycker att detta beteende är förvirrande. Det inträffar eftersom endast huvuden och sammanslagningsbasen beaktas när en sammanslagning utförs, inte de enskilda incheckningarna. Sammanslagningsalgoritmen betraktar därför den ångrade ändringen som ingen ändring alls och ersätter den ändrade versionen i stället.</p>
 </div>
 </div>
 </div>
@@ -963,13 +979,13 @@ Uppströms grenar kallas ibland för "spårningsinformation", som i "ange grenen
 <h2 id="DEFAULT-BEHAVIOUR"><a class="anchor" href="#DEFAULT-BEHAVIOUR"></a>STANDARDBETEENDE</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Ofta använder man <span class='synopsis'><code>git</code> <code>pull</code></span> utan att ange någon parameter. Traditionellt, har detta motsvarat att säga <span class='synopsis'><code>git</code> <code>pull</code> <code>origin</code></span>. Men när konfigurationen <span class='synopsis'><code>branch.</code><em>&lt;namn&gt;</em><code>.remote</code></span> finns på grenen <span class='synopsis'><em>&lt;namn&gt;</em></span>, används det värdet istället för <span class='synopsis'><code>origin</code></span>.</p>
+<p>Ofta använder man <span class='synopsis'><code>git</code> <code>pull</code></span> utan att ange någon parameter. Traditionellt har detta motsvarat att säga <span class='synopsis'><code>git</code> <code>pull</code> <code>origin</code></span>. Men när konfigurationen <span class='synopsis'><code>branch.</code><em>&lt;namn&gt;</em><code>.remote</code></span> finns på grenen <span class='synopsis'><em>&lt;namn&gt;</em></span>, används det värdet i stället för <span class='synopsis'><code>origin</code></span>.</p>
 </div>
 <div class="paragraph">
 <p>För att avgöra vilken URL som ska användas för att hämta från, konsulteras värdet för konfigurationen <span class='synopsis'><code>remote.</code><em>&lt;fjärr&gt;</em><code>.url</code></span> och om det inte finns någon sådan variabel används värdet på raden <span class='synopsis'><code>URL:</code></span> i <span class='synopsis'><code>$GIT_DIR/remotes/</code><em>&lt;fjärr&gt;</em></span>.</p>
 </div>
 <div class="paragraph">
-<p>För att avgöra vilka fjärrgrenar som ska hämtas (och eventuellt lagras i fjärrspårningsgrenarna) när kommandot körs utan några referensspecifikations-parametrar på kommandoraden, konsulteras värden för konfigurationsvariabeln <span class='synopsis'><code>remote.</code><em>&lt;fjärr&gt;</em><code>.fetch</code></span>, och om det inte finns några konsulteras <span class='synopsis'><code>$GIT_DIR/remotes/</code><em>&lt;fjärr&gt;</em></span> och dess <span class='synopsis'><code>Pull:</code></span>-rader används. Förutom referensspecifikations-formaten som beskrivs i avsnittet OPTIONS kan du ha en globbing-referensspecifikation som ser ut så här:</p>
+<p>För att avgöra vilka fjärrgrenar som ska hämtas (och eventuellt lagras i fjärrspårade grenar) när kommandot körs utan några refspecsparametrar på kommandoraden, används värdena i konfigurationsvariabeln <span class='synopsis'><code>remote.</code><em>&lt;fjärr&gt;</em><code>.fetch</code></span>. Om inga finns används i stället <span class='synopsis'><code>$GIT_DIR/remotes/</code><em>&lt;fjärr&gt;</em></span> och dess <span class='synopsis'><code>Pull:</code></span>-rader. Utöver refspecsformaten som beskrivs i avsnittet OPTIONS kan du använda en globbande refspec som ser ut så här:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -977,7 +993,7 @@ Uppströms grenar kallas ibland för "spårningsinformation", som i "ange grenen
 </div>
 </div>
 <div class="paragraph">
-<p>En globbande referensspecifikation måste ha en icke-tom RHS (dvs. måste lagra det som hämtades i fjärrspårningsgrenar), och dess LHS och RHS måste sluta med <span class='synopsis'><code>/*</code></span>. Ovanstående anger att alla fjärrgrenar spåras med hjälp av fjärrspårningsgrenar i <span class='synopsis'><code>refs/remotes/origin/</code></span>-hierarkin under samma namn.</p>
+<p>En globbande refspec måste ha en icke-tom RHS (d.v.s. måste lagra det som hämtades i fjärrspårade grenar), och dess LHS och RHS måste sluta med <span class='synopsis'><code>/*</code></span>. Ovanstående anger att alla fjärrgrenar spåras med hjälp av fjärrspårade grenar i <span class='synopsis'><code>refs/remotes/origin/</code></span>-hierarkin under samma namn.</p>
 </div>
 <div class="paragraph">
 <p>Regeln för att avgöra vilken fjärrgren som ska sammanfogas efter hämtning är lite invecklad för att inte bryta bakåtkompatibiliteten.</p>
@@ -991,7 +1007,7 @@ Uppströms grenar kallas ibland för "spårningsinformation", som i "ange grenen
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Om konfigurationen <span class='synopsis'><code>branch.</code><em>&lt;namn&gt;</em><code>.merge</code></span> för den aktuella branch <em>&lt;namn&gt;</em> finns, är det namnet på branchen på den fjärrplats som slås samman.</p>
+<p>Om konfigurationen <span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.merge</code></span> finns för den aktuella grenen <em>&lt;name&gt;</em>, är det namnet på grenen på fjärrsidan som sammanfogas.</p>
 </li>
 <li>
 <p>Om referensspecifikationifikationen är en globbing-specifikation slås ingenting samman.</p>
@@ -1017,7 +1033,7 @@ $ git pull origin</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Normalt sett är den sammanslagna grenen <span class='synopsis'><code>HEAD</code></span> för fjärrarkivet, men valet bestäms av alternativen <span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.remote</code></span> och <span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.merge</code></span>; se <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a> för detaljer.</p>
+<p>Normalt är den gren som sammanfogas in fjärrkodförrådets <span class='synopsis'><code>HEAD</code></span>, men valet avgörs av alternativen <span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.remote</code></span> och <span class='synopsis'><code>branch.</code><em>&lt;name&gt;</em><code>.merge</code></span>; se <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a> för detaljer.</p>
 </div>
 </li>
 <li>
@@ -1028,7 +1044,7 @@ $ git pull origin</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Detta lämnar en kopia av <span class='synopsis'><code>next</code></span> tillfälligt i <span class='synopsis'><code>FETCH_HEAD</code></span> och uppdaterar fjärrspårningsgrenen <span class='synopsis'><code>origin/next</code></span>. Detsamma kan göras genom att anropa fetch och merge:</p>
+<p>Det lämnar en kopia av <span class='synopsis'><code>next</code></span> tillfälligt i <span class='synopsis'><code>FETCH_HEAD</code></span> och uppdaterar fjärrspårade grenen <span class='synopsis'><code>origin/next</code></span>. Detsamma kan göras genom att anropa fetch och merge:</p>
 </div>
 <div class="listingblock">
 <div class="content">

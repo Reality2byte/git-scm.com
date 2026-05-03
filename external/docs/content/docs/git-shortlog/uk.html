@@ -100,15 +100,15 @@ git log --pretty=short | <em>git shortlog</em> [&lt;options&gt;]</pre>
 </li>
 <li>
 <p><span class='synopsis'><code>trailer:</code><em>&lt;field&gt;</em></span>, <span class='synopsis'><em>&lt;field&gt;</em></span> інтерпретується як трейлер повідомлення коміту без урахування регістру (див. <a href='{{< relurl "docs/git-interpret-trailers/uk" >}}'>git-interpret-trailers[1]</a>). Наприклад, якщо ваш проєкт використовує трейлери <span class='synopsis'><code>Reviewed-by</code></span>, ви можете захотіти побачити, хто був рецензентом, за допомогою <span class='synopsis'><code>git</code> <code>shortlog</code> <code>-ns</code> <code>--group=trailer:reviewed-by</code></span>.</p>
-</li>
-<li>
-<p><span class='synopsis'><code>format:</code><em>&lt;формат&gt;</em></span>, будь-який рядок, що приймається опцією <span class='synopsis'><code>--format</code></span> команді <em>git log</em>. (Див. розділ "ГАРНІ ФОРМАТИ" у <a href='{{< relurl "docs/git-log/uk" >}}'>git-log[1]</a>.)</p>
 <div class="paragraph">
 <p>Зверніть увагу, що коміти, які не містять трейлера, не будуть враховані. Аналогічно, коміти з кількома трейлерами (наприклад, кілька підписань) можуть бути враховані більше одного разу (але лише один раз для кожного унікального значення трейлера в цьому коміті).</p>
 </div>
 <div class="paragraph">
 <p>Shortlog спробує розібрати кожне значення трейлера як ідентифікатор <span class='synopsis'><code>name</code> <em>&lt;email&gt;</em></span>. У разі успіху застосовується mailmap, а email пропускається, якщо не вказано опцію <span class='synopsis'><code>--email</code></span>. Якщо значення не може бути розібране як ідентифікатор, воно буде сприйнято буквально та повністю.</p>
 </div>
+</li>
+<li>
+<p><span class='synopsis'><code>format:</code><em>&lt;формат&gt;</em></span>, будь-який рядок, що приймається опцією <span class='synopsis'><code>--format</code></span> команді <em>git log</em>. (Див. розділ "ГАРНІ ФОРМАТИ" у <a href='{{< relurl "docs/git-log/uk" >}}'>git-log[1]</a>.)</p>
 </li>
 </ul>
 </div>
@@ -260,6 +260,10 @@ git log --pretty=short | <em>git shortlog</em> [&lt;options&gt;]</pre>
 <dt class="hdlist1" id="git-shortlog-spanclasssynopsiscode--exclude-first-parent-onlycodespan"> <a class="anchor" href="#git-shortlog---exclude-first-parent-only"></a> <a class="anchor" href="#git-shortlog-spanclasssynopsiscode--exclude-first-parent-onlycodespan"></a><span class='synopsis'><code>--exclude-first-parent-only</code></span> </dt>
 <dd>
 <p>Під час пошуку комітів, які слід виключити (за допомогою символу <em>^</em>), при виявленні коміту злиття слід враховувати лише перший батьківський коміт. Цю функцію можна використовувати для визначення набору змін у тематичній гілці, починаючи з моменту її відгалуження від віддаленої гілки, з огляду на те, що довільні злиття можуть бути дійсними змінами в тематичній гілці.</p>
+</dd>
+<dt class="hdlist1" id="git-shortlog-spanclasssynopsiscode--maximal-onlycodespan"> <a class="anchor" href="#git-shortlog---maximal-only"></a> <a class="anchor" href="#git-shortlog-spanclasssynopsiscode--maximal-onlycodespan"></a><span class='synopsis'><code>--maximal-only</code></span> </dt>
+<dd>
+<p>Обмежити вихідні коміти тими, до яких неможливо дістатися з будь-яких інших комітів у діапазоні ревізій.</p>
 </dd>
 <dt class="hdlist1" id="git-shortlog-spanclasssynopsiscode--notcodespan"> <a class="anchor" href="#git-shortlog---not"></a> <a class="anchor" href="#git-shortlog-spanclasssynopsiscode--notcodespan"></a><span class='synopsis'><code>--not</code></span> </dt>
 <dd>

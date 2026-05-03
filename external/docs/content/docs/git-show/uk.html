@@ -45,7 +45,7 @@ headings:
 <h2 id="_синопсис"><a class="anchor" href="#_синопсис"></a>СИНОПСИС</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>git show</em> [&lt;options&gt;] [&lt;object&gt;&#8230;&#8203;]</pre>
+<pre class="content"><span class='synopsis'><code>git</code></span> <span class='synopsis'><code>show</code></span> [<em>&lt;options&gt;</em>] [<em>&lt;object&gt;</em>&#8230;&#8203;]</pre>
 </div>
 </div>
 </div>
@@ -56,19 +56,19 @@ headings:
 <p>Показує один або декілька обʼєктів (блоби, дерева, теги та коміти).</p>
 </div>
 <div class="paragraph">
-<p>Для комітів показує повідомлення журналу та текстуальний diff. Також показує коміт злиття у спеціальному форматі, який генерується командою <em>git diff-tree --cc</em>.</p>
+<p>Для комітів показує повідомлення журналу та текст відмінностей. Також показує комміт злиття у спеціальному форматі, який генерується командою <span class='synopsis'><code>git</code> <code>diff-tree</code> <code>--cc</code></span>.</p>
 </div>
 <div class="paragraph">
 <p>Для тегів показує повідомлення тегу та об’єкти, на які він посилається.</p>
 </div>
 <div class="paragraph">
-<p>Для дерев показує їх назву (еквівалентно команді <em>git ls-tree</em> з --name-only).</p>
+<p>Для дерев показує їх назву (еквівалентно команді <span class='synopsis'><code>git</code> <code>ls-tree</code></span> з <span class='synopsis'><code>--name-only</code></span>).</p>
 </div>
 <div class="paragraph">
 <p>Для звичайних блобів показує звичайний вміст.</p>
 </div>
 <div class="paragraph">
-<p>Деякі опції, які підтримує команда <em>git log</em>, можна використовувати для керування показом змін, внесених комітом.</p>
+<p>Деякі опції, які підтримує команда <span class='synopsis'><code>git</code> <code>log</code></span>, можна використовувати для керування показом змін, внесених комітом.</p>
 </div>
 <div class="paragraph">
 <p>Ця сторінка довідки містить опис лише найпоширеніших опцій.</p>
@@ -80,9 +80,9 @@ headings:
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1" id="git-show-ltobjectgt82308203"> <a class="anchor" href="#git-show-object"></a> <a class="anchor" href="#git-show-ltobjectgt82308203"></a>&lt;object&gt;&#8230;&#8203; </dt>
+<dt class="hdlist1" id="git-show-spanclasssynopsisemltobjectgtemspan"> <a class="anchor" href="#git-show-object"></a> <a class="anchor" href="#git-show-spanclasssynopsisemltobjectgtemspan"></a><span class='synopsis'><em>&lt;object&gt;</em>...</span> </dt>
 <dd>
-<p>Назви обʼєктів, які потрібно показати (зазвичай — “HEAD”). Більш повний перелік варіантів написання назв об’єктів див. у розділі «ВИЗНАЧЕННЯ РЕВІЗІЙ» в <a href='{{< relurl "docs/gitrevisions/uk" >}}'>gitrevisions[7]</a>.</p>
+<p>Назви обʼєктів, які потрібно показати (зазвичай — <span class='synopsis'><code>HEAD</code></span>). Більш повний перелік варіантів написання назв обʼєктів див. у розділі «ВИЗНАЧЕННЯ РЕВІЗІЙ» в <a href='{{< relurl "docs/gitrevisions/uk" >}}'>gitrevisions[7]</a>.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--prettycodecodecodeemltformatgtemspan"> <a class="anchor" href="#git-show---prettyformat"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--prettycodecodecodeemltformatgtemspan"></a><span class='synopsis'><code>--pretty</code>[<code>=</code><em>&lt;format&gt;</em>]</span> </dt>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--formatcodeemltformatgtemspan"> <a class="anchor" href="#git-show---formatformat"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--formatcodeemltformatgtemspan"></a><span class='synopsis'><code>--format=</code><em>&lt;format&gt;</em></span> </dt>
@@ -177,139 +177,83 @@ headings:
 <div class="paragraph">
 <p>Існує кілька вбудованих форматів, і ви можете визначити додаткові формати, встановивши для параметра конфігурації pretty.&lt;name&gt; іншу назву формату або рядок <span class='synopsis'><code>format:</code></span>, як описано нижче (див. <a href='{{< relurl "docs/git-config/uk" >}}'>git-config[1]</a>). Ось детальна інформація про вбудовані формати:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><span class='synopsis'><code>oneline</code></span></p>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;hash&gt; &lt;title-line&gt;</pre>
-</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeonelinecodespan"> <a class="anchor" href="#git-show-oneline"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeonelinecodespan"></a><span class='synopsis'><code>oneline</code></span> </dt>
+<dd>
+<div class="verseblock">
+<pre class="content"><em>&lt;hash&gt;</em> <em>&lt;title-line&gt;</em></pre>
 </div>
 <div class="paragraph">
 <p>Ця конструкція розроблена так, щоб бути якомога компактнішою.</p>
 </div>
-</li>
-<li>
-<p><span class='synopsis'><code>short</code></span></p>
-<div class="literalblock">
-<div class="content">
-<pre>commit &lt;hash&gt;
-Author: &lt;author&gt;</pre>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeshortcodespan"> <a class="anchor" href="#git-show-short"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeshortcodespan"></a><span class='synopsis'><code>short</code></span> </dt>
+<dd>
+<div class="verseblock">
+<pre class="content"><em>commit &lt;hash&gt; Author: &lt;author&gt;</em>
+<em><em>_
+</em>    &lt;title-line&gt;_</em></pre>
 </div>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodemediumcodespan"> <a class="anchor" href="#git-show-medium"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodemediumcodespan"></a><span class='synopsis'><code>medium</code></span> </dt>
+<dd>
+<div class="verseblock">
+<pre class="content"><em>commit &lt;hash&gt; Author: &lt;author&gt; Date: &lt;author-date&gt;</em>
+<em><em>_
+</em>    &lt;title-line&gt;<em>
+</em><em>
+</em>    &lt;full-commit-message&gt;_</em></pre>
 </div>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;title-line&gt;</pre>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodefullcodespan"> <a class="anchor" href="#git-show-full"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodefullcodespan"></a><span class='synopsis'><code>full</code></span> </dt>
+<dd>
+<div class="verseblock">
+<pre class="content"><em>commit &lt;hash&gt; Author: &lt;author&gt; Commit: &lt;committer&gt;</em>
+<em><em>_
+</em>    &lt;title-line&gt;<em>
+</em><em>
+</em>    &lt;full-commit-message&gt;_</em></pre>
 </div>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodefullercodespan"> <a class="anchor" href="#git-show-fuller"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodefullercodespan"></a><span class='synopsis'><code>fuller</code></span> </dt>
+<dd>
+<div class="verseblock">
+<pre class="content"><em>commit &lt;hash&gt; Author: &lt;author&gt; AuthorDate: &lt;author-date&gt; Commit: &lt;committer&gt; CommitDate: &lt;committer-date&gt;</em>
+<em><em>_
+</em>     &lt;title-line&gt;<em>
+</em><em>
+</em>     &lt;full-commit-message&gt;_</em></pre>
 </div>
-</li>
-<li>
-<p><span class='synopsis'><code>medium</code></span></p>
-<div class="literalblock">
-<div class="content">
-<pre>commit &lt;hash&gt;
-Author: &lt;author&gt;
-Date:   &lt;author-date&gt;</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;title-line&gt;</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;повне-повідомлення-коміту&gt;</pre>
-</div>
-</div>
-</li>
-<li>
-<p><span class='synopsis'><code>full</code></span></p>
-<div class="literalblock">
-<div class="content">
-<pre>commit &lt;hash&gt;
-Author: &lt;author&gt;
-Commit: &lt;committer&gt;</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;title-line&gt;</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;повне-повідомлення-коміту&gt;</pre>
-</div>
-</div>
-</li>
-<li>
-<p><span class='synopsis'><code>fuller</code></span></p>
-<div class="literalblock">
-<div class="content">
-<pre>commit &lt;hash&gt;
-Author:     &lt;author&gt;
-AuthorDate: &lt;author-date&gt;
-Commit:     &lt;committer&gt;
-CommitDate: &lt;committer-date&gt;</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;title-line&gt;</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;повне-повідомлення-коміту&gt;</pre>
-</div>
-</div>
-</li>
-<li>
-<p><span class='synopsis'><code>reference</code></span></p>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;abbrev-hash&gt; (&lt;title-line&gt;, &lt;short-author-date&gt;)</pre>
-</div>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodereferencecodespan"> <a class="anchor" href="#git-show-reference"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodereferencecodespan"></a><span class='synopsis'><code>reference</code></span> </dt>
+<dd>
+<div class="verseblock">
+<pre class="content"><em>&lt;abbrev-hash&gt;</em> (<em>&lt;title-line&gt;</em><span class='synopsis'><code>,</code></span> <em>&lt;short-author-date&gt;</em>)</pre>
 </div>
 <div class="paragraph">
 <p>Цей формат використовується для посилання на інший коміт у повідомленні коміту та є таким самим, як <span class='synopsis'><code>--pretty='format:%C</code>(<code>auto</code>)<code>%h</code> (<code>%s,</code> <code>%ad</code>)</span>. Зазвичай дата форматується за допомогою <span class='synopsis'><code>--date=short</code></span>, якщо явно не вказано інший параметр <span class='synopsis'><code>--date</code></span>. Як і у випадку з будь-яким <span class='synopsis'><code>format:</code></span> з заповнювачами формату, його вивід не залежить від інших параметрів, таких як <span class='synopsis'><code>--decorate</code></span> та <span class='synopsis'><code>--walk-reflogs</code></span>.</p>
 </div>
-</li>
-<li>
-<p><span class='synopsis'><code>email</code></span></p>
-<div class="literalblock">
-<div class="content">
-<pre>From &lt;hash&gt; &lt;date&gt;
-From: &lt;author&gt;
-Date: &lt;author-date&gt;
-Subject: [PATCH] &lt;title-line&gt;</pre>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeemailcodespan"> <a class="anchor" href="#git-show-email"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeemailcodespan"></a><span class='synopsis'><code>email</code></span> </dt>
+<dd>
+<div class="verseblock">
+<pre class="content"><em>From &lt;hash&gt; &lt;date&gt; From: &lt;author&gt; Date: &lt;author-date&gt; Subject: [PATCH] &lt;title-line&gt;</em>
+<em><em>_
+</em>&lt;повне-повідомлення-коміту&gt;_</em></pre>
 </div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;повне-повідомлення-коміту&gt;</pre>
-</div>
-</div>
-</li>
-<li>
-<p><span class='synopsis'><code>mboxrd</code></span></p>
-<div class="paragraph">
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodemboxrdcodespan"> <a class="anchor" href="#git-show-mboxrd"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodemboxrdcodespan"></a><span class='synopsis'><code>mboxrd</code></span> </dt>
+<dd>
 <p>Як і <span class='synopsis'><code>email</code></span>, але рядки в повідомленні коміту, що починаються з "From" (перед якими стоїть нуль або більше символів "&gt;"), відділяються за допомогою "&gt;", щоб їх не плутали з початком нового коміту.</p>
-</div>
-</li>
-<li>
-<p><span class='synopsis'><code>raw</code></span></p>
-<div class="paragraph">
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscoderawcodespan"> <a class="anchor" href="#git-show-raw"></a> <a class="anchor" href="#git-show-spanclasssynopsiscoderawcodespan"></a><span class='synopsis'><code>raw</code></span> </dt>
+<dd>
 <p>Формат <span class='synopsis'><code>raw</code></span> показує весь коміт точно так, як він збережений в обʼєкті коміту. Примітно, що хеші відображаються повністю, незалежно від того, чи використовується <span class='synopsis'><code>--abbrev</code></span> чи <span class='synopsis'><code>--no-abbrev</code></span>, а інформація про <em>батьків</em> показує справжні батьківські коміти, без урахування graft або спрощення історії. Зауважте, що цей формат впливає на спосіб відображення комітів, але не на спосіб відображення diff, наприклад, за допомогою <span class='synopsis'><code>git</code> <code>log</code> <code>--raw</code></span>. Щоб отримати повні назви обʼєктів у форматі raw diff, використовуйте <span class='synopsis'><code>--no-abbrev</code></span>.</p>
-</div>
-</li>
-<li>
-<p><span class='synopsis'><code>format:</code><em>&lt;рядок-формату&gt;</em></span></p>
-<div class="paragraph">
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeformatcodeemlt-gtemspan"> <a class="anchor" href="#git-show-format-"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeformatcodeemlt-gtemspan"></a><span class='synopsis'><code>format:</code><em>&lt;рядок-формату&gt;</em></span> </dt>
+<dd>
 <p>Формат <span class='synopsis'><code>format:</code><em>&lt;рядок-формату&gt;</em></span> дозволяє вказати, яку інформацію ви хочете відобразити. Він працює приблизно так само, як формат printf, але з одним істотним винятком: для введення нового рядка використовується <span class='synopsis'><code>%n</code></span>, а не <span class='synopsis'><em>\n</em></span>.</p>
-</div>
 <div class="paragraph">
 <p>Наприклад, «format:"Автором %h був %an, %ar%nНазва була &gt;&gt;%s&lt;&lt;%n"» виведе щось на кшталт цього:</p>
 </div>
@@ -326,6 +270,8 @@ Subject: [PATCH] &lt;title-line&gt;</pre>
 <ul>
 <li>
 <p>Заповнювачі, які розгортаються в один символ:</p>
+<div class="openblock">
+<div class="content">
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodencodespan"> <a class="anchor" href="#git-show-n"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodencodespan"></a><span class='synopsis'><code>%n</code></span> </dt>
@@ -342,9 +288,13 @@ Subject: [PATCH] &lt;title-line&gt;</pre>
 </dd>
 </dl>
 </div>
+</div>
+</div>
 </li>
 <li>
 <p>Заповнювачі, що впливають на форматування наступних заповнювачів:</p>
+<div class="openblock">
+<div class="content">
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodeCredcodespan"> <a class="anchor" href="#git-show-Cred"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeCredcodespan"></a><span class='synopsis'><code>%Cred</code></span> </dt>
@@ -400,9 +350,13 @@ Subject: [PATCH] &lt;title-line&gt;</pre>
 </dd>
 </dl>
 </div>
+</div>
+</div>
 </li>
 <li>
 <p>Заповнювачі, які замінюються інформацією, отриманою з коміту:</p>
+<div class="openblock">
+<div class="content">
 <div class="dlist">
 <dl>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodeHcodespan"> <a class="anchor" href="#git-show-H"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeHcodespan"></a><span class='synopsis'><code>%H</code></span> </dt>
@@ -549,43 +503,50 @@ Subject: [PATCH] &lt;title-line&gt;</pre>
 <dd>
 <p>імена посилань без дужок "(", ")".</p>
 </dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodecodecodecountcodespan"> <a class="anchor" href="#git-show-count"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodecodecodecountcodespan"></a><span class='synopsis'><code>%</code>(<code>count</code>)</span> </dt>
+<dd>
+<p>номер латки в серії латок. Використовується лише в параметрі <span class='synopsis'><code>--commit-list-format</code></span> команди <span class='synopsis'><code>format-patch</code></span></p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodecodecodetotalcodespan"> <a class="anchor" href="#git-show-total"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodecodecodetotalcodespan"></a><span class='synopsis'><code>%</code>(<code>total</code>)</span> </dt>
+<dd>
+<p>загальна кількість латок у серії латок. Використовується лише в параметрі <span class='synopsis'><code>--commit-list-format</code></span> команди <span class='synopsis'><code>format-patch</code></span></p>
+</dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodecodecodedecoratecodespanspanclasssynopsiscodecodeemltoptiongtemcodecodespanspanclasssynopsisspan"> <a class="anchor" href="#git-show-decorateoption"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodecodecodedecoratecodespanspanclasssynopsiscodecodeemltoptiongtemcodecodespanspanclasssynopsisspan"></a><span class='synopsis'><code>%</code>(<code>decorate</code></span><span class='synopsis'>[<code>:</code><em>&lt;option&gt;</em><code>,...</code>]</span><span class='synopsis'>)</span> </dt>
 <dd>
 <p>імена посилань з оформленням користувача. За рядком <span class='synopsis'><code>decorate</code></span> може йти двокрапка та нуль або більше параметрів, розділених комами. Значення параметрів можуть містити літеральні коди форматування. Їх необхідно використовувати для коми (<span class='synopsis'><code>%x2C</code></span>) та закриваючої дужки (<span class='synopsis'><code>%x29</code></span>) через їхню роль у синтаксисі параметрів.</p>
-<div class="ulist">
-<ul>
-<li>
-<p><span class='synopsis'><code>prefix=</code><em>&lt;value&gt;</em></span>: Відображається перед списком імен посилань. Зазвичай "&#160;<span class='synopsis'>(</span>".</p>
-</li>
-<li>
-<p><span class='synopsis'><code>suffix=</code><em>&lt;value&gt;</em></span>: Відображається після списку імен посилань. Зазвичай "<span class='synopsis'>)</span>".</p>
-</li>
-<li>
-<p><span class='synopsis'><code>separator=</code><em>&lt;value&gt;</em></span>: Відображається між іменами посилань. Зазвичай "<span class='synopsis'><code>,</code></span>&#160;".</p>
-</li>
-<li>
-<p><span class='synopsis'><code>pointer=</code><em>&lt;value&gt;</em></span>: Відображається між HEAD та гілкою, на яку вона вказує, якщо така є.
-Зазвичай "&#160;<span class='synopsis'><em>&#8594;</em></span>&#160;".</p>
-</li>
-<li>
-<p><span class='synopsis'><code>tag=</code><em>&lt;value&gt;</em></span>: Відображається перед назвами тегів. Зазвичай "<span class='synopsis'><code>tag:</code></span>&#160;".</p>
-</li>
-</ul>
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeprefixcodeemltvaluegtemspan"> <a class="anchor" href="#git-show-prefixvalue"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeprefixcodeemltvaluegtemspan"></a><span class='synopsis'><code>prefix=</code><em>&lt;value&gt;</em></span> </dt>
+<dd>
+<p>Показується перед списком імен посилань. Стандартне значення — "&#160;<span class='synopsis'>(</span>".</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodesuffixcodeemltvaluegtemspan"> <a class="anchor" href="#git-show-suffixvalue"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodesuffixcodeemltvaluegtemspan"></a><span class='synopsis'><code>suffix=</code><em>&lt;value&gt;</em></span> </dt>
+<dd>
+<p>Показується після списку імен посилань. Стандартне значення — "<span class='synopsis'>)</span>".</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeseparatorcodeemltvaluegtemspan"> <a class="anchor" href="#git-show-separatorvalue"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeseparatorcodeemltvaluegtemspan"></a><span class='synopsis'><code>separator=</code><em>&lt;value&gt;</em></span> </dt>
+<dd>
+<p>Показується між іменами посилань. Стандартне значення — "<span class='synopsis'><code>,</code></span>&#160;".</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodepointercodeemltvaluegtemspan"> <a class="anchor" href="#git-show-pointervalue"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodepointercodeemltvaluegtemspan"></a><span class='synopsis'><code>pointer=</code><em>&lt;value&gt;</em></span> </dt>
+<dd>
+<p>Показується між елементом HEAD та гілкою, на яку він вказує (якщо така є). Стандартне значення — "&#160;&#8594;&#160;".</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodetagcodeemltvaluegtemspan"> <a class="anchor" href="#git-show-tagvalue"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodetagcodeemltvaluegtemspan"></a><span class='synopsis'><code>tag=</code><em>&lt;value&gt;</em></span> </dt>
+<dd>
+<p>Показується перед назвами тегів. Стандартне значення — "<span class='synopsis'><code>tag:</code></span>&#160;".</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Наприклад, для створення декорацій без обтікання чи анотацій тегів, з пробілами як роздільниками:</p>
 </div>
 </dd>
 </dl>
 </div>
-</li>
-</ul>
-</div>
-<div class="openblock">
+<div class="listingblock">
 <div class="content">
-<div class="paragraph">
-<p>Наприклад, для створення декорацій без обтікання чи анотацій тегів, з пробілами як роздільниками:</p>
-</div>
-<div class="paragraph">
-<p><span class='synopsis'><code>%</code>(<code>decorate:prefix=,suffix=,tag=,separator=</code> )</span></p>
-</div>
+<pre>    %(decorate:prefix=,suffix=,tag=,separator= )</pre>
 </div>
 </div>
 <div class="dlist">
@@ -593,21 +554,25 @@ Subject: [PATCH] &lt;title-line&gt;</pre>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodecodecodedescribecodespanspanclasssynopsiscodecodeemltoptiongtemcodecodespanspanclasssynopsisspan"> <a class="anchor" href="#git-show-describeoption"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodecodecodedescribecodespanspanclasssynopsiscodecodeemltoptiongtemcodecodespanspanclasssynopsisspan"></a><span class='synopsis'><code>%</code>(<code>describe</code></span><span class='synopsis'>[<code>:</code><em>&lt;option&gt;</em><code>,...</code>]</span><span class='synopsis'>)</span> </dt>
 <dd>
 <p>зрозуміле для людини імʼя, як-от <a href='{{< relurl "docs/git-describe/uk" >}}'>git-describe[1]</a>; порожній рядок для комітів, які неможливо описати. За рядком <span class='synopsis'><code>describe</code></span> може йти двокрапка та нуль або більше опцій, розділених комами. Описи можуть бути суперечливими, якщо теги додаються або видаляються одночасно.</p>
-<div class="ulist">
-<ul>
-<li>
-<p><span class='synopsis'><code>tags</code>[<code>=</code><em>&lt;bool-value&gt;</em>]</span>: Замість того, щоб розглядати лише анотовані теги, розгляньте також легкі теги.</p>
-</li>
-<li>
-<p><span class='synopsis'><code>abbrev=</code><em>&lt;number&gt;</em></span>: Замість використання стандартної кількості шістнадцяткових цифр (яка змінюватиметься залежно від кількості обʼєктів у репозиторії, зазвичай — 7) скороченої назви обʼєкта, використовуйте &lt;number&gt; цифр або стільки цифр, скільки потрібно для формування унікальної назви обʼєкта.</p>
-</li>
-<li>
-<p><span class='synopsis'><code>match=</code><em>&lt;шаблон&gt;</em></span>: Розглядати лише теги, що відповідають заданому шаблону <span class='synopsis'><code>glob</code>(<code>7</code>)</span> <em>&lt;шаблон&gt;</em>, виключаючи префікс <span class='synopsis'><code>refs/tags/</code></span>.</p>
-</li>
-<li>
-<p><span class='synopsis'><code>exclude=</code><em>&lt;pattern&gt;</em></span>: Не враховувати теги, що відповідають заданому шаблону <span class='synopsis'><code>glob</code>(<code>7</code>)</span> <em>&lt;pattern&gt;</em>, за винятком префікса <span class='synopsis'><code>refs/tags/</code></span>.</p>
-</li>
-</ul>
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodetagscodecodecodeemltbool-valuegtemspan"> <a class="anchor" href="#git-show-tagsbool-value"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodetagscodecodecodeemltbool-valuegtemspan"></a><span class='synopsis'><code>tags</code>[<code>=</code><em>&lt;bool-value&gt;</em>]</span> </dt>
+<dd>
+<p>Замість того, щоб враховувати лише теги з анотаціями, враховуйте також і «легкі» теги.</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeabbrevcodeemltnumbergtemspan"> <a class="anchor" href="#git-show-abbrevnumber"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeabbrevcodeemltnumbergtemspan"></a><span class='synopsis'><code>abbrev=</code><em>&lt;number&gt;</em></span> </dt>
+<dd>
+<p>Замість стандартної кількості шістнадцяткових цифр (яка залежить від кількості об’єктів у сховищі, зазвичай це 7 цифр) у скороченому імені об’єкта використовуйте <em>&lt;число&gt;</em> цифр або стільки цифр, скільки потрібно для формування унікального імені об’єкта.</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodematchcodeemltpatterngtemspan"> <a class="anchor" href="#git-show-matchpattern"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodematchcodeemltpatterngtemspan"></a><span class='synopsis'><code>match=</code><em>&lt;pattern&gt;</em></span> </dt>
+<dd>
+<p>Враховувати лише теги, що відповідають заданому шаблону <span class='synopsis'><code>glob</code>(<code>7</code>)</span> <em>&lt;pattern&gt;</em>, виключаючи префікс <span class='synopsis'><code>refs/tags/</code></span>.</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeexcludecodeemltpatterngtemspan"> <a class="anchor" href="#git-show-excludepattern"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeexcludecodeemltpatterngtemspan"></a><span class='synopsis'><code>exclude=</code><em>&lt;pattern&gt;</em></span> </dt>
+<dd>
+<p>Не враховувати теги, що відповідають заданому шаблону <span class='synopsis'><code>glob</code>(<code>7</code>)</span> <em>&lt;pattern&gt;</em>, за винятком префікса <span class='synopsis'><code>refs/tags/</code></span>.</p>
+</dd>
+</dl>
 </div>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodeScodespan"> <a class="anchor" href="#git-show-S"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeScodespan"></a><span class='synopsis'><code>%S</code></span> </dt>
@@ -697,36 +662,40 @@ Subject: [PATCH] &lt;title-line&gt;</pre>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscodecodecodetrailerscodespanspanclasssynopsiscodecodeemltoptiongtemcodecodespanspanclasssynopsisspan"> <a class="anchor" href="#git-show-trailersoption"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodecodecodetrailerscodespanspanclasssynopsiscodecodeemltoptiongtemcodecodespanspanclasssynopsisspan"></a><span class='synopsis'><code>%</code>(<code>trailers</code></span><span class='synopsis'>[<code>:</code><em>&lt;option&gt;</em><code>,...</code>]</span><span class='synopsis'>)</span> </dt>
 <dd>
 <p>показувати трейлери тіла повідомлення, як їх інтерпретує <a href='{{< relurl "docs/git-interpret-trailers/uk" >}}'>git-interpret-trailers[1]</a>. За рядком <span class='synopsis'><code>trailers</code></span> може йти двокрапка та нуль або більше опцій, розділених комами. Якщо якась опція вказана кілька разів, враховується останнє її вживання.</p>
-<div class="ulist">
-<ul>
-<li>
-<p><span class='synopsis'><code>key=</code><em>&lt;ключ&gt;</em></span>: показувати лише трейлери з вказаним &lt;ключ&gt;. Зіставлення виконується без урахування регістру, а двокрапка в кінці є необовʼязковою. Якщо опція вказана кілька разів, відображаються рядки трейлера, що відповідають будь-якому з ключів. Ця опція автоматично вмикає опцію <span class='synopsis'><code>only</code></span>, щоб приховувати рядки, що не є трейлерами, у блоці трейлера. Якщо це небажано, її можна вимкнути за допомогою <span class='synopsis'><code>only=false</code></span>. Наприклад, <span class='synopsis'><code>%</code>(<code>trailers:key=Reviewed-by</code>)</span> показує рядки трейлера з ключем <span class='synopsis'><code>Reviewed-by</code></span>.</p>
-</li>
-<li>
-<p><span class='synopsis'><code>only</code>[<code>=</code><em>&lt;bool&gt;</em>]</span>: виберіть, чи слід включати не-трейлери рядків з трейлерного блоку.</p>
-</li>
-<li>
-<p><span class='synopsis'><code>separator=</code><em>&lt;sep&gt;</em></span>: вкажіть роздільник, що вставляється між рядками-трейлерами. Зазвичай використовується символ переведення рядка. Рядок &lt;sep&gt; може містити літеральні коди форматування, описані вище. Щоб використовувати кому як роздільник, необхідно використовувати <span class='synopsis'><code>%x2C</code></span>, оскільки в іншому випадку він буде проаналізований як наступний параметр. Наприклад, <span class='synopsis'><code>%</code>(<code>trailers:key=Ticket,separator=%x2C</code>)</span> показує всі рядки-завершення, ключем яких є "Ticket", розділені комою та пробілом.</p>
-</li>
-<li>
-<p><span class='synopsis'><code>unfold</code>[<code>=</code><em>&lt;bool&gt;</em>]</span>: змусити поводитися так, ніби для interpret-trailer було задано опцію <span class='synopsis'><code>--unfold</code></span>. Наприклад, <span class='synopsis'><code>%</code>(<code>trailers:only,unfold=true</code>)</span> розгортає та показує всі рядки трейлера.</p>
-</li>
-<li>
-<p><span class='synopsis'><code>keyonly</code>[<code>=</code><em>&lt;bool&gt;</em>]</span>: показувати тільки частину <em>ключ</em> трейлера.</p>
-</li>
-<li>
-<p><span class='synopsis'><code>valueonly</code>[<code>=</code><em>&lt;bool&gt;</em>]</span>: показувати тільки частину <em>значення</em> трейлера.</p>
-</li>
-<li>
-<p><span class='synopsis'><code>key_value_separator=</code><em>&lt;sep&gt;</em></span>: визначає роздільник, що вставляється між ключем і значенням кожного трейлера. Зазвичай використовується значення ": ". В іншому випадку він має ту саму семантику, що й <span class='synopsis'><code>separator=</code><em>&lt;sep&gt;</em></span> вище.</p>
-</li>
-</ul>
-</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodekeycodeemltkeygtemspan"> <a class="anchor" href="#git-show-keykey"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodekeycodeemltkeygtemspan"></a><span class='synopsis'><code>key=</code><em>&lt;key&gt;</em></span> </dt>
+<dd>
+<p>показувати лише трейлери із зазначеним &lt;ключем&gt;. Збіг визначається без урахування регістру, а двокрапка в кінці рядка є необов’язковою. Якщо цей параметр вказано кілька разів, показуються рядки трейлера, що відповідають будь-якому з ключів. Цей параметр автоматично вмикає параметр <span class='synopsis'><code>only</code></span>, завдяки чому рядки, що не є трейлерами, у блоці трейлерів приховуються. Якщо це небажано, її можна вимкнути за допомогою <span class='synopsis'><code>only=false</code></span>. Наприклад, <span class='synopsis'><code>%</code>(<code>trailers:key=Reviewed-by</code>)</span> показує рядки трейлера з ключем <span class='synopsis'><code>Reviewed-by</code></span>.</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeonlycodecodecodeemltboolgtemspan"> <a class="anchor" href="#git-show-onlybool"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeonlycodecodecodeemltboolgtemspan"></a><span class='synopsis'><code>only</code>[<code>=</code><em>&lt;bool&gt;</em>]</span> </dt>
+<dd>
+<p>виберіть, чи слід включати рядки з блоку трейлера, що не є частиною самого трейлера.</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeseparatorcodeemltsepgtemspan"> <a class="anchor" href="#git-show-separatorsep"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeseparatorcodeemltsepgtemspan"></a><span class='synopsis'><code>separator=</code><em>&lt;sep&gt;</em></span> </dt>
+<dd>
+<p>вкажіть роздільник, що вставляється між рядками трейлера. Стандартним значенням є символ переведення рядка. Рядок &lt;sep&gt; може містити літеральні коди форматування, описані вище. Щоб використовувати кому як роздільник, потрібно ввести <span class='synopsis'><code>%x2C</code></span>, інакше це буде розпізнано як наступний параметр. Наприклад, <span class='synopsis'><code>%</code>(<code>trailers:key=Ticket,separator=%x2C</code> )</span> показує всі рядки трейлера, ключ яких — <span class='synopsis'><code>Ticket</code></span>, розділені комою та пробілом.</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodeunfoldcodecodecodeemltboolgtemspan"> <a class="anchor" href="#git-show-unfoldbool"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodeunfoldcodecodecodeemltboolgtemspan"></a><span class='synopsis'><code>unfold</code>[<code>=</code><em>&lt;bool&gt;</em>]</span> </dt>
+<dd>
+<p>зробити так, щоб команда працювала так, ніби було вказано опцію <span class='synopsis'><code>--unfold</code></span> у <span class='synopsis'><code>interpret-trailer</code></span>. Наприклад, <span class='synopsis'><code>%</code>(<code>trailers:only,unfold=true</code>)</span> розгортає та показує всі рядки трейлера.</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodekeyonlycodecodecodeemltboolgtemspan"> <a class="anchor" href="#git-show-keyonlybool"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodekeyonlycodecodecodeemltboolgtemspan"></a><span class='synopsis'><code>keyonly</code>[<code>=</code><em>&lt;bool&gt;</em>]</span> </dt>
+<dd>
+<p>показувати тільки частину <em>ключ</em> трейлера.</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodevalueonlycodecodecodeemltboolgtemspan"> <a class="anchor" href="#git-show-valueonlybool"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodevalueonlycodecodecodeemltboolgtemspan"></a><span class='synopsis'><code>valueonly</code>[<code>=</code><em>&lt;bool&gt;</em>]</span> </dt>
+<dd>
+<p>показувати тільки частину <em>значення</em> трейлера.</p>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodekeyvalueseparatorcodeemltsepgtemspan"> <a class="anchor" href="#git-show-keyvalueseparatorsep"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodekeyvalueseparatorcodeemltsepgtemspan"></a><span class='synopsis'><code>key_value_separator=</code><em>&lt;sep&gt;</em></span> </dt>
+<dd>
+<p>визначає роздільник, що вставляється між ключем і значенням кожного трейлера. Зазвичай використовується значення ": ". В іншому випадку він має ту саму семантику, що й <span class='synopsis'><code>separator=</code><em>&lt;sep&gt;</em></span> вище.</p>
 </dd>
 </dl>
 </div>
-</li>
-</ul>
+</dd>
+</dl>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -757,13 +726,15 @@ Subject: [PATCH] &lt;title-line&gt;</pre>
 <div class="paragraph">
 <p>Якщо додати <span class='synopsis'> </span> (пробіл) після <span class='synopsis'><code>%</code></span> заповнювача, пробіл вставляється безпосередньо перед розкриттям тоді і тільки тоді, коли заповнювач розкривається до непорожнього рядка.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><span class='synopsis'><code>tformat:</code></span></p>
-<div class="paragraph">
-<p>Формат <span class='synopsis'><code>tformat:</code></span> працює точно так само, як <span class='synopsis'><code>format:</code></span>, за винятком того, що він надає семантику "terminator" замість семантики "separator". Іншими словами, до кожного коміту додається символ завершення повідомлення (зазвичай це новий рядок), а не роздільник, розміщений між записами. Це означає, що останній запис однорядкового формату буде належним чином завершуватися новим рядком, як і у форматі "oneline". Наприклад:</p>
 </div>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1" id="git-show-spanclasssynopsiscodetformatcodespan"> <a class="anchor" href="#git-show-tformat"></a> <a class="anchor" href="#git-show-spanclasssynopsiscodetformatcodespan"></a><span class='synopsis'><code>tformat:</code></span> </dt>
+<dd>
+<p>Формат <span class='synopsis'><code>tformat:</code></span> працює точно так само, як <span class='synopsis'><code>format:</code></span>, за винятком того, що він надає семантику "terminator" замість семантики "separator". Іншими словами, до кожного коміту додається символ завершення повідомлення (зазвичай це новий рядок), а не роздільник, розміщений між записами. Це означає, що останній запис однорядкового формату буде належним чином завершуватися новим рядком, як і у форматі "oneline". Наприклад:</p>
 <div class="listingblock">
 <div class="content">
 <pre>$ git log -2 --pretty=format:%h 4da45bef \
@@ -786,8 +757,8 @@ $ git log -2 --pretty=tformat:%h 4da45bef \
 $ git log -2 --pretty=%h 4da45bef</pre>
 </div>
 </div>
-</li>
-</ul>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -893,7 +864,7 @@ $ git log -2 --pretty=%h 4da45bef</pre>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode-Ucodeemltngtemspan"> <a class="anchor" href="#git-show--Un"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode-Ucodeemltngtemspan"></a><span class='synopsis'><code>-U</code><em>&lt;n&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--unifiedcodeemltngtemspan"> <a class="anchor" href="#git-show---unifiedn"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--unifiedcodeemltngtemspan"></a><span class='synopsis'><code>--unified=</code><em>&lt;n&gt;</em></span> </dt>
 <dd>
-<p>Генерувати diff з <em>&lt;n&gt;</em> рядками контексту замість звичайних трьох.
+<p>Створити diffs з <em>&lt;n&gt;</em> рядками контексту. Зазвичай кількість рядків контексту дорівнює значенню <span class='synopsis'><code>diff.context</code></span> або 3, якщо ця змінна конфігурації не встановлена. (Опція <span class='synopsis'><code>-U</code></span> без аргументу <span class='synopsis'><em>&lt;n&gt;</em></span> через історичну випадковість мовчки приймається як синонім опції <span class='synopsis'><code>-p</code></span>).
 Мається на увазі <span class='synopsis'><code>--patch</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--outputcodeemltgtemspan"> <a class="anchor" href="#git-show---output"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--outputcodeemltgtemspan"></a><span class='synopsis'><code>--output=</code><em>&lt;файл&gt;</em></span> </dt>
@@ -1470,7 +1441,10 @@ $ git log -2 --pretty=%h 4da45bef</pre>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--default-prefixcodespan"> <a class="anchor" href="#git-show---default-prefix"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--default-prefixcodespan"></a><span class='synopsis'><code>--default-prefix</code></span> </dt>
 <dd>
-<p>Використовувати типові префікси джерела та призначення ("a/" та "b/"). Замінює змінні конфігурації, такі як <span class='synopsis'><code>diff.noprefix</code></span>, <span class='synopsis'><code>diff.srcPrefix</code></span>, <span class='synopsis'><code>diff.dstPrefix</code></span> та <span class='synopsis'><code>diff.mnemonicPrefix</code></span> (див. <a href='{{< relurl "docs/git-config/uk" >}}'>git-config[1]</a>).</p>
+<p>Використовувати типові префікси джерела та призначення ("a/" та "b/").
+Перевизначає змінні конфігурації, такі як <span class='synopsis'><code>diff.noprefix</code></span>,
+<span class='synopsis'><code>diff.srcPrefix</code></span>, <span class='synopsis'><code>diff.dstPrefix</code></span> та <span class='synopsis'><code>diff.mnemonicPrefix</code></span>
+(див. <a href='{{< relurl "docs/git-config/uk" >}}'>git-config[1]</a>).</p>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--line-prefixcodeemltprefixgtemspan"> <a class="anchor" href="#git-show---line-prefixprefix"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--line-prefixcodeemltprefixgtemspan"></a><span class='synopsis'><code>--line-prefix=</code><em>&lt;prefix&gt;</em></span> </dt>
 <dd>
@@ -1558,7 +1532,7 @@ $ git log -2 --pretty=%h 4da45bef</pre>
 <em>перейменувати в &lt;шлях&gt;</em>
 <em>індекс подібності &lt;номер&gt;</em>
 <em>індекс несхожості &lt;номер&gt;</em>
-<em>індекс <span class="hover-term" data-term="хеш">&lt;хеш&gt;</span>..<span class="hover-term" data-term="хеш">&lt;хеш&gt;</span> &lt;режим&gt;</em></pre>
+<em>індекс &lt;хеш&gt;..&lt;хеш&gt; &lt;режим&gt;</em></pre>
 </div>
 <div class="paragraph">
 <p>Режими файлів <em>&lt;режим&gt;</em> виводиться у вигляді 6-значні вісімкових чисел, включаючи тип файлу та біти прав доступу до файлу.</p>

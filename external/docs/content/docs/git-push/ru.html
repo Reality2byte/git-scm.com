@@ -18,6 +18,12 @@ headings:
   id: _описание
 - text: ПАРАМЕТРЫ
   id: OPTIONS
+- text: URL-АДРЕСА GIT
+  id: _url_адреса_git
+- text: ВНЕШНИЕ РЕПОЗИТОРИИ
+  id: _внешние_репозитории
+- text: ВЫШЕСТОЯЩИЕ ВЕТКИ
+  id: UPSTREAM-BRANCHES
 - text: ВЫВОД
   id: _вывод
 - text: ПРАВИЛА ОТПРАВКИ
@@ -26,8 +32,8 @@ headings:
   id: _примечание_о_перемотке_вперёд_fast_forward
 - text: ПРИМЕРЫ
   id: _примеры
-- text: БЕЗОПАСНОСТЬ
-  id: _безопасность
+- text: ЗАЩИТА
+  id: _защита
 - text: КОНФИГУРАЦИЯ
   id: CONFIGURATION
 - text: GIT
@@ -46,11 +52,11 @@ headings:
 <div class="sectionbody">
 <div class="verseblock">
 <pre class="content"><span class='synopsis'><code>git</code></span> <span class='synopsis'><code>push</code></span> [<span class='synopsis'><code>--all</code></span> | <span class='synopsis'><code>--branches</code></span> | <span class='synopsis'><code>--mirror</code></span> | <span class='synopsis'><code>--tags</code></span>] [<span class='synopsis'><code>--follow-tags</code></span>] [<span class='synopsis'><code>--atomic</code></span>] [<span class='synopsis'><code>-n</code></span> | <span class='synopsis'><code>--dry-run</code></span>] [<span class='synopsis'><code>--receive-pack=</code></span><em>&lt;пакет-получения-git&gt;</em>]
-	 [<span class='synopsis'><code>--repo=</code></span><em>&lt;репозиторий&gt;</em>] [<span class='synopsis'><code>-f</code></span> | <span class='synopsis'><code>--force</code></span>] [<span class='synopsis'><code>-d</code></span> | <span class='synopsis'><code>--delete</code></span>] [<span class='synopsis'><code>--prune</code></span>] [<span class='synopsis'><code>-q</code></span> | <span class='synopsis'><code>--quiet</code></span>] [<span class='synopsis'><code>-v</code></span> | <span class='synopsis'><code>--verbose</code></span>]
+	 [<span class='synopsis'><code>--repo=</code></span><em><span class="hover-term" data-term="репозиторий">&lt;репозиторий&gt;</span></em>] [<span class='synopsis'><code>-f</code></span> | <span class='synopsis'><code>--force</code></span>] [<span class='synopsis'><code>-d</code></span> | <span class='synopsis'><code>--delete</code></span>] [<span class='synopsis'><code>--prune</code></span>] [<span class='synopsis'><code>-q</code></span> | <span class='synopsis'><code>--quiet</code></span>] [<span class='synopsis'><code>-v</code></span> | <span class='synopsis'><code>--verbose</code></span>]
 	 [<span class='synopsis'><code>-u</code></span> | <span class='synopsis'><code>--set-upstream</code></span>] [<span class='synopsis'><code>-o</code></span> <em>&lt;строка&gt;</em> | <span class='synopsis'><code>--push-option=</code></span><em>&lt;строка&gt;</em>]
 	 [<span class='synopsis'><code>--</code></span>[<span class='synopsis'><code>no-</code></span>]<span class='synopsis'><code>signed</code></span> | <span class='synopsis'><code>--signed=</code></span>(<span class='synopsis'><code>true</code></span>|<span class='synopsis'><code>false</code></span>|<span class='synopsis'><code>if-asked</code></span>)]
 	 [<span class='synopsis'><code>--force-with-lease</code></span>[<span class='synopsis'><code>=</code></span><em>&lt;имя-ссылки&gt;</em>[<span class='synopsis'><code>:</code></span><em>&lt;ожидаемое&gt;</em>]] [<span class='synopsis'><code>--force-if-includes</code></span>]]
-	 [<span class='synopsis'><code>--no-verify</code></span>] [<em>&lt;репозиторий&gt;</em> [<em>&lt;спецификатор-ссылки&gt;</em>&#8230;&#8203;]]</pre>
+	 [<span class='synopsis'><code>--no-verify</code></span>] [<em><span class="hover-term" data-term="репозиторий">&lt;репозиторий&gt;</span></em> [<em>&lt;спецификатор-ссылки&gt;</em>&#8230;&#8203;]]</pre>
 </div>
 </div>
 </div>
@@ -64,7 +70,7 @@ headings:
 <p>Самый простой способ отправить изменения — <span class='synopsis'><code>git</code> <code>push</code> <em>&lt;внешний-репозиторий&gt;</em> <em>&lt;ветка&gt;</em></span>. <span class='synopsis'><code>git</code> <code>push</code> <code>origin</code> <code>main</code></span> отправит локальную ветку <span class='synopsis'><code>main</code></span> в ветку <span class='synopsis'><code>main</code></span> во внешнем репозитории с именем <span class='synopsis'><code>origin</code></span>.</p>
 </div>
 <div class="paragraph">
-<p>Аргумент <span class='synopsis'><em>&lt;репозиторий&gt;</em></span> по умолчанию указывает на вышестоящий (upstream) репозиторий для текущей ветки или на <span class='synopsis'><code>origin</code></span>, если вышестоящий репозиторий не настроен.</p>
+<p>Аргумент <span class='synopsis'><em><span class="hover-term" data-term="репозиторий">&lt;репозиторий&gt;</span></em></span> по умолчанию указывает на вышестоящий (upstream) репозиторий для текущей ветки или на <span class='synopsis'><code>origin</code></span>, если вышестоящий репозиторий не настроен.</p>
 </div>
 <div class="paragraph">
 <p>Чтобы решить, какие ветки, метки или другие ссылки отправлять, Git использует (в порядке приоритета):</p>
@@ -95,7 +101,7 @@ headings:
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1" id="git-push-emltgtem"> <a class="anchor" href="#git-push-"></a> <a class="anchor" href="#git-push-emltgtem"></a><em>&lt;репозиторий&gt;</em> </dt>
+<dt class="hdlist1" id="git-push-emltgtem"> <a class="anchor" href="#git-push-"></a> <a class="anchor" href="#git-push-emltgtem"></a><em><span class="hover-term" data-term="репозиторий">&lt;репозиторий&gt;</span></em> </dt>
 <dd>
 <p>«Внешний» (remote) репозиторий, являющийся целью операции отправки (push). Этот параметр может быть либо URL-адресом (см. раздел <a href="#URLS">URL-АДРЕСА GIT</a> ниже), либо именем внешнего репозитория (см. раздел <a href="#REMOTES">ВНЕШНИЕ РЕПОЗИТОРИИ</a> ниже).</p>
 </dd>
@@ -120,10 +126,10 @@ headings:
 <div class="ulist">
 <ul>
 <li>
-<p><em>&lt;источник&gt;</em> без <span class='synopsis'><code>:</code><em>&lt;назначение&gt;</em></span> означает обновление той же ссылки, что и <em>&lt;источник&gt;</em>, если только конфигурация <span class='synopsis'><code>remote.</code><em>&lt;репозиторий&gt;</em><code>.push</code></span> не указывает другое <em>&lt;назначение&gt;</em>. Например, если <span class='synopsis'><code>main</code></span> — это ветка, то спецификатор ссылки <span class='synopsis'><code>main</code></span> разворачивается в <span class='synopsis'><code>main:refs/heads/main</code></span>.</p>
+<p><em>&lt;источник&gt;</em> без <span class='synopsis'><code>:</code><em>&lt;назначение&gt;</em></span> означает обновление той же ссылки, что и <em>&lt;источник&gt;</em>, если только конфигурация <span class='synopsis'><code>remote.</code><em><span class="hover-term" data-term="репозиторий">&lt;репозиторий&gt;</span></em><code>.push</code></span> не указывает другое <em>&lt;назначение&gt;</em>. Например, если <span class='synopsis'><code>main</code></span> — это ветка, то спецификатор ссылки <span class='synopsis'><code>main</code></span> разворачивается в <span class='synopsis'><code>main:refs/heads/main</code></span>.</p>
 </li>
 <li>
-<p>Если <em>&lt;назначение&gt;</em> однозначно ссылается на ссылку во внешнем репозитории &lt;репозиторий&gt;, то развернуть его в эту ссылку. Например, если <span class='synopsis'><code>v1.0</code></span> — это метка во внешнем репозитории, то <span class='synopsis'><code>HEAD:v1.0</code></span> разворачивается в <span class='synopsis'><code>HEAD:refs/tags/v1.0</code></span>.</p>
+<p>Если <em>&lt;назначение&gt;</em> однозначно ссылается на ссылку во внешнем репозитории <span class="hover-term" data-term="репозиторий">&lt;репозиторий&gt;</span>, то развернуть его в эту ссылку. Например, если <span class='synopsis'><code>v1.0</code></span> — это метка во внешнем репозитории, то <span class='synopsis'><code>HEAD:v1.0</code></span> разворачивается в <span class='synopsis'><code>HEAD:refs/tags/v1.0</code></span>.</p>
 </li>
 <li>
 <p>Если <em>&lt;источник&gt;</em> преобразуется в ссылку, начинающуюся с <span class='synopsis'><code>refs/heads/</code></span> или <span class='synopsis'><code>refs/tags/</code></span>, то добавить это префикс к &lt;назначение&gt;. Например, если <span class='synopsis'><code>main</code></span> — это ветка, то <span class='synopsis'><code>main:other</code></span> разворачивается в <span class='synopsis'><code>main:refs/heads/other</code></span></p>
@@ -329,7 +335,7 @@ git push --force-with-lease=master:base master:master</pre>
 </dd>
 <dt class="hdlist1" id="git-push-spanclasssynopsiscode--repocodeemltrepositorygtemspan"> <a class="anchor" href="#git-push---reporepository"></a> <a class="anchor" href="#git-push-spanclasssynopsiscode--repocodeemltrepositorygtemspan"></a><span class='synopsis'><code>--repo=</code><em>&lt;repository&gt;</em></span> </dt>
 <dd>
-<p>Этот параметр эквивалентен аргументу <em>&lt;репозиторий&gt;</em>. Если указаны оба, аргумент командной строки имеет приоритет.</p>
+<p>Этот параметр эквивалентен аргументу <em><span class="hover-term" data-term="репозиторий">&lt;репозиторий&gt;</span></em>. Если указаны оба, аргумент командной строки имеет приоритет.</p>
 </dd>
 <dt class="hdlist1" id="git-push-spanclasssynopsiscode-ucodespan"> <a class="anchor" href="#git-push--u"></a> <a class="anchor" href="#git-push-spanclasssynopsiscode-ucodespan"></a><span class='synopsis'><code>-u</code></span> </dt>
 <dt class="hdlist1" id="git-push-spanclasssynopsiscode--set-upstreamcodespan"> <a class="anchor" href="#git-push---set-upstream"></a> <a class="anchor" href="#git-push-spanclasssynopsiscode--set-upstreamcodespan"></a><span class='synopsis'><code>--set-upstream</code></span> </dt>
@@ -400,19 +406,285 @@ git push --force-with-lease=master:base master:master</pre>
 </dd>
 </dl>
 </div>
-<div class="admonitionblock warning">
+</div>
+</div>
+<div class="sect1">
+<h2 id="_url_адреса_git"><a class="anchor" href="#_url_адреса_git"></a>URL-АДРЕСА GIT<a id="URLS"></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>В целом, URL-адреса содержат информацию о транспортном протоколе, адресе удалённого сервера и пути к репозиторию. В зависимости от транспортного протокола, некоторые из этих элементов могут отсутствовать.</p>
+</div>
+<div class="paragraph">
+<p>Git поддерживает следующие протоколы: ssh, git, http и https (кроме того, ftp и ftps могут быть использованы для извлечения из репозиториев, но это неэффективно и является устаревшей (deprecated) возможностью; не используйте эти протоколы).</p>
+</div>
+<div class="paragraph">
+<p>Родной транспорт (т.е. адреса вида <span class='synopsis'><code>git://</code></span>) не имеет аутентификации и должен использоваться с осторожностью в незащищённых сетях.</p>
+</div>
+<div class="paragraph">
+<p>Для этих протоколов может использоваться следующий синтаксис:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><span class='synopsis'><code>ssh://</code>[<em>&lt;пользователь&gt;</em><code>@</code>]<em>&lt;хост&gt;</em>[<code>:</code><em>&lt;порт&gt;</em>]<code>/</code><em>&lt;путь-к-репозиторию-git&gt;</em></span></p>
+</li>
+<li>
+<p><span class='synopsis'><code>git://</code><em>&lt;хост&gt;</em>[<code>:</code><em>&lt;порт&gt;</em>]<code>/</code><em>&lt;путь-к-репозиторию-git&gt;</em></span></p>
+</li>
+<li>
+<p><span class='synopsis'><code>http</code>[<code>s</code>]<code>://</code><em>&lt;хост&gt;</em>[<code>:</code><em>&lt;порт&gt;</em>]<code>/</code><em>&lt;путь-к-репозиторию-git&gt;</em></span></p>
+</li>
+<li>
+<p><span class='synopsis'><code>ftp</code>[<code>s</code>]<code>://</code><em>&lt;хост&gt;</em>[<code>:</code><em>&lt;порт&gt;</em>]<code>/</code><em>&lt;путь-к-репозиторию-git&gt;</em></span></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>В качестве альтернативы для протокола ssh можно также использовать scp-подобный синтаксис:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><span class='synopsis'>[<em>&lt;пользователь&gt;</em><code>@</code>]<em>&lt;хост&gt;</em><code>:/</code><em>&lt;путь-к-репозиторию-git&gt;</em></span></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Этот синтаксис распознаётся только в том случае, если перед первым двоеточием нет слэшей. Это позволяет отличить его от локального пути, который содержит двоеточие. Например, локальный путь <span class='synopsis'><code>foo:bar</code></span> можно записан как <span class='synopsis'><code>./foo:bar</code></span> или как абсолютный путь, дабы он не был бы ошибочно интерпретирован как ssh-адреса.</p>
+</div>
+<div class="paragraph">
+<p>Кроме того протоколы ssh и git поддерживают расширение <span class='synopsis'><code>~</code><em>&lt;имени-пользователя&gt;</em></span>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><span class='synopsis'><code>ssh://</code>[<em>&lt;пользователь&gt;</em><code>@</code>]<em>&lt;хост&gt;</em>[<code>:</code><em>&lt;порт&gt;</em>]<code>/~</code><em>&lt;имя-пользователя&gt;</em><code>/</code><em>&lt;путь-к-репозиторию-git&gt;</em></span></p>
+</li>
+<li>
+<p><span class='synopsis'><code>git://</code><em>&lt;хост&gt;</em>[<code>:</code><em>&lt;порт&gt;</em>]<code>/~</code><em>&lt;имя-пользователя&gt;</em><code>/</code><em>&lt;путь-к-репозиторию-git&gt;</em></span></p>
+</li>
+<li>
+<p><span class='synopsis'>[<em>&lt;пользователь&gt;</em><code>@</code>]<em>&lt;хост&gt;</em><code>:/~</code><em>&lt;имя-пользователя&gt;</em><code>/</code><em>&lt;путь-к-репозиторию-git&gt;</em></span></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Для локальных репозиториев, для которых поддержка у Git также родная, могут использоваться следующие варианты синтаксиса:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><span class='synopsis'><em>/путь/к/репозиторию.git/</em></span></p>
+</li>
+<li>
+<p><span class='synopsis'><em>file:///путь/к/репозиторию.git/</em></span></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Эти два синтаксиса по большей части эквивалентны, кроме как при клонировании; в этом случае первый подразумевает параметр <span class='synopsis'><code>--local</code></span>. См. подробности в <a href='{{< relurl "docs/git-clone/ru" >}}'>git-clone[1]</a>.</p>
+</div>
+<div class="paragraph">
+<p><span class='synopsis'><code>git</code> <code>clone</code></span>, <span class='synopsis'><code>git</code> <code>fetch</code></span> и <span class='synopsis'><code>git</code> <code>pull</code></span>, но не <span class='synopsis'><code>git</code> <code>push</code></span>, также примут сформированный соответствующим образом pack-файл. См. <a href='{{< relurl "docs/git-bundle/ru" >}}'>git-bundle[1]</a>.</p>
+</div>
+<div class="paragraph">
+<p>Когда Git не знает, как работать с определённым транспортным протоколом, он пытается использовать вспомогательную программу <span class='synopsis'><code>remote-</code><em>&lt;транспорт&gt;</em></span>, помощник работы со внешним репозиторием, если таковая существует. Для явного запроса такого помощника можно использовать следующий синтаксис:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><span class='synopsis'><em>&lt;транспорт&gt;</em><code>::</code><em>&lt;адрес&gt;</em></span></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>где <em>&lt;адрес&gt;</em> может быть путём, сервером и путём, или произвольной URL-подобной строкой, которая распознаётся конкретным помощником работы с удалённым репозиторием. См. подробности в <a href='{{< relurl "docs/gitremote-helpers/ru" >}}'>gitremote-helpers[7]</a>.</p>
+</div>
+<div class="paragraph">
+<p>Если у вас много внешних репозиториев с похожими друг на друга именами, и вы хотите использовать для них свой собственный формат (так, что бы использовать свои собственные удобные вам URL-адреса, которые будут автоматически преобразовываться в те, которые работают), вы можете добавить раздел конфигурации следующего вида:</p>
+</div>
+<div class="verseblock">
+<pre class="content">	[url "<em>&lt;настоящая-база-url&gt;</em>"]
+		insteadOf = <em>&lt;другая-база-url&gt;</em></pre>
+</div>
+<div class="paragraph">
+<p>Например, при такой конфигурации:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>	[url "git://git.host.xz/"]
+		insteadOf = host.xz:/path/to/
+		insteadOf = work:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>URL-адрес вида "work:repo.git" или "host.xz:/path/to/repo.git", будет преобразовываться в любом контексте, в котором ожидается URL-адрес, в "git.host.xz/repo.git".</p>
+</div>
+<div class="paragraph">
+<p>Если вы хотите, чтобы URL-адреса преобразовывались только при отправки изменений во внешний репозиторий, вы можете добавить раздел конфигурации следующего вида:</p>
+</div>
+<div class="verseblock">
+<pre class="content">	[url "<em>&lt;настоящая-база-url&gt;</em>"]
+		pushInsteadOf = <em>&lt;другая-база-url&gt;</em></pre>
+</div>
+<div class="paragraph">
+<p>Например, при такой конфигурации:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>	[url "ssh://example.org/"]
+		pushInsteadOf = git://example.org/</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>URL-адрес вида "git://example.org/path/to/repo.git", будет преобразован в "ssh://example.org/path/to/repo.git" для отправки изменений, но при получении изменений будет по-прежнему использоваться оригинальный URL-адрес.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_внешние_репозитории"><a class="anchor" href="#_внешние_репозитории"></a>ВНЕШНИЕ РЕПОЗИТОРИИ<a id="REMOTES"></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Имя одного из следующих может использоваться вместо URL в качестве аргумента <em><span class="hover-term" data-term="репозиторий">&lt;репозиторий&gt;</span></em>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>внешний репозиторий в файле конфигурации Git: <span class='synopsis'><code>$GIT_DIR/config</code></span>,</p>
+</li>
+<li>
+<p>файл в каталоге <span class='synopsis'><code>$GIT_DIR/remotes</code></span> или</p>
+</li>
+<li>
+<p>файл в каталоге <span class='synopsis'><code>$GIT_DIR/branches</code></span>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Все они также позволяют вам опустить спецификатор ссылки в командной строке, поскольку каждый из них содержит спецификатор ссылки, который git будет использовать по умолчанию.</p>
+</div>
+<div class="sect2">
+<h3 id="_именованный_внешний_репозиторий_в_файле_конфигурации"><a class="anchor" href="#_именованный_внешний_репозиторий_в_файле_конфигурации"></a>Именованный внешний репозиторий в файле конфигурации</h3>
+<div class="paragraph">
+<p>Вы можете указать имя внешнего репозитория, который вы ранее настроили с помощью <a href='{{< relurl "docs/git-remote/ru" >}}'>git-remote[1]</a>, <a href='{{< relurl "docs/git-config/ru" >}}'>git-config[1]</a> или даже путём ручного редактирования файла <span class='synopsis'><code>$GIT_DIR/config</code></span>. URL этого внешнего репозитория будет использоваться для доступа к репозиторию. Спецификатор ссылки этого внешнего репозитория будет использоваться по умолчанию, если вы не укажете спецификатор ссылки в командной строке. Запись в файле конфигурации будет выглядеть так:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>	[remote "&lt;имя&gt;"]
+		url = &lt;URL&gt;
+		pushurl = &lt;URL-отправки&gt;
+		push = &lt;спецификатор-ссылки&gt;
+		fetch = &lt;спецификатор-ссылки&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em>&lt;URL-отправки&gt;</em> используется только для отправки. Он необязателен и по умолчанию равен <em>&lt;URL&gt;</em>. Отправка во внешний репозиторий влияет на все определённые pushurl-ы или все определённые url-ы, если pushurl-ы не определены. Однако получение будет выполняться только из первого определённого url, если определено несколько url-ов.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_именованный_файл_в_git_dirremotes"><a class="anchor" href="#_именованный_файл_в_git_dirremotes"></a>Именованный файл в <span class='synopsis'><code>$GIT_DIR/remotes</code></span></h3>
+<div class="paragraph">
+<p>Вы можете указать имя файла в <span class='synopsis'><code>$GIT_DIR/remotes</code></span>. URL в этом файле будет использоваться для доступа к репозиторию. Спецификатор ссылки в этом файле будет использоваться по умолчанию, если вы не укажете спецификатор ссылки в командной строке. Этот файл должен иметь следующий формат:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>	URL: один из вышеуказанных форматов URL
+	Push: &lt;спецификатор-ссылки&gt;
+	Pull: &lt;спецификатор-ссылки&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Строки <span class='synopsis'><code>Push:</code></span> используются <span class='synopsis'><code>git</code> <code>push</code></span>, а строки <span class='synopsis'><code>Pull:</code></span> используются <span class='synopsis'><code>git</code> <code>pull</code></span> и <span class='synopsis'><code>git</code> <code>fetch</code></span>. Для дополнительных сопоставлений веток может быть указано несколько строк <span class='synopsis'><code>Push:</code></span> и <span class='synopsis'><code>Pull:</code></span>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_именованный_файл_в_git_dirbranches"><a class="anchor" href="#_именованный_файл_в_git_dirbranches"></a>Именованный файл в <span class='synopsis'><code>$GIT_DIR/branches</code></span></h3>
+<div class="paragraph">
+<p>Вы можете указать имя файла в <span class='synopsis'><code>$GIT_DIR/branches</code></span>. URL в этом файле будет использоваться для доступа к репозиторию. Этот файл должен иметь следующий формат:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>	&lt;URL&gt;#&lt;голова&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em>&lt;URL&gt;</em> обязателен; <span class='synopsis'><code>#</code><em>&lt;голова&gt;</em></span> необязателен.</p>
+</div>
+<div class="paragraph">
+<p>В зависимости от операции git будет использовать один из следующих спецификаторов ссылок, если вы не укажете его в командной строке. <em>&lt;ветка&gt;</em> — это имя этого файла в <span class='synopsis'><code>$GIT_DIR/branches</code></span>, а <em>&lt;голова&gt;</em> по умолчанию равна <span class='synopsis'><code>master</code></span>.</p>
+</div>
+<div class="paragraph">
+<p>git fetch использует:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>	refs/heads/&lt;голова&gt;:refs/heads/&lt;ветка&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>git push использует:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>	HEAD:refs/heads/&lt;голова&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="UPSTREAM-BRANCHES"><a class="anchor" href="#UPSTREAM-BRANCHES"></a>ВЫШЕСТОЯЩИЕ ВЕТКИ</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ветки в Git могут опционально иметь вышестоящую внешнюю ветку. Git по умолчанию использует вышестоящую ветку для операций с внешними репозиториями, например:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Это значение по умолчанию для <span class='synopsis'><code>git</code> <code>pull</code></span> или <span class='synopsis'><code>git</code> <code>fetch</code></span> без аргументов.</p>
+</li>
+<li>
+<p>Это значение по умолчанию для <span class='synopsis'><code>git</code> <code>push</code></span> без аргументов, с некоторыми исключениями. Например, вы можете использовать параметр <span class='synopsis'><code>branch.</code><em>&lt;имя&gt;</em><code>.pushRemote</code></span>, чтобы отправлять в другой внешний репозиторий, отличный от того, из которого вы получаете, и по умолчанию с <span class='synopsis'><code>push.default=simple</code></span> настраиваемая вами вышестоящая ветка должна иметь то же имя.</p>
+</li>
+<li>
+<p>Различные команды, включая <span class='synopsis'><code>git</code> <code>checkout</code></span> и <span class='synopsis'><code>git</code> <code>status</code></span>, покажут вам, сколько коммитов было добавлено в вашу текущую ветку и вышестоящую с момента ответвления от неё, например: "Ваша ветка и <em>origin/main</em> разошлись, и имеют 2 и 3 разных коммита соответственно".</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Вышестоящая ветка хранится в <span class='synopsis'><code>.git/config</code></span> в полях "<span class='synopsis'><code>remote</code></span>" и "<span class='synopsis'><code>merge</code></span>". Например, если вышестоящей для <span class='synopsis'><code>main</code></span> является <span class='synopsis'><code>origin/main</code></span>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[branch "main"]
+   remote = origin
+   merge = refs/heads/main</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Вы можете явно установить вышестоящую ветку с помощью <span class='synopsis'><code>git</code> <code>push</code> <code>--set-upstream</code> <em>&lt;внешний-репозиторий&gt;</em> <em>&lt;ветка&gt;</em></span>, но Git часто автоматически устанавливает вышестоящую ветку за вас, например:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Когда вы клонируете репозиторий, Git автоматически устанавливает вышестоящую ветку для ветки по умолчанию.</p>
+</li>
+<li>
+<p>Если у вас установлен параметр конфигурации <span class='synopsis'><code>push.autoSetupRemote</code></span>, <span class='synopsis'><code>git</code> <code>push</code></span> автоматически установит вышестоящую ветку при первой отправке ветки.</p>
+</li>
+<li>
+<p>Переключение на отслеживаемую внешнюю ветку с помощью <span class='synopsis'><code>git</code> <code>checkout</code> <em>&lt;ветка&gt;</em></span> автоматически создаст локальную ветку с этим именем и установит вышестоящую ветку на внешнюю ветку.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<div class="title">Warning</div>
+<div class="title">Note</div>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>Missing <span class='synopsis'><code>ru/urls-remotes.adoc</code></span></p>
-</div>
-<div class="paragraph">
-<p>See original version for this content.</p>
-</div>
+Вышестоящие ветки иногда называют "информацией об отслеживании", как в выражении "установить информацию об отслеживании ветки".
 </td>
 </tr>
 </table>
@@ -525,7 +797,7 @@ git push --force-with-lease=master:base master:master</pre>
 <h2 id="_правила_отправки"><a class="anchor" href="#_правила_отправки"></a>ПРАВИЛА ОТПРАВКИ</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>В целях безопасности команда <span class='synopsis'><code>git</code> <code>push</code></span> разрешает только определенные виды обновлений, чтобы предотвратить случайную потерю данных во внешнем репозитории.</p>
+<p>В целях безопасности команда <span class='synopsis'><code>git</code> <code>push</code></span> разрешает только определённые виды обновлений, чтобы предотвратить случайную потерю данных во внешнем репозитории.</p>
 </div>
 <div class="paragraph">
 <p>Поскольку ветки и метки предназначены для разного использования, правила безопасности для отправки в ветку отличаются от правил для отправки в метку. В следующих правилах под «обновлением» понимаются любые изменения, кроме удалений и созданий. Удаления и создания всегда разрешены, если только они не запрещены конфигурацией или перехватчиками (hooks).</p>
@@ -711,7 +983,7 @@ git push --force-with-lease=master:base master:master</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_безопасность"><a class="anchor" href="#_безопасность"></a>БЕЗОПАСНОСТЬ</h2>
+<h2 id="_защита"><a class="anchor" href="#_защита"></a>ЗАЩИТА</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Протоколы получения (fetch) и отправки (push) не предназначены для предотвращения кражи одной стороной данных из другого репозитория, которые не предназначались для общего доступа. Если у вас есть частные данные, которые необходимо защитить от злонамеренного участника, лучший вариант — хранить их в другом репозитории. Это относится как к клиентам, так и к серверам. В частности, пространства имён на сервере неэффективны для контроля доступа на чтение; вы должны предоставлять доступ на чтение к пространству имён только тем клиентам, которым вы доверили бы доступ на чтение ко всему репозиторию.</p>

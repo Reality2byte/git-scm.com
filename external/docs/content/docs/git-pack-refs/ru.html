@@ -59,22 +59,45 @@ headings:
 <div class="sect1">
 <h2 id="_параметры"><a class="anchor" href="#_параметры"></a>ПАРАМЕТРЫ</h2>
 <div class="sectionbody">
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="git-pack-refs---all"> <a class="anchor" href="#git-pack-refs---all"></a>--all </dt>
+<dd>
+<p>По умолчанию команда упаковывает все метки и ссылки, которые уже упакованы, и оставляет другие ссылки нетронутыми. Это связано с тем, что ожидается, что ветки активно разрабатываются, и упаковка их верхушек не помогает производительности. Этот параметр приводит к упаковке всех ссылок, за исключением скрытых ссылок, сломанных ссылок и символьных ссылок. Полезно для репозитория с большим количеством веток, представляющих исторический интерес.</p>
+</dd>
+<dt class="hdlist1" id="git-pack-refs---no-prune"> <a class="anchor" href="#git-pack-refs---no-prune"></a>--no-prune </dt>
+<dd>
+<p>Обычно команда удаляет несжатые ссылки в иерархии <span class='synopsis'><code>$GIT_DIR/refs</code></span> после их упаковки. Этот параметр указывает ей не делать этого.</p>
+</dd>
+<dt class="hdlist1" id="git-pack-refs---auto"> <a class="anchor" href="#git-pack-refs---auto"></a>--auto </dt>
+<dd>
+<p>Упаковывать ссылки по мере необходимости в зависимости от текущего состояния базы данных ссылок. Поведение зависит от формата ссылок, используемого репозиторием, и может измениться в будущем.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>"files": Несжатые ссылки упаковываются в файл <span class='synopsis'><code>packed-refs</code></span> на основе отношения количества несжатых ссылок к размеру файла <span class='synopsis'><code>packed-refs</code></span>. Чем больше файл <span class='synopsis'><code>packed-refs</code></span>, тем больше несжатых ссылок должно существовать перед переупаковкой.</p>
+</li>
+<li>
+<p>"reftable": Таблицы уплотняются так, чтобы они образовывали геометрическую последовательность. Для двух таблиц N и N+1, где N+1 новее, это поддерживает свойство, согласно которому N по крайней мере вдвое больше, чем N+1. Уплотняются только таблицы, нарушающие это свойство.</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1" id="git-pack-refs---includeltgt"> <a class="anchor" href="#git-pack-refs---include"></a> <a class="anchor" href="#git-pack-refs---includeltgt"></a>--include &lt;шаблон&gt; </dt>
+<dd>
+<p>Упаковывать ссылки на основе шаблона <span class='synopsis'><code>glob</code>(<code>7</code>)</span>. Повторения этого параметра накапливают шаблоны включения. Если ссылка включена как в <span class='synopsis'><code>--include</code></span>, так и в <span class='synopsis'><code>--exclude</code></span>, <span class='synopsis'><code>--exclude</code></span> имеет приоритет. Использование <span class='synopsis'><code>--include</code></span> исключит все метки из включения по умолчанию. Символьные ссылки и сломанные ссылки никогда не упаковываются. При использовании с <span class='synopsis'><code>--all</code></span> это будет неоперацией. Используйте <span class='synopsis'><code>--no-include</code></span>, чтобы очистить и сбросить список шаблонов.</p>
+</dd>
+<dt class="hdlist1" id="git-pack-refs---excludeltgt"> <a class="anchor" href="#git-pack-refs---exclude"></a> <a class="anchor" href="#git-pack-refs---excludeltgt"></a>--exclude &lt;шаблон&gt; </dt>
+<dd>
+<p>Не упаковывать ссылки, соответствующие указанному шаблону <span class='synopsis'><code>glob</code>(<code>7</code>)</span>. Повторения этого параметра накапливают шаблоны исключения. Используйте <span class='synopsis'><code>--no-exclude</code></span>, чтобы очистить и сбросить список шаблонов. Если ссылка уже упакована, включение её с помощью <span class='synopsis'><code>--exclude</code></span> не распакует её.</p>
 <div class="paragraph">
-<p>Missing <span class='synopsis'><code>ru/pack-refs-options.adoc</code></span></p>
+<p>При использовании с <span class='synopsis'><code>--all</code></span> упаковывать только несжатые ссылки, которые не соответствуют ни одному из предоставленных шаблонов <span class='synopsis'><code>--exclude</code></span>.</p>
 </div>
 <div class="paragraph">
-<p>See original version for this content.</p>
+<p>При использовании с <span class='synopsis'><code>--include</code></span> ссылки, предоставленные <span class='synopsis'><code>--include</code></span>, за вычетом ссылок, предоставленных <span class='synopsis'><code>--exclude</code></span>, будут упакованы.</p>
 </div>
-</td>
-</tr>
-</table>
+</dd>
+</dl>
 </div>
 </div>
 </div>

@@ -39,7 +39,7 @@ headings:
 <h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>git describe</em> [--all] [--tags] [--contains] [--abbrev=&lt;n&gt;] [&lt;incheckning-igt&gt;&#8230;&#8203;]
+<pre class="content"><em>git describe</em> [--all] [--tags] [--contains] [--abbrev=&lt;n&gt;] [&lt;incheckningslik&gt;&#8230;&#8203;]
 <em>git describe</em> [--all] [--tags] [--contains] [--abbrev=&lt;n&gt;] --dirty[=&lt;märk&gt;]
 <em>git describe</em> &lt;blob&gt;</pre>
 </div>
@@ -49,13 +49,13 @@ headings:
 <h2 id="_beskrivning"><a class="anchor" href="#_beskrivning"></a>BESKRIVNING</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Kommandot hittar den senaste taggen som är nåbar från en commit. Om taggen pekar på incheckning visas bara taggen. Annars läggs taggnamnet till suffixet med antalet ytterligare incheckningar ovanpå det taggade objektet och det förkortade objektnamnet för den senaste incheckning. Resultatet är ett "människoläsbart" objektnamn som också kan användas för att identifiera incheckningen till andra git-kommandon.</p>
+<p>Kommandot hittar den senaste taggen som är nåbar från en incheckning. Om taggen pekar på incheckning visas bara taggen. Annars läggs taggnamnet till suffixet med antalet ytterligare incheckningar ovanpå det taggade objektet och det förkortade objektnamnet för den senaste incheckning. Resultatet är ett "människoläsbart" objektnamn som också kan användas för att identifiera incheckningen till andra git-kommandon.</p>
 </div>
 <div class="paragraph">
 <p>Som standard (utan --all eller --tags) visar <span class='synopsis'><code>git</code> <code>describe</code></span> bara kommenterade taggar. För mer information om hur man skapar kommenterade taggar, se alternativen -a och -s till <a href='{{< relurl "docs/git-tag/sv" >}}'>git-tag[1]</a>.</p>
 </div>
 <div class="paragraph">
-<p>Om det givna objektet refererar till en blob, kommer den att beskrivas som <span class='synopsis'><em>&lt;incheckning-igt&gt;</em><code>:</code><em>&lt;sökväg&gt;</em></span>, så att blobben kan hittas vid <span class='synopsis'><em>&lt;sökväg&gt;</em></span> i <span class='synopsis'><em>&lt;incheckning-igt&gt;</em></span>, vilket i sig beskriver den första incheckning där denna blob inträffar i en omvänd revisionspromenad från HEAD.</p>
+<p>Om det givna objektet refererar till en blob, kommer den att beskrivas som <span class='synopsis'><em>&lt;incheckningslik&gt;</em><code>:</code><em>&lt;sökväg&gt;</em></span>, så att blobben kan hittas vid <span class='synopsis'><em>&lt;sökväg&gt;</em></span> i <span class='synopsis'><em>&lt;incheckningslik&gt;</em></span>, vilket i sig beskriver den första incheckning där denna blob inträffar i en omvänd revisionspromenad från HEAD.</p>
 </div>
 </div>
 </div>
@@ -64,34 +64,34 @@ headings:
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1" id="git-describe-ltincheckning-igtgt82308203"> <a class="anchor" href="#git-describe-incheckning-igt"></a> <a class="anchor" href="#git-describe-ltincheckning-igtgt82308203"></a>&lt;incheckning-igt&gt;&#8230;&#8203; </dt>
+<dt class="hdlist1" id="git-describe-ltincheckningslikgt82308203"> <a class="anchor" href="#git-describe-incheckningslik"></a> <a class="anchor" href="#git-describe-ltincheckningslikgt82308203"></a>&lt;incheckningslik&gt;&#8230;&#8203; </dt>
 <dd>
 <p>Incheckning-igt namn att beskriva. Standardvärdet är HEAD om det utelämnas.</p>
 </dd>
 <dt class="hdlist1" id="git-describe---dirtyltmrkgt"> <a class="anchor" href="#git-describe---dirtymrk"></a> <a class="anchor" href="#git-describe---dirtyltmrkgt"></a>--dirty[=&lt;märk&gt;] </dt>
 <dt class="hdlist1" id="git-describe---brokenltmrkgt"> <a class="anchor" href="#git-describe---brokenmrk"></a> <a class="anchor" href="#git-describe---brokenltmrkgt"></a>--broken[=&lt;märk&gt;] </dt>
 <dd>
-<p>Beskriv arbetskatalogen. När arbetsträdet matchar HEAD, är utdata detsamma som "git describe HEAD". Om arbetsträdet har en lokal modifiering läggs "-dirty" till. Om ett arkiv är korrupt och Git inte kan avgöra om det finns en lokal modifiering kommer Git att ge ett felmeddelande, såvida inte &#8216;--broken&#8217; anges, vilket lägger till suffixet "-broken" istället.</p>
+<p>Beskriv arbetsträdet. När arbetsträdet matchar HEAD, är utdata detsamma som "git describe HEAD". Om arbetsträdet har en lokal modifiering läggs "-dirty" till. Om ett arkiv är korrupt och Git inte kan avgöra om det finns en lokal modifiering kommer Git att ge ett felmeddelande, såvida inte &#8216;--broken&#8217; anges, vilket lägger till suffixet "-broken" i stället.</p>
 </dd>
 <dt class="hdlist1" id="git-describe---all"> <a class="anchor" href="#git-describe---all"></a>--all </dt>
 <dd>
-<p>Istället för att bara använda de kommenterade taggarna, använd vilken ref som helst som finns i namnrymden <span class='synopsis'><code>refs/</code></span>. Det här alternativet möjliggör matchning av vilken känd gren, fjärrspårningsgren eller lättviktstag som helst.</p>
+<p>I stället för att bara använda de kommenterade taggarna, använd vilken ref som helst som finns i namnrymden <span class='synopsis'><code>refs/</code></span>. Det här alternativet möjliggör matchning av vilken känd gren, fjärrspårad gren eller lättviktstagg som helst.</p>
 </dd>
 <dt class="hdlist1" id="git-describe---tags"> <a class="anchor" href="#git-describe---tags"></a>--tags </dt>
 <dd>
-<p>Istället för att bara använda de kommenterade taggarna, använd vilken tagg som helst som finns i namnrymden <span class='synopsis'><code>refs/tags</code></span>. Det här alternativet möjliggör matchning av en lätt (icke-kommenterad) tagg.</p>
+<p>I stället för att bara använda de kommenterade taggarna, använd vilken tagg som helst som finns i namnrymden <span class='synopsis'><code>refs/tags</code></span>. Det här alternativet möjliggör matchning av en lätt (icke-kommenterad) tagg.</p>
 </dd>
 <dt class="hdlist1" id="git-describe---contains"> <a class="anchor" href="#git-describe---contains"></a>--contains </dt>
 <dd>
-<p>Istället för att hitta taggen som föregår incheckningen, hitta taggen som kommer efter incheckningen, och därmed innehåller den. Implicerar automatiskt --tags.</p>
+<p>I stället för att hitta taggen som föregår incheckningen, hitta taggen som kommer efter incheckningen och därmed innehåller den. Implicerar automatiskt --tags.</p>
 </dd>
 <dt class="hdlist1" id="git-describe---abbrevltngt"> <a class="anchor" href="#git-describe---abbrevn"></a> <a class="anchor" href="#git-describe---abbrevltngt"></a>--abbrev=&lt;n&gt; </dt>
 <dd>
-<p>Istället för att använda standardantalet hexadecimala siffror (som varierar beroende på antalet objekt i kodförrådet med standardvärdet 7) för det förkortade objektnamnet, använd &lt;n&gt; siffror, eller så många siffror som behövs för att bilda ett unikt objektnamn. Ett &lt;n&gt; på 0 kommer att undertrycka långt format och endast visa den närmaste taggen.</p>
+<p>I stället för att använda standardantalet hexadecimala siffror (som varierar beroende på antalet objekt i kodförrådet med standardvärdet 7) för det förkortade objektnamnet, använd &lt;n&gt; siffror, eller så många siffror som behövs för att bilda ett unikt objektnamn. Ett &lt;n&gt; på 0 kommer att undertrycka långt format och endast visa den närmaste taggen.</p>
 </dd>
 <dt class="hdlist1" id="git-describe---candidatesltngt"> <a class="anchor" href="#git-describe---candidatesn"></a> <a class="anchor" href="#git-describe---candidatesltngt"></a>--candidates=&lt;n&gt; </dt>
 <dd>
-<p>Istället för att bara betrakta de 10 senaste taggarna som kandidater för att beskriva indata incheckning-igt, betrakta upp till &lt;n&gt; kandidater. Att öka &lt;n&gt; över 10 tar något längre tid men kan ge ett mer exakt resultat. Ett &lt;n&gt; på 0 kommer att orsaka att endast exakta matchningar matas ut.</p>
+<p>I stället för att bara betrakta de 10 senaste taggarna som kandidater för att beskriva indata incheckningslik, betrakta upp till &lt;n&gt; kandidater. Att öka &lt;n&gt; över 10 tar något längre tid men kan ge ett mer exakt resultat. Ett &lt;n&gt; på 0 kommer att orsaka att endast exakta matchningar matas ut.</p>
 </dd>
 <dt class="hdlist1" id="git-describe---exact-match"> <a class="anchor" href="#git-describe---exact-match"></a>--exact-match </dt>
 <dd>
@@ -103,7 +103,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-describe---long"> <a class="anchor" href="#git-describe---long"></a>--long </dt>
 <dd>
-<p>Skriv alltid ut det långa formatet (taggen, antalet incheckningar och det förkortade inchecknings-namnet) även när det matchar en tagg. Detta är användbart när du vill se delar av inchecknings-objektets namn i "describe"-utdata, även när incheckningeni fråga råkar vara en taggad version. Istället för att bara skriva ut taggnamnet kommer den att beskriva en sådan incheckning som v1.2-0-gdeadbee (0:e incheckningen sedan taggen v1.2 som pekar på objektets dödbi&#8230;&#8203;.).</p>
+<p>Skriv alltid ut det långa formatet (taggen, antalet incheckningar och det förkortade incheckningsnamnet) även när det matchar en tagg. Detta är användbart när delar av incheckningsobjektets namn ska visas i "describe"-utdata, även när incheckningen i fråga råkar vara en taggad version. I stället för att bara skriva ut taggnamnet kommer den att beskriva en sådan incheckning som v1.2-0-gdeadbee (0:e incheckningen sedan taggen v1.2 som pekar på objektets dödbi&#8230;&#8203;.).</p>
 </dd>
 <dt class="hdlist1" id="git-describe---matchltmnstergt"> <a class="anchor" href="#git-describe---matchmnster"></a> <a class="anchor" href="#git-describe---matchltmnstergt"></a>--match &lt;mönster&gt; </dt>
 <dd>
@@ -119,7 +119,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-describe---first-parent"> <a class="anchor" href="#git-describe---first-parent"></a>--first-parent </dt>
 <dd>
-<p>Följ endast den första förälder-incheckning när du ser en sammanslagings-incheckning. Detta är användbart när du inte vill matcha taggar på grenar som sammanslagits målincheckningens historik.</p>
+<p>Följ endast den första föräldraincheckningen när en sammanslagningsincheckning påträffas. Detta är användbart när taggar på grenar inte ska matchas i målincheckningens historik.</p>
 </dd>
 </dl>
 </div>
@@ -185,13 +185,13 @@ tags/v1.0.0</pre>
 <h2 id="_sökstrategi"><a class="anchor" href="#_sökstrategi"></a>SÖKSTRATEGI</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>För varje incheckning-igt som anges, kommer <em>git describe</em> först att leta efter en tagg som taggar exakt den incheckningen. Annoterade taggar kommer alltid att föredras framför lättviktstaggar, och taggar med nyare datum kommer alltid att föredras framför taggar med äldre datum. Om en exakt matchning hittas kommer dess namn att visas och sökningen stoppas.</p>
+<p>För varje incheckningslik som anges, kommer <em>git describe</em> först att leta efter en tagg som taggar exakt den incheckningen. Annoterade taggar kommer alltid att föredras framför lättviktstaggar, och taggar med nyare datum kommer alltid att föredras framför taggar med äldre datum. Om en exakt matchning hittas kommer dess namn att visas och sökningen stoppas.</p>
 </div>
 <div class="paragraph">
-<p>Om en exakt matchning inte hittades, kommer <em>git describe</em> att gå tillbaka genom inchecknings-historiken för att hitta en förälder-incheckning som har taggats. Förfäderns tagg kommer att matas ut tillsammans med en förkortning av indata-incheckning-igts SHA-1. Om <span class='synopsis'><code>--first-parent</code></span> angavs kommer vandringen endast att beakta den första föräldern till varje incheckning.</p>
+<p>Om en exakt matchning inte hittades, kommer <em>git describe</em> att gå tillbaka genom incheckningshistoriken för att hitta en förälder-incheckning som har taggats. Förfäderns tagg kommer att matas ut tillsammans med en förkortning av indata-incheckningsliks SHA-1. Om <span class='synopsis'><code>--first-parent</code></span> angavs kommer vandringen endast att beakta den första föräldern till varje incheckning.</p>
 </div>
 <div class="paragraph">
-<p>Om flera taggar hittades under promenaden kommer den tagg som har minst antal incheckningar som skiljer sig från indata-incheckning-igt att väljas och matas ut. Här definieras fewest incheckningar annorluda som antalet incheckningar som skulle visas av <span class='synopsis'><code>git</code> <code>log</code> <code>tag..input</code></span>, vilket skulle vara det minsta antalet incheckninger som är möjliga.</p>
+<p>Om flera taggar hittas under genomgången väljs den tagg som har minst antal incheckningar som skiljer sig från indataobjektet och den skrivs ut. Här betyder <em>minst antal</em> antalet incheckningar som skulle visas av <span class='synopsis'><code>git</code> <code>log</code> <code>tag..input</code></span>, d.v.s. minsta möjliga antal incheckningar.</p>
 </div>
 </div>
 </div>
@@ -199,7 +199,7 @@ tags/v1.0.0</pre>
 <h2 id="_buggar"><a class="anchor" href="#_buggar"></a>BUGGAR</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Trädobjekt såväl som taggobjekt som inte pekar på incheckningars kan inte beskrivas. När man beskriver blobbar ignoreras de lättviktiga taggarna som pekar på blobbar, men blobben beskrivs fortfarande som &lt;incheckning-igt&gt;:&lt;sökväg&gt; trots att lättviktstaggen är gynnsam.</p>
+<p>Trädobjekt, liksom taggobjekt som inte pekar på incheckningar, kan inte beskrivas. När blobbar beskrivs ignoreras lättviktstaggar som pekar på blobbar, men blobben beskrivs ändå som &lt;incheckningslik&gt;:&lt;sökväg&gt; även om lättviktstaggen annars vore fördelaktig.</p>
 </div>
 </div>
 </div>

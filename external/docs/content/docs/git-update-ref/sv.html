@@ -53,7 +53,7 @@ headings:
 <p>Givet tre argument, lagrar &lt;ny-oid&gt; i <span class="hover-term" data-term="ref">&lt;ref&gt;</span>, eventuellt avtrefererande de symboliska refs, efter att ha verifierat att det aktuella värdet för <span class="hover-term" data-term="ref">&lt;ref&gt;</span> matchar &lt;gammalt-oid&gt;. T.ex. <span class='synopsis'><code>git</code> <code>update-ref</code> <code>refs/heads/master</code> <em>&lt;ny-oid&gt;</em> <em>&lt;gammalt-oid&gt;</em></span> uppdaterar master-grenen head till &lt;ny-oid&gt; endast om dess aktuella värde är &lt;gammalt-oid&gt;. Du kan ange 40 "0" eller en tom sträng som &lt;gammalt-oid&gt; för att säkerställa att refen du skapar inte existerar.</p>
 </div>
 <div class="paragraph">
-<p>De sista argumenten är objektnamn; detta kommando utan några alternativ stöder inte uppdatering av en symbolisk referens för att peka på en annan referens (se <a href='{{< relurl "docs/git-symbolic-ref/sv" >}}'>git-symbolic-ref[1]</a>). Men <span class='synopsis'><code>git</code> <code>update-ref</code> <code>--stdin</code></span> har <span class='synopsis'><code>symref-*</code></span>-kommandona så att vanliga referenser och symboliska referenser kan checkas-in i samma transaktion.</p>
+<p>De sista argumenten är objektnamn; detta kommando utan några alternativ stöder inte uppdatering av en symbolisk referens för att peka på en annan referens (se <a href='{{< relurl "docs/git-symbolic-ref/sv" >}}'>git-symbolic-ref[1]</a>). Men <span class='synopsis'><code>git</code> <code>update-ref</code> <code>--stdin</code></span> har <span class='synopsis'><code>symref-*</code></span>-kommandona så att vanliga referenser och symboliska referenser kan checkas in i samma transaktion.</p>
 </div>
 <div class="paragraph">
 <p>Om --no-deref anges, <span class="hover-term" data-term="ref">&lt;ref&gt;</span> sigsjälv skrivs över, snarare än resultatet av att följa de symboliska pekarna.</p>
@@ -93,7 +93,7 @@ abort LF</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Citat-fält som innehåller blanksteg som om de vore strängar i C-källkod; d.v.s. omgivna av dubbla citattecken och med bakåtsnedstreck. Använd 40 "0"-tecken eller den tomma strängen för att ange ett nollvärde. För att ange ett saknat värde, utelämna värdet och dess föregående SP helt och hållet.</p>
+<p>Citat-fält som innehåller blanksteg som om de vore strängar i C-källkod; dvs. omgivna av dubbla citattecken och med bakåtsnedstreck. Använd 40 "0"-tecken eller den tomma strängen för att ange ett nollvärde. För att ange ett saknat värde, utelämna värdet och dess föregående SP helt och hållet.</p>
 </div>
 <div class="paragraph">
 <p>Alternativt, kan du använda <span class='synopsis'><code>-z</code></span> för att ange i NUL-avslutat format, utan att citera:</p>
@@ -143,15 +143,10 @@ abort NUL</pre>
 <dd>
 <p>Verifiera <span class="hover-term" data-term="ref">&lt;ref&gt;</span> mot &lt;gammal-oid&gt; men ändra den inte. Om &lt;gammal-oid&gt; är noll eller saknas, får referensen inte existera.</p>
 </dd>
-</dl>
-</div>
-<div class="paragraph">
-<p>symref-create:
-	Skapa symbolisk ref <span class="hover-term" data-term="ref">&lt;ref&gt;</span> med &lt;ny-mål&gt; efter att ha verifierat att
-	den inte existerar.</p>
-</div>
-<div class="dlist">
-<dl>
+<dt class="hdlist1" id="git-update-ref-symref-create"> <a class="anchor" href="#git-update-ref-symref-create"></a>symref-create </dt>
+<dd>
+<p>Create symbolic ref <span class="hover-term" data-term="ref">&lt;ref&gt;</span> with &lt;new-target&gt; after verifying that it does not exist.</p>
+</dd>
 <dt class="hdlist1" id="git-update-ref-symref-delete"> <a class="anchor" href="#git-update-ref-symref-delete"></a>symref-delete </dt>
 <dd>
 <p>Ta bort <span class="hover-term" data-term="ref">&lt;ref&gt;</span> efter att ha verifierat att den finns med &lt;gammalt-mål&gt;, om angivet.</p>
@@ -174,7 +169,7 @@ abort NUL</pre>
 </dd>
 <dt class="hdlist1" id="git-update-ref-incheckning"> <a class="anchor" href="#git-update-ref-incheckning"></a>incheckning </dt>
 <dd>
-<p>Checka-in alla referens-uppdateringar som är i kö för transaktionen, vilket avslutar transaktionen.</p>
+<p>Checka in alla referensuppdateringar som är köade för transaktionen, och avsluta transaktionen.</p>
 </dd>
 <dt class="hdlist1" id="git-update-ref-abort"> <a class="anchor" href="#git-update-ref-abort"></a>abort </dt>
 <dd>

@@ -152,7 +152,7 @@ Standardnamnet kan anpassas via konfigurationsvariabeln <span class='synopsis'><
 <dt class="hdlist1" id="git-init-spanclasssynopsiscodeworldcodespan"> <a class="anchor" href="#git-init-world"></a> <a class="anchor" href="#git-init-spanclasssynopsiscodeworldcodespan"></a><span class='synopsis'><code>world</code></span> </dt>
 <dt class="hdlist1" id="git-init-spanclasssynopsiscodeeverybodycodespan"> <a class="anchor" href="#git-init-everybody"></a> <a class="anchor" href="#git-init-spanclasssynopsiscodeeverybodycodespan"></a><span class='synopsis'><code>everybody</code></span> </dt>
 <dd>
-<p>Samma som <span class='synopsis'><code>group</code></span>, men gör arkivet läsbart för alla användare.</p>
+<p>Samma som <span class='synopsis'><code>group</code></span>, men gör kodförrådet läsbart för alla användare.</p>
 </dd>
 <dt class="hdlist1" id="git-init-emltbehrighetergtem"> <a class="anchor" href="#git-init-behrigheter"></a> <a class="anchor" href="#git-init-emltbehrighetergtem"></a><em>&lt;behörigheter&gt;</em> </dt>
 <dd>
@@ -265,6 +265,10 @@ $ git commit    <b class="conum">(3)</b></pre>
 <dt class="hdlist1" id="git-init-spanclasssynopsiscodeinitdefaultRefFormatcodespan"> <a class="anchor" href="#git-init-initdefaultRefFormat"></a> <a class="anchor" href="#git-init-spanclasssynopsiscodeinitdefaultRefFormatcodespan"></a><span class='synopsis'><code>init.defaultRefFormat</code></span> </dt>
 <dd>
 <p>Tillåter åsidosättning av standardformatet för referenslagring för nya arkiv. Se <span class='synopsis'><code>--ref-format=</code></span> i <a href='{{< relurl "docs/git-init/sv" >}}'>git-init[1]</a>. Både kommandoradsalternativet och miljövariabeln <span class='synopsis'><code>GIT_DEFAULT_REF_FORMAT</code></span> har företräde framför denna konfiguration.</p>
+</dd>
+<dt class="hdlist1" id="git-init-initdefaultSubmodulePathConfig"> <a class="anchor" href="#git-init-initdefaultSubmodulePathConfig"></a>init.defaultSubmodulePathConfig </dt>
+<dd>
+<p>A boolean that specifies if <span class='synopsis'><code>git</code> <code>init</code></span> and <span class='synopsis'><code>git</code> <code>clone</code></span> should automatically set <span class='synopsis'><code>extensions.submodulePathConfig</code></span> to <span class='synopsis'><code>true</code></span>. This allows all new repositories to automatically use the submodule path extension. Defaults to <span class='synopsis'><code>false</code></span> when unset.</p>
 </dd>
 </dl>
 </div>

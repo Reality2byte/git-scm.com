@@ -35,7 +35,7 @@ headings:
 <h2 id="_namn"><a class="anchor" href="#_namn"></a>NAMN</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>git-checkout - Byt gren eller återställ filer i arbetskatalogen</p>
+<p>git-checkout - Byt gren eller återställ filer i arbetsträdet</p>
 </div>
 </div>
 </div>
@@ -80,7 +80,7 @@ headings:
 <dd>
 <p>Växla till <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em>. Detta ställer in den aktuella grenen till <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em> och uppdaterar filerna i din arbetskatalog. Utcheckningen kommer att misslyckas om det finns oincheckade ändringar i filer där <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em> och din nuvarande incheckning har olika innehåll. Oincheckade ändringar kommer annars att behållas.</p>
 <div class="paragraph">
-<p>Om <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em> inte hittas men det finns en spårningsgren i exakt en fjärr (kalla den <em>&lt;fjärr &gt;</em>) med ett matchande namn och <span class='synopsis'><code>--no-guess</code></span> inte är specificerad, behandla den som likvärdig med</p>
+<p>Om <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em> inte hittas men det finns en spårningsgren i exakt en fjärr (kalla den <em>&lt;fjärr&gt;</em>) med ett matchande namn och <span class='synopsis'><code>--no-guess</code></span> inte är specificerat, behandla den som likvärdig med</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -93,19 +93,19 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscodegitcodecodecheckoutcodecode-bcodeemltny-grengtememltstart-punktgtemspan"> <a class="anchor" href="#git-checkout-gitcheckout-bny-grenstart-punkt"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscodegitcodecodecheckoutcodecode-bcodeemltny-grengtememltstart-punktgtemspan"></a><span class='synopsis'><code>git</code> <code>checkout</code> <code>-b</code> <em>&lt;ny-gren&gt;</em> [<em>&lt;start-punkt&gt;</em>]</span> </dt>
 <dd>
-<p>Skapa en ny gren med namnet <em>&lt;ny-gren&gt;</em>, starta den vid <em>&lt;start-punkt&gt;</em> (standardinställningen är den nuvarande incheckning) och kolla in den nya grenen. Du kan använda alternativen <span class='synopsis'><code>--track</code></span> eller <span class='synopsis'><code>--no-track</code></span> för att ställa in grenens uppströms spårningsinformation.</p>
+<p>Skapa en ny gren med namnet <em>&lt;ny-gren&gt;</em>, starta den vid <em>&lt;start-punkt&gt;</em> (standardinställningen är den nuvarande incheckningen) och checka ut den nya grenen. Du kan använda alternativen <span class='synopsis'><code>--track</code></span> eller <span class='synopsis'><code>--no-track</code></span> för att ställa in grenens uppströms spårningsinformation.</p>
 <div class="paragraph">
-<p>Detta kommer att misslyckas om det uppstår ett fel vid utcheckning av <em>&lt;ny-gren&gt;</em>, till exempel om utcheckning av <span class='synopsis'><em>&lt;start-punkt&gt;</em></span>-incheckningen skulle skriva över dina oincheckade ändringar.</p>
+<p>Det kommer att misslyckas om det uppstår ett fel vid utcheckning av <em>&lt;ny-gren&gt;</em>, till exempel om utcheckning av <span class='synopsis'><em>&lt;start-punkt&gt;</em></span>-incheckningen skulle skriva över oincheckade ändringar.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscodegitcodecodecheckoutcodecode-Bcodeemltgrengtememltstart-punktgtemspan"> <a class="anchor" href="#git-checkout-gitcheckout-Bgrenstart-punkt"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscodegitcodecodecheckoutcodecode-Bcodeemltgrengtememltstart-punktgtemspan"></a><span class='synopsis'><code>git</code> <code>checkout</code> <code>-B</code> <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em> [<em>&lt;start-punkt&gt;</em>]</span> </dt>
 <dd>
-<p>Samma som <span class='synopsis'><code>-b</code></span>, förutom att om grenen redan finns återställer den <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em> till startpunkten istället för att misslyckas.</p>
+<p>Samma som <span class='synopsis'><code>-b</code></span>, förutom att om grenen redan finns återställer den <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em> till startpunkten i stället för att misslyckas.</p>
 </dd>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscodegitcodecodecheckoutcodecode--detachcodeemltgrengtemspan"> <a class="anchor" href="#git-checkout-gitcheckout--detachgren"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscodegitcodecodecheckoutcodecode--detachcodeemltgrengtemspan"></a><span class='synopsis'><code>git</code> <code>checkout</code> <code>--detach</code> [<em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em>]</span> </dt>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscodegitcodecodecheckoutcodecode--detachcodeemltincheckninggtemspan"> <a class="anchor" href="#git-checkout-gitcheckout--detachincheckning"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscodegitcodecodecheckoutcodecode--detachcodeemltincheckninggtemspan"></a><span class='synopsis'><code>git</code> <code>checkout</code> [<code>--detach</code>] <em><span class="hover-term" data-term="incheckning">&lt;incheckning&gt;</span></em></span> </dt>
 <dd>
-<p>Samma som <span class='synopsis'><code>git</code> <code>checkout</code> <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em></span>, förutom att istället för att peka <span class='synopsis'><code>HEAD</code></span> mot branchen, pekar den <span class='synopsis'><code>HEAD</code></span> mot inchecknings-ID:t. Se avsnittet "FRÅNKOPPLAT HEAD" nedan för mer information.</p>
+<p>Samma som <span class='synopsis'><code>git</code> <code>checkout</code> <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em></span>, förutom att den i stället för att peka <span class='synopsis'><code>HEAD</code></span> mot grenen pekar <span class='synopsis'><code>HEAD</code></span> mot inchecknings-ID:t. Se avsnittet "FRÅNKOPPLAT HEAD" nedan för mer information.</p>
 <div class="paragraph">
 <p>Om man utelämnar <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em> lossnar <span class='synopsis'><code>HEAD</code></span> i toppen av den aktuella grenen.</p>
 </div>
@@ -126,12 +126,12 @@ headings:
 <p>Om du till exempel checkar ut en incheckning, redigerar <span class='synopsis'><code>file.txt</code></span> och sedan bestämmer dig för att ändringarna var ett misstag, kommer <span class='synopsis'><code>git</code> <code>checkout</code> <code>file.txt</code></span> att ignorera alla ej köade ändringar av <span class='synopsis'><code>file.txt</code></span>.</p>
 </div>
 <div class="paragraph">
-<p>Detta kommer att misslyckas om filen har en sammanslagningskonflikt och du ännu inte har kört <span class='synopsis'><code>git</code> <code>add</code> <code>file.txt</code></span> (eller något motsvarande) för att markera den som löst. Du kan använda <span class='synopsis'><code>-f</code></span> för att ignorera de icke-sammanslagna filerna istället för att misslyckas, använda <span class='synopsis'><code>--ours</code></span> eller <span class='synopsis'><code>--theirs</code></span> för att ersätta dem med versionen från en specifik sida av sammanslagningen, eller använda <span class='synopsis'><code>-m</code></span> för att ersätta dem med det ursprungliga konfliktfyllda sammanslagningsresultatet.</p>
+<p>Det kommer att misslyckas om filen har en sammanslagningskonflikt och ännu inte har kört <span class='synopsis'><code>git</code> <code>add</code> <code>file.txt</code></span> (eller något motsvarande) för att markera den som löst. <span class='synopsis'><code>-f</code></span> kan användas för att ignorera de icke-sammanslagna filerna i stället för att misslyckas, använda <span class='synopsis'><code>--ours</code></span> eller <span class='synopsis'><code>--theirs</code></span> för att ersätta dem med versionen från en specifik sida av sammanslagningen, eller använda <span class='synopsis'><code>-m</code></span> för att ersätta dem med det ursprungliga konfliktfyllda sammanslagningsresultatet.</p>
 </div>
 </dd>
-<dt class="hdlist1" id="git-checkout-spanclasssynopsiscodegitcodecodecheckoutcodecode-pcodecode--patchcodeemlttrd-igtgtemcode--codeemltskvgsmnstergtemspan"> <a class="anchor" href="#git-checkout-gitcheckout-p--patchtrd-igt--skvgsmnster"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscodegitcodecodecheckoutcodecode-pcodecode--patchcodeemlttrd-igtgtemcode--codeemltskvgsmnstergtemspan"></a><span class='synopsis'><code>git</code> <code>checkout</code> (<code>-p</code>|<code>--patch</code>) [<em>&lt;träd-igt&gt;</em>] [<code>--</code>] [<em><span class="hover-term" data-term="sökvägsmönster">&lt;sökvägsmönster&gt;</span></em>...]</span> </dt>
+<dt class="hdlist1" id="git-checkout-spanclasssynopsiscodegitcodecodecheckoutcodecode-pcodecode--patchcodeemlttrdliktgtemcode--codeemltskvgsmnstergtemspan"> <a class="anchor" href="#git-checkout-gitcheckout-p--patchtrdlikt--skvgsmnster"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscodegitcodecodecheckoutcodecode-pcodecode--patchcodeemlttrdliktgtemcode--codeemltskvgsmnstergtemspan"></a><span class='synopsis'><code>git</code> <code>checkout</code> (<code>-p</code>|<code>--patch</code>) [<em>&lt;trädlikt&gt;</em>] [<code>--</code>] [<em><span class="hover-term" data-term="sökvägsmönster">&lt;sökvägsmönster&gt;</span></em>...]</span> </dt>
 <dd>
-<p>Detta liknar de två föregående lägena, men låter dig använda det interaktiva gränssnittet för att visa "diff"-utdata och välja vilka stycken som ska användas i resultatet. Se nedan för beskrivningen av alternativet <span class='synopsis'><code>--patch</code></span>.</p>
+<p>Det liknar de två föregående lägena, men gör det möjligt att använda det interaktiva gränssnittet för att visa "diff"-utdata och välja vilka stycken som ska användas i resultatet. Se nedan för beskrivningen av alternativet <span class='synopsis'><code>--patch</code></span>.</p>
 </dd>
 </dl>
 </div>
@@ -155,20 +155,20 @@ headings:
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode-fcodespan"> <a class="anchor" href="#git-checkout--f"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode-fcodespan"></a><span class='synopsis'><code>-f</code></span> </dt>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode--forcecodespan"> <a class="anchor" href="#git-checkout---force"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode--forcecodespan"></a><span class='synopsis'><code>--force</code></span> </dt>
 <dd>
-<p>När du byter gren, fortsätt även om indexet eller arbetskatalogen skiljer sig från <span class='synopsis'><code>HEAD</code></span>, och även om det finns ospårade filer i vägen. Detta används för att ta bort lokala ändringar och eventuella ospårade filer eller kataloger som är i vägen.</p>
+<p>Vid byte av gren, fortsätt även om indexet eller arbetsträdet skiljer sig från <span class='synopsis'><code>HEAD</code></span>, och även om det finns ospårade filer i vägen. Detta används för att ta bort lokala ändringar och eventuella ospårade filer eller kataloger som är i vägen.</p>
 <div class="paragraph">
-<p>När du checkar ut sökvägar från indexet, misslyckas inte med ej sammanslagna poster; istället ignoreras ej sammanslagna poster.</p>
+<p>Vid utcheckning av sökvägar från indexet, misslyckas inte med ej sammanslagna poster; i stället ignoreras ej sammanslagna poster.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode--ourscodespan"> <a class="anchor" href="#git-checkout---ours"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode--ourscodespan"></a><span class='synopsis'><code>--ours</code></span> </dt>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode--theirscodespan"> <a class="anchor" href="#git-checkout---theirs"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode--theirscodespan"></a><span class='synopsis'><code>--theirs</code></span> </dt>
 <dd>
-<p>When checking out paths from the index, check out stage #2 (<span class='synopsis'><code>ours</code></span>) or #3 (<span class='synopsis'><code>theirs</code></span>) for unmerged paths.</p>
+<p>Vid utcheckning av sökvägar från indexet, kontrollera steg #2 (<span class='synopsis'><em>vår</em></span>) eller #3 (<span class='synopsis'><code>deras</code></span>) för ej sammanslagna sökvägar.</p>
 <div class="paragraph">
 <p>Observera att under <span class='synopsis'><code>git</code> <code>rebase</code></span> och <span class='synopsis'><code>git</code> <code>pull</code> <code>--rebase</code></span> kan <span class='synopsis'><em>vår</em></span> och <span class='synopsis'><code>deras</code></span> verka omväxlande; <span class='synopsis'><code>--ours</code></span> anger versionen från grenen som ändringarna ombaseras på, medan <span class='synopsis'><code>--theirs</code></span> anger versionen från grenen som innehåller ditt arbete som ombaseras.</p>
 </div>
 <div class="paragraph">
-<p>Detta beror på att <span class='synopsis'><code>rebase</code></span> används i ett arbetsflöde som behandlar historiken på fjärren som den delade kanoniska, och behandlar arbetet som utförs på grenen du ombaserar som tredjepartsarbete som ska integreras, och du tar tillfälligt rollen som behållare av den kanoniska historiken under ombaseringen. Som behållare av den kanoniska historiken måste du se historiken från fjärren som <span class='synopsis'><em>vår</em></span> (dvs. "vår delade kanoniska historik"), medan det du gjorde på din sidogren som <span class='synopsis'><code>deras</code></span> (dvs. "en bidragsgivares arbete ovanpå den").</p>
+<p>Det beror på att <span class='synopsis'><code>rebase</code></span> används i ett arbetsflöde som behandlar historiken på fjärren som den delade kanoniska, och behandlar arbetet som utförs på grenen som ombaseras som tredjepartsarbete som ska integreras, och rollen som behållare av den kanoniska historiken antas tillfälligt under ombaseringen. Som behållare av den kanoniska historiken måste historiken ses historiken från fjärren som <span class='synopsis'><em>vår</em></span> (dvs. "vår delade kanoniska historik"), medan det som gjordes på sidogrenen ses som <span class='synopsis'><code>deras</code></span> (dvs. "en bidragsgivares arbete ovanpå den").</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode-bcodeemltny-grengtemspan"> <a class="anchor" href="#git-checkout--bny-gren"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode-bcodeemltny-grengtemspan"></a><span class='synopsis'><code>-b</code> <em>&lt;ny-gren&gt;</em></span> </dt>
@@ -177,7 +177,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode-Bcodeemltny-grengtemspan"> <a class="anchor" href="#git-checkout--Bny-gren"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode-Bcodeemltny-grengtemspan"></a><span class='synopsis'><code>-B</code> <em>&lt;ny-gren&gt;</em></span> </dt>
 <dd>
-<p>Samma som <span class='synopsis'><code>-b</code></span>, förutom att om grenen redan finns återställer den <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em> till startpunkten istället för att misslyckas.</p>
+<p>Samma som <span class='synopsis'><code>-b</code></span>, förutom att om grenen redan finns återställer den <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em> till startpunkten i stället för att misslyckas.</p>
 </dd>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode-tcodespan"> <a class="anchor" href="#git-checkout--t"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode-tcodespan"></a><span class='synopsis'><code>-t</code></span> </dt>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode--trackcodecodecodecodedirectcodecodeinheritcodespan"> <a class="anchor" href="#git-checkout---trackdirectinherit"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode--trackcodecodecodecodedirectcodecodeinheritcodespan"></a><span class='synopsis'><code>--track</code>[<code>=</code>(<code>direct</code>|<code>inherit</code>)]</span> </dt>
@@ -201,7 +201,7 @@ headings:
 </div>
 </div>
 <div class="paragraph">
-<p>Om grenen finns i flera fjärrer och en av dem namnges av konfigurationsvariabeln <span class='synopsis'><code>checkout.defaultRemote</code></span>, kommer vi att använda den för att göra det tydligare, även om <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em> inte är unik för alla fjärrer. Ställ in den till t.ex. <span class='synopsis'><code>checkout.defaultRemote=origin</code></span> för att alltid checka ut fjärrgrenar därifrån om <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em> är tvetydig men finns på fjärren <em>origin</em>. Se även <span class='synopsis'><code>checkout.defaultRemote</code></span> i <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>.</p>
+<p>Om grenen finns i flera fjärrar och en av dem namnges av konfigurationsvariabeln <span class='synopsis'><code>checkout.defaultRemote</code></span> använder vi den för att göra tolkningen tydligare, även om <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em> inte är unik över alla fjärrar. Sätt den till t.ex. <span class='synopsis'><code>checkout.defaultRemote=origin</code></span> för att alltid checka ut fjärrgrenar därifrån om <em><span class="hover-term" data-term="gren">&lt;gren&gt;</span></em> är tvetydig men finns på fjärren <span class='synopsis'><code>origin</code></span>. Se även <span class='synopsis'><code>checkout.defaultRemote</code></span> i <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>.</p>
 </div>
 <div class="paragraph">
 <p><span class='synopsis'><code>--guess</code></span> är standardbeteendet. Använd <span class='synopsis'><code>--no-guess</code></span> för att inaktivera det.</p>
@@ -217,19 +217,19 @@ headings:
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode-dcodespan"> <a class="anchor" href="#git-checkout--d"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode-dcodespan"></a><span class='synopsis'><code>-d</code></span> </dt>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode--detachcodespan"> <a class="anchor" href="#git-checkout---detach"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode--detachcodespan"></a><span class='synopsis'><code>--detach</code></span> </dt>
 <dd>
-<p>Istället för att checka ut en gren för att arbeta med den, checka ut en incheckning för inspektion och kasserbara experiment. Detta är standardbeteendet för <span class='synopsis'><code>git</code> <code>checkout</code> <em><span class="hover-term" data-term="incheckning">&lt;incheckning&gt;</span></em></span> när <em><span class="hover-term" data-term="incheckning">&lt;incheckning&gt;</span></em> inte är ett branchnamn. Se avsnittet "FRÅNKOPPLAT HUVUD (HEAD)" nedan för mer information.</p>
+<p>I stället för att checka ut en gren för att arbeta med den, checka ut en incheckning för inspektion och kasserbara experiment. Detta är standardbeteendet för <span class='synopsis'><code>git</code> <code>checkout</code> <em><span class="hover-term" data-term="incheckning">&lt;incheckning&gt;</span></em></span> när <em><span class="hover-term" data-term="incheckning">&lt;incheckning&gt;</span></em> inte är ett grennamn. Se avsnittet "FRÅNKOPPLAT HUVUD (HEAD)" nedan för mer information.</p>
 </dd>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode--orphancodeemltny-grengtemspan"> <a class="anchor" href="#git-checkout---orphanny-gren"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode--orphancodeemltny-grengtemspan"></a><span class='synopsis'><code>--orphan</code> <em>&lt;ny-gren&gt;</em></span> </dt>
 <dd>
 <p>Skapa en ny ofödd gren, med namnet <em>&lt;ny-gren&gt;</em>, startad från <em>&lt;start-punkt&gt;</em> och byt till den. Den första incheckning som görs på den här nya grenen kommer inte att ha några föräldrar och den kommer att vara roten till en ny historik som är helt frikopplad från alla andra grenar och incheckningar.</p>
 <div class="paragraph">
-<p>Indexet och arbetskatalogen justeras som om du tidigare hade kört <span class='synopsis'><code>git</code> <code>checkout</code> <em>&lt;start-punkt&gt;</em></span>. Detta låter dig starta en ny historik som registrerar en uppsättning sökvägar liknande <em>&lt;start-punkt&gt;</em> genom att enkelt köra <span class='synopsis'><code>git</code> <code>commit</code> <code>-a</code></span> för att göra root-incheckningen.</p>
+<p>Indexet och arbetsträdet justeras som om <span class='synopsis'><code>git</code> <code>checkout</code> <em>&lt;start-punkt&gt;</em></span>. Detta gör det möjligt att starta en ny historik som registrerar en uppsättning sökvägar liknande <em>&lt;start-punkt&gt;</em> genom att enkelt köra <span class='synopsis'><code>git</code> <code>commit</code> <code>-a</code></span> för att göra root-incheckningen.</p>
 </div>
 <div class="paragraph">
-<p>Detta kan vara användbart när du vill publicera trädet från en incheckning utan att exponera dess fullständiga historik. Du kanske vill göra detta för att publicera en öppen källkods-gren av ett projekt vars nuvarande träd är "rent", men vars fullständiga historik innehåller proprietära eller på annat sätt begränsade kodbitar.</p>
+<p>Det kan vara användbart när trädet från en incheckning ska publiceras utan att exponera dess fullständiga historik. Det kan till exempel användas för att publicera en öppen källkodsgren av ett projekt vars nuvarande träd är "rent", men vars fullständiga historik innehåller proprietära eller på annat sätt begränsade kodbitar.</p>
 </div>
 <div class="paragraph">
-<p>Om du vill starta en frånkopplad historik som registrerar en uppsättning sökvägar som är helt annorlunda än den för <em>&lt;startpunkt&gt;</em>, bör du rensa indexet och arbetskatalogen direkt efter att du skapat den föräldralösa grenen genom att köra <span class='synopsis'><code>git</code> <code>rm</code> <code>-rf</code> <code>.</code></span> från den översta nivån i arbetskatalogen. Efteråt är du redo att förbereda dina nya filer, fylla i arbetsträdet igen, kopiera dem från någon annanstans, extrahera en tar-fil, etc.</p>
+<p>Om en frånkopplad historik ska startas som registrerar en uppsättning sökvägar som är helt annorlunda än den för <em>&lt;startpunkt&gt;</em>, bör indexet och arbetsträdet rensas direkt efter att den föräldralösa grenen har skapats genom att köra <span class='synopsis'><code>git</code> <code>rm</code> <code>-rf</code> <code>.</code></span> från den översta nivån i arbetsträdet. Efteråt är det möjligt att förbereda de nya filerna, fylla i arbetsträdet igen, kopiera dem från någon annanstans, extrahera en tar-fil, etc.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode--ignore-skip-worktree-bitscodespan"> <a class="anchor" href="#git-checkout---ignore-skip-worktree-bits"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode--ignore-skip-worktree-bitscodespan"></a><span class='synopsis'><code>--ignore-skip-worktree-bits</code></span> </dt>
@@ -239,7 +239,7 @@ headings:
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode-mcodespan"> <a class="anchor" href="#git-checkout--m"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode-mcodespan"></a><span class='synopsis'><code>-m</code></span> </dt>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode--mergecodespan"> <a class="anchor" href="#git-checkout---merge"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode--mergecodespan"></a><span class='synopsis'><code>--merge</code></span> </dt>
 <dd>
-<p>Vid byte av grenar, om du har lokala ändringar i en eller flera filer som skiljer sig från den aktuella grenen och den gren du växlar till, vägrar kommandot att byta gren för att bevara dina ändringar i kontext. Men, med det här alternativet, sker dock en trevägssammanslagning mellan den aktuella grenen, innehållet i din arbetskatalog och den nya grenen är klar, och du kommer att vara på den nya grenen.</p>
+<p>Vid byte av grenar: om det finns lokala ändringar i en eller flera filer som skiljer sig mellan den aktuella grenen och den gren som växlas till, vägrar kommandot att byta gren för att bevara ändringarna i sitt sammanhang. Med det här alternativet görs dock en trevägssammanslagning mellan den aktuella grenen, innehållet i arbetsträdet och den nya grenen, och resultatet blir den nya grenen.</p>
 <div class="paragraph">
 <p>När en sammanslagningskonflikt inträffar, lämnas indexposterna för motstridiga sökvägar ej sammanslagna, och du måste lösa konflikterna och markera de lösta sökvägarna med <span class='synopsis'><code>git</code> <code>add</code></span> (eller <span class='synopsis'><code>git</code> <code>rm</code></span> om sammanslagningen ska resultera i borttagning av sökvägen).</p>
 </div>
@@ -257,9 +257,9 @@ headings:
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode-pcodespan"> <a class="anchor" href="#git-checkout--p"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode-pcodespan"></a><span class='synopsis'><code>-p</code></span> </dt>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode--patchcodespan"> <a class="anchor" href="#git-checkout---patch"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode--patchcodespan"></a><span class='synopsis'><code>--patch</code></span> </dt>
 <dd>
-<p>Välj interaktivt bitar i skillnaden mellan <em>&lt;trädlikt&gt;</em> (eller indexet, om ospecificerat) och arbetsträdet. De valda bitarna tillämpas sedan i omvänd ordning på arbetsträdet (och om ett <em>&lt;trädlikt&gt;</em> specificerades, indexet).</p>
+<p>Välj interaktivt bitar i skillnaden mellan <em>&lt;trädlikt&gt;</em> (eller indexet, om inget anges) och arbetsträdet. De valda bitarna tillämpas sedan i omvänd ordning på arbetsträdet (och om ett <em>&lt;trädlikt&gt;</em> angavs, indexet).</p>
 <div class="paragraph">
-<p>Det här betyder att du kan använda <span class='synopsis'><code>git</code> <code>checkout</code> <code>-p</code></span> för att selektivt ignorera redigeringar från din nuvarande arbetskatalog. Se avsnittet "Interaktivt läge" i <a href='{{< relurl "docs/git-add/sv" >}}'>git-add[1]</a> för att lära dig hur du använder <span class='synopsis'><code>--patch</code></span>-läget.</p>
+<p>Det betyder att <span class='synopsis'><code>git</code> <code>checkout</code> <code>-p</code></span> kan användas för att selektivt ignorera redigeringar från det nuvarande arbetsträdet. Se avsnittet "Interaktivt läge" i <a href='{{< relurl "docs/git-add/sv" >}}'>git-add[1]</a> för information om hur <span class='synopsis'><code>--patch</code></span>-läget.</p>
 </div>
 <div class="paragraph">
 <p>Observera att det här alternativet använder inte överläggsläget som standard (se även <span class='synopsis'><code>--overlay</code></span>), och för närvarande stödes inte överläggsläget.</p>
@@ -268,7 +268,7 @@ headings:
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode-Ucodeemltngtemspan"> <a class="anchor" href="#git-checkout--Un"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode-Ucodeemltngtemspan"></a><span class='synopsis'><code>-U</code><em>&lt;n&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode--unifiedcodeemltngtemspan"> <a class="anchor" href="#git-checkout---unifiedn"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode--unifiedcodeemltngtemspan"></a><span class='synopsis'><code>--unified=</code><em>&lt;n&gt;</em></span> </dt>
 <dd>
-<p>Generate diffs with <em>&lt;n&gt;</em> lines of context. Defaults to <span class='synopsis'><code>diff.context</code></span> or 3 if the config option is unset.</p>
+<p>Generate diffs with <em>&lt;n&gt;</em> lines of context. The number of context lines defaults to <span class='synopsis'><code>diff.context</code></span> or 3 if the configuration variable is unset. (<span class='synopsis'><code>-U</code></span> without <span class='synopsis'><em>&lt;n&gt;</em></span> is silently accepted as a synonym for <span class='synopsis'><code>-p</code></span> due to a historical accident).</p>
 </dd>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode--inter-hunk-contextcodeemltngtemspan"> <a class="anchor" href="#git-checkout---inter-hunk-contextn"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode--inter-hunk-contextcodeemltngtemspan"></a><span class='synopsis'><code>--inter-hunk-context=</code><em>&lt;n&gt;</em></span> </dt>
 <dd>
@@ -290,16 +290,16 @@ headings:
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode--recurse-submodulescodespan"> <a class="anchor" href="#git-checkout---recurse-submodules"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode--recurse-submodulescodespan"></a><span class='synopsis'><code>--recurse-submodules</code></span> </dt>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode--no-recurse-submodulescodespan"> <a class="anchor" href="#git-checkout---no-recurse-submodules"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode--no-recurse-submodulescodespan"></a><span class='synopsis'><code>--no-recurse-submodules</code></span> </dt>
 <dd>
-<p>Genom att använda <span class='synopsis'><code>--recurse-submodules</code></span> uppdateras innehållet i alla aktiva undermoduler enligt den incheckningen som registrerats i superprojektet. Om lokala modifieringar i en undermodul skulle skrivas över kommer utcheckningen att misslyckas om inte <span class='synopsis'><code>-f</code></span> används. Om ingenting (eller <span class='synopsis'><code>--no-recurse-submodules</code></span>) används kommer undermodulernas arbetskataloger inte att uppdateras. Precis som med <a href='{{< relurl "docs/git-submodule/sv" >}}'>git-submodule[1]</a> kommer detta att koppla bort <span class='synopsis'><code>HEAD</code></span> från undermodulen.</p>
+<p>Genom att använda <span class='synopsis'><code>--recurse-submodules</code></span> uppdateras innehållet i alla aktiva undermoduler enligt den incheckningen som registrerats i superprojektet. Om lokala modifieringar i en undermodul skulle skrivas över kommer utcheckningen att misslyckas om inte <span class='synopsis'><code>-f</code></span> används. Om ingenting (eller <span class='synopsis'><code>--no-recurse-submodules</code></span>) används kommer undermodulernas arbetsträd inte att uppdateras. Precis som med <a href='{{< relurl "docs/git-submodule/sv" >}}'>git-submodule[1]</a> kommer detta att koppla bort <span class='synopsis'><code>HEAD</code></span> från undermodulen.</p>
 </dd>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode--overlaycodespan"> <a class="anchor" href="#git-checkout---overlay"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode--overlaycodespan"></a><span class='synopsis'><code>--overlay</code></span> </dt>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode--no-overlaycodespan"> <a class="anchor" href="#git-checkout---no-overlay"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode--no-overlaycodespan"></a><span class='synopsis'><code>--no-overlay</code></span> </dt>
 <dd>
-<p>I standard överläggsläget, tar <span class='synopsis'><code>git</code> <code>checkout</code></span> aldrig bort filer från indexet eller arbetskatalogen. När <span class='synopsis'><code>--no-overlay</code></span> anges, tas filer som finnsi indexet och arbetskatalogen, men inte i <em>&lt;trädlikt&gt;</em>, bort, så att de matchar <em>&lt;trädlikt&gt;</em> exakt.</p>
+<p>I standard överläggsläget, tar <span class='synopsis'><code>git</code> <code>checkout</code></span> aldrig bort filer från indexet eller arbetsträdet. När <span class='synopsis'><code>--no-overlay</code></span> anges, tas filer som finnsi indexet och arbetsträdet, men inte i <em>&lt;trädlikt&gt;</em>, bort, så att de matchar <em>&lt;trädlikt&gt;</em> exakt.</p>
 </dd>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode--pathspec-from-filecodeemltfilgtemspan"> <a class="anchor" href="#git-checkout---pathspec-from-filefil"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode--pathspec-from-filecodeemltfilgtemspan"></a><span class='synopsis'><code>--pathspec-from-file=</code><em>&lt;fil&gt;</em></span> </dt>
 <dd>
-<p>Sökvägsspec skickas i <em>&lt;fil&gt;</em> istället för kommandoradsargument. Om <em>&lt;fil&gt;</em> är exakt <span class='synopsis'><code>-</code></span> används standardindata. Sökvägsmönster-element separeras med <em>LF</em> eller <em>CR</em>/<em>LF</em>. Sökvägsmönster-element kan citeras enligt beskrivningen för konfigurationsvariabeln <span class='synopsis'><code>core.quotePath</code></span> (se <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>). Se även <span class='synopsis'><code>--pathspec-file-nul</code></span> och global <span class='synopsis'><code>--literal-pathspecs</code></span>.</p>
+<p>Sökvägsmönster skickas i <em>&lt;fil&gt;</em> i stället för kommandoradsargument. Om <em>&lt;fil&gt;</em> är exakt <span class='synopsis'><code>-</code></span> används standardindata. Sökvägsmönster separeras med <em>LF</em> eller <em>CR</em>/<em>LF</em>. Sökvägsmönster kan citeras enligt beskrivningen för konfigurationsvariabeln <span class='synopsis'><code>core.quotePath</code></span> (se <a href='{{< relurl "docs/git-config/sv" >}}'>git-config[1]</a>). Se även <span class='synopsis'><code>--pathspec-file-nul</code></span> och globala <span class='synopsis'><code>--literal-pathspecs</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscode--pathspec-file-nulcodespan"> <a class="anchor" href="#git-checkout---pathspec-file-nul"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscode--pathspec-file-nulcodespan"></a><span class='synopsis'><code>--pathspec-file-nul</code></span> </dt>
 <dd>
@@ -451,7 +451,7 @@ a---b---c---d  gren 'master' (refers to incheckning 'd')
 </div>
 </div>
 <div class="paragraph">
-<p>Det är viktigt att inse att ingenting i nuläget refererar till incheckning <span class='synopsis'><code>f</code></span>. Så småningom kommer incheckning <span class='synopsis'><code>f</code></span> (och i förlängningen commit <span class='synopsis'><code>e</code></span>) att raderas av Gits rutinmässiga skräpinsamlingsprocess, såvida vi inte skapar en referens innan det händer. Om vi inte ännu har gått ifrån incheckning <span class='synopsis'><code>f</code></span> kommer någon av dessa att skapa en referens till den:</p>
+<p>Det är viktigt att inse att ingenting i nuläget refererar till incheckning <span class='synopsis'><code>f</code></span>. Så småningom kommer incheckning <span class='synopsis'><code>f</code></span> (och i förlängningen incheckning <span class='synopsis'><code>e</code></span>) att raderas av Gits rutinmässiga skräpinsamlingsprocess, såvida vi inte skapar en referens innan det händer. Om vi inte ännu har gått ifrån incheckning <span class='synopsis'><code>f</code></span> kommer någon av dessa att skapa en referens till den:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -538,10 +538,10 @@ $ git checkout hello.c            <b class="conum">(3)</b></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Observera citattecknen runt <span class='synopsis'><code>*.c</code></span>. Filen <span class='synopsis'><code>hello.c</code></span> kommer också att checkas ut, även om den inte längre finns i arbetskatalogen, eftersom filglobbing används för att matcha poster i indexet (inte i arbetskatalogen av skalet).</p>
+<p>Observera citattecknen runt <span class='synopsis'><code>*.c</code></span>. Filen <span class='synopsis'><code>hello.c</code></span> kommer också att checkas ut, även om den inte längre finns i arbetsträdet, eftersom filglobbing används för att matcha poster i indexet (inte i arbetsträdet av skalet).</p>
 </div>
 <div class="paragraph">
-<p>Om du har en olycklig gren som heter <span class='synopsis'><code>hello.c</code></span>, skulle detta steg förväxlas med en instruktion för att byta till den grenen. Du bör istället skriva:</p>
+<p>Om du har en olycklig gren som heter <span class='synopsis'><code>hello.c</code></span>, skulle detta steg förväxlas med en instruktion för att byta till den grenen. Du bör i stället skriva:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -564,7 +564,7 @@ $ git checkout hello.c            <b class="conum">(3)</b></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>$ git checkout mytopic
+<pre>$ git checkout mittämne
 error: You have local changes to 'frotz'; not switching branches.</pre>
 </div>
 </div>
@@ -573,7 +573,7 @@ error: You have local changes to 'frotz'; not switching branches.</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>$ git checkout -m mytopic
+<pre>$ git checkout -m mittämne
 Auto-merging frotz</pre>
 </div>
 </div>
@@ -588,7 +588,7 @@ Auto-merging frotz</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>$ git checkout -m mytopic
+<pre>$ git checkout -m mittämne
 Auto-merging frotz
 ERROR: Merge conflict in frotz
 fatal: merge program failed</pre>
@@ -627,7 +627,7 @@ $ git add frotz</pre>
 </dd>
 <dt class="hdlist1" id="git-checkout-spanclasssynopsiscodecheckoutworkerscodespan"> <a class="anchor" href="#git-checkout-checkoutworkers"></a> <a class="anchor" href="#git-checkout-spanclasssynopsiscodecheckoutworkerscodespan"></a><span class='synopsis'><code>checkout.workers</code></span> </dt>
 <dd>
-<p>Antalet parallella arbetare som ska användas vid uppdatering av arbetskatalogen. Standardvärdet är ett, dvs. sekventiell exekvering. Om det sätts till ett värde mindre än ett, kommer Git att använda lika många arbetare som antalet tillgängliga logiska kärnor. Denna inställning och <span class='synopsis'><code>checkout.thresholdForParallelism</code></span> påverkar alla kommandon som utför utcheckning. T.ex. checkout, clone, reset, sparse-checkout, etc.</p>
+<p>Antalet parallella arbetare som ska användas vid uppdatering av arbetsträdet. Standardvärdet är ett, d.v.s. sekventiell exekvering. Om det sätts till ett värde mindre än ett, kommer Git att använda lika många arbetare som antalet tillgängliga logiska kärnor. Inställningen och <span class='synopsis'><code>checkout.thresholdForParallelism</code></span> påverkar alla kommandon som utför utcheckning. T.ex. checkout, clone, reset, sparse-checkout, etc.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -635,7 +635,7 @@ $ git add frotz</pre>
 <div class="title">Note</div>
 </td>
 <td class="content">
-Parallell utcheckning ger vanligtvis bättre prestanda för förvar som finns på SSD-diskar eller över NFS. För förvar på roterande diskar och/eller maskiner med ett litet antal kärnor fungerar standard sekventiell utcheckning ofta bättre. Storleken och komprimeringsnivån för ett förvaret kan också påverka hur bra den parallella versionen presterar.
+Parallell utcheckning ger vanligtvis bättre prestanda för kodförråd som finns på SSD-diskar eller över NFS. För kodförråd på roterande diskar och/eller maskiner med ett litet antal kärnor fungerar standard sekventiell utcheckning ofta bättre. Storleken och komprimeringsnivån för ett kodförrådet kan också påverka hur bra den parallella versionen presterar.
 </td>
 </tr>
 </table>

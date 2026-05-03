@@ -35,7 +35,7 @@ headings:
 <h2 id="_namn"><a class="anchor" href="#_namn"></a>NAMN</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>git-range-diff - Jämför två incheckningsintervall (dvs. två versioner av en gren)</p>
+<p>git-range-diff - Jämför två incheckningsintervall (d.v.s. två versioner av en gren)</p>
 </div>
 </div>
 </div>
@@ -56,24 +56,24 @@ headings:
 <h2 id="_beskrivning"><a class="anchor" href="#_beskrivning"></a>BESKRIVNING</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Det här kommandot visar skillnaderna mellan två versioner av en patchserieer, eller mer generellt, två inchecknings-intervall (ignorerar sammanslagnings-incheckningar).</p>
+<p>Kommandot visar skillnaderna mellan två versioner av en patchserie, eller mer generellt två incheckningsintervall (ignorerar sammanslagningsincheckningar).</p>
 </div>
 <div class="paragraph">
-<p>Om <span class='synopsis'><em>&lt;sökväg&gt;</em></span>-argument finns begränsas dessa inchecknings-intervall i enlighet därmed.</p>
+<p>Om <span class='synopsis'><em>&lt;sökväg&gt;</em></span>-argument finns begränsas dessa incheckningsintervall i enlighet därmed.</p>
 </div>
 <div class="paragraph">
-<p>För detta ändamål, hittar den först par av incheckningar från båda inchecknings-intervallen som motsvarar varandra. Två incheckningar sägs överensstämma när skillnaden mellan deras patchar (dvs. författarinformationen, inchecknings-meddelandet och inchecknings-differensen) är rimligt liten jämfört med patcharnas storlek. Se ``Algoritm`` nedan för detaljer.</p>
+<p>För detta ändamål hittar den först par av incheckningar från båda incheckningsintervallen som motsvarar varandra. Två incheckningar sägs överensstämma när skillnaden mellan deras patchar (d.v.s. författarinformationen, incheckningsmeddelandet och incheckningsdifferensen) är rimligt liten jämfört med patcharnas storlek. Se ``Algoritm`` nedan för detaljer.</p>
 </div>
 <div class="paragraph">
-<p>Slutligen, visas listan över matchande incheckningar i ordningen för det andra inchecknings-intervallet, där omatchade incheckningar infogas precis efter att alla deras föregångare har visats.</p>
+<p>Slutligen, visas listan över matchande incheckningar i ordningen för det andra incheckningsintervallet, där omatchade incheckningar infogas precis efter att alla deras föregångare har visats.</p>
 </div>
 <div class="paragraph">
-<p>Det finns tre sätt att ange inchecknings-intervallen:</p>
+<p>Det finns tre sätt att ange incheckningsintervallen:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><span class='synopsis'><em>&lt;intervall1&gt;</em> <em>&lt;intervall2&gt;</em></span>: Endera inchecknings-intervallet kan ha formen <span class='synopsis'><em>&lt;bas&gt;</em><code>..</code><em>&lt;rev&gt;</em></span>, <span class='synopsis'><em>&lt;rev&gt;</em><code>^!</code></span> eller <span class='synopsis'><em>&lt;rev&gt;</em><code>^-</code><em>&lt;n&gt;</em></span>. Se <span class='synopsis'><code>SPECIFIERING</code> <code>AV</code> <code>INTERVALL</code></span> i <a href='{{< relurl "docs/gitrevisions/sv" >}}'>gitrevisions[7]</a> för mer information.</p>
+<p><span class='synopsis'><em>&lt;intervall1&gt;</em> <em>&lt;intervall2&gt;</em></span>: Endera incheckningsintervallet kan ha formen <span class='synopsis'><em>&lt;bas&gt;</em><code>..</code><em>&lt;rev&gt;</em></span>, <span class='synopsis'><em>&lt;rev&gt;</em><code>^!</code></span> eller <span class='synopsis'><em>&lt;rev&gt;</em><code>^-</code><em>&lt;n&gt;</em></span>. Se <span class='synopsis'><code>SPECIFIERING</code> <code>AV</code> <code>INTERVALL</code></span> i <a href='{{< relurl "docs/gitrevisions/sv" >}}'>gitrevisions[7]</a> för mer information.</p>
 </li>
 <li>
 <p><span class='synopsis'><em>&lt;rev1&gt;</em><code>...</code><em>&lt;rev2&gt;</em></span>. Detta motsvarar <span class='synopsis'><em>&lt;rev2&gt;</em><code>..</code><em>&lt;rev1&gt;</em> <em>&lt;rev1&gt;</em><code>..</code><em>&lt;rev2&gt;</em></span>.</p>
@@ -92,12 +92,12 @@ headings:
 <dl>
 <dt class="hdlist1" id="git-range-diff---no-dual-color"> <a class="anchor" href="#git-range-diff---no-dual-color"></a>--no-dual-color </dt>
 <dd>
-<p>När inchecknings-differenserna skiljer sig åt återskapar <span class='synopsis'><code>git</code> <code>range-diff</code></span> de ursprungliga differnas färg och lägger till yttre -/+ diff-markörer med <strong>bakgrunden</strong> röd/grön för att göra det lättare att se t.ex. när det skedde en ändring i exakt vilka rader som lades till.</p>
+<p>När incheckningsdifferenserna skiljer sig åt återskapar <span class='synopsis'><code>git</code> <code>range-diff</code></span> de ursprungliga differnas färg och lägger till yttre -/+ diff-markörer med <strong>bakgrunden</strong> röd/grön för att göra det lättare att se t.ex. när det skedde en ändring i exakt vilka rader som lades till.</p>
 <div class="paragraph">
-<p>Dessutom, visas inchecknings diff-raderna som bara finns i det första inchecknings-intervallet "nedtonade" (detta kan åsidosättas med konfigurationsinställningen <span class='synopsis'><code>color.diff.</code><em>&lt;fack&gt;</em></span> där <span class='synopsis'><em>&lt;fack&gt;</em></span> är en av <span class='synopsis'><code>contextDimmed</code></span>, <span class='synopsis'><code>oldDimmed</code></span> och <span class='synopsis'><code>newDimmed</code></span>), och inchecknings diff-raderna som bara finns i det andra inchecknings-intervallet visas i fetstil (vilket kan åsidosättas med konfigurationsinställningarna <span class='synopsis'><code>color.diff.</code><em>&lt;fack&gt;</em></span> där <span class='synopsis'><em>&lt;fack&gt;</em></span> är en av <span class='synopsis'><code>contextBold</code></span>, <span class='synopsis'><code>oldBold</code></span> eller <span class='synopsis'><code>newBold</code></span>).</p>
+<p>Dessutom, visas incheckningsdiffraderna som bara finns i det första incheckningsintervallet "nedtonade" (detta kan åsidosättas med konfigurationsinställningen <span class='synopsis'><code>color.diff.</code><em>&lt;fack&gt;</em></span> där <span class='synopsis'><em>&lt;fack&gt;</em></span> är en av <span class='synopsis'><code>contextDimmed</code></span>, <span class='synopsis'><code>oldDimmed</code></span> och <span class='synopsis'><code>newDimmed</code></span>), och incheckningsdiffraderna som bara finns i det andra incheckningsintervallet visas i fetstil (vilket kan åsidosättas med konfigurationsinställningarna <span class='synopsis'><code>color.diff.</code><em>&lt;fack&gt;</em></span> där <span class='synopsis'><em>&lt;fack&gt;</em></span> är en av <span class='synopsis'><code>contextBold</code></span>, <span class='synopsis'><code>oldBold</code></span> eller <span class='synopsis'><code>newBold</code></span>).</p>
 </div>
 <div class="paragraph">
-<p>Detta kallas <span class='synopsis'><code>range-diff</code></span> för "dubbel färgning". Använd <span class='synopsis'><code>--no-dual-color</code></span> för att återgå till att färga alla linjer enligt de yttre diff-markörerna (och helt ignorera den inre diff-markören när det gäller färg).</p>
+<p>Det kallas i <span class='synopsis'><code>range-diff</code></span> för "dubbel färgning". Använd <span class='synopsis'><code>--no-dual-color</code></span> för att återgå till att färga alla linjer enligt de yttre diff-markörerna (och helt ignorera den inre diff-markören när det gäller färg).</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-range-diff---creation-factorltprocentgt"> <a class="anchor" href="#git-range-diff---creation-factorprocent"></a> <a class="anchor" href="#git-range-diff---creation-factorltprocentgt"></a>--creation-factor=&lt;procent&gt; </dt>
@@ -114,9 +114,9 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-range-diff---diff-mergesltformatgt"> <a class="anchor" href="#git-range-diff---diff-mergesformat"></a> <a class="anchor" href="#git-range-diff---diff-mergesltformatgt"></a>--diff-merges=&lt;format&gt; </dt>
 <dd>
-<p>Istället för att ignorera sammanslagnings-incheckningar, generera diffs för dem med hjälp av motsvarande <span class='synopsis'><code>--diff-merges=</code><em>&lt;format&gt;</em></span>-alternativ i <a href='{{< relurl "docs/git-log/sv" >}}'>git-log[1]</a>, och inkludera dem i jämförelsen.</p>
+<p>I stället för att ignorera sammanslagningsincheckningar, generera diffar för dem med hjälp av motsvarande <span class='synopsis'><code>--diff-merges=</code><em>&lt;format&gt;</em></span>-alternativ i <a href='{{< relurl "docs/git-log/sv" >}}'>git-log[1]</a>, och inkludera dem i jämförelsen.</p>
 <div class="paragraph">
-<p>Obs: I vanliga fall är <span class='synopsis'><code>remerge</code></span>-läget det mest naturliga att använda, eftersom det bara visar skillnaden utöver vad Gits sammanslagnings-maskineri skulle ha producerat. Med andra ord, om en sammanslagnings-incheckning är resultatet av en icke-konfliktfylld <span class='synopsis'><code>git</code> <code>merge</code></span>, kommer <span class='synopsis'><code>remerge</code></span>-läget att representera det med en tom skillnad.</p>
+<p>Obs: I vanliga fall är <span class='synopsis'><code>remerge</code></span>-läget det mest naturliga att använda, eftersom det bara visar skillnaden utöver vad Gits sammanslagnings-maskineri skulle ha producerat. Med andra ord, om en sammanslagningsincheckning är resultatet av en icke-konfliktfylld <span class='synopsis'><code>git</code> <code>merge</code></span>, kommer <span class='synopsis'><code>remerge</code></span>-läget att representera det med en tom skillnad.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-range-diff---remerge-diff"> <a class="anchor" href="#git-range-diff---remerge-diff"></a>--remerge-diff </dt>
@@ -143,7 +143,7 @@ headings:
 </dl>
 </div>
 <div class="paragraph">
-<p><span class='synopsis'><code>git</code> <code>range-diff</code></span> accepterar även de vanliga diff-alternativen (se <a href='{{< relurl "docs/git-diff/sv" >}}'>git-diff[1]</a>), framför allt alternativen <span class='synopsis'><code>--color=</code>[<em>&lt;när&gt;</em>]</span> och <span class='synopsis'><code>--no-color</code></span>. Dessa alternativ används när man genererar "differensen mellan patchar", dvs. för att jämföra författaren, inchecknings-meddelandet och diff-värdet för motsvarande gamla/nya incheckningar. Det finns för närvarande inget sätt att justera de flesta av diff-alternativen som skickas till <span class='synopsis'><code>git</code> <code>log</code></span> när man genererar dessa patchar.</p>
+<p><span class='synopsis'><code>git</code> <code>range-diff</code></span> accepterar även de vanliga diff-alternativen (se <a href='{{< relurl "docs/git-diff/sv" >}}'>git-diff[1]</a>), framför allt alternativen <span class='synopsis'><code>--color=</code>[<em>&lt;när&gt;</em>]</span> och <span class='synopsis'><code>--no-color</code></span>. Dessa alternativ används när man genererar "differensen mellan patchar", dvs. för att jämföra författaren, incheckningsmeddelandet och diff-värdet för motsvarande gamla/nya incheckningar. Det finns för närvarande inget sätt att justera de flesta av diff-alternativen som skickas till <span class='synopsis'><code>git</code> <code>log</code></span> när man genererar dessa patchar.</p>
 </div>
 </div>
 </div>
@@ -151,10 +151,10 @@ headings:
 <h2 id="_utmatningsstabilitet"><a class="anchor" href="#_utmatningsstabilitet"></a>UTMATNINGSSTABILITET</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Utdata från kommandot <span class='synopsis'><code>range-diff</code></span> kan komma att ändras. Det är avsett att vara människoläsbart porslinsutdata, inte något som kan användas i olika versioner av Git för att få en textmässigt stabil <span class='synopsis'><code>range-diff</code></span> (i motsats till något som <span class='synopsis'><code>--stable</code></span>-alternativet till <a href='{{< relurl "docs/git-patch-id/sv" >}}'>git-patch-id[1]</a>). Det finns inte heller någon motsvarighet till <a href='{{< relurl "docs/git-apply/sv" >}}'>git-apply[1]</a> för <span class='synopsis'><code>range-diff</code></span>, utdata är inte avsett att vara maskinläsbart.</p>
+<p>Utdata från kommandot <span class='synopsis'><code>range-diff</code></span> kan komma att ändras. Det är avsett att vara människoläsbar högnivåutdata, inte något som kan användas i olika versioner av Git för att få en textmässigt stabil <span class='synopsis'><code>range-diff</code></span> (i motsats till något som <span class='synopsis'><code>--stable</code></span>-alternativet till <a href='{{< relurl "docs/git-patch-id/sv" >}}'>git-patch-id[1]</a>). Det finns inte heller någon motsvarighet till <a href='{{< relurl "docs/git-apply/sv" >}}'>git-apply[1]</a> för <span class='synopsis'><code>range-diff</code></span>; utdata är inte avsett att vara maskinläsbart.</p>
 </div>
 <div class="paragraph">
-<p>Detta gäller särskilt när man skickar in diff-alternativ. För närvarande kan vissa alternativ som <span class='synopsis'><code>--stat</code></span>, som en framväxande effekt, producera utdata som är ganska värdelösa i samband med <span class='synopsis'><code>range-diff</code></span>. Framtida versioner av <span class='synopsis'><code>range-diff</code></span> kan lära sig att tolka sådana alternativ på ett sätt som är specifikt för <span class='synopsis'><code>range-diff</code></span> (t.ex. för <span class='synopsis'><code>--stat</code></span> som producerar människoläsbart utdata som sammanfattar hur diffstaten ändradats).</p>
+<p>Detta gäller särskilt när man anger diff-alternativ. För närvarande kan vissa alternativ, som <span class='synopsis'><code>--stat</code></span>, som en bieffekt ge utdata som är ganska värdelösa för <span class='synopsis'><code>range-diff</code></span>. Framtida versioner av <span class='synopsis'><code>range-diff</code></span> kan lära sig att tolka sådana alternativ på ett sätt som är specifikt för <span class='synopsis'><code>range-diff</code></span> (t.ex. att <span class='synopsis'><code>--stat</code></span> producerar människoläsbar utdata som sammanfattar hur diffstaten har ändrats).</p>
 </div>
 </div>
 </div>
@@ -202,13 +202,13 @@ headings:
 </div>
 </div>
 <div class="paragraph">
-<p>I det här exemplet, finns det 3 gamla och 3 nya incheckningar, där utvecklaren tog bort den tredje, lade till en ny före de två första och modifierade inchecknings-meddelandet för den andra incheckningen såväl som dess diff.</p>
+<p>I det här exemplet, finns det 3 gamla och 3 nya incheckningar, där utvecklaren tog bort den tredje, lade till en ny före de två första och modifierade incheckningsmeddelandet för den andra incheckningen såväl som dess diff.</p>
 </div>
 <div class="paragraph">
-<p>När utdata skickas till en terminal, är den färgkodad som standard, precis som vanlig <span class='synopsis'><code>git</code> <code>diff</code></span> utdata. Dessutom är den första raden (som lägger till en incheckning) grön, den sista raden (som tar bort en incheckning) är röd, den andra raden (med perfekt matchning) är gul som inchecknings-huvudet i <span class='synopsis'><code>git</code> <code>show</code></span> utdata, och den tredje raden färgar den gamla incheckningen röd, den nya grön och resten som `git show`s inchecknings-huvuder.</p>
+<p>När utdata skickas till en terminal, är den färgkodad som standard, precis som vanlig <span class='synopsis'><code>git</code> <code>diff</code></span> utdata. Dessutom är den första raden (som lägger till en incheckning) grön, den sista raden (som tar bort en incheckning) är röd, den andra raden (med perfekt matchning) är gul som incheckningshuvudet i <span class='synopsis'><code>git</code> <code>show</code></span> utdata, och den tredje raden färgar den gamla incheckningen röd, den nya grön och resten som `git show`s incheckningshuvuden.</p>
 </div>
 <div class="paragraph">
-<p>En naiv färgkodad diff av diffs är faktiskt lite svår att läsa, eftersom den färgar hela raderna röda eller gröna. Raden som lade till "Vad är oväntat" i den gamla incheckningen är till exempel helt röd, även om avsikten med den gamla cincheckningen var att lägga till något.</p>
+<p>En naiv färgkodad diff av diffar är faktiskt lite svår att läsa, eftersom den färgar hela raderna röda eller gröna. Raden som lade till "Vad är oväntat" i den gamla incheckningen är till exempel helt röd, även om avsikten med den gamla incheckningen var att lägga till något.</p>
 </div>
 <div class="paragraph">
 <p>För att underlätta detta använder <span class='synopsis'><code>range</code></span> läget <span class='synopsis'><code>--dual-color</code></span> som standard. I det här läget behåller diff-värdena de ursprungliga färgerna och prefixerar raderna med -/+ markörer som har sin <strong>bakgrund</strong> röd eller grön, för att göra det tydligare att de beskriver hur själva diffen ändrades.</p>
@@ -219,7 +219,7 @@ headings:
 <h2 id="_algoritm"><a class="anchor" href="#_algoritm"></a>Algoritm</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Den allmänna idén är denna: vi genererar en kostnadsmatris mellan incheckningar i båda inchecknings-intervallen, och löser sedan den lägsta kostnadstilldelningen.</p>
+<p>Den allmänna idén är denna: vi genererar en kostnadsmatris mellan incheckningar i båda incheckningsintervallen, och löser sedan den lägsta kostnadstilldelningen.</p>
 </div>
 <div class="paragraph">
 <p>Kostnadsmatrisen fylls i så här: för varje par av incheckningar genereras båda differna och "diffen av differ" genereras, med 3 kontextrader, sedan används antalet rader i den diffen som kostnad.</p>
@@ -284,7 +284,7 @@ headings:
 <p>Kostnaden för en kant <span class='synopsis'><code>o--C</code></span> är storleken på <span class='synopsis'><em>C`s diff, modifierad med en fudgefaktor som bör vara mindre än 100%. Kostnaden för en kant `o--o</em></span> är gratis. Fudgefaktorn är nödvändig eftersom även om <span class='synopsis'><code>1</code></span> och <span class='synopsis'><code>C</code></span> inte har något gemensamt, kan de fortfarande dela några tomma rader och liknande, vilket möjligen gör tilldelningen <span class='synopsis'><code>1--C</code></span>, <span class='synopsis'><code>o--o</code></span> något billigare än <span class='synopsis'><code>1--o</code></span>, <span class='synopsis'><code>o--C</code></span> även om <span class='synopsis'><code>1</code></span> och <span class='synopsis'><code>C</code></span> inte har något gemensamt. Med fudgefaktorn kräver vi en mycket större gemensam del för att betrakta patchar som motsvarande.</p>
 </div>
 <div class="paragraph">
-<p>Den totala tiden som behövs för att beräkna denna algoritm är den tid som behövs för att beräkna n+m inchecknings-differenser och sedan n*m differenser av patchar, plus den tid som behövs för att beräkna den lägsta kostnadstilldelningen mellan n och m differenser. Git använder en implementering av Jonker-Volgenant-algoritmen för att lösa tilldelningsproblemet, som har kubisk runtime-komplexitet. Matchningen som hittas i detta fall kommer att se ut så här:</p>
+<p>Den totala tiden som behövs för att beräkna denna algoritm är den tid som behövs för att beräkna n+m incheckningsdifferenser och sedan n*m patchdifferenser, plus den tid som behövs för att beräkna den lägsta kostnadstilldelningen mellan n och m differenser. Git använder en implementering av Jonker-Volgenant-algoritmen för att lösa tilldelningsproblemet, som har kubisk körtidskomplexitet. Matchningen som hittas i det här fallet kommer att se ut så här:</p>
 </div>
 <div class="listingblock">
 <div class="content">
