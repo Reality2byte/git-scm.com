@@ -1,5 +1,5 @@
 ---
-languageCode: en
+locale: en
 title: Git
 disablePathToLower: true
 relativeURLs: true
